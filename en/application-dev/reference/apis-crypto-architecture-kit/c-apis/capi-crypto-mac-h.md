@@ -8,8 +8,6 @@ Defines the message authentication code interfaces.
 
 **Library**: libohcrypto.so
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Related module**: [CryptoMacApi](capi-cryptomacapi.md)
@@ -52,8 +50,6 @@ enum CryptoMac_ParamType
 
 Defines MAC algorithm parameter types.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 | Enum item | Description |
@@ -74,9 +70,9 @@ OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)
 
 Creates a MAC context based on the given algorithm name.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_mac/OH_CryptoMac_Destroy {ctx}
 
 **Parameters**:
 
@@ -89,7 +85,7 @@ Creates a MAC context based on the given algorithm name.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if algoName or ctx is NULL,              algoName is not "HMAC" or "CMAC".</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if algoName or ctx is NULL, algoName is not "HMAC" or "CMAC".</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 **Reference**:
 
@@ -106,8 +102,6 @@ OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType t
 
 Sets the specified parameter of the MAC context.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Parameters**:
@@ -116,13 +110,13 @@ Sets the specified parameter of the MAC context.
 | -- | -- |
 | [OH_CryptoMac](capi-cryptomacapi-oh-cryptomac.md) *ctx | [in] MAC context. Cannot be NULL. |
 | [CryptoMac_ParamType](capi-crypto-mac-h.md#cryptomac_paramtype) type | [in] MAC parameter type. |
-| const Crypto_DataBlob *value | [in] Parameter value. This function performs a deep copy of the data in value. The caller can release value immediately after the function returns. Cannot be NULL. |
+| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [in] Parameter value. This function performs a deep copy of the data in value. The caller can release value immediately after the function returns. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx, value, or             value->data is NULL, type is not valid for the MAC algorithm,             or the digest/cipher algorithm name is not supported.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation for param copy fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx, value, or value->data is NULL, type is not valid for the MAC algorithm, or the digest/cipher algorithm name is not supported.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation for param copy fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 **Reference**:
 
@@ -139,8 +133,6 @@ OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *ke
 
 Initializes the MAC context with a symmetric key.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Parameters**:
@@ -148,13 +140,13 @@ Initializes the MAC context with a symmetric key.
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoMac](capi-cryptomacapi-oh-cryptomac.md) *ctx | [in] MAC context. Cannot be NULL. |
-| const OH_CryptoSymKey *key | [in] Symmetric key. Cannot be NULL. |
+| [const OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md) *key | [in] Symmetric key. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or key is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if MAC init fails. Possible causes:             the key length does not match the algorithm (e.g. CMAC with AES-128 requires a 16-byte key).</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or key is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if MAC init fails. Possible causes: the key length does not match the algorithm (e.g. CMAC with AES-128 requires a 16-byte key).</li> </ul> |
 
 **Reference**:
 
@@ -171,8 +163,6 @@ OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *
 
 Updates MAC data.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Parameters**:
@@ -180,13 +170,13 @@ Updates MAC data.
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoMac](capi-cryptomacapi-oh-cryptomac.md) *ctx | [in] MAC context. Cannot be NULL. |
-| const Crypto_DataBlob *in | [in] Data to update. Cannot be NULL. |
+| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] Data to update. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or in is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if MAC update fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or in is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if MAC update fails.</li> </ul> |
 
 **Reference**:
 
@@ -203,22 +193,22 @@ OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)
 
 Finishes the MAC operation.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoMac](capi-cryptomacapi-oh-cryptomac.md) *ctx | [in] MAC context. Cannot be NULL. |
-| Crypto_DataBlob *out | [out] Pointer to the Crypto_DataBlob structure for storing the MAC result. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] Pointer to the Crypto_DataBlob structure for storing the MAC result. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or out is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if MAC final fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or out is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if MAC final fails.</li> </ul> |
 
 ### OH_CryptoMac_GetLength()
 
@@ -229,8 +219,6 @@ OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)
 **Description**
 
 Obtains the MAC result length.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -245,7 +233,7 @@ Obtains the MAC result length.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or length is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or length is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 ### OH_CryptoMac_Destroy()
 
@@ -256,8 +244,6 @@ void OH_CryptoMac_Destroy(OH_CryptoMac *ctx)
 **Description**
 
 Destroys the MAC context.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 

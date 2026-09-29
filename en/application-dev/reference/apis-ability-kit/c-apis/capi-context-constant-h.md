@@ -6,8 +6,6 @@ The file declares the context constants of the AbilityRuntime module.
 
 **Library**: libability_runtime.so
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 13
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -35,8 +33,6 @@ enum AbilityRuntime_AreaMode
 
 Enumerates the data encryption levels.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 13
 
 | Enum item | Description |
@@ -57,8 +53,6 @@ enum AbilityRuntime_StartVisibility
 
 Enumerates the visibility modes of the window and dock bar icons when the ability is started.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 17
 
 | Enum item | Description |
@@ -76,8 +70,6 @@ enum AbilityRuntime_WindowMode
 
 Enumerates the window modes.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 17
 
 | Enum item | Description |
@@ -92,8 +84,6 @@ enum AbilityRuntime_SupportedWindowMode
 ```
 
 **Description**
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Enum item | Description |
 | -- | -- |

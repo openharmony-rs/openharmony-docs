@@ -6,9 +6,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 
 **Library**: libnative_window_manager.so
 
-**System capability**: SystemCapability.Window.SessionManager
-
-**Since**: 12
+**Since**: 15
 
 **Related module**: [WindowManager](capi-windowmanager.md)
 
@@ -60,7 +58,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 
 | Name | Description |
 | -- | -- |
-| void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize) | Defines the callback used for receiving the main window screenshot list.<br>**Since**: 21 |
+| void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize) | Defines the callback used for receiving the main window screenshot list.<br>**Since**: 21<br>**System capability**: SystemCapability.Window.SessionManager |
 
 ## Function description
 
@@ -73,8 +71,6 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 **Description**
 
 Sets whether to display the status bar in a window.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -90,7 +86,7 @@ Sets whether to display the status bar in a window.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_SetWindowStatusBarColor()
 
@@ -101,8 +97,6 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 **Description**
 
 Sets the color of the status bar in a window.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -117,7 +111,7 @@ Sets the color of the status bar in a window.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_SetWindowNavigationBarEnabled()
 
@@ -128,8 +122,6 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 **Description**
 
 Sets whether to display the navigation bar in a window.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -145,7 +137,7 @@ Sets whether to display the navigation bar in a window.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_GetWindowAvoidArea()
 
@@ -157,8 +149,6 @@ int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_Avoi
 
 Obtains the avoid area of a window.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 15
 
 **Parameters**:
@@ -166,14 +156,14 @@ Obtains the avoid area of a window.
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer. |
-| WindowManager_AvoidAreaType type | Type of the avoid area. |
-| WindowManager_AvoidArea* avoidArea | Pointer to the avoid area. |
+| [WindowManager_AvoidAreaType](capi-oh-window-comm-h.md#windowmanager_avoidareatype) type | Type of the avoid area. |
+| [WindowManager_AvoidArea](capi-windowmanager-windowmanager-avoidarea.md)* avoidArea | Pointer to the avoid area. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful, return avoid area ptr in avoidArea.      [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful, return avoid area ptr in avoidArea. [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_IsWindowShown()
 
@@ -184,8 +174,6 @@ int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)
 **Description**
 
 Checks whether a window is displayed.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -200,7 +188,7 @@ Checks whether a window is displayed.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. |
 
 ### OH_WindowManager_ShowWindow()
 
@@ -211,8 +199,6 @@ int32_t OH_WindowManager_ShowWindow(int32_t windowId)
 **Description**
 
 Shows a window.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -226,7 +212,7 @@ Shows a window.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_SetWindowTouchable()
 
@@ -237,8 +223,6 @@ int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)
 **Description**
 
 Sets whether a window is touchable.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -253,7 +237,7 @@ Sets whether a window is touchable.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_SetWindowFocusable()
 
@@ -264,8 +248,6 @@ int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)
 **Description**
 
 Sets whether a window is focusable.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -280,7 +262,7 @@ Sets whether a window is focusable.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_SetWindowBackgroundColor()
 
@@ -291,8 +273,6 @@ int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* 
 **Description**
 
 Sets the background color of a window.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -307,7 +287,7 @@ Sets the background color of a window.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. |
 
 ### OH_WindowManager_SetWindowBrightness()
 
@@ -318,8 +298,6 @@ int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 **Description**
 
 Sets the window brightness for the main window. The window brightness takes effect only when the window is in the foreground and has focus.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -334,7 +312,7 @@ Sets the window brightness for the main window. The window brightness takes effe
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_SetWindowKeepScreenOn()
 
@@ -345,8 +323,6 @@ int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScre
 **Description**
 
 Sets whether to always keep the screen on for a window.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -361,7 +337,7 @@ Sets whether to always keep the screen on for a window.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_SetWindowPrivacyMode()
 
@@ -372,8 +348,6 @@ int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)
 **Description**
 
 Sets whether to enable privacy mode for a window.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Required permission**: ohos.permission.PRIVACY_WINDOW
 
@@ -390,7 +364,7 @@ Sets whether to enable privacy mode for a window.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally.      [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed. |
 
 ### OH_WindowManager_GetWindowProperties()
 
@@ -402,8 +376,6 @@ int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_Win
 
 Obtains the properties of a window.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 15
 
 **Parameters**:
@@ -411,13 +383,13 @@ Obtains the properties of a window.
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer. |
-| WindowManager_WindowProperties* windowProperties | Pointer to the properties. |
+| [WindowManager_WindowProperties](capi-windowmanager-windowmanager-windowproperties.md)* windowProperties | Pointer to the properties. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful, return window properties ptr in windowProperties.      [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful, return window properties ptr in windowProperties. [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. |
 
 ### OH_WindowManager_Snapshot()
 
@@ -429,22 +401,20 @@ int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 
 Obtains the snapshot of a window.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| int32_t windowId | Window ID. The default value is **0**. The value is an integer. If the window ID is invalid or the window has been destroyed, you cannot obtain the window snapshot. To successfully obtain a snapshot, a valid window ID is required. You can obtain a valid window ID by calling the ArkTS API {@link getWindowProperties()} on the window object |
-| OH_PixelmapNative* pixelMap | Pointer to the snapshot. |
+| int32_t windowId | Window ID. The default value is **0**. The value is an integer. If the window ID is invalid or the window has been destroyed, you cannot obtain the window snapshot. To successfully obtain a snapshot, a valid window ID is required. You can obtain a valid window ID by calling the ArkTS API getWindowProperties() on the window object |
+| [OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)* pixelMap | Pointer to the snapshot. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful, return pixel map ptr in pixelMap.      [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful, return pixel map ptr in pixelMap. [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_GetAllWindowLayoutInfoList()
 
@@ -456,23 +426,21 @@ int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId, WindowMan
 
 Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 17
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| int64_t displayId | ID of the display. You can obtain a valid display ID by calling the ArkTS API {@link getWindowProperties()} on the window object |
-| WindowManager_Rect** windowLayoutInfoList | Double pointer to the layout information array of all windows visible. This parameter is used as an output parameter. |
+| int64_t displayId | ID of the display. You can obtain a valid display ID by calling the ArkTS API getWindowProperties() on the window object |
+| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md)** windowLayoutInfoList | Double pointer to the layout information array of all windows visible. This parameter is used as an output parameter. |
 | size_t* windowLayoutInfoSize | Pointer to the length of the layout information array. This parameter is used as an output parameter. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful, return Window layout info list.      [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error.      [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful, return Window layout info list. [WINDOW_MANAGER_ERRORCODE_INVALID_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) parameter error. [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_ReleaseAllWindowLayoutInfoList()
 
@@ -484,15 +452,13 @@ void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowL
 
 Releases the memory occupied by a window layout information array.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 17
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| WindowManager_Rect* windowLayoutInfoList | Pointer to the layout information array of all windows visible on the display. You can obtain the array pointer by calling [OH_WindowManager_GetAllWindowLayoutInfoList](capi-oh-window-h.md#oh_windowmanager_getallwindowlayoutinfolist). |
+| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md)* windowLayoutInfoList | Pointer to the layout information array of all windows visible on the display. You can obtain the array pointer by calling [OH_WindowManager_GetAllWindowLayoutInfoList](capi-oh-window-h.md#oh_windowmanager_getallwindowlayoutinfolist). |
 
 ### OH_WindowManager_InjectTouchEvent()
 
@@ -504,8 +470,6 @@ int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* to
 
 Injects a multimodal touch event into the target window. This function is limited to injecting events into windows that belong to the same process. The injection does not affect window focus or stacking order, nor does it start window dragging. The event is forwarded directly to ArkUI. This function must be called after the target window has completed its UI loading.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 20
 
 **Parameters**:
@@ -513,7 +477,7 @@ Injects a multimodal touch event into the target window. This function is limite
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer. |
-| Input_TouchEvent* touchEvent | Pointer to the multimodal touch event. For details, see {@link Input_TouchEvent}. The event is defined in **oh_input_manager.h**. Certain fields in this parameter have specific constraints. Specifically, **<br>action** should be an integer in the range [0, 3]; **id**, **displayX**, **displayY** should be an integer greater than or equal to 0. If these constraints are not met, the function returns **<br>WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**, indicating that the window manager service is abnormal. |
+| [Input_TouchEvent](../../apis-input-kit/c-apis/capi-input-input-touchevent.md)* touchEvent | Pointer to the multimodal touch event. For details, see [Input_TouchEvent](../../apis-input-kit/c-apis/capi-input-input-touchevent.md). The event is defined in **oh_input_manager.h**. Certain fields in this parameter have specific constraints. Specifically, **<br>action** should be an integer in the range [0, 3]; **id**, **displayX**, **displayY** should be an integer greater than or equal to 0. If these constraints are not met, the function returns **<br>WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**, indicating that the window manager service is abnormal. |
 | int32_t windowX | X coordinate of the event relative to the target window. The value is an integer. |
 | int32_t windowY | Y coordinate of the event relative to the target window. The value is an integer. |
 
@@ -521,7 +485,7 @@ Injects a multimodal touch event into the target window. This function is limite
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.      [OK](capi-uchar-h.md#ublockcode) the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.      [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the result code. [OK](capi-oh-key-code-h.md#input_keycode) the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_GetAllMainWindowInfo()
 
@@ -533,8 +497,6 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 
 Obtains the information about all main windows.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Required permission**: ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **Since**: 21
@@ -543,14 +505,14 @@ Obtains the information about all main windows.
 
 | Parameter | Description |
 | -- | -- |
-| WindowManager_MainWindowInfo** infoList | Double pointer to the main window information list. This parameter is used as an output parameter. |
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)** infoList | Double pointer to the main window information list. This parameter is used as an output parameter. |
 | size_t* mainWindowInfoSize | Pointer to the size of the main window information list. This parameter is used as an output parameter. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.      {@link WS_OK} the function call is successful.      [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed.<br>    [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported.<br>    [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed. [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_ReleaseAllMainWindowInfo()
 
@@ -562,15 +524,13 @@ void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* inf
 
 Releases the memory used by the main window information list.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| WindowManager_MainWindowInfo* infoList | Pointer to the main window information list. |
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)* infoList | Pointer to the main window information list. |
 
 ### OH_WindowManager_WindowSnapshotCallback()
 
@@ -582,15 +542,13 @@ typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative*
 
 Defines the callback used for receiving the main window screenshot list.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_PixelmapNative\*\* snapshotPixelMapList | Double pointer to the list of window screenshots. |
+| [const OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)** snapshotPixelMapList | Double pointer to the list of window screenshots. |
 | size_t snapshotListSize | Size of the window screenshot list. |
 
 ### OH_WindowManager_GetMainWindowSnapshot()
@@ -603,8 +561,6 @@ int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t win
 
 Obtains the screenshots of one or more main windows specified by **windowId**.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Required permission**: ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **Since**: 21
@@ -615,14 +571,14 @@ Obtains the screenshots of one or more main windows specified by **windowId**.
 | -- | -- |
 | int32_t* windowIdList | Pointer to the main window ID list. |
 | size_t windowIdListSize | Size of the main window ID list. |
-| WindowManager_WindowSnapshotConfig config | Configuration for obtaining the window screenshot. |
+| [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) config | Configuration for obtaining the window screenshot. |
 | [OH_WindowManager_WindowSnapshotCallback](capi-oh-window-h.md#oh_windowmanager_windowsnapshotcallback) callback | Callback used to return the lists of window screenshots, in the order of the provided window ID array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.      {@link WS_OK} the function call is successful.      [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed.<br>    [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported.<br>    [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed. [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_ReleaseMainWindowSnapshot()
 
@@ -634,15 +590,13 @@ void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapsho
 
 Releases the memory used by the main window screenshot list.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_PixelmapNative* snapshotPixelMapList | Pointer to the list of window screenshots. |
+| [const OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)* snapshotPixelMapList | Pointer to the list of window screenshots. |
 
 ### OH_WindowManager_LockCursor()
 
@@ -653,8 +607,6 @@ int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovemen
 **Description**
 
 Locks the mouse cursor within the specified window area and controls whether the cursor follows mouse movements. It is only supported by the window that currently has focus, and the lock is automatically released when the window loses focus.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Required permission**: ohos.permission.LOCK_WINDOW_CURSOR
 
@@ -671,7 +623,7 @@ Locks the mouse cursor within the specified window area and controls whether the
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.      {@link WS_OK} the function call is successful.      [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed.<br>    [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported.<br>    [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.<br>    [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed. [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_UnlockCursor()
 
@@ -682,8 +634,6 @@ int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 **Description**
 
 Clears the mouse cursor mode previously set for the window.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Required permission**: ohos.permission.LOCK_WINDOW_CURSOR
 
@@ -699,7 +649,7 @@ Clears the mouse cursor mode previously set for the window.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.      {@link WS_OK} the function call is successful.      [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed.<br>    [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported.<br>    [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal.<br>    [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_NO_PERMISSION](capi-oh-window-comm-h.md#windowmanager_errorcode) permission verification failed. [WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED](capi-oh-window-comm-h.md#windowmanager_errorcode) capability not supported. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. [WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) the window manager service works abnormally. |
 
 ### OH_WindowManager_FrameMetrics_IsFirstDrawFrame()
 
@@ -711,22 +661,20 @@ int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_Fr
 
 Check whether the current frame is the first frame.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_WindowManager_FrameMetrics* metrics | Frame metrics data object. |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | Frame metrics data object. |
 | bool* isFirstDrawFrame | This parameter is the return value of the function, indicating whether the current frame is the first frame. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_FrameMetrics_GetInputHandlingDuration()
 
@@ -738,22 +686,20 @@ int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowMa
 
 Get the time taken to process external input events in one frame.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_WindowManager_FrameMetrics* metrics | Frame metrics data object. |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | Frame metrics data object. |
 | uint64_t* duration | This parameter is the return value of the function, indicating the time taken to process external input events in one frame, in nanoseconds. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration()
 
@@ -765,22 +711,20 @@ int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowMa
 
 Get the time taken for layout measurement in one frame.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_WindowManager_FrameMetrics* metrics | Frame metrics data object. |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | Frame metrics data object. |
 | uint64_t* duration | This parameter is the return value of the function, indicating the time taken for layout measurement in one frame, in nanoseconds. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_FrameMetrics_GetVsyncTimestamp()
 
@@ -792,22 +736,20 @@ int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_F
 
 Get the start timestamp of the current frame.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_WindowManager_FrameMetrics* metrics | Frame metrics data object. |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | Frame metrics data object. |
 | uint64_t* timestamp | This parameter is the return value of the function, indicating the start timestamp of the current frame, in nanoseconds. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_RegisterFrameMetricsMeasuredCallback()
 
@@ -819,8 +761,6 @@ int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, 
 
 Registers a callback for window frame metric change events. This API depends on the loading of the window page content. That is, this API can be called only after the **<br>loadContent()** or **setUIContent()** API in ArkTS takes effect. The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting). To cancel the registration, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback) API.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -828,13 +768,13 @@ Registers a callback for window frame metric change events. This API depends on 
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | Window ID. |
-| OH_WindowManager_FrameMetricsMeasuredCallback callback | Callback used to return the result. |
+| [OH_WindowManager_FrameMetricsMeasuredCallback](capi-oh-window-comm-h.md#oh_windowmanager_framemetricsmeasuredcallback) callback | Callback used to return the result. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.      {@link WS_OK} the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause:<br>    1. The window is not created or destroyed;<br>    2. This window state is abnormal.<br>    [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:      1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. This window state is abnormal. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_UnregisterFrameMetricsMeasuredCallback()
 
@@ -846,8 +786,6 @@ int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId
 
 Unregisters the callback for window frame metric change events. This API depends on the loading of the window page content. That is, this API can be called only after the **<br>loadContent()** or **setUIContent()** API in ArkTS takes effect. To register such a callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback) API.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -855,13 +793,13 @@ Unregisters the callback for window frame metric change events. This API depends
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | Window ID. |
-| OH_WindowManager_FrameMetricsMeasuredCallback callback | Callback used to return the result. |
+| [OH_WindowManager_FrameMetricsMeasuredCallback](capi-oh-window-comm-h.md#oh_windowmanager_framemetricsmeasuredcallback) callback | Callback used to return the result. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.      {@link WS_OK} the function call is successful.      [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause:<br>    1. The window is not created or destroyed;<br>    2. This window state is abnormal.<br>    [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:      1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. This window state is abnormal. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_DensityInfo_GetDefaultDensity()
 
@@ -873,22 +811,20 @@ int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_De
 
 Gets the system default display size scaling factor of the screen where the window is located.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_WindowManager_DensityInfo* info | Display size scaling factor information for the current window. |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Display size scaling factor information for the current window. |
 | float* density | System default display size scaling factor |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_DensityInfo_GetSystemDensity()
 
@@ -900,22 +836,20 @@ int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_Den
 
 Gets the system display size scaling factor of the screen where the window is located.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_WindowManager_DensityInfo* info | Display size scaling factor information for the current window. |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Display size scaling factor information for the current window. |
 | float* density | System display size scaling factor |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_DensityInfo_GetCustomDensity()
 
@@ -927,22 +861,20 @@ int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_Den
 
 Gets the custom display size scaling factor of the window.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_WindowManager_DensityInfo* info | Display size scaling factor information for the current window. |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Display size scaling factor information for the current window. |
 | float* density | Custom display size scaling factor of the window. A return value of -1 indicates that no custom display size scaling factor has been set, or it has been reset. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_GetDensityInfoCopy()
 
@@ -954,8 +886,6 @@ int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowMan
 
 Get the system display size scaling factor, the system default display size scaling factor, and the custom display size scaling factor information of the screen where the current window is located.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 24
 
 **Parameters**:
@@ -963,13 +893,13 @@ Get the system display size scaling factor, the system default display size scal
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | WindowId when window is created. |
-| const OH_WindowManager_DensityInfo** info | Display size scaling factor information for the current window. A return value of NULL means this interface is not supported on the current device. |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)** info | Display size scaling factor information for the current window. A return value of NULL means this interface is not supported on the current device. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause:<br>            1. The window is not created or destroyed;<br>            2. This window state is abnormal.<br>        [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. This window state is abnormal. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_RegisterDensityInfoChangeCallback()
 
@@ -981,8 +911,6 @@ int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_
 
 Listen for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. To unlisten for changes in the display size scaling factor information of the window, call OH_WindowManager_UnregisterDensityInfoChangeCallback.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 24
 
 **Parameters**:
@@ -990,13 +918,13 @@ Listen for changes in the display size scaling factor information of the window.
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | WindowId when window is created. |
-| OH_WindowManager_DensityInfoCallback callback | Callback used to return the result of density information. |
+| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | Callback used to return the result of density information. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause:<br>            1. The window is not created or destroyed;<br>            2. This window state is abnormal.<br>        [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. This window state is abnormal. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_UnregisterDensityInfoChangeCallback()
 
@@ -1008,8 +936,6 @@ int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, O
 
 Unlisten for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. To listen for changes in the display size scaling factor information of the window, call OH_WindowManager_RegisterDensityInfoChangeCallback.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 24
 
 **Parameters**:
@@ -1017,13 +943,13 @@ Unlisten for changes in the display size scaling factor information of the windo
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | WindowId when window is created. |
-| OH_WindowManager_DensityInfoCallback callback | Callback used to return the result of density information. |
+| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | Callback used to return the result of density information. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause:<br>            1. The window is not created or destroyed;<br>            2. This window state is abnormal.<br>        [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. This window state is abnormal. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ### OH_WindowManager_DensityInfo_Release()
 
@@ -1035,20 +961,18 @@ int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo*
 
 Releases the memory occupied by DensityInfo.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_WindowManager_DensityInfo* info | Display size scaling factor information for the current window. |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Display size scaling factor information for the current window. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
 
 

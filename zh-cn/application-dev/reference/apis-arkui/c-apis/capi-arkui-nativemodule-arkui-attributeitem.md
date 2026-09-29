@@ -22,7 +22,7 @@ typedef struct ArkUI_AttributeItem {...} ArkUI_AttributeItem
 
 | 名称 | 描述 |
 | -- | -- |
-| const [ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value |  |
+| [const ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value |  |
 | int32_t size |  |
 | const char* string |  |
 | void* object |  |

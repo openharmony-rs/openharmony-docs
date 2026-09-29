@@ -6,8 +6,6 @@ The file declares the capability to take screenshots.
 
 **库：** libnative_display_manager.so
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 14
 
 **相关模块：** [OH_DisplayManager](capi-oh-displaymanager.md)
@@ -32,8 +30,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 
 获取屏幕全屏截图，可以通过设置不同的屏幕id号截取不同屏幕的截图。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE [since 14]
 
 **起始版本：** 14
@@ -43,12 +39,12 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t displayId | 需要截屏的屏幕id号，该值为非负整数。 |
-| OH_PixelmapNative **pixelMap | 创建指定屏幕id的OH_PixelmapNative对象，此处作为出参返回。 |
+| [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md) **pixelMap | 创建指定屏幕id的OH_PixelmapNative对象，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_NO_PERMISSION，表示权限校验失败，应用无权限使用该API，需要申请权限。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_NO_PERMISSION，表示权限校验失败，应用无权限使用该API，需要申请权限。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 

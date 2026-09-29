@@ -6,8 +6,6 @@ Declared predicate related functions and enumerations.
 
 **Library**: libnative_rdb_ndk.z.so
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 10
 
 **Related module**: [RDB](capi-rdb.md)
@@ -47,8 +45,6 @@ enum OH_OrderType
 
 Result set sort type.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 10
 
 | Enum item | Description |
@@ -69,8 +65,6 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 
 Sets the OH_Predicates to match the field whose data type is string and value is not like the specified value. This method is similar to "Not like" of the SQL statement.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -85,7 +79,7 @@ Sets the OH_Predicates to match the field whose data type is string and value is
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Predicates_Glob()
 
@@ -96,8 +90,6 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 **Description**
 
 Sets the OH_Predicates to match the specified field whose data type is string and the value contains a wildcard. Different from like, the input parameters of this method are case-sensitive.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -113,7 +105,7 @@ Sets the OH_Predicates to match the specified field whose data type is string an
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Predicates_NotGlob()
 
@@ -124,8 +116,6 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 **Description**
 
 Sets the OH_Predicates to not match the specified field whose data type is string and the value contains a wildcard. Different from not like, the input parameters of this method are case-sensitive.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -141,7 +131,7 @@ Sets the OH_Predicates to not match the specified field whose data type is strin
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Predicates_Having()
 
@@ -153,8 +143,6 @@ int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, cons
 
 Sets the OH_Predicates to specify conditions to filter grouped results that will appear in the final result.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -163,12 +151,12 @@ Sets the OH_Predicates to specify conditions to filter grouped results that will
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an instance of OH_Predicates. |
 | const char *conditions | Indicates filter conditions in the having clause. |
-| const OH_Data_Values *values | Indicates a pointer to an instance of OH_Data_Values. |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *values | Indicates a pointer to an instance of OH_Data_Values. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 

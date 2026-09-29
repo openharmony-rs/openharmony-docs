@@ -6,8 +6,6 @@ Declare underlying data structure.
 
 **Library**: libohaudiosuite.so
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 22
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)
@@ -18,17 +16,17 @@ Declare underlying data structure.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md) | OH_AudioFormat | Define the audio format info structure, used to describe basic audio format. |
-| [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md) | OH_AudioDataArray | Define the audio data array structure. This structure is used to get the processed audio data after acquisition processing during multi-channel rendering. |
-| [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) | OH_EqualizerFrequencyBandGains | Specify equalizer frequency band gains. |
-| [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md) | OH_AudioSuite_SpaceRenderPositionParams | Definition of the parameter structure for fixed position mode in 3D spatial rendering. Left-hand coordinate system: Extend your left hand, forming an "L" shape with your thumb and index finger. Point the thumb to the right, the index finger upward, and the remaining fingers forward. This establishes a left-hand coordinate system. In this system, the thumb, index finger, and other fingers represent the positive directions of the x, y, and z axes, respectively. |
-| [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md) | OH_AudioSuite_SpaceRenderRotationParams | Space rendering dynamic mode parameters. |
+| [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md) | - | Define the audio format info structure, used to describe basic audio format. |
+| [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md) | - | Define the audio data array structure. This structure is used to get the processed audio data after acquisition processing during multi-channel rendering. |
+| [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) | - | Specify equalizer frequency band gains. |
+| [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md) | - | Definition of the parameter structure for fixed position mode in 3D spatial rendering. Left-hand coordinate system: Extend your left hand, forming an "L" shape with your thumb and index finger. Point the thumb to the right, the index finger upward, and the remaining fingers forward. This establishes a left-hand coordinate system. In this system, the thumb, index finger, and other fingers represent the positive directions of the x, y, and z axes, respectively. |
+| [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md) | - | Space rendering dynamic mode parameters. |
 | [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md) | - | Space rendering extension mode parameters. |
-| [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) | OH_AudioSuite_PureVoiceChangeOption | Define change voice option. |
-| [OH_AudioSuiteEngineStruct](capi-ohaudiosuite-oh-audiosuiteenginestruct.md) | OH_AudioSuiteEngine | Declare the audio engine. The handle of audio suite engine is used for audio suite engine related functions. |
-| [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md) | OH_AudioSuitePipeline | Declare the audio pipeline. The handle of audio suite pipeline is used for audio pipeline related functions. |
-| [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md) | OH_AudioNode | Declare the audio node. The handle of audio suite node is used for audio suite node related functions. |
-| [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md) | OH_AudioNodeBuilder | Declare the audio node builder. The handle of audio node builder is used for audio node create. |
+| [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) | - | Define change voice option. |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteengine.md) | OH_AudioSuiteEngine | Declare the audio engine. The handle of audio suite engine is used for audio suite engine related functions. |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md) | OH_AudioSuitePipeline | Declare the audio pipeline. The handle of audio suite pipeline is used for audio pipeline related functions. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md) | OH_AudioNode | Declare the audio node. The handle of audio suite node is used for audio suite node related functions. |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md) | OH_AudioNodeBuilder | Declare the audio node builder. The handle of audio node builder is used for audio node create. |
 
 ### Enum
 
@@ -82,8 +80,6 @@ enum OH_AudioNode_Type
 
 Define audio node type.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 22
 
 | Enum item | Description |
@@ -113,8 +109,6 @@ enum OH_AudioSuite_PipelineWorkMode
 
 Define pipeline work mode
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 22
 
 | Enum item | Description |
@@ -131,8 +125,6 @@ enum OH_AudioSuite_PipelineState
 **Description**
 
 Define pipeline state
-
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
 
@@ -151,26 +143,24 @@ enum OH_AudioSuite_Result
 
 Define the result of the function execution.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 22
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSUITE_SUCCESS = 0 |  The call was successful.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_INVALID_PARAM = 1 |  This means that the function was executed with an invalid input parameter.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_INVALID_STATE = 2 |  Execution status exception.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_SYSTEM = 3 |  A system error has occurred.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 |  Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5 |  audio engine does not exist.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6 |  audio pipeline does not exist.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 |  audio node does not exist.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 |  the connect or disconnect between the nodes is unsupported.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 |  Unsupported operation.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 |  The application attempted to create an object that exceeds the system's maximum limit.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 |  Required parameters are missing.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_TIMEOUT = 12 |  Operation timed out.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 |  Memory allocation failed.<br>**Since**: 22 |
+| AUDIOSUITE_SUCCESS = 0 | &nbsp;The call was successful.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_INVALID_STATE = 2 | &nbsp;Execution status exception.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_SYSTEM = 3 | &nbsp;A system error has occurred.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5 | &nbsp;audio engine does not exist.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6 | &nbsp;audio pipeline does not exist.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 | &nbsp;audio node does not exist.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 | &nbsp;the connect or disconnect between the nodes is unsupported.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 | &nbsp;Unsupported operation.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | &nbsp;The application attempted to create an object that exceeds the system's maximum limit.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | &nbsp;Required parameters are missing.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_TIMEOUT = 12 | &nbsp;Operation timed out.<br>**Since**: 22 |
+| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 | &nbsp;Memory allocation failed.<br>**Since**: 22 |
 
 ### OH_Audio_SampleFormat
 
@@ -181,8 +171,6 @@ enum OH_Audio_SampleFormat
 **Description**
 
 Define the audio sample format.
-
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
 
@@ -204,8 +192,6 @@ enum OH_Audio_EncodingType
 
 Define the audio encoding type.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 22
 
 | Enum item | Description |
@@ -221,8 +207,6 @@ enum OH_Audio_SampleRate
 **Description**
 
 Define the audio sample rate.
-
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
 
@@ -253,8 +237,6 @@ enum OH_SoundFieldType
 
 Define the sound field type.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 22
 
 | Enum item | Description |
@@ -273,8 +255,6 @@ enum OH_EnvironmentType
 **Description**
 
 Define the environment type.
-
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
 
@@ -295,8 +275,6 @@ enum OH_VoiceBeautifierType
 
 Define voice beautifier type.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 22
 
 | Enum item | Description |
@@ -316,8 +294,6 @@ enum OH_AudioSuite_SurroundDirection
 
 Space rendering surround Direction
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 23
 
 | Enum item | Description |
@@ -335,8 +311,6 @@ enum OH_AudioSuite_PureVoiceChangeGenderOption
 
 Define speaker gender in change voice option
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 23
 
 | Enum item | Description |
@@ -353,8 +327,6 @@ enum OH_AudioSuite_PureVoiceChangeType
 **Description**
 
 Define voice type in change voice option
-
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
 
@@ -377,8 +349,6 @@ enum OH_AudioSuite_GeneralVoiceChangeType
 **Description**
 
 Define voice type in general voice change.
-
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
 

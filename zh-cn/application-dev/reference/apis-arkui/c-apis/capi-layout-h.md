@@ -6,8 +6,6 @@ Defines the layout-related types for the native module.
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -34,6 +32,8 @@ Defines the layout-related types for the native module.
 | [ArkUI_Axis](#arkui_axis) | ArkUI_Axis | 定义方向或List组件排列方向枚举值。 |
 | [ArkUI_VerticalAlignment](#arkui_verticalalignment) | ArkUI_VerticalAlignment | 定义垂直对齐方式。 |
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) | ArkUI_HorizontalAlignment | 定义语言方向对齐方式。 |
+| [ArkUI_BarrierDirection](#arkui_barrierdirection) | ArkUI_BarrierDirection | 定义屏障线的方向。 |
+| [ArkUI_RelativeLayoutChainStyle](#arkui_relativelayoutchainstyle) | ArkUI_RelativeLayoutChainStyle | 定义链的风格。 |
 | [ArkUI_SafeAreaEdge](#arkui_safeareaedge) | ArkUI_SafeAreaEdge | 定义扩展安全区域的方向的枚举值。 |
 | [ArkUI_LayoutSafeAreaType](#arkui_layoutsafeareatype) | ArkUI_LayoutSafeAreaType | 定义扩展安全区域的枚举值。 |
 | [ArkUI_LayoutSafeAreaEdge](#arkui_layoutsafeareaedge) | ArkUI_LayoutSafeAreaEdge | 定义扩展安全区域的方向的枚举值。 |
@@ -122,8 +122,6 @@ enum ArkUI_Alignment
 
 定义布局对齐枚举值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -148,8 +146,6 @@ enum ArkUI_ItemAlignment
 
 设置子组件在父容器交叉轴的对齐格式枚举值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -170,8 +166,6 @@ enum ArkUI_FlexAlignment
 **描述：**
 
 定义垂直方向对齐方式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -194,8 +188,6 @@ enum ArkUI_FlexDirection
 
 定义Flex容器的主轴方向。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -215,8 +207,6 @@ enum ArkUI_FlexWrap
 
 定义Flex行列布局模式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -234,8 +224,6 @@ enum ArkUI_Direction
 **描述：**
 
 设置容器元素内主轴方向上的布局枚举值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -255,8 +243,6 @@ enum ArkUI_Axis
 
 定义方向或List组件排列方向枚举值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -273,8 +259,6 @@ enum ArkUI_VerticalAlignment
 **描述：**
 
 定义垂直对齐方式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -294,8 +278,6 @@ enum ArkUI_HorizontalAlignment
 
 定义语言方向对齐方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -303,6 +285,43 @@ enum ArkUI_HorizontalAlignment
 | ARKUI_HORIZONTAL_ALIGNMENT_START = 0 | 按照语言方向起始端对齐。 |
 | ARKUI_HORIZONTAL_ALIGNMENT_CENTER | 居中对齐，默认对齐方式。 |
 | ARKUI_HORIZONTAL_ALIGNMENT_END | 按照语言方向末端对齐。 |
+
+### ArkUI_BarrierDirection
+
+```c
+enum ArkUI_BarrierDirection
+```
+
+**描述：**
+
+定义屏障线的方向。
+
+**起始版本：** 12
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_BARRIER_DIRECTION_START = 0 | 屏障在其所有referencedId的最左侧。 |
+| ARKUI_BARRIER_DIRECTION_END | 屏障在其所有referencedId的最右侧。 |
+| ARKUI_BARRIER_DIRECTION_TOP | 屏障在其所有referencedId的最上方。 |
+| ARKUI_BARRIER_DIRECTION_BOTTOM | 屏障在其所有referencedId的最下方。 |
+
+### ArkUI_RelativeLayoutChainStyle
+
+```c
+enum ArkUI_RelativeLayoutChainStyle
+```
+
+**描述：**
+
+定义链的风格。
+
+**起始版本：** 12
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | 组件在约束锚点间均匀分布，该值为默认值。 |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE | 除首尾2个子组件的其他组件在约束锚点间均匀分布。 |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED | 链内子组件无间隙。 |
 
 ### ArkUI_SafeAreaEdge
 
@@ -313,8 +332,6 @@ enum ArkUI_SafeAreaEdge
 **描述：**
 
 定义扩展安全区域的方向的枚举值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -335,8 +352,6 @@ enum ArkUI_LayoutSafeAreaType
 
 定义扩展安全区域的枚举值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -352,8 +367,6 @@ enum ArkUI_LayoutSafeAreaEdge
 **描述：**
 
 定义扩展安全区域的方向的枚举值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -376,8 +389,6 @@ enum ArkUI_LocalizedAlignment
 **描述：**
 
 定义Stack容器中子组件的对齐规则。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -403,8 +414,6 @@ enum ArkUI_LayoutPolicy
 
 布局策略枚举。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 | 枚举项 | 描述 |
@@ -422,8 +431,6 @@ enum ArkUI_PixelRoundCalcPolicy
 **描述：**
 
 定义像素取整计算策略枚举。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -445,8 +452,6 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 **描述：**
 
 创建RelativeContainer容器内的辅助线信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -472,8 +477,6 @@ void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)
 
 销毁辅助线信息。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -491,8 +494,6 @@ void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char
 **描述：**
 
 设置辅助线的Id。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -514,8 +515,6 @@ void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, Ark
 
 设置辅助线的方向。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -535,8 +534,6 @@ void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline,
 **描述：**
 
 设置距离容器左侧或者顶部的距离。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -558,8 +555,6 @@ void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, f
 
 设置距离容器右侧或者底部的距离。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -579,8 +574,6 @@ const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int
 **描述：**
 
 获取辅助线的Id。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -607,8 +600,6 @@ ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guidelin
 
 获取辅助线的方向。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -633,8 +624,6 @@ float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline
 **描述：**
 
 获取辅助线距离容器左侧或者顶部的距离。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -661,8 +650,6 @@ float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, 
 
 获取辅助线距离容器右侧或者底部的距离。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -688,8 +675,6 @@ ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 
 创建RelativeContainer容器内的屏障信息。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -714,8 +699,6 @@ void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)
 
 销毁屏障信息。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -733,8 +716,6 @@ void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char*
 **描述：**
 
 设置屏障的Id。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -756,8 +737,6 @@ void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkU
 
 设置屏障的方向。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -765,7 +744,7 @@ void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkU
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_BarrierOption* barrierStyle | 屏障信息。 |
-| ArkUI_BarrierDirection value | 方向。 |
+| [ArkUI_BarrierDirection](capi-layout-h.md#arkui_barrierdirection) value | 方向。 |
 | int32_t index | 屏障索引值。 |
 
 ### OH_ArkUI_BarrierOption_SetReferencedId()
@@ -777,8 +756,6 @@ void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, c
 **描述：**
 
 设置屏障的依赖的组件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -799,8 +776,6 @@ const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int3
 **描述：**
 
 获取屏障的Id。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -827,8 +802,6 @@ ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* 
 
 获取屏障的方向。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -842,7 +815,7 @@ ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_BarrierDirection | 屏障的方向。 |
+| [ArkUI_BarrierDirection](capi-layout-h.md#arkui_barrierdirection) | 屏障的方向。 |
 
 ### OH_ArkUI_BarrierOption_GetReferencedId()
 
@@ -853,8 +826,6 @@ const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierS
 **描述：**
 
 获取屏障的依赖的组件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -882,8 +853,6 @@ int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierS
 
 获取屏障的依赖的组件的个数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -909,8 +878,6 @@ ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()
 
 创建相对容器中子组件的对齐规则信息。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **返回值：**
@@ -929,8 +896,6 @@ void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)
 
 销毁相对容器中子组件的对齐规则信息。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -948,8 +913,6 @@ void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, co
 **描述：**
 
 设置相对布局的左对齐方式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -971,8 +934,6 @@ void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, cons
 
 设置相对布局的右对齐方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -992,8 +953,6 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption*
 **描述：**
 
 设置相对布局的横向居中对齐方式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1015,8 +974,6 @@ void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, cons
 
 设置相对布局的顶部对齐方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1036,8 +993,6 @@ void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, c
 **描述：**
 
 设置相对布局的底部对齐方式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1059,8 +1014,6 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* o
 
 设置相对布局的纵向居中对齐方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1081,8 +1034,6 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* o
 
 设置组件在锚点约束下的水平方向上偏移参数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1102,8 +1053,6 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* opt
 
 设置组件在锚点约束下的垂直方向上偏移参数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1122,8 +1071,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* o
 **描述：**
 
 获取左对齐参数的Id。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1149,8 +1096,6 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_A
 
 获取左对齐参数的对齐方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1174,8 +1119,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* opt
 **描述：**
 
 获取右对齐参数。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1201,8 +1144,6 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_Ali
 
 获取右对齐参数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1226,8 +1167,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRu
 **描述：**
 
 获取横向居中对齐方式的参数。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1253,8 +1192,6 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizon
 
 获取横向居中对齐方式的参数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1278,8 +1215,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* opt
 **描述：**
 
 获取顶部对齐的参数。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1305,8 +1240,6 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_Align
 
 获取顶部对齐的参数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1330,8 +1263,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* 
 **描述：**
 
 获取底部对齐的参数。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1357,8 +1288,6 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_Al
 
 获取底部对齐的参数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1382,8 +1311,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRule
 **描述：**
 
 获取纵向居中对齐方式的参数。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1409,8 +1336,6 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(
 
 获取纵向居中对齐方式的参数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1434,8 +1359,6 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* 
 **描述：**
 
 获取水平方向上的bias值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1461,8 +1384,6 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* op
 
 获取垂直方向上的bias值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -1487,8 +1408,6 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
 
 创建PositionEdges属性对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **返回值：**
@@ -1506,8 +1425,6 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edge
 **描述：**
 
 深拷贝PositionEdges属性对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1533,8 +1450,6 @@ void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)
 
 销毁PositionEdges属性对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1552,8 +1467,6 @@ void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)
 **描述：**
 
 设置PositionEdges属性对象的上方向值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1574,8 +1487,6 @@ int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 
 获取PositionEdges属性对象的上方向值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1589,7 +1500,7 @@ int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。返回 ARKUI_ERROR_CODE_NO_ERROR 表示操作成功。返回 ARKUI_ERROR_CODE_PARAM_INVALID 表示参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetLeft()
 
@@ -1600,8 +1511,6 @@ void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)
 **描述：**
 
 设置PositionEdges属性对象的左方向值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1622,8 +1531,6 @@ int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 
 获取PositionEdges属性对象的左方向值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1637,7 +1544,7 @@ int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。返回 ARKUI_ERROR_CODE_NO_ERROR 表示操作成功。返回 ARKUI_ERROR_CODE_PARAM_INVALID 表示参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetBottom()
 
@@ -1648,8 +1555,6 @@ void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 **描述：**
 
 设置PositionEdges属性对象的下方向值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1670,8 +1575,6 @@ int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* valu
 
 获取PositionEdges属性对象的下方向值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1685,7 +1588,7 @@ int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* valu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。返回 ARKUI_ERROR_CODE_NO_ERROR 表示操作成功。返回 ARKUI_ERROR_CODE_PARAM_INVALID 表示参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetRight()
 
@@ -1696,8 +1599,6 @@ void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)
 **描述：**
 
 设置PositionEdges属性对象的右方向值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1718,8 +1619,6 @@ int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value
 
 获取PositionEdges属性对象的右方向值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1733,7 +1632,7 @@ int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。返回 ARKUI_ERROR_CODE_NO_ERROR 表示操作成功。返回 ARKUI_ERROR_CODE_PARAM_INVALID 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_Create()
 
@@ -1744,8 +1643,6 @@ ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 **描述：**
 
 创建PixelRoundPolicy属性对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1765,8 +1662,6 @@ void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)
 
 释放PixelRoundPolicy属性对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1784,8 +1679,6 @@ void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 **描述：**
 
 设置PixelRoundPolicy属性对象的上部方向值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1806,8 +1699,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 获取PixelRoundPolicy属性对象的上部方向值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1821,7 +1712,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。返回 ARKUI_ERROR_CODE_NO_ERROR 表示操作成功。返回 ARKUI_ERROR_CODE_PARAM_INVALID 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
@@ -1832,8 +1723,6 @@ void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_Pi
 **描述：**
 
 设置PixelRoundPolicy属性对象的前部方向值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1854,8 +1743,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 
 获取PixelRoundPolicy属性对象的前部方向值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1869,7 +1756,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。返回 ARKUI_ERROR_CODE_NO_ERROR 表示操作成功。返回 ARKUI_ERROR_CODE_PARAM_INVALID 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
@@ -1880,8 +1767,6 @@ void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 **描述：**
 
 设置PixelRoundPolicy属性对象的下部方向值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1902,8 +1787,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 
 获取PixelRoundPolicy属性对象的下部方向值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1917,7 +1800,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。返回 ARKUI_ERROR_CODE_NO_ERROR 表示操作成功。返回 ARKUI_ERROR_CODE_PARAM_INVALID 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
@@ -1928,8 +1811,6 @@ void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 **描述：**
 
 设置PixelRoundPolicy属性对象的尾部方向值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1950,8 +1831,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 获取PixelRoundPolicy属性对象的尾部方向值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -1965,6 +1844,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。返回 ARKUI_ERROR_CODE_NO_ERROR 表示操作成功。返回 ARKUI_ERROR_CODE_PARAM_INVALID 表示参数无效。 |
 
 

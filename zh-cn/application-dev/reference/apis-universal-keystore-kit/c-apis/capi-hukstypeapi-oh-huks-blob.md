@@ -1,7 +1,7 @@
 # OH_Huks_Blob
 
 ```c
-typedef struct OH_Huks_Blob {...} OH_Huks_Blob
+struct OH_Huks_Blob {...}
 ```
 
 ## 概述

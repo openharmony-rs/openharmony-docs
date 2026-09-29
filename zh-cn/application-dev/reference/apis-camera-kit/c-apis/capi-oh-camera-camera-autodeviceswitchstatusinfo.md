@@ -1,7 +1,7 @@
 # Camera_AutoDeviceSwitchStatusInfo
 
 ```c
-typedef struct Camera_AutoDeviceSwitchStatusInfo {...} Camera_AutoDeviceSwitchStatusInfo
+struct Camera_AutoDeviceSwitchStatusInfo {...}
 ```
 
 ## 概述

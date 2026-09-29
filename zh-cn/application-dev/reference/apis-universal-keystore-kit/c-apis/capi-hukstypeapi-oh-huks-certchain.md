@@ -1,7 +1,7 @@
 # OH_Huks_CertChain
 
 ```c
-typedef struct OH_Huks_CertChain {...} OH_Huks_CertChain
+struct OH_Huks_CertChain {...}
 ```
 
 ## 概述
@@ -22,7 +22,7 @@ typedef struct OH_Huks_CertChain {...} OH_Huks_CertChain
 
 | 名称 | 描述 |
 | -- | -- |
-| struct [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *certs | 指向证书数据的指针。 |
+| struct OH_Huks_Blob *certs | 指向证书数据的指针。 |
 | uint32_t certsCount | 证书数量。 |
 
 

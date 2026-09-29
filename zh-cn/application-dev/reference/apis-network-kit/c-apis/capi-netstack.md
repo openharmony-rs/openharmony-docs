@@ -6,7 +6,7 @@
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 20
+**起始版本：** 11
 
 ## 文件汇总
 

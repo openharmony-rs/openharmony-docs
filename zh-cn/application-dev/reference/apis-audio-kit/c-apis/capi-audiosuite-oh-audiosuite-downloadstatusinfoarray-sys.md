@@ -1,7 +1,7 @@
 # OH_AudioSuite_DownloadStatusInfoArray（系统接口）
 
 ```c
-typedef struct OH_AudioSuite_DownloadStatusInfoArray {...} OH_AudioSuite_DownloadStatusInfoArray
+struct OH_AudioSuite_DownloadStatusInfoArray {...}
 ```
 
 ## 概述
@@ -25,6 +25,6 @@ typedef struct OH_AudioSuite_DownloadStatusInfoArray {...} OH_AudioSuite_Downloa
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t size | 数组大小。<br>**起始版本：** 26.0.0 |
-| [OH_AudioSuite_DownloadStatusInfo](capi-audiosuite-oh-audiosuite-downloadstatusinfo-sys.md) **downloadStatusInfo | 下载状态信息指针数组。<br>**起始版本：** 26.0.0 |
+| OH_AudioSuite_DownloadStatusInfo **downloadStatusInfo | 下载状态信息指针数组。<br>**起始版本：** 26.0.0 |
 
 

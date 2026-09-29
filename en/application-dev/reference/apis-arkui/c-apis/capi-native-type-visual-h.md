@@ -6,8 +6,6 @@ Defines the visual effect types for the native module.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -23,7 +21,7 @@ Defines the visual effect types for the native module.
 | [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md) | ArkUI_RotationOptions | Defines the rotation options for component transition. |
 | [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md) | ArkUI_PointF | Defines a two-dimensional point struct, with coordinates stored as float type. |
 | [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md) | ArkUI_Matrix4 | Defines a fourth-order matrix object. |
-| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) | OH_ArkUI_ShadowOptions | Defines shadow options. |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) | OH_ArkUI_ShadowOptions | Defines shadow options for setting the shadow effect of a component, including attributes such as the shadow color, offset, blur radius, shadow type, and whether to fill.<br> Call [OH_ArkUI_ShadowOptions_Create](capi-native-type-visual-h.md#oh_arkui_shadowoptions_create) to create the corresponding shadow option object.<br> Call [OH_ArkUI_ShadowOptions_Destroy](capi-native-type-visual-h.md#oh_arkui_shadowoptions_destroy) to destroy the shadow option object.<br> After the object is created, call the <b>OH_ArkUI_ShadowOptions_SetXXX</b> series APIs to set the specific styles to take effect, for example, call [OH_ArkUI_ShadowOptions_SetRadius](capi-native-type-visual-h.md#oh_arkui_shadowoptions_setradius) to set the shadow blur radius. If the object fails to be created (a null pointer is returned), calling the <b>SetXXX</b> series APIs will not take effect. |
 | [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) | ArkUI_MotionPathOptions | Defines the motion path options for path animation. |
 | [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md) | ArkUI_Matrix4ScaleOptions | Defines a matrix scaling object. |
 | [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md) | ArkUI_Matrix4RotationOptions | Defines a matrix rotation object. |
@@ -61,7 +59,7 @@ Defines the visual effect types for the native module.
 | -- | -- |
 | [ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()](#oh_arkui_motionpathoptions_create) | Create a motion path option for path animation. |
 | [void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)](#oh_arkui_motionpathoptions_dispose) | Destroys a motion path option of path animation. |
-| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)](#oh_arkui_motionpathoptions_setpath) | Sets the motion path for the animation using an SVG path string. The path supports using **start** and **end** as placeholders for the starting and ending points, for example: **Mstart.x start.y L50 50 Lend.x end.y Z**. For details about the path string format, see {@link Path}. If this parameter is set to an empty string, it is equivalent to not setting a path animation. |
+| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)](#oh_arkui_motionpathoptions_setpath) | Sets the motion path for the animation using an SVG path string. The path supports using **start** and **end** as placeholders for the starting and ending points, for example: **Mstart.x start.y L50 50 Lend.x end.y Z**. For details about the path string format, see Path. If this parameter is set to an empty string, it is equivalent to not setting a path animation. |
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions* options, char* svgPathBuffer, const int32_t bufferSize, int32_t* writeLength)](#oh_arkui_motionpathoptions_getpath) | Obtains the motion path string stored in the motion path option. |
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* options, const float from)](#oh_arkui_motionpathoptions_setfrom) | Sets the start progress of the motion path. Progress refers to the ratio of the length of the path that has been traveled to the total length of the entire path. |
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions* options, float* from)](#oh_arkui_motionpathoptions_getfrom) | Obtains the start progress of the motion path from the motion path option. |
@@ -98,11 +96,11 @@ Defines the visual effect types for the native module.
 | [ArkUI_Matrix4RotationOptions* OH_ArkUI_Matrix4RotationOptions_Create()](#oh_arkui_matrix4rotationoptions_create) | Creates a pointer to the rotation parameter object for matrix operations. In the newly created object, the default value of an x-axis offset (**centerX**) of a single matrix transformation center point relative to a component transformation center point, the default value of a y-axis offset (**centerY**) of the single matrix transformation center point relative to the component transformation center point, and the default value of a rotation angle (**angle**) are 0. If none of the direction vectors in the x, y, and z directions is specified, the value is equivalent to x=0, y=0, and z=1, indicating rotation around the z-axis. Once any of the direction vectors in the x, y, and z directions is specified, the unspecified values are equivalent to 0. |
 | [void OH_ArkUI_Matrix4RotationOptions_Dispose(ArkUI_Matrix4RotationOptions* options)](#oh_arkui_matrix4rotationoptions_dispose) | Disposes of the pointer to the rotation parameter object for matrix operations. |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetX(ArkUI_Matrix4RotationOptions* options, const float x)](#oh_arkui_matrix4rotationoptions_setx) | Sets the direction vector in the x direction of the rotation parameter object for matrix operations. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4RotationOptions* options, float* x)](#oh_arkui_matrix4rotationoptions_getx) | Obtains the direction vector in the x direction of the rotation parameter object for matrix operations. If the value of x has never been set, the value is undefined. In this case, [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4RotationOptions* options, float* x)](#oh_arkui_matrix4rotationoptions_getx) | Obtains the direction vector in the x direction of the rotation parameter object for matrix operations. If the value of x has never been set, the value is undefined. In this case, ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetY(ArkUI_Matrix4RotationOptions* options, const float y)](#oh_arkui_matrix4rotationoptions_sety) | Sets the direction vector in the y direction of the rotation parameter object for matrix operations. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4RotationOptions* options, float* y)](#oh_arkui_matrix4rotationoptions_gety) | Obtains the direction vector in the y direction of the rotation parameter object for matrix operations. If the value of y has never been set, the value is undefined. In this case, [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4RotationOptions* options, float* y)](#oh_arkui_matrix4rotationoptions_gety) | Obtains the direction vector in the y direction of the rotation parameter object for matrix operations. If the value of y has never been set, the value is undefined. In this case, ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetZ(ArkUI_Matrix4RotationOptions* options, const float z)](#oh_arkui_matrix4rotationoptions_setz) | Sets the direction vector in the z direction of the rotation parameter object for matrix operations. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4RotationOptions* options, float* z)](#oh_arkui_matrix4rotationoptions_getz) | Obtains the direction vector in the z direction of the rotation parameter object for matrix operations. If the value of z has never been set, the value is undefined. In this case, [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4RotationOptions* options, float* z)](#oh_arkui_matrix4rotationoptions_getz) | Obtains the direction vector in the z direction of the rotation parameter object for matrix operations. If the value of z has never been set, the value is undefined. In this case, ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetAngle(ArkUI_Matrix4RotationOptions* options, const float angle)](#oh_arkui_matrix4rotationoptions_setangle) | Sets the rotation angle in the rotation parameter object for matrix operations. |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetAngle(const ArkUI_Matrix4RotationOptions* options, float* angle)](#oh_arkui_matrix4rotationoptions_getangle) | Obtains the rotation angle in the rotation parameter object for matrix operations. |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterX(ArkUI_Matrix4RotationOptions* options, const float centerX)](#oh_arkui_matrix4rotationoptions_setcenterx) | Sets the x-axis offset of a single matrix transformation center point relative to a component transformation center point. |
@@ -143,8 +141,6 @@ enum ArkUI_ShadowType
 
 Enumerates shadow types.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -161,8 +157,6 @@ enum ArkUI_ShadowStyle
 **Description**
 
 Enumerates shadow styles.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -184,8 +178,6 @@ enum ArkUI_AnimationCurve
 **Description**
 
 Enumerates the animation curves.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -215,8 +207,6 @@ enum ArkUI_AnimationPlayMode
 
 Enumerates the animation playback directions.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -235,8 +225,6 @@ enum ArkUI_BlurStyle
 **Description**
 
 Enumerates the blur styles.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -266,8 +254,6 @@ enum ArkUI_BlurStyleActivePolicy
 
 Enumerates the activation policies for the background blur effect.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 19
 
 | Enum item | Description |
@@ -285,8 +271,6 @@ enum ArkUI_BlendMode
 **Description**
 
 Enumerates the blend modes.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -333,8 +317,6 @@ enum ArkUI_ColorStrategy
 
 Enumerates foreground and shadow colors.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -352,8 +334,6 @@ enum ArkUI_MaskType
 **Description**
 
 Enumerates the mask types. A mask is a means to limit the display area of a component. It uses a specific shape to crop the component content so that only the content in the mask area is visible.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -375,8 +355,6 @@ enum ArkUI_ClipType
 
 Enumerates the clipping region types.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -396,8 +374,6 @@ enum ArkUI_ShapeType
 
 Enumerates custom shape types.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -416,8 +392,6 @@ enum ArkUI_LinearGradientDirection
 **Description**
 
 Enumerates the gradient directions.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -444,8 +418,6 @@ enum ArkUI_TransitionEdge
 
 Enumerates the slide-in and slide-out positions of the component from the screen edge during transition.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -465,8 +437,6 @@ enum ArkUI_BlendApplyType
 
 Defines how the specified blend mode is applied.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -484,8 +454,6 @@ enum ArkUI_FinishCallbackType
 
 Enumerates the callback types for [OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback) in an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -502,8 +470,6 @@ enum ArkUI_RenderFit
 **Description**
 
 Enumerates the sizing and positioning behaviors of animated content in its final state.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -536,8 +502,6 @@ enum ArkUI_AnimationFillMode
 
 Defines the status before and after execution of the animation in the current playback direction.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -557,8 +521,6 @@ enum ArkUI_AnimationDirection
 
 Enumerates the animation playback modes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -577,8 +539,6 @@ enum OH_ArkUI_AnimationPropertyType
 **Description**
 
 Enumerates the animatable property types for property animations and keyframe animations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -613,8 +573,6 @@ enum OH_ArkUI_AnimationGroupState
 
 Enumerates the playback states of an animation group.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 | Enum item | Description |
@@ -632,8 +590,6 @@ enum OH_ArkUI_AnimationFinishMode
 **Description**
 
 Enumerates the finish modes of an animation group.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -656,15 +612,13 @@ ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()
 
 Create a motion path option for path animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_MotionPathOptions*](capi-arkui-nativemodule-arkui-motionpathoptions.md) | Pointer to [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md).      <br>In the newly created [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) object, path (motion path) is an empty string,       from (start progress) is 0, to (end progress) is 1, and rotatable (whether the component      rotates along the path) is false. |
+| [ArkUI_MotionPathOptions*](capi-arkui-nativemodule-arkui-motionpathoptions.md) | Pointer to [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md). <br>In the newly created [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) object, **path** (motion path) is an empty string, ** from** (start progress) is **0**, **to** (end progress) is **1**, and **rotatable** (whether the component rotates along the path) is **false**. |
 
 ### OH_ArkUI_MotionPathOptions_Dispose()
 
@@ -675,8 +629,6 @@ void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)
 **Description**
 
 Destroys a motion path option of path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -694,9 +646,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* opti
 
 **Description**
 
-Sets the motion path for the animation using an SVG path string. The path supports using **start** and **end** as placeholders for the starting and ending points, for example: **Mstart.x start.y L50 50 Lend.x end.y Z**. For details about the path string format, see {@link Path}. If this parameter is set to an empty string, it is equivalent to not setting a path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the motion path for the animation using an SVG path string. The path supports using **start** and **end** as placeholders for the starting and ending points, for example: **Mstart.x start.y L50 50 Lend.x end.y Z**. For details about the path string format, see Path. If this parameter is set to an empty string, it is equivalent to not setting a path animation.
 
 **Since**: 23
 
@@ -711,7 +661,7 @@ Sets the motion path for the animation using an SVG path string. The path suppor
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_MotionPathOptions_GetPath()
 
@@ -723,8 +673,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions
 
 Obtains the motion path string stored in the motion path option.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
@@ -734,13 +682,13 @@ Obtains the motion path string stored in the motion path option.
 | [const ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md). |
 | char* svgPathBuffer | Buffer pointer to the motion path string. |
 | const int32_t bufferSize | Buffer size of the **svgPathBuffer** parameter. |
-| int32_t* writeLength | Indicates the string length actually written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. Indicates the minimum buffer size that can accommodate the target string when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| int32_t* writeLength | Indicates the string length actually written to the buffer when ARKUI_ERROR_CODE_NO_ERROR is returned. Indicates the minimum buffer size that can accommodate the target string when ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul> .          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the buffer size is less than the minimum buffer size.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> . <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size is less than the minimum buffer size.</li> </ul> |
 
 ### OH_ArkUI_MotionPathOptions_SetFrom()
 
@@ -752,8 +700,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* opti
 
 Sets the start progress of the motion path. Progress refers to the ratio of the length of the path that has been traveled to the total length of the entire path.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
@@ -761,13 +707,13 @@ Sets the start progress of the motion path. Progress refers to the ratio of the 
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md). |
-| const float from | Start progress of the motion path. The value ranges from **0.0** to **1.0**. The value of **from** must be less than or equal to that of **to**; otherwise, [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. For details about the meaning of **to**, see [OH_ArkUI_MotionPathOptions_SetTo](capi-native-type-visual-h.md#oh_arkui_motionpathoptions_setto). |
+| const float from | Start progress of the motion path. The value ranges from **0.0** to **1.0**. The value of **from** must be less than or equal to that of **to**; otherwise, ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE is returned. For details about the meaning of **to**, see [OH_ArkUI_MotionPathOptions_SetTo](capi-native-type-visual-h.md#oh_arkui_motionpathoptions_setto). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if from is out of the range [0.0, 1.0] or from is               greater than to.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE if **from** is out of the range [0.0, 1.0] or **from** is greater than **to**.</li> </ul> |
 
 ### OH_ArkUI_MotionPathOptions_GetFrom()
 
@@ -778,8 +724,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions
 **Description**
 
 Obtains the start progress of the motion path from the motion path option.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -794,7 +738,7 @@ Obtains the start progress of the motion path from the motion path option.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_MotionPathOptions_SetTo()
 
@@ -806,8 +750,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* option
 
 Sets the end progress of the motion path. Progress refers to the ratio of the length of the path that has been traveled to the total length of the entire path.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
@@ -815,13 +757,13 @@ Sets the end progress of the motion path. Progress refers to the ratio of the le
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md). |
-| const float to | End progress of the motion path. The value ranges from **0.0** to **1.0**. The value of **to** must be greater than or equal to that of **from**; otherwise, [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. For details about the meaning of **from**, see [OH_ArkUI_MotionPathOptions_SetFrom](capi-native-type-visual-h.md#oh_arkui_motionpathoptions_setfrom). |
+| const float to | End progress of the motion path. The value ranges from **0.0** to **1.0**. The value of **to** must be greater than or equal to that of **from**; otherwise, ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE is returned. For details about the meaning of **from**, see [OH_ArkUI_MotionPathOptions_SetFrom](capi-native-type-visual-h.md#oh_arkui_motionpathoptions_setfrom). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>.          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if to is out of the range [0.0, 1.0] or to is less than           from.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul>. <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE if **to** is out of the range [0.0, 1.0] or **to** is less than **from**.</li> </ul> |
 
 ### OH_ArkUI_MotionPathOptions_GetTo()
 
@@ -832,8 +774,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* 
 **Description**
 
 Obtains the end progress of the motion path from the motion path option.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -848,7 +788,7 @@ Obtains the end progress of the motion path from the motion path option.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_MotionPathOptions_SetRotatable()
 
@@ -859,8 +799,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions*
 **Description**
 
 Sets whether the component rotates along the motion path.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -875,7 +813,7 @@ Sets whether the component rotates along the motion path.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_MotionPathOptions_GetRotatable()
 
@@ -886,8 +824,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOp
 **Description**
 
 Obtains whether the component rotates along the motion path.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -902,7 +838,7 @@ Obtains whether the component rotates along the motion path.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_Create()
 
@@ -913,8 +849,6 @@ OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()
 **Description**
 
 Creates a shadow option object. When the object is no longer in use, call [OH_ArkUI_ShadowOptions_Destroy](capi-native-type-visual-h.md#oh_arkui_shadowoptions_destroy) to destroy it.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -934,8 +868,6 @@ void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)
 
 Destroys the shadow option object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -954,8 +886,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options
 
 Sets the blur radius for the shadow options.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -969,7 +899,7 @@ Sets the blur radius for the shadow options.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_GetRadius()
 
@@ -980,8 +910,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options
 **Description**
 
 Obtains the blur radius for the shadow options.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -996,7 +924,7 @@ Obtains the blur radius for the shadow options.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_SetType()
 
@@ -1007,8 +935,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, 
 **Description**
 
 Sets the shadow type for the shadow options.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1023,7 +949,7 @@ Sets the shadow type for the shadow options.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_GetType()
 
@@ -1034,8 +960,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, 
 **Description**
 
 Obtains the shadow type for the shadow options.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1050,7 +974,7 @@ Obtains the shadow type for the shadow options.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_SetColor()
 
@@ -1061,8 +985,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options,
 **Description**
 
 Sets the shadow color for the shadow options.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1077,7 +999,7 @@ Sets the shadow color for the shadow options.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_GetColor()
 
@@ -1088,8 +1010,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options,
 **Description**
 
 Obtains the shadow color for the shadow options.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1104,7 +1024,7 @@ Obtains the shadow color for the shadow options.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_SetOffsetX()
 
@@ -1115,8 +1035,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* option
 **Description**
 
 Sets the shadow offset on the x-axis.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1131,7 +1049,7 @@ Sets the shadow offset on the x-axis.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_GetOffsetX()
 
@@ -1142,8 +1060,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* option
 **Description**
 
 Obtains the shadow offset on the x-axis.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1158,7 +1074,7 @@ Obtains the shadow offset on the x-axis.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_SetOffsetY()
 
@@ -1169,8 +1085,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* option
 **Description**
 
 Sets the shadow offset on the y-axis.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1185,7 +1099,7 @@ Sets the shadow offset on the y-axis.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_GetOffsetY()
 
@@ -1196,8 +1110,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* option
 **Description**
 
 Obtains the shadow offset on the y-axis.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1212,7 +1124,7 @@ Obtains the shadow offset on the y-axis.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_SetFill()
 
@@ -1223,8 +1135,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, 
 **Description**
 
 Sets whether to fill a component with a shadow.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1239,7 +1149,7 @@ Sets whether to fill a component with a shadow.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_ShadowOptions_GetFill()
 
@@ -1250,8 +1160,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, 
 **Description**
 
 Obtains whether a component is filled with a shadow.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1266,7 +1174,7 @@ Obtains whether a component is filled with a shadow.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_Create()
 
@@ -1277,8 +1185,6 @@ ArkUI_Matrix4ScaleOptions* OH_ArkUI_Matrix4ScaleOptions_Create()
 **Description**
 
 Creates a pointer to the scaling parameter object for matrix operations. In the newly created object, the default scaling coefficients in the x, y, and z directions are 1. The default values of **centerX** and **centerY**<br>of the transformation center point are 0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1298,8 +1204,6 @@ void OH_ArkUI_Matrix4ScaleOptions_Dispose(ArkUI_Matrix4ScaleOptions* options)
 
 Disposes of the pointer to the scaling parameter object for matrix operations.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -1318,8 +1222,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetX(ArkUI_Matrix4ScaleOptions* opt
 
 Sets the scaling factor in the x direction of the scaling parameter object for matrix operations.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -1333,7 +1235,7 @@ Sets the scaling factor in the x direction of the scaling parameter object for m
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetX()
 
@@ -1344,8 +1246,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetX(const ArkUI_Matrix4ScaleOption
 **Description**
 
 Obtains the scaling factor in the x direction of the scaling parameter object for matrix operations. If the value of x is not set, the default value of the scaling factor in the x direction is 1.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1360,7 +1260,7 @@ Obtains the scaling factor in the x direction of the scaling parameter object fo
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetY()
 
@@ -1371,8 +1271,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetY(ArkUI_Matrix4ScaleOptions* opt
 **Description**
 
 Sets the scaling factor in the y direction of the scaling parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1387,7 +1285,7 @@ Sets the scaling factor in the y direction of the scaling parameter object for m
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetY()
 
@@ -1398,8 +1296,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetY(const ArkUI_Matrix4ScaleOption
 **Description**
 
 Obtains the scaling factor in the y direction of the scaling parameter object for matrix operations. If the value of y is not set, the default value of the scaling factor in the y direction is 1.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1414,7 +1310,7 @@ Obtains the scaling factor in the y direction of the scaling parameter object fo
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetZ()
 
@@ -1425,8 +1321,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetZ(ArkUI_Matrix4ScaleOptions* opt
 **Description**
 
 Sets the scaling factor in the z direction of the scaling parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1441,7 +1335,7 @@ Sets the scaling factor in the z direction of the scaling parameter object for m
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetZ()
 
@@ -1452,8 +1346,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetZ(const ArkUI_Matrix4ScaleOption
 **Description**
 
 Obtains the scaling factor in the z direction of the scaling parameter object for matrix operations. If the value of z is not set, the default value of the scaling factor in the z direction is 1.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1468,7 +1360,7 @@ Obtains the scaling factor in the z direction of the scaling parameter object fo
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetCenterX()
 
@@ -1479,8 +1371,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterX(ArkUI_Matrix4ScaleOption
 **Description**
 
 Sets the x coordinate of the transformation center point of the scaling parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1495,7 +1385,7 @@ Sets the x coordinate of the transformation center point of the scaling paramete
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetCenterX()
 
@@ -1506,8 +1396,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterX(const ArkUI_Matrix4Scale
 **Description**
 
 Obtains the x coordinate of the transformation center point of the scaling parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1522,7 +1410,7 @@ Obtains the x coordinate of the transformation center point of the scaling param
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetCenterY()
 
@@ -1533,8 +1421,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterY(ArkUI_Matrix4ScaleOption
 **Description**
 
 Sets the y coordinate of the transformation center point of the scaling parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1549,7 +1435,7 @@ Sets the y coordinate of the transformation center point of the scaling paramete
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetCenterY()
 
@@ -1560,8 +1446,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterY(const ArkUI_Matrix4Scale
 **Description**
 
 Obtains the y coordinate of the transformation center point of the scaling parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1576,7 +1460,7 @@ Obtains the y coordinate of the transformation center point of the scaling param
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_Create()
 
@@ -1587,8 +1471,6 @@ ArkUI_Matrix4RotationOptions* OH_ArkUI_Matrix4RotationOptions_Create()
 **Description**
 
 Creates a pointer to the rotation parameter object for matrix operations. In the newly created object, the default value of an x-axis offset (**centerX**) of a single matrix transformation center point relative to a component transformation center point, the default value of a y-axis offset (**centerY**) of the single matrix transformation center point relative to the component transformation center point, and the default value of a rotation angle (**angle**) are 0. If none of the direction vectors in the x, y, and z directions is specified, the value is equivalent to x=0, y=0, and z=1, indicating rotation around the z-axis. Once any of the direction vectors in the x, y, and z directions is specified, the unspecified values are equivalent to 0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1608,8 +1490,6 @@ void OH_ArkUI_Matrix4RotationOptions_Dispose(ArkUI_Matrix4RotationOptions* optio
 
 Disposes of the pointer to the rotation parameter object for matrix operations.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -1628,8 +1508,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetX(ArkUI_Matrix4RotationOption
 
 Sets the direction vector in the x direction of the rotation parameter object for matrix operations.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -1643,7 +1521,7 @@ Sets the direction vector in the x direction of the rotation parameter object fo
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetX()
 
@@ -1653,9 +1531,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4Rotation
 
 **Description**
 
-Obtains the direction vector in the x direction of the rotation parameter object for matrix operations. If the value of x has never been set, the value is undefined. In this case, [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the direction vector in the x direction of the rotation parameter object for matrix operations. If the value of x has never been set, the value is undefined. In this case, ARKUI_ERROR_CODE_PARAM_INVALID is returned.
 
 **Since**: 24
 
@@ -1670,7 +1546,7 @@ Obtains the direction vector in the x direction of the rotation parameter object
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetY()
 
@@ -1681,8 +1557,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetY(ArkUI_Matrix4RotationOption
 **Description**
 
 Sets the direction vector in the y direction of the rotation parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1697,7 +1571,7 @@ Sets the direction vector in the y direction of the rotation parameter object fo
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetY()
 
@@ -1707,9 +1581,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4Rotation
 
 **Description**
 
-Obtains the direction vector in the y direction of the rotation parameter object for matrix operations. If the value of y has never been set, the value is undefined. In this case, [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the direction vector in the y direction of the rotation parameter object for matrix operations. If the value of y has never been set, the value is undefined. In this case, ARKUI_ERROR_CODE_PARAM_INVALID is returned.
 
 **Since**: 24
 
@@ -1724,7 +1596,7 @@ Obtains the direction vector in the y direction of the rotation parameter object
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetZ()
 
@@ -1735,8 +1607,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetZ(ArkUI_Matrix4RotationOption
 **Description**
 
 Sets the direction vector in the z direction of the rotation parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1751,7 +1621,7 @@ Sets the direction vector in the z direction of the rotation parameter object fo
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetZ()
 
@@ -1761,9 +1631,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4Rotation
 
 **Description**
 
-Obtains the direction vector in the z direction of the rotation parameter object for matrix operations. If the value of z has never been set, the value is undefined. In this case, [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the direction vector in the z direction of the rotation parameter object for matrix operations. If the value of z has never been set, the value is undefined. In this case, ARKUI_ERROR_CODE_PARAM_INVALID is returned.
 
 **Since**: 24
 
@@ -1778,7 +1646,7 @@ Obtains the direction vector in the z direction of the rotation parameter object
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetAngle()
 
@@ -1789,8 +1657,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetAngle(ArkUI_Matrix4RotationOp
 **Description**
 
 Sets the rotation angle in the rotation parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1805,7 +1671,7 @@ Sets the rotation angle in the rotation parameter object for matrix operations.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetAngle()
 
@@ -1816,8 +1682,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetAngle(const ArkUI_Matrix4Rota
 **Description**
 
 Obtains the rotation angle in the rotation parameter object for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1832,7 +1696,7 @@ Obtains the rotation angle in the rotation parameter object for matrix operation
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetCenterX()
 
@@ -1843,8 +1707,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterX(ArkUI_Matrix4Rotation
 **Description**
 
 Sets the x-axis offset of a single matrix transformation center point relative to a component transformation center point.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1859,7 +1721,7 @@ Sets the x-axis offset of a single matrix transformation center point relative t
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetCenterX()
 
@@ -1870,8 +1732,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterX(const ArkUI_Matrix4Ro
 **Description**
 
 Obtains the x-axis offset of a single matrix transformation center point relative to a component transformation center point.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1886,7 +1746,7 @@ Obtains the x-axis offset of a single matrix transformation center point relativ
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetCenterY()
 
@@ -1897,8 +1757,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterY(ArkUI_Matrix4Rotation
 **Description**
 
 Sets the y-axis offset of a single matrix transformation center point relative to a component transformation center point.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1913,7 +1771,7 @@ Sets the y-axis offset of a single matrix transformation center point relative t
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetCenterY()
 
@@ -1924,8 +1782,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4Ro
 **Description**
 
 Obtains the y-axis offset of a single matrix transformation center point relative to a component transformation center point.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1940,7 +1796,7 @@ Obtains the y-axis offset of a single matrix transformation center point relativ
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul>curs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul>curs. |
 
 ### OH_ArkUI_Matrix4TranslationOptions_Create()
 
@@ -1951,8 +1807,6 @@ ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()
 **Description**
 
 Creates a pointer to a translation object for matrix operations. In the newly created object, the default translation distances on the x, y, and z axes are 0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1972,8 +1826,6 @@ void OH_ArkUI_Matrix4TranslationOptions_Dispose(ArkUI_Matrix4TranslationOptions*
 
 Disposes of a pointer to a translation object for matrix operations.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -1992,8 +1844,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4Translation
 
 Sets the translation value of a translation object on the x-axis for matrix operations.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -2007,7 +1857,7 @@ Sets the translation value of a translation object on the x-axis for matrix oper
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4TranslationOptions_GetX()
 
@@ -2018,8 +1868,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4Trans
 **Description**
 
 Obtains the translation value of a translation object on the x-axis for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2034,7 +1882,7 @@ Obtains the translation value of a translation object on the x-axis for matrix o
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4TranslationOptions_SetY()
 
@@ -2045,8 +1893,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4Translation
 **Description**
 
 Sets the translation value of a translation object on the y-axis for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2061,7 +1907,7 @@ Sets the translation value of a translation object on the y-axis for matrix oper
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4TranslationOptions_GetY()
 
@@ -2072,8 +1918,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4Trans
 **Description**
 
 Obtains the translation value of a translation object on the y-axis for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2088,7 +1932,7 @@ Obtains the translation value of a translation object on the y-axis for matrix o
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4TranslationOptions_SetZ()
 
@@ -2099,8 +1943,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4Translation
 **Description**
 
 Sets the translation value of a translation object on the z-axis for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2115,7 +1957,7 @@ Sets the translation value of a translation object on the z-axis for matrix oper
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul>. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul>. |
 
 ### OH_ArkUI_Matrix4TranslationOptions_GetZ()
 
@@ -2126,8 +1968,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4Trans
 **Description**
 
 Obtains the translation value of a translation object on the z-axis for matrix operations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2142,7 +1982,7 @@ Obtains the translation value of a translation object on the z-axis for matrix o
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4_CreateIdentity()
 
@@ -2153,8 +1993,6 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()
 **Description**
 
 Creates a fourth-order identity matrix object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2174,8 +2012,6 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)
 
 Creates a fourth-order matrix object by specifying each element of the matrix.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -2188,7 +2024,7 @@ Creates a fourth-order matrix object by specifying each element of the matrix.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_Matrix4*](capi-arkui-nativemodule-arkui-matrix4.md) | Pointer to the created fourth-order matrix object. If the elements pointer is a null pointer, a null      value is returned. |
+| [ArkUI_Matrix4*](capi-arkui-nativemodule-arkui-matrix4.md) | Pointer to the created fourth-order matrix object. If the **elements** pointer is a null pointer, a null value is returned. |
 
 ### OH_ArkUI_Matrix4_Dispose()
 
@@ -2199,8 +2035,6 @@ void OH_ArkUI_Matrix4_Dispose(ArkUI_Matrix4* matrix)
 **Description**
 
 Disposes of a fourth-order matrix object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2219,8 +2053,6 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_Copy(const ArkUI_Matrix4* matrix)
 **Description**
 
 Creates a copy of a fourth-order matrix object. It is used to perform operations on the same matrix to obtain different matrix objects.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2246,8 +2078,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Invert(ArkUI_Matrix4* matrix)
 
 Performs an inverse matrix transformation on the input matrix.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -2260,7 +2090,7 @@ Performs an inverse matrix transformation on the input matrix.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4_Combine()
 
@@ -2271,8 +2101,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Combine(ArkUI_Matrix4* oriMatrix, const ArkUI_M
 **Description**
 
 Combines another matrix with the original matrix and stores the resulting matrix in **oriMatrix**. The resulting matrix is equivalent to first applying the transformation of **oriMatrix** and then applying the transformation of **anotherMatrix**. This function modifies the **oriMatrix** object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2287,7 +2115,7 @@ Combines another matrix with the original matrix and stores the resulting matrix
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4_Translate()
 
@@ -2298,8 +2126,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Translate(ArkUI_Matrix4* matrix, const ArkUI_Ma
 **Description**
 
 Applies a translation transformation to the original matrix to obtain the translated matrix. Each translation transformation is cumulative on the previous matrix. The input matrix object is modified after the transformation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2314,7 +2140,7 @@ Applies a translation transformation to the original matrix to obtain the transl
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4_Scale()
 
@@ -2325,8 +2151,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Scale(ArkUI_Matrix4* matrix, const ArkUI_Matrix
 **Description**
 
 Applies a scaling transformation to the original matrix to obtain the scaled matrix. Each scaling transformation is cumulative on the previous matrix. This function modifies the input matrix object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2341,7 +2165,7 @@ Applies a scaling transformation to the original matrix to obtain the scaled mat
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4_Rotate()
 
@@ -2352,8 +2176,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Rotate(ArkUI_Matrix4* matrix, const ArkUI_Matri
 **Description**
 
 Applies a rotation transformation to the original matrix to obtain the rotated matrix. Each rotation transformation is cumulative on the previous matrix. This function modifies the input matrix object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2368,7 +2190,7 @@ Applies a rotation transformation to the original matrix to obtain the rotated m
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4_Skew()
 
@@ -2379,8 +2201,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Skew(ArkUI_Matrix4* matrix, const float skewX, 
 **Description**
 
 Applies a skew transformation to the original matrix to obtain the skewed matrix. Each skew transformation is cumulative on the previous matrix. The input matrix object is modified after the transformation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2396,7 +2216,7 @@ Applies a skew transformation to the original matrix to obtain the skewed matrix
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4_TransformPoint()
 
@@ -2407,8 +2227,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, con
 **Description**
 
 Calculates the new coordinate position of a point after it is transformed by a matrix.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2424,7 +2242,7 @@ Calculates the new coordinate position of a point after it is transformed by a m
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4_SetPolyToPoly()
 
@@ -2435,8 +2253,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkU
 **Description**
 
 Maps the vertex coordinates of one polygon to the vertex coordinates of another polygon and calculates the required matrix.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2453,7 +2269,7 @@ Maps the vertex coordinates of one polygon to the vertex coordinates of another 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Matrix4_GetElements()
 
@@ -2464,8 +2280,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float*
 **Description**
 
 Obtains the 16 elements of the fourth-order matrix.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2480,6 +2294,6 @@ Obtains the 16 elements of the fourth-order matrix.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 

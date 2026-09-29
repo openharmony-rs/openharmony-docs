@@ -23,7 +23,7 @@ ArkUI（方舟UI框架）提供的Native侧动画接口集合。
 | 名称 | 描述 |
 | -- | -- |
 | [int32_t (\*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, ArkUI_ContextCallback* update,ArkUI_AnimateCompleteCallback* complete)](#animateto) | 执行显式动画过渡效果。 |
-| [int32_t (\*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateOption* option)](#keyframeanimateto) | 关键帧动画接口，通过指定关键帧定义属性在不同时间节点的值，系统根据插值算法自动计算中间帧的属性值实现平滑过渡。关键帧参数配置详见{@link ArkUI_KeyframeAnimateOption}。 与animateTo的显式过渡动画不同，keyframeAnimateTo适用于需要在多个时间节点定义不同动画状态的场景。选取原则：仅需起始到结束状态的过渡动画时使用animateTo， 需多关键帧精细控制动画过程时使用keyframeAnimateTo。 |
+| [int32_t (\*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateOption* option)](#keyframeanimateto) | 关键帧动画接口，通过指定关键帧定义属性在不同时间节点的值，系统根据插值算法自动计算中间帧的属性值实现平滑过渡。关键帧参数配置详见[ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)。 与animateTo的显式过渡动画不同，keyframeAnimateTo适用于需要在多个时间节点定义不同动画状态的场景。选取原则：仅需起始到结束状态的过渡动画时使用animateTo， 需多关键帧精细控制动画过程时使用keyframeAnimateTo。 |
 | [ArkUI_AnimatorHandle (\*createAnimator)(ArkUI_ContextHandle context, ArkUI_AnimatorOption* option)](#createanimator) | 创建animator动画对象并返回其指针。与animateTo/keyframeAnimateTo的触发式动画不同，createAnimator创建可持久控制的动画对象，适用于需要反复启动、停止、 监听状态等精细控制的动画场景。选取原则：一次性过渡动画使用animateTo或keyframeAnimateTo，需持久控制动画生命周期时使用createAnimator。 |
 | [void (\*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)](#disposeanimator) | 销毁animator动画对象并释放其内存，销毁后不可再使用该handle。传入NULL或已销毁的句柄时，函数不执行销毁操作。 |
 
@@ -56,7 +56,7 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。          <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常，请检查传入参数的类型和有效性。可能原因：context无效、option为NULL或配置不合理。解决措施：          确保context有效、option配置正确且非NULL。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常，请检查传入参数的类型和有效性。可能原因：context无效、option为NULL或配置不合理。解决措施：确保context有效、option配置正确且非NULL。 |
 
 ### keyframeAnimateTo()
 
@@ -66,7 +66,7 @@ int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateO
 
 **描述：**
 
-关键帧动画接口，通过指定关键帧定义属性在不同时间节点的值，系统根据插值算法自动计算中间帧的属性值实现平滑过渡。关键帧参数配置详见{@link ArkUI_KeyframeAnimateOption}。 与animateTo的显式过渡动画不同，keyframeAnimateTo适用于需要在多个时间节点定义不同动画状态的场景。选取原则：仅需起始到结束状态的过渡动画时使用animateTo， 需多关键帧精细控制动画过程时使用keyframeAnimateTo。
+关键帧动画接口，通过指定关键帧定义属性在不同时间节点的值，系统根据插值算法自动计算中间帧的属性值实现平滑过渡。关键帧参数配置详见[ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)。 与animateTo的显式过渡动画不同，keyframeAnimateTo适用于需要在多个时间节点定义不同动画状态的场景。选取原则：仅需起始到结束状态的过渡动画时使用animateTo， 需多关键帧精细控制动画过程时使用keyframeAnimateTo。
 
 **参数：**
 
@@ -79,7 +79,7 @@ int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateO
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。          <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常，请检查传入参数的类型和有效性。可能原因：context无效、option为NULL或配置不合理。解决措施：          确保context有效、option配置正确且非NULL。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常，请检查传入参数的类型和有效性。可能原因：context无效、option为NULL或配置不合理。解决措施：确保context有效、option配置正确且非NULL。 |
 
 ### createAnimator()
 
@@ -102,7 +102,7 @@ ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_Animat
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) | animator动画对象指针，用于后续对动画对象进行控制。函数参数异常时返回NULL。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) | animator动画对象指针，用于后续对动画对象进行控制。函数参数异常时返回NULL。 |
 
 ### disposeAnimator()
 
@@ -118,6 +118,6 @@ void (*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | animator动画对象，必须为由createAnimator创建的有效handle，不可传入已销毁的对象。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | animator动画对象，必须为由createAnimator创建的有效handle，不可传入已销毁的对象。 |
 
 

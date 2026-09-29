@@ -6,8 +6,6 @@ Defines the enum variables and structs used in the HID DDK.
 
 **Library**: libhid.z.so
 
-**System capability**: SystemCapability.Driver.HID.Extension
-
 **Since**: 11
 
 **Related module**: [HidDdk](capi-hidddk.md)
@@ -18,15 +16,15 @@ Defines the enum variables and structs used in the HID DDK.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Hid_EmitItem](capi-hidddk-hid-emititem.md) | Hid_EmitItem | Represents the event information. |
-| [Hid_Device](capi-hidddk-hid-device.md) | Hid_Device | Defines a struct for basic device information. |
-| [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md) | Hid_EventTypeArray | Defines a struct for an array of event types. |
-| [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md) | Hid_KeyCodeArray | Defines a struct for the key code array. |
-| [Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md) | Hid_AbsAxesArray | Defines an array of absolute coordinates. |
-| [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md) | Hid_RelAxesArray | Defines an array of relative coordinates. |
-| [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md) | Hid_MscEventArray | Defines an array of miscellaneous events. |
-| [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | Hid_EventProperties | Defines a struct for the event properties of a device. |
-| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md) | Hid_RawDevInfo | Defines the raw device information. |
+| [Hid_EmitItem](capi-hidddk-hid-emititem.md) | - | Represents the event information. |
+| [Hid_Device](capi-hidddk-hid-device.md) | - | Defines a struct for basic device information. |
+| [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md) | - | Defines a struct for an array of event types. |
+| [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md) | - | Defines a struct for the key code array. |
+| [Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md) | - | Defines an array of absolute coordinates. |
+| [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md) | - | Defines an array of relative coordinates. |
+| [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md) | - | Defines an array of miscellaneous events. |
+| [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | - | Defines a struct for the event properties of a device. |
+| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md) | - | Defines the raw device information. |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) | Hid_DeviceHandle | Defines the opaque USB HID device structure. |
 
 ### Enum
@@ -61,8 +59,6 @@ enum Hid_DeviceProp
 
 Enumerates the properties of input devices.
 
-**System capability**: SystemCapability.Driver.HID.Extension
-
 **Since**: 11
 
 | Enum item | Description |
@@ -85,8 +81,6 @@ enum Hid_EventType
 
 Enumerates the event types.
 
-**System capability**: SystemCapability.Driver.HID.Extension
-
 **Since**: 11
 
 | Enum item | Description |
@@ -107,8 +101,6 @@ enum Hid_SynEvent
 
 Enumerates sync events.
 
-**System capability**: SystemCapability.Driver.HID.Extension
-
 **Since**: 11
 
 | Enum item | Description |
@@ -127,8 +119,6 @@ enum Hid_KeyCode
 **Description**
 
 Enumerates the key codes.
-
-**System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
@@ -255,8 +245,6 @@ enum Hid_AbsAxes
 
 Enumerates the absolute coordinates.
 
-**System capability**: SystemCapability.Driver.HID.Extension
-
 **Since**: 11
 
 | Enum item | Description |
@@ -298,8 +286,6 @@ enum Hid_RelAxes
 
 Enumerates the relative coordinates.
 
-**System capability**: SystemCapability.Driver.HID.Extension
-
 **Since**: 11
 
 | Enum item | Description |
@@ -328,8 +314,6 @@ enum Hid_MscEvent
 
 Enumerates miscellaneous input events.
 
-**System capability**: SystemCapability.Driver.HID.Extension
-
 **Since**: 11
 
 | Enum item | Description |
@@ -350,8 +334,6 @@ enum Hid_DdkErrCode
 **Description**
 
 Enumerates the HID DDK error codes.
-
-**System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
@@ -379,8 +361,6 @@ enum Hid_ReportType
 **Description**
 
 Defines the report (data packets exchanged between the HID device and the host) type.
-
-**System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 18
 

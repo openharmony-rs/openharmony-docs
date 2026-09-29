@@ -6,8 +6,6 @@
 
 **库：** libimage_receiver_ndk.z.so
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 10
 
 **相关模块：** [Image](capi-image.md)
@@ -20,6 +18,7 @@
 | -- | -- | -- |
 | [OhosImageReceiverInfo](capi-image-ohosimagereceiverinfo.md) | - | 定义ImageReceiver的相关信息。 |
 | [ImageReceiverNative_](capi-image-imagereceivernative-.md) | - | 用于定义ImageReceiverNative数据类型名称。 |
+| [ImageReceiverNative](capi-image-imagereceivernative.md) | ImageReceiverNative | 用于定义ImageReceiverNative数据类型名称。 |
 
 ### 函数
 
@@ -27,21 +26,21 @@
 | -- | -- | -- |
 | [typedef void (\*OH_Image_Receiver_On_Callback)(void)](#oh_image_receiver_on_callback) | OH_Image_Receiver_On_Callback | 定义native层图片的回调方法。 |
 | [int32_t OH_Image_Receiver_CreateImageReceiver(napi_env env, struct OhosImageReceiverInfo info, napi_value* res)](#oh_image_receiver_createimagereceiver) | - | 创建应用层ImageReceiver对象。 |
-| [ImageReceiverNative* OH_Image_Receiver_InitImageReceiverNative(napi_env env, napi_value source)](#oh_image_receiver_initimagereceivernative) | - | 通过应用层ImageReceiver对象初始化native层[ImageReceiverNative](capi-image-imagereceivernative-.md)对象。 |
-| [int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* native, char* id, size_t len)](#oh_image_receiver_getreceivingsurfaceid) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取receiver的id。 |
-| [int32_t OH_Image_Receiver_ReadLatestImage(const ImageReceiverNative* native, napi_value* image)](#oh_image_receiver_readlatestimage) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取最新的一张图片。 <br>注意，此接口需要在[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调后调用，才能正常的接收到数据。并且使用此接口返回Image对象创建的[ImageNative](capi-image-imagenative-.md)使用完毕后需要调用 [OH_Image_Release](capi-image-mdk-h.md#oh_image_release)方法释放，释放后才可以继续接收新的数据。 |
-| [int32_t OH_Image_Receiver_ReadNextImage(const ImageReceiverNative* native, napi_value* image)](#oh_image_receiver_readnextimage) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取下一张图片。 <br>注意，此接口需要在[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调后调用，才能正常的接收到数据。并且使用此接口返回Image对象创建的[ImageNative](capi-image-imagenative-.md)使用完毕后需要调用 [OH_Image_Release](capi-image-mdk-h.md#oh_image_release)方法释放，释放后才可以继续接收新的数据。 |
+| [ImageReceiverNative* OH_Image_Receiver_InitImageReceiverNative(napi_env env, napi_value source)](#oh_image_receiver_initimagereceivernative) | - | 通过应用层ImageReceiver对象初始化native层[ImageReceiverNative](capi-image-imagereceivernative.md)对象。 |
+| [int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* native, char* id, size_t len)](#oh_image_receiver_getreceivingsurfaceid) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取receiver的id。 |
+| [int32_t OH_Image_Receiver_ReadLatestImage(const ImageReceiverNative* native, napi_value* image)](#oh_image_receiver_readlatestimage) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取最新的一张图片。 <br>注意，此接口需要在[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调后调用，才能正常的接收到数据。并且使用此接口返回Image对象创建的[ImageNative](capi-image-imagenative.md)使用完毕后需要调用 [OH_Image_Release](capi-image-mdk-h.md#oh_image_release)方法释放，释放后才可以继续接收新的数据。 |
+| [int32_t OH_Image_Receiver_ReadNextImage(const ImageReceiverNative* native, napi_value* image)](#oh_image_receiver_readnextimage) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取下一张图片。 <br>注意，此接口需要在[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调后调用，才能正常的接收到数据。并且使用此接口返回Image对象创建的[ImageNative](capi-image-imagenative.md)使用完毕后需要调用 [OH_Image_Release](capi-image-mdk-h.md#oh_image_release)方法释放，释放后才可以继续接收新的数据。 |
 | [int32_t OH_Image_Receiver_On(const ImageReceiverNative* native, OH_Image_Receiver_On_Callback callback)](#oh_image_receiver_on) | - | 注册一个[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调事件。每当接收新图片，该回调事件就会响应。 |
-| [int32_t OH_Image_Receiver_GetSize(const ImageReceiverNative* native, struct OhosImageSize* size)](#oh_image_receiver_getsize) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取ImageReceiver的大小。 |
-| [int32_t OH_Image_Receiver_GetCapacity(const ImageReceiverNative* native, int32_t* capacity)](#oh_image_receiver_getcapacity) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取ImageReceiver的容量。 |
-| [int32_t OH_Image_Receiver_GetFormat(const ImageReceiverNative* native, int32_t* format)](#oh_image_receiver_getformat) | - | Obtains the format of the image receiver through an [ImageReceiverNative](capi-image-imagereceivernative-.md) object. |
-| [int32_t OH_Image_Receiver_Release(ImageReceiverNative* native)](#oh_image_receiver_release) | - | 释放native层[ImageReceiverNative](capi-image-imagereceivernative-.md)对象。 <br>注意，此方法不能释放应用层ImageReceiver对象。 |
+| [int32_t OH_Image_Receiver_GetSize(const ImageReceiverNative* native, struct OhosImageSize* size)](#oh_image_receiver_getsize) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取ImageReceiver的大小。 |
+| [int32_t OH_Image_Receiver_GetCapacity(const ImageReceiverNative* native, int32_t* capacity)](#oh_image_receiver_getcapacity) | - | 通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取ImageReceiver的容量。 |
+| [int32_t OH_Image_Receiver_GetFormat(const ImageReceiverNative* native, int32_t* format)](#oh_image_receiver_getformat) | - | Obtains the format of the image receiver through an [ImageReceiverNative](capi-image-imagereceivernative.md) object. |
+| [int32_t OH_Image_Receiver_Release(ImageReceiverNative* native)](#oh_image_receiver_release) | - | 释放native层[ImageReceiverNative](capi-image-imagereceivernative.md)对象。 <br>注意，此方法不能释放应用层ImageReceiver对象。 |
 
 ### 变量
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_Image_Receiver_On_Callback)(void) | 定义native层图片的回调方法。<br>**起始版本：** 10 |
+| void (*OH_Image_Receiver_On_Callback)(void) | 定义native层图片的回调方法。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver |
 
 ## 函数说明
 
@@ -55,8 +54,6 @@ typedef void (*OH_Image_Receiver_On_Callback)(void)
 
 定义native层图片的回调方法。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 10
 
 ### OH_Image_Receiver_CreateImageReceiver()
@@ -68,8 +65,6 @@ int32_t OH_Image_Receiver_CreateImageReceiver(napi_env env, struct OhosImageRece
 **描述：**
 
 创建应用层ImageReceiver对象。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 10
 
@@ -85,7 +80,7 @@ int32_t OH_Image_Receiver_CreateImageReceiver(napi_env env, struct OhosImageRece
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_CREATE_SURFACE_FAILED：创建surface失败。      <br>IMAGE_RESULT_SURFACE_GRALLOC_BUFFER_FAILED：surface分配内存失败。      <br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。      <br>IMAGE_RESULT_MEDIA_RTSP_SURFACE_UNSUPPORT：媒体rtsp surface不支持。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。      <br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>IMAGE_RESULT_CREATE_SURFACE_FAILED：创建surface失败。<br>IMAGE_RESULT_SURFACE_GRALLOC_BUFFER_FAILED：surface分配内存失败。<br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。<br>IMAGE_RESULT_MEDIA_RTSP_SURFACE_UNSUPPORT：媒体rtsp surface不支持。<br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。<br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
 
 **参考：**
 
@@ -100,9 +95,7 @@ ImageReceiverNative* OH_Image_Receiver_InitImageReceiverNative(napi_env env, nap
 
 **描述：**
 
-通过应用层ImageReceiver对象初始化native层[ImageReceiverNative](capi-image-imagereceivernative-.md)对象。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+通过应用层ImageReceiver对象初始化native层[ImageReceiverNative](capi-image-imagereceivernative.md)对象。
 
 **起始版本：** 10
 
@@ -117,7 +110,7 @@ ImageReceiverNative* OH_Image_Receiver_InitImageReceiverNative(napi_env env, nap
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageReceiverNative*](capi-image-imagereceivernative-.md) | 操作成功则返回ImageReceiverNative指针；如果操作失败，则返回nullptr。 |
+| [ImageReceiverNative*](capi-image-imagereceivernative.md) | 操作成功则返回ImageReceiverNative指针；如果操作失败，则返回nullptr。 |
 
 **参考：**
 
@@ -132,9 +125,7 @@ int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* nativ
 
 **描述：**
 
-通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取receiver的id。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取receiver的id。
 
 **起始版本：** 10
 
@@ -142,7 +133,7 @@ int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* nativ
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageReceiverNative](capi-image-imagereceivernative-.md)* native | native层的ImageReceiverNative指针。 |
+| [const ImageReceiverNative](capi-image-imagereceivernative.md)* native | native层的ImageReceiverNative指针。 |
 | char* id | 指向字符缓冲区的指针，用于获取字符串的id。 |
 | size_t len | id所对应的字符缓冲区的大小。 |
 
@@ -150,11 +141,11 @@ int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* nativ
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_INVALID_PARAMETER：从surface获取参数失败。      <br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。      <br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>IMAGE_RESULT_INVALID_PARAMETER：从surface获取参数失败。<br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。<br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。<br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
 
 **参考：**
 
-[ImageReceiverNative](capi-image-imagereceivernative-.md)
+[ImageReceiverNative](capi-image-imagereceivernative.md)
 
 
 ### OH_Image_Receiver_ReadLatestImage()
@@ -165,9 +156,7 @@ int32_t OH_Image_Receiver_ReadLatestImage(const ImageReceiverNative* native, nap
 
 **描述：**
 
-通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取最新的一张图片。 <br>注意，此接口需要在[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调后调用，才能正常的接收到数据。并且使用此接口返回Image对象创建的[ImageNative](capi-image-imagenative-.md)使用完毕后需要调用 [OH_Image_Release](capi-image-mdk-h.md#oh_image_release)方法释放，释放后才可以继续接收新的数据。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取最新的一张图片。 <br>注意，此接口需要在[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调后调用，才能正常的接收到数据。并且使用此接口返回Image对象创建的[ImageNative](capi-image-imagenative.md)使用完毕后需要调用 [OH_Image_Release](capi-image-mdk-h.md#oh_image_release)方法释放，释放后才可以继续接收新的数据。
 
 **起始版本：** 10
 
@@ -175,18 +164,18 @@ int32_t OH_Image_Receiver_ReadLatestImage(const ImageReceiverNative* native, nap
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageReceiverNative](capi-image-imagereceivernative-.md)* native | native层的ImageReceiverNative指针。 |
+| [const ImageReceiverNative](capi-image-imagereceivernative.md)* native | native层的ImageReceiverNative指针。 |
 | napi_value* image | 获取到的应用层的Image指针对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_INVALID_PARAMETER：从surface获取参数失败。      <br>IMAGE_RESULT_CREATE_SURFACE_FAILED：创建surface失败。      <br>IMAGE_RESULT_SURFACE_GRALLOC_BUFFER_FAILED：surface分配内存失败。      <br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。      <br>IMAGE_RESULT_MEDIA_RTSP_SURFACE_UNSUPPORT：媒体rtsp surface不支持。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。      <br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>IMAGE_RESULT_INVALID_PARAMETER：从surface获取参数失败。<br>IMAGE_RESULT_CREATE_SURFACE_FAILED：创建surface失败。<br>IMAGE_RESULT_SURFACE_GRALLOC_BUFFER_FAILED：surface分配内存失败。<br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。<br>IMAGE_RESULT_MEDIA_RTSP_SURFACE_UNSUPPORT：媒体rtsp surface不支持。<br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。<br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
 
 **参考：**
 
-[ImageReceiverNative](capi-image-imagereceivernative-.md)
+[ImageReceiverNative](capi-image-imagereceivernative.md)
 
 
 ### OH_Image_Receiver_ReadNextImage()
@@ -197,9 +186,7 @@ int32_t OH_Image_Receiver_ReadNextImage(const ImageReceiverNative* native, napi_
 
 **描述：**
 
-通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取下一张图片。 <br>注意，此接口需要在[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调后调用，才能正常的接收到数据。并且使用此接口返回Image对象创建的[ImageNative](capi-image-imagenative-.md)使用完毕后需要调用 [OH_Image_Release](capi-image-mdk-h.md#oh_image_release)方法释放，释放后才可以继续接收新的数据。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取下一张图片。 <br>注意，此接口需要在[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调后调用，才能正常的接收到数据。并且使用此接口返回Image对象创建的[ImageNative](capi-image-imagenative.md)使用完毕后需要调用 [OH_Image_Release](capi-image-mdk-h.md#oh_image_release)方法释放，释放后才可以继续接收新的数据。
 
 **起始版本：** 10
 
@@ -207,18 +194,18 @@ int32_t OH_Image_Receiver_ReadNextImage(const ImageReceiverNative* native, napi_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageReceiverNative](capi-image-imagereceivernative-.md)* native | native层的ImageReceiverNative指针。 |
+| [const ImageReceiverNative](capi-image-imagereceivernative.md)* native | native层的ImageReceiverNative指针。 |
 | napi_value* image | 读取到的应用层的Image指针对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_INVALID_PARAMETER：从surface获取参数失败。      <br>IMAGE_RESULT_CREATE_SURFACE_FAILED：创建surface失败。      <br>IMAGE_RESULT_SURFACE_GRALLOC_BUFFER_FAILED：surface分配内存失败。      <br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。      <br>IMAGE_RESULT_MEDIA_RTSP_SURFACE_UNSUPPORT：媒体rtsp surface不支持。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。      <br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>IMAGE_RESULT_INVALID_PARAMETER：从surface获取参数失败。<br>IMAGE_RESULT_CREATE_SURFACE_FAILED：创建surface失败。<br>IMAGE_RESULT_SURFACE_GRALLOC_BUFFER_FAILED：surface分配内存失败。<br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。<br>IMAGE_RESULT_MEDIA_RTSP_SURFACE_UNSUPPORT：媒体rtsp surface不支持。<br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。<br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
 
 **参考：**
 
-[ImageReceiverNative](capi-image-imagereceivernative-.md)
+[ImageReceiverNative](capi-image-imagereceivernative.md)
 
 
 ### OH_Image_Receiver_On()
@@ -231,26 +218,24 @@ int32_t OH_Image_Receiver_On(const ImageReceiverNative* native, OH_Image_Receive
 
 注册一个[OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)回调事件。每当接收新图片，该回调事件就会响应。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageReceiverNative](capi-image-imagereceivernative-.md)* native | native层的ImageReceiverNative指针。 |
+| [const ImageReceiverNative](capi-image-imagereceivernative.md)* native | native层的ImageReceiverNative指针。 |
 | [OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback) callback | [OH_Image_Receiver_On_Callback](capi-image-receiver-mdk-h.md#oh_image_receiver_on_callback)事件的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_INVALID_PARAMETER：从surface获取参数失败。      <br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。      <br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>IMAGE_RESULT_INVALID_PARAMETER：从surface获取参数失败。<br>IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。<br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。<br>IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
 
 **参考：**
 
-[ImageReceiverNative](capi-image-imagereceivernative-.md)
+[ImageReceiverNative](capi-image-imagereceivernative.md)
 
 
 ### OH_Image_Receiver_GetSize()
@@ -261,9 +246,7 @@ int32_t OH_Image_Receiver_GetSize(const ImageReceiverNative* native, struct Ohos
 
 **描述：**
 
-通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取ImageReceiver的大小。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取ImageReceiver的大小。
 
 **起始版本：** 10
 
@@ -271,14 +254,14 @@ int32_t OH_Image_Receiver_GetSize(const ImageReceiverNative* native, struct Ohos
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageReceiverNative](capi-image-imagereceivernative-.md)* native | native层的ImageReceiverNative指针。 |
-| struct OhosImageSize* size | 作为结果的OhosImageSize指针。 |
+| [const ImageReceiverNative](capi-image-imagereceivernative.md)* native | native层的ImageReceiverNative指针。 |
+| [struct OhosImageSize](capi-image-ohosimagesize.md)* size | 作为结果的OhosImageSize指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。 |
 
 **参考：**
 
@@ -293,9 +276,7 @@ int32_t OH_Image_Receiver_GetCapacity(const ImageReceiverNative* native, int32_t
 
 **描述：**
 
-通过[ImageReceiverNative](capi-image-imagereceivernative-.md)获取ImageReceiver的容量。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+通过[ImageReceiverNative](capi-image-imagereceivernative.md)获取ImageReceiver的容量。
 
 **起始版本：** 10
 
@@ -303,14 +284,14 @@ int32_t OH_Image_Receiver_GetCapacity(const ImageReceiverNative* native, int32_t
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageReceiverNative](capi-image-imagereceivernative-.md)* native | native层的ImageReceiverNative指针。 |
+| [const ImageReceiverNative](capi-image-imagereceivernative.md)* native | native层的ImageReceiverNative指针。 |
 | int32_t* capacity | 作为结果的指向容量的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。 |
 
 **参考：**
 
@@ -325,9 +306,7 @@ int32_t OH_Image_Receiver_GetFormat(const ImageReceiverNative* native, int32_t* 
 
 **描述：**
 
-Obtains the format of the image receiver through an [ImageReceiverNative](capi-image-imagereceivernative-.md) object.
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+Obtains the format of the image receiver through an [ImageReceiverNative](capi-image-imagereceivernative.md) object.
 
 **起始版本：** 10
 
@@ -335,18 +314,18 @@ Obtains the format of the image receiver through an [ImageReceiverNative](capi-i
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageReceiverNative](capi-image-imagereceivernative-.md)* native | Indicates the pointer to an [ImageReceiverNative](capi-image-imagereceivernative-.md) object at the native layer. |
+| [const ImageReceiverNative](capi-image-imagereceivernative.md)* native | Indicates the pointer to an [ImageReceiverNative](capi-image-imagereceivernative.md) object at the native layer. |
 | int32_t* format | Indicates the pointer to the format obtained. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_SUCCESS - if the operation is successful.  returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_BAD_PARAMETER - if bad parameter.  returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_JNI_ENV_ABNORMAL - if Abnormal JNI environment.  returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_INVALID_PARAMETER - if invalid parameter.  returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_DATA_UNSUPPORT - if image type unsupported. |
+| int32_t | Returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_SUCCESS - if the operation is successful. returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_BAD_PARAMETER - if bad parameter. returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_JNI_ENV_ABNORMAL - if Abnormal JNI environment. returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_INVALID_PARAMETER - if invalid parameter. returns [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode) IMAGE_RESULT_DATA_UNSUPPORT - if image type unsupported. |
 
 **参考：**
 
-[ImageReceiverNative](capi-image-imagereceivernative-.md)
+[ImageReceiverNative](capi-image-imagereceivernative.md)
 
 
 ### OH_Image_Receiver_Release()
@@ -357,9 +336,7 @@ int32_t OH_Image_Receiver_Release(ImageReceiverNative* native)
 
 **描述：**
 
-释放native层[ImageReceiverNative](capi-image-imagereceivernative-.md)对象。 <br>注意，此方法不能释放应用层ImageReceiver对象。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+释放native层[ImageReceiverNative](capi-image-imagereceivernative.md)对象。 <br>注意，此方法不能释放应用层ImageReceiver对象。
 
 **起始版本：** 10
 
@@ -367,17 +344,17 @@ int32_t OH_Image_Receiver_Release(ImageReceiverNative* native)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ImageReceiverNative](capi-image-imagereceivernative-.md)* native | native层的ImageReceiverNative指针。 |
+| [ImageReceiverNative](capi-image-imagereceivernative.md)* native | native层的ImageReceiverNative指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。 |
 
 **参考：**
 
-[ImageReceiverNative](capi-image-imagereceivernative-.md)
+[ImageReceiverNative](capi-image-imagereceivernative.md)
 
 
 

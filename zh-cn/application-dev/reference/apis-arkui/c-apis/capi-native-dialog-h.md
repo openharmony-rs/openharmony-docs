@@ -6,8 +6,6 @@
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -86,8 +84,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| bool (*ArkUI_OnWillDismissEvent)(int32_t reason) | 弹窗关闭的回调函数。<br>**起始版本：** 12 |
-| void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, void* userData) | 弹窗显示时的回调函数。<br>**起始版本：** 26.0.1 |
+| bool (*ArkUI_OnWillDismissEvent)(int32_t reason) | 弹窗关闭的回调函数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, void* userData) | 弹窗显示时的回调函数。<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 
 ## 枚举类型说明
 
@@ -100,8 +98,6 @@ enum ArkUI_DismissReason
 **描述：**
 
 弹窗关闭的触发方式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -121,8 +117,6 @@ enum ArkUI_DialogState
 **描述：**
 
 枚举对话框的状态。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -145,8 +139,6 @@ enum ArkUI_LevelMode
 
 设置弹窗显示层级。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 | 枚举项 | 描述 |
@@ -164,8 +156,6 @@ enum ArkUI_ImmersiveMode
 
 指定嵌入式弹窗的蒙层覆盖区域。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 | 枚举项 | 描述 |
@@ -182,8 +172,6 @@ enum OH_ArkUI_DialogDisplayModeInSubWindow
 **描述：**
 
 弹窗在子窗口中的显示模式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -205,8 +193,6 @@ typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 
 弹窗关闭的回调函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 ### OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss()
@@ -218,8 +204,6 @@ void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent*
 **描述：**
 
 设置是否需要屏蔽系统关闭弹窗行为，true表示屏蔽系统行为，不关闭弹窗，false表示不屏蔽。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -239,8 +223,6 @@ void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)
 **描述：**
 
 获取弹窗关闭事件对象中的用户自定义数据指针。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -266,8 +248,6 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 获取交互式关闭事件指针中的关闭原因。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -280,7 +260,7 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 关闭原因，异常情况返回-1。      <br>[DIALOG_DISMISS_BACK_PRESS](capi-native-dialog-h.md#arkui_dismissreason) 点击三键back、侧滑（左滑/右滑）、键盘ESC关闭。      <br>[DIALOG_DISMISS_TOUCH_OUTSIDE](capi-native-dialog-h.md#arkui_dismissreason) 点击遮障层时。      <br>[DIALOG_DISMISS_CLOSE_BUTTON](capi-native-dialog-h.md#arkui_dismissreason) 点击关闭按钮。      <br>[DIALOG_DISMISS_SLIDE_DOWN](capi-native-dialog-h.md#arkui_dismissreason) 下拉关闭。 |
+| int32_t | 关闭原因，异常情况返回-1。<br>[DIALOG_DISMISS_BACK_PRESS](capi-native-dialog-h.md#arkui_dismissreason) 点击三键back、侧滑（左滑/右滑）、键盘ESC关闭。<br>[DIALOG_DISMISS_TOUCH_OUTSIDE](capi-native-dialog-h.md#arkui_dismissreason) 点击遮障层时。<br>[DIALOG_DISMISS_CLOSE_BUTTON](capi-native-dialog-h.md#arkui_dismissreason) 点击关闭按钮。<br>[DIALOG_DISMISS_SLIDE_DOWN](capi-native-dialog-h.md#arkui_dismissreason) 下拉关闭。 |
 
 ### OH_ArkUI_CustomDialog_OpenDialog()
 
@@ -292,22 +272,20 @@ int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, voi
 
 弹出自定义弹窗。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_CustomDialogOptions\* options | 弹窗参数。 |
-| void (\*callback)(int32_t dialogId) | 开启弹窗的回调，返回弹窗ID。 |
+| rkUI_CustomDialogOptions* options | 弹窗参数。 |
+| void (*callback)(int32_t dialogId) | 开启弹窗的回调，返回弹窗ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### ArkUI_OpenDialogCallback()
 
@@ -319,17 +297,15 @@ typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, vo
 
 弹窗显示时的回调函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t errorCode | 打开弹窗的操作结果。 [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 操作成功。 [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)  函数参数异常。 [ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 由于节点挂载失败，弹窗无法打开。 [ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 由于子窗口创建失败，弹窗无法打开。 |
+| int32_t errorCode | 打开弹窗的操作结果。 ARKUI_ERROR_CODE_NO_ERROR 操作成功。 ARKUI_ERROR_CODE_PARAM_INVALID  函数参数异常。 ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE 由于节点挂载失败，弹窗无法打开。 ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE 由于子窗口创建失败，弹窗无法打开。 |
 | int32_t dialogId | 弹窗ID。当弹窗无法显示时返回-1。 |
-| void\* userData | 表示指向自定义数据的指针。 |
+| void* userData | 表示指向自定义数据的指针。 |
 
 ### OH_ArkUI_CustomDialog_OpenDialogWithCallback()
 
@@ -340,8 +316,6 @@ void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* opt
 **描述：**
 
 弹出自定义弹窗。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.1
 
@@ -363,22 +337,20 @@ int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, v
 
 更新自定义弹窗。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_CustomDialogOptions\* options | 弹窗参数。 |
-| void (\*callback)(int32_t dialogId) | 更新弹窗的回调，返回弹窗ID。 |
+| rkUI_CustomDialogOptions* options | 弹窗参数。 |
+| void (*callback)(int32_t dialogId) | 更新弹窗的回调，返回弹窗ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_CloseDialog()
 
@@ -389,8 +361,6 @@ int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 **描述：**
 
 关闭自定义弹窗。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -404,7 +374,7 @@ int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_CreateOptions()
 
@@ -415,8 +385,6 @@ ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle 
 **描述：**
 
 创建自定义弹窗配置。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -442,8 +410,6 @@ void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 
 销毁自定义弹窗配置。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -466,8 +432,6 @@ int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, A
 >
 > 本方法需要在调用<b>OH_ArkUI_CustomDialog_OpenDialog</b>方法之前调用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -481,7 +445,7 @@ int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, A
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetLevelUniqueId()
 
@@ -492,8 +456,6 @@ int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* option
 **描述：**
 
 设置弹窗显示层级页面下的节点id。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -508,7 +470,7 @@ int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetImmersiveMode()
 
@@ -524,8 +486,6 @@ int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* option
 >
 > 本方法需要在调用<b>OH_ArkUI_CustomDialog_OpenDialog</b>方法之前调用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -539,7 +499,7 @@ int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetBackgroundColor()
 
@@ -550,8 +510,6 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* opti
 **描述：**
 
 设置弹窗的背景颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -566,7 +524,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* opti
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetCornerRadius()
 
@@ -577,8 +535,6 @@ int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options
 **描述：**
 
 设置弹窗的圆角半径。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -596,7 +552,7 @@ int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetBorderWidth()
 
@@ -607,8 +563,6 @@ int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options,
 **描述：**
 
 设置弹窗的边框宽度。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -621,13 +575,13 @@ int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options,
 | float right | 弹窗右边框的宽度。 |
 | float bottom | 弹窗下边框的宽度。 |
 | float left | 弹窗左边框的宽度。 |
-| ArkUI_LengthMetricUnit unit | 指定宽度的单位，默认为vp。 |
+| [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | 指定宽度的单位，默认为vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetBorderColor()
 
@@ -638,8 +592,6 @@ int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options,
 **描述：**
 
 设置弹窗的边框颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -657,7 +609,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetBorderStyle()
 
@@ -668,8 +620,6 @@ int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options,
 **描述：**
 
 设置弹窗的边框样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -687,7 +637,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetWidth()
 
@@ -699,8 +649,6 @@ int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float
 
 设置弹窗的背板宽度。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -709,13 +657,13 @@ int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | float width | 弹窗的背板宽度。 |
-| ArkUI_LengthMetricUnit unit | 指定宽度的单位，默认为vp。 |
+| [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | 指定宽度的单位，默认为vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetHeight()
 
@@ -727,8 +675,6 @@ int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, floa
 
 设置弹窗的背板高度。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -737,13 +683,13 @@ int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, floa
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | float height | 弹窗的背板高度。 |
-| ArkUI_LengthMetricUnit unit | 指定高度的单位，默认为vp。 |
+| [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | 指定高度的单位，默认为vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetShadow()
 
@@ -755,8 +701,6 @@ int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkU
 
 设置弹窗的背板阴影。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -764,13 +708,13 @@ int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkU
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| ArkUI_ShadowStyle shadow | 弹窗的背板阴影样式，枚举值。 |
+| [ArkUI_ShadowStyle](capi-native-type-h.md#arkui_shadowstyle) shadow | 弹窗的背板阴影样式，枚举值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetCustomShadow()
 
@@ -781,8 +725,6 @@ int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options
 **描述：**
 
 设置弹窗的背板阴影。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -797,7 +739,7 @@ int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetBackgroundBlurStyle()
 
@@ -809,8 +751,6 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* 
 
 设置弹窗的背板模糊材质。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -818,13 +758,13 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| ArkUI_BlurStyle blurStyle | 弹窗的背板模糊材质，枚举值。 |
+| [ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle) blurStyle | 弹窗的背板模糊材质，枚举值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetAlignment()
 
@@ -835,8 +775,6 @@ int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, i
 **描述：**
 
 设置弹窗的对齐模式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -853,7 +791,7 @@ int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, i
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetModalMode()
 
@@ -864,8 +802,6 @@ int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, b
 **描述：**
 
 设置自定义弹窗是否开启模态样式的弹窗。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -880,7 +816,7 @@ int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, b
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetAutoCancel()
 
@@ -891,8 +827,6 @@ int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, 
 **描述：**
 
 设置自定义弹窗是否允许点击遮罩层退出。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -907,7 +841,7 @@ int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetSubwindowMode()
 
@@ -918,8 +852,6 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 **描述：**
 
 设置弹窗是否在子窗口显示此弹窗。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -934,7 +866,7 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow()
 
@@ -950,8 +882,6 @@ int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOption
 >
 > 本方法需要在调用<b>OH_ArkUI_CustomDialog_OpenDialog</b>方法之前调用。<br> 本方法仅在弹窗通过<b>OH_ArkUI_CustomDialog_SetSubwindowMode</b>设置为子窗口显示时生效。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -965,7 +895,7 @@ int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOption
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetMask()
 
@@ -976,8 +906,6 @@ int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32
 **描述：**
 
 设置自定义弹窗遮罩属性。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -993,7 +921,7 @@ int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetKeyboardAvoidMode()
 
@@ -1005,8 +933,6 @@ int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* op
 
 设置弹窗避让键盘的模式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -1014,13 +940,13 @@ int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* op
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| ArkUI_KeyboardAvoidMode keyboardAvoidMode | 键盘避让模式，枚举值。 |
+| [ArkUI_KeyboardAvoidMode](capi-native-type-h.md#arkui_keyboardavoidmode) keyboardAvoidMode | 键盘避让模式，枚举值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetHoverModeEnabled()
 
@@ -1031,8 +957,6 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* opt
 **描述：**
 
 设置弹窗是否响应悬停态。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -1047,7 +971,7 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetHoverModeArea()
 
@@ -1059,8 +983,6 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* option
 
 设置悬停态下弹窗默认展示区域。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -1068,13 +990,13 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* option
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| ArkUI_HoverModeAreaType hoverModeAreaType | 悬停态区域，枚举值。 |
+| [ArkUI_HoverModeAreaType](capi-native-type-h.md#arkui_hovermodeareatype) hoverModeAreaType | 悬停态区域，枚举值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback()
 
@@ -1090,23 +1012,21 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOp
 >
 > 本方法需要在调用<b>OH_ArkUI_CustomDialog_OpenDialog</b>方法之前调用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_CustomDialogOptions\* options | 弹窗参数。 |
-| void\* userData | 用户自定义数据指针。 |
-| void (\*callback)(ArkUI_DialogDismissEvent\* event) | 监听自定义弹窗关闭的回调事件。<br> - event: 回调函数的入参，捕获关闭原因。 |
+| rkUI_CustomDialogOptions* options | 弹窗参数。 |
+| void* userData | 用户自定义数据指针。 |
+| void (*callback)(ArkUI_DialogDismissEvent* event) | 监听自定义弹窗关闭的回调事件。<br> - event: 回调函数的入参，捕获关闭原因。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback()
 
@@ -1118,23 +1038,21 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOpt
 
 注册自定义弹窗显示动效前的监听事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_CustomDialogOptions\* options | 弹窗参数。 |
-| void\* userData | 用户自定义数据指针。 |
-| void (\*callback)(void\* userData) |  弹窗显示动效前的事件回调。入参userData为用户自定义数据。 |
+| rkUI_CustomDialogOptions* options | 弹窗参数。 |
+| void* userData | 用户自定义数据指针。 |
+| void (*callback)(void* userData) |  弹窗显示动效前的事件回调。入参userData为用户自定义数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback()
 
@@ -1146,23 +1064,21 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOpti
 
 注册自定义弹窗弹出时的监听事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_CustomDialogOptions\* options | 弹窗参数。 |
-| void\* userData | 用户自定义数据指针。 |
-| void (\*callback)(void\* userData) | 弹窗弹出后的事件回调。入参userData为用户自定义数据。 |
+| rkUI_CustomDialogOptions* options | 弹窗参数。 |
+| void* userData | 用户自定义数据指针。 |
+| void (*callback)(void* userData) | 弹窗弹出后的事件回调。入参userData为用户自定义数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback()
 
@@ -1174,23 +1090,21 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialog
 
 注册自定义弹窗退出动效前的监听事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_CustomDialogOptions\* options | 弹窗参数。 |
-| void\* userData | 用户自定义数据指针。 |
-| void (\*callback)(void\* userData) | 弹窗退出动效前的事件回调。入参userData为用户自定义数据。 |
+| rkUI_CustomDialogOptions* options | 弹窗参数。 |
+| void* userData | 用户自定义数据指针。 |
+| void (*callback)(void* userData) | 弹窗退出动效前的事件回调。入参userData为用户自定义数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback()
 
@@ -1202,23 +1116,21 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogO
 
 注册自定义弹窗消失时的监听事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_CustomDialogOptions\* options | 弹窗参数。 |
-| void\* userData | 用户自定义数据指针。 |
-| void (\*callback)(void\* userData) | 弹窗消失时的事件回调。入参userData为用户自定义数据。 |
+| rkUI_CustomDialogOptions* options | 弹窗参数。 |
+| void* userData | 用户自定义数据指针。 |
+| void (*callback)(void* userData) | 弹窗消失时的事件回调。入参userData为用户自定义数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_GetState()
 
@@ -1230,22 +1142,20 @@ int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_Di
 
 获取弹窗的状态。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
 | [ArkUI_DialogState](capi-native-dialog-h.md#arkui_dialogstate)* state | 自定义弹窗的状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions()
 
@@ -1256,8 +1166,6 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOp
 **描述：**
 
 设置弹窗的背景模糊效果。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -1272,7 +1180,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOp
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_CustomDialog_SetBackgroundEffect()
 
@@ -1283,8 +1191,6 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* opt
 **描述：**
 
 设置弹窗的背景效果参数。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -1299,7 +1205,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions()
 
@@ -1311,8 +1217,6 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_Cust
 
 设置弹窗参数的沉浸式材质属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -1320,13 +1224,13 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_Cust
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 指向弹窗参数对象的指针。 |
-| ArkUI_ImmersiveMaterialHandle material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial()
 
@@ -1338,21 +1242,19 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogH
 
 设置指定弹窗的沉浸式材质。沉浸式材质根据设备算力等级分为不同等级。材质等级由[ArkUI_MaterialLevel](capi-native-material-h.md#arkui_materiallevel)定义，可通过 [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。在高算力和中算力设备上，会影响材质层的滤镜效果和阴影（ [OH_ArkUI_CustomDialog_SetShadow](capi-native-dialog-h.md#oh_arkui_customdialog_setshadow)或[OH_ArkUI_CustomDialog_SetCustomShadow](capi-native-dialog-h.md#oh_arkui_customdialog_setcustomshadow)）、背景模糊 [OH_ArkUI_CustomDialog_SetBackgroundBlurStyle](capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundblurstyle)、背景效果[OH_ArkUI_CustomDialog_SetBackgroundEffect](capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundeffect)效果。 在低算力设备上，会影响背景颜色[OH_ArkUI_CustomDialog_SetBackgroundColor](capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundcolor)、背景模糊 [OH_ArkUI_CustomDialog_SetBackgroundBlurStyle](capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundblurstyle)、背景效果[OH_ArkUI_CustomDialog_SetBackgroundEffect](capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundeffect)、边框颜色 [OH_ArkUI_CustomDialog_SetBorderColor](capi-native-dialog-h.md#oh_arkui_customdialog_setbordercolor)、边框宽度[OH_ArkUI_CustomDialog_SetBorderWidth](capi-native-dialog-h.md#oh_arkui_customdialog_setborderwidth)和阴影（ [OH_ArkUI_CustomDialog_SetShadow](capi-native-dialog-h.md#oh_arkui_customdialog_setshadow)或[OH_ArkUI_CustomDialog_SetCustomShadow](capi-native-dialog-h.md#oh_arkui_customdialog_setcustomshadow)）效果。依据设备算力档位自动生效交互形变和流光效果， 高算力设备生效交互形变和流光效果，中算力设备生效交互形变效果，低算力设备不生效。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | 指向自定义弹窗控制器的指针。 |
-| ArkUI_ImmersiveMaterialHandle material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。       <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。       <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 

@@ -1,7 +1,7 @@
 # OH_Huks_KeyMaterialDh
 
 ```c
-typedef struct OH_Huks_KeyMaterialDh {...} OH_Huks_KeyMaterialDh
+struct OH_Huks_KeyMaterialDh {...}
 ```
 
 ## Overview
@@ -22,7 +22,7 @@ Defines the struct for a DH key.
 
 | Name | Description |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | Algorithm of the key. |
+| enum OH_Huks_KeyAlg keyAlg | Algorithm of the key. |
 | uint32_t keySize | Length of the DH key. |
 | uint32_t pubKeySize | Length of the public key. |
 | uint32_t priKeySize | Length of the private key. |

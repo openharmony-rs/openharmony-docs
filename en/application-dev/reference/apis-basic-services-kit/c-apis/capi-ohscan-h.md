@@ -6,8 +6,6 @@ Declares APIs for discovering and connecting to scanners, scanning pictures, que
 
 **Library**: libohscan.so
 
-**System capability**: SystemCapability.Print.PrintFramework
-
 **Since**: 12
 
 **Related module**: [OH_Scan](capi-oh-scan.md)
@@ -48,7 +46,7 @@ Declares APIs for discovering and connecting to scanners, scanning pictures, que
 
 | Name | Description |
 | -- | -- |
-| void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int32_t deviceCount) | Discovers scanners. The memory pointed to by the pointer registered via [OH_Scan_StartScannerDiscovery](capi-ohscan-h.md#oh_scan_startscannerdiscovery) will be released when the callback function ends.<br>**Since**: 12 |
+| void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int32_t deviceCount) | Discovers scanners. The memory pointed to by the pointer registered via [OH_Scan_StartScannerDiscovery](capi-ohscan-h.md#oh_scan_startscannerdiscovery) will be released when the callback function ends.<br>**Since**: 12<br>**System capability**: SystemCapability.Print.PrintFramework |
 
 ## Enum type description
 
@@ -61,8 +59,6 @@ enum Scan_ErrorCode
 **Description**
 
 Enumerates the error codes.
-
-**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -97,15 +93,13 @@ typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int3
 
 Discovers scanners. The memory pointed to by the pointer registered via [OH_Scan_StartScannerDiscovery](capi-ohscan-h.md#oh_scan_startscannerdiscovery) will be released when the callback function ends.
 
-**System capability**: SystemCapability.Print.PrintFramework
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)\*\* devices | Double pointer to the list of all discovered scanners. |
+| [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)** devices | Double pointer to the list of all discovered scanners. |
 | int32_t deviceCount | Number of scanners discovered. |
 
 ### OH_Scan_Init()
@@ -118,8 +112,6 @@ int32_t OH_Scan_Init()
 
 Initiates the scan service, initializes the scan client, and connects the client to the scan service.
 
-**System capability**: SystemCapability.Print.PrintFramework
-
 **Required permission**: {@code ohos.permission.PRINT}
 
 **Since**: 12
@@ -128,7 +120,7 @@ Initiates the scan service, initializes the scan client, and connects the client
 
 | Type | Description |
 | -- | -- |
-| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful.      <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied.      <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error.      <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. |
+| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful. <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied. <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error. <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. |
 
 ### OH_Scan_StartScannerDiscovery()
 
@@ -139,8 +131,6 @@ int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 **Description**
 
 Starts scanner discovery and registers a callback used to process the discovered scanners.
-
-**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -156,7 +146,7 @@ Starts scanner discovery and registers a callback used to process the discovered
 
 | Type | Description |
 | -- | -- |
-| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful.      <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied.      <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error.      <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. |
+| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful. <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied. <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error. <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. |
 
 ### OH_Scan_OpenScanner()
 
@@ -168,8 +158,6 @@ int32_t OH_Scan_OpenScanner(const char* scannerId)
 
 Opens a scanner.
 
-**System capability**: SystemCapability.Print.PrintFramework
-
 **Required permission**: {@code ohos.permission.PRINT}
 
 **Since**: 12
@@ -184,7 +172,7 @@ Opens a scanner.
 
 | Type | Description |
 | -- | -- |
-| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful.      <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied.      <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error.      <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error.      <br>[SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode): device busy.      <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter.      <br>[SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode): scanner I/O error.      <br>[SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode): insufficient memory. |
+| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful. <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied. <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error. <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. <br>[SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode): device busy. <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter. <br>[SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode): scanner I/O error. <br>[SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode): insufficient memory. |
 
 ### OH_Scan_CloseScanner()
 
@@ -196,8 +184,6 @@ int32_t OH_Scan_CloseScanner(const char* scannerId)
 
 Closes a connected scanner.
 
-**System capability**: SystemCapability.Print.PrintFramework
-
 **Required permission**: {@code ohos.permission.PRINT}
 
 **Since**: 12
@@ -212,7 +198,7 @@ Closes a connected scanner.
 
 | Type | Description |
 | -- | -- |
-| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful.      <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied.      <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error.      <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error.      <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter. |
+| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful. <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied. <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error. <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter. |
 
 ### OH_Scan_GetScannerParameter()
 
@@ -223,8 +209,6 @@ Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t*
 **Description**
 
 Obtains the scanner setting options. The memory to which the returned struct pointer points is automatically released when [OH_Scan_Exit](capi-ohscan-h.md#oh_scan_exit) is called. Only one copy of each scanner model is stored in the memory.
-
-**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -253,8 +237,6 @@ int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option,
 
 Sets the option parameters of a scanner. The option values are obtained through the [OH_Scan_GetScannerParameter](capi-ohscan-h.md#oh_scan_getscannerparameter) API.
 
-**System capability**: SystemCapability.Print.PrintFramework
-
 **Required permission**: {@code ohos.permission.PRINT}
 
 **Since**: 12
@@ -271,7 +253,7 @@ Sets the option parameters of a scanner. The option values are obtained through 
 
 | Type | Description |
 | -- | -- |
-| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful.      <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied.      <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error.      <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error.      <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter. |
+| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful. <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied. <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error. <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter. |
 
 ### OH_Scan_StartScan()
 
@@ -282,8 +264,6 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 **Description**
 
 Starts scanning.
-
-**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -300,7 +280,7 @@ Starts scanning.
 
 | Type | Description |
 | -- | -- |
-| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful.      <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied.      <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error.      <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error.      <br>[SCAN_ERROR_JAMMED](capi-ohscan-h.md#scan_errorcode): paper jam in feeder.      <br>[SCAN_ERROR_NO_DOCS](capi-ohscan-h.md#scan_errorcode): out of paper.      <br>[SCAN_ERROR_COVER_OPEN](capi-ohscan-h.md#scan_errorcode): scanner cover open.      <br>[SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode): scanner I/O error.      <br>[SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode): insufficient memory.      <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter.      <br>[SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode): device busy. |
+| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful. <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied. <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error. <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. <br>[SCAN_ERROR_JAMMED](capi-ohscan-h.md#scan_errorcode): paper jam in feeder. <br>[SCAN_ERROR_NO_DOCS](capi-ohscan-h.md#scan_errorcode): out of paper. <br>[SCAN_ERROR_COVER_OPEN](capi-ohscan-h.md#scan_errorcode): scanner cover open. <br>[SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode): scanner I/O error. <br>[SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode): insufficient memory. <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter. <br>[SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode): device busy. |
 
 ### OH_Scan_CancelScan()
 
@@ -311,8 +291,6 @@ int32_t OH_Scan_CancelScan(const char* scannerId)
 **Description**
 
 Cancels scanning.
-
-**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -328,7 +306,7 @@ Cancels scanning.
 
 | Type | Description |
 | -- | -- |
-| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful.      <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied.      <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter.      <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error.      <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. |
+| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful. <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied. <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter. <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error. <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. |
 
 ### OH_Scan_GetPictureScanProgress()
 
@@ -339,8 +317,6 @@ int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanPr
 **Description**
 
 Obtains the progress of scanning a picture by the scanner. A non-null value must be passed. The scan progress will be written into the struct pointed to by the pointer.
-
-**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -357,7 +333,7 @@ Obtains the progress of scanning a picture by the scanner. A non-null value must
 
 | Type | Description |
 | -- | -- |
-| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful.      <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied.      <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter.      <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error.      <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error.      <br>[SCAN_ERROR_JAMMED](capi-ohscan-h.md#scan_errorcode): paper jam in feeder.      <br>[SCAN_ERROR_NO_DOCS](capi-ohscan-h.md#scan_errorcode): out of paper.      <br>[SCAN_ERROR_COVER_OPEN](capi-ohscan-h.md#scan_errorcode): scanner cover open.      <br>[SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode): scanner I/O error.      <br>[SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode): insufficient memory.      <br>[SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode): device busy. |
+| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful. <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied. <br>[SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode): invalid parameter. <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error. <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. <br>[SCAN_ERROR_JAMMED](capi-ohscan-h.md#scan_errorcode): paper jam in feeder. <br>[SCAN_ERROR_NO_DOCS](capi-ohscan-h.md#scan_errorcode): out of paper. <br>[SCAN_ERROR_COVER_OPEN](capi-ohscan-h.md#scan_errorcode): scanner cover open. <br>[SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode): scanner I/O error. <br>[SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode): insufficient memory. <br>[SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode): device busy. |
 
 ### OH_Scan_Exit()
 
@@ -369,8 +345,6 @@ int32_t OH_Scan_Exit()
 
 Exits the scan service, releases the memory of the scan framework, and deregisters the scanner discovery callback.
 
-**System capability**: SystemCapability.Print.PrintFramework
-
 **Required permission**: {@code ohos.permission.PRINT}
 
 **Since**: 12
@@ -379,6 +353,6 @@ Exits the scan service, releases the memory of the scan framework, and deregiste
 
 | Type | Description |
 | -- | -- |
-| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful.      <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied.      <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error.      <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. |
+| int32_t | [SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode): operation successful. <br>[SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode): permission denied. <br>[SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode): RPC communication error. <br>[SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode): server error. |
 
 

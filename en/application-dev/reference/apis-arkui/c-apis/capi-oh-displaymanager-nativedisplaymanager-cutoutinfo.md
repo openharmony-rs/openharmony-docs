@@ -23,7 +23,7 @@ The struct describes the unusable area of a display, including punch hole, notch
 | Name | Description |
 | -- | -- |
 | int32_t boundingRectsLength | boundingRects length |
-| [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md) *boundingRects | boundingRects info pointer |
+| NativeDisplayManager_Rect *boundingRects | boundingRects info pointer |
 | [NativeDisplayManager_WaterfallDisplayAreaRects](capi-oh-displaymanager-nativedisplaymanager-waterfalldisplayarearects.md) waterfallDisplayAreaRects | waterfallDisplayAreaRects info |
 
 

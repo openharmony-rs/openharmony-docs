@@ -1,7 +1,7 @@
 # HiAppEvent_AppEventInfo
 
 ```c
-typedef struct HiAppEvent_AppEventInfo {...} HiAppEvent_AppEventInfo
+struct HiAppEvent_AppEventInfo {...}
 ```
 
 ## Overview
@@ -24,7 +24,7 @@ Defines a struct for the information about a single event, including the domain,
 | -- | -- |
 | const char* domain | The domain of the event. |
 | const char* name | The name of the event. |
-| enum [EventType](capi-hiappevent-h.md#eventtype) type | The type of the event. |
+| enum EventType type | The type of the event. |
 | const char* params | The JSON string of the parameter. |
 
 

@@ -1,7 +1,7 @@
 # OH_TrafficFilter_PortMulti
 
 ```c
-typedef struct OH_TrafficFilter_PortMulti {...} OH_TrafficFilter_PortMulti
+struct OH_TrafficFilter_PortMulti {...}
 ```
 
 ## 概述

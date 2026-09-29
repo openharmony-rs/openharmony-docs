@@ -22,7 +22,7 @@ Describes the first-screen loading prediction information, including the predict
 
 | Name | Description |
 | -- | -- |
-| ArkWeb_BlanklessErrorCode errCode | Error code of the blankless loading. The value **0** indicates no error, and a non-zero value indicates the error type. For details, see {@link ArkWeb_BlanklessErrorCode}. |
+| [ArkWeb_BlanklessErrorCode](capi-arkweb-error-code-h.md#arkweb_blanklesserrorcode) errCode | Error code of the blankless loading. The value **0** indicates no error, and a non-zero value indicates the error type. For details, see [ArkWeb_BlanklessErrorCode](capi-arkweb-error-code-h.md#arkweb_blanklesserrorcode). |
 | double similarity | Similarity of the first screen. The similarity is calculated based on the first screen content of historical loads. The value ranges from [0, 1.0], where **1.0** indicates a complete match. The closer the value is to 1, the higher the similarity. This value has a lagging nature, meaning the similarity of a local load will only be reflected in the next load. It is recommended that the app does not enable the blankless loading frame insertion solution when the similarity is below a specific threshold (for example, 0.33). |
 | int32_t loadingTime | Predicted loading time of the current load based on the first screen loading time of historical loads, in ms. The value must be greater than 0. |
 

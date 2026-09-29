@@ -8,8 +8,6 @@
 
 **库：** liblowpower_avsink.so
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **相关模块：** [LowPowerAudioSink](capi-lowpoweraudiosink.md)
@@ -58,21 +56,19 @@ OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)
 
 创建LowPowerAudioSink。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* mime | 音频解码器MIME类型，取值范围请参考{@link OH_AVCODEC_MIMETYPE} |
+| const char* mime | 音频解码器MIME类型，取值范围请参考OH_AVCODEC_MIMETYPE |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_LowPowerAudioSink* | 如果创建成功返回指向OH_LowPowerAudioSink实例的指针，否则返回空指针。 |
+| [OH_LowPowerAudioSink*](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) | 如果创建成功返回指向OH_LowPowerAudioSink实例的指针，否则返回空指针。 |
 
 ### OH_LowPowerAudioSink_Configure()
 
@@ -84,22 +80,20 @@ OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH
 
 配置LowPowerAudioSink，需要在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)前完成。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| const OH_AVFormat* format | 指向OH_AVFormat的指针，用于配置LowPowerAudioSink的参数。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [const OH_AVFormat](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md)* format | 指向OH_AVFormat的指针，用于配置LowPowerAudioSink的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_UNSUPPORT：不支持的格式。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_UNSUPPORT：不支持的格式。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_SetParameter()
 
@@ -111,22 +105,20 @@ OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const
 
 为LowPowerAudioSink设置参数，支持[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)后动态设置。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| const OH_AVFormat* format | 指向OH_AVFormat的指针，为LowPowerAudioSink设置的参数。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [const OH_AVFormat](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md)* format | 指向OH_AVFormat的指针，为LowPowerAudioSink设置的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_UNSUPPORT：不支持的格式。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_UNSUPPORT：不支持的格式。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_GetParameter()
 
@@ -138,22 +130,20 @@ OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AV
 
 获取LowPowerAudioSink的相关参数。应在[OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure)配置参数后调用。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| OH_AVFormat* format | 指向OH_AVFormat实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_AVFormat](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md)* format | 指向OH_AVFormat实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_Prepare()
 
@@ -165,21 +155,19 @@ OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)
 
 准备LowPowerAudioSink的解码、渲染资源，在[OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure)后调用。 调用此接口前必须调用LowPowerVideoSink的[OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)方法。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_UNSUPPORT：不支持的格式。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_UNSUPPORT：不支持的格式。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_Start()
 
@@ -191,21 +179,19 @@ OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)
 
 启动低功耗音频接收器，此接口必须在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)成功后调用。 启动成功后，LowPowerAudioSink将开始上报[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_UNSUPPORT：不支持的格式。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_UNSUPPORT：不支持的格式。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_Pause()
 
@@ -217,21 +203,19 @@ OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)
 
 暂停LowPowerAudioSink，在[OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume)后调用。 暂停成功后，LowPowerAudioSink将暂停[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_Resume()
 
@@ -243,21 +227,19 @@ OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)
 
 恢复LowPowerAudioSink，在[OH_LowPowerAudioSink_Pause](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_pause)后调用。 恢复成功后，LowPowerAudioSink将恢复[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_Flush()
 
@@ -269,21 +251,19 @@ OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)
 
 清除LowPowerAudioSink中所有解码器和渲染缓存的输入输出数据。 此接口不建议在[OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume)之后调用。 需要注意的是，如果编解码器之前已输入数据，则需要重新输入编解码器数据。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_Stop()
 
@@ -295,21 +275,19 @@ OH_AVErrCode OH_LowPowerAudioSink_Stop(OH_LowPowerAudioSink* sink)
 
 停止LowPowerAudioSink。应在[OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Pause](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_pause)之后调用。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_Reset()
 
@@ -321,21 +299,19 @@ OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)
 
 重置LowPowerAudioSink。 如果要重新使用该实例，需要调用[OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure)完成配置。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_Destroy()
 
@@ -347,21 +323,19 @@ OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)
 
 清理LowPowerAudioSink内部资源，销毁LowPowerAudioSink实例。建议在[OH_LowPowerAudioSink_Stop](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_stop)后调用。不能重复销毁。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_SetVolume()
 
@@ -373,22 +347,20 @@ OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const fl
 
 为LowPowerAudioSink设置渲染音量。需要在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)后调用。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 | const float volume | 音量值，取值范围[0.0, 1.0]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_SetPlaybackSpeed()
 
@@ -400,22 +372,20 @@ OH_AVErrCode OH_LowPowerAudioSink_SetPlaybackSpeed(OH_LowPowerAudioSink* sink, c
 
 为LowPowerAudioSink设置音频渲染倍速。需要在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)后调用。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 | const float speed | 音频渲染倍速值，取值范围[0.25, 4.0]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_ReturnSamples()
 
@@ -427,22 +397,20 @@ OH_AVErrCode OH_LowPowerAudioSink_ReturnSamples(OH_LowPowerAudioSink* sink, OH_A
 
 给LowPowerAudioSink输入buffer。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 | OH_AVSamplesBuffer* samples | 需要送入LowPowerAudioSink消费的OH_AVSamplesBuffer实例，支持聚包输入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_RegisterCallback()
 
@@ -454,22 +422,20 @@ OH_AVErrCode OH_LowPowerAudioSink_RegisterCallback(OH_LowPowerAudioSink* sink, O
 
 为LowPowerAudioSink注册回调。需要在[OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)之前调用，以确保事件回调正常接收。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| OH_LowPowerAudioSinkCallback* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSinkCallback_Create()
 
@@ -481,15 +447,13 @@ OH_LowPowerAudioSinkCallback* OH_LowPowerAudioSinkCallback_Create(void)
 
 创建OH_LowPowerAudioSinkCallback实例。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_LowPowerAudioSinkCallback* | 返回指向OH_LowPowerAudioSinkCallback实例的指针。如果内存不足，则返回nullptr。 |
+| [OH_LowPowerAudioSinkCallback*](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | 返回指向OH_LowPowerAudioSinkCallback实例的指针。如果内存不足，则返回nullptr。 |
 
 ### OH_LowPowerAudioSinkCallback_Destroy()
 
@@ -501,21 +465,19 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_Destroy(OH_LowPowerAudioSinkCallback* 
 
 销毁OH_LowPowerAudioSinkCallback实例。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSinkCallback* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。 |
 
 ### OH_LowPowerAudioSinkCallback_SetPositionUpdateListener()
 
@@ -527,23 +489,21 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(OH_LowPowerA
 
 为LowPowerAudioSinkCallback设置进度更新监听。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSinkCallback* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
-| OH_LowPowerAudioSink_OnPositionUpdated onPositionUpdated | OH_LowPowerAudioSink_OnPositionUpdated方法，在PositionUpdate事件触发时调用。 请参考[OH_LowPowerAudioSink_OnPositionUpdated](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_onpositionupdated) |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
+| [OH_LowPowerAudioSink_OnPositionUpdated](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_onpositionupdated) onPositionUpdated | OH_LowPowerAudioSink_OnPositionUpdated方法，在PositionUpdate事件触发时调用。 请参考[OH_LowPowerAudioSink_OnPositionUpdated](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_onpositionupdated) |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSinkCallback_SetDataNeededListener()
 
@@ -555,23 +515,21 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDataNeededListener(OH_LowPowerAudio
 
 为LowPowerAudioSinkCallback设置需要数据监听。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSinkCallback* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
-| OH_LowPowerAudioSink_OnDataNeeded onDataNeeded | OH_LowPowerAudioSink_OnDataNeeded方法，在DataNeeded事件触发时调用。 请参考[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
+| [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) onDataNeeded | OH_LowPowerAudioSink_OnDataNeeded方法，在DataNeeded事件触发时调用。 请参考[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSinkCallback_SetErrorListener()
 
@@ -583,23 +541,21 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetErrorListener(OH_LowPowerAudioSinkC
 
 为LowPowerAudioSinkCallback设置错误监听。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSinkCallback* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
-| OH_LowPowerAudioSink_OnError onError |  OH_LowPowerAudioSink_OnError方法，在Error事件触发时调用。 请参考[OH_LowPowerAudioSink_OnError](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_onerror) |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
+| [OH_LowPowerAudioSink_OnError](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_onerror) onError |  OH_LowPowerAudioSink_OnError方法，在Error事件触发时调用。 请参考[OH_LowPowerAudioSink_OnError](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_onerror) |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSinkCallback_SetInterruptListener()
 
@@ -611,23 +567,21 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetInterruptListener(OH_LowPowerAudioS
 
 为LowPowerAudioSinkCallback设置音频焦点打断监听。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSinkCallback* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
-| OH_LowPowerAudioSink_OnInterrupted onInterrupted | OH_LowPowerAudioSink_OnInterrupted方法，在Interrupted事件触发时调用。 请参考[OH_LowPowerAudioSink_OnInterrupted](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_oninterrupted) |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
+| [OH_LowPowerAudioSink_OnInterrupted](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_oninterrupted) onInterrupted | OH_LowPowerAudioSink_OnInterrupted方法，在Interrupted事件触发时调用。 请参考[OH_LowPowerAudioSink_OnInterrupted](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_oninterrupted) |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSinkCallback_SetDeviceChangeListener()
 
@@ -639,23 +593,21 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDeviceChangeListener(OH_LowPowerAud
 
 为LowPowerAudioSinkCallback设置音频设备切换监听。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSinkCallback* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
-| OH_LowPowerAudioSink_OnDeviceChanged onDeviceChanged | OH_LowPowerAudioSink_OnDeviceChanged方法，在DeviceChanged事件触发时调用。 请参考[OH_LowPowerAudioSink_OnDeviceChanged](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondevicechanged) |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)* callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
+| [OH_LowPowerAudioSink_OnDeviceChanged](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondevicechanged) onDeviceChanged | OH_LowPowerAudioSink_OnDeviceChanged方法，在DeviceChanged事件触发时调用。 请参考[OH_LowPowerAudioSink_OnDeviceChanged](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondevicechanged) |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSinkCallback_SetEosListener()
 
@@ -667,23 +619,21 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetEosListener(OH_LowPowerAudioSinkCal
 
 为LowPowerAudioSinkCallback设置播放完成监听。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSinkCallback *callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
-| OH_LowPowerAudioSink_OnEos onEos | OH_LowPowerAudioSink_OnEos方法，在Eos事件触发时调用。 请参考[OH_LowPowerAudioSink_OnEos](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_oneos) |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) *callback | 指向OH_LowPowerAudioSinkCallback实例的指针。 |
+| [OH_LowPowerAudioSink_OnEos](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_oneos) onEos | OH_LowPowerAudioSink_OnEos方法，在Eos事件触发时调用。 请参考[OH_LowPowerAudioSink_OnEos](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_oneos) |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerAudioSink_SetLoudnessGain()
 
@@ -695,21 +645,19 @@ OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, fl
 
 为LowPowerAudioSink设置播放响度。需要在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)后调用。
 
-**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **起始版本：** 21
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerAudioSink* sink | 指向OH_LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 | float loudnessGain | 响度值，取值范围[-90.0, 24.0]。默认值为0.0dB。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br>  AV_ERR_SERVICE_DIED：媒体服务端已销毁。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。 |
 
 

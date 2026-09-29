@@ -6,8 +6,6 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -23,17 +21,17 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [ArkUI_NativeAnimateAPI_1](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md) | ArkUI_NativeAnimateAPI_1 | Declares the native animation APIs provided by ArkUI. |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md) | ArkUI_AnimateOption | Defines the animation configuration. |
 | [ArkUI_Curve](capi-arkui-nativemodule-arkui-curve.md) | ArkUI_Curve | Defines an interpolation curve. |
-| [ArkUI_Curve*](capi-arkui-nativemodule-arkui-curve8h.md) | ArkUI_CurveHandle | Defines the pointer to an interpolation curve. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | ArkUI_CurveHandle | Defines the pointer to an interpolation curve. |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md) | ArkUI_KeyframeAnimateOption | Defines the keyframe animation parameter object. |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md) | ArkUI_AnimatorOption | Defines the animator parameter object. |
-| [ArkUI_Animator*](capi-arkui-nativemodule-arkui-animator8h.md) | ArkUI_AnimatorHandle | Defines the pointer to an animator object. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) | ArkUI_AnimatorHandle | Defines the pointer to an animator object. |
 | [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md) | ArkUI_AnimatorEvent | Defines the animator callback event object. |
 | [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md) | ArkUI_AnimatorOnFrameEvent | Defines the callback object when the animator receives a frame. |
 | [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md) | ArkUI_TransitionEffect | Defines the transition parameter object for transition property configuration. |
-| [OH_ArkUI_PropertyAnimation](capi-arkui-nativemodule-oh-arkui-propertyanimation.md) | *OH_ArkUI_PropertyAnimationHandle | Defines the handle to a property animation. |
-| [OH_ArkUI_KeyframeAnimation](capi-arkui-nativemodule-oh-arkui-keyframeanimation.md) | *OH_ArkUI_KeyframeAnimationHandle | Defines the handle to a keyframe animation. |
-| [OH_ArkUI_PathAnimation](capi-arkui-nativemodule-oh-arkui-pathanimation.md) | *OH_ArkUI_PathAnimationHandle | Defines the handle to a path animation. |
-| [OH_ArkUI_AnimationGroup](capi-arkui-nativemodule-oh-arkui-animationgroup.md) | *OH_ArkUI_AnimationGroupHandle | Defines the handle to an animation group. |
+| [*OH_ArkUI_PropertyAnimationHandle](capi-arkui-nativemodule-8hoh-arkui-propertyanimationhandle.md) | *OH_ArkUI_PropertyAnimationHandle | Defines the handle to a property animation. |
+| [*OH_ArkUI_KeyframeAnimationHandle](capi-arkui-nativemodule-8hoh-arkui-keyframeanimationhandle.md) | *OH_ArkUI_KeyframeAnimationHandle | Defines the handle to a keyframe animation. |
+| [*OH_ArkUI_PathAnimationHandle](capi-arkui-nativemodule-8hoh-arkui-pathanimationhandle.md) | *OH_ArkUI_PathAnimationHandle | Defines the handle to a path animation. |
+| [*OH_ArkUI_AnimationGroupHandle](capi-arkui-nativemodule-8hoh-arkui-animationgrouphandle.md) | *OH_ArkUI_AnimationGroupHandle | Defines the handle to an animation group. |
 
 ### Function
 
@@ -61,7 +59,7 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | Disposes of a keyframe animation parameter object. |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | Sets the overall delay of a keyframe animation, in milliseconds. By default, the keyframe animation starts without any delay. |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setiterations) | Sets the number of times that the keyframe animation is played. By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. The value **0** indicates that no animation is played. |
-| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | Sets the callback invoked when the keyframe animation playback is complete. This function is called after the {@link keyframe animation} has played for the specified number of times. |
+| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | Sets the callback invoked when the keyframe animation playback is complete. This function is called after the keyframe animation has played for the specified number of times. |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option, ArkUI_ExpectedFrameRateRange* frameRate)](#oh_arkui_keyframeanimateoption_setexpectedframerate) | Sets the expected frame rate for a keyframe animation. |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)](#oh_arkui_keyframeanimateoption_setduration) | Sets the duration of a keyframe animation, in milliseconds. |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* option, ArkUI_CurveHandle value, int32_t index)](#oh_arkui_keyframeanimateoption_setcurve) | Sets the animation curve for a specific keyframe animation segment. |
@@ -112,7 +110,7 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateCurveByType(ArkUI_AnimationCurve curve)](#oh_arkui_curve_createcurvebytype) | Implements initialization for the interpolation curve, which is used to create an interpolation curve based on the input parameter. |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateStepsCurve(int32_t count, bool end)](#oh_arkui_curve_createstepscurve) | Creates a step curve. |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateCubicBezierCurve(float x1, float y1, float x2, float y2)](#oh_arkui_curve_createcubicbeziercurve) | Creates a cubic Bezier curve. |
-| [ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, float stiffness, float damping)](#oh_arkui_curve_createspringcurve) | Creates a spring curve. The curve shape is determined by the spring parameters, and the animation duration is controlled by the **duration** parameter in {@link animation} and [animateTo](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto). |
+| [ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, float stiffness, float damping)](#oh_arkui_curve_createspringcurve) | Creates a spring curve. The curve shape is determined by the spring parameters, and the animation duration is controlled by the **duration** parameter in animation and [animateTo](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto). |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringMotion(float response, float dampingFraction, float overlapDuration)](#oh_arkui_curve_createspringmotion) | Creates a spring animation curve. If multiple spring animations are applied to the same attribute of an object, each animation replaces their predecessor and inherits the velocity. |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateResponsiveSpringMotion(float response, float dampingFraction, float overlapDuration)](#oh_arkui_curve_createresponsivespringmotion) | Creates a responsive spring animation curve. It is a special case of **springMotion**, with the only difference in the default values. It can be used together with **springMotion**. |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float mass, float stiffness, float damping)](#oh_arkui_curve_createinterpolatingspring) | Creates an interpolating spring curve animated from 0 to 1. The actual animation value is calculated based on the curve. |
@@ -135,11 +133,11 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetToValue(OH_ArkUI_PropertyAnimationHandle animation, const ArkUI_NumberValue *value, int32_t size)](#oh_arkui_nativemodule_propertyanimation_settovalue) | Sets the end value of a property animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetToValue(OH_ArkUI_PropertyAnimationHandle animation, ArkUI_NumberValue *value, int32_t size)](#oh_arkui_nativemodule_propertyanimation_gettovalue) | Obtains the end value of a property animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetDuration(OH_ArkUI_PropertyAnimationHandle animation, int32_t duration)](#oh_arkui_nativemodule_propertyanimation_setduration) | Sets the duration for a property animation.<br> The actual effective animation duration is determined by priority: if the duration is set via this API, that value is used; otherwise, the duration set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDuration(OH_ArkUI_PropertyAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_propertyanimation_getduration) | Obtains the duration of a property animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDuration(OH_ArkUI_PropertyAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_propertyanimation_getduration) | Obtains the duration of a property animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetDelay(OH_ArkUI_PropertyAnimationHandle animation, int32_t delay)](#oh_arkui_nativemodule_propertyanimation_setdelay) | Sets the delay for a property animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDelay(OH_ArkUI_PropertyAnimationHandle animation, int32_t *delay)](#oh_arkui_nativemodule_propertyanimation_getdelay) | Obtains the delay of a property animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetCurve(OH_ArkUI_PropertyAnimationHandle animation, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_propertyanimation_setcurve) | Sets the animation curve for a property animation.<br> The actual effective animation curve is determined by priority: if the curve is set via this API, that value is used; otherwise, the curve set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. Spring curves (<b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b>) are supported. When a spring curve is set, the duration set via [OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration) does not take effect; the animation duration is determined by the spring curve. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetCurve(OH_ArkUI_PropertyAnimationHandle animation, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_propertyanimation_getcurve) | Obtains the animation curve of a property animation.<br> This API returns only the curve explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation curve used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setcurve), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetCurve(OH_ArkUI_PropertyAnimationHandle animation, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_propertyanimation_getcurve) | Obtains the animation curve of a property animation.<br> This API returns only the curve explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation curve used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setcurve), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetTempo(OH_ArkUI_PropertyAnimationHandle animation, float tempo)](#oh_arkui_nativemodule_propertyanimation_settempo) | Sets the tempo for a property animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetTempo(OH_ArkUI_PropertyAnimationHandle animation, float *tempo)](#oh_arkui_nativemodule_propertyanimation_gettempo) | Obtains the tempo of a property animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetAutoReverse(OH_ArkUI_PropertyAnimationHandle animation, bool autoReverse)](#oh_arkui_nativemodule_propertyanimation_setautoreverse) | Sets whether to auto-reverse a property animation.<br> When auto-reverse is enabled, the animation plays forward and then backward alternately across iterations. The default value is <b>false</b>. |
@@ -158,9 +156,9 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetValue(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_NumberValue *value, int32_t size)](#oh_arkui_nativemodule_keyframeanimation_getvalue) | Obtains the value of a keyframe at the specified index. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves(OH_ArkUI_KeyframeAnimationHandle animation, const ArkUI_CurveHandle *value, int32_t size)](#oh_arkui_nativemodule_keyframeanimation_setcurves) | Sets the animation curves for keyframes. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_keyframeanimation_setcurve) | Sets the animation curve for a keyframe at the specified index. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_keyframeanimation_getcurve) | Obtains the curve of a keyframe at the specified index.<br> This API returns only the curve explicitly set for the keyframe; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set for the keyframe, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation curve used at runtime is determined by priority: if set for the keyframe via [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurve) or [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_keyframeanimation_getcurve) | Obtains the curve of a keyframe at the specified index.<br> This API returns only the curve explicitly set for the keyframe; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set for the keyframe, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation curve used at runtime is determined by priority: if set for the keyframe via [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurve) or [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration(OH_ArkUI_KeyframeAnimationHandle animation, int32_t duration)](#oh_arkui_nativemodule_keyframeanimation_setduration) | Sets the duration for a keyframe animation.<br> The actual effective animation duration is determined by priority: if the duration is set via this API, that value is used; otherwise, the duration set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration(OH_ArkUI_KeyframeAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_keyframeanimation_getduration) | Obtains the duration of a keyframe animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration(OH_ArkUI_KeyframeAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_keyframeanimation_getduration) | Obtains the duration of a keyframe animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDelay(OH_ArkUI_KeyframeAnimationHandle animation, int32_t delay)](#oh_arkui_nativemodule_keyframeanimation_setdelay) | Sets the delay for a keyframe animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDelay(OH_ArkUI_KeyframeAnimationHandle animation, int32_t *delay)](#oh_arkui_nativemodule_keyframeanimation_getdelay) | Obtains the delay of a keyframe animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetTempo(OH_ArkUI_KeyframeAnimationHandle animation, float tempo)](#oh_arkui_nativemodule_keyframeanimation_settempo) | Sets the tempo for a keyframe animation. |
@@ -174,11 +172,11 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [OH_ArkUI_PathAnimationHandle OH_ArkUI_NativeModule_PathAnimation_Create(const char *path)](#oh_arkui_nativemodule_pathanimation_create) | Creates a path animation that moves the component along a geometric path.<br> The path animation applies to the TRANSLATION property. |
 | [void OH_ArkUI_NativeModule_PathAnimation_Destroy(OH_ArkUI_PathAnimationHandle animation)](#oh_arkui_nativemodule_pathanimation_destroy) | Destroys a path animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDuration(OH_ArkUI_PathAnimationHandle animation, int32_t duration)](#oh_arkui_nativemodule_pathanimation_setduration) | Sets the duration for a path animation.<br> The actual effective animation duration is determined by priority: if the duration is set via this API, that value is used; otherwise, the duration set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDuration(OH_ArkUI_PathAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_pathanimation_getduration) | Obtains the duration of a path animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDuration(OH_ArkUI_PathAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_pathanimation_getduration) | Obtains the duration of a path animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDelay(OH_ArkUI_PathAnimationHandle animation, int32_t delay)](#oh_arkui_nativemodule_pathanimation_setdelay) | Sets the delay for a path animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDelay(OH_ArkUI_PathAnimationHandle animation, int32_t *delay)](#oh_arkui_nativemodule_pathanimation_getdelay) | Obtains the delay of a path animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetCurve(OH_ArkUI_PathAnimationHandle animation, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_pathanimation_setcurve) | Sets the animation curve for a path animation. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetCurve(OH_ArkUI_PathAnimationHandle animation, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_pathanimation_getcurve) | Obtains the animation curve of a path animation.<br> This API returns only the curve explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation curve used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PathAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setcurve), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetCurve(OH_ArkUI_PathAnimationHandle animation, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_pathanimation_getcurve) | Obtains the animation curve of a path animation.<br> This API returns only the curve explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation curve used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PathAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setcurve), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetTempo(OH_ArkUI_PathAnimationHandle animation, float tempo)](#oh_arkui_nativemodule_pathanimation_settempo) | Sets the tempo for a path animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetTempo(OH_ArkUI_PathAnimationHandle animation, float *tempo)](#oh_arkui_nativemodule_pathanimation_gettempo) | Obtains the tempo of a path animation. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetAutoReverse(OH_ArkUI_PathAnimationHandle animation, bool autoReverse)](#oh_arkui_nativemodule_pathanimation_setautoreverse) | Sets whether to auto-reverse a path animation.<br> When auto-reverse is enabled, the animation plays forward and then backward alternately across iterations. The default value is <b>false</b>. |
@@ -192,11 +190,11 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [OH_ArkUI_AnimationGroupHandle OH_ArkUI_NativeModule_AnimationGroup_Create(void)](#oh_arkui_nativemodule_animationgroup_create) | Creates an animation group. |
 | [void OH_ArkUI_NativeModule_AnimationGroup_Destroy(OH_ArkUI_AnimationGroupHandle group)](#oh_arkui_nativemodule_animationgroup_destroy) | Destroys the frontend handle of an animation group.<br> This releases the frontend handle only. The backend (runtime) objects of a group that has been registered via [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup) are released separately — automatically when the finish callback is invoked, or via [OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup).<br> The child animations added to the group are not automatically destroyed. Call OH_ArkUI_NativeModule_PropertyAnimation_Destroy, OH_ArkUI_NativeModule_KeyframeAnimation_Destroy or OH_ArkUI_NativeModule_PathAnimation_Destroy separately. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetDuration(OH_ArkUI_AnimationGroupHandle group, int32_t duration)](#oh_arkui_nativemodule_animationgroup_setduration) | Sets the duration for an animation group.<br> The group's duration serves as the default duration for child animations that do not set their own duration via [OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration), [OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration), or [OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration). |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDuration(OH_ArkUI_AnimationGroupHandle group, int32_t *duration)](#oh_arkui_nativemodule_animationgroup_getduration) | Obtains the duration of an animation group.<br> This API returns only the duration explicitly set on this animation group, and is not affected by the duration of child animations. If the duration has not been set on this group, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. At runtime, an unset group duration defaults to **1000** ms. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDuration(OH_ArkUI_AnimationGroupHandle group, int32_t *duration)](#oh_arkui_nativemodule_animationgroup_getduration) | Obtains the duration of an animation group.<br> This API returns only the duration explicitly set on this animation group, and is not affected by the duration of child animations. If the duration has not been set on this group, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. At runtime, an unset group duration defaults to **1000** ms. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetDelay(OH_ArkUI_AnimationGroupHandle group, int32_t delay)](#oh_arkui_nativemodule_animationgroup_setdelay) | Sets the delay for an animation group. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDelay(OH_ArkUI_AnimationGroupHandle group, int32_t *delay)](#oh_arkui_nativemodule_animationgroup_getdelay) | Obtains the delay of an animation group. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetCurve(OH_ArkUI_AnimationGroupHandle group, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_animationgroup_setcurve) | Sets the animation curve for an animation group.<br> The group's curve serves as the default curve for child animations that do not set their own curve via [OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setcurve), [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurve), or [OH_ArkUI_NativeModule_PathAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setcurve). The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetCurve(OH_ArkUI_AnimationGroupHandle group, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_animationgroup_getcurve) | Obtains the animation curve of an animation group.<br> This API returns only the curve explicitly set on this animation group, and is not affected by the curve of child animations. If the curve has not been set on this group, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. At runtime, an unset group curve defaults to [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetCurve(OH_ArkUI_AnimationGroupHandle group, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_animationgroup_getcurve) | Obtains the animation curve of an animation group.<br> This API returns only the curve explicitly set on this animation group, and is not affected by the curve of child animations. If the curve has not been set on this group, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. At runtime, an unset group curve defaults to [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetTempo(OH_ArkUI_AnimationGroupHandle group, float tempo)](#oh_arkui_nativemodule_animationgroup_settempo) | Sets the tempo for an animation group. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetTempo(OH_ArkUI_AnimationGroupHandle group, float *tempo)](#oh_arkui_nativemodule_animationgroup_gettempo) | Obtains the tempo of an animation group. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetAutoReverse(OH_ArkUI_AnimationGroupHandle group, bool autoReverse)](#oh_arkui_nativemodule_animationgroup_setautoreverse) | Sets whether to auto-reverse an animation group.<br> When auto-reverse is enabled, the animation group plays forward and then backward alternately across iterations. The default value is <b>false</b>. |
@@ -211,13 +209,13 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation(OH_ArkUI_AnimationGroupHandle group, OH_ArkUI_PropertyAnimationHandle animation)](#oh_arkui_nativemodule_animationgroup_addpropertyanimation) | Adds a property animation to an animation group.<br> The target node of the animation is determined by [OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_settargetnode); if not set, the animation inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). Every child must resolve to a non-NULL target when the group is registered. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation(OH_ArkUI_AnimationGroupHandle group, OH_ArkUI_KeyframeAnimationHandle animation)](#oh_arkui_nativemodule_animationgroup_addkeyframeanimation) | Adds a keyframe animation to an animation group.<br> The target node of the animation is determined by [OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_settargetnode); if not set, the animation inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). Every child must resolve to a non-NULL target when the group is registered. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation(OH_ArkUI_AnimationGroupHandle group, OH_ArkUI_PathAnimationHandle animation)](#oh_arkui_nativemodule_animationgroup_addpathanimation) | Adds a path animation to an animation group.<br> The target node of the animation is determined by [OH_ArkUI_NativeModule_PathAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_settargetnode); if not set, the animation inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). Every child must resolve to a non-NULL target when the group is registered. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle context, OH_ArkUI_AnimationGroupHandle group, const char *key)](#oh_arkui_nativemodule_addanimationgroup) | Registers an animation group on a UIContext with a specified key and starts playback.<br> The UIContext owns the group by <b>key</b>: once registered, the UIContext holds the group's backend (runtime) objects, and the caller may destroy the frontend group handle (and child animation handles) after registration since the backend runs independently by (UIContext, key). Keys are scoped per UIContext (instance): the same key in different UIContexts does not collide. Within one UIContext, if a group is already registered with the same key, the system removes the previous group first (releasing its backend objects) and then registers the new group. The group is later identified and managed by the same (UIContext, key) pair.<br> Each child animation added via [OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpropertyanimation), [OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addkeyframeanimation), or [OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpathanimation) animates the target node set by its own <b>SetTargetNode</b> API; if that target is not set (or is <b>NULL</b>), it inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). At registration, every child must resolve to a non-NULL target node (its own, or the group default), and every resolved target node must belong to the same UIContext as <b>context</b>; otherwise, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned.<br> Playback control and lifecycle APIs ([OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup), [OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate), [OH_ArkUI_NativeModule_HasAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_hasanimationgroup), [OH_ArkUI_NativeModule_PauseAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_pauseanimationgroup), [OH_ArkUI_NativeModule_ResumeAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_resumeanimationgroup), [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup) are all keyed by the (UIContext, key) pair.<br> The finish callback (see [OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)) is invoked exactly once after natural completion, [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup), or destruction of a target node. If [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup) returns an error, the finish callback is not invoked. After the callback returns, the system automatically removes the group from the UIContext and releases the backend (runtime) objects of the group and its child animations; the frontend handles (the group and its child animations) must still be destroyed by the caller via [OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy), [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy), [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy), or [OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy). |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle context, OH_ArkUI_AnimationGroupHandle group, const char *key)](#oh_arkui_nativemodule_addanimationgroup) | Registers an animation group on a UIContext with a specified key and starts playback.<br> The UIContext owns the group by <b>key</b>: once registered, the UIContext holds the group's backend (runtime) objects, and the caller may destroy the frontend group handle (and child animation handles) after registration since the backend runs independently by (UIContext, key). Keys are scoped per UIContext (instance): the same key in different UIContexts does not collide. Within one UIContext, if a group is already registered with the same key, the system removes the previous group first (releasing its backend objects) and then registers the new group. The group is later identified and managed by the same (UIContext, key) pair.<br> Each child animation added via [OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpropertyanimation), [OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addkeyframeanimation), or [OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpathanimation) animates the target node set by its own <b>SetTargetNode</b> API; if that target is not set (or is <b>NULL</b>), it inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). At registration, every child must resolve to a non-NULL target node (its own, or the group default), and every resolved target node must belong to the same UIContext as <b>context</b>; otherwise, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned.<br> Playback control and lifecycle APIs ([OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup), [OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate), [OH_ArkUI_NativeModule_HasAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_hasanimationgroup), [OH_ArkUI_NativeModule_PauseAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_pauseanimationgroup), [OH_ArkUI_NativeModule_ResumeAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_resumeanimationgroup), [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup) are all keyed by the (UIContext, key) pair.<br> The finish callback (see [OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)) is invoked exactly once after natural completion, [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup), or destruction of a target node. If [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup) returns an error, the finish callback is not invoked. After the callback returns, the system automatically removes the group from the UIContext and releases the backend (runtime) objects of the group and its child animations; the frontend handles (the group and its child animations) must still be destroyed by the caller via [OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy), [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy), [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy), or [OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy). |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_RemoveAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_removeanimationgroup) | Removes the animation group identified by the specified key from the UIContext.<br> Stops the group (if still running) and releases the backend (runtime) objects of the group and its child animations. The animated target nodes are restored to their state at the start of the animation. The frontend handles (the group and its child animations) are not freed by this call and must be destroyed by the caller via [OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy), [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy), [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy), or [OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy). Use this only for a group that has not stopped on its own (for example, a paused group); once the finish callback is invoked, the group is removed automatically. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetAnimationGroupState(ArkUI_ContextHandle context, const char *key, OH_ArkUI_AnimationGroupState *state)](#oh_arkui_nativemodule_getanimationgroupstate) | Obtains the playback state of an animation group identified by the specified key on the UIContext. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_HasAnimationGroup(ArkUI_ContextHandle context, const char *key, bool *exists)](#oh_arkui_nativemodule_hasanimationgroup) | Checks whether an animation group with the specified key exists on the UIContext. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PauseAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_pauseanimationgroup) | Pauses the animation group identified by the specified key on the UIContext.<br> The animation group must be in the RUNNING state; otherwise, [ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ResumeAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_resumeanimationgroup) | Resumes the animation group identified by the specified key on the UIContext.<br> The animation group must be in the PAUSED state; otherwise, [ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_FinishAnimationGroup(ArkUI_ContextHandle context, const char *key, OH_ArkUI_AnimationFinishMode mode)](#oh_arkui_nativemodule_finishanimationgroup) | Finishes the animation group identified by the specified key on the UIContext.<br> The animation group is finished according to the specified finish mode: jump to the end state, jump to the start state, or stay at the current value. The animation group must be in the RUNNING or PAUSED state; otherwise, [ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PauseAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_pauseanimationgroup) | Pauses the animation group identified by the specified key on the UIContext.<br> The animation group must be in the RUNNING state; otherwise, ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE is returned. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ResumeAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_resumeanimationgroup) | Resumes the animation group identified by the specified key on the UIContext.<br> The animation group must be in the PAUSED state; otherwise, ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE is returned. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_FinishAnimationGroup(ArkUI_ContextHandle context, const char *key, OH_ArkUI_AnimationFinishMode mode)](#oh_arkui_nativemodule_finishanimationgroup) | Finishes the animation group identified by the specified key on the UIContext.<br> The animation group is finished according to the specified finish mode: jump to the end state, jump to the start state, or stay at the current value. The animation group must be in the RUNNING or PAUSED state; otherwise, ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE is returned. |
 
 ## Function description
 
@@ -230,8 +228,6 @@ ArkUI_AnimateOption* OH_ArkUI_AnimateOption_Create()
 **Description**
 
 Creates an animation configuration.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -251,8 +247,6 @@ void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)
 
 Disposes of an animation configuration.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -271,8 +265,6 @@ uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 
 Obtains the animation duration, in milliseconds.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -285,7 +277,7 @@ Obtains the animation duration, in milliseconds.
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Animation duration, in milliseconds. If option is invalid, 0 is returned. |
+| uint32_t | Animation duration, in milliseconds. If **option** is invalid, **0** is returned. |
 
 ### OH_ArkUI_AnimateOption_GetTempo()
 
@@ -296,8 +288,6 @@ float OH_ArkUI_AnimateOption_GetTempo(ArkUI_AnimateOption* option)
 **Description**
 
 Obtains the playback speed of an animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -311,7 +301,7 @@ Obtains the playback speed of an animation.
 
 | Type | Description |
 | -- | -- |
-| float | Animation playback speed. Value range: [0, +∞). If option is invalid, 0.0 is returned. |
+| float | Animation playback speed. Value range: [0, +∞). If **option** is invalid, **0.0** is returned. |
 
 ### OH_ArkUI_AnimateOption_GetCurve()
 
@@ -323,8 +313,6 @@ ArkUI_AnimationCurve OH_ArkUI_AnimateOption_GetCurve(ArkUI_AnimateOption* option
 
 Obtains an animation curve.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -337,7 +325,7 @@ Obtains an animation curve.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_AnimationCurve | Animation curve. If option is invalid,-1 is returned. |
+| ArkUI_AnimationCurve | Animation curve. If **option** is invalid,**-1** is returned. |
 
 ### OH_ArkUI_AnimateOption_GetDelay()
 
@@ -349,8 +337,6 @@ int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)
 
 Obtains the animation delay, in milliseconds.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -363,7 +349,7 @@ Obtains the animation delay, in milliseconds.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Delay of animation playback. If option is invalid, 0 is returned. |
+| int32_t | Delay of animation playback. If **option** is invalid, **0** is returned. |
 
 ### OH_ArkUI_AnimateOption_GetIterations()
 
@@ -375,8 +361,6 @@ int32_t OH_ArkUI_AnimateOption_GetIterations(ArkUI_AnimateOption* option)
 
 Obtains the number of times that an animation is played.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -389,7 +373,7 @@ Obtains the number of times that an animation is played.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Number of times that the animation is played. If option is invalid, 0 is returned. |
+| int32_t | Number of times that the animation is played. If **option** is invalid, **0** is returned. |
 
 ### OH_ArkUI_AnimateOption_GetPlayMode()
 
@@ -400,8 +384,6 @@ ArkUI_AnimationPlayMode OH_ArkUI_AnimateOption_GetPlayMode(ArkUI_AnimateOption* 
 **Description**
 
 Obtains the playback mode of an animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -415,7 +397,7 @@ Obtains the playback mode of an animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_AnimationPlayMode | Animation playback mode. If option is invalid,-1 is returned. |
+| ArkUI_AnimationPlayMode | Animation playback mode. If **option** is invalid,**-1** is returned. |
 
 ### OH_ArkUI_AnimateOption_GetExpectedFrameRateRange()
 
@@ -426,8 +408,6 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimateOption_GetExpectedFrameRateRange(A
 **Description**
 
 Obtains the expected frame rate range of an animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -441,7 +421,7 @@ Obtains the expected frame rate range of an animation.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ExpectedFrameRateRange*](capi-arkui-nativemodule-arkui-expectedframeraterange.md) | Expected frame rate range of the animation, in fps. If option is invalid, NULL is returned. |
+| [ArkUI_ExpectedFrameRateRange*](capi-arkui-nativemodule-arkui-expectedframeraterange.md) | Expected frame rate range of the animation, in fps. If **option** is invalid, **NULL** is returned. |
 
 ### OH_ArkUI_AnimateOption_SetDuration()
 
@@ -452,8 +432,6 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 **Description**
 
 Sets the animation duration, in milliseconds.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -474,8 +452,6 @@ void OH_ArkUI_AnimateOption_SetTempo(ArkUI_AnimateOption* option, float value)
 
 Sets the playback speed of an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -494,8 +470,6 @@ void OH_ArkUI_AnimateOption_SetCurve(ArkUI_AnimateOption* option, ArkUI_Animatio
 **Description**
 
 Animation curve.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -516,8 +490,6 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 
 Sets the animation delay, in milliseconds.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -536,8 +508,6 @@ void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t v
 **Description**
 
 Sets the number of times that an animation is played.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -558,8 +528,6 @@ void OH_ArkUI_AnimateOption_SetPlayMode(ArkUI_AnimateOption* option, ArkUI_Anima
 
 Sets the playback mode for an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -578,8 +546,6 @@ void OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(ArkUI_AnimateOption* optio
 **Description**
 
 Defines a struct for the expected frame rate range of the animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -604,8 +570,6 @@ Sets the animation curve for an animation.
 >
 > This method is better than the value set by OH_ArkUI_AnimateOption_SetCurve.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -613,7 +577,7 @@ Sets the animation curve for an animation.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Animator animation parameters. <br>If **option** is set to **NULL**, the operation is invalid. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve parameters. <br>If **value** is set to **NULL**, the operation is invalid. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | Animation curve parameters. <br>If **value** is set to **NULL**, the operation is invalid. |
 
 ### OH_ArkUI_AnimateOption_GetICurve()
 
@@ -624,8 +588,6 @@ ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 **Description**
 
 Obtains the animation curve of an animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -639,7 +601,7 @@ Obtains the animation curve of an animation.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Animation curve parameters. Returns NULL if the option parameter is invalid. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Animation curve parameters. Returns **NULL** if the option parameter is invalid. |
 
 ### OH_ArkUI_KeyframeAnimateOption_Create()
 
@@ -650,8 +612,6 @@ ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)
 **Description**
 
 Creates a keyframe animation parameter object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -665,7 +625,7 @@ Creates a keyframe animation parameter object.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption*](capi-arkui-nativemodule-arkui-keyframeanimateoption.md) | Keyframe animation parameter object. If the value of size is less than 0 or if option is abnormal,       NULL is returned. |
+| [ArkUI_KeyframeAnimateOption*](capi-arkui-nativemodule-arkui-keyframeanimateoption.md) | Keyframe animation parameter object. If the value of **size** is less than 0 or if **option** is abnormal, ** NULL** is returned. |
 
 ### OH_ArkUI_KeyframeAnimateOption_Dispose()
 
@@ -676,8 +636,6 @@ void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)
 **Description**
 
 Disposes of a keyframe animation parameter object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -697,22 +655,20 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 
 Sets the overall delay of a keyframe animation, in milliseconds. By default, the keyframe animation starts without any delay.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | int32_t value | Animation delay, in milliseconds. Value range: (-∞, +∞). Default value: **0**, indicating no animation delay. A value greater than 0 means to begin the animation after the specified amount of time has elapsed. A value less than 0 means to begin the animation in advance. If **value** is less than **0** and the absolute value of **value** is less than the actual animation duration, the animation starts its first frame from the state at the absolute value. If the absolute value of **value** is greater than or equal to the actual animation duration, the animation starts its first frame from the end state. The actual animation duration is equal to the duration of a single animation multiplied by the number of animation playback times. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_KeyframeAnimateOption_SetIterations()
 
@@ -724,22 +680,20 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption
 
 Sets the number of times that the keyframe animation is played. By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. The value **0** indicates that no animation is played.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| int32_t value | Number of times that the animation is played. Value range: [-1, +∞). If this parameter is set to **0**, the animation is not played. If this parameter is set to **-1**, the animation is played for an infinite number of times. Default value: **1**, indicating that the animation is played once. <br>If the value is less than **-1**, the operation is invalid, and the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| int32_t value | Number of times that the animation is played. Value range: [-1, +∞). If this parameter is set to **0**, the animation is not played. If this parameter is set to **-1**, the animation is played for an infinite number of times. Default value: **1**, indicating that the animation is played once. <br>If the value is less than **-1**, the operation is invalid, and the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback()
 
@@ -749,9 +703,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 
 **Description**
 
-Sets the callback invoked when the keyframe animation playback is complete. This function is called after the {@link keyframe animation} has played for the specified number of times.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the callback invoked when the keyframe animation playback is complete. This function is called after the keyframe animation has played for the specified number of times.
 
 **Since**: 12
 
@@ -759,15 +711,15 @@ Sets the callback invoked when the keyframe animation playback is complete. This
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_KeyframeAnimateOption\* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| void\* userData | Pointer to a custom object. <br>Abnormal value processing is not involved. |
-| void (\*onFinish)(void\* userData) | Indicates the callback. |
+| rkUI_KeyframeAnimateOption* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| void* userData | Pointer to a custom object. <br>Abnormal value processing is not involved. |
+| void (*onFinish)(void* userData) | Indicates the callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate()
 
@@ -779,22 +731,20 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimat
 
 Sets the expected frame rate for a keyframe animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 19
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | Expected frame rate for the keyframe animation. <br>If **frameRate** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | Expected frame rate for the keyframe animation. <br>If **frameRate** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_KeyframeAnimateOption_SetDuration()
 
@@ -806,23 +756,21 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 
 Sets the duration of a keyframe animation, in milliseconds.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | int32_t value | Keyframe animation duration, in ms. The default value is 1000 ms. Value range: [0, +∞). <br>If the value is less than 0, **0** is used. |
-| int32_t index | Index of the keyframe state segment. <br>If the value of **index** is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| int32_t index | Index of the keyframe state segment. <br>If the value of **index** is less than 0, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_KeyframeAnimateOption_SetCurve()
 
@@ -838,23 +786,21 @@ Sets the animation curve for a specific keyframe animation segment.
 >
 > Because the <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves do not have effective duration settings, they are not supported.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve to set. Default value: [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve). |
-| int32_t index | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states. <br>If the value of **index** is less than 0 or out of range, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | Animation curve to set. Default value: [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve). |
+| int32_t index | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states. <br>If the value of **index** is less than 0 or out of range, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback()
 
@@ -866,24 +812,22 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(ArkUI_KeyframeAni
 
 Sets the closure function of the state at the time of the keyframe, that is, the state to be reached at the time of the keyframe.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_KeyframeAnimateOption\* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| void (\*event)(void\* userData) | Indicates a closure function. |
-| void\* userData | Pointer to a user-defined object. <br>Abnormal value processing is not involved. |
-| int32_t index | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states. <br>If the value of **index** is less than 0 or out of range, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| rkUI_KeyframeAnimateOption* option | Keyframe animation parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| void (*event)(void* userData) | Indicates a closure function. |
+| void* userData | Pointer to a user-defined object. <br>Abnormal value processing is not involved. |
+| int32_t index | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states. <br>If the value of **index** is less than 0 or out of range, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetDelay()
 
@@ -895,8 +839,6 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* opt
 
 Obtains the overall delay of a keyframe animation, in milliseconds.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -909,7 +851,7 @@ Obtains the overall delay of a keyframe animation, in milliseconds.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Overall delay, in milliseconds. If option is invalid, 0 is returned. |
+| int32_t | Overall delay, in milliseconds. If **option** is invalid, **0** is returned. |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetIterations()
 
@@ -921,8 +863,6 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetIterations(ArkUI_KeyframeAnimateOption
 
 Obtains the number of times that a keyframe animation is played.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -935,7 +875,7 @@ Obtains the number of times that a keyframe animation is played.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Number of times that the animation is played. If option is invalid, 0 is returned. |
+| int32_t | Number of times that the animation is played. If **option** is invalid, **0** is returned. |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate()
 
@@ -946,8 +886,6 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRat
 **Description**
 
 Obtains the expected frame rate from keyframe animation parameters.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -961,7 +899,7 @@ Obtains the expected frame rate from keyframe animation parameters.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ExpectedFrameRateRange*](capi-arkui-nativemodule-arkui-expectedframeraterange.md) | Returns the expected frame rate obtained. If option is invalid, NULL is returned. |
+| [ArkUI_ExpectedFrameRateRange*](capi-arkui-nativemodule-arkui-expectedframeraterange.md) | Returns the expected frame rate obtained. If **option** is invalid, **NULL** is returned. |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetDuration()
 
@@ -972,8 +910,6 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* 
 **Description**
 
 Obtains the duration of a specific state in a keyframe animation, in milliseconds.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -988,7 +924,7 @@ Obtains the duration of a specific state in a keyframe animation, in millisecond
 
 | Type | Description |
 | -- | -- |
-| int32_t | Duration, in milliseconds. If option is invalid, 0 is returned. |
+| int32_t | Duration, in milliseconds. If **option** is invalid, **0** is returned. |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetCurve()
 
@@ -999,8 +935,6 @@ ArkUI_CurveHandle OH_ArkUI_KeyframeAnimateOption_GetCurve(ArkUI_KeyframeAnimateO
 **Description**
 
 Obtains the animation curve of a specific state in a keyframe animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1015,7 +949,7 @@ Obtains the animation curve of a specific state in a keyframe animation.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Animation curve. If the parameter is abnormal, NULL is returned. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Animation curve. If the parameter is abnormal, **NULL** is returned. |
 
 ### OH_ArkUI_AnimatorOption_Create()
 
@@ -1031,8 +965,6 @@ Creates an **AnimatorOption** object.
 >
 > When <b>keyframeSize</b> is greater than 0, the animation interpolation start point is 0, and the animation interpolation end point is 1; no setting is allowed.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1045,7 +977,7 @@ Creates an **AnimatorOption** object.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption*](capi-arkui-nativemodule-arkui-animatoroption.md) | Pointer to the animator parameter object. If the value of size is less than 0 or if option is      abnormal, NULL is returned. |
+| [ArkUI_AnimatorOption*](capi-arkui-nativemodule-arkui-animatoroption.md) | Pointer to the animator parameter object. If the value of **size** is less than 0 or if **option** is abnormal, **NULL** is returned. |
 
 ### OH_ArkUI_AnimatorOption_Dispose()
 
@@ -1056,8 +988,6 @@ void OH_ArkUI_AnimatorOption_Dispose(ArkUI_AnimatorOption* option)
 **Description**
 
 Disposes of an **AnimatorOption** object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1077,22 +1007,20 @@ int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_
 
 Sets the duration of an animator animation, in milliseconds.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| int32_t value | Playback duration, in ms. The default value is 0 ms. Value range: [0, +∞). <br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| int32_t value | Playback duration, in ms. The default value is 0 ms. Value range: [0, +∞). <br>If the value is less than 0, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetDelay()
 
@@ -1104,22 +1032,20 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 
 Sets the delay time of the animator playback, in milliseconds.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | int32_t value | Animation delay, in milliseconds. Value range: (-∞, +∞). Default value: **0**, indicating no animation delay. A value greater than 0 means to begin the animation after the specified amount of time has elapsed. A value less than 0 means to begin the animation in advance. If **value** is less than **0** and the absolute value of **value** is less than the actual animation duration, the animation starts its first frame from the state at the absolute value. If the absolute value of **value** is greater than or equal to the actual animation duration, the animation starts its first frame from the end state. The actual animation duration is equal to the duration of a single animation multiplied by the number of animation playback times. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetIterations()
 
@@ -1135,22 +1061,20 @@ Sets the number of times that an animator animation is played. By default, the a
 >
 > If this parameter is set to a negative value other than <b>-1</b>, the value is invalid. In this case, the animation is played once.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | int32_t value | Value range: [-1, +∞). If this parameter is set to **0**, the animation is not played. If this parameter is set to **-1**, the animation is played for an infinite number of times. Default value: **1** ( played once). <br>If the value is less than -1, the operation is invalid. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetFill()
 
@@ -1162,22 +1086,20 @@ int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_Anim
 
 Sets the status of the component before and after the animator animation execution.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| ArkUI_AnimationFillMode value | Status of the component before and after the animator animation execution. Default value: [ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-visual-h.md#arkui_animationfillmode). <br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| ArkUI_AnimationFillMode value | Status of the component before and after the animator animation execution. Default value: [ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-visual-h.md#arkui_animationfillmode). <br>If the value is less than 0, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetDirection()
 
@@ -1189,22 +1111,20 @@ int32_t OH_ArkUI_AnimatorOption_SetDirection(ArkUI_AnimatorOption* option, ArkUI
 
 Set the playback direction.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| ArkUI_AnimationDirection value | Animation playback direction. <br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| ArkUI_AnimationDirection value | Animation playback direction. <br>If the value is less than 0, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetCurve()
 
@@ -1220,22 +1140,20 @@ Sets the interpolation curve for the animation of an animator.
 >
 > <b>springCurve</b>, <b>springMotion</b>, <b>responsiveSpringMotion</b>, <b>interpolatingSpring</b>, and <b>customCurve</b> curves are not supported.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve) to obtain a smoother animation effect. <br>If **value** is set to **NULL**, the default curve [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | Interpolation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve) to obtain a smoother animation effect. <br>If **value** is set to **NULL**, the default curve [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetBegin()
 
@@ -1251,22 +1169,20 @@ Sets the interpolation start point of an animation.
 >
 > This API does not take effect when the animation is a keyframe animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | float value | Interpolation start point of the animation. Value range: (-∞, +∞). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetEnd()
 
@@ -1282,22 +1198,20 @@ Sets the interpolation end point for the animation of an animator.
 >
 > This API does not take effect when the animation is a keyframe animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | float value | Interpolation end point of the animation. Value range: (-∞, +∞). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange()
 
@@ -1309,22 +1223,20 @@ int32_t OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange(ArkUI_AnimatorOption* 
 
 Sets the expected frame rate range of an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | Expected frame rate range. <br>If **value** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | Expected frame rate range. <br>If **value** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetKeyframe()
 
@@ -1336,24 +1248,22 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframe(ArkUI_AnimatorOption* option, float 
 
 Sets the keyframe parameters of an animator animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| float time | Keyframe time. Value range: [0, 1]. The value must be in ascending order. Default value: evenly distributed by index (for example, **0.0** for the first frame, **0.5** for the second frame, and **1.0** for the third frame). <br>If the value of **time** is less than 0 or greater than 1, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| float time | Keyframe time. Value range: [0, 1]. The value must be in ascending order. Default value: evenly distributed by index (for example, **0.0** for the first frame, **0.5** for the second frame, and **1.0** for the third frame). <br>If the value of **time** is less than 0 or greater than 1, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | float value | Keyframe value. Value range: (-∞, +∞). |
-| int32_t index | Keyframe index. <br>If the value of **index** is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| int32_t index | Keyframe index. <br>If the value of **index** is less than 0, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_SetKeyframeCurve()
 
@@ -1369,23 +1279,21 @@ Sets the keyframe curve type for the animation of an animator.
 >
 > <b>springCurve</b>, <b>springMotion</b>, <b>responsiveSpringMotion</b>, <b>interpolatingSpring</b>, and <b>customCurve</b> curves are not supported.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: **NULL**, indicating linear interpolation. |
-| int32_t index | Keyframe index. <br>If the value of **index** is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | Interpolation curve. Default value: **NULL**, indicating linear interpolation. |
+| int32_t index | Keyframe index. <br>If the value of **index** is less than 0, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_GetDuration()
 
@@ -1396,8 +1304,6 @@ int32_t OH_ArkUI_AnimatorOption_GetDuration(ArkUI_AnimatorOption* option)
 **Description**
 
 Obtains the duration for playing an animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1411,7 +1317,7 @@ Obtains the duration for playing an animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Duration for playing the animation, in milliseconds. If option is invalid, 0 is returned. |
+| int32_t | Duration for playing the animation, in milliseconds. If **option** is invalid, **0** is returned. |
 
 ### OH_ArkUI_AnimatorOption_GetDelay()
 
@@ -1422,8 +1328,6 @@ int32_t OH_ArkUI_AnimatorOption_GetDelay(ArkUI_AnimatorOption* option)
 **Description**
 
 Obtains the delay for playing an animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1437,7 +1341,7 @@ Obtains the delay for playing an animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Delay for playing the animation, in milliseconds. If option is invalid, 0 is returned. |
+| int32_t | Delay for playing the animation, in milliseconds. If **option** is invalid, **0** is returned. |
 
 ### OH_ArkUI_AnimatorOption_GetIterations()
 
@@ -1448,8 +1352,6 @@ int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)
 **Description**
 
 Obtains the number of times that an animator animation is played.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1463,7 +1365,7 @@ Obtains the number of times that an animator animation is played.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Number of times that the animation is played. If option is invalid, 0 is returned. |
+| int32_t | Number of times that the animation is played. If **option** is invalid, **0** is returned. |
 
 ### OH_ArkUI_AnimatorOption_GetFill()
 
@@ -1475,8 +1377,6 @@ ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* op
 
 Obtains the status of the component before and after the animator animation execution.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1489,7 +1389,7 @@ Obtains the status of the component before and after the animator animation exec
 
 | Type | Description |
 | -- | -- |
-| ArkUI_AnimationFillMode | Status of the component before and after the animator animation execution. If option is invalid,-1      is returned. |
+| ArkUI_AnimationFillMode | Status of the component before and after the animator animation execution. If **option** is invalid,**-1** is returned. |
 
 ### OH_ArkUI_AnimatorOption_GetDirection()
 
@@ -1501,8 +1401,6 @@ ArkUI_AnimationDirection OH_ArkUI_AnimatorOption_GetDirection(ArkUI_AnimatorOpti
 
 Obtains the playback direction of an animator animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1515,7 +1413,7 @@ Obtains the playback direction of an animator animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_AnimationDirection | Animation playback direction. If option is invalid,-1 is returned. |
+| ArkUI_AnimationDirection | Animation playback direction. If **option** is invalid,**-1** is returned. |
 
 ### OH_ArkUI_AnimatorOption_GetCurve()
 
@@ -1527,8 +1425,6 @@ ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetCurve(ArkUI_AnimatorOption* option)
 
 Obtains the interpolation curve of the animation of an animator.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1541,7 +1437,7 @@ Obtains the interpolation curve of the animation of an animator.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Interpolation curve. If option is invalid, NULL is returned. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Interpolation curve. If **option** is invalid, **NULL** is returned. |
 
 ### OH_ArkUI_AnimatorOption_GetBegin()
 
@@ -1553,8 +1449,6 @@ float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)
 
 Obtains the interpolation start point of an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1567,7 +1461,7 @@ Obtains the interpolation start point of an animation.
 
 | Type | Description |
 | -- | -- |
-| float | Interpolation start point of the animation. If option is invalid, 0.0 is returned. |
+| float | Interpolation start point of the animation. If **option** is invalid, **0.0** is returned. |
 
 ### OH_ArkUI_AnimatorOption_GetEnd()
 
@@ -1579,8 +1473,6 @@ float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)
 
 Obtains the interpolation end point of an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1593,7 +1485,7 @@ Obtains the interpolation end point of an animation.
 
 | Type | Description |
 | -- | -- |
-| float | Interpolation end point of the animation. If option is invalid, 0.0 is returned. |
+| float | Interpolation end point of the animation. If **option** is invalid, **0.0** is returned. |
 
 ### OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange()
 
@@ -1605,8 +1497,6 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(
 
 Obtains the expected frame rate range of an animator animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1619,7 +1509,7 @@ Obtains the expected frame rate range of an animator animation.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ExpectedFrameRateRange*](capi-arkui-nativemodule-arkui-expectedframeraterange.md) | Pointer to the expected frame rate range object. Returns NULL if a parameter error occurs. |
+| [ArkUI_ExpectedFrameRateRange*](capi-arkui-nativemodule-arkui-expectedframeraterange.md) | Pointer to the expected frame rate range object. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_AnimatorOption_GetKeyframeTime()
 
@@ -1630,8 +1520,6 @@ float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int3
 **Description**
 
 Obtains the keyframe time of the animator playback, in milliseconds.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1658,8 +1546,6 @@ float OH_ArkUI_AnimatorOption_GetKeyframeValue(ArkUI_AnimatorOption* option, int
 
 Obtains the keyframe value of an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1685,8 +1571,6 @@ ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetKeyframeCurve(ArkUI_AnimatorOption*
 
 Obtains the interpolation curve for a keyframe in the animation of an animator.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1700,7 +1584,7 @@ Obtains the interpolation curve for a keyframe in the animation of an animator.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Interpolation curve. Returns NULL if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Interpolation curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_AnimatorEvent_GetUserData()
 
@@ -1711,8 +1595,6 @@ void* OH_ArkUI_AnimatorEvent_GetUserData(ArkUI_AnimatorEvent* event)
 **Description**
 
 Obtains the user-defined object in an animation event object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1738,8 +1620,6 @@ void* OH_ArkUI_AnimatorOnFrameEvent_GetUserData(ArkUI_AnimatorOnFrameEvent* even
 
 Obtains the user-defined object in the frame event of an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1764,8 +1644,6 @@ float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)
 
 Obtains the interpolation result in the animation frame callback event object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1778,7 +1656,7 @@ Obtains the interpolation result in the animation frame callback event object.
 
 | Type | Description |
 | -- | -- |
-| float | Animation interpolation result.      <br>NOTE      <br>During the animation, the interpolation result changes between the interpolation start point      [OH_ArkUI_AnimatorOption_SetBegin](capi-native-animate-h.md#oh_arkui_animatoroption_setbegin) and the interpolation end point [OH_ArkUI_AnimatorOption_SetEnd](capi-native-animate-h.md#oh_arkui_animatoroption_setend)      based on the animation parameters. |
+| float | Animation interpolation result. <br>**NOTE** <br>During the animation, the interpolation result changes between the interpolation start point [OH_ArkUI_AnimatorOption_SetBegin](capi-native-animate-h.md#oh_arkui_animatoroption_setbegin) and the interpolation end point [OH_ArkUI_AnimatorOption_SetEnd](capi-native-animate-h.md#oh_arkui_animatoroption_setend) based on the animation parameters. |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnFrameCallback()
 
@@ -1790,23 +1668,21 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(ArkUI_AnimatorOption* op
 
 Sets the callback invoked when the animator receives a frame.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_AnimatorOption\* option | Animator animation parameters. |
-| void\* userData | User-defined parameter. |
-| void (\*callback)(ArkUI_AnimatorOnFrameEvent\* event) | Indicates the callback to set. |
+| rkUI_AnimatorOption* option | Animator animation parameters. |
+| void* userData | User-defined parameter. |
+| void (*callback)(ArkUI_AnimatorOnFrameEvent* event) | Indicates the callback to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnFinishCallback()
 
@@ -1818,23 +1694,21 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(ArkUI_AnimatorOption* o
 
 Sets the callback invoked when the animation playback is complete.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_AnimatorOption\* option | Animator animation parameters. |
-| void\* userData | User-defined parameter. |
-| void (\*callback)(ArkUI_AnimatorEvent\* event) | Indicates the callback to set. |
+| rkUI_AnimatorOption* option | Animator animation parameters. |
+| void* userData | User-defined parameter. |
+| void (*callback)(ArkUI_AnimatorEvent* event) | Indicates the callback to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnCancelCallback()
 
@@ -1846,23 +1720,21 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnCancelCallback(ArkUI_AnimatorOption* o
 
 Sets the callback invoked when the animation playback is canceled.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_AnimatorOption\* option | Animator animation parameters. |
-| void\* userData | User-defined parameter. |
-| void (\*callback)(ArkUI_AnimatorEvent\* event) | Indicates the callback to set. |
+| rkUI_AnimatorOption* option | Animator animation parameters. |
+| void* userData | User-defined parameter. |
+| void (*callback)(ArkUI_AnimatorEvent* event) | Indicates the callback to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback()
 
@@ -1874,23 +1746,21 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback(ArkUI_AnimatorOption* o
 
 Sets the callback invoked when the animation playback is repeated.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_AnimatorOption\* option | Animator animation parameters. |
-| void\* userData | User-defined parameter. |
-| void (\*callback)(ArkUI_AnimatorEvent\* event) | Indicates the callback to set. |
+| rkUI_AnimatorOption* option | Animator animation parameters. |
+| void* userData | User-defined parameter. |
+| void (*callback)(ArkUI_AnimatorEvent* event) | Indicates the callback to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Animator_ResetAnimatorOption()
 
@@ -1902,22 +1772,20 @@ int32_t OH_ArkUI_Animator_ResetAnimatorOption(ArkUI_AnimatorHandle animatorHandl
 
 Resets the animation of an animator.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator object. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator object. |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator animation parameters. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Animator_Play()
 
@@ -1929,21 +1797,19 @@ int32_t OH_ArkUI_Animator_Play(ArkUI_AnimatorHandle animatorHandle)
 
 Starts the animation of an animator.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator object. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Animator_Finish()
 
@@ -1955,21 +1821,19 @@ int32_t OH_ArkUI_Animator_Finish(ArkUI_AnimatorHandle animatorHandle)
 
 Ends the animation of an animator.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator object. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Animator_Pause()
 
@@ -1981,21 +1845,19 @@ int32_t OH_ArkUI_Animator_Pause(ArkUI_AnimatorHandle animatorHandle)
 
 Pauses the animation of an animator.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator object. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Animator_Cancel()
 
@@ -2007,21 +1869,19 @@ int32_t OH_ArkUI_Animator_Cancel(ArkUI_AnimatorHandle animatorHandle)
 
 Cancels the animation of an animator.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator object. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Animator_Reverse()
 
@@ -2033,21 +1893,19 @@ int32_t OH_ArkUI_Animator_Reverse(ArkUI_AnimatorHandle animatorHandle)
 
 Plays this animation in reverse order.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator object. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_Curve_CreateCurveByType()
 
@@ -2058,8 +1916,6 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCurveByType(ArkUI_AnimationCurve curve)
 **Description**
 
 Implements initialization for the interpolation curve, which is used to create an interpolation curve based on the input parameter.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2073,7 +1929,7 @@ Implements initialization for the interpolation curve, which is used to create a
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns NULL if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateStepsCurve()
 
@@ -2084,8 +1940,6 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateStepsCurve(int32_t count, bool end)
 **Description**
 
 Creates a step curve.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2100,7 +1954,7 @@ Creates a step curve.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns NULL if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateCubicBezierCurve()
 
@@ -2111,8 +1965,6 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCubicBezierCurve(float x1, float y1, floa
 **Description**
 
 Creates a cubic Bezier curve.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2129,7 +1981,7 @@ Creates a cubic Bezier curve.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns NULL if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateSpringCurve()
 
@@ -2139,9 +1991,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, f
 
 **Description**
 
-Creates a spring curve. The curve shape is determined by the spring parameters, and the animation duration is controlled by the **duration** parameter in {@link animation} and [animateTo](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Creates a spring curve. The curve shape is determined by the spring parameters, and the animation duration is controlled by the **duration** parameter in animation and [animateTo](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto).
 
 **Since**: 12
 
@@ -2158,7 +2008,7 @@ Creates a spring curve. The curve shape is determined by the spring parameters, 
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns NULL if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateSpringMotion()
 
@@ -2174,8 +2024,6 @@ Creates a spring animation curve. If multiple spring animations are applied to t
 >
 > The animation duration is subject to the curve parameters, rather than the <b>duration</b> parameter in <b>animation</b> or <b>animateTo</b>.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2190,7 +2038,7 @@ Creates a spring animation curve. If multiple spring animations are applied to t
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns NULL if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateResponsiveSpringMotion()
 
@@ -2206,8 +2054,6 @@ Creates a responsive spring animation curve. It is a special case of **springMot
 >
 > The animation duration is subject to the curve parameters, rather than the <b>duration</b> parameter in <b>animation</b> or <b>animateTo</b>.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2222,7 +2068,7 @@ Creates a responsive spring animation curve. It is a special case of **springMot
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns NULL if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateInterpolatingSpring()
 
@@ -2237,8 +2083,6 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 > **Note**:
 >
 > The animation duration is subject to the curve parameters, rather than the <b>duration</b> parameter in <b>animation</b> or <b>animateTo</b>.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2255,7 +2099,7 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns NULL if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateCustomCurve()
 
@@ -2267,22 +2111,20 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCustomCurve(void* userData, float (*inter
 
 Creates a custom curve.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| oid\* userData | Pointer to user-defined data. |
-| float (\*interpolate)(float fraction | Indicates the custom interpolation callback. <b>fraction</b> indicates the input x value for interpolation when the animation starts; value range: [0,1]. The return value is the y value of the curve; value range: [0,1]. If <b>fraction</b> is <b>0</b>, the return value <b>0</b> corresponds to the animation start point; any other return value means that the animation jumps at the start point. If <b>fraction</b> is <b>1</b>, the return value <b>1</b> corresponds to the animation end point; any other return value means that the end value of the animation is not the value of the state variable, which will result in an effect of transition from that end value to the value of the state variable. |
+| oid* userData | Pointer to user-defined data. |
+| float (*interpolate)(float fraction | Indicates the custom interpolation callback. <b>fraction</b> indicates the input x value for interpolation when the animation starts; value range: [0,1]. The return value is the y value of the curve; value range: [0,1]. If <b>fraction</b> is <b>0</b>, the return value <b>0</b> corresponds to the animation start point; any other return value means that the animation jumps at the start point. If <b>fraction</b> is <b>1</b>, the return value <b>1</b> corresponds to the animation end point; any other return value means that the end value of the animation is not the value of the state variable, which will result in an effect of transition from that end value to the value of the state variable. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns NULL if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_DisposeCurve()
 
@@ -2294,15 +2136,13 @@ void OH_ArkUI_Curve_DisposeCurve(ArkUI_CurveHandle curveHandle)
 
 Disposes of a custom curve.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curveHandle | Pointer to the interpolation object of the curve. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curveHandle | Pointer to the interpolation object of the curve. |
 
 ### OH_ArkUI_CreateOpacityTransitionEffect()
 
@@ -2317,8 +2157,6 @@ Creates an opacity effect object for component transitions.
 > **Note**:
 >
 > If the value specified is less than 0, the value <b>0</b> is used. If the value specified is greater than 1, the value <b>1</b> is used.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2344,8 +2182,6 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateTranslationTransitionEffect(ArkUI_Transla
 
 Creates a translation effect object for component transitions.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2358,7 +2194,7 @@ Creates a translation effect object for component transitions.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Translation effect object for component transitions. Returns NULL if a parameter error occurs. |
+| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Translation effect object for component transitions. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_CreateScaleTransitionEffect()
 
@@ -2369,8 +2205,6 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateScaleTransitionEffect(ArkUI_ScaleOptions*
 **Description**
 
 Creates a scaling effect object for component transitions.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2384,7 +2218,7 @@ Creates a scaling effect object for component transitions.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Scaling effect object for component transitions. Returns NULL if a parameter error occurs. |
+| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Scaling effect object for component transitions. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_CreateRotationTransitionEffect()
 
@@ -2395,8 +2229,6 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateRotationTransitionEffect(ArkUI_RotationOp
 **Description**
 
 Creates a rotation effect object for component transition.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2410,7 +2242,7 @@ Creates a rotation effect object for component transition.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Rotation effect object for component transitions. Returns NULL if a parameter error occurs. |
+| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Rotation effect object for component transitions. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_CreateMovementTransitionEffect()
 
@@ -2421,8 +2253,6 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateMovementTransitionEffect(ArkUI_Transition
 **Description**
 
 Creates a movement transition effect object for the component.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2436,7 +2266,7 @@ Creates a movement transition effect object for the component.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Translation effect object for component transitions. Returns NULL if a parameter error occurs. |
+| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Translation effect object for component transitions. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_CreateAsymmetricTransitionEffect()
 
@@ -2452,8 +2282,6 @@ Creates an asymmetric transition effect.
 >
 > If the <b>asymmetric</b> function is not used for <b>TransitionEffect</b>, the transition effect takes effect for both appearance and disappearance of the component.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2467,7 +2295,7 @@ Creates an asymmetric transition effect.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Asymmetric transition effect. Returns NULL if a parameter error occurs. |
+| [ArkUI_TransitionEffect*](capi-arkui-nativemodule-arkui-transitioneffect.md) | Asymmetric transition effect. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_CreateIdentityTransitionEffect()
 
@@ -2479,9 +2307,9 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateIdentityTransitionEffect(void)
 
 Create an identity transition effect. Identity transition effect performs no visual transition animation. It can alse be used as the appear or disappear parameter of OH_ArkUI_CreateAsymmetricTransitionEffect to indicate no animation on one side.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.0
+
+**Resource release**: native_animate/OH_ArkUI_TransitionEffect_Dispose {return}
 
 **Returns**:
 
@@ -2498,8 +2326,6 @@ void OH_ArkUI_TransitionEffect_Dispose(ArkUI_TransitionEffect* effect)
 **Description**
 
 Disposes of a transition effect.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2519,8 +2345,6 @@ int32_t OH_ArkUI_TransitionEffect_Combine(ArkUI_TransitionEffect* firstEffect, A
 
 Sets a combination of transition effects.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2534,7 +2358,7 @@ Sets a combination of transition effects.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_TransitionEffect_SetAnimation()
 
@@ -2550,8 +2374,6 @@ Sets transition effect animation settings.
 >
 > If <b>combine</b> is used for combining transition effects, the animation settings of a transition effect are applicable to the one following it.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2565,7 +2387,7 @@ Sets transition effect animation settings.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>           <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_Create()
 
@@ -2577,9 +2399,9 @@ OH_ArkUI_PropertyAnimationHandle OH_ArkUI_NativeModule_PropertyAnimation_Create(
 
 Creates a property animation for a specific animatable property.<br> <b>propertyType</b> must be a valid [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype); otherwise, this API returns <b>NULL</b>.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
+
+**Resource release**: native_animate/OH_ArkUI_NativeModule_PropertyAnimation_Destroy {return}
 
 **Parameters**:
 
@@ -2591,7 +2413,7 @@ Creates a property animation for a specific animatable property.<br> <b>property
 
 | Type | Description |
 | -- | -- |
-| OH_ArkUI_PropertyAnimationHandle | Returns the handle to the property animation. The caller owns the returned          handle and must release it with [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy). |
+| OH_ArkUI_PropertyAnimationHandle | Returns the handle to the property animation. The caller owns the returned handle and must release it with [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy). |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_Destroy()
 
@@ -2602,8 +2424,6 @@ void OH_ArkUI_NativeModule_PropertyAnimation_Destroy(OH_ArkUI_PropertyAnimationH
 **Description**
 
 Destroys a property animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -2623,8 +2443,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetFromValue(OH_ArkUI_Pr
 
 Sets the start value of a property animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -2639,7 +2457,7 @@ Sets the start value of a property animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetFromValue()
 
@@ -2651,8 +2469,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetFromValue(OH_ArkUI_Pr
 
 Obtains the start value of a property animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -2660,14 +2476,14 @@ Obtains the start value of a property animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| ArkUI_NumberValue *value | [out] Indicates the pointer to receive the start value array of [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md). The number and type of elements depend on [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype). For example, OPACITY requires 1 f32 value, and TRANSLATION requires 2 f32 values (x, y). The values are written into the memory pointed to by this pointer. <br>This pointer must not be **NULL**. If **value** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| int32_t size | [in] Indicates the size of the output array. It must equal the number of elements required by [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype); otherwise, the error code [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| ArkUI_NumberValue *value | [out] Indicates the pointer to receive the start value array of [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md). The number and type of elements depend on [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype). For example, OPACITY requires 1 f32 value, and TRANSLATION requires 2 f32 values (x, y). The values are written into the memory pointed to by this pointer. <br>This pointer must not be **NULL**. If **value** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| int32_t size | [in] Indicates the size of the output array. It must equal the number of elements required by [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype); otherwise, the error code ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the start value has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the buffer size does not equal the required              buffer size.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the start value has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size does not equal the required buffer size.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetToValue()
 
@@ -2678,8 +2494,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetToValue(OH_ArkUI_Prop
 **Description**
 
 Sets the end value of a property animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -2695,7 +2509,7 @@ Sets the end value of a property animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetToValue()
 
@@ -2707,8 +2521,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetToValue(OH_ArkUI_Prop
 
 Obtains the end value of a property animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -2716,14 +2528,14 @@ Obtains the end value of a property animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| ArkUI_NumberValue *value | [out] Indicates the pointer to receive the end value array of [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md). The number and type of elements depend on [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype). For example, OPACITY requires 1 f32 value, and TRANSLATION requires 2 f32 values (x, y). The values are written into the memory pointed to by this pointer. <br>This pointer must not be **NULL**. If **value** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| int32_t size | [in] Indicates the size of the output array. It must equal the number of elements required by [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype); otherwise, the error code [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| ArkUI_NumberValue *value | [out] Indicates the pointer to receive the end value array of [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md). The number and type of elements depend on [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype). For example, OPACITY requires 1 f32 value, and TRANSLATION requires 2 f32 values (x, y). The values are written into the memory pointed to by this pointer. <br>This pointer must not be **NULL**. If **value** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| int32_t size | [in] Indicates the size of the output array. It must equal the number of elements required by [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype); otherwise, the error code ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the end value has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the buffer size does not equal the required              buffer size.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the end value has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size does not equal the required buffer size.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetDuration()
 
@@ -2734,8 +2546,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetDuration(OH_ArkUI_Pro
 **Description**
 
 Sets the duration for a property animation.<br> The actual effective animation duration is determined by priority: if the duration is set via this API, that value is used; otherwise, the duration set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -2750,7 +2560,7 @@ Sets the duration for a property animation.<br> The actual effective animation d
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetDuration()
 
@@ -2760,9 +2570,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDuration(OH_ArkUI_Pro
 
 **Description**
 
-Obtains the duration of a property animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the duration of a property animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used.
 
 **Since**: 26.0.1
 
@@ -2777,7 +2585,7 @@ Obtains the duration of a property animation.<br> This API returns only the dura
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the duration has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the duration has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetDelay()
 
@@ -2788,8 +2596,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetDelay(OH_ArkUI_Proper
 **Description**
 
 Sets the delay for a property animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -2804,7 +2610,7 @@ Sets the delay for a property animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetDelay()
 
@@ -2815,8 +2621,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDelay(OH_ArkUI_Proper
 **Description**
 
 Obtains the delay of a property animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -2831,7 +2635,7 @@ Obtains the delay of a property animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetCurve()
 
@@ -2843,8 +2647,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetCurve(OH_ArkUI_Proper
 
 Sets the animation curve for a property animation.<br> The actual effective animation curve is determined by priority: if the curve is set via this API, that value is used; otherwise, the curve set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. Spring curves (<b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b>) are supported. When a spring curve is set, the duration set via [OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration) does not take effect; the animation duration is determined by the spring curve.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -2852,13 +2654,13 @@ Sets the animation curve for a property animation.<br> The actual effective anim
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] Indicates the animation curve. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] Indicates the animation curve. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetCurve()
 
@@ -2868,9 +2670,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetCurve(OH_ArkUI_Proper
 
 **Description**
 
-Obtains the animation curve of a property animation.<br> This API returns only the curve explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation curve used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setcurve), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the animation curve of a property animation.<br> This API returns only the curve explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation curve used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setcurve), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used.
 
 **Since**: 26.0.1
 
@@ -2879,13 +2679,13 @@ Obtains the animation curve of a property animation.<br> This API returns only t
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the curve has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the curve has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetTempo()
 
@@ -2896,8 +2696,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetTempo(OH_ArkUI_Proper
 **Description**
 
 Sets the tempo for a property animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -2912,7 +2710,7 @@ Sets the tempo for a property animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetTempo()
 
@@ -2923,8 +2721,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetTempo(OH_ArkUI_Proper
 **Description**
 
 Obtains the tempo of a property animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -2939,7 +2735,7 @@ Obtains the tempo of a property animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetAutoReverse()
 
@@ -2950,8 +2746,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetAutoReverse(OH_ArkUI_
 **Description**
 
 Sets whether to auto-reverse a property animation.<br> When auto-reverse is enabled, the animation plays forward and then backward alternately across iterations. The default value is <b>false</b>.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -2966,7 +2760,7 @@ Sets whether to auto-reverse a property animation.<br> When auto-reverse is enab
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetAutoReverse()
 
@@ -2977,8 +2771,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetAutoReverse(OH_ArkUI_
 **Description**
 
 Obtains whether auto-reverse is enabled for a property animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -2993,7 +2785,7 @@ Obtains whether auto-reverse is enabled for a property animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetIterations()
 
@@ -3005,8 +2797,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetIterations(OH_ArkUI_P
 
 Sets the number of iterations for a property animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3014,13 +2804,13 @@ Sets the number of iterations for a property animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| int32_t iterations | [in] Indicates the number of iterations. The value must be -1 or greater than or equal to 1; a value of <b>0</b> returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode). The value <b>-1</b> indicates unlimited iterations. The default value is <b>1</b>. |
+| int32_t iterations | [in] Indicates the number of iterations. The value must be -1 or greater than or equal to 1; a value of <b>0</b> returns ARKUI_ERROR_CODE_PARAM_INVALID. The value <b>-1</b> indicates unlimited iterations. The default value is <b>1</b>. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetIterations()
 
@@ -3031,8 +2821,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetIterations(OH_ArkUI_P
 **Description**
 
 Obtains the number of iterations of a property animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3047,7 +2835,7 @@ Obtains the number of iterations of a property animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode()
 
@@ -3059,8 +2847,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode(OH_ArkUI_P
 
 Sets the target render node for a property animation.<br> The target node is the render node animated by this property animation. If <b>NULL</b> (the default), the animation inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). A non-NULL target must belong to the same UIContext that the group is registered on; the check is performed when the group is registered by [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3068,13 +2854,13 @@ Sets the target render node for a property animation.<br> The target node is the
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| ArkUI_RenderNodeHandle targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetTargetNode()
 
@@ -3086,8 +2872,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetTargetNode(OH_ArkUI_P
 
 Obtains the target render node of a property animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3095,13 +2879,13 @@ Obtains the target render node of a property animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| ArkUI_RenderNodeHandle *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_Create()
 
@@ -3113,9 +2897,9 @@ OH_ArkUI_KeyframeAnimationHandle OH_ArkUI_NativeModule_KeyframeAnimation_Create(
 
 Creates a keyframe animation for a specific animatable property.<br> The key time of each keyframe defaults to being evenly distributed in [0, 1] by index (for example, when there are 3 keyframes, <b>0.0</b> for the first frame, <b>0.5</b> for the second frame, and <b>1.0</b> for the third frame). Use [OH_ArkUI_NativeModule_KeyframeAnimation_SetKeyTimes](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setkeytimes) or [OH_ArkUI_NativeModule_KeyframeAnimation_SetKeyTime](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setkeytime) to customize the key time points.<br> <b>propertyType</b> must be a valid [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype), and <b>size</b> must be at least 2; otherwise, this API returns <b>NULL</b>.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
+
+**Resource release**: native_animate/OH_ArkUI_NativeModule_KeyframeAnimation_Destroy {return}
 
 **Parameters**:
 
@@ -3128,7 +2912,7 @@ Creates a keyframe animation for a specific animatable property.<br> The key tim
 
 | Type | Description |
 | -- | -- |
-| OH_ArkUI_KeyframeAnimationHandle | Returns the handle to the keyframe animation. The caller owns the returned          handle and must release it with [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy). |
+| OH_ArkUI_KeyframeAnimationHandle | Returns the handle to the keyframe animation. The caller owns the returned handle and must release it with [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy). |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_Destroy()
 
@@ -3139,8 +2923,6 @@ void OH_ArkUI_NativeModule_KeyframeAnimation_Destroy(OH_ArkUI_KeyframeAnimationH
 **Description**
 
 Destroys a keyframe animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3160,8 +2942,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetKeyTimes(OH_ArkUI_Key
 
 Sets the keyframe key time points.<br> If this API is not called, the key time of each keyframe defaults to being evenly distributed in [0, 1] by index (for example, when there are 3 keyframes, <b>0.0</b> for the first frame, <b>0.5</b> for the second frame, and <b>1.0</b> for the third frame).<br> The elements in <b>keyTimes</b> must be non-decreasing, and <b>size</b> must equal the number of keyframes of the keyframe animation (the <b>size</b> value specified when the animation was created via [OH_ArkUI_NativeModule_KeyframeAnimation_Create](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_create)).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3176,7 +2956,7 @@ Sets the keyframe key time points.<br> If this API is not called, the key time o
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetKeyTime()
 
@@ -3187,8 +2967,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetKeyTime(OH_ArkUI_Keyf
 **Description**
 
 Obtains the key time point of a keyframe at the specified index.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3204,7 +2982,7 @@ Obtains the key time point of a keyframe at the specified index.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetKeyTime()
 
@@ -3215,8 +2993,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetKeyTime(OH_ArkUI_Keyf
 **Description**
 
 Sets the key time point of a keyframe at the specified index.<br> If this API is not called for a keyframe, its key time defaults to being evenly distributed in [0, 1] by index (for example, when there are 3 keyframes, <b>0.0</b> for the first frame, <b>0.5</b> for the second frame, and <b>1.0</b> for the third frame).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3232,7 +3008,7 @@ Sets the key time point of a keyframe at the specified index.<br> If this API is
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetValue()
 
@@ -3243,8 +3019,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetValue(OH_ArkUI_Keyfra
 **Description**
 
 Sets the value of a keyframe at the specified index.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3261,7 +3035,7 @@ Sets the value of a keyframe at the specified index.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetValues()
 
@@ -3272,8 +3046,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetValues(OH_ArkUI_Keyfr
 **Description**
 
 Sets the values for all keyframes at once.<br> The values are provided as a flat array. The number of elements per keyframe depends on [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype). For example, OPACITY requires 1 value per keyframe, and TRANSLATION requires 2 values per keyframe. The total number of elements must equal the number of keyframes multiplied by the number of values per keyframe.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3289,7 +3061,7 @@ Sets the values for all keyframes at once.<br> The values are provided as a flat
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetValue()
 
@@ -3301,8 +3073,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetValue(OH_ArkUI_Keyfra
 
 Obtains the value of a keyframe at the specified index.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3311,14 +3081,14 @@ Obtains the value of a keyframe at the specified index.
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
 | int32_t index | [in] Indicates the keyframe index. |
-| ArkUI_NumberValue *value | [out] Indicates the pointer to receive the value array of [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md). The number and type of elements depend on [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype). For example, OPACITY requires 1 f32 value, and TRANSLATION requires 2 f32 values (x, y). The values are written into the memory pointed to by this pointer. <br>This pointer must not be **NULL**. If **value** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
-| int32_t size | [in] Indicates the size of the output array. It must equal the number of elements required by [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype); otherwise, the error code [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| ArkUI_NumberValue *value | [out] Indicates the pointer to receive the value array of [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md). The number and type of elements depend on [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype). For example, OPACITY requires 1 f32 value, and TRANSLATION requires 2 f32 values (x, y). The values are written into the memory pointed to by this pointer. <br>This pointer must not be **NULL**. If **value** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| int32_t size | [in] Indicates the size of the output array. It must equal the number of elements required by [OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype); otherwise, the error code ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the value of the keyframe has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the buffer size does not equal the required              buffer size.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the value of the keyframe has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size does not equal the required buffer size.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves()
 
@@ -3330,8 +3100,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves(OH_ArkUI_Keyfr
 
 Sets the animation curves for keyframes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3339,14 +3107,14 @@ Sets the animation curves for keyframes.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
-| [const ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *value | [in] Indicates the array of curve handles. This API does not take ownership of the curve handles; the caller must ensure all curves remain valid when using this handle. |
+| [const ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *value | [in] Indicates the array of curve handles. This API does not take ownership of the curve handles; the caller must ensure all curves remain valid when using this handle. |
 | int32_t size | [in] Indicates the number of curves. The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve()
 
@@ -3358,8 +3126,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve(OH_ArkUI_Keyfra
 
 Sets the animation curve for a keyframe at the specified index.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3368,13 +3134,13 @@ Sets the animation curve for a keyframe at the specified index.
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
 | int32_t index | [in] Indicates the keyframe index. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] Indicates the animation curve. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings. The actual effective animation curve is determined by priority: if the curve is set for the keyframe (via this API or [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves)), that value is used; otherwise, the curve set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] Indicates the animation curve. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings. The actual effective animation curve is determined by priority: if the curve is set for the keyframe (via this API or [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves)), that value is used; otherwise, the curve set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve()
 
@@ -3384,9 +3150,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve(OH_ArkUI_Keyfra
 
 **Description**
 
-Obtains the curve of a keyframe at the specified index.<br> This API returns only the curve explicitly set for the keyframe; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set for the keyframe, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation curve used at runtime is determined by priority: if set for the keyframe via [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurve) or [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the curve of a keyframe at the specified index.<br> This API returns only the curve explicitly set for the keyframe; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set for the keyframe, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation curve used at runtime is determined by priority: if set for the keyframe via [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurve) or [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used.
 
 **Since**: 26.0.1
 
@@ -3396,13 +3160,13 @@ Obtains the curve of a keyframe at the specified index.<br> This API returns onl
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
 | int32_t index | [in] Indicates the keyframe index. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the curve has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the curve has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration()
 
@@ -3413,8 +3177,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration(OH_ArkUI_Key
 **Description**
 
 Sets the duration for a keyframe animation.<br> The actual effective animation duration is determined by priority: if the duration is set via this API, that value is used; otherwise, the duration set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3429,7 +3191,7 @@ Sets the duration for a keyframe animation.<br> The actual effective animation d
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration()
 
@@ -3439,9 +3201,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration(OH_ArkUI_Key
 
 **Description**
 
-Obtains the duration of a keyframe animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the duration of a keyframe animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used.
 
 **Since**: 26.0.1
 
@@ -3456,7 +3216,7 @@ Obtains the duration of a keyframe animation.<br> This API returns only the dura
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the duration has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the duration has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetDelay()
 
@@ -3467,8 +3227,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDelay(OH_ArkUI_Keyfra
 **Description**
 
 Sets the delay for a keyframe animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3483,7 +3241,7 @@ Sets the delay for a keyframe animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetDelay()
 
@@ -3494,8 +3252,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDelay(OH_ArkUI_Keyfra
 **Description**
 
 Obtains the delay of a keyframe animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3510,7 +3266,7 @@ Obtains the delay of a keyframe animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetTempo()
 
@@ -3521,8 +3277,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetTempo(OH_ArkUI_Keyfra
 **Description**
 
 Sets the tempo for a keyframe animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3537,7 +3291,7 @@ Sets the tempo for a keyframe animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetTempo()
 
@@ -3548,8 +3302,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetTempo(OH_ArkUI_Keyfra
 **Description**
 
 Obtains the tempo of a keyframe animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3564,7 +3316,7 @@ Obtains the tempo of a keyframe animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetAutoReverse()
 
@@ -3575,8 +3327,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetAutoReverse(OH_ArkUI_
 **Description**
 
 Sets whether to auto-reverse a keyframe animation.<br> When auto-reverse is enabled, the animation plays forward and then backward alternately across iterations. The default value is <b>false</b>.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3591,7 +3341,7 @@ Sets whether to auto-reverse a keyframe animation.<br> When auto-reverse is enab
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetAutoReverse()
 
@@ -3602,8 +3352,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetAutoReverse(OH_ArkUI_
 **Description**
 
 Obtains whether auto-reverse is enabled for a keyframe animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3618,7 +3366,7 @@ Obtains whether auto-reverse is enabled for a keyframe animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetIterations()
 
@@ -3630,8 +3378,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetIterations(OH_ArkUI_K
 
 Sets the number of iterations for a keyframe animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3639,13 +3385,13 @@ Sets the number of iterations for a keyframe animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
-| int32_t iterations | [in] Indicates the number of iterations. The value must be -1 or greater than or equal to 1; a value of <b>0</b> returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode). The value <b>-1</b> indicates unlimited iterations. The default value is <b>1</b>. |
+| int32_t iterations | [in] Indicates the number of iterations. The value must be -1 or greater than or equal to 1; a value of <b>0</b> returns ARKUI_ERROR_CODE_PARAM_INVALID. The value <b>-1</b> indicates unlimited iterations. The default value is <b>1</b>. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetIterations()
 
@@ -3656,8 +3402,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetIterations(OH_ArkUI_K
 **Description**
 
 Obtains the number of iterations of a keyframe animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3672,7 +3416,7 @@ Obtains the number of iterations of a keyframe animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode()
 
@@ -3684,8 +3428,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode(OH_ArkUI_K
 
 Sets the target render node for a keyframe animation.<br> The target node is the render node animated by this keyframe animation. If <b>NULL</b> (the default), the animation inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). A non-NULL target must belong to the same UIContext that the group is registered on; the check is performed when the group is registered by [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3693,13 +3435,13 @@ Sets the target render node for a keyframe animation.<br> The target node is the
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
-| ArkUI_RenderNodeHandle targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetTargetNode()
 
@@ -3711,8 +3453,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetTargetNode(OH_ArkUI_K
 
 Obtains the target render node of a keyframe animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3720,13 +3460,13 @@ Obtains the target render node of a keyframe animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
-| ArkUI_RenderNodeHandle *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_Create()
 
@@ -3738,9 +3478,9 @@ OH_ArkUI_PathAnimationHandle OH_ArkUI_NativeModule_PathAnimation_Create(const ch
 
 Creates a path animation that moves the component along a geometric path.<br> The path animation applies to the TRANSLATION property.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
+
+**Resource release**: native_animate/OH_ArkUI_NativeModule_PathAnimation_Destroy {return}
 
 **Parameters**:
 
@@ -3752,7 +3492,7 @@ Creates a path animation that moves the component along a geometric path.<br> Th
 
 | Type | Description |
 | -- | -- |
-| OH_ArkUI_PathAnimationHandle | Returns the handle to the path animation. Returns <b>NULL</b> on invalid input.          The caller owns the returned handle and must release it with          [OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy). |
+| OH_ArkUI_PathAnimationHandle | Returns the handle to the path animation. Returns <b>NULL</b> on invalid input. The caller owns the returned handle and must release it with [OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy). |
 
 ### OH_ArkUI_NativeModule_PathAnimation_Destroy()
 
@@ -3763,8 +3503,6 @@ void OH_ArkUI_NativeModule_PathAnimation_Destroy(OH_ArkUI_PathAnimationHandle an
 **Description**
 
 Destroys a path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3784,8 +3522,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDuration(OH_ArkUI_PathAni
 
 Sets the duration for a path animation.<br> The actual effective animation duration is determined by priority: if the duration is set via this API, that value is used; otherwise, the duration set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3799,7 +3535,7 @@ Sets the duration for a path animation.<br> The actual effective animation durat
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetDuration()
 
@@ -3809,9 +3545,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDuration(OH_ArkUI_PathAni
 
 **Description**
 
-Obtains the duration of a path animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the duration of a path animation.<br> This API returns only the duration explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the duration has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation duration used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration), that value is used; otherwise, the group's duration via [OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration) is used; if neither is set, **1000** ms is used.
 
 **Since**: 26.0.1
 
@@ -3826,7 +3560,7 @@ Obtains the duration of a path animation.<br> This API returns only the duration
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the duration has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the duration has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetDelay()
 
@@ -3837,8 +3571,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDelay(OH_ArkUI_PathAnimat
 **Description**
 
 Sets the delay for a path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3853,7 +3585,7 @@ Sets the delay for a path animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetDelay()
 
@@ -3864,8 +3596,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDelay(OH_ArkUI_PathAnimat
 **Description**
 
 Obtains the delay of a path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3880,7 +3610,7 @@ Obtains the delay of a path animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetCurve()
 
@@ -3892,8 +3622,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetCurve(OH_ArkUI_PathAnimat
 
 Sets the animation curve for a path animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -3901,13 +3629,13 @@ Sets the animation curve for a path animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PathAnimationHandle animation | [in] Indicates the path animation handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] Indicates the animation curve that controls the rate of motion along the path. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings. The actual effective animation curve is determined by priority: if the curve is set via this API, that value is used; otherwise, the curve set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] Indicates the animation curve that controls the rate of motion along the path. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings. The actual effective animation curve is determined by priority: if the curve is set via this API, that value is used; otherwise, the curve set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetCurve()
 
@@ -3917,9 +3645,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetCurve(OH_ArkUI_PathAnimat
 
 **Description**
 
-Obtains the animation curve of a path animation.<br> This API returns only the curve explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set on this animation, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. The actual effective animation curve used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PathAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setcurve), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the animation curve of a path animation.<br> This API returns only the curve explicitly set on this animation; the value inherited from the animation group or the default is resolved at runtime and is not stored on this object. If the curve has not been set on this animation, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. The actual effective animation curve used at runtime is determined by priority: if set via [OH_ArkUI_NativeModule_PathAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setcurve), that value is used; otherwise, the group's curve via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used.
 
 **Since**: 26.0.1
 
@@ -3928,13 +3654,13 @@ Obtains the animation curve of a path animation.<br> This API returns only the c
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PathAnimationHandle animation | [in] Indicates the path animation handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the curve has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the curve has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetTempo()
 
@@ -3945,8 +3671,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetTempo(OH_ArkUI_PathAnimat
 **Description**
 
 Sets the tempo for a path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3961,7 +3685,7 @@ Sets the tempo for a path animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetTempo()
 
@@ -3972,8 +3696,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetTempo(OH_ArkUI_PathAnimat
 **Description**
 
 Obtains the tempo of a path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -3988,7 +3710,7 @@ Obtains the tempo of a path animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetAutoReverse()
 
@@ -3999,8 +3721,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetAutoReverse(OH_ArkUI_Path
 **Description**
 
 Sets whether to auto-reverse a path animation.<br> When auto-reverse is enabled, the animation plays forward and then backward alternately across iterations. The default value is <b>false</b>.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4015,7 +3735,7 @@ Sets whether to auto-reverse a path animation.<br> When auto-reverse is enabled,
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetAutoReverse()
 
@@ -4026,8 +3746,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetAutoReverse(OH_ArkUI_Path
 **Description**
 
 Obtains whether auto-reverse is enabled for a path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4042,7 +3760,7 @@ Obtains whether auto-reverse is enabled for a path animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetIterations()
 
@@ -4054,8 +3772,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetIterations(OH_ArkUI_PathA
 
 Sets the number of iterations for a path animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4063,13 +3779,13 @@ Sets the number of iterations for a path animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PathAnimationHandle animation | [in] Indicates the path animation handle. |
-| int32_t iterations | [in] Indicates the number of iterations. The value must be -1 or greater than or equal to 1; a value of <b>0</b> returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode). The value <b>-1</b> indicates unlimited iterations. The default value is <b>1</b>. |
+| int32_t iterations | [in] Indicates the number of iterations. The value must be -1 or greater than or equal to 1; a value of <b>0</b> returns ARKUI_ERROR_CODE_PARAM_INVALID. The value <b>-1</b> indicates unlimited iterations. The default value is <b>1</b>. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetIterations()
 
@@ -4080,8 +3796,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetIterations(OH_ArkUI_PathA
 **Description**
 
 Obtains the number of iterations of a path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4096,7 +3810,7 @@ Obtains the number of iterations of a path animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetAutoRotation()
 
@@ -4107,8 +3821,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetAutoRotation(OH_ArkUI_Pat
 **Description**
 
 Sets whether the component auto-rotates to align with the path tangent during a path animation.<br> When auto-rotation is enabled, the component rotates so that its heading direction aligns with the tangent of the path at the current position. The default value is <b>false</b>.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4123,7 +3835,7 @@ Sets whether the component auto-rotates to align with the path tangent during a 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetAutoRotation()
 
@@ -4134,8 +3846,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetAutoRotation(OH_ArkUI_Pat
 **Description**
 
 Obtains whether auto-rotation is enabled for a path animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4150,7 +3860,7 @@ Obtains whether auto-rotation is enabled for a path animation.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetTargetNode()
 
@@ -4162,8 +3872,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetTargetNode(OH_ArkUI_PathA
 
 Sets the target render node for a path animation.<br> The target node is the render node animated by this path animation. If <b>NULL</b> (the default), the animation inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). A non-NULL target must belong to the same UIContext that the group is registered on; the check is performed when the group is registered by [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4171,13 +3879,13 @@ Sets the target render node for a path animation.<br> The target node is the ren
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PathAnimationHandle animation | [in] Indicates the path animation handle. |
-| ArkUI_RenderNodeHandle targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetTargetNode()
 
@@ -4189,8 +3897,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetTargetNode(OH_ArkUI_PathA
 
 Obtains the target render node of a path animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4198,13 +3904,13 @@ Obtains the target render node of a path animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PathAnimationHandle animation | [in] Indicates the path animation handle. |
-| ArkUI_RenderNodeHandle *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_Create()
 
@@ -4216,15 +3922,15 @@ OH_ArkUI_AnimationGroupHandle OH_ArkUI_NativeModule_AnimationGroup_Create(void)
 
 Creates an animation group.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
+
+**Resource release**: native_animate/OH_ArkUI_NativeModule_AnimationGroup_Destroy {return}
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_ArkUI_AnimationGroupHandle | Returns the handle to the animation group. The caller owns the returned          handle and must release it with [OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy). |
+| OH_ArkUI_AnimationGroupHandle | Returns the handle to the animation group. The caller owns the returned handle and must release it with [OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy). |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_Destroy()
 
@@ -4235,8 +3941,6 @@ void OH_ArkUI_NativeModule_AnimationGroup_Destroy(OH_ArkUI_AnimationGroupHandle 
 **Description**
 
 Destroys the frontend handle of an animation group.<br> This releases the frontend handle only. The backend (runtime) objects of a group that has been registered via [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup) are released separately — automatically when the finish callback is invoked, or via [OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup).<br> The child animations added to the group are not automatically destroyed. Call OH_ArkUI_NativeModule_PropertyAnimation_Destroy, OH_ArkUI_NativeModule_KeyframeAnimation_Destroy or OH_ArkUI_NativeModule_PathAnimation_Destroy separately.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4256,8 +3960,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetDuration(OH_ArkUI_Animat
 
 Sets the duration for an animation group.<br> The group's duration serves as the default duration for child animations that do not set their own duration via [OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration), [OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration), or [OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4271,7 +3973,7 @@ Sets the duration for an animation group.<br> The group's duration serves as the
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetDuration()
 
@@ -4281,9 +3983,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDuration(OH_ArkUI_Animat
 
 **Description**
 
-Obtains the duration of an animation group.<br> This API returns only the duration explicitly set on this animation group, and is not affected by the duration of child animations. If the duration has not been set on this group, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. At runtime, an unset group duration defaults to **1000** ms.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the duration of an animation group.<br> This API returns only the duration explicitly set on this animation group, and is not affected by the duration of child animations. If the duration has not been set on this group, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. At runtime, an unset group duration defaults to **1000** ms.
 
 **Since**: 26.0.1
 
@@ -4298,7 +3998,7 @@ Obtains the duration of an animation group.<br> This API returns only the durati
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the duration has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the duration has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetDelay()
 
@@ -4309,8 +4009,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetDelay(OH_ArkUI_Animation
 **Description**
 
 Sets the delay for an animation group.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4325,7 +4023,7 @@ Sets the delay for an animation group.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetDelay()
 
@@ -4336,8 +4034,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDelay(OH_ArkUI_Animation
 **Description**
 
 Obtains the delay of an animation group.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4352,7 +4048,7 @@ Obtains the delay of an animation group.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetCurve()
 
@@ -4364,8 +4060,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetCurve(OH_ArkUI_Animation
 
 Sets the animation curve for an animation group.<br> The group's curve serves as the default curve for child animations that do not set their own curve via [OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setcurve), [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurve), or [OH_ArkUI_NativeModule_PathAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setcurve). The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4373,13 +4067,13 @@ Sets the animation curve for an animation group.<br> The group's curve serves as
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] Indicates the animation curve. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] Indicates the animation curve. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetCurve()
 
@@ -4389,9 +4083,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetCurve(OH_ArkUI_Animation
 
 **Description**
 
-Obtains the animation curve of an animation group.<br> This API returns only the curve explicitly set on this animation group, and is not affected by the curve of child animations. If the curve has not been set on this group, [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. At runtime, an unset group curve defaults to [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the animation curve of an animation group.<br> This API returns only the curve explicitly set on this animation group, and is not affected by the curve of child animations. If the curve has not been set on this group, ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND is returned. At runtime, an unset group curve defaults to [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve).
 
 **Since**: 26.0.1
 
@@ -4400,13 +4092,13 @@ Obtains the animation curve of an animation group.<br> This API returns only the
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the curve has not been set.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND if the curve has not been set.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetTempo()
 
@@ -4417,8 +4109,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetTempo(OH_ArkUI_Animation
 **Description**
 
 Sets the tempo for an animation group.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4433,7 +4123,7 @@ Sets the tempo for an animation group.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetTempo()
 
@@ -4444,8 +4134,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetTempo(OH_ArkUI_Animation
 **Description**
 
 Obtains the tempo of an animation group.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4460,7 +4148,7 @@ Obtains the tempo of an animation group.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetAutoReverse()
 
@@ -4471,8 +4159,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetAutoReverse(OH_ArkUI_Ani
 **Description**
 
 Sets whether to auto-reverse an animation group.<br> When auto-reverse is enabled, the animation group plays forward and then backward alternately across iterations. The default value is <b>false</b>.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4487,7 +4173,7 @@ Sets whether to auto-reverse an animation group.<br> When auto-reverse is enable
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetAutoReverse()
 
@@ -4498,8 +4184,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetAutoReverse(OH_ArkUI_Ani
 **Description**
 
 Obtains whether auto-reverse is enabled for an animation group.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4514,7 +4198,7 @@ Obtains whether auto-reverse is enabled for an animation group.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetIterations()
 
@@ -4526,8 +4210,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetIterations(OH_ArkUI_Anim
 
 Sets the number of iterations for an animation group.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4535,13 +4217,13 @@ Sets the number of iterations for an animation group.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| int32_t iterations | [in] Indicates the number of iterations. The value must be -1 or greater than or equal to 1; a value of <b>0</b> returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode). The value <b>-1</b> indicates unlimited iterations. The default value is <b>1</b>. |
+| int32_t iterations | [in] Indicates the number of iterations. The value must be -1 or greater than or equal to 1; a value of <b>0</b> returns ARKUI_ERROR_CODE_PARAM_INVALID. The value <b>-1</b> indicates unlimited iterations. The default value is <b>1</b>. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetIterations()
 
@@ -4552,8 +4234,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetIterations(OH_ArkUI_Anim
 **Description**
 
 Obtains the number of iterations of an animation group.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4568,7 +4248,7 @@ Obtains the number of iterations of an animation group.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetExpectedFrameRateRange()
 
@@ -4579,8 +4259,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetExpectedFrameRateRange(O
 **Description**
 
 Sets the expected frame rate range for an animation group.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4595,7 +4273,7 @@ Sets the expected frame rate range for an animation group.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetExpectedFrameRateRange()
 
@@ -4607,8 +4285,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetExpectedFrameRateRange(O
 
 Obtains the expected frame rate range of an animation group.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4616,13 +4292,13 @@ Obtains the expected frame rate range of an animation group.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md) *frameRate | [out] Indicates the pointer used to receive the expected frame rate range. The values of the [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md) object are written into the memory pointed to by this pointer. <br>This pointer must not be **NULL**. If **frameRate** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md) *frameRate | [out] Indicates the pointer used to receive the expected frame rate range. The values of the [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md) object are written into the memory pointed to by this pointer. <br>This pointer must not be **NULL**. If **frameRate** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback()
 
@@ -4634,8 +4310,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback(OH
 
 Registers a callback to be invoked when the animation group playback is complete.<br> An animation group has one finish callback. Registering another callback replaces the previous callback and userData pair. Registering the same callback and userData pair again succeeds without creating an additional registration.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4643,14 +4317,14 @@ Registers a callback to be invoked when the animation group playback is complete
 | Parameter | Description |
 | -- | -- |
 | H_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| void \*userData | [in] Caller-owned data passed unchanged to the callback. It may be <b>NULL</b>, must remain valid until the callback returns, and is never freed by the library. |
-| void (\*callback)(void \*userData) | [in] Non-NULL finish callback invoked once and serially on the UI main thread. |
+| void *userData | [in] Caller-owned data passed unchanged to the callback. It may be <b>NULL</b>, must remain valid until the callback returns, and is never freed by the library. |
+| void (*callback)(void *userData) | [in] Non-NULL finish callback invoked once and serially on the UI main thread. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode()
 
@@ -4662,8 +4336,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode(OH_ArkUI_Anim
 
 Sets the default target render node for an animation group.<br> The default target is the render node animated by child animations that do not set their own target via [OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_settargetnode), [OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_settargetnode), or [OH_ArkUI_NativeModule_PathAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_settargetnode). Every child must resolve to a non-NULL target (its own, or this group default) when the group is registered by [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup); any resolved target must belong to the same UIContext that the group is registered on. The default value is <b>NULL</b>.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4671,13 +4343,13 @@ Sets the default target render node for an animation group.<br> The default targ
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| ArkUI_RenderNodeHandle targetNode | [in] Indicates the default render node to animate. <b>NULL</b> means no group-level default. The default value is <b>NULL</b>. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) targetNode | [in] Indicates the default render node to animate. <b>NULL</b> means no group-level default. The default value is <b>NULL</b>. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetTargetNode()
 
@@ -4689,8 +4361,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetTargetNode(OH_ArkUI_Anim
 
 Obtains the default target render node of an animation group.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -4698,13 +4368,13 @@ Obtains the default target render node of an animation group.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| ArkUI_RenderNodeHandle *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means no group-level default is set. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means no group-level default is set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation()
 
@@ -4715,8 +4385,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation(OH_Ark
 **Description**
 
 Adds a property animation to an animation group.<br> The target node of the animation is determined by [OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_settargetnode); if not set, the animation inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). Every child must resolve to a non-NULL target when the group is registered.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4731,7 +4399,7 @@ Adds a property animation to an animation group.<br> The target node of the anim
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li><br>        <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li><br>        <li>[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameters of the              {@link OH_ArkUI_PropertyAnimationHandle} are invalid.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID if the parameters of the OH_ArkUI_PropertyAnimationHandle are invalid.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation()
 
@@ -4742,8 +4410,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation(OH_Ark
 **Description**
 
 Adds a keyframe animation to an animation group.<br> The target node of the animation is determined by [OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_settargetnode); if not set, the animation inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). Every child must resolve to a non-NULL target when the group is registered.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4758,7 +4424,7 @@ Adds a keyframe animation to an animation group.<br> The target node of the anim
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li><br>        <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li><br>        <li>[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameters of the              {@link OH_ArkUI_KeyframeAnimationHandle} are invalid.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID if the parameters of the OH_ArkUI_KeyframeAnimationHandle are invalid.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation()
 
@@ -4769,8 +4435,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation(OH_ArkUI_A
 **Description**
 
 Adds a path animation to an animation group.<br> The target node of the animation is determined by [OH_ArkUI_NativeModule_PathAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_settargetnode); if not set, the animation inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). Every child must resolve to a non-NULL target when the group is registered.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4785,7 +4449,7 @@ Adds a path animation to an animation group.<br> The target node of the animatio
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li><br>        <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li><br>        <li>[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameters of the              {@link OH_ArkUI_PathAnimationHandle} are invalid.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID if the parameters of the OH_ArkUI_PathAnimationHandle are invalid.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_AddAnimationGroup()
 
@@ -4795,9 +4459,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle cont
 
 **Description**
 
-Registers an animation group on a UIContext with a specified key and starts playback.<br> The UIContext owns the group by <b>key</b>: once registered, the UIContext holds the group's backend (runtime) objects, and the caller may destroy the frontend group handle (and child animation handles) after registration since the backend runs independently by (UIContext, key). Keys are scoped per UIContext (instance): the same key in different UIContexts does not collide. Within one UIContext, if a group is already registered with the same key, the system removes the previous group first (releasing its backend objects) and then registers the new group. The group is later identified and managed by the same (UIContext, key) pair.<br> Each child animation added via [OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpropertyanimation), [OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addkeyframeanimation), or [OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpathanimation) animates the target node set by its own <b>SetTargetNode</b> API; if that target is not set (or is <b>NULL</b>), it inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). At registration, every child must resolve to a non-NULL target node (its own, or the group default), and every resolved target node must belong to the same UIContext as <b>context</b>; otherwise, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned.<br> Playback control and lifecycle APIs ([OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup), [OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate), [OH_ArkUI_NativeModule_HasAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_hasanimationgroup), [OH_ArkUI_NativeModule_PauseAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_pauseanimationgroup), [OH_ArkUI_NativeModule_ResumeAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_resumeanimationgroup), [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup) are all keyed by the (UIContext, key) pair.<br> The finish callback (see [OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)) is invoked exactly once after natural completion, [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup), or destruction of a target node. If [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup) returns an error, the finish callback is not invoked. After the callback returns, the system automatically removes the group from the UIContext and releases the backend (runtime) objects of the group and its child animations; the frontend handles (the group and its child animations) must still be destroyed by the caller via [OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy), [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy), [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy), or [OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Registers an animation group on a UIContext with a specified key and starts playback.<br> The UIContext owns the group by <b>key</b>: once registered, the UIContext holds the group's backend (runtime) objects, and the caller may destroy the frontend group handle (and child animation handles) after registration since the backend runs independently by (UIContext, key). Keys are scoped per UIContext (instance): the same key in different UIContexts does not collide. Within one UIContext, if a group is already registered with the same key, the system removes the previous group first (releasing its backend objects) and then registers the new group. The group is later identified and managed by the same (UIContext, key) pair.<br> Each child animation added via [OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpropertyanimation), [OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addkeyframeanimation), or [OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpathanimation) animates the target node set by its own <b>SetTargetNode</b> API; if that target is not set (or is <b>NULL</b>), it inherits the group's default target set by [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode). At registration, every child must resolve to a non-NULL target node (its own, or the group default), and every resolved target node must belong to the same UIContext as <b>context</b>; otherwise, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned.<br> Playback control and lifecycle APIs ([OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup), [OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate), [OH_ArkUI_NativeModule_HasAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_hasanimationgroup), [OH_ArkUI_NativeModule_PauseAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_pauseanimationgroup), [OH_ArkUI_NativeModule_ResumeAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_resumeanimationgroup), [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup) are all keyed by the (UIContext, key) pair.<br> The finish callback (see [OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)) is invoked exactly once after natural completion, [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup), or destruction of a target node. If [OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup) returns an error, the finish callback is not invoked. After the callback returns, the system automatically removes the group from the UIContext and releases the backend (runtime) objects of the group and its child animations; the frontend handles (the group and its child animations) must still be destroyed by the caller via [OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy), [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy), [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy), or [OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy).
 
 **Since**: 26.0.1
 
@@ -4805,7 +4467,7 @@ Registers an animation group on a UIContext with a specified key and starts play
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_ContextHandle context | [in] Indicates the [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) (UIContext) on which the animation group is registered and played. |
+| ArkUI_ContextHandle context | [in] Indicates the [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) (UIContext) on which the animation group is registered and played. |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
 | const char *key | [in] Indicates the key used to identify the animation group on the UIContext. |
 
@@ -4813,7 +4475,7 @@ Registers an animation group on a UIContext with a specified key and starts play
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs, or a resolved target node              does not belong to the same UIContext as <b>context</b>.</li>          <li>[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a child animation has no resolvable target node.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a re-entrant call is detected on              the same thread.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs, or a resolved target node does not belong to the same UIContext as <b>context</b>.</li> <li>ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID if a child animation has no resolvable target node.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL if a re-entrant call is detected on the same thread.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_RemoveAnimationGroup()
 
@@ -4824,8 +4486,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_RemoveAnimationGroup(ArkUI_ContextHandle c
 **Description**
 
 Removes the animation group identified by the specified key from the UIContext.<br> Stops the group (if still running) and releases the backend (runtime) objects of the group and its child animations. The animated target nodes are restored to their state at the start of the animation. The frontend handles (the group and its child animations) are not freed by this call and must be destroyed by the caller via [OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy), [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy), [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy), or [OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy). Use this only for a group that has not stopped on its own (for example, a paused group); once the finish callback is invoked, the group is removed automatically.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4840,7 +4500,7 @@ Removes the animation group identified by the specified key from the UIContext.<
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the animation group identified by              <b>key</b> is not found on the UIContext.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a re-entrant call is detected on              the same thread.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND if the animation group identified by <b>key</b> is not found on the UIContext.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL if a re-entrant call is detected on the same thread.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_GetAnimationGroupState()
 
@@ -4851,8 +4511,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetAnimationGroupState(ArkUI_ContextHandle
 **Description**
 
 Obtains the playback state of an animation group identified by the specified key on the UIContext.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4868,7 +4526,7 @@ Obtains the playback state of an animation group identified by the specified key
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the animation group identified by              <b>key</b> is not found on the UIContext.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a re-entrant call is detected on              the same thread.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND if the animation group identified by <b>key</b> is not found on the UIContext.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL if a re-entrant call is detected on the same thread.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_HasAnimationGroup()
 
@@ -4879,8 +4537,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_HasAnimationGroup(ArkUI_ContextHandle cont
 **Description**
 
 Checks whether an animation group with the specified key exists on the UIContext.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -4896,7 +4552,7 @@ Checks whether an animation group with the specified key exists on the UIContext
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a re-entrant call is detected on              the same thread.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL if a re-entrant call is detected on the same thread.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_PauseAnimationGroup()
 
@@ -4906,9 +4562,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PauseAnimationGroup(ArkUI_ContextHandle co
 
 **Description**
 
-Pauses the animation group identified by the specified key on the UIContext.<br> The animation group must be in the RUNNING state; otherwise, [ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Pauses the animation group identified by the specified key on the UIContext.<br> The animation group must be in the RUNNING state; otherwise, ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE is returned.
 
 **Since**: 26.0.1
 
@@ -4923,7 +4577,7 @@ Pauses the animation group identified by the specified key on the UIContext.<br>
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the animation group identified by              <b>key</b> is not found on the UIContext.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the animation group is not in the              RUNNING state.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a re-entrant call is detected on              the same thread.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND if the animation group identified by <b>key</b> is not found on the UIContext.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE if the animation group is not in the RUNNING state.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL if a re-entrant call is detected on the same thread.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_ResumeAnimationGroup()
 
@@ -4933,9 +4587,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ResumeAnimationGroup(ArkUI_ContextHandle c
 
 **Description**
 
-Resumes the animation group identified by the specified key on the UIContext.<br> The animation group must be in the PAUSED state; otherwise, [ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Resumes the animation group identified by the specified key on the UIContext.<br> The animation group must be in the PAUSED state; otherwise, ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE is returned.
 
 **Since**: 26.0.1
 
@@ -4950,7 +4602,7 @@ Resumes the animation group identified by the specified key on the UIContext.<br
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the animation group identified by              <b>key</b> is not found on the UIContext.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the animation group is not in the              PAUSED state.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a re-entrant call is detected on              the same thread.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND if the animation group identified by <b>key</b> is not found on the UIContext.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE if the animation group is not in the PAUSED state.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL if a re-entrant call is detected on the same thread.</li> </ul> |
 
 ### OH_ArkUI_NativeModule_FinishAnimationGroup()
 
@@ -4960,9 +4612,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_FinishAnimationGroup(ArkUI_ContextHandle c
 
 **Description**
 
-Finishes the animation group identified by the specified key on the UIContext.<br> The animation group is finished according to the specified finish mode: jump to the end state, jump to the start state, or stay at the current value. The animation group must be in the RUNNING or PAUSED state; otherwise, [ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Finishes the animation group identified by the specified key on the UIContext.<br> The animation group is finished according to the specified finish mode: jump to the end state, jump to the start state, or stay at the current value. The animation group must be in the RUNNING or PAUSED state; otherwise, ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE is returned.
 
 **Since**: 26.0.1
 
@@ -4978,6 +4628,6 @@ Finishes the animation group identified by the specified key on the UIContext.<b
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | <ul>          <li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>          <li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs,              for example when <b>context</b> or <b>key</b> is invalid, or <b>mode</b> is not a valid              value of [OH_ArkUI_AnimationFinishMode](capi-native-type-visual-h.md#oh_arkui_animationfinishmode).</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the animation group identified by              <b>key</b> is not found on the UIContext.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the animation group is not in the              RUNNING or PAUSED state.</li>          <li>[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a re-entrant call is detected on              the same thread.</li>          </ul> |
+| ArkUI_ErrorCode | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs, for example when <b>context</b> or <b>key</b> is invalid, or <b>mode</b> is not a valid value of [OH_ArkUI_AnimationFinishMode](capi-native-type-visual-h.md#oh_arkui_animationfinishmode).</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND if the animation group identified by <b>key</b> is not found on the UIContext.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE if the animation group is not in the RUNNING or PAUSED state.</li> <li>ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL if a re-entrant call is detected on the same thread.</li> </ul> |
 
 

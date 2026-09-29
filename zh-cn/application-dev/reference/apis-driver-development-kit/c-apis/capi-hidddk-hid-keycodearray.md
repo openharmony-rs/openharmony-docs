@@ -1,7 +1,7 @@
 # Hid_KeyCodeArray
 
 ```c
-typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
+struct Hid_KeyCodeArray {...}
 ```
 
 ## 概述
@@ -22,7 +22,7 @@ typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
 
 | 名称 | 描述 |
 | -- | -- |
-| [Hid_KeyCode](capi-hid-ddk-types-h.md#hid_keycode) *hidKeyCode | 键值属性编码数组的指针，指向调用方预先分配的数组（不允许为空指针），数组大小不小于length。 |
+| Hid_KeyCode *hidKeyCode | 键值属性编码数组的指针，指向调用方预先分配的数组（不允许为空指针），数组大小不小于length。 |
 | uint16_t length | 数组的有效长度，不超过hidKeyCode数组的实际长度。 |
 
 

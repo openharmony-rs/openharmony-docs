@@ -1,7 +1,7 @@
 # OH_Drawing_LineMetrics
 
 ```c
-typedef struct OH_Drawing_LineMetrics {...} OH_Drawing_LineMetrics
+struct OH_Drawing_LineMetrics {...}
 ```
 
 ## Overview
@@ -32,6 +32,6 @@ This struct describes the measurement information about a line of text.
 | double y | Height from the top edge of the character to the top of the container. The first line is 0, and the second line is the height of the first line. |
 | size_t startIndex | Index of the first character in the line. |
 | size_t endIndex | Index of the last character in the line. |
-| OH_Drawing_Font_Metrics firstCharMetrics | Measurement information of the first character. |
+| [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md) firstCharMetrics | Measurement information of the first character. |
 
 

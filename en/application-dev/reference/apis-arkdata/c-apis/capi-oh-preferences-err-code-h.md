@@ -6,8 +6,6 @@ Defines the error codes used in the **Preferences** module.
 
 **Library**: libohpreferences.so
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Related module**: [Preferences](capi-preferences.md)
@@ -31,8 +29,6 @@ enum OH_Preferences_ErrCode
 **Description**
 
 Enumerates the error codes.
-
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 

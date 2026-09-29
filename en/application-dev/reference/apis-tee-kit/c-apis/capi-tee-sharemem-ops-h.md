@@ -6,8 +6,6 @@ Provides  APIs for developers to apply for shared memory.
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -36,22 +34,20 @@ void *tee_alloc_sharemem_aux(const struct tee_uuid *uuid, uint32_t size)
 
 Alloc shared memory in TEE.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const struct tee_uuid *uuid | Indicates the UUID of TA. |
+| [const struct tee_uuid](capi-teetrusted-tee-uuid.md) *uuid | Indicates the UUID of TA. |
 | uint32_t size | Indicates the size of the requested shared memory. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| void * | Returns a pointer to the newly allocated space if the operation is successful.          Returns a <b>NULL</b> pointer if the allocation fails. |
+| void * | Returns a pointer to the newly allocated space if the operation is successful. Returns a <b>NULL</b> pointer if the allocation fails. |
 
 ### tee_alloc_coherent_sharemem_aux()
 
@@ -63,22 +59,20 @@ void *tee_alloc_coherent_sharemem_aux(const struct tee_uuid *uuid, uint32_t size
 
 Alloc continuous shared memory in TEE.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const struct tee_uuid *uuid | Indicates the UUID of TA. |
+| [const struct tee_uuid](capi-teetrusted-tee-uuid.md) *uuid | Indicates the UUID of TA. |
 | uint32_t size | Indicates the size of the requested shared memory. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| void * | Returns a pointer to the newly allocated space if the operation is successful.          Returns a <b>NULL</b> pointer if the allocation fails. |
+| void * | Returns a pointer to the newly allocated space if the operation is successful. Returns a <b>NULL</b> pointer if the allocation fails. |
 
 ### tee_free_sharemem()
 
@@ -89,8 +83,6 @@ uint32_t tee_free_sharemem(void *addr, uint32_t size)
 **Description**
 
 Free the shared memory in TEE.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -105,7 +97,7 @@ Free the shared memory in TEE.
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Returns <b>0</b> if the operation is successful.          Returns others if the operation is failed. |
+| uint32_t | Returns <b>0</b> if the operation is successful. Returns others if the operation is failed. |
 
 ### copy_from_sharemem()
 
@@ -116,8 +108,6 @@ int32_t copy_from_sharemem(uint32_t src_task, uint64_t src, uint32_t src_size, u
 **Description**
 
 Copy shared memory from source task.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -135,7 +125,7 @@ Copy shared memory from source task.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns <b>0</b> if the operation is successful.          Returns <b>-1</b> if the operation is failed. |
+| int32_t | Returns <b>0</b> if the operation is successful. Returns <b>-1</b> if the operation is failed. |
 
 ### copy_to_sharemem()
 
@@ -146,8 +136,6 @@ int32_t copy_to_sharemem(uintptr_t src, uint32_t src_size, uint32_t dst_task, ui
 **Description**
 
 Copy shared memory to destination task.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -165,6 +153,6 @@ Copy shared memory to destination task.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns <b>0</b> if the operation is successful.          Returns <b>-1</b> if the operation is failed. |
+| int32_t | Returns <b>0</b> if the operation is successful. Returns <b>-1</b> if the operation is failed. |
 
 

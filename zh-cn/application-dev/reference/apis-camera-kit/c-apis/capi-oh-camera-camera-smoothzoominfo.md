@@ -1,7 +1,7 @@
 # Camera_SmoothZoomInfo
 
 ```c
-typedef struct Camera_SmoothZoomInfo {...} Camera_SmoothZoomInfo
+struct Camera_SmoothZoomInfo {...}
 ```
 
 ## 概述

@@ -1,12 +1,12 @@
 # OH_ImageBufferData
 
 ```c
-typedef struct OH_ImageBufferData {...} OH_ImageBufferData
+struct OH_ImageBufferData {...}
 ```
 
 ## Overview
 
-{@link OH_ImageBufferData} is the image data struct encapsulated at the native layer. To obtain an {@link OH_ImageBufferData}<br>object, call {@link OH_ImageNative_GetBufferData}.<br> The struct stores the shallow copy of the original image data. Once the original data is released, no read or write operations should be performed on the pointers within this struct; otherwise, undefined behavior will occur.
+[OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) is the image data struct encapsulated at the native layer. To obtain an [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) object, call [OH_ImageNative_GetBufferData](capi-image-native-h.md#oh_imagenative_getbufferdata).<br> The struct stores the shallow copy of the original image data. Once the original data is released, no read or write operations should be performed on the pointers within this struct; otherwise, undefined behavior will occur.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

@@ -1,12 +1,12 @@
 # Image_String
 
 ```c
-typedef struct Image_String Image_MimeType
+typedef struct Image_String Image_String
 ```
 
 ## Overview
 
-Defines the image encode format.
+Defines the property string (in key-value format) of the image source.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

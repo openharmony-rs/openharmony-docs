@@ -6,7 +6,7 @@ typedef struct ArkUI_ShowCounterConfig ArkUI_ShowCounterConfig
 
 ## Overview
 
-Defines the textField's counter configuration.
+Defines the counter configuration of a text input box for managing character counting. It applies to scenarios where character count limits and real-time prompts are required for user input, helping users track input progress and prevent exceeding the character limit.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

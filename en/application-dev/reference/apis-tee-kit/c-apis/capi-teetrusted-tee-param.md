@@ -22,15 +22,15 @@ Enumerates the TEE parameter.
 
 | Name | Description |
 | -- | -- |
-| struct | Describes a memory reference.<br>**Since**: 20 |
+| [](capi-teetrusted---tee-objecthandle.md)s[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md)r[](capi-teetrusted---tee-objecthandle.md)u[](capi-teetrusted---tee-objecthandle.md)c[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md) | Describes a memory reference.<br>**Since**: 20 |
 | void *buffer | Pointer to the memory buffer. |
 | size_t size;
  } memref | Size of the memory buffer. |
-| struct | Describes value parameters.<br>**Since**: 20 |
+| [](capi-teetrusted---tee-objecthandle.md)s[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md)r[](capi-teetrusted---tee-objecthandle.md)u[](capi-teetrusted---tee-objecthandle.md)c[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md) | Describes value parameters.<br>**Since**: 20 |
 | unsigned int a | First value. |
 | unsigned int b;
  } value | Second value. |
-| struct | Describes shared memory reference.<br>**Since**: 20 |
+| [](capi-teetrusted---tee-objecthandle.md)s[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md)r[](capi-teetrusted---tee-objecthandle.md)u[](capi-teetrusted---tee-objecthandle.md)c[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md) | Describes shared memory reference.<br>**Since**: 20 |
 | void *buffer | Pointer to the shared memory buffer. |
 | size_t size;
  } sharedmem | Size of the shared memory buffer. |

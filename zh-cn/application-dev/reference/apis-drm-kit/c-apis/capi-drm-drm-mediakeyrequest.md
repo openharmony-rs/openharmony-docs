@@ -1,7 +1,7 @@
 # DRM_MediaKeyRequest
 
 ```c
-typedef struct DRM_MediaKeyRequest {...} DRM_MediaKeyRequest
+struct DRM_MediaKeyRequest {...}
 ```
 
 ## 概述

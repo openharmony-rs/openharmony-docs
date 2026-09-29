@@ -6,8 +6,6 @@ Declare audio stream related interfaces for input type.
 
 **Library**: libohaudio.so
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Related module**: [OHAudio](capi-ohaudio.md)
@@ -46,7 +44,7 @@ Declare audio stream related interfaces for input type.
 | [OH_AudioStream_Result OH_AudioCapturer_SetMuteHint(OH_AudioCapturer* capturer, bool mute)](#oh_audiocapturer_setmutehint) | - | Sets recording mute state to audio system. This method is used as a hint for power optimization, it does not mute the recording stream, only affects internal processing strategy. Audio system may disable some recording effects when application notifies its muted state to system. Mute hint state can only be set when current stream is in running state. |
 | [OH_AudioStream_Result OH_AudioCapturer_SetIndependentAudioSessionStrategy(OH_AudioCapturer* capturer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)](#oh_audiocapturer_setindependentaudiosessionstrategy) | - | Configure audio session strategy and behavior parameters to adjust the focus preemption policy. Each time you call this interface to set parameters, you need to call the interface [OH_AudioCapturer_Start](capi-native-audiocapturer-h.md#oh_audiocapturer_start) again for the settings to take effect. |
 | [typedef void (\*OH_AudioCapturer_SensitiveRecordPermitCallback)(OH_AudioCapturer* capturer, void* userData, bool isPermitted)](#oh_audiocapturer_sensitiverecordpermitcallback) | OH_AudioCapturer_SensitiveRecordPermitCallback | Callback used to receive when the sensitive warning message playback for cellular call recording is finished. The application must wait for the permitted result before starting cellular call recording. |
-| [OH_AudioStream_Result OH_AudioCapturer_SetNoiseReductionMode(OH_AudioCapturer* capturer, OH_AudioNoiseReductionMode noiseReductionMode)](#oh_audiocapturer_setnoisereductionmode) | - | Sets noise reduction mode for current audio capturer. The supported mode should be obtained by {@link #getSupportedNoiseReductionModes}. The actual effect may vary from different audio devices, and will be invalid when there are multiple direct streams running simultaneously. The mode can only be changed in created and stopped state. |
+| [OH_AudioStream_Result OH_AudioCapturer_SetNoiseReductionMode(OH_AudioCapturer* capturer, OH_AudioNoiseReductionMode noiseReductionMode)](#oh_audiocapturer_setnoisereductionmode) | - | Sets noise reduction mode for current audio capturer. The supported mode should be obtained by getSupportedNoiseReductionModes. The actual effect may vary from different audio devices, and will be invalid when there are multiple direct streams running simultaneously. The mode can only be changed in created and stopped state. |
 | [OH_AudioStream_Result OH_AudioCapturer_GetNoiseReductionMode(OH_AudioCapturer* capturer, OH_AudioNoiseReductionMode* noiseReductionMode)](#oh_audiocapturer_getnoisereductionmode) | - | Gets the noise reduction mode for current audio capturer. The mode will only consider the default and setted status, audio input device and stream concurrency will not be considered. |
 | [OH_AudioStream_Result OH_AudioCapturer_GetSupportedNoiseReductionModes(OH_AudioCapturer* capturer, OH_AudioNoiseReductionMode* noiseReductionModeArray, uint32_t inModeArraySize, uint32_t *outModeArraySize)](#oh_audiocapturer_getsupportednoisereductionmodes) | - | Gets all the supported noise reduction modes for current device platform. Currently the noise reduction effect is only supported when using [AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype), other supported usage may be extened later. The supported modes will only consider the audio format and device platform, audio input device and stream concurrency will not be considered. |
 
@@ -54,13 +52,13 @@ Declare audio stream related interfaces for input type.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, void* userData, void* audioData, int32_t audioDataSize) | Called when audio data is available to read. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnReadData.<br>**Since**: 20 |
-| void (*OH_AudioCapturer_OnDeviceChangeCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioDeviceDescriptorArray* deviceArray) | Called when the input device of an AudioCapturer instance changes. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnStreamEvent.<br>**Since**: 20 |
-| void (*OH_AudioCapturer_OnInterruptCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint) | Called when an interrupt event occurs in an AudioCapturer instance. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnInterruptEvent.<br>**Since**: 20 |
-| void (*OH_AudioCapturer_OnErrorCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_Result error) | Called when an error event occurs in an AudioCapturer instance. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnError.<br>**Since**: 20 |
-| void (*OH_AudioCapturer_OnFastStatusChange)( OH_AudioCapturer* capturer, void* userData, OH_AudioStream_FastStatus status ) | Callback function of fast status change event for audio capturer.<br>**Since**: 20 |
-| void (*OH_AudioCapturer_OnPlaybackCaptureStartCallback)( OH_AudioCapturer* capturer, void* userData, OH_AudioStream_PlaybackCaptureStartState state) | Callback function to get playback capture start result.<br>**Since**: 23 |
-| void (*OH_AudioCapturer_SensitiveRecordPermitCallback)( OH_AudioCapturer* capturer, void* userData, bool isPermitted) | Callback used to receive when the sensitive warning message playback for cellular call recording is finished. The application must wait for the permitted result before starting cellular call recording.<br>**Since**: 26.0.0 |
+| void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, void* userData, void* audioData, int32_t audioDataSize) | Called when audio data is available to read. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnReadData.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioCapturer_OnDeviceChangeCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioDeviceDescriptorArray* deviceArray) | Called when the input device of an AudioCapturer instance changes. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnStreamEvent.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioCapturer_OnInterruptCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint) | Called when an interrupt event occurs in an AudioCapturer instance. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnInterruptEvent.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioCapturer_OnErrorCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_Result error) | Called when an error event occurs in an AudioCapturer instance. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnError.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioCapturer_OnFastStatusChange)( OH_AudioCapturer* capturer, void* userData, OH_AudioStream_FastStatus status ) | Callback function of fast status change event for audio capturer.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioCapturer_OnPlaybackCaptureStartCallback)( OH_AudioCapturer* capturer, void* userData, OH_AudioStream_PlaybackCaptureStartState state) | Callback function to get playback capture start result.<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioCapturer_SensitiveRecordPermitCallback)( OH_AudioCapturer* capturer, void* userData, bool isPermitted) | Callback used to receive when the sensitive warning message playback for cellular call recording is finished. The application must wait for the permitted result before starting cellular call recording.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 
 ## Function description
 
@@ -72,8 +70,6 @@ OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Required permission**: ohos.permission.MICROPHONE
 
 **Since**: 10
@@ -82,13 +78,13 @@ OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioCapturer_Start()
 
@@ -98,8 +94,6 @@ OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Required permission**: ohos.permission.MICROPHONE
 
 **Since**: 10
@@ -108,13 +102,13 @@ OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer)
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioCapturer_Pause()
 
@@ -124,8 +118,6 @@ OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Required permission**: ohos.permission.MICROPHONE
 
 **Since**: 10
@@ -134,13 +126,13 @@ OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioCapturer_Stop()
 
@@ -150,8 +142,6 @@ OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Required permission**: ohos.permission.MICROPHONE
 
 **Since**: 10
@@ -160,13 +150,13 @@ OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioCapturer_Flush()
 
@@ -176,21 +166,19 @@ OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioCapturer_GetCurrentState()
 
@@ -200,22 +188,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetCurrentState(OH_AudioCapturer* capture
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
-| OH_AudioStream_State* state | Pointer to a variable that will be set for the state value. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioStream_State](capi-native-audiostream-base-h.md#oh_audiostream_state)* state | Pointer to a variable that will be set for the state value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_GetLatencyMode()
 
@@ -225,22 +211,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetLatencyMode(OH_AudioCapturer* capturer
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
-| OH_AudioStream_LatencyMode* latencyMode | Pointer to a variable that will be set for the latency mode. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode)* latencyMode | Pointer to a variable that will be set for the latency mode. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_GetStreamId()
 
@@ -250,22 +234,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetStreamId(OH_AudioCapturer* capturer, u
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 | uint32_t* streamId | Pointer to a variable that will be set for the stream id. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_GetSamplingRate()
 
@@ -275,22 +257,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetSamplingRate(OH_AudioCapturer* capture
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 | int32_t* rate | Pointer to a variable that will be set for the sampling rate. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_GetChannelCount()
 
@@ -300,22 +280,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetChannelCount(OH_AudioCapturer* capture
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 | int32_t* channelCount | Pointer to a variable that will be set for the channel count. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_GetSampleFormat()
 
@@ -325,22 +303,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetSampleFormat(OH_AudioCapturer* capture
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
-| OH_AudioStream_SampleFormat* sampleFormat | Pointer to a variable that will be set for the sample format. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioStream_SampleFormat](capi-native-audiostream-base-h.md#oh_audiostream_sampleformat)* sampleFormat | Pointer to a variable that will be set for the sample format. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_GetEncodingType()
 
@@ -350,22 +326,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetEncodingType(OH_AudioCapturer* capture
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
-| OH_AudioStream_EncodingType* encodingType | Pointer to a variable that will be set for the encoding type. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype)* encodingType | Pointer to a variable that will be set for the encoding type. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_GetCapturerInfo()
 
@@ -375,22 +349,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetCapturerInfo(OH_AudioCapturer* capture
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
-| OH_AudioStream_SourceType* sourceType | Pointer to a variable that will be set for the stream sourceType. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)* sourceType | Pointer to a variable that will be set for the stream sourceType. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_GetFrameSizeInCallback()
 
@@ -400,22 +372,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetFrameSizeInCallback(OH_AudioCapturer* 
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 | int32_t* frameSize | Pointer to a variable that will be set for the frame size. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioCapturer_GetTimestamp()
 
@@ -425,16 +395,14 @@ OH_AudioStream_Result OH_AudioCapturer_GetTimestamp(OH_AudioCapturer* capturer, 
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
-| clockid_t clockId | {@link #CLOCK_MONOTONIC} |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| clockid_t clockId | CLOCK_MONOTONIC |
 | int64_t* framePosition | Pointer to a variable to receive the position. |
 | int64_t* timestamp | Pointer to a variable to receive the timestamp, unit is nanosecond. |
 
@@ -442,7 +410,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetTimestamp(OH_AudioCapturer* capturer, 
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of capturer is nullptr;                                                  2.The param of clockId invalid.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of capturer is nullptr; 2.The param of clockId invalid. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioCapturer_GetFramesRead()
 
@@ -452,22 +420,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetFramesRead(OH_AudioCapturer* capturer,
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer() |
 | int64_t* frames | Pointer to a variable that will be set for the frame count number. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_GetOverflowCount()
 
@@ -479,22 +445,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetOverflowCount(OH_AudioCapturer* captur
 
 Gets the overflow count on this stream.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Capturer generated by OH_AudioStreamBuilder_GenerateCapturer() |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Capturer generated by OH_AudioStreamBuilder_GenerateCapturer() |
 | uint32_t* count | Pointer to a variable that will be set for the overflow count number. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. |
 
 ### OH_AudioCapturer_OnReadDataCallback()
 
@@ -506,17 +470,15 @@ typedef void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, 
 
 Called when audio data is available to read. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnReadData.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer\* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
-| void\* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetCapturerReadDataCallback. |
-| void\* audioData | Pointer to the available audio data. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
+| void* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetCapturerReadDataCallback. |
+| void* audioData | Pointer to the available audio data. |
 | int32_t audioDataSize | Size of the available audio data, unit is byte. |
 
 **Reference**:
@@ -534,17 +496,15 @@ typedef void (*OH_AudioCapturer_OnDeviceChangeCallback)(OH_AudioCapturer* captur
 
 Called when the input device of an AudioCapturer instance changes. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnStreamEvent.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer\* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
-| void\* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback. |
-| OH_AudioDeviceDescriptorArray\* deviceArray | Pointer to an array of the new input devices. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
+| void* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback. |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md)* deviceArray | Pointer to an array of the new input devices. |
 
 **Reference**:
 
@@ -561,18 +521,16 @@ typedef void (*OH_AudioCapturer_OnInterruptCallback)(OH_AudioCapturer* capturer,
 
 Called when an interrupt event occurs in an AudioCapturer instance. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnInterruptEvent.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer\* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
-| void\* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetCapturerInterruptCallback. |
-| OH_AudioInterrupt_ForceType type | Type of force that causes the interrupt event. |
-| OH_AudioInterrupt_Hint hint | Hint provided along with the interrupt event. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
+| void* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetCapturerInterruptCallback. |
+| [OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) type | Type of force that causes the interrupt event. |
+| [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) hint | Hint provided along with the interrupt event. |
 
 **Reference**:
 
@@ -589,17 +547,15 @@ typedef void (*OH_AudioCapturer_OnErrorCallback)(OH_AudioCapturer* capturer, voi
 
 Called when an error event occurs in an AudioCapturer instance. This function is similar to OH_AudioCapturer_Callbacks_Struct.OH_AudioCapturer_OnError.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer\* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
-| void\* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetCapturerErrorCallback. |
-| OH_AudioStream_Result error | Specific error information. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
+| void* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetCapturerErrorCallback. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | Specific error information. |
 
 **Reference**:
 
@@ -616,22 +572,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetFastStatus(OH_AudioCapturer* capturer,
 
 Gets audio capturer running status, check if it works in fast status.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer. |
-| OH_AudioStream_FastStatus* status | Pointer to a variable to receive the status. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer. |
+| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus)* status | Pointer to a variable to receive the status. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | @return      [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) if the execution is successful.      [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) the param of capturer is nullptr.      [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) function called in invalid state, only available before release state. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) if the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) the param of capturer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) function called in invalid state, only available before release state. |
 
 ### OH_AudioCapturer_OnFastStatusChange()
 
@@ -643,17 +597,15 @@ typedef void (*OH_AudioCapturer_OnFastStatusChange)(OH_AudioCapturer* capturer, 
 
 Callback function of fast status change event for audio capturer.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer\* capturer | Pointer to an audio capturer instance for which this callback occurs. |
-| void\* userData | Userdata which is passed by register. |
-| OH_AudioStream_FastStatus status | Current fast status. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Pointer to an audio capturer instance for which this callback occurs. |
+| void* userData | Userdata which is passed by register. |
+| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | Current fast status. |
 
 ### OH_AudioCapturer_OnPlaybackCaptureStartCallback()
 
@@ -665,17 +617,15 @@ typedef void (*OH_AudioCapturer_OnPlaybackCaptureStartCallback)(OH_AudioCapturer
 
 Callback function to get playback capture start result.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer\* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
-| void\* userData | Pointer to the user data passed when setting the callback via [OH_AudioCapturer_RequestPlaybackCaptureStart](capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart). |
-| OH_AudioStream_PlaybackCaptureStartState state | The final state to describe whether start request is successful. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Pointer to the AudioCapturer instance that triggers the callback. |
+| void* userData | Pointer to the user data passed when setting the callback via [OH_AudioCapturer_RequestPlaybackCaptureStart](capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart). |
+| [OH_AudioStream_PlaybackCaptureStartState](capi-native-audiostream-base-h.md#oh_audiostream_playbackcapturestartstate) state | The final state to describe whether start request is successful. |
 
 ### OH_AudioCapturer_RequestPlaybackCaptureStart()
 
@@ -685,15 +635,13 @@ OH_AudioStream_Result OH_AudioCapturer_RequestPlaybackCaptureStart(OH_AudioCaptu
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | reference created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer) |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | reference created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer) |
 | [OH_AudioCapturer_OnPlaybackCaptureStartCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onplaybackcapturestartcallback) callback | Callback function used to receive the final result of start request. |
 | void* userData | Pointer to an application data structure that will be passed to the callback functions. |
 
@@ -701,7 +649,7 @@ OH_AudioStream_Result OH_AudioCapturer_RequestPlaybackCaptureStart(OH_AudioCaptu
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:      [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.      [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr or callback is invalid.      [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Running and released are illegal states.      [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) System internal error, like audio service error. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr or callback is invalid. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Running and released are illegal states. [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) System internal error, like audio service error. |
 
 ### OH_AudioCapturer_SetMuteHint()
 
@@ -713,22 +661,20 @@ OH_AudioStream_Result OH_AudioCapturer_SetMuteHint(OH_AudioCapturer* capturer, b
 
 Sets recording mute state to audio system. This method is used as a hint for power optimization, it does not mute the recording stream, only affects internal processing strategy. Audio system may disable some recording effects when application notifies its muted state to system. Mute hint state can only be set when current stream is in running state.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer(). |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Reference created by OH_AudioStreamBuilder_GenerateCapturer(). |
 | bool mute | use true if application recording stream muted by application itself. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Operation not permitted at current state, stream is not running. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Operation not permitted at current state, stream is not running. |
 
 ### OH_AudioCapturer_SetIndependentAudioSessionStrategy()
 
@@ -740,23 +686,21 @@ OH_AudioStream_Result OH_AudioCapturer_SetIndependentAudioSessionStrategy(OH_Aud
 
 Configure audio session strategy and behavior parameters to adjust the focus preemption policy. Each time you call this interface to set parameters, you need to call the interface [OH_AudioCapturer_Start](capi-native-audiocapturer-h.md#oh_audiocapturer_start) again for the settings to take effect.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | Capturer generated by OH_AudioStreamBuilder_GenerateCapturer() |
-| const OH_AudioSession_Strategy* strategy | pointer to [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) which is used to set the audio session strategy. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | Capturer generated by OH_AudioStreamBuilder_GenerateCapturer() |
+| [const OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md)* strategy | pointer to [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) which is used to set the audio session strategy. |
 | uint32_t behavior | Audio session behavior flag, which can be a single flag or a bitwise OR combination of multiple flags [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.      or [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) If the parameter is null or out of range.      or [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Running and released are illegal states. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. or [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) If the parameter is null or out of range. or [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Running and released are illegal states. |
 
 ### OH_AudioCapturer_SensitiveRecordPermitCallback()
 
@@ -768,16 +712,14 @@ typedef void (*OH_AudioCapturer_SensitiveRecordPermitCallback)(OH_AudioCapturer*
 
 Callback used to receive when the sensitive warning message playback for cellular call recording is finished. The application must wait for the permitted result before starting cellular call recording.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer\* capturer | The pointer to the [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md) object created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
-| void\* userData | The pointer to user data which is set in [OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setsensitiverecordpermitcallback). |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | The pointer to the [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md) object created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
+| void* userData | The pointer to user data which is set in [OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setsensitiverecordpermitcallback). |
 | bool isPermitted | Indicates whether the sensitive warning message playback is finished. If the result is true, the recording can start, otherwise the recording is not permitted. |
 
 ### OH_AudioCapturer_SetNoiseReductionMode()
@@ -788,9 +730,7 @@ OH_AudioStream_Result OH_AudioCapturer_SetNoiseReductionMode(OH_AudioCapturer* c
 
 **Description**
 
-Sets noise reduction mode for current audio capturer. The supported mode should be obtained by {@link #getSupportedNoiseReductionModes}. The actual effect may vary from different audio devices, and will be invalid when there are multiple direct streams running simultaneously. The mode can only be changed in created and stopped state.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
+Sets noise reduction mode for current audio capturer. The supported mode should be obtained by getSupportedNoiseReductionModes. The actual effect may vary from different audio devices, and will be invalid when there are multiple direct streams running simultaneously. The mode can only be changed in created and stopped state.
 
 **Since**: 26.0.0
 
@@ -798,14 +738,14 @@ Sets noise reduction mode for current audio capturer. The supported mode should 
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | [in] Pointer to the audio capturer created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | [in] Pointer to the audio capturer created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
 | OH_AudioNoiseReductionMode noiseReductionMode | [in] The noise reduction mode to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.                                                      The param of noiseReductionMode is invalid.</li>          <li>[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Illegal state, audio capturer is in running state.</li>          <li>[AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY](capi-native-audiostream-base-h.md#oh_audiostream_result) The setted mode is not supported.</li>          <li>[AUDIOSTREAM_ERROR_SERVICE_DIED](capi-native-audiostream-base-h.md#oh_audiostream_result) Audio server process died.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. The param of noiseReductionMode is invalid.</li> <li>[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Illegal state, audio capturer is in running state.</li> <li>[AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY](capi-native-audiostream-base-h.md#oh_audiostream_result) The setted mode is not supported.</li> <li>[AUDIOSTREAM_ERROR_SERVICE_DIED](capi-native-audiostream-base-h.md#oh_audiostream_result) Audio server process died.</li> </ul> |
 
 ### OH_AudioCapturer_GetNoiseReductionMode()
 
@@ -817,22 +757,20 @@ OH_AudioStream_Result OH_AudioCapturer_GetNoiseReductionMode(OH_AudioCapturer* c
 
 Gets the noise reduction mode for current audio capturer. The mode will only consider the default and setted status, audio input device and stream concurrency will not be considered.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | [in] Pointer to the audio capturer created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | [in] Pointer to the audio capturer created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
 | OH_AudioNoiseReductionMode* noiseReductionMode | [out] Pointer to get the input noise reduction mode, the default value is [AUDIO_NOISE_REDUCTION_MODE_FIDELITY](capi-native-audio-common-h.md#oh_audionoisereductionmode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.                                                      The param of noiseReductionMode is nullptr.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. The param of noiseReductionMode is nullptr.</li> </ul> |
 
 ### OH_AudioCapturer_GetSupportedNoiseReductionModes()
 
@@ -844,15 +782,13 @@ OH_AudioStream_Result OH_AudioCapturer_GetSupportedNoiseReductionModes(OH_AudioC
 
 Gets all the supported noise reduction modes for current device platform. Currently the noise reduction effect is only supported when using [AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype), other supported usage may be extened later. The supported modes will only consider the audio format and device platform, audio input device and stream concurrency will not be considered.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioCapturer* capturer | [in] Pointer to the audio capturer created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)* capturer | [in] Pointer to the audio capturer created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
 | OH_AudioNoiseReductionMode* noiseReductionModeArray | [out] Pointer to a user-allocated array to get the supported noise reduction modes, at least [AUDIO_NOISE_REDUCTION_MODE_FIDELITY](capi-native-audio-common-h.md#oh_audionoisereductionmode) is supported. |
 | uint32_t inModeArraySize | [in] The allocated size of the 'noiseReductionModeArray' input parameter, it is recommanded to allocate a larger size, such as 20, to adapt the new modes in the future. |
 | uint32_t *outModeArraySize | [out] Pointer to get the actual modes size. When the supported modes size is larger than 'inModeArraySize', only part of the modes will be filled into 'noiseReductionModeArray', and the 'outModeArraySize' will be equal to 'inModeArraySize'. |
@@ -861,6 +797,6 @@ Gets all the supported noise reduction modes for current device platform. Curren
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr.                                                      The param of noiseReductionModeArray is nullptr.                                                      The param of outModeArraySize is nullptr.</li>          <li>[AUDIOSTREAM_ERROR_SERVICE_DIED](capi-native-audiostream-base-h.md#oh_audiostream_result) Audio server process died.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of capturer is nullptr. The param of noiseReductionModeArray is nullptr. The param of outModeArraySize is nullptr.</li> <li>[AUDIOSTREAM_ERROR_SERVICE_DIED](capi-native-audiostream-base-h.md#oh_audiostream_result) Audio server process died.</li> </ul> |
 
 

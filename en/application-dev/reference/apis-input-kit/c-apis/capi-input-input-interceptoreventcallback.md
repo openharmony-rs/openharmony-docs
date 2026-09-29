@@ -1,7 +1,7 @@
 # Input_InterceptorEventCallback
 
 ```c
-typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
+struct Input_InterceptorEventCallback {...}
 ```
 
 ## Overview

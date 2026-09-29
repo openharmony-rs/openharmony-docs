@@ -6,8 +6,6 @@ Declare audio debugging manager related interfaces.<br> The interfaces in this f
 
 **库：** libohaudio.so
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 26.0.0
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
@@ -42,21 +40,19 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioDebuggingManager(OH_AudioDebugging
 
 获取音频调试管理器句柄，它是一个单例。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) **manager | 获取{@link OH_AudioDebugManager}实例的输出参数。 |
+| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) **manager | 获取OH_AudioDebugManager实例的输出参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)管理器的参数为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)管理器的参数为nullptr。 |
 
 ### OH_AudioDebuggingManager_PrintAppInfo()
 
@@ -68,22 +64,20 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintAppInfo(OH_AudioDebuggingMan
 
 打印当前应用进程的完整音频运行时快照。 快照将包含所有音频渲染器、捕获器、音频会话信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | {@link OH_AudioManager_GetAudioDebugsManager}提供的{@link OH_AudioDebugsManager}句柄。 |
+| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | OH_AudioManager_GetAudioDebugsManager提供的OH_AudioDebugsManager句柄。 |
 | int32_t fd | 是一个文件描述符，表示快照信息将要写入的位置。 如果fd小于0或者不可写，则会将快照信息打印到运行日志中。 否则快照将写入文件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)管理器的参数为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)管理器的参数为nullptr。 |
 
 ### OH_AudioDebuggingManager_PrintRendererInfo()
 
@@ -95,23 +89,21 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintRendererInfo(OH_AudioDebuggi
 
 打印目标音频渲染器实例的完整音频运行时快照。 快照将包含流、管道、卷和设备信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | {@link OH_AudioManager_GetAudioDebugsManager}提供的{@link OH_AudioDebugsManager}句柄。 |
-| OH_AudioRenderer *renderer | 指向要打印快照的目标音频渲染器实例的指针。 |
+| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | OH_AudioManager_GetAudioDebugsManager提供的OH_AudioDebugsManager句柄。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md) *renderer | 指向要打印快照的目标音频渲染器实例的指针。 |
 | int32_t fd | 是一个文件描述符，表示快照信息将要写入的位置。 如果fd小于0或者不可写，则会将快照信息打印到运行日志中。 否则快照将写入文件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  {@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；  2.渲染器的param为nullptr； |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。{@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；2.渲染器的param为nullptr； |
 
 ### OH_AudioDebuggingManager_PrintCapturerInfo()
 
@@ -123,23 +115,21 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintCapturerInfo(OH_AudioDebuggi
 
 打印目标音频捕获程序实例的完整音频运行时快照。 快照将包含流、管道、卷和设备信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | {@link OH_AudioManager_GetAudioDebugsManager}提供的{@link OH_AudioDebugsManager}句柄。 |
-| OH_AudioCapturer *capturer | 指向要打印快照的目标音频捕获器实例的指针。 |
+| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | OH_AudioManager_GetAudioDebugsManager提供的OH_AudioDebugsManager句柄。 |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md) *capturer | 指向要打印快照的目标音频捕获器实例的指针。 |
 | int32_t fd | 是一个文件描述符，表示快照信息将要写入的位置。 如果fd小于0或者不可写，则会将快照信息打印到运行日志中。 否则快照将写入文件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  {@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；  2.捕获器的参数为nullptr； |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。{@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；2.捕获器的参数为nullptr； |
 
 ### OH_AudioDebuggingManager_PrintSessionInfo()
 
@@ -151,22 +141,20 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintSessionInfo(OH_AudioDebuggin
 
 打印目标音频会话管理器实例的完整音频运行时快照。 快照将包含会话状态、场景、策略和设备信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | {@link OH_AudioManager_GetAudioDebugsManager}提供的{@link OH_AudioDebugsManager}句柄。 |
-| OH_AudioSessionManager *session | 指向要打印快照的目标音频会话管理器实例的指针。 |
+| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | OH_AudioManager_GetAudioDebugsManager提供的OH_AudioDebugsManager句柄。 |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *session | 指向要打印快照的目标音频会话管理器实例的指针。 |
 | int32_t fd | 是一个文件描述符，表示快照信息将要写入的位置。 如果fd小于0或者不可写，则会将快照信息打印到运行日志中。 否则快照将写入文件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  {@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；  2.session的param为nullptr； |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。{@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；2.session的param为nullptr； |
 
 

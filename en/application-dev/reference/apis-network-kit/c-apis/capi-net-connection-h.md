@@ -6,8 +6,6 @@ Provide C interface for the data network connection module of network management
 
 **Library**: libnet_connection.so
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 11
 
 **Related module**: [NetConnection](capi-netconnection.md)
@@ -58,8 +56,6 @@ int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 
 Checks whether a default activated data network is available.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
@@ -74,7 +70,7 @@ Checks whether a default activated data network is available.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 201: Missing permissions.      <br>401: Parameter error. 2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. **201**: Missing permissions. <br>**401**: Parameter error. **2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_GetDefaultNet()
 
@@ -86,8 +82,6 @@ int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 
 Obtains the default activated data network.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
@@ -96,13 +90,13 @@ Obtains the default activated data network.
 
 | Parameter | Description |
 | -- | -- |
-| NetConn_NetHandle *netHandle | Network ID. |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | Network ID. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 201: Missing permissions.      <br>401: Parameter error. 2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. **201**: Missing permissions. <br>**401**: Parameter error. **2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_IsDefaultNetMetered()
 
@@ -113,8 +107,6 @@ int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 **Description**
 
 Checks whether metering is enabled for the default data network.
-
-**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -130,7 +122,7 @@ Checks whether metering is enabled for the default data network.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 201: Missing permissions.      <br>401: Parameter error. 2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. **201**: Missing permissions. <br>**401**: Parameter error. **2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_GetConnectionProperties()
 
@@ -142,8 +134,6 @@ int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn
 
 Obtains the link information of a data network.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
@@ -152,14 +142,14 @@ Obtains the link information of a data network.
 
 | Parameter | Description |
 | -- | -- |
-| NetConn_NetHandle *netHandle | Network ID. |
-| NetConn_ConnectionProperties *prop | Link information. |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | Network ID. |
+| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) *prop | Link information. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 201: Missing permissions.      <br>401: Parameter error. 2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. **201**: Missing permissions. <br>**401**: Parameter error. **2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_GetNetCapabilities()
 
@@ -171,8 +161,6 @@ int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetC
 
 Obtains the capabilities of a data network.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
@@ -181,14 +169,14 @@ Obtains the capabilities of a data network.
 
 | Parameter | Description |
 | -- | -- |
-| NetConn_NetHandle *netHandle | Network ID. |
-| NetConn_NetCapabilities *netCapabilities | Capability set. |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | Network ID. |
+| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) *netCapabilities | Capability set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 201: Missing permissions.      <br>401: Parameter error. 2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. **201**: Missing permissions. <br>**401**: Parameter error. **2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_GetDefaultHttpProxy()
 
@@ -200,21 +188,19 @@ int32_t OH_NetConn_GetDefaultHttpProxy(NetConn_HttpProxy *httpProxy)
 
 Obtains the default network proxy.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NetConn_HttpProxy *httpProxy | Proxy configuration. |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *httpProxy | Proxy configuration. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 201: Missing permissions.      <br>401: Parameter error. 2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. **201**: Missing permissions. <br>**401**: Parameter error. **2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_GetAddrInfo()
 
@@ -225,8 +211,6 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 **Description**
 
 Obtains the DNS result based on the specified **netId**.
-
-**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -246,7 +230,7 @@ Obtains the DNS result based on the specified **netId**.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 201: Missing permissions.      <br>401: Parameter error. 2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. **201**: Missing permissions. <br>**401**: Parameter error. **2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_FreeDnsResult()
 
@@ -257,8 +241,6 @@ int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 **Description**
 
 Releases the DNS query result.
-
-**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -274,7 +256,7 @@ Releases the DNS query result.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 201: Missing permissions.      <br>401: Parameter error. 2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. **201**: Missing permissions. <br>**401**: Parameter error. **2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_GetAllNets()
 
@@ -286,8 +268,6 @@ int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 
 Obtains all activated data networks.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
@@ -296,13 +276,13 @@ Obtains all activated data networks.
 
 | Parameter | Description |
 | -- | -- |
-| NetConn_NetHandleList *netHandleList | Network information list. |
+| [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) *netHandleList | Network information list. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 201: Missing permissions.      <br>401: Parameter error. 2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. **201**: Missing permissions. <br>**401**: Parameter error. **2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OHOS_NetConn_RegisterDnsResolver()
 
@@ -314,8 +294,6 @@ int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 Registers a custom DNS resolver.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 11
 
 **Deprecated**: 13
@@ -326,13 +304,13 @@ Registers a custom DNS resolver.
 
 | Parameter | Description |
 | -- | -- |
-| OH_NetConn_CustomDnsResolver resolver | Pointer to the custom DNS resolver. |
+| [OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver | Pointer to the custom DNS resolver. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success. 401: Parameter error.      <br>2100002: Service connection failure.  2100003: Internal error. |
+| int32_t | **0**: Success. **401**: Parameter error. <br>**2100002**: Service connection failure.  **2100003**: Internal error. |
 
 ### OHOS_NetConn_UnregisterDnsResolver()
 
@@ -344,8 +322,6 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 
 Unregisters a custom DNS resolver.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 11
 
 **Deprecated**: 13
@@ -356,7 +332,7 @@ Unregisters a custom DNS resolver.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. <br>**2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_RegisterDnsResolver()
 
@@ -368,8 +344,6 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 Registers a custom DNS resolver.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 13
 
 **Deprecated**: 26.0.0
@@ -380,13 +354,13 @@ Registers a custom DNS resolver.
 
 | Parameter | Description |
 | -- | -- |
-| OH_NetConn_CustomDnsResolver resolver | Pointer to the custom DNS resolver. |
+| [OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver | Pointer to the custom DNS resolver. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>NETMANAGER_EXT_SUCCESS: Operation success.      <br>NETMANAGER_ERR_PARAMETER_ERROR: Parameter error. Enter a correct parameter. |
+| int32_t | Result code. <br>**NETMANAGER_EXT_SUCCESS**: Operation success. <br>**NETMANAGER_ERR_PARAMETER_ERROR**: Parameter error. Enter a correct parameter. |
 
 ### OH_NetConn_UnregisterDnsResolver()
 
@@ -398,8 +372,6 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 
 Unregisters a custom DNS resolver.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 13
 
 **Deprecated**: 26.0.0
@@ -410,7 +382,7 @@ Unregisters a custom DNS resolver.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. <br>**2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_RegisterCustomDnsResolver()
 
@@ -422,21 +394,19 @@ int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolv
 
 Registers a custom DNS resolver to intercept and override DNS queries. Falls back to system DNS if no result is specified. Only a single resolver is allowed. You must unregister the existing one before registering a new one.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_NetConn_CustomDnsResolver resolver | Pointer to the custom DNS resolver. If the resolver returns 0, skip system DNS; otherwise, fallback to system DNS. |
+| [OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver | Pointer to the custom DNS resolver. If the resolver returns 0, skip system DNS; otherwise, fallback to system DNS. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 - Success.          401 - Parameter error. Please enter a correct parameter.          2101008 - Resolver already exists. use OH_NetConn_UnregisterCustomDnsResolver before registering a new one. |
+| int32_t | 0 - Success. 401 - Parameter error. Please enter a correct parameter. 2101008 - Resolver already exists. use OH_NetConn_UnregisterCustomDnsResolver before registering a new one. |
 
 ### OH_NetConn_UnregisterCustomDnsResolver()
 
@@ -448,15 +418,13 @@ int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
 
 Unregisters the custom DNS resolver.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 26.0.0
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 - Success.          2100003 - Internal error. |
+| int32_t | 0 - Success. 2100003 - Internal error. |
 
 ### OH_NetConn_BindSocket()
 
@@ -468,8 +436,6 @@ int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 
 Binds a socket to the specified network.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -477,13 +443,13 @@ Binds a socket to the specified network.
 | Parameter | Description |
 | -- | -- |
 | int32_t socketFd | Socket constructed by the user. |
-| NetConn_NetHandle *netHandle | Pointer to the network handle containing the network ID. |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | Pointer to the network handle containing the network ID. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>401: Parameter error.      <br>2100002: Service connection failure.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. <br>**401**: Parameter error. <br>**2100002**: Service connection failure. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_SetAppHttpProxy()
 
@@ -495,21 +461,19 @@ int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)
 
 Sets an HTTP proxy for the current application.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NetConn_HttpProxy *httpProxy | HTTP proxy to set. |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *httpProxy | HTTP proxy to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>401: Parameter error. |
+| int32_t | **0**: Success. <br>**401**: Parameter error. |
 
 ### OH_NetConn_RegisterAppHttpProxyCallback()
 
@@ -521,22 +485,20 @@ int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange ap
 
 Registers a callback for HTTP proxy changes of the application.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_NetConn_AppHttpProxyChange appHttpProxyChange | Callback to register. |
+| [OH_NetConn_AppHttpProxyChange](capi-net-connection-type-h.md#oh_netconn_apphttpproxychange) appHttpProxyChange | Callback to register. |
 | uint32_t *callbackId | ID of the registered callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>401: Parameter error. |
+| int32_t | **0**: Success. <br>**401**: Parameter error. |
 
 ### OH_NetConn_UnregisterAppHttpProxyCallback()
 
@@ -547,8 +509,6 @@ void OH_NetConn_UnregisterAppHttpProxyCallback(uint32_t callbackId)
 **Description**
 
 Unregisters the callback for HTTP proxy changes of the application.
-
-**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 12
 
@@ -568,8 +528,6 @@ int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxy
 
 Requests global HTTP proxy re-authentication and reports the result through a one-shot callback.<br> This function submits an asynchronous re-authentication request. A return value of 0 indicates that the request has been accepted. It does not indicate that re-authentication has succeeded. The final result is reported through the callback.<br><br> If this function returns 0, the callback will be invoked at most once. After the callback is invoked, it is automatically released by the system.<br><br> If this function returns a non-zero value, the callback will not be invoked.<br><br> The callback may be invoked on a system worker thread. The caller must ensure that the callback implementation is thread-safe and returns quickly.<br><br> The caller must ensure that the callback function and userData remain valid until the callback is invoked.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 26.0.0
@@ -578,14 +536,14 @@ Requests global HTTP proxy re-authentication and reports the result through a on
 
 | Parameter | Description |
 | -- | -- |
-| OH_NetConn_GlobalHttpProxyRefreshCallback callback | The one-shot callback used to receive the re-authentication result. It must not be NULL. |
+| [OH_NetConn_GlobalHttpProxyRefreshCallback](capi-net-connection-type-h.md#oh_netconn_globalhttpproxyrefreshcallback) callback | The one-shot callback used to receive the re-authentication result. It must not be NULL. |
 | void *userContext | The user-defined data passed to the callback. It can be NULL. The system does not access, copy, or release it. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>0 - Success.</li>      <li>201 - Permission denied.</li>      <li>401 - Parameter error.</li></ul> |
+| int32_t | <ul><li>0 - Success.</li> <li>201 - Permission denied.</li> <li>401 - Parameter error.</li></ul> |
 
 ### OH_NetConn_RegisterNetConnCallback()
 
@@ -596,8 +554,6 @@ int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetC
 **Description**
 
 Registers a callback for network status changes.
-
-**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -616,7 +572,7 @@ Registers a callback for network status changes.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>201: Missing permissions.      <br>401: Parameter error.      <br>2100002: Service connection failure.      <br>2100003: Internal error.      <br>2101008: Callback already registered.      <br>2101022: Maximum number of requests exceeded. |
+| int32_t | **0**: Success. <br>**201**: Missing permissions. <br>**401**: Parameter error. <br>**2100002**: Service connection failure. <br>**2100003**: Internal error. <br>**2101008**: Callback already registered. <br>**2101022**: Maximum number of requests exceeded. |
 
 ### OH_NetConn_RegisterDefaultNetConnCallback()
 
@@ -627,8 +583,6 @@ int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netCo
 **Description**
 
 Registers a callback for status changes of the default network.
-
-**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -645,7 +599,7 @@ Registers a callback for status changes of the default network.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>201: Missing permissions.      <br>401: Parameter error.      <br>2100002: Service connection failure.      <br>2100003: Internal error.      <br>2101008: Callback already registered.      <br>2101022: Maximum number of requests exceeded. |
+| int32_t | **0**: Success. <br>**201**: Missing permissions. <br>**401**: Parameter error. <br>**2100002**: Service connection failure. <br>**2100003**: Internal error. <br>**2101008**: Callback already registered. <br>**2101022**: Maximum number of requests exceeded. |
 
 ### OH_NetConn_UnregisterNetConnCallback()
 
@@ -656,8 +610,6 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 **Description**
 
 Unregisters the callback for network status changes.
-
-**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -673,7 +625,7 @@ Unregisters the callback for network status changes.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>201: Missing permissions.      <br>401: Parameter error.      <br>2100002: Service connection failure.      <br>2100003: Internal error.      <br>2101007: Callback not exist. |
+| int32_t | **0**: Success. <br>**201**: Missing permissions. <br>**401**: Parameter error. <br>**2100002**: Service connection failure. <br>**2100003**: Internal error. <br>**2101007**: Callback not exist. |
 
 ### OH_NetConn_SetPacUrl()
 
@@ -684,8 +636,6 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 **Description**
 
 Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **http://127.0.0.1:21998/ PacProxyScript.pac**. You can obtain the proxy information by parsing the URL.
-
-**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.SET_PAC_URL
 
@@ -701,7 +651,7 @@ Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **
 
 | Type | Description |
 | -- | -- |
-| NetConn_ErrorCode | Result code defined in [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode).      <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode): success.      <br>[NETCONN_PERMISSION_DENIED](capi-net-connection-type-h.md#netconn_errorcode): permission denied.      <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode): parameter error.      <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode): unable to connect to the service.      <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode): internal error. |
+| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | Result code defined in [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode). <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode): success. <br>[NETCONN_PERMISSION_DENIED](capi-net-connection-type-h.md#netconn_errorcode): permission denied. <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode): parameter error. <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode): unable to connect to the service. <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode): internal error. |
 
 ### OH_NetConn_GetPacUrl()
 
@@ -712,8 +662,6 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 **Description**
 
 Obtains the URL of the system-level PAC script.
-
-**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 15
 
@@ -727,7 +675,7 @@ Obtains the URL of the system-level PAC script.
 
 | Type | Description |
 | -- | -- |
-| NetConn_ErrorCode | Result code defined in [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode).      <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode): success.      <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode): parameter error.      <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode): unable to connect to the service.      <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode): internal error. |
+| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | Result code defined in [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode). <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode): success. <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode): parameter error. <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode): unable to connect to the service. <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode): internal error. |
 
 ### OH_NetConn_QueryProbeResult()
 
@@ -739,8 +687,6 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 Queries network probe results. If an exception (for example, network disconnection) occurs and the request fails to be sent, the API immediately returns the result without performing subsequent detection. This API involves network operations. Do not call it in the main process. Otherwise, the UI may freeze.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 20
@@ -751,13 +697,13 @@ Queries network probe results. If an exception (for example, network disconnecti
 | -- | -- |
 | char *destination | Target domain name or IP address to be detected. For a domain name, the domain name is resolved to the target IP address before the detection, and then the detection is initiated. The domain name resolution time is not included in the probe duration indicated by duration. |
 | int32_t duration | Probe duration. in seconds. The detection interval is 1 second. Therefore, you can use this field to control the number of detections. |
-| NetConn_ProbeResultInfo *probeResultInfo | Packet loss rate and round-trip time (RTT). |
+| [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) *probeResultInfo | Packet loss rate and round-trip time (RTT). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>201: Missing permissions.      <br>401: Parameter error.      <br>2100003: Internal error. |
+| int32_t | **0**: Success. <br>**201**: Missing permissions. <br>**401**: Parameter error. <br>**2100003**: Internal error. |
 
 ### OH_NetConn_QueryTraceRoute()
 
@@ -769,8 +715,6 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 
 Queries network trace route information.
 
-**System capability**: SystemCapability.Communication.NetManager.Core
-
 **Required permission**: ohos.permission.INTERNET and ohos.permission.LOCATION and ohos.permission.ACCESS_NET_TRACE_INFO
 
 **Since**: 20
@@ -780,13 +724,13 @@ Queries network trace route information.
 | Parameter | Description |
 | -- | -- |
 | char *destination | Destination address. |
-| NetConn_TraceRouteOption *option | Route options. |
-| NetConn_TraceRouteInfo *traceRouteInfo | Route result. An array pointer needs to be passed. The array size indicates the number of route hops, which is **30** by default. If you customize the number of hops, ensure that the array size is the same as the value of **maxJumpNumber** in the **option** field. |
+| [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) *option | Route options. |
+| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) *traceRouteInfo | Route result. An array pointer needs to be passed. The array size indicates the number of route hops, which is **30** by default. If you customize the number of hops, ensure that the array size is the same as the value of **maxJumpNumber** in the **option** field. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>201: Missing permissions. |
+| int32_t | **0**: Success. <br>**201**: Missing permissions. |
 
 

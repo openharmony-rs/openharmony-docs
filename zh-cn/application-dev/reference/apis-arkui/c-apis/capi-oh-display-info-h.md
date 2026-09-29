@@ -6,8 +6,6 @@ The file declares the common enums and definitions of the display.
 
 **库：** libnative_display_manager.so
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **相关模块：** [OH_DisplayManager](capi-oh-displaymanager.md)
@@ -55,8 +53,6 @@ enum NativeDisplayManager_Rotation
 
 屏幕顺时针的旋转角度。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -75,8 +71,6 @@ enum NativeDisplayManager_Orientation
 **描述：**
 
 屏幕的旋转方向。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -97,8 +91,6 @@ enum NativeDisplayManager_ErrorCode
 **描述：**
 
 屏幕管理接口返回状态码枚举。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -124,8 +116,6 @@ enum NativeDisplayManager_FoldDisplayMode
 
 可折叠设备的显示模式枚举。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -145,8 +135,6 @@ enum NativeDisplayManager_DisplayState
 **描述：**
 
 显示设备的状态枚举。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 14
 
@@ -169,8 +157,6 @@ enum NativeDisplayManager_SourceMode
 **描述：**
 
 设备的显示模式枚举。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 20
 

@@ -23,7 +23,7 @@ ArkWeb_ProxyObject是注入到Web页面的JavaScript代理对象结构体，用�
 | 名称 | 描述 |
 | -- | -- |
 | const char* objName | 注入的对象名，命名应遵循JavaScript标识符规则，不支持特殊字符。 |
-| const [ArkWeb_ProxyMethod*](capi-web-arkweb-proxymethod.md) methodList | 注入的对象携带的方法结构体数组。 |
+| [const ArkWeb_ProxyMethod*](capi-web-arkweb-proxymethod.md) methodList | 注入的对象携带的方法结构体数组。 |
 | size_t size | 方法结构体数组的长度，必须与methodList数组的实际元素个数一致。 |
 
 

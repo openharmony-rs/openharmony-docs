@@ -6,8 +6,6 @@ Provides custom node event definitions for <b>NativeNode</b> APIs.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -31,8 +29,6 @@ enum ArkUI_NodeCustomEventType
 **Description**
 
 Defines the custom component event type.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

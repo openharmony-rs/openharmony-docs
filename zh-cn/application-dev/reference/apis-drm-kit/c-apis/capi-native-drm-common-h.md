@@ -8,8 +8,6 @@
 
 **库：** libnative_drm.so
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **相关模块：** [Drm](capi-drm.md)
@@ -20,15 +18,15 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md) | DRM_MediaKeyRequestInfo | 媒体密钥请求信息。 |
-| [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md) | DRM_MediaKeyRequest | 媒体密钥请求。 |
-| [DRM_Statistics](capi-drm-drm-statistics.md) | DRM_Statistics | MediaKeySystem的度量信息。 |
-| [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md) | DRM_OfflineMediakeyIdArray | 离线媒体密钥ID数组。 |
-| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) | DRM_KeysInfo | 媒体密钥信息。 |
-| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) | DRM_MediaKeyStatus | 媒体密钥状态。 |
-| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) | DRM_PsshInfo | DRM内容保护系统专用头（Protection System Specific Header）信息。 |
-| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | 加密媒体内容的DRM信息。 |
-| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) | DRM_MediaKeySystemDescription | DRM解决方案名称及其UUID的列表。 |
+| [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md) | - | 媒体密钥请求信息。 |
+| [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md) | - | 媒体密钥请求。 |
+| [DRM_Statistics](capi-drm-drm-statistics.md) | - | MediaKeySystem的度量信息。 |
+| [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md) | - | 离线媒体密钥ID数组。 |
+| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) | - | 媒体密钥信息。 |
+| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) | - | 媒体密钥状态。 |
+| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) | - | DRM内容保护系统专用头（Protection System Specific Header）信息。 |
+| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) | - | 加密媒体内容的DRM信息。 |
+| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) | - | DRM解决方案名称及其UUID的列表。 |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) | MediaKeySystem | MediaKeySystem结构，用于表示一个媒体密钥系统实例。MediaKeySystem提供数字版权保护能力， 负责DRM插件配置管理、设备证书管理、统计信息获取、内容保护级别查询以及创建MediaKeySession等功能。 通过OH_MediaKeySystem_Create接口创建实例，通过OH_MediaKeySystem_Destroy接口销毁实例。 |
 | [MediaKeySession](capi-drm-mediakeysession.md) | MediaKeySession | MediaKeySession结构，用于表示一个媒体密钥会话实例。MediaKeySession是DRM解密流程的核心组件， 负责生成许可证请求、处理许可证响应、管理密钥状态等功能。每个MediaKeySession实例对应一个播放会话的密钥解密过程。 通过OH_MediaKeySystem_CreateMediaKeySession接口创建实例，通过OH_MediaKeySession_Destroy接口销毁实例。 每个MediaKeySystem可创建多个MediaKeySession实例，用于处理不同的播放会话。 |
 
@@ -81,7 +79,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo) | 应用为从媒体源获取DRM信息而设置的回调函数。<br>**起始版本：** 11 |
+| void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo) | 应用为从媒体源获取DRM信息而设置的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Drm.Core |
 
 ## 枚举类型说明
 
@@ -94,8 +92,6 @@ enum DRM_EventType
 **描述：**
 
 监听事件类型。
-
-**系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
 
@@ -118,8 +114,6 @@ enum DRM_ContentProtectionLevel
 
 内容保护级别。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -140,8 +134,6 @@ enum DRM_MediaKeyType
 
 媒体密钥类型。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -158,8 +150,6 @@ enum DRM_MediaKeyRequestType
 **描述：**
 
 媒体密钥请求类型。
-
-**系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
 
@@ -182,8 +172,6 @@ enum DRM_OfflineMediaKeyStatus
 
 离线媒体密钥状态。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -201,8 +189,6 @@ enum DRM_CertificateStatus
 **描述：**
 
 设备DRM证书状态。
-
-**系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
 
@@ -227,14 +213,12 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 应用为从媒体源获取DRM信息而设置的回调函数。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) \*mediaKeySystemInfo | 输出参数，从媒体源获取的DRM信息，包含DRM内容保护系统的唯一标识和PSSH数据。 |
+| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | 输出参数，从媒体源获取的DRM信息，包含DRM内容保护系统的唯一标识和PSSH数据。 |
 
 

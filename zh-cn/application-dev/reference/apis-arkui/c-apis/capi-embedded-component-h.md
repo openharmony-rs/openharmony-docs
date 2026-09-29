@@ -8,8 +8,6 @@
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -52,8 +50,6 @@ ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
 
 创建EmbeddedComponent组件选项的对象。 返回的对象需要在不再使用时通过OH_ArkUI_EmbeddedComponentOption_Dispose销毁。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 20
 
 **返回值：**
@@ -71,8 +67,6 @@ void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* opt
 **描述：**
 
 销毁EmbeddedComponent组件选项的对象。 该对象必须由OH_ArkUI_EmbeddedComponentOption_Create创建，销毁后不应再使用该对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -92,16 +86,14 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* 
 
 设置EmbeddedComponent组件的onError回调。 EmbeddedComponent组件在运行过程中发生异常时触发本回调。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_EmbeddedComponentOption\* option | EmbeddedComponent组件选项的对象的指针。 |
-| const char\* message) | 开发者自定义回调函数。不设置该回调时，EmbeddedComponent组件在运行过程中发生异常时不触发回调。 - code：组件运行发生异常时返回的错误码信息。错误码的详细介绍请参考UIExtension错误码。 - name：组件运行发生异常时返回的名称信息。 - message：组件运行发生异常时返回的详细信息。 |
+| rkUI_EmbeddedComponentOption* option | EmbeddedComponent组件选项的对象的指针。 |
+| const char* message) | 开发者自定义回调函数。不设置该回调时，EmbeddedComponent组件在运行过程中发生异常时不触发回调。 - code：组件运行发生异常时返回的错误码信息。错误码的详细介绍请参考UIExtension错误码。 - name：组件运行发生异常时返回的名称信息。 - message：组件运行发生异常时返回的详细信息。 |
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnTerminated()
 
@@ -113,15 +105,13 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 
 设置EmbeddedComponent组件的onTerminated回调。 EmbeddedComponent组件正常退出时触发本回调。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_EmbeddedComponentOption\* option | EmbeddedComponent组件选项的对象的指针。 |
-| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)\* want) | 开发者自定义回调函数。不设置该回调时，EmbeddedComponent组件正常退出时不触发回调。 - code：被拉起的EmbeddedUIExtensionAbility退出时返回的结果码。若EmbeddedUIExtensionAbility通过调用terminateSelfWithResult退出， 结果码为EmbeddedUIExtensionAbility设置的值。若EmbeddedUIExtensionAbility通过调用terminateSelf退出，结果码为默认值"0"。 - want：被拉起的EmbeddedUIExtensionAbility退出时返回的数据。若EmbeddedUIExtensionAbility通过调用terminateSelfWithResult退出， 返回的数据为EmbeddedUIExtensionAbility设置的数据。若EmbeddedUIExtensionAbility通过调用terminateSelf退出，返回的数据为默认值。 |
+| rkUI_EmbeddedComponentOption* option | EmbeddedComponent组件选项的对象的指针。 |
+| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | 开发者自定义回调函数。不设置该回调时，EmbeddedComponent组件正常退出时不触发回调。 - code：被拉起的EmbeddedUIExtensionAbility退出时返回的结果码。若EmbeddedUIExtensionAbility通过调用terminateSelfWithResult退出， 结果码为EmbeddedUIExtensionAbility设置的值。若EmbeddedUIExtensionAbility通过调用terminateSelf退出，结果码为默认值"0"。 - want：被拉起的EmbeddedUIExtensionAbility退出时返回的数据。若EmbeddedUIExtensionAbility通过调用terminateSelfWithResult退出， 返回的数据为EmbeddedUIExtensionAbility设置的数据。若EmbeddedUIExtensionAbility通过调用terminateSelf退出，返回的数据为默认值。 |
 
 

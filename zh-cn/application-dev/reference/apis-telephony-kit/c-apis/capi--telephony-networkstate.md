@@ -4,6 +4,8 @@
 
 网络状态信息。
 
+**系统能力：** SystemCapability.Telephony.CoreService
+
 **起始版本：** 13
 
 ## 汇总

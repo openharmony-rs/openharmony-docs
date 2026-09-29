@@ -8,8 +8,6 @@ The file declares the native APIs used for audio and video multiplexing.
 
 **Library**: libnative_media_avmuxer.so
 
-**System capability**: SystemCapability.Multimedia.Media.Muxer
-
 **Since**: 10
 
 **Related module**: [AVMuxer](capi-avmuxer.md)
@@ -48,8 +46,6 @@ OH_AVMuxer *OH_AVMuxer_Create(int32_t fd, OH_AVOutputFormat format)
 
 Creates an OH_AVMuxer instance by using the file descriptor and container format.
 
-**System capability**: SystemCapability.Multimedia.Media.Muxer
-
 **Since**: 10
 
 **Parameters**:
@@ -57,13 +53,13 @@ Creates an OH_AVMuxer instance by using the file descriptor and container format
 | Parameter | Description |
 | -- | -- |
 | int32_t fd | File descriptor (FD). You must open the file in read/write mode (O_RDWR) and close the file after using it. |
-| OH_AVOutputFormat format | Format of the multiplexed output file. |
+| [OH_AVOutputFormat](capi-native-avcodec-base-h.md#oh_avoutputformat) format | Format of the multiplexed output file. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_AVMuxer *](capi-avmuxer-oh-avmuxer.md) | Pointer to the OH_AVMuxer instance created. You must call [OH_AVMuxer_Destroy](capi-native-avmuxer-h.md#oh_avmuxer_destroy) to destroy the      instance when it is no longer needed. |
+| [OH_AVMuxer *](capi-avmuxer-oh-avmuxer.md) | Pointer to the **OH_AVMuxer** instance created. You must call [OH_AVMuxer_Destroy](capi-native-avmuxer-h.md#oh_avmuxer_destroy) to destroy the instance when it is no longer needed. |
 
 ### OH_AVMuxer_SetRotation()
 
@@ -74,8 +70,6 @@ OH_AVErrCode OH_AVMuxer_SetRotation(OH_AVMuxer *muxer, int32_t rotation)
 **Description**
 
 Sets the rotation angle (clockwise), which must be 0, 90, 180, or 270, of an output video. This function must be called before [OH_AVMuxer_Start](capi-native-avmuxer-h.md#oh_avmuxer_start).
-
-**System capability**: SystemCapability.Multimedia.Media.Muxer
 
 **Since**: 10
 
@@ -90,7 +84,7 @@ Sets the rotation angle (clockwise), which must be 0, 90, 180, or 270, of an out
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null or the value of rotation is invalid.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null or the value of **rotation** is invalid. <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence. |
 
 ### OH_AVMuxer_SetFormat()
 
@@ -101,8 +95,6 @@ OH_AVErrCode OH_AVMuxer_SetFormat(OH_AVMuxer *muxer, OH_AVFormat *format)
 **Description**
 
 Set format to the muxer.
-
-**System capability**: SystemCapability.Multimedia.Media.Muxer
 
 **Since**: 14
 
@@ -117,7 +109,7 @@ Set format to the muxer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): the muxer or format is invalid      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): not permit to call the interface, it was called in invalid state |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): the muxer or format is invalid <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): not permit to call the interface, it was called in invalid state |
 
 ### OH_AVMuxer_AddTrack()
 
@@ -128,8 +120,6 @@ OH_AVErrCode OH_AVMuxer_AddTrack(OH_AVMuxer *muxer, int32_t *trackIndex, OH_AVFo
 **Description**
 
 Adds an audio or video track to a muxer. Each time this function is called, an audio or video track is added to the muxer. This function must be called before [OH_AVMuxer_Start](capi-native-avmuxer-h.md#oh_avmuxer_start).
-
-**System capability**: SystemCapability.Multimedia.Media.Muxer
 
 **Since**: 10
 
@@ -145,7 +135,7 @@ Adds an audio or video track to a muxer. Each time this function is called, an a
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null, or the track index or track format is invalid.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence.      <br>[AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode): The MIME type is not supported.      <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): Memory allocation fails.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): An unknown error occurs. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null, or the track index or track format is invalid. <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence. <br>[AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode): The MIME type is not supported. <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): Memory allocation fails. <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): An unknown error occurs. |
 
 ### OH_AVMuxer_Start()
 
@@ -156,8 +146,6 @@ OH_AVErrCode OH_AVMuxer_Start(OH_AVMuxer *muxer)
 **Description**
 
 Starts a muxer. This function must be called after [OH_AVMuxer_AddTrack](capi-native-avmuxer-h.md#oh_avmuxer_addtrack) and before [OH_AVMuxer_WriteSample](capi-native-avmuxer-h.md#oh_avmuxer_writesample).
-
-**System capability**: SystemCapability.Multimedia.Media.Muxer
 
 **Since**: 10
 
@@ -171,7 +159,7 @@ Starts a muxer. This function must be called after [OH_AVMuxer_AddTrack](capi-na
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): An unknown error occurs. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null. <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence. <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): An unknown error occurs. |
 
 ### OH_AVMuxer_WriteSample()
 
@@ -182,8 +170,6 @@ OH_AVErrCode OH_AVMuxer_WriteSample(OH_AVMuxer *muxer, uint32_t trackIndex, OH_A
 **Description**
 
 Writes a sample to a muxer. This function must be called after [OH_AVMuxer_Start](capi-native-avmuxer-h.md#oh_avmuxer_start) and before [OH_AVMuxer_Stop](capi-native-avmuxer-h.md#oh_avmuxer_stop). The caller must write the sample to the correct audio or video track based on the timing in **info**.
-
-**System capability**: SystemCapability.Multimedia.Media.Muxer
 
 **Since**: 10
 
@@ -204,7 +190,7 @@ Writes a sample to a muxer. This function must be called after [OH_AVMuxer_Start
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null, or the track index, sample, or info is invalid.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence.      <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): Memory allocation fails.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): An unknown error occurs. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null, or the track index, sample, or info is invalid. <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence. <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): Memory allocation fails. <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): An unknown error occurs. |
 
 ### OH_AVMuxer_WriteSampleBuffer()
 
@@ -215,8 +201,6 @@ OH_AVErrCode OH_AVMuxer_WriteSampleBuffer(OH_AVMuxer *muxer, uint32_t trackIndex
 **Description**
 
 Writes a sample to a muxer. This function must be called after [OH_AVMuxer_Start](capi-native-avmuxer-h.md#oh_avmuxer_start) and before [OH_AVMuxer_Stop](capi-native-avmuxer-h.md#oh_avmuxer_stop). The caller must write the sample to the correct audio or video track based on the timing in **sample**.
-
-**System capability**: SystemCapability.Multimedia.Media.Muxer
 
 **Since**: 11
 
@@ -232,7 +216,7 @@ Writes a sample to a muxer. This function must be called after [OH_AVMuxer_Start
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null, or the track index or sample is invalid.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence.      <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): Memory allocation fails.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): An unknown error occurs. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null, or the track index or sample is invalid. <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence. <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): Memory allocation fails. <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): An unknown error occurs. |
 
 ### OH_AVMuxer_Stop()
 
@@ -244,8 +228,6 @@ OH_AVErrCode OH_AVMuxer_Stop(OH_AVMuxer *muxer)
 
 Stops a muxer. Once the muxer is stopped, it cannot be restarted.
 
-**System capability**: SystemCapability.Multimedia.Media.Muxer
-
 **Since**: 10
 
 **Parameters**:
@@ -258,7 +240,7 @@ Stops a muxer. Once the muxer is stopped, it cannot be restarted.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null. <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The function is called out of sequence. |
 
 ### OH_AVMuxer_Destroy()
 
@@ -270,8 +252,6 @@ OH_AVErrCode OH_AVMuxer_Destroy(OH_AVMuxer *muxer)
 
 Clears internal resources and destroys an OH_AVMuxer instance.<br> Do not repeatedly destroy the instance. Otherwise, the program may crash.
 
-**System capability**: SystemCapability.Multimedia.Media.Muxer
-
 **Since**: 10
 
 **Parameters**:
@@ -284,6 +264,6 @@ Clears internal resources and destroys an OH_AVMuxer instance.<br> Do not repeat
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The muxer pointer is null. |
 
 

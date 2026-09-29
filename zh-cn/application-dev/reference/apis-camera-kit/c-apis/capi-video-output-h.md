@@ -6,8 +6,6 @@
 
 **库：** libohcamera.so
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)
@@ -18,8 +16,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) | VideoOutput_Callbacks | 用于录像输出的回调。 |
-| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md) | Camera_VideoOutput | 录像输出对象。<br> 可以使用{@link OH_CameraManager_CreateVideoOutput}方法创建指针。 |
+| [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) | - | 用于录像输出的回调。 |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md) | Camera_VideoOutput | 录像输出对象。<br> 可以使用[OH_CameraManager_CreateVideoOutput](capi-camera-manager-h.md#oh_cameramanager_createvideooutput)方法创建指针。 |
 
 ### 函数
 
@@ -48,9 +46,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput) | 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出帧开始回调。<br>**起始版本：** 11 |
-| void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount) | 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出帧结束回调。<br>**起始版本：** 11 |
-| void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode) | 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出错误回调。<br>**起始版本：** 11 |
+| void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput) | 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出帧开始回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
+| void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount) | 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出帧结束回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
+| void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode) | 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出错误回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
 
 ## 函数说明
 
@@ -64,15 +62,13 @@ typedef void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput)
 
 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出帧开始回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)\* videoOutput | 传递回调的录像输出实例。 |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递回调的录像输出实例。 |
 
 ### OH_VideoOutput_OnFrameEnd()
 
@@ -84,15 +80,13 @@ typedef void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32
 
 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出帧结束回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)\* videoOutput | 传递回调的录像输出实例。 |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递回调的录像输出实例。 |
 | int32_t frameCount | 回调传递的帧计数。 |
 
 ### OH_VideoOutput_OnError()
@@ -105,16 +99,14 @@ typedef void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_E
 
 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出错误回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)\* videoOutput | 传递回调的录像输出实例。 |
-| Camera_ErrorCode errorCode | 录像输出的错误码。 |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递回调的录像输出实例。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | 录像输出的错误码。 |
 
 **参考：**
 
@@ -131,8 +123,6 @@ Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput
 
 注册录像输出更改事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -146,7 +136,7 @@ Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_VideoOutput_UnregisterCallback()
 
@@ -157,8 +147,6 @@ Camera_ErrorCode OH_VideoOutput_UnregisterCallback(Camera_VideoOutput* videoOutp
 **描述：**
 
 注销录像输出更改事件回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -173,7 +161,7 @@ Camera_ErrorCode OH_VideoOutput_UnregisterCallback(Camera_VideoOutput* videoOutp
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_VideoOutput_Start()
 
@@ -184,8 +172,6 @@ Camera_ErrorCode OH_VideoOutput_Start(Camera_VideoOutput* videoOutput)
 **描述：**
 
 开始录像输出。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -199,7 +185,7 @@ Camera_ErrorCode OH_VideoOutput_Start(Camera_VideoOutput* videoOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_Stop()
 
@@ -210,8 +196,6 @@ Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)
 **描述：**
 
 停止录像输出。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -225,7 +209,7 @@ Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_Release()
 
@@ -236,8 +220,6 @@ Camera_ErrorCode OH_VideoOutput_Release(Camera_VideoOutput* videoOutput)
 **描述：**
 
 释放录像输出实例。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -251,7 +233,7 @@ Camera_ErrorCode OH_VideoOutput_Release(Camera_VideoOutput* videoOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_GetActiveProfile()
 
@@ -263,8 +245,6 @@ Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput
 
 获取当前视频输出配置文件。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -272,13 +252,13 @@ Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递当前视频输出配置文件的录像输出实例。 |
-| Camera_VideoProfile** profile | 如果方法调用成功，将记录当前的视频输出配置文件。 |
+| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)** profile | 如果方法调用成功，将记录当前的视频输出配置文件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_DeleteProfile()
 
@@ -290,21 +270,19 @@ Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)
 
 删除视频配置文件实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_VideoProfile* profile | 要删除的视频配置文件实例。 |
+| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)* profile | 要删除的视频配置文件实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_VideoOutput_IsMirrorSupported()
 
@@ -315,8 +293,6 @@ Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutpu
 **描述：**
 
 判断当前视频输出是否支持镜像。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 15
 
@@ -331,7 +307,7 @@ Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutpu
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_EnableMirror()
 
@@ -342,8 +318,6 @@ Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bo
 **描述：**
 
 打开/关闭当前视频输出镜像功能。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 15
 
@@ -358,7 +332,7 @@ Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bo
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_GetVideoRotation()
 
@@ -370,8 +344,6 @@ Camera_ErrorCode OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput
 
 获取录像旋转角度。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -380,13 +352,13 @@ Camera_ErrorCode OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递当前视频输出的录像输出实例。 |
 | int deviceDegree | 设备目前相对于自然方向（充电口朝下）顺时针的旋转角度。 |
-| Camera_ImageRotation* imageRotation | 录像旋转角度的结果。 |
+| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | 录像旋转角度的结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_GetVideoRotationWithoutDeviceDegree()
 
@@ -398,8 +370,6 @@ Camera_ErrorCode OH_VideoOutput_GetVideoRotationWithoutDeviceDegree(Camera_Video
 
 获取录像旋转角度。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -407,13 +377,13 @@ Camera_ErrorCode OH_VideoOutput_GetVideoRotationWithoutDeviceDegree(Camera_Video
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递当前视频输出的录像输出实例。 |
-| Camera_ImageRotation* imageRotation | 录像旋转角度的结果。 |
+| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | 录像旋转角度的结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_GetSupportedFrameRates()
 
@@ -425,8 +395,6 @@ Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* video
 
 获取支持的视频输出帧率列表。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -434,14 +402,14 @@ Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* video
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递支持的视频输出帧率列表的录像输出实例。 |
-| Camera_FrameRateRange** frameRateRange | 如果方法调用成功，将记录支持的视频输出帧率列表。 |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md)** frameRateRange | 如果方法调用成功，将记录支持的视频输出帧率列表。 |
 | uint32_t* size | 如果方法调用成功，将记录支持的视频输出帧率列表大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_VideoOutput_DeleteFrameRates()
 
@@ -453,8 +421,6 @@ Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput
 
 删除帧率列表。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -462,13 +428,13 @@ Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 录像输出实例。 |
-| Camera_FrameRateRange* frameRateRange | 要删除的帧率列表。 |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md)* frameRateRange | 要删除的帧率列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_VideoOutput_SetFrameRate()
 
@@ -479,8 +445,6 @@ Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, in
 **描述：**
 
 设置视频输出帧率。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
@@ -496,7 +460,7 @@ Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, in
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_VideoOutput_GetActiveFrameRate()
 
@@ -508,8 +472,6 @@ Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutp
 
 获取当前视频输出帧率。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -517,12 +479,12 @@ Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutp
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | 传递当前视频输出帧率的录像输出实例。 |
-| Camera_FrameRateRange* frameRateRange | 如果方法调用成功，将记录当前的视频输出帧率。 |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md)* frameRateRange | 如果方法调用成功，将记录当前的视频输出帧率。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 

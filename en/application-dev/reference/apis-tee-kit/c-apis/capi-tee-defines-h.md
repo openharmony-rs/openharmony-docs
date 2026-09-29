@@ -6,8 +6,6 @@ Defines basic data types and data structures of TEE.
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -21,14 +19,15 @@ Defines basic data types and data structures of TEE.
 | [TEE_Param](capi-teetrusted-tee-param.md) | TEE_Param | Enumerates the TEE parameter. |
 | [TEE_ObjectInfo](capi-teetrusted-tee-objectinfo.md) | TEE_ObjectInfo | Defines an object information. |
 | [TEE_Attribute](capi-teetrusted-tee-attribute.md) | TEE_Attribute | Defines an object attribute. |
-| [\_\_TEE_ObjectHandle](capi-teetrusted---tee-objecthandle.md) | *TEE_ObjectHandle | Defines an object handle. |
-| [tee_uuid](capi-teetrusted-tee-uuid.md) | TEE_UUID | Defines an UUID of TA. |
-| [spawn_uuid](capi-teetrusted-spawn-uuid.md) | spawn_uuid_t | Defines the type of spawn UUID. |
+| [\_\_TEE_ObjectHandle](capi-teetrusted---tee-objecthandle.md) | - | Defines an object handle. |
+| [tee_uuid](capi-teetrusted-tee-uuid.md) | - | Defines an UUID of TA. |
+| [spawn_uuid](capi-teetrusted-spawn-uuid.md) | - | Defines the type of spawn UUID. |
 | [TEE_Identity](capi-teetrusted-tee-identity.md) | TEE_Identity | Definitions the TEE Identity. |
 | [TEE_Time](capi-teetrusted-tee-time.md) | TEE_Time | Definitions the TEE time. |
 | [TEE_Date_Time](capi-teetrusted-tee-date-time.md) | TEE_Date_Time | Definitions the date time of TEE. |
-| [\_\_TEE_ObjectEnumHandle](capi-teetrusted---tee-objectenumhandle.md) | *TEE_ObjectEnumHandle | Defines the pointer to <b>TEE_ObjectEnumHandle</b>. |
-| [\_\_TEE_OperationHandle](capi-teetrusted---tee-operationhandle.md) | *TEE_OperationHandle | Defines the pointer to <b>\_\_TEE_OperationHandle</b>. |
+| [*TEE_ObjectHandle](capi-teetrusted-8htee-objecthandle.md) | *TEE_ObjectHandle | Defines the <b>\_\_TEE_ObjectHandle</b> struct. |
+| [*TEE_ObjectEnumHandle](capi-teetrusted-8htee-objectenumhandle.md) | *TEE_ObjectEnumHandle | Defines the pointer to <b>TEE_ObjectEnumHandle</b>. |
+| [*TEE_OperationHandle](capi-teetrusted-8htee-operationhandle.md) | *TEE_OperationHandle | Defines the pointer to <b>\_\_TEE_OperationHandle</b>. |
 
 ### Enum
 
@@ -64,16 +63,19 @@ Defines basic data types and data structures of TEE.
 
 | Name | Description |
 | -- | -- |
-| [static inline bool check_param_type(uint32_t param_to_check, uint32_t valid0, uint32_t valid1, uint32_t valid2, uint32_t valid3)](#check_param_type) | Checks parameter types. |
+| [static inline bool check_param_type(uint32_t param_to_check, uint32_t valid0, uint32_t valid1, uint32_t valid2, uint32_t valid3)
+{return (TEE_PARAM_TYPES(valid0, valid1, valid2, valid3) == param_to_check)](#check_param_type) | Checks parameter types. |
 
 ### Variable
 
 | Name | Description |
 | -- | -- |
-| int *tee_mutex_handle | Defines the tee mutex handle.<br>**Since**: 20 |
-| uint32_t TEE_Result | Defines the return values.<br>**Since**: 20 |
-| TEE_Result TEEC_Result | Defines the return values.<br>**Since**: 20 |
-| uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20 |
+| int *tee_mutex_handle | Defines the tee mutex handle.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| uint32_t TEE_Result | Defines the return values.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| TEE_Result TEEC_Result | Defines the return values.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| typedef uint32_t TEE_Result | Defines the return values.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| typedef uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
 
 ## Enum type description
 
@@ -86,8 +88,6 @@ enum TEE_ParamType
 **Description**
 
 Enumerates the types of the TEE parameter.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -116,8 +116,6 @@ enum TEE_ObjectAttribute
 **Description**
 
 Enumerates the types of object attribute.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -177,8 +175,6 @@ enum TEE_ObjectType
 
 Enumerates the types of object.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -231,8 +227,6 @@ enum TEE_Result_Value
 **Description**
 
 Enumerates the result codes used in the TEEKit APIs.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -391,8 +385,6 @@ enum TEE_LoginMethod
 
 Login type definitions
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -414,14 +406,11 @@ Login type definitions
 ```c
 static inline bool check_param_type(uint32_t param_to_check, uint32_t valid0, uint32_t valid1, uint32_t valid2, uint32_t valid3)
 {return (TEE_PARAM_TYPES(valid0, valid1, valid2, valid3) == param_to_check)
-}
 ```
 
 **Description**
 
 Checks parameter types.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -429,16 +418,16 @@ Checks parameter types.
 
 | Parameter | Description |
 | -- | -- |
-| uint32_t param_to_check | Indicates the expected parameter values. |
-| uint32_t valid0 | Indicates the first parameter type to check. |
-| uint32_t valid1 | Indicates the second parameter type to check. |
-| uint32_t valid2 | Indicates the third parameter type to check. |
-| uint32_t valid3 | Indicates the fourth parameter type to check. |
+| valid3) == param_to_check | Indicates the expected parameter values. |
+| [](capi-teetrusted---tee-objecthandle.md)v[](capi-teetrusted---tee-objecthandle.md)a[](capi-teetrusted---tee-objecthandle.md)l[](capi-teetrusted---tee-objecthandle.md)i[](capi-teetrusted---tee-objecthandle.md)d[](capi-teetrusted---tee-objecthandle.md)0[](capi-teetrusted---tee-objecthandle.md) | Indicates the first parameter type to check. |
+| [](capi-teetrusted---tee-objecthandle.md)v[](capi-teetrusted---tee-objecthandle.md)a[](capi-teetrusted---tee-objecthandle.md)l[](capi-teetrusted---tee-objecthandle.md)i[](capi-teetrusted---tee-objecthandle.md)d[](capi-teetrusted---tee-objecthandle.md)1[](capi-teetrusted---tee-objecthandle.md) | Indicates the second parameter type to check. |
+| [](capi-teetrusted---tee-objecthandle.md)v[](capi-teetrusted---tee-objecthandle.md)a[](capi-teetrusted---tee-objecthandle.md)l[](capi-teetrusted---tee-objecthandle.md)i[](capi-teetrusted---tee-objecthandle.md)d[](capi-teetrusted---tee-objecthandle.md)2[](capi-teetrusted---tee-objecthandle.md) | Indicates the third parameter type to check. |
+| valid3) == param_to_check | Indicates the fourth parameter type to check. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| static inline bool | Returns <b>true</b> if the parameter types are correct.          Returns <b>false</b> otherwise. |
+| static inline bool | Returns <b>true</b> if the parameter types are correct. Returns <b>false</b> otherwise. |
 
 

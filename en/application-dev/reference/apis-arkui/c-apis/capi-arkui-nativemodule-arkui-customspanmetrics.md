@@ -6,7 +6,7 @@ typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics
 
 ## Overview
 
-Defines a struct for the measurement metrics of a custom span.
+Describes the metrics of a custom span, which is used to set layout information such as the width and height of a component. It applies to mixed text and image layout in scenarios such as rich text editors and chat applications.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

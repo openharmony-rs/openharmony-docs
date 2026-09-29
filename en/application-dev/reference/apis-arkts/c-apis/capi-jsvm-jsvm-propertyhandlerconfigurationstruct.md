@@ -22,8 +22,40 @@ When the object's getter, setter, deleter, and enumerator operations are perform
 
 | Name | Description |
 | -- | -- |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) namedPropertyData | data will be utilized by the named property callbacks in this struct. |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) indexedPropertyData | data will be utilized by the indexed property callbacks in this struct. |
+| JSVM_Value(JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env,
+ JSVM_Value name,
+ JSVM_Value thisArg,
+ JSVM_Value namedPropertyData) | A callback function triggered by getting a named property of an instance object. |
+| JSVM_Value(JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env,
+ JSVM_Value name,
+ JSVM_Value property,
+ JSVM_Value thisArg,
+ JSVM_Value namedPropertyData) | A callback function triggered by setting a named property of an instance object. |
+| JSVM_Value(JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env,
+ JSVM_Value name,
+ JSVM_Value thisArg,
+ JSVM_Value namedPropertyData) | A callback function triggered by deleting a named property of an instance object. |
+| JSVM_Value(JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env,
+ JSVM_Value thisArg,
+ JSVM_Value namedPropertyData) | A callback function triggered by getting all named properties requests on an object. |
+| JSVM_Value(JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env,
+ JSVM_Value index,
+ JSVM_Value thisArg,
+ JSVM_Value indexedPropertyData) | A callback function triggered by getting an indexed property of an instance object. |
+| JSVM_Value(JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env,
+ JSVM_Value index,
+ JSVM_Value property,
+ JSVM_Value thisArg,
+ JSVM_Value indexedPropertyData) | A callback function triggered by setting an indexed property of an instance object. |
+| JSVM_Value(JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,
+ JSVM_Value index,
+ JSVM_Value thisArg,
+ JSVM_Value indexedPropertyData) | A callback function triggered by deleting an indexed property of an instance object. |
+| JSVM_Value(JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,
+ JSVM_Value thisArg,
+ JSVM_Value indexedPropertyData) | A callback function triggered by getting all indexed properties requests on an object. |
+| [JSVM_Value](capi-jsvm-jsvm-value.md) namedPropertyData | data will be utilized by the named property callbacks in this struct. |
+| [JSVM_Value](capi-jsvm-jsvm-value.md) indexedPropertyData | data will be utilized by the indexed property callbacks in this struct. |
 
 
 ### Member functions

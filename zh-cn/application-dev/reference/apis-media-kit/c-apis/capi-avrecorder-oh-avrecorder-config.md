@@ -1,7 +1,7 @@
 # OH_AVRecorder_Config
 
 ```c
-typedef struct OH_AVRecorder_Config {...} OH_AVRecorder_Config
+struct OH_AVRecorder_Config {...}
 ```
 
 ## 概述

@@ -1,12 +1,12 @@
 # Usb_DeviceArray
 
 ```c
-typedef struct Usb_DeviceArray {...} Usb_DeviceArray
+struct Usb_DeviceArray {...}
 ```
 
 ## 概述
 
-设备ID数组，用于存放{@link OH_Usb_GetDevices}接口获取到的设备ID列表和设备数量。开发者申请设备ID数组，使用完结构体后需释放申请的内存，否则会造成资源泄漏。
+设备ID数组，用于存放OH_Usb_GetDevices接口获取到的设备ID列表和设备数量。开发者申请设备ID数组，使用完结构体后需释放申请的内存，否则会造成资源泄漏。
 
 **系统能力：** SystemCapability.Driver.USB.Extension
 

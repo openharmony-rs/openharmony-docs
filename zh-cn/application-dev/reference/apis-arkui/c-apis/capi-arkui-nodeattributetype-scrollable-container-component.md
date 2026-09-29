@@ -414,7 +414,7 @@ NODE_LIST_NODE_ADAPTER
 
 **描述：**
 
-List组件适配器，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>**属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.object 使用{@link ArkUI_NodeAdapter}对象作为适配器。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 返回值格式为{@link ArkUI_NodeAdapter}。</li> </ul>
+List组件适配器，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用ArkUI_NodeAdapter对象作为适配器。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 返回值格式为ArkUI_NodeAdapter。</li> </ul>
 
 **起始版本：** 12
 
@@ -450,7 +450,7 @@ NODE_LIST_ALIGN_LIST_ITEM
 
 **描述：**
 
-设置List交叉轴方向宽度大于ListItem交叉轴宽度乘以布局数量时，ListItem在List交叉轴方向的布局方式。List垂直滚动时，布局数量为列数；List水平滚动时，布局数量为行数。支持属性设置、 属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>**属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32 交叉轴方向的布局方式。参数类型{@link ArkUI_ListItemAlign}。默认值：ARKUI_LIST_ITEM_ALIGNMENT_START。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32 交叉轴方向的布局方式。参数类型{@link ArkUI_ListItemAlign}。</li> </ul>
+设置List交叉轴方向宽度大于ListItem交叉轴宽度乘以布局数量时，ListItem在List交叉轴方向的布局方式。List垂直滚动时，布局数量为列数；List水平滚动时，布局数量为行数。支持属性设置、 属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 交叉轴方向的布局方式。参数类型ArkUI_ListItemAlign。默认值：ARKUI_LIST_ITEM_ALIGNMENT_START。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 交叉轴方向的布局方式。参数类型ArkUI_ListItemAlign。</li> </ul>
 
 **起始版本：** 12
 
@@ -666,7 +666,7 @@ NODE_LIST_ITEM_GROUP_SET_HEADER = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LIST_ITEM_GROU
 
 **描述：**
 
-设置 ListItemGroup 头部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为ListItemGroup头部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为ListItemGroup头部组件。</li> </ul>
+设置 ListItemGroup 头部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ListItemGroup头部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ListItemGroup头部组件。</li> </ul>
 
 **起始版本：** 12
 
@@ -678,7 +678,7 @@ NODE_LIST_ITEM_GROUP_SET_FOOTER
 
 **描述：**
 
-设置 ListItemGroup 尾部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为ListItemGroup尾部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为ListItemGroup尾部组件。</li> </ul>
+设置 ListItemGroup 尾部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ListItemGroup尾部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ListItemGroup尾部组件。</li> </ul>
 
 **起始版本：** 12
 
@@ -714,7 +714,7 @@ NODE_LIST_ITEM_GROUP_NODE_ADAPTER = 1005004
 
 **描述：**
 
-ListItemGroup组件适配器，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>**属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.object 使用{@link ArkUI_NodeAdapter}对象作为适配器。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 返回值格式为{@link ArkUI_NodeAdapter}。</li> </ul>
+ListItemGroup组件适配器，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用ArkUI_NodeAdapter对象作为适配器。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 返回值格式为ArkUI_NodeAdapter。</li> </ul>
 
 **起始版本：** 15
 
@@ -738,7 +738,7 @@ NODE_REFRESH_CONTENT
 
 **描述：**
 
-设置下拉区域的自定义内容，支持属性设置和重置。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。</li> </ul>
+设置下拉区域的自定义内容，支持属性设置和重置。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。</li> </ul>
 
 **起始版本：** 12
 
@@ -822,7 +822,7 @@ NODE_WATER_FLOW_COLUMN_TEMPLATE
 
 **描述：**
 
-设置当前瀑布流组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。 可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字， track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局列的数量。默认值：'1fr'。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局列的数量。</li> </ul>
+设置当前瀑布流组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。 可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字， track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。 track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。 非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。 设置为'0fr'时，该列的列宽为0，该列中的组件不显示；设置为其他非法值时，按固定1列处理。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局列的数量。默认值：'1fr'。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局列的数量。</li> </ul>
 
 **起始版本：** 12
 
@@ -834,7 +834,7 @@ NODE_WATER_FLOW_ROW_TEMPLATE
 
 **描述：**
 
-设置当前瀑布流组件布局行的数量，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。 可使用rowsTemplate('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度， 支持的单位包括px、vp、%或有效数字，默认单位为vp。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局行的数量。默认值：'1fr'。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局行的数量。</li> </ul>
+设置当前瀑布流组件布局行的数量，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。 可使用rowsTemplate('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度， 支持的单位包括px、vp、%或有效数字，默认单位为vp。 track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。 非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。 设置为'0fr'时，该行的行高为0，该行中的组件不显示；设置为其他非法值时，按固定1行处理。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局行的数量。默认值：'1fr'。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局行的数量。</li> </ul>
 
 **起始版本：** 12
 
@@ -882,7 +882,7 @@ NODE_WATER_FLOW_NODE_ADAPTER
 
 **描述：**
 
-WaterFlow组件适配器，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>**属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.object 使用{@link ArkUI_NodeAdapter}对象作为适配器。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 返回值格式为{@link ArkUI_NodeAdapter}。</li> </ul>
+WaterFlow组件适配器，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用ArkUI_NodeAdapter对象作为适配器。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 返回值格式为ArkUI_NodeAdapter。</li> </ul>
 
 **起始版本：** 12
 
@@ -906,7 +906,7 @@ NODE_WATER_FLOW_FOOTER
 
 **描述：**
 
-设置瀑布流组件末尾的自定义显示组件。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。</li> </ul>
+设置瀑布流组件末尾的自定义显示组件。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。</li> </ul>
 
 **起始版本：** 12
 
@@ -990,7 +990,7 @@ NODE_GRID_COLUMN_TEMPLATE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_GRID
 
 **描述：**
 
-设置当前Grid组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。 可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字， track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局列的数量。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局列的数量。</li> </ul>
+设置当前Grid组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。 可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字， track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。 track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。 非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。 设置为'0fr'时，该列的列宽为0，该列中的组件不显示；设置为其他非法值时，按固定1列处理。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局列的数量。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局列的数量。</li> </ul>
 
 **起始版本：** 12
 
@@ -1002,7 +1002,7 @@ NODE_GRID_ROW_TEMPLATE
 
 **描述：**
 
-设置当前Grid布局行的数量或最小行高值，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。 可使用rowsTemplate('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度， 支持的单位包括px、vp、%或有效数字，默认单位为vp。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局行的数量。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局行的数量。</li> </ul>
+设置当前Grid布局行的数量或最小行高值，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。 可使用rowsTemplate('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度， 支持的单位包括px、vp、%或有效数字，默认单位为vp。 track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。 非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。 设置为'0fr'时，该行的行高为0，该行中的组件不显示；设置为其他非法值时，按固定1行处理。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局行的数量。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string 布局行的数量。</li> </ul>
 
 **起始版本：** 12
 
@@ -1038,7 +1038,7 @@ NODE_GRID_NODE_ADAPTER
 
 **描述：**
 
-Grid组件适配器，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>**属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.object 使用{@link ArkUI_NodeAdapter}对象作为适配器。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 返回值格式为{@link ArkUI_NodeAdapter}。</li> </ul>
+Grid组件适配器，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用ArkUI_NodeAdapter对象作为适配器。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 返回值格式为ArkUI_NodeAdapter。</li> </ul>
 
 **起始版本：** 12
 
@@ -1050,7 +1050,7 @@ NODE_GRID_CACHED_COUNT
 
 **描述：**
 
-Grid组件适配器缓存数量，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>**属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32 配合Grid组件适配器使用，设置{@link ArkUI_NodeAdapter}的缓存数量。</li><br><li>.value[1].i32 是否显示缓存节点，0：不显示缓存节点，1：显示缓存节点。可选参数，默认值：0。从API版本26.0.0开始支持。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32 Grid组件适配器的缓存数量。</li><br><li>.value[1].i32 是否显示缓存节点，0：不显示，1：显示。该参数从API版本26.0.0开始支持。</li> </ul>
+Grid组件适配器缓存数量，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 配合Grid组件适配器使用，设置ArkUI_NodeAdapter的缓存数量。</li> <li>.value[1].i32 是否显示缓存节点，0：不显示缓存节点，1：显示缓存节点。可选参数，默认值：0。从API版本26.0.0开始支持。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 Grid组件适配器的缓存数量。</li> <li>.value[1].i32 是否显示缓存节点，0：不显示，1：显示。该参数从API版本26.0.0开始支持。</li> </ul>
 
 **起始版本：** 12
 
@@ -1242,7 +1242,7 @@ NODE_ARC_LIST_DIGITAL_CROWN_SENSITIVITY = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_LI
 
 **描述：**
 
-设置ArcList组件表冠灵敏度，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>**属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32 表冠灵敏度类型，数据类型{@link ArkUI_CrownSensitivity}，默认值为{@link ARKUI_CROWN_SENSITIVITY_MEDIUM}。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32 表冠灵敏度类型，数据类型{@link ArkUI_CrownSensitivity}。</li> </ul>
+设置ArcList组件表冠灵敏度，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 表冠灵敏度类型，数据类型ArkUI_CrownSensitivity，默认值为ARKUI_CROWN_SENSITIVITY_MEDIUM。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 表冠灵敏度类型，数据类型ArkUI_CrownSensitivity。</li> </ul>
 
 **起始版本：** 26.0.0
 
@@ -1314,7 +1314,7 @@ NODE_ARC_LIST_SET_HEADER = 1019006
 
 **描述：**
 
-设置ArcList头部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为ArcList头部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为ArcList头部组件。</li> </ul>
+设置ArcList头部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ArcList头部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ArcList头部组件。</li> </ul>
 
 **起始版本：** 26.0.0
 
@@ -1434,7 +1434,7 @@ NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SCROLL
 
 **描述：**
 
-设置ArcScrollBar绑定的可滚动组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为滚动条绑定的可滚动组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为滚动条绑定的可滚动组件。</li> </ul>
+设置ArcScrollBar绑定的可滚动组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为滚动条绑定的可滚动组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为滚动条绑定的可滚动组件。</li> </ul>
 
 **起始版本：** 26.0.0
 

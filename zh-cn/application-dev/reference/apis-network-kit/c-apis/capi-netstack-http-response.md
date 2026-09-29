@@ -1,7 +1,7 @@
 # Http_Response
 
 ```c
-typedef struct Http_Response {...} Http_Response
+struct Http_Response {...}
 ```
 
 ## 概述
@@ -22,11 +22,11 @@ typedef struct Http_Response {...} Http_Response
 
 | 名称 | 描述 |
 | -- | -- |
-| [Http_Buffer](capi-netstack-http-buffer.md) body | HTTP response data. For details, see {@link Http_Buffer}. |
-| [Http_ResponseCode](capi-net-http-type-h.md#http_responsecode) responseCode | HTTP response code. For details, see {@link Http_ResponseCode}. |
-| [Http_Headers](capi-netstack-http-headers.md) *headers | Pointer to the HTTP response header. For details, see {@link Http_Headers}. |
+| [Http_Buffer](capi-netstack-http-buffer.md) body | HTTP response data. For details, see [Http_Buffer](capi-netstack-http-buffer.md). |
+| [Http_ResponseCode](capi-net-http-type-h.md#http_responsecode) responseCode | HTTP response code. For details, see [Http_ResponseCode](capi-net-http-type-h.md#http_responsecode). |
+| Http_Headers *headers | Pointer to the HTTP response header. For details, see [Http_Headers](capi-netstack-http-headers.md). |
 | char *cookies | HTTP响应Cookies。 |
-| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) *performanceTiming | Pointer to the HTTP response timing. For details, see {@link Http_PerformanceTiming}. |
+| Http_PerformanceTiming *performanceTiming | Pointer to the HTTP response timing. For details, see [Http_PerformanceTiming](capi-netstack-http-performancetiming.md). |
 
 
 ### 成员函数

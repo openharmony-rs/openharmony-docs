@@ -6,8 +6,6 @@
 
 **库：** libudmf.so
 
-**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
-
 **起始版本：** 12
 
 **相关模块：** [UDMF](capi-udmf.md)

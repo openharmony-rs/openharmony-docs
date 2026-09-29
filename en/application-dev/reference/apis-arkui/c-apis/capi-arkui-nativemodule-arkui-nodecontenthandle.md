@@ -1,0 +1,18 @@
+# ArkUI_NodeContentHandle
+
+```c
+typedef struct ArkUI_NodeContentHandle ArkUI_NodeContentHandle
+```
+
+## Overview
+
+Defines the pointer type of the ArkUI node content.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 12
+
+**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Header file**: [common_type.h](capi-common-type-h.md)
+

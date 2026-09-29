@@ -1,7 +1,7 @@
 # OH_AVRecorder_Metadata
 
 ```c
-typedef struct OH_AVRecorder_Metadata {...} OH_AVRecorder_Metadata
+struct OH_AVRecorder_Metadata {...}
 ```
 
 ## Overview

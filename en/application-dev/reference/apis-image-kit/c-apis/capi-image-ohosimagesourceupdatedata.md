@@ -6,7 +6,7 @@ struct OhosImageSourceUpdateData {...}
 
 ## Overview
 
-Defines the update data of the image source. It is obtained by calling {@link OH_ImageSource_UpdateData}.
+Defines the update data of the image source. It is obtained by calling [OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata).
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -26,13 +26,11 @@ Defines the update data of the image source. It is obtained by calling {@link OH
 | size_t bufferSize = 0 |  |
 | uint32_t offset = 0 |  |
 | uint32_t updateLength = 0 |  |
-| int8_t isCompleted = 0;
-#else |  |
+| int8_t isCompleted = 0 |  |
 | uint8_t* buffer |  |
 | size_t bufferSize |  |
 | uint32_t offset |  |
 | uint32_t updateLength |  |
-| int8_t isCompleted;
-#endif |  |
+| int8_t isCompleted |  |
 
 

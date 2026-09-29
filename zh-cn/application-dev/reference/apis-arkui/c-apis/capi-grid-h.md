@@ -6,8 +6,6 @@
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -18,15 +16,15 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) | ArkUI_GridItemSize | 定义Grid布局选项{@link OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback}回调返回值结构体， 用于通过GridItem索引指定不规则GridItem占用的行数和列数。 |
-| [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) | ArkUI_GridItemRect | 定义Grid布局选项{@link OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback}回调返回值结构体， 用于通过GridItem索引指定该GridItem在Grid中的起始行列位置和占用的行列数。 |
+| [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) | ArkUI_GridItemSize | 定义Grid布局选项[OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback](capi-grid-h.md#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback)回调返回值结构体， 用于通过GridItem索引指定不规则GridItem占用的行数和列数。 |
+| [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) | ArkUI_GridItemRect | 定义Grid布局选项[OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback](capi-grid-h.md#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback)回调返回值结构体， 用于通过GridItem索引指定该GridItem在Grid中的起始行列位置和占用的行列数。 |
 | [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md) | ArkUI_GridLayoutOptions | 定义Grid（网格）布局选项，用于配置Grid组件中不规则GridItem的布局参数，包括不规则项索引和布局回调。不规则GridItem是指在网格布局中跨行跨列或尺寸不同的网格项。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_GridItemAlignment](#arkui_griditemalignment) | ArkUI_GridItemAlignment | {@link GridItem}对齐方式枚举。 |
+| [ArkUI_GridItemAlignment](#arkui_griditemalignment) | ArkUI_GridItemAlignment | GridItem对齐方式枚举。 |
 | [ArkUI_GridItemStyle](#arkui_griditemstyle) | ArkUI_GridItemStyle | GridItem样式枚举。 |
 
 ### 函数
@@ -50,9 +48,7 @@ enum ArkUI_GridItemAlignment
 
 **描述：**
 
-{@link GridItem}对齐方式枚举。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+GridItem对齐方式枚举。
 
 **起始版本：** 22
 
@@ -70,8 +66,6 @@ enum ArkUI_GridItemStyle
 **描述：**
 
 GridItem样式枚举。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -93,8 +87,6 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 
 创建Grid布局选项。使用完毕后调用OH_ArkUI_GridLayoutOptions_Dispose销毁。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **返回值：**
@@ -112,8 +104,6 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 **描述：**
 
 销毁Grid布局选项并释放资源。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -133,8 +123,6 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 设置Grid中不规则GridItem的索引数组。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
@@ -149,7 +137,7 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID}  函数参数异常。      <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID  函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_GridLayoutOptions_GetIrregularIndexes()
 
@@ -160,8 +148,6 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 **描述：**
 
 获取Grid中不规则GridItem的索引数组。当不设置OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback时， irregularIndexes中GridItem的默认大小为垂直滚动Grid的一整行或水平滚动Grid的一整列。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -177,7 +163,7 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 数组大小不够。      <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 数组大小不够。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback()
 
@@ -189,17 +175,15 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_Gr
 
 Grid布局选项通过GridItem索引获取指定Item占用的行列数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_GridLayoutOptions\* option | Grid布局选项。 |
-| void\* userData | 用户自定义数据。 |
-| ArkUI_GridItemSize (\*callback)(int32_t itemIndex | 根据index获取指定Item占用的行列数。itemIndex: GridItem索引值，取值范围来自 [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](capi-grid-h.md#oh_arkui_gridlayoutoptions_setirregularindexes). |
+| rkUI_GridLayoutOptions* option | Grid布局选项。 |
+| void* userData | 用户自定义数据。 |
+| ArkUI_GridItemSize (*callback)(int32_t itemIndex | 根据index获取指定Item占用的行列数。itemIndex: GridItem索引值，取值范围来自 [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](capi-grid-h.md#oh_arkui_gridlayoutoptions_setirregularindexes). |
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback()
 
@@ -211,16 +195,14 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutO
 
 Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的行列数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_GridLayoutOptions\* option | Grid布局选项。 |
-| void\* userData | 用户自定义数据。 |
-| ArkUI_GridItemRect (\*callback)(int32_t itemIndex | Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的行列数。 |
+| rkUI_GridLayoutOptions* option | Grid布局选项。 |
+| void* userData | 用户自定义数据。 |
+| ArkUI_GridItemRect (*callback)(int32_t itemIndex | Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的行列数。 |
 
 

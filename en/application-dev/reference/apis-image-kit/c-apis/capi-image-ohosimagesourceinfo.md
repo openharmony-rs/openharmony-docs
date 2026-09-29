@@ -6,7 +6,7 @@ struct OhosImageSourceInfo {...}
 
 ## Overview
 
-Defines the image source information, which is obtained by calling {@link OH_ImageSource_GetImageInfo}.
+Defines the image source information, which is obtained by calling [OH_ImageSource_GetImageInfo](capi-image-source-mdk-h.md#oh_imagesource_getimageinfo).
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -22,10 +22,10 @@ Defines the image source information, which is obtained by calling {@link OH_Ima
 
 | Name | Description |
 | -- | -- |
-| int32_t pixelFormat | Pixel format of the image source. It is set in {@link OH_ImageSource_Create}. |
+| int32_t pixelFormat | Pixel format of the image source. It is set in [OH_ImageSource_Create](capi-image-source-mdk-h.md#oh_imagesource_create). |
 | int32_t colorSpace | Color space of the image source. |
 | int32_t alphaType | Alpha type of the image source. |
-| int32_t density | Image density of the image source. It is set in {@link OH_ImageSource_Create}. |
-| struct OhosImageSize size | Pixel width and height of the image source. |
+| int32_t density | Image density of the image source. It is set in [OH_ImageSource_Create](capi-image-source-mdk-h.md#oh_imagesource_create). |
+| [struct OhosImageSize](capi-image-ohosimagesize.md) size | Pixel width and height of the image source. |
 
 

@@ -1,7 +1,7 @@
 # OH_Huks_PubKeyInfo
 
 ```c
-typedef struct OH_Huks_PubKeyInfo {...} OH_Huks_PubKeyInfo
+struct OH_Huks_PubKeyInfo {...}
 ```
 
 ## Overview
@@ -22,7 +22,7 @@ Defines the struct of a public key.
 
 | Name | Description |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | Algorithm of the public key. |
+| enum OH_Huks_KeyAlg keyAlg | Algorithm of the public key. |
 | uint32_t keySize | Length of the public key. |
 | uint32_t nOrXSize | Length of **n** or **X**. |
 | uint32_t eOrYSize | Length of **e** or **Y**. |

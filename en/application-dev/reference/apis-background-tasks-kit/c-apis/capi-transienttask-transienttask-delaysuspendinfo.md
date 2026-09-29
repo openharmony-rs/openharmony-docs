@@ -1,7 +1,7 @@
 # TransientTask_DelaySuspendInfo
 
 ```c
-typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendInfo
+struct TransientTask_DelaySuspendInfo {...}
 ```
 
 ## Overview

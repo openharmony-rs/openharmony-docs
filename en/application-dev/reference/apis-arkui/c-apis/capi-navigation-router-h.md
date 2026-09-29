@@ -2,11 +2,9 @@
 
 ## Overview
 
-Defines a set of navigation or router enum and interface.
+Defines the enumerations related to the **NavDestination** and **Router** components.
 
 **Library**: libace_ndk.z.so
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -18,8 +16,8 @@ Defines a set of navigation or router enum and interface.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkUI_NavDestinationState](#arkui_navdestinationstate) | ArkUI_NavDestinationState | Defines the state of the NavDestination component. |
-| [ArkUI_RouterPageState](#arkui_routerpagestate) | ArkUI_RouterPageState | Define the state of Router Page. |
+| [ArkUI_NavDestinationState](#arkui_navdestinationstate) | ArkUI_NavDestinationState | Enumerates the states of the **NavDestination** component, used to describe the lifecycle state changes of **<br>NavDestination** during navigation. |
+| [ArkUI_RouterPageState](#arkui_routerpagestate) | ArkUI_RouterPageState | Enumerates the states of the Router component (route page), used to describe the lifecycle state changes of **Router** during routing. |
 
 ## Enum type description
 
@@ -31,9 +29,7 @@ enum ArkUI_NavDestinationState
 
 **Description**
 
-Defines the state of the NavDestination component.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates the states of the **NavDestination** component, used to describe the lifecycle state changes of **<br>NavDestination** during navigation.
 
 **Since**: 12
 
@@ -47,6 +43,8 @@ Defines the state of the NavDestination component.
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 |  |
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 |  |
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 |  |
+| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 |  |
+| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 |  |
 | ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 |  |
 
 ### ArkUI_RouterPageState
@@ -57,9 +55,7 @@ enum ArkUI_RouterPageState
 
 **Description**
 
-Define the state of Router Page.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates the states of the Router component (route page), used to describe the lifecycle state changes of **Router** during routing.
 
 **Since**: 12
 

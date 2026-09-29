@@ -6,8 +6,6 @@ Provides the enumeration and structure definitions required by the `resourcemana
 
 **Library**: libohresmgr.so
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 12
 
 **Related module**: [resourcemanager](capi-resourcemanager.md)
@@ -16,9 +14,9 @@ Provides the enumeration and structure definitions required by the `resourcemana
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) | ResourceManager_Configuration | Structure of the device status. |
+| Name | Description |
+| -- | -- |
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) | Structure of the device status. |
 
 ### Enum
 
@@ -48,8 +46,6 @@ enum ResourceManager_ErrorCode
 
 Enumerates resource manager error codes.
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 12
 
 | Enum item | Description |
@@ -78,8 +74,6 @@ enum ResourceManager_Direction
 
 Enumerates screen orientations.
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 12
 
 | Enum item | Description |
@@ -97,8 +91,6 @@ enum ResourceManager_ColorMode
 
 Enumerates color modes.
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 12
 
 | Enum item | Description |
@@ -115,8 +107,6 @@ enum ResourceManager_DeviceType
 **Description**
 
 Enumerates device types.
-
-**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -139,8 +129,6 @@ enum ScreenDensity
 **Description**
 
 Enumerates the screen density types.
-
-**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 

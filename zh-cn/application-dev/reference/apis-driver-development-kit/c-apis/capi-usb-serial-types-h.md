@@ -8,8 +8,6 @@
 
 **库：** libusb_serial_ndk.z.so
 
-**系统能力：** SystemCapability.Driver.UsbSerial.Extension
-
 **起始版本：** 18
 
 **相关模块：** [USBSerialDDK](capi-usbserialddk.md)
@@ -20,8 +18,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [UsbSerial_Params](capi-usbserialddk-usbserial-params.md) | \_\_attribute\_\_((aligned(8))) UsbSerial_Params | 定义USB Serial DDK使用的USB串口参数，用于USB转串口设备的通信参数配置，需与目标通信设备的配置保持一致，否则可能无法正常通信。常见于工业控制设备、调试工具、 传感器数据采集等需要通过USB串口与设备通信的场景。 |
-| [UsbSerial_Device](capi-usbserialddk-usbserial-device.md) | UsbSerial_Device | USB串口设备数据结构（不透明），用于表示USB串口设备。开发者应通过{@link OH_UsbSerial_Open}接口函数获取此结构体实例。 |
+| [UsbSerial_Params](capi-usbserialddk-usbserial-params.md) | - | 定义USB Serial DDK使用的USB串口参数，用于USB转串口设备的通信参数配置，需与目标通信设备的配置保持一致，否则可能无法正常通信。常见于工业控制设备、调试工具、 传感器数据采集等需要通过USB串口与设备通信的场景。 |
+| [UsbSerial_Device](capi-usbserialddk-usbserial-device.md) | UsbSerial_Device | USB串口设备数据结构（不透明），用于表示USB串口设备。开发者应通过OH_UsbSerial_Open接口函数获取此结构体实例。 |
 
 ### 枚举
 
@@ -42,8 +40,6 @@ enum UsbSerial_DdkRetCode
 **描述：**
 
 定义USB Serial DDK使用的返回码。
-
-**系统能力：** SystemCapability.Driver.UsbSerial.Extension
 
 **起始版本：** 18
 
@@ -69,8 +65,6 @@ enum UsbSerial_FlowControl
 
 定义USB Serial DDK中的流量控制。在使用USB串口进行数据传输时，需要根据通信场景选择合适的流量控制方式。例如，在高速大数据量传输场景下，建议使用硬件流控以避免数据丢失；在低速或对实时性要求不高的场景下， 可使用软件流控；在短距离、可靠的点对点通信场景下，可选择无流控。
 
-**系统能力：** SystemCapability.Driver.UsbSerial.Extension
-
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -88,8 +82,6 @@ enum UsbSerial_Parity
 **描述：**
 
 定义USB Serial DDK使用的校验参数枚举。在配置USB串口通信参数时，需要根据数据传输的可靠性要求选择合适的校验方式。例如，在对数据完整性要求较高的工业控制场景下，建议使用奇校验或偶校验来检测传输错误； 在高噪声干扰环境下，校验可以帮助识别错误数据；在短距离、可靠的通信场景下，为提高传输效率，可选择无校验。
-
-**系统能力：** SystemCapability.Driver.UsbSerial.Extension
 
 **起始版本：** 18
 

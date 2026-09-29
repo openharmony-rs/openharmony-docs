@@ -6,8 +6,6 @@
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -51,8 +49,6 @@ enum ArkUI_KeyCode
 **描述：**
 
 按键事件的键码。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -215,8 +211,6 @@ enum ArkUI_KeyEventType
 
 按键的类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 | 枚举项 | 描述 |
@@ -237,8 +231,6 @@ enum ArkUI_KeySourceType
 
 触发当前按键的输入设备类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 | 枚举项 | 描述 |
@@ -257,8 +249,6 @@ enum ArkUI_KeyIntension
 **描述：**
 
 按键对应的意图。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -303,15 +293,13 @@ ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)
 
 获取按键的类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回值：**
 
@@ -329,15 +317,13 @@ int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)
 
 获取按键的键码。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回值：**
 
@@ -355,15 +341,13 @@ const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)
 
 获取按键的键值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回值：**
 
@@ -381,15 +365,13 @@ ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* eve
 
 获取当前按键的输入设备类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回值：**
 
@@ -407,15 +389,13 @@ void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool sto
 
 阻塞事件冒泡传递。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 | bool stopPropagation | 表示是否阻止事件冒泡。true表示阻止事件冒泡，false表示不阻止事件冒泡。 |
 
 ### OH_ArkUI_KeyEvent_GetKeyIntensionCode()
@@ -428,15 +408,13 @@ ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEven
 
 获取按键对应的意图。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回值：**
 
@@ -454,15 +432,13 @@ uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)
 
 获取按键的Unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的Unicode码值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回值：**
 
@@ -480,15 +456,13 @@ void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsu
 
 在按键事件回调中，设置事件是否被该回调消费。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 | bool isConsumed | 事件是否被该回调消费。true表示事件被消费，false表示事件未被消费。 |
 
 ### OH_ArkUI_KeyEvent_Dispatch()
@@ -501,8 +475,6 @@ void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent*
 
 将按键事件分发到特定组件节点。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 **参数：**
@@ -510,7 +482,7 @@ void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent*
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_NodeHandle node | 指定的节点。 |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 
 ### OH_ArkUI_KeyEvent_IsNumLockOn()
 
@@ -522,22 +494,20 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, b
 
 获取按键事件发生时NumLock的状态。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 | bool* state | 输出参数，返回NumLock的状态。true表示处于激活状态，false表示处于未激活状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_KeyEvent_IsCapsLockOn()
 
@@ -549,22 +519,20 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, 
 
 获取按键事件发生时CapsLock的状态。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 | bool* state | 输出参数，返回CapsLock的状态。true表示处于激活状态，false表示处于未激活状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_KeyEvent_IsScrollLockOn()
 
@@ -576,21 +544,19 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event
 
 获取按键事件发生时ScrollLock的状态。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 | bool* state | 输出参数，返回ScrollLock的状态。true表示处于激活状态，false表示处于未激活状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 成功。      <br>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 

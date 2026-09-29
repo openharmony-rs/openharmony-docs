@@ -1,12 +1,12 @@
 # Vibrator_Attribute
 
 ```c
-typedef struct Vibrator_Attribute {...} Vibrator_Attribute
+struct Vibrator_Attribute {...}
 ```
 
 ## 概述
 
-Vibrator_Attribute结构体用于描述马达的属性信息。开发者使用该结构体可以指定马达ID和振动场景。具体使用场景和实现机制请参见{@link Vibrator}模块文档。
+Vibrator_Attribute结构体用于描述马达的属性信息。开发者使用该结构体可以指定马达ID和振动场景。具体使用场景和实现机制请参见Vibrator模块文档。
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 

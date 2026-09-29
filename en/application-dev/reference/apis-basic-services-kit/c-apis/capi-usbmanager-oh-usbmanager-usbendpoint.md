@@ -1,12 +1,12 @@
 # OH_UsbManager_UsbEndpoint
 
 ```c
-typedef struct OH_UsbManager_UsbEndpoint {...} OH_UsbManager_UsbEndpoint
+struct OH_UsbManager_UsbEndpoint {...}
 ```
 
 ## Overview
 
-Defines the USB endpoint from which data is sent or received. An endpoint <br>is obtained from {@link OH_UsbManager_UsbInterface}.
+Defines the USB endpoint from which data is sent or received. An endpoint <br>is obtained from [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md).
 
 **System capability**: SystemCapability.USB.USBManager
 

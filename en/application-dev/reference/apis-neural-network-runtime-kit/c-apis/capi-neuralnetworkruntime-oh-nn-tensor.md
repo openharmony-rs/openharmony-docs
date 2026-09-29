@@ -1,7 +1,7 @@
 # OH_NN_Tensor
 
 ```c
-typedef struct OH_NN_Tensor {...} OH_NN_Tensor
+struct OH_NN_Tensor {...}
 ```
 
 ## Overview
@@ -14,7 +14,7 @@ Defines the tensor structure.<br> It is usually used to construct data nodes and
 
 **Deprecated**: 11
 
-**Replaced by**: {@link NN_TensorDesc}
+**Replaced by**: [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md)
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
 
@@ -26,10 +26,10 @@ Defines the tensor structure.<br> It is usually used to construct data nodes and
 
 | Name | Description |
 | -- | -- |
-| [OH_NN_DataType](capi-neural-network-runtime-type-h.md#oh_nn_datatype) dataType | Data type of the specified tensor. The value must be an enumerated value of {@link OH_NN_DataType}. |
+| [OH_NN_DataType](capi-neural-network-runtime-type-h.md#oh_nn_datatype) dataType | Data type of the specified tensor. The value must be an enumerated value of [OH_NN_DataType](capi-neural-network-runtime-type-h.md#oh_nn_datatype). |
 | uint32_t dimensionCount | Number of dimensions of the specified tensor |
 | const int32_t *dimensions | Dimension information (shape) of the specified tensor |
-| const [OH_NN_QuantParam](capi-neuralnetworkruntime-oh-nn-quantparam.md) *quantParam | Quantization information of the specified tensor. The data type must be {@link OH_NN_QuantParam}. |
+| const OH_NN_QuantParam *quantParam | Quantization information of the specified tensor. The data type must be [OH_NN_QuantParam](capi-neuralnetworkruntime-oh-nn-quantparam.md). |
 | [OH_NN_TensorType](capi-neural-network-runtime-type-h.md#oh_nn_tensortype) type |  |
 
 

@@ -1,7 +1,7 @@
 # OH_PictureNative_AuxiliaryPictureCopyItem
 
 ```c
-typedef struct OH_PictureNative_AuxiliaryPictureCopyItem {...} OH_PictureNative_AuxiliaryPictureCopyItem
+struct OH_PictureNative_AuxiliaryPictureCopyItem {...}
 ```
 
 ## Overview

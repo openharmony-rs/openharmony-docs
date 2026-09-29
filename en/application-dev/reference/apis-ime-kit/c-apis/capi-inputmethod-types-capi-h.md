@@ -8,8 +8,6 @@ Provides the input method types.
 
 **Library**: libohinputmethod.so
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 **Related module**: [InputMethod](capi-inputmethod.md)
@@ -47,8 +45,6 @@ enum InputMethod_KeyboardStatus
 
 Enumerates the keyboard status.
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 | Enum item | Description |
@@ -66,8 +62,6 @@ enum InputMethod_EnterKeyType
 **Description**
 
 Enumerates the Enter key types.
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -93,8 +87,6 @@ enum InputMethod_Direction
 
 Enumerates the moving directions.
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 | Enum item | Description |
@@ -115,8 +107,6 @@ enum InputMethod_ExtendAction
 
 Enumerates the types of the extended edit action on the text box.
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 | Enum item | Description |
@@ -135,8 +125,6 @@ enum InputMethod_TextInputType
 **Description**
 
 Enumerates the text input types.
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -168,8 +156,6 @@ enum InputMethod_CommandValueType
 
 Enumerates the private data types.
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 | Enum item | Description |
@@ -189,25 +175,23 @@ enum InputMethod_ErrorCode
 
 Enumerates the input method error codes.
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| IME_ERR_OK = 0 | The error code in the correct case. |
-| IME_ERR_UNDEFINED = 1 | The error code when error is undefined. |
-| IME_ERR_PARAMCHECK = 401 | The error code when parameter check failed. |
-| IME_ERR_PACKAGEMANAGER = 12800001 | The error code when the bundle manager error. |
-| IME_ERR_IMENGINE = 12800002 | The error code when input method engine error. |
-| IME_ERR_IMCLIENT = 12800003 | The error code when input method client error. |
-| IME_ERR_CONFIG_PERSIST = 12800005 | The error code when configuration persistence error. This error code is reported when the configuration fails to be saved. |
-| IME_ERR_CONTROLLER = 12800006 | The error code when input method controller error. |
-| IME_ERR_SETTINGS = 12800007 | The error code when input method setting error. |
-| IME_ERR_IMMS = 12800008 | The error code when input method manager service error. |
-| IME_ERR_DETACHED = 12800009 | The error code when input method client detached. |
-| IME_ERR_NULL_POINTER = 12802000 | The error code when unexpected null pointer. |
-| IME_ERR_QUERY_FAILED = 12802001 | The error code when query failed. |
+| IME_ERR_OK = 0 | &nbsp;The error code in the correct case. |
+| IME_ERR_UNDEFINED = 1 | &nbsp;The error code when error is undefined. |
+| IME_ERR_PARAMCHECK = 401 | &nbsp;The error code when parameter check failed. |
+| IME_ERR_PACKAGEMANAGER = 12800001 | &nbsp;The error code when the bundle manager error. |
+| IME_ERR_IMENGINE = 12800002 | &nbsp;The error code when input method engine error. |
+| IME_ERR_IMCLIENT = 12800003 | &nbsp;The error code when input method client error. |
+| IME_ERR_CONFIG_PERSIST = 12800005 | &nbsp;The error code when configuration persistence error. This error code is reported when the configuration fails to be saved. |
+| IME_ERR_CONTROLLER = 12800006 | &nbsp;The error code when input method controller error. |
+| IME_ERR_SETTINGS = 12800007 | &nbsp;The error code when input method setting error. |
+| IME_ERR_IMMS = 12800008 | &nbsp;The error code when input method manager service error. |
+| IME_ERR_DETACHED = 12800009 | &nbsp;The error code when input method client detached. |
+| IME_ERR_NULL_POINTER = 12802000 | &nbsp;The error code when unexpected null pointer. |
+| IME_ERR_QUERY_FAILED = 12802001 | &nbsp;The error code when query failed. |
 
 ### InputMethod_RequestKeyboardReason
 
@@ -218,8 +202,6 @@ enum InputMethod_RequestKeyboardReason
 **Description**
 
 Enumerates the reasons for requesting the keyboard.
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 15
 

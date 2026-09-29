@@ -6,8 +6,6 @@ Declares the functions for setting filter parameters, registering custom filter 
 
 **Library**: libimage_effect.so
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Related module**: [ImageEffect](capi-imageeffect.md)
@@ -34,11 +32,11 @@ Declares the functions for setting filter parameters, registering custom filter 
 
 | Name | Description |
 | -- | -- |
-| OH_EFFECT_BRIGHTNESS_FILTER "Brightness" | Define the brightness filter name that contain the parameter matched with the key refer to OH_EFFECT_FILTER_INTENSITY_KEY and the value refer to {@link ImageEffect_Any} that contain the data type of [EFFECT_DATA_TYPE_FLOAT](capi-image-effect-filter-h.md#imageeffect_datatype)<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
-| OH_EFFECT_CONTRAST_FILTER "Contrast" | Define the contrast filter name that contain the parameter matched with the key refer to OH_EFFECT_FILTER_INTENSITY_KEY and the value refer to {@link ImageEffect_Any} that contain the data type of [EFFECT_DATA_TYPE_FLOAT](capi-image-effect-filter-h.md#imageeffect_datatype)<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
-| OH_EFFECT_CROP_FILTER "Crop" | Define the crop filter name that contain the parameter matched with the key refer to OH_EFFECT_FILTER_REGION_KEY and the value refer to {@link ImageEffect_Any} that contain the data type of<br>[EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype) for {@link ImageEffect_Region}<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
+| OH_EFFECT_BRIGHTNESS_FILTER "Brightness" | Define the brightness filter name that contain the parameter matched with the key refer to OH_EFFECT_FILTER_INTENSITY_KEY and the value refer to ImageEffect_Any that contain the data type of [EFFECT_DATA_TYPE_FLOAT](capi-image-effect-filter-h.md#imageeffect_datatype)<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
+| OH_EFFECT_CONTRAST_FILTER "Contrast" | Define the contrast filter name that contain the parameter matched with the key refer to OH_EFFECT_FILTER_INTENSITY_KEY and the value refer to ImageEffect_Any that contain the data type of [EFFECT_DATA_TYPE_FLOAT](capi-image-effect-filter-h.md#imageeffect_datatype)<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
+| OH_EFFECT_CROP_FILTER "Crop" | Define the crop filter name that contain the parameter matched with the key refer to OH_EFFECT_FILTER_REGION_KEY and the value refer to ImageEffect_Any that contain the data type of [EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype) for ImageEffect_Region<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
 | OH_EFFECT_FILTER_INTENSITY_KEY "FilterIntensity" | Define the key that means intensity<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
-| OH_EFFECT_FILTER_REGION_KEY "FilterRegion" | Define the key that means region and matches the value ref to {@link ImageEffect_Any} contain the data type of<br>[EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype) for {@link ImageEffect_Region}<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
+| OH_EFFECT_FILTER_REGION_KEY "FilterRegion" | Define the key that means region and matches the value ref to ImageEffect_Any contain the data type of [EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype) for ImageEffect_Region<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
 
 ### Function
 
@@ -106,8 +104,6 @@ enum ImageEffect_DataType
 
 Enumerates the data type
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -131,8 +127,6 @@ enum ImageEffect_Format
 
 Enumerates the pixel format type
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -155,8 +149,6 @@ enum ImageEffect_BufferType
 
 Enumerates the effect buffer type
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -178,15 +170,13 @@ OH_EffectFilterInfo *OH_EffectFilterInfo_Create()
 
 Create an OH_EffectFilterInfo instance. It should be noted that the life cycle of the OH_EffectFilterInfo instance pointed to by the return value * needs to be manually released by [OH_EffectFilterInfo_Release](capi-image-effect-filter-h.md#oh_effectfilterinfo_release)
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_EffectFilterInfo *](capi-imageeffect-oh-effectfilterinfo.md) | Returns a pointer to an OH_EffectFilterInfo instance if the execution is successful, otherwise returns  nullptr |
+| [OH_EffectFilterInfo *](capi-imageeffect-oh-effectfilterinfo.md) | Returns a pointer to an OH_EffectFilterInfo instance if the execution is successful, otherwise returns nullptr |
 
 ### OH_EffectFilterInfo_SetFilterName()
 
@@ -197,8 +187,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *inf
 **Description**
 
 Set the filter name for OH_EffectFilterInfo structure
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -213,7 +201,7 @@ Set the filter name for OH_EffectFilterInfo structure
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilterInfo_GetFilterName()
 
@@ -224,8 +212,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *inf
 **Description**
 
 Get the filter name from OH_EffectFilterInfo structure
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -240,7 +226,7 @@ Get the filter name from OH_EffectFilterInfo structure
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilterInfo_SetSupportedBufferTypes()
 
@@ -251,8 +237,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilte
 **Description**
 
 Set the supported buffer types for OH_EffectFilterInfo structure
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -268,7 +252,7 @@ Set the supported buffer types for OH_EffectFilterInfo structure
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilterInfo_GetSupportedBufferTypes()
 
@@ -280,8 +264,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilte
 
 Get the supported buffer types from OH_EffectFilterInfo structure
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -289,14 +271,14 @@ Get the supported buffer types from OH_EffectFilterInfo structure
 | Parameter | Description |
 | -- | -- |
 | [OH_EffectFilterInfo](capi-imageeffect-oh-effectfilterinfo.md) *info | Encapsulate OH_EffectFilterInfo structure instance pointer |
-| uint32_t *size | The size of {@link OH_EffectBufferInfoType} that can be supported |
-| [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype) **bufferTypeArray | Array of {@link OH_EffectBufferInfoType} that can be supported |
+| uint32_t *size | The size of OH_EffectBufferInfoType that can be supported |
+| [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype) **bufferTypeArray | Array of OH_EffectBufferInfoType that can be supported |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilterInfo_SetSupportedFormats()
 
@@ -307,8 +289,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInf
 **Description**
 
 Set the supported formats for OH_EffectFilterInfo structure
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -324,7 +304,7 @@ Set the supported formats for OH_EffectFilterInfo structure
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilterInfo_GetSupportedFormats()
 
@@ -335,8 +315,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInf
 **Description**
 
 Get the supported formats from OH_EffectFilterInfo structure
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -352,7 +330,7 @@ Get the supported formats from OH_EffectFilterInfo structure
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilterInfo_Release()
 
@@ -363,8 +341,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_Release(OH_EffectFilterInfo *info)
 **Description**
 
 Clear the internal resources of the OH_EffectFilterInfo and destroy the OH_EffectFilterInfo instance
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -378,7 +354,7 @@ Clear the internal resources of the OH_EffectFilterInfo and destroy the OH_Effec
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_Create()
 
@@ -390,15 +366,13 @@ OH_EffectBufferInfo *OH_EffectBufferInfo_Create()
 
 Create an OH_EffectBufferInfo instance. It should be noted that the life cycle of the OH_EffectBufferInfo instance pointed to by the return value * needs to be manually released by [OH_EffectBufferInfo_Release](capi-image-effect-filter-h.md#oh_effectbufferinfo_release)
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_EffectBufferInfo *](capi-imageeffect-oh-effectbufferinfo.md) | Returns a pointer to an OH_EffectBufferInfo instance if the execution is successful, otherwise returns  nullptr |
+| [OH_EffectBufferInfo *](capi-imageeffect-oh-effectbufferinfo.md) | Returns a pointer to an OH_EffectBufferInfo instance if the execution is successful, otherwise returns nullptr |
 
 ### OH_EffectBufferInfo_SetAddr()
 
@@ -409,8 +383,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetAddr(OH_EffectBufferInfo *info, voi
 **Description**
 
 Set access to the address of the image in memory
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -425,7 +397,7 @@ Set access to the address of the image in memory
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_GetAddr()
 
@@ -436,8 +408,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetAddr(OH_EffectBufferInfo *info, voi
 **Description**
 
 Provide direct access to the address of the image in memory for rendering the filter effects
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -452,7 +422,7 @@ Provide direct access to the address of the image in memory for rendering the fi
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_SetWidth()
 
@@ -463,8 +433,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetWidth(OH_EffectBufferInfo *info, in
 **Description**
 
 Set the width of the image in pixels
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -479,7 +447,7 @@ Set the width of the image in pixels
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_GetWidth()
 
@@ -490,8 +458,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetWidth(OH_EffectBufferInfo *info, in
 **Description**
 
 Get the width of the image in pixels
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -506,7 +472,7 @@ Get the width of the image in pixels
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_SetHeight()
 
@@ -517,8 +483,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetHeight(OH_EffectBufferInfo *info, i
 **Description**
 
 Set the height of the image in pixels
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -533,7 +497,7 @@ Set the height of the image in pixels
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_GetHeight()
 
@@ -544,8 +508,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetHeight(OH_EffectBufferInfo *info, i
 **Description**
 
 Get the height of the image in pixels
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -560,7 +522,7 @@ Get the height of the image in pixels
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_SetRowSize()
 
@@ -571,8 +533,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetRowSize(OH_EffectBufferInfo *info, 
 **Description**
 
 Set number of bytes per row for the image
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -587,7 +547,7 @@ Set number of bytes per row for the image
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_GetRowSize()
 
@@ -598,8 +558,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetRowSize(OH_EffectBufferInfo *info, 
 **Description**
 
 Get number of bytes per row for the image
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -614,7 +572,7 @@ Get number of bytes per row for the image
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_SetEffectFormat()
 
@@ -625,8 +583,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetEffectFormat(OH_EffectBufferInfo *i
 **Description**
 
 Set the format of the image for OH_EffectBufferInfo
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -641,7 +597,7 @@ Set the format of the image for OH_EffectBufferInfo
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_GetEffectFormat()
 
@@ -652,8 +608,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetEffectFormat(OH_EffectBufferInfo *i
 **Description**
 
 Get the format of the image from OH_EffectBufferInfo
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -668,7 +622,7 @@ Get the format of the image from OH_EffectBufferInfo
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_SetTimestamp()
 
@@ -679,8 +633,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTimestamp(OH_EffectBufferInfo *info
 **Description**
 
 Set the timestamp of the image for OH_EffectBufferInfo
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -695,7 +647,7 @@ Set the timestamp of the image for OH_EffectBufferInfo
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_GetTimestamp()
 
@@ -706,8 +658,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetTimestamp(OH_EffectBufferInfo *info
 **Description**
 
 Get the timestamp of the image from OH_EffectBufferInfo
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -722,7 +672,7 @@ Get the timestamp of the image from OH_EffectBufferInfo
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectBufferInfo_SetTextureId()
 
@@ -733,8 +683,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTextureId(OH_EffectBufferInfo *info
 **Description**
 
 Sets the texture ID of the image for an OH_EffectBufferInfo struct.
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 20
 
@@ -749,7 +697,7 @@ Sets the texture ID of the image for an OH_EffectBufferInfo struct.
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the operation is successful; returns EFFECT_ERROR_PARAM_INVALID if the  parameter parameter is missing. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the operation is successful; returns EFFECT_ERROR_PARAM_INVALID if the parameter parameter is missing. |
 
 ### OH_EffectBufferInfo_GetTextureId()
 
@@ -760,8 +708,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetTextureId(OH_EffectBufferInfo *info
 **Description**
 
 Obtains the texture ID of an image from an OH_EffectBufferInfo struct.
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 20
 
@@ -776,7 +722,7 @@ Obtains the texture ID of an image from an OH_EffectBufferInfo struct.
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the operation is successful; returns EFFECT_ERROR_PARAM_INVALID if the  parameter parameter is missing. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the operation is successful; returns EFFECT_ERROR_PARAM_INVALID if the parameter parameter is missing. |
 
 ### OH_EffectBufferInfo_Release()
 
@@ -787,8 +733,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_Release(OH_EffectBufferInfo *info)
 **Description**
 
 Clear the internal resources of the OH_EffectBufferInfo and destroy the OH_EffectBufferInfo instance
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -802,7 +746,7 @@ Clear the internal resources of the OH_EffectBufferInfo and destroy the OH_Effec
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilterDelegate_SetValue()
 
@@ -814,17 +758,15 @@ typedef bool (*OH_EffectFilterDelegate_SetValue)(OH_EffectFilter *filter, const 
 
 When executing the method of [OH_EffectFilter_SetValue](capi-image-effect-filter-h.md#oh_effectfilter_setvalue) for the delegate filter, the function pointer will be called for checking the parameters is valid for the delegate filter
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) \*filter | Encapsulate OH_EffectFilter structure instance pointer |
-| const char \*key | Indicates the key of the filter |
-| const ImageEffect_Any \*value | Indicates the value corresponding to the key of the filter |
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | Encapsulate OH_EffectFilter structure instance pointer |
+| const char *key | Indicates the key of the filter |
+| const ImageEffect_Any *value | Indicates the value corresponding to the key of the filter |
 
 **Returns**:
 
@@ -842,16 +784,14 @@ typedef void (*OH_EffectFilterDelegate_PushData)(OH_EffectFilter *filter, OH_Eff
 
 Actively execute this callback function at the end of invoking the method of [OH_EffectFilterDelegate_Render](capi-image-effect-filter-h.md#oh_effectfilterdelegate_render) for passing possible new OH_EffectBufferInfo to the next filter. It should be noted that when passing new OH_EffectBufferInfo, the buffer in OH_EffectBufferInfo needs to be manually released after the execution of the function ends
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) \*filter | Encapsulate OH_EffectFilter structure instance pointer |
-| [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) \*info | Indicates the information of the image, such as width, height, etc. See [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) |
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | Encapsulate OH_EffectFilter structure instance pointer |
+| [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) *info | Indicates the information of the image, such as width, height, etc. See [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) |
 
 ### OH_EffectFilterDelegate_Render()
 
@@ -863,16 +803,14 @@ typedef bool (*OH_EffectFilterDelegate_Render)(OH_EffectFilter *filter, OH_Effec
 
 When the method of OH_ImageEffect_Start is executed on delegate filter that is contained in OH_ImageEffect, the function pointer will be called for rendering the delegate filter effects
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) \*filter | Encapsulate OH_EffectFilter structure instance pointer |
-| [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) \*info | Indicates the information of the image, such as width, height, etc. See [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) |
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | Encapsulate OH_EffectFilter structure instance pointer |
+| [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) *info | Indicates the information of the image, such as width, height, etc. See [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) |
 | [OH_EffectFilterDelegate_PushData](capi-image-effect-filter-h.md#oh_effectfilterdelegate_pushdata) pushData | Indicates the callback function for passing possible new OH_EffectBufferInfo to the next filter. See [OH_EffectFilterDelegate_PushData](capi-image-effect-filter-h.md#oh_effectfilterdelegate_pushdata) |
 
 **Returns**:
@@ -891,16 +829,14 @@ typedef bool (*OH_EffectFilterDelegate_Save)(OH_EffectFilter *filter, char **inf
 
 When the method of OH_ImageEffect_Save is executed on delegate filter that is contained in OH_ImageEffect, the function pointer will be called for serializing the delegate filter parameters
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) \*filter | Encapsulate OH_EffectFilter structure instance pointer |
-| char \*\*info | Indicates the serialized information that is obtained by converting the delegate filter parameters to JSON string |
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | Encapsulate OH_EffectFilter structure instance pointer |
+| char **info | Indicates the serialized information that is obtained by converting the delegate filter parameters to JSON string |
 
 **Returns**:
 
@@ -918,15 +854,13 @@ typedef OH_EffectFilter *(*OH_EffectFilterDelegate_Restore)(const char *info)
 
 When the method of OH_ImageEffect_Restore is executed on delegate filter that is contained in OH_ImageEffect, the function pointer will be called for deserializing the delegate filter parameters
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const char \*info | Indicates the serialized information that is obtained by converting the delegate filter parameters to JSON string |
+| const char *info | Indicates the serialized information that is obtained by converting the delegate filter parameters to JSON string |
 
 **Returns**:
 
@@ -943,8 +877,6 @@ OH_EffectFilter *OH_EffectFilter_Create(const char *name)
 **Description**
 
 Create an OH_EffectFilter instance. It should be noted that the life cycle of the OH_EffectFilter instance pointed to by the return value * needs to be manually released by [OH_EffectFilter_Release](capi-image-effect-filter-h.md#oh_effectfilter_release)
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -970,8 +902,6 @@ ImageEffect_ErrorCode OH_EffectFilter_SetValue(OH_EffectFilter *filter, const ch
 
 Set the filter parameter. It can be set multiple parameters by invoking this function multiple times
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -986,7 +916,7 @@ Set the filter parameter. It can be set multiple parameters by invoking this fun
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer.  [EFFECT_KEY_ERROR](capi-image-effect-errors-h.md#imageeffect_errorcode), the key of the filter parameter is invalid.  [EFFECT_PARAM_ERROR](capi-image-effect-errors-h.md#imageeffect_errorcode), the value of the filter parameter is invalid. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. [EFFECT_KEY_ERROR](capi-image-effect-errors-h.md#imageeffect_errorcode), the key of the filter parameter is invalid. [EFFECT_PARAM_ERROR](capi-image-effect-errors-h.md#imageeffect_errorcode), the value of the filter parameter is invalid. |
 
 ### OH_EffectFilter_GetValue()
 
@@ -997,8 +927,6 @@ ImageEffect_ErrorCode OH_EffectFilter_GetValue(OH_EffectFilter *filter, const ch
 **Description**
 
 Get the filter parameter
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -1014,7 +942,7 @@ Get the filter parameter
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer.  [EFFECT_KEY_ERROR](capi-image-effect-errors-h.md#imageeffect_errorcode), the key of the filter parameter is invalid. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. [EFFECT_KEY_ERROR](capi-image-effect-errors-h.md#imageeffect_errorcode), the key of the filter parameter is invalid. |
 
 ### OH_EffectFilter_Register()
 
@@ -1026,8 +954,6 @@ ImageEffect_ErrorCode OH_EffectFilter_Register(const OH_EffectFilterInfo *info, 
 
 Register the delegate filter
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1035,13 +961,13 @@ Register the delegate filter
 | Parameter | Description |
 | -- | -- |
 | [const OH_EffectFilterInfo](capi-imageeffect-oh-effectfilterinfo.md) *info | Indicates the capabilities supported by delegate filter, see [OH_EffectFilterInfo](capi-imageeffect-oh-effectfilterinfo.md) |
-| const ImageEffect_FilterDelegate *delegate | A collection of all callback functions, see {@link ImageEffect_FilterDelegate} |
+| const ImageEffect_FilterDelegate *delegate | A collection of all callback functions, see ImageEffect_FilterDelegate |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilter_LookupFilters()
 
@@ -1052,8 +978,6 @@ ImageEffect_FilterNames *OH_EffectFilter_LookupFilters(const char *key)
 **Description**
 
 Lookup for the filter names that matches the lookup condition. It should be noted that the allocated memory of ImageEffect_FilterNames can be manually released by invoking [OH_EffectFilter_ReleaseFilterNames](capi-image-effect-filter-h.md#oh_effectfilter_releasefilternames) if need
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -1067,7 +991,7 @@ Lookup for the filter names that matches the lookup condition. It should be note
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_FilterNames * | Returns Filter name array that matches the key, see {@link ImageEffect_FilterNames} |
+| ImageEffect_FilterNames * | Returns Filter name array that matches the key, see ImageEffect_FilterNames |
 
 ### OH_EffectFilter_ReleaseFilterNames()
 
@@ -1078,8 +1002,6 @@ void OH_EffectFilter_ReleaseFilterNames()
 **Description**
 
 Clear the internal cached resources of the ImageEffect_FilterNames
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -1092,8 +1014,6 @@ ImageEffect_ErrorCode OH_EffectFilter_LookupFilterInfo(const char *name, OH_Effe
 **Description**
 
 Lookup for the capabilities that supported by the filter
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -1108,7 +1028,7 @@ Lookup for the capabilities that supported by the filter
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilter_Render()
 
@@ -1120,8 +1040,6 @@ ImageEffect_ErrorCode OH_EffectFilter_Render(OH_EffectFilter *filter, OH_Pixelma
 
 Render the filter effects. The function is designed to support the same input and output image
 
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1129,14 +1047,14 @@ Render the filter effects. The function is designed to support the same input an
 | Parameter | Description |
 | -- | -- |
 | [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | Encapsulate OH_EffectFilter structure instance pointer |
-| OH_PixelmapNative *inputPixelmap | Indicates the input image |
-| OH_PixelmapNative *outputPixelmap | Indicates the output image |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *inputPixelmap | Indicates the input image |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *outputPixelmap | Indicates the output image |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 ### OH_EffectFilter_RenderWithTextureId()
 
@@ -1147,8 +1065,6 @@ ImageEffect_ErrorCode OH_EffectFilter_RenderWithTextureId(OH_EffectFilter *filte
 **Description**
 
 Applies the filter effect using texture IDs. This function does not support using the same texture for for both input and output.
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 20
 
@@ -1165,7 +1081,7 @@ Applies the filter effect using texture IDs. This function does not support usin
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the operation is successful; returns EFFECT_ERROR_PARAM_INVALID if the  parameter parameter is missing. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the operation is successful; returns EFFECT_ERROR_PARAM_INVALID if the parameter parameter is missing. |
 
 ### OH_EffectFilter_Release()
 
@@ -1176,8 +1092,6 @@ ImageEffect_ErrorCode OH_EffectFilter_Release(OH_EffectFilter *filter)
 **Description**
 
 Clear the internal resources of the OH_EffectFilter and destroy the OH_EffectFilter instance
-
-**System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12
 
@@ -1191,6 +1105,6 @@ Clear the internal resources of the OH_EffectFilter and destroy the OH_EffectFil
 
 | Type | Description |
 | -- | -- |
-| ImageEffect_ErrorCode | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to  [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode)  [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | Returns EFFECT_SUCCESS if the execution is successful, otherwise returns a specific error code, refer to [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) [EFFECT_ERROR_PARAM_INVALID](capi-image-effect-errors-h.md#imageeffect_errorcode), the input parameter is a null pointer. |
 
 

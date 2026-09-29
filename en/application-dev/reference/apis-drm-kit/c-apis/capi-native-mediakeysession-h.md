@@ -6,8 +6,6 @@ The file declares the MediaKeySession APIs for DRM operations. The APIs can be u
 
 **Library**: libnative_drm.so
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Related module**: [Drm](capi-drm.md)
@@ -16,10 +14,10 @@ The file declares the MediaKeySession APIs for DRM operations. The APIs can be u
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | MediaKeySession_Callback | The MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It does not provide a MediaKeySession instance, making it suitable for single-session decryption scenarios. |
-| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | OH_MediaKeySession_Callback | The OH_MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It provides a MediaKeySession instance, making it suitable for multi-session decryption scenarios. |
+| Name | Description |
+| -- | -- |
+| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | The MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It does not provide a MediaKeySession instance, making it suitable for single-session decryption scenarios. |
+| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | The OH_MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It provides a MediaKeySession instance, making it suitable for multi-session decryption scenarios. |
 
 ### Function
 
@@ -46,10 +44,10 @@ The file declares the MediaKeySession APIs for DRM operations. The APIs can be u
 
 | Name | Description |
 | -- | -- |
-| Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Defines the callback used to listen for media key session events, for example, key expiration events.<br>**Since**: 11 |
-| Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable) | Call back will be invoked when key changes.<br>**Since**: 11 |
-| Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Defines the callback used to listen for media key session events.<br>**Since**: 12 |
-| Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable) | Call back will be invoked when key changes.<br>**Since**: 12 |
+| Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Defines the callback used to listen for media key session events, for example, key expiration events.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
+| Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable) | Call back will be invoked when key changes.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
+| Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Defines the callback used to listen for media key session events.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
+| Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable) | Call back will be invoked when key changes.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
 
 ## Function description
 
@@ -63,24 +61,22 @@ typedef Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, ui
 
 Defines the callback used to listen for media key session events, for example, key expiration events.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| DRM_EventType eventType | Event type. |
-| uint8_t \*info | Pointer to the event information obtained from the media key session. |
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type. |
+| uint8_t *info | Pointer to the event information obtained from the media key session. |
 | int32_t infoLen | Length of the event information. |
-| char \*extra | Pointer to the additional information obtained from the media key session. |
+| char *extra | Pointer to the additional information obtained from the media key session. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | Error code. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | Error code. |
 
 ### MediaKeySession_KeyChangeCallback()
 
@@ -92,22 +88,20 @@ typedef Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo,
 
 Call back will be invoked when key changes.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| DRM_KeysInfo \*keysInfo | Key info gotten from media key system. |
+| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) *keysInfo | Key info gotten from media key system. |
 | bool newKeysAvailable | Whether new keys available. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_INVALID_VAL when the params checked failure, return DRM_ERR_OK when function called successfully. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_INVALID_VAL when the params checked failure, return DRM_ERR_OK when function called successfully. |
 
 ### OH_MediaKeySession_EventCallback()
 
@@ -119,25 +113,23 @@ typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKe
 
 Defines the callback used to listen for media key session events.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession \*mediaKeySession | Pointer to the MediaKeySession instance. |
-| DRM_EventType eventType | Event type. |
-| uint8_t \*info | Pointer to the event information. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance. |
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type. |
+| uint8_t *info | Pointer to the event information. |
 | int32_t infoLen | Length of the event information. |
-| char \*extra | Pointer to the additional information. |
+| char *extra | Pointer to the additional information. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | Error code. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | Error code. |
 
 ### OH_MediaKeySession_KeyChangeCallback()
 
@@ -149,23 +141,21 @@ typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *med
 
 Call back will be invoked when key changes.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession \*mediaKeySession | MediaKeySession instance. |
-| DRM_KeysInfo \*keysInfo | Key info gotten from media key system. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession instance. |
+| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) *keysInfo | Key info gotten from media key system. |
 | bool newKeysAvailable | Whether new keys available. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_INVALID_VAL when the params checked failure, return DRM_ERR_OK when function called successfully. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_INVALID_VAL when the params checked failure, return DRM_ERR_OK when function called successfully. |
 
 ### OH_MediaKeySession_GenerateMediaKeyRequest()
 
@@ -177,23 +167,21 @@ Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKey
 
 Generate media key request.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
-| DRM_MediaKeyRequestInfo *info | Media key request info. |
-| DRM_MediaKeyRequest *mediaKeyRequest | Media key request. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
+| [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md) *info | Media key request info. |
+| [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md) *mediaKeyRequest | Media key request. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_ProcessMediaKeyResponse()
 
@@ -205,15 +193,13 @@ Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKey
 
 Process media key response.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
 | uint8_t *response | Media Key response. |
 | int32_t responseLen | Media Key response len. |
 | uint8_t *offlineMediaKeyId | Offline media key identifier. |
@@ -223,7 +209,7 @@ Process media key response.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_CheckMediaKeyStatus()
 
@@ -235,22 +221,20 @@ Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySess
 
 Check media key status.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
-| DRM_MediaKeyStatus *mediaKeyStatus | Media key status. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
+| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) *mediaKeyStatus | Media key status. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_ClearMediaKeys()
 
@@ -262,21 +246,19 @@ Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)
 
 Clear media keys of the current session .
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_GenerateOfflineReleaseRequest()
 
@@ -288,15 +270,13 @@ Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *me
 
 Generate offline media key release request.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
 | uint8_t *offlineMediaKeyId | Offline media key identifier. |
 | int32_t offlineMediaKeyIdLen | Offline media key identifier len. |
 | uint8_t *releaseRequest | Media Key release request. |
@@ -306,7 +286,7 @@ Generate offline media key release request.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_ProcessOfflineReleaseResponse()
 
@@ -318,15 +298,13 @@ Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *me
 
 Process offline media key release response.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
 | uint8_t *offlineMediaKeyId | Offline media key identifier. |
 | int32_t offlineMediaKeyIdLen | Offline media key identifier len. |
 | uint8_t *releaseResponse | Media Key response. |
@@ -336,7 +314,7 @@ Process offline media key release response.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_RestoreOfflineMediaKeys()
 
@@ -348,15 +326,13 @@ Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKey
 
 Restore offline media keys by ID.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
 | uint8_t *offlineMediaKeyId | Offline media key identifier. |
 | int32_t offlineMediaKeyIdLen | Offline media key identifier len. |
 
@@ -364,7 +340,7 @@ Restore offline media keys by ID.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_GetContentProtectionLevel()
 
@@ -376,22 +352,20 @@ Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaK
 
 Get content protection level of the session.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
-| DRM_ContentProtectionLevel *contentProtectionLevel | Content protection level. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) *contentProtectionLevel | Content protection level. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_RequireSecureDecoderModule()
 
@@ -403,15 +377,13 @@ Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *media
 
 Whether the encrypted content require a secure decoder or not.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
 | const char *mimeType | The media type. |
 | bool *status | Whether secure decoder is required. |
 
@@ -419,7 +391,7 @@ Whether the encrypted content require a secure decoder or not.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_SetMediaKeySessionCallback()
 
@@ -431,22 +403,20 @@ Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *media
 
 Set media key session event callback.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
 | [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) *callback | Callback to be set to the media key session. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. |
 
 ### OH_MediaKeySession_SetCallback()
 
@@ -458,22 +428,20 @@ Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_
 
 Set media key session event callback.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
 | [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) *callback | Callback to be set to the media key session. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. |
 
 ### OH_MediaKeySession_Destroy()
 
@@ -485,20 +453,18 @@ Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)
 
 Release the resource before the session going to be unused.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySession *mediaKeySession | Media key session instance. |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 

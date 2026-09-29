@@ -6,8 +6,6 @@ Provides type definitions for <b>NativeNode</b> APIs.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -24,7 +22,7 @@ Provides type definitions for <b>NativeNode</b> APIs.
 | [ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md) | ArkUI_NativeNodeAPI_1 | Provides a collection of native-side Node type APIs provided by ArkUI. APIs related to the Node module must be called on the main thread. |
 | [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) | OH_ArkUI_TextEditorChangeEvent | Defines a struct for the text content change event of the **TextEditor** component. |
 | [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) | ArkUI_NodeCustomEvent | Defines the general structure of a custom component event. |
-| [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md) | ArkUI_NodeAdapterHandle | Defines the component adapter, which is used for lazy loading of elements of scrollable components. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) | ArkUI_NodeAdapterHandle | Defines the pointer to a component adapter object, which is used for lazy loading of elements in scrollable components. This is applicable to scenarios where a large amount of scrollable content needs to be loaded on demand. It prevents all elements from being created at once, reducing memory usage and improving scrolling performance. |
 | [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md) | ArkUI_NodeAdapterEvent | Defines the component adapter event. |
 | [ArkUI_NodeContentEvent](capi-arkui-nativemodule-arkui-nodecontentevent.md) | ArkUI_NodeContentEvent | Defines the general structure of a node content event. |
 
@@ -142,15 +140,15 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node, void* userData, void (\*onDrawCompleted)(void* userData))](#oh_arkui_registerdrawcallbackonnodehandle) | - | Registers a callback for node when draw is completed. |
 | [int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)](#oh_arkui_unregisterlayoutcallbackonnodehandle) | - | Unregisters the layout completed callback for node. |
 | [int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)](#oh_arkui_unregisterdrawcallbackonnodehandle) | - | Unregisters the draw completed callback for node. |
-| [int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* snapshotOptions, OH_PixelmapNative** pixelmap)](#oh_arkui_getnodesnapshot) | - | Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the <b>Pixelmap</b> object created is no longer in use, it should be released by calling {@link OH_PixelmapNative_Release}. |
+| [int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* snapshotOptions, OH_PixelmapNative** pixelmap)](#oh_arkui_getnodesnapshot) | - | Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the <b>Pixelmap</b> object created is no longer in use, it should be released by calling OH_PixelmapNative_Release. |
 | [int32_t OH_ArkUI_GetNodeSnapshotSizeLimitation(int32_t* maxWidth, int32_t* maxHeight)](#oh_arkui_getnodesnapshotsizelimitation) | - | Query the size limitation of the component snapshot. |
 | [int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntOffset* globalOffset)](#oh_arkui_nodeutils_getpositiontoparent) | - | Obtains the offset of a specific node relative to its parent node. |
 | [ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiStates, void (statesChangeHandler)(int32_t currentStates, void* userData), bool excludeInner, void* userData)](#oh_arkui_addsupporteduistates) | - | Adds the UI state style supported by the component. To handle states change efficiently, need to specify the states of interest and the corresponding handler. When a state of interest occurs, the handler will be executed. - You can adjust the UI style based on the current state within the callback. If this API is called multiple times on the same node, the last set of states and handler will take precedence. - Some component types have default system handling for certain states. For example, the <b>Button</b> component has a default style effect for the PRESSED state. When custom state handling is implemented on such components, the default style effect will be applied first, followed by the custom style changes, resulting in a combined effect. To disable the default style effects, set <b>excludeInner</b> to <b>true</b>, if this is allowed by the system implementation. - And when this API is called, the provided handler function will be executed immediately. - There is no need to explicitly register a listener for the NORMAL state. Once a non-NORMAL state is registered, the system will automatically notify your application when the state changes back to NORMAL. |
 | [ArkUI_ErrorCode OH_ArkUI_RemoveSupportedUIStates(ArkUI_NodeHandle node, int32_t uiStates)](#oh_arkui_removesupporteduistates) | - | Removes registered UI states. When all states registered using **OH_ArkUI_AddSupportedUIStates** are removed, the registered **stateChangeHandler** will no longer be executed. |
-| [int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, void(\*callback)(void* userData))](#oh_arkui_runtaskinscope) | - | Executes the specified callback in the target UI context. For the implementation example, see {@link Ensuring Multi-Instance Functionality in the NDK}. |
+| [int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, void(\*callback)(void* userData))](#oh_arkui_runtaskinscope) | - | Executes the specified callback in the target UI context. For the implementation example, see Ensuring Multi-Instance Functionality in the NDK. |
 | [int32_t OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(const uint32_t uniqueId, ArkUI_NodeHandle* node)](#oh_arkui_nodeutils_getnodehandlebyuniqueid) | - | Obtain a node by its unique ID. |
 | [int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqueId)](#oh_arkui_nodeutils_getnodeuniqueid) | - | Obtains the unique ID of the target node. |
-| [int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInRenderState)](#oh_arkui_nativemodule_isinrenderstate) | - | Obtains whether a node is in the render state. If {@link RenderNode} of a node is in the render tree, the node is in the render state. |
+| [int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInRenderState)](#oh_arkui_nativemodule_isinrenderstate) | - | Obtains whether a node is in the render state. If RenderNode of a node is in the render tree, the node is in the render state. |
 | [int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)](#oh_arkui_nativemodule_adoptchild) | - | Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node. |
 | [int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)](#oh_arkui_nativemodule_removeadoptedchild) | - | Removes a previously-adopted affiliated node. |
 | [int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDark, ArkUI_NodeType nodeType, uint32_t (\*colorInvertFunc)(uint32_t color))](#oh_arkui_setforcedarkconfig) | - | Sets the inverse color algorithm for components and instances. |
@@ -158,13 +156,13 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)](#oh_arkui_nativemodule_unregistercommonevent) | - | Unregisters the basic event callback for the target node.<br> For details about the supported event types, see [OH_ArkUI_NativeModule_RegisterCommonEvent](capi-native-node-h.md#oh_arkui_nativemodule_registercommonevent). |
 | [int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node, float* ratios, int32_t size, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonvisibleareaapproximatechangeevent) | - | Registers a basic event callback for visible area changes with a constrained callback interval. |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonvisibleareaapproximatechangeevent) | - | Unregisters the basic event callback for visible area changes with a constrained callback interval. |
-| [int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNode, ArkUI_IntOffset localPosition, ArkUI_IntOffset* windowPosition)](#oh_arkui_nativemodule_convertpositiontowindow) | - | Converts the coordinates of a point from the coordinate system of a specified node to that of the current window. For a coordinate system of a node, transformation of the node is considered. For example, if node A is translated leftward by 100, the coordinates of the points in its coordinate system will also be translated leftward by 100.<br> [](docroot://reference/apis-arkui/figures/ConvertToWindow.png)<br> As shown in the preceding figure, the coordinates (x0, y0) in the coordinate system of the specified node are converted to the coordinates (x1, y1) in the coordinate system of the window. |
-| [int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetNode, ArkUI_IntOffset windowPosition, ArkUI_IntOffset* localPosition)](#oh_arkui_nativemodule_convertpositionfromwindow) | - | Converts the coordinates of a point from the current window's coordinate system to the target node's coordinate system. For a coordinate system of a node, transformation of the node is considered. For example, if node A is translated leftward by 100, the coordinates of the points in its coordinate system will also be translated leftward by 100.<br> [](docroot://reference/apis-arkui/figures/ConvertFromWindow.png)<br> As shown in the preceding figure, the coordinates (x1, y1) in the window coordinate system are converted to the coordinates (x0, y0) in the coordinate system of the target node. |
+| [int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNode, ArkUI_IntOffset localPosition, ArkUI_IntOffset* windowPosition)](#oh_arkui_nativemodule_convertpositiontowindow) | - | Converts the coordinates of a point from the coordinate system of a specified node to that of the current window. For a coordinate system of a node, transformation of the node is considered. For example, if node A is translated leftward by 100, the coordinates of the points in its coordinate system will also be translated leftward by 100.<br> [](../../../reference/apis-arkui/figures/ConvertToWindow.png)<br> As shown in the preceding figure, the coordinates (x0, y0) in the coordinate system of the specified node are converted to the coordinates (x1, y1) in the coordinate system of the window. |
+| [int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetNode, ArkUI_IntOffset windowPosition, ArkUI_IntOffset* localPosition)](#oh_arkui_nativemodule_convertpositionfromwindow) | - | Converts the coordinates of a point from the current window's coordinate system to the target node's coordinate system. For a coordinate system of a node, transformation of the node is considered. For example, if node A is translated leftward by 100, the coordinates of the points in its coordinate system will also be translated leftward by 100.<br> [](../../../reference/apis-arkui/figures/ConvertFromWindow.png)<br> As shown in the preceding figure, the coordinates (x1, y1) in the window coordinate system are converted to the coordinates (x0, y0) in the coordinate system of the target node. |
 | [int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_swiper_finishanimation) | - | Stop the animation being executed by the Swiper node. |
 | [int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskData, void (\*asyncUITask)(void* asyncUITaskData), void (\*onFinish)(void* asyncUITaskData))](#oh_arkui_postasyncuitask) | - | Submits the **asyncUITask** function to a non-UI thread provided by the ArkUI framework for execution. After **asyncUITask** finishes execution, the **onFinish** function is called in the UI thread.<br> This is suitable for scenarios involving multi-threaded UI component creation. You can use this API to create UI components in non-UI threads and then mount the created components to the main tree in the UI thread. |
 | [int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (\*task)(void* taskData))](#oh_arkui_postuitask) | - | Submits the **task** function to the UI thread for execution.<br> This is suitable for scenarios involving multi-threaded UI component creation. When you create UI components in a self-built thread, you can use this API to mount the created components to the main tree on the UI thread. |
 | [int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle uiContext, bool visible)](#oh_arkui_nativemodule_atomicservicemenubarsetvisible) | - | set the visiblity of the menubar. |
-| [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | Registers a callback for listening for component dimension and area changes.<br> This function can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node at any time. The newly registered callback will replace the previously registered callback for this event and will take effect from the next frame. When the callback is no longer needed, call [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released. |
+| [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | Registers a callback for listening for component dimension and area changes.<br> This function can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node at any time. The newly registered callback will replace the previously registered callback for this event and will take effect from the next frame. When the callback is no longer needed, call [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released. |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) | - | Unregisters the callback bound to the dimensions and area changes of a component. |
 | [int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, void (\*task)(void* taskData))](#oh_arkui_postuitaskandwait) | - | Post UI task to UI thread and wait until UI task finished. |
 | [int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_startfakedrag) | - | Start a fake drag of the Swiper node. Call OH_ArkUI_Swiper_FakeDragBy to simulate the drag motion. Call OH_ArkUI_Swiper_StopFakeDrag to complete the fake drag. A fake drag can be interrupted by a real drag. If you need to ignore touch events and other user input during a fake drag, use NODE_SWIPER_DISABLE_SWIPE. |
@@ -186,7 +184,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 
 | Name | Description |
 | -- | -- |
-| void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event) | Defines the callback function of a node content event.<br>**Since**: 12 |
+| void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event) | Defines the callback function of a node content event.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
 ## Enum type description
 
@@ -199,8 +197,6 @@ enum ArkUI_NodeType
 **Description**
 
 Enumerates ArkUI component types that can be created on the native side.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -264,8 +260,6 @@ enum ArkUI_NodeDirtyFlag
 
 Defines the dirty area flag passed in the <b>::markDirty</b> API.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -283,8 +277,6 @@ enum ArkUI_NodeAdapterEventType
 **Description**
 
 Enumerates component adapter events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -306,8 +298,6 @@ enum ArkUI_NodeContentEventType
 
 Defines the node content event type.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -325,14 +315,12 @@ enum ArkUI_InspectorErrorCode
 
 Enumerates the inspector error codes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_INSPECTOR_NATIVE_RESULT_SUCCESSFUL = 0 | Success. |
-| ARKUI_INSPECTOR_NATIVE_RESULT_BAD_PARAMETER = -1 | Invalid parameter. |
+| ARKUI_INSPECTOR_NATIVE_RESULT_SUCCESSFUL = 0 | &nbsp;Success. |
+| ARKUI_INSPECTOR_NATIVE_RESULT_BAD_PARAMETER = -1 | &nbsp;Invalid parameter. |
 
 
 ## Function description
@@ -347,21 +335,19 @@ ArkUI_NodeEventType OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event)
 
 Obtains the type of a component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Indicates the pointer to the component event. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Indicates the pointer to the component event. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype) | Returns the type of the component event. |
+| [ArkUI_NodeEventType](capi-arkui-nodeeventtype.md) | Returns the type of the component event. |
 
 ### OH_ArkUI_NodeEvent_GetTargetId()
 
@@ -373,15 +359,13 @@ int32_t OH_ArkUI_NodeEvent_GetTargetId(ArkUI_NodeEvent* event)
 
 Obtains the custom ID of a component event.<br> The event ID is passed in as a parameter when the [registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) function is called and can be applied to the dispatch logic of the same event entry function [registerNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Indicates the pointer to the component event. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Indicates the pointer to the component event. |
 
 **Returns**:
 
@@ -399,21 +383,19 @@ ArkUI_NodeHandle OH_ArkUI_NodeEvent_GetNodeHandle(ArkUI_NodeEvent* event)
 
 Obtains the component object that triggers a component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Indicates the pointer to the component event. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Indicates the pointer to the component event. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_NodeHandle | Returns the component object that triggers the component event. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Returns the component object that triggers the component event. |
 
 ### OH_ArkUI_NodeEvent_GetInputEvent()
 
@@ -425,21 +407,19 @@ ArkUI_UIInputEvent* OH_ArkUI_NodeEvent_GetInputEvent(ArkUI_NodeEvent* event)
 
 Obtains input event (for example, touch event) data for a component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Pointer to the component event. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Pointer to the component event. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_UIInputEvent* | Pointer to the input event data. |
+| [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) | Pointer to the input event data. |
 
 ### OH_ArkUI_NodeEvent_GetNodeComponentEvent()
 
@@ -451,15 +431,13 @@ ArkUI_NodeComponentEvent* OH_ArkUI_NodeEvent_GetNodeComponentEvent(ArkUI_NodeEve
 
 Obtains the numerical data in a component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Indicates the pointer to the component event. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Indicates the pointer to the component event. |
 
 **Returns**:
 
@@ -477,15 +455,13 @@ ArkUI_StringAsyncEvent* OH_ArkUI_NodeEvent_GetStringAsyncEvent(ArkUI_NodeEvent* 
 
 Obtains the string data in a component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Indicates the pointer to the component event. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Indicates the pointer to the component event. |
 
 **Returns**:
 
@@ -503,15 +479,13 @@ ArkUI_TextChangeEvent* OH_ArkUI_NodeEvent_GetTextChangeEvent(ArkUI_NodeEvent* ev
 
 Obtains the ArkUI_TextChangeEvent data from a component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Pointer to a component event. It cannot be null. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Pointer to a component event. It cannot be null. |
 
 **Returns**:
 
@@ -529,15 +503,13 @@ void* OH_ArkUI_NodeEvent_GetUserData(ArkUI_NodeEvent* event)
 
 Obtains the custom data in a component event.<br> This parameter is passed in [registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) and can be applied to the service logic when the event is triggered.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Indicates the pointer to the component event. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Indicates the pointer to the component event. |
 
 **Returns**:
 
@@ -555,23 +527,21 @@ int32_t OH_ArkUI_NodeEvent_GetNumberValue(ArkUI_NodeEvent* event, int32_t index,
 
 Obtains the numeric-type parameter of a component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Indicates the pointer to the component event. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Indicates the pointer to the component event. |
 | int32_t index | Indicates the index of the return value. |
-| ArkUI_NumberValue* value | Indicates the return value. |
+| [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | Indicates the return value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter length exceeds          the limit.          Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the data does not exist in the component event. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE if the parameter length exceeds the limit. Returns ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID if the data does not exist in the component event. |
 
 ### OH_ArkUI_NodeEvent_GetStringValue()
 
@@ -583,15 +553,13 @@ int32_t OH_ArkUI_NodeEvent_GetStringValue(ArkUI_NodeEvent* event, int32_t index,
 
 Obtains the string-type parameter of a component event. The string data is valid only during an event callback. To use it outside an event callback, you are advised to copy the string data.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Indicates the pointer to the component event. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Indicates the pointer to the component event. |
 | int32_t index | Indicates the index of the return value. |
 | char** string | Indicates the pointer to the string array. |
 | int32_t* stringSize | Indicates the length of the string array. |
@@ -600,7 +568,7 @@ Obtains the string-type parameter of a component event. The string data is valid
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter length exceeds          the limit.          Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the data does not exist in the component event. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE if the parameter length exceeds the limit. Returns ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID if the data does not exist in the component event. |
 
 ### OH_ArkUI_NodeEvent_SetReturnNumberValue()
 
@@ -612,23 +580,21 @@ int32_t OH_ArkUI_NodeEvent_SetReturnNumberValue(ArkUI_NodeEvent* event, ArkUI_Nu
 
 Sets the return value for a component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Indicates the pointer to the component event. |
-| ArkUI_NumberValue* value | Indicates the numeric-type array. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Indicates the pointer to the component event. |
+| [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | Indicates the numeric-type array. |
 | int32_t size | Indicates the array length. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the component event does not support return values.          Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if data does not exist in the component event. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN if the component event does not support return values. Returns ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID if data does not exist in the component event. |
 
 ### OH_ArkUI_NodeEvent_GetTouchTestInfo()
 
@@ -639,8 +605,6 @@ ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEv
 **Description**
 
 Obtains the touch test information in a component event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -654,7 +618,7 @@ Obtains the touch test information in a component event.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_TouchTestInfo* | Pointer to the [ArkUI_TouchTestInfo](capi-arkui-eventmodule-arkui-touchtestinfo.md) object. If the input parameter is invalid or is not touch test      information, null is returned. |
+| [ArkUI_TouchTestInfo*](capi-arkui-eventmodule-arkui-touchtestinfo.md) | Pointer to the [ArkUI_TouchTestInfo](capi-arkui-eventmodule-arkui-touchtestinfo.md) object. If the input parameter is invalid or is not touch test information, **null** is returned. |
 
 ### OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent()
 
@@ -666,21 +630,19 @@ OH_ArkUI_TextEditorChangeEvent* OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEven
 
 Obtains the text content change data of the **TextEditor** component in the component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* event | Pointer to the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) component event object. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* event | Pointer to the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) component event object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_ArkUI_TextEditorChangeEvent*](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) | Returns the pointer to an <b>OH_ArkUI_TextEditorChangeEvent</b> object.      Returns <b>null</b> if the input parameter is invalid or does not represent a text editor change event. |
+| [OH_ArkUI_TextEditorChangeEvent*](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) | Returns the pointer to an <b>OH_ArkUI_TextEditorChangeEvent</b> object. Returns <b>null</b> if the input parameter is invalid or does not represent a text editor change event. |
 
 ### OH_ArkUI_NodeAdapter_Create()
 
@@ -691,8 +653,6 @@ ArkUI_NodeAdapterHandle OH_ArkUI_NodeAdapter_Create()
 **Description**
 
 Creates a component adapter.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -706,15 +666,13 @@ void OH_ArkUI_NodeAdapter_Dispose(ArkUI_NodeAdapterHandle handle)
 
 Destroys a component adapter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
 
 ### OH_ArkUI_NodeAdapter_SetTotalNodeCount()
 
@@ -726,22 +684,20 @@ int32_t OH_ArkUI_NodeAdapter_SetTotalNodeCount(ArkUI_NodeAdapterHandle handle, u
 
 Sets the total number of elements in the specified adapter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
 | uint32_t size | Indicates the number of elements. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeAdapter_GetTotalNodeCount()
 
@@ -753,15 +709,13 @@ uint32_t OH_ArkUI_NodeAdapter_GetTotalNodeCount(ArkUI_NodeAdapterHandle handle)
 
 Obtains the total number of elements in the specified adapter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
 
 **Returns**:
 
@@ -780,23 +734,21 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 
 Registers an event callback for the adapter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
-| void\* userData | Indicates custom data. |
-| void (\*receiver)(ArkUI_NodeAdapterEvent\* event) | Indicates the event receiver callback. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
+| void* userData | Indicates custom data. |
+| void (*receiver)(ArkUI_NodeAdapterEvent* event) | Indicates the event receiver callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeAdapter_UnregisterEventReceiver()
 
@@ -808,15 +760,13 @@ void OH_ArkUI_NodeAdapter_UnregisterEventReceiver(ArkUI_NodeAdapterHandle handle
 
 Deregisters an event callback for the adapter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
 
 ### OH_ArkUI_NodeAdapter_ReloadAllItems()
 
@@ -828,21 +778,19 @@ int32_t OH_ArkUI_NodeAdapter_ReloadAllItems(ArkUI_NodeAdapterHandle handle)
 
 Instructs the specified adapter to reload all elements.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeAdapter_ReloadItem()
 
@@ -855,23 +803,21 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 Instructs the specified adapter to reload certain elements.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
 | uint32_t startPosition | Indicates the start position of the elements to reload. |
-| uint32_t itemCount | Indicates the number of the elements to reload. @return Returns the error code. Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful. Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| uint32_t itemCount | Indicates the number of the elements to reload. @return Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeAdapter_RemoveItem()
 
@@ -884,15 +830,13 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 Instructs the specified adapter to remove certain elements.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
 | uint32_t startPosition | Indicates the start position of the elements to remove. |
 | uint32_t itemCount | Indicates the number of the elements to remove. |
 
@@ -900,7 +844,7 @@ Instructs the specified adapter to remove certain elements.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeAdapter_InsertItem()
 
@@ -913,15 +857,13 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 Instructs the specified adapter to insert certain elements.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
 | uint32_t startPosition | Indicates the start position of the elements to insert. |
 | uint32_t itemCount | Indicates the number of the elements to insert. |
 
@@ -929,7 +871,7 @@ Instructs the specified adapter to insert certain elements.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeAdapter_MoveItem()
 
@@ -941,15 +883,13 @@ int32_t OH_ArkUI_NodeAdapter_MoveItem(ArkUI_NodeAdapterHandle handle, uint32_t f
 
 Instructs the specified adapter to move certain elements.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
 | uint32_t from | Indicates the start position of the elements to move. |
 | uint32_t to |  Indicates the end position of the elements to move. |
 
@@ -957,7 +897,7 @@ Instructs the specified adapter to move certain elements.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeAdapter_GetAllItems()
 
@@ -969,23 +909,21 @@ int32_t OH_ArkUI_NodeAdapter_GetAllItems(ArkUI_NodeAdapterHandle handle, ArkUI_N
 
 Obtains all elements stored in the specified adapter.<br> This API returns the pointer to the array of the elements. You need to manually release the memory data to which the pointer points.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Indicates the target component adapter. |
-| ArkUI_NodeHandle** items | Indicates the pointer to the array of the elements in the adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Indicates the target component adapter. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)** items | Indicates the pointer to the array of the elements in the adapter. |
 | uint32_t* size | Indicates the number of elements. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeAdapterEvent_GetUserData()
 
@@ -996,8 +934,6 @@ void* OH_ArkUI_NodeAdapterEvent_GetUserData(ArkUI_NodeAdapterEvent* event)
 **Description**
 
 Obtains the custom data passed in during registration of the specified event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1016,8 +952,6 @@ ArkUI_NodeAdapterEventType OH_ArkUI_NodeAdapterEvent_GetType(ArkUI_NodeAdapterEv
 **Description**
 
 Obtains the event type.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1043,8 +977,6 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetRemovedNode(ArkUI_NodeAdapterEvent
 
 Obtains the element to be removed for the event to be destroyed.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1057,7 +989,7 @@ Obtains the element to be removed for the event to be destroyed.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_NodeHandle | Returns the element to be removed. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Returns the element to be removed. |
 
 ### OH_ArkUI_NodeAdapterEvent_GetItemIndex()
 
@@ -1068,8 +1000,6 @@ uint32_t OH_ArkUI_NodeAdapterEvent_GetItemIndex(ArkUI_NodeAdapterEvent* event)
 **Description**
 
 Obtains the index of the element to be operated for the specified adapter event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1095,8 +1025,6 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetHostNode(ArkUI_NodeAdapterEvent* e
 
 Obtains the scrollable container node that uses the specified adapter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1109,7 +1037,7 @@ Obtains the scrollable container node that uses the specified adapter.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_NodeHandle | Returns the scrollable container node that uses the specified adapter. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Returns the scrollable container node that uses the specified adapter. |
 
 ### OH_ArkUI_NodeAdapterEvent_SetItem()
 
@@ -1121,8 +1049,6 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetItem(ArkUI_NodeAdapterEvent* event, ArkUI_N
 
 Sets the component to be added to the specified adapter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1130,13 +1056,13 @@ Sets the component to be added to the specified adapter.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md)* event | Indicates the target adapter event. |
-| ArkUI_NodeHandle node | Indicates the component to be added. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Indicates the component to be added. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeAdapterEvent_SetNodeId()
 
@@ -1147,8 +1073,6 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetNodeId(ArkUI_NodeAdapterEvent* event, int32
 **Description**
 
 Sets the component ID to be generated.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1163,7 +1087,7 @@ Sets the component ID to be generated.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure()
 
@@ -1175,8 +1099,6 @@ ArkUI_LayoutConstraint* OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(Ar
 
 Obtains the size constraint for measurement through a custom component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1189,7 +1111,7 @@ Obtains the size constraint for measurement through a custom component event.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_LayoutConstraint* | Returns the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint*](capi-arkui-nativemodule-arkui-layoutconstraint.md) | Returns the pointer to the size constraint. |
 
 ### OH_ArkUI_NodeCustomEvent_GetPositionInLayout()
 
@@ -1201,8 +1123,6 @@ ArkUI_IntOffset OH_ArkUI_NodeCustomEvent_GetPositionInLayout(ArkUI_NodeCustomEve
 
 Obtains the expected position of a component relative to its parent component in the layout phase through a custom component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1215,7 +1135,7 @@ Obtains the expected position of a component relative to its parent component in
 
 | Type | Description |
 | -- | -- |
-| ArkUI_IntOffset | Returns the expected position relative to the parent component. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) | Returns the expected position relative to the parent component. |
 
 ### OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw()
 
@@ -1227,8 +1147,6 @@ ArkUI_DrawContext* OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(ArkUI_NodeCusto
 
 Obtains the drawing context through a custom component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1241,7 +1159,7 @@ Obtains the drawing context through a custom component event.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_DrawContext* | Returns the drawing context. |
+| [ArkUI_DrawContext*](capi-arkui-nativemodule-arkui-drawcontext.md) | Returns the drawing context. |
 
 ### OH_ArkUI_NodeCustomEvent_GetEventTargetId()
 
@@ -1252,8 +1170,6 @@ int32_t OH_ArkUI_NodeCustomEvent_GetEventTargetId(ArkUI_NodeCustomEvent* event)
 **Description**
 
 Obtains the ID of a custom component event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1279,8 +1195,6 @@ void* OH_ArkUI_NodeCustomEvent_GetUserData(ArkUI_NodeCustomEvent* event)
 
 Obtains custom event parameters through a custom component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1305,8 +1219,6 @@ ArkUI_NodeHandle OH_ArkUI_NodeCustomEvent_GetNodeHandle(ArkUI_NodeCustomEvent* e
 
 Obtains a component object through a custom component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1319,7 +1231,7 @@ Obtains a component object through a custom component event.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_NodeHandle | Returns the component object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Returns the component object. |
 
 ### OH_ArkUI_NodeCustomEvent_GetEventType()
 
@@ -1331,8 +1243,6 @@ ArkUI_NodeCustomEventType OH_ArkUI_NodeCustomEvent_GetEventType(ArkUI_NodeCustom
 
 Obtains the event type through a custom component event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1345,7 +1255,7 @@ Obtains the event type through a custom component event.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_NodeCustomEventType | Returns the type of the custom component event. |
+| [ArkUI_NodeCustomEventType](capi-custom-attributes-h.md#arkui_nodecustomeventtype) | Returns the type of the custom component event. |
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo()
 
@@ -1356,8 +1266,6 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo(ArkUI_NodeCustomEvent*
 **Description**
 
 Obtains the measurement information of a custom span through a custom component event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1372,7 +1280,7 @@ Obtains the measurement information of a custom span through a custom component 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.         <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
 
 ### OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics()
 
@@ -1383,8 +1291,6 @@ int32_t OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics(ArkUI_NodeCustomEvent* eve
 **Description**
 
 Sets the measurement metrics of a custom span through a custom component event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1399,7 +1305,7 @@ Sets the measurement metrics of a custom span through a custom component event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.         <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo()
 
@@ -1410,8 +1316,6 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo(ArkUI_NodeCustomEvent* ev
 **Description**
 
 Obtains the drawing information of a custom span through a custom component event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1426,7 +1330,7 @@ Obtains the drawing information of a custom span through a custom component even
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.         Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.         <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br> Possible causes: Parameter verification failed, the parameter should not be nullptr. |
 
 ### ArkUI_NodeContentCallback()
 
@@ -1437,8 +1341,6 @@ typedef void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event)
 **Description**
 
 Defines the callback function of a node content event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1452,22 +1354,20 @@ int32_t OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, A
 
 register a callback function to a node content.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeContentHandle content | Indicates the pointer to the node content instance. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | Indicates the pointer to the node content instance. |
 | [ArkUI_NodeContentCallback](capi-native-node-h.md#arkui_nodecontentcallback) callback | Indicates the callback function. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeContentEvent_GetEventType()
 
@@ -1478,8 +1378,6 @@ ArkUI_NodeContentEventType OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeCont
 **Description**
 
 Obtains the type of a node content event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1505,8 +1403,6 @@ ArkUI_NodeContentHandle OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_Nod
 
 Obtains the node content object that triggers a node content event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1519,7 +1415,7 @@ Obtains the node content object that triggers a node content event.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_NodeContentHandle | Returns the node content object that triggers the node content event. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) | Returns the node content object that triggers the node content event. |
 
 ### OH_ArkUI_NodeContent_SetUserData()
 
@@ -1531,22 +1427,20 @@ int32_t OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* 
 
 Saves custom data on the specified node content.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeContentHandle content | Indicates the node content on which the custom data will be saved. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | Indicates the node content on which the custom data will be saved. |
 | void* userData | Indicates the custom data to be saved. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeContent_GetUserData()
 
@@ -1558,15 +1452,13 @@ void* OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)
 
 Obtains the custom data saved on the specified node content.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeContentHandle content | Indicates the target node content. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | Indicates the target node content. |
 
 **Returns**:
 
@@ -1584,22 +1476,20 @@ int32_t OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_Node
 
 Adds an ArkUI component node to the specified **NodeContent** object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeContentHandle content | **NodeContent** object to which a node is to be added. |
-| ArkUI_NodeHandle node | Node to be added. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | **NodeContent** object to which a node is to be added. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node to be added. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a child node has been accepted. This specification is      supported since API version 22. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NODE_IS_ADOPTED if a child node has been accepted. This specification is supported since API version 22. |
 
 ### OH_ArkUI_NodeContent_RemoveNode()
 
@@ -1611,22 +1501,20 @@ int32_t OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_N
 
 Removes an ArkUI component node from the specified **NodeContent** object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeContentHandle content | **NodeContent** object from which a node is to be removed. |
-| ArkUI_NodeHandle node | Node to be removed. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | **NodeContent** object from which a node is to be removed. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node to be removed. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeContent_InsertNode()
 
@@ -1638,23 +1526,21 @@ int32_t OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_N
 
 Inserts an ArkUI component node into a specific position of the specified **NodeContent** object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeContentHandle content | **NodeContent** object into which a node is to be inserted. |
-| ArkUI_NodeHandle node | Node to be inserted. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | **NodeContent** object into which a node is to be inserted. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node to be inserted. |
 | int32_t position | Position where a node is to be inserted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a child node has been accepted. This specification is      supported since API version 22. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NODE_IS_ADOPTED if a child node has been accepted. This specification is supported since API version 22. |
 
 ### OH_ArkUI_NodeUtils_GetLayoutSize()
 
@@ -1666,22 +1552,20 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutSize(ArkUI_NodeHandle node, ArkUI_IntSize* s
 
 Get the size of the component layout area. The layout area size does not include graphic variation attributes such as scaling.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
-| ArkUI_IntSize* size | The drawing area size of the component handle, in px. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md)* size | The drawing area size of the component handle, in px. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetLayoutPosition()
 
@@ -1693,22 +1577,20 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPosition(ArkUI_NodeHandle node, ArkUI_IntOff
 
 Obtain the position of the component layout area relative to the parent component. The relative position of the layout area does not include graphic variation attributes, such as translation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
-| ArkUI_IntOffset* localOffset | The offset value of the component handle relative to the parent component, in px. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* localOffset | The offset value of the component handle relative to the parent component, in px. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInWindow()
 
@@ -1720,22 +1602,20 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInWindow(ArkUI_NodeHandle node, ArkU
 
 Obtain the position of the component layout area relative to the window. The relative position of the layout area does not include graphic variation attributes, such as translation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
-| ArkUI_IntOffset* globalOffset | The offset value of the component handle relative to the window, in px. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* globalOffset | The offset value of the component handle relative to the window, in px. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInScreen()
 
@@ -1747,22 +1627,20 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInScreen(ArkUI_NodeHandle node, ArkU
 
 Obtain the position of the component layout area relative to the screen. The relative position of the layout area does not include graphic variation attributes, such as translation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
-| ArkUI_IntOffset* screenOffset | The offset value of the component handle relative to the screen, in px. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* screenOffset | The offset value of the component handle relative to the screen, in px. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay()
 
@@ -1774,22 +1652,20 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay(ArkUI_NodeHandle nod
 
 Obtains the offset of a component relative to the global display. The relative position does not count in transformation attributes, such as translate.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Pointer to the <b>ArkUI_NodeHandle</b> representing the component. |
-| ArkUI_IntOffset* offset | Offset of the component relative to the global display, in px. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the <b>ArkUI_NodeHandle</b> representing the component. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* offset | Offset of the component relative to the global display, in px. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow()
 
@@ -1801,22 +1677,20 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow(ArkUI_NodeHandle nod
 
 Obtain the position of the component in the window, including the properties of graphic translation changes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
-| ArkUI_IntOffset* translateOffset | The cumulative offset value of the component handle itself, parent components, and ancestor nodes, in px. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* translateOffset | The cumulative offset value of the component handle itself, parent components, and ancestor nodes, in px. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen()
 
@@ -1828,22 +1702,20 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen(ArkUI_NodeHandle nod
 
 Obtain the position of the component on the screen, including the attributes of graphic translation changes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
-| ArkUI_IntOffset* translateOffset | The cumulative offset value of the component handle itself, parent components, and ancestor nodes, in px. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* translateOffset | The cumulative offset value of the component handle itself, parent components, and ancestor nodes, in px. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_AddCustomProperty()
 
@@ -1855,15 +1727,13 @@ void OH_ArkUI_NodeUtils_AddCustomProperty(ArkUI_NodeHandle node, const char* nam
 
 Sets a custom property for a component. This API takes effect only in the main thread.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | **ArkUI_NodeHandle** pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer. |
 | const char* name | Pointer to the name of the custom property. A null pointer is not allowed. |
 | const char* value | Pointer to the value of the custom property corresponding to the key parameter name. A null pointer is not allowed. |
 
@@ -1877,15 +1747,13 @@ void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* 
 
 Removes a custom property that has been set for the specified component.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | **ArkUI_NodeHandle** pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer. |
 | const char* name | Pointer to the name of the custom property. |
 
 ### OH_ArkUI_NodeUtils_GetCustomProperty()
@@ -1898,23 +1766,21 @@ int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* 
 
 Obtains the value of a custom property of the specified component.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | **ArkUI_NodeHandle** pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer. |
 | const char* name | Pointer to the name of the custom property. |
-| ArkUI_CustomProperty** handle | Double pointer to the struct that receives the custom property corresponding to the key parameter name. |
+| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)** handle | Double pointer to the struct that receives the custom property corresponding to the key parameter name. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetParentInPageTree()
 
@@ -1926,21 +1792,19 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)
 
 Obtains the parent node, which can be a component node created with ArkTS.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_NodeHandle | Pointer to the component if the component exists; NULL otherwise. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the component if the component exists; **NULL** otherwise. |
 
 ### OH_ArkUI_NodeUtils_GetActiveChildrenInfo()
 
@@ -1952,22 +1816,20 @@ int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_Ac
 
 Obtains all active child nodes of the specified node. Spans are not counted as child nodes. In **LazyForEach**<br>scenarios, you are advised to use the [OH_ArkUI_NodeUtils_GetChildWithExpandMode](capi-native-node-h.md#oh_arkui_nodeutils_getchildwithexpandmode) API for traversal.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle head | Node for which to obtain the child nodes. |
-| ArkUI_ActiveChildrenInfo** handle | Double pointer to the struct containing information about the child nodes of the head node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) head | Node for which to obtain the child nodes. |
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)** handle | Double pointer to the struct containing information about the child nodes of the head node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetCurrentPageRootNode()
 
@@ -1979,21 +1841,19 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node
 
 Obtains the root node of the current page.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_NodeHandle | Pointer to the root node if the node exists; NULL otherwise. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the root node if the node exists; **NULL** otherwise. |
 
 ### OH_ArkUI_NodeUtils_IsCreatedByNDK()
 
@@ -2005,21 +1865,19 @@ bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)
 
 Checks whether the specified component is created with C APIs.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Whether the node is created with the C API. The value true means that the node is created with the C API,       and false means the opposite. |
+| bool | Whether the node is created with the C API. The value **true** means that the node is created with the C API, and **false** means the opposite. |
 
 ### OH_ArkUI_NodeUtils_GetNodeType()
 
@@ -2031,21 +1889,19 @@ int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)
 
 Obtains the type of the specified node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Type of the node. Returns -1 if the type is not supported yet. For details about the available types,      see [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype). |
+| int32_t | Type of the node. Returns **-1** if the type is not supported yet. For details about the available types, see [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype). |
 
 ### OH_ArkUI_NodeUtils_GetWindowInfo()
 
@@ -2057,22 +1913,20 @@ int32_t OH_ArkUI_NodeUtils_GetWindowInfo(ArkUI_NodeHandle node, ArkUI_HostWindow
 
 Obtains the information about the window to which a node belongs.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node object. |
-| ArkUI_HostWindowInfo** info | Double pointer to the window information object. The memory allocated for this object must be released using [OH_ArkUI_HostWindowInfo_Destroy](capi-native-type-h.md#oh_arkui_hostwindowinfo_destroy). |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
+| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)** info | Double pointer to the window information object. The memory allocated for this object must be released using [OH_ArkUI_HostWindowInfo_Destroy](capi-native-type-h.md#oh_arkui_hostwindowinfo_destroy). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node is not mounted on the main component tree. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE if the node is not mounted on the main component tree. |
 
 ### OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand()
 
@@ -2084,22 +1938,20 @@ int32_t OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(ArkUI_NodeHandle node
 
 Obtains the index of the first child node of the target node in the tree without expanding any nodes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
 | uint32_t* index | Pointer to the index of the child node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand()
 
@@ -2111,22 +1963,20 @@ int32_t OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(ArkUI_NodeHandle node,
 
 Obtains the index of the last child node of the target node in the tree without expanding any nodes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
 | uint32_t* index | Pointer to the index of the child node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetChildWithExpandMode()
 
@@ -2138,24 +1988,22 @@ int32_t OH_ArkUI_NodeUtils_GetChildWithExpandMode(ArkUI_NodeHandle node, int32_t
 
 Obtains a child node at the specified index using different expansion modes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
 | int32_t position | Index of the child node to obtain. |
-| ArkUI_NodeHandle* subnode | Pointer to the obtained child node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* subnode | Pointer to the obtained child node. |
 | uint32_t expandMode | Expansion mode for node traversal. For details, see [ArkUI_ExpandMode](capi-native-type-h.md#arkui_expandmode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_List_CloseAllSwipeActions()
 
@@ -2167,8 +2015,6 @@ int32_t OH_ArkUI_List_CloseAllSwipeActions(ArkUI_NodeHandle node, void* userData
 
 Collapse the ListItem in its expanded state.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2176,14 +2022,14 @@ Collapse the ListItem in its expanded state.
 | Parameter | Description |
 | -- | -- |
 | rkUI_NodeHandle node | Node objects that need to be registered for events. |
-| void\* userData | Custom event parameters are carried back in the callback parameter when the event is triggered. |
-| void (\*onFinish)(void\* userData) | The callback triggered after the completion of the folding animation. |
+| void* userData | Custom event parameters are carried back in the callback parameter when the event is triggered. |
+| void (*onFinish)(void* userData) | The callback triggered after the completion of the folding animation. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception.          [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) The component does not support this event. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED The component does not support this event. |
 
 ### OH_ArkUI_GetContextByNode()
 
@@ -2195,21 +2041,19 @@ ArkUI_ContextHandle OH_ArkUI_GetContextByNode(ArkUI_NodeHandle node)
 
 Obtain the UIContext pointer to the page where the node is located.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | The node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | The node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ContextHandle | The UIContext pointer.         If a null pointer is returned, it may be because the node is empty. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) | The UIContext pointer. If a null pointer is returned, it may be because the node is empty. |
 
 ### OH_ArkUI_RegisterSystemColorModeChangeEvent()
 
@@ -2221,8 +2065,6 @@ int32_t OH_ArkUI_RegisterSystemColorModeChangeEvent(ArkUI_NodeHandle node, void*
 
 The event called when the system color mode changes. Only one system color change callback can be registered for the same component.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2230,14 +2072,14 @@ The event called when the system color mode changes. Only one system color chang
 | Parameter | Description |
 | -- | -- |
 | rkUI_NodeHandle node | Indicates the target node. |
-| void\* userData | Indicates the custom data to be saved. |
-| void (\*onColorModeChange)(ArkUI_SystemColorMode colorMode | Callback Events. |
+| void* userData | Indicates the custom data to be saved. |
+| void (*onColorModeChange)(ArkUI_SystemColorMode colorMode | Callback Events. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.         [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_UnregisterSystemColorModeChangeEvent()
 
@@ -2249,15 +2091,13 @@ void OH_ArkUI_UnregisterSystemColorModeChangeEvent(ArkUI_NodeHandle node)
 
 Unregister the event callback when the system color mode changes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Indicates the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Indicates the target node. |
 
 ### OH_ArkUI_RegisterSystemFontStyleChangeEvent()
 
@@ -2269,8 +2109,6 @@ int32_t OH_ArkUI_RegisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node, void*
 
 The event called when the system font style changes. Only one system font change callback can be registered for the same component.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2278,14 +2116,14 @@ The event called when the system font style changes. Only one system font change
 | Parameter | Description |
 | -- | -- |
 | rkUI_NodeHandle node | Indicates the target node. |
-| void\* userData | Indicates the custom data to be saved. |
-| void (\*onFontStyleChange)(ArkUI_SystemFontStyleEvent\* event | Callback Events. |
+| void* userData | Indicates the custom data to be saved. |
+| void (*onFontStyleChange)(ArkUI_SystemFontStyleEvent* event | Callback Events. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.         [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.         [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_UnregisterSystemFontStyleChangeEvent()
 
@@ -2297,15 +2135,13 @@ void OH_ArkUI_UnregisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node)
 
 Unregister the event callback when the system font style changes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Indicates the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Indicates the target node. |
 
 ### OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale()
 
@@ -2317,15 +2153,13 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale(const ArkUI_SystemFontStyle
 
 Retrieve the font size value for system font change events.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const ArkUI_SystemFontStyleEvent* event | Indicates a pointer to the current system font change event. |
+| [const ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md)* event | Indicates a pointer to the current system font change event. |
 
 **Returns**:
 
@@ -2343,15 +2177,13 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(const ArkUI_SystemFontSty
 
 Retrieve the font thickness values for system font change events.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const ArkUI_SystemFontStyleEvent* event | Indicates a pointer to the current system font change event. |
+| [const ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md)* event | Indicates a pointer to the current system font change event. |
 
 **Returns**:
 
@@ -2369,8 +2201,6 @@ int32_t OH_ArkUI_NodeUtils_GetAttachedNodeHandleById(const char* id, ArkUI_NodeH
 
 Get the node handle by id.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -2378,13 +2208,13 @@ Get the node handle by id.
 | Parameter | Description |
 | -- | -- |
 | const char* id | The id of the target node handle. |
-| ArkUI_NodeHandle* node | The handle of target node handle. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | The handle of target node handle. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_NodeUtils_MoveTo()
 
@@ -2396,23 +2226,21 @@ int32_t OH_ArkUI_NodeUtils_MoveTo(ArkUI_NodeHandle node, ArkUI_NodeHandle target
 
 Moves a node to a target parent node as a child.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Node to be moved. |
-| ArkUI_NodeHandle target_parent | Pointer to the target parent node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node to be moved. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) target_parent | Pointer to the target parent node. |
 | int32_t index | Index of the node after the movement. If the index is invalid, the node will be added to the end of the target parent node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if C API initialization failed.      <br>Returns [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a child node has been accepted. This specification is      supported since API version 22. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed. <br>Returns ARKUI_ERROR_CODE_NODE_IS_ADOPTED if a child node has been accepted. This specification is supported since API version 22. |
 
 ### OH_ArkUI_NativeModule_InvalidateAttributes()
 
@@ -2424,21 +2252,19 @@ int32_t OH_ArkUI_NativeModule_InvalidateAttributes(ArkUI_NodeHandle node)
 
 Triggers the node attribute update in this frame. If the attributes of the current node are modified after the build phase, these changes do not take effect immediately but are deferred for batch processing in the next frame. This API forces immediate node updates within the current frame, ensuring that rendering effects are applied synchronously.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Node whose attributes are to be updated. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node whose attributes are to be updated. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_SetCrossLanguageOption()
 
@@ -2450,22 +2276,20 @@ int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 
 Sets the cross-language option for the target node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Pointer to the target node. |
-| ArkUI_CrossLanguageOption* option | Pointer to the cross-language configuration option ([ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)). |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Pointer to the cross-language configuration option ([ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeUtils_GetCrossLanguageOption()
 
@@ -2477,22 +2301,20 @@ int32_t OH_ArkUI_NodeUtils_GetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 
 Obtains the cross-language option of the target node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Pointer to the target node. |
-| ArkUI_CrossLanguageOption* option | Pointer to the cross-language configuration option ([ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)). |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Pointer to the cross-language configuration option ([ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RegisterLayoutCallbackOnNodeHandle()
 
@@ -2504,8 +2326,6 @@ int32_t OH_ArkUI_RegisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node, void*
 
 Registers a callback for node when layout is completed.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -2513,14 +2333,14 @@ Registers a callback for node when layout is completed.
 | Parameter | Description |
 | -- | -- |
 | rkUI_NodeHandle node | Indicates the target node. |
-| void\* userData | Indicates the custom data used in onLayoutCompleted callback function. |
-| void (\*onLayoutCompleted)(void\* userData) | Indicates the function when layout completed is callback. |
+| void* userData | Indicates the custom data used in onLayoutCompleted callback function. |
+| void (*onLayoutCompleted)(void* userData) | Indicates the function when layout completed is callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | error code          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter is incorrect. |
+| int32_t | error code ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if a parameter is incorrect. |
 
 ### OH_ArkUI_RegisterDrawCallbackOnNodeHandle()
 
@@ -2532,8 +2352,6 @@ int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node, void* u
 
 Registers a callback for node when draw is completed.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -2541,14 +2359,14 @@ Registers a callback for node when draw is completed.
 | Parameter | Description |
 | -- | -- |
 | rkUI_NodeHandle node | Indicates the target node. |
-| void\* userData | Indicates the custom data used in onDrawCompleted callback function. |
-| void (\*onDrawCompleted)(void\* userData) | Indicates the function when draw completed is callback. |
+| void* userData | Indicates the custom data used in onDrawCompleted callback function. |
+| void (*onDrawCompleted)(void* userData) | Indicates the function when draw completed is callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | error code          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter is incorrect. |
+| int32_t | error code ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if a parameter is incorrect. |
 
 ### OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle()
 
@@ -2560,21 +2378,19 @@ int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 Unregisters the layout completed callback for node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Indicates the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Indicates the target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | error code          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter is incorrect. |
+| int32_t | error code ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if a parameter is incorrect. |
 
 ### OH_ArkUI_UnregisterDrawCallbackOnNodeHandle()
 
@@ -2586,21 +2402,19 @@ int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 Unregisters the draw completed callback for node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Indicates the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Indicates the target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | error code          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter is incorrect. |
+| int32_t | error code ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if a parameter is incorrect. |
 
 ### OH_ArkUI_GetNodeSnapshot()
 
@@ -2610,9 +2424,7 @@ int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* s
 
 **Description**
 
-Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the <b>Pixelmap</b> object created is no longer in use, it should be released by calling {@link OH_PixelmapNative_Release}.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the <b>Pixelmap</b> object created is no longer in use, it should be released by calling OH_PixelmapNative_Release.
 
 **Since**: 15
 
@@ -2620,7 +2432,7 @@ Obtains a snapshot of a given component. If the node is not in the component tre
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
 | ArkUI_SnapshotOptions* snapshotOptions | Snapshot settings. If the value is null, the default settings are used. Snapshot settings include scaling, color space, and dynamic range configuration. Scaling: floating-point value greater than 0. Color space: <b>3</b> (DISPLAY_P3), <b>4</b> (SRGB), <b>27</b> (DISPLAY_BT2020_SRGB). Dynamic range: [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode). |
 | OH_PixelmapNative** pixelmap | Pointer to the <b>Pixelmap</b> object created by the system. |
 
@@ -2628,7 +2440,7 @@ Obtains a snapshot of a given component. If the node is not in the component tre
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.          Returns [ARKUI_ERROR_CODE_INTERNAL_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the snapshot fails, returning a null pointer.          Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the snapshot operation times out.          Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the provided color space or          dynamic range mode is not supported.          Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the isAuto parameter of the color          space or dynamic range mode is set to true for offscreen node snapshot. |
+| int32_t | Result code. ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. Returns ARKUI_ERROR_CODE_INTERNAL_ERROR if the snapshot fails, returning a null pointer. Returns ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT if the snapshot operation times out. Returns ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED if the provided color space or dynamic range mode is not supported. Returns ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED if the isAuto parameter of the color space or dynamic range mode is set to true for offscreen node snapshot. |
 
 ### OH_ArkUI_GetNodeSnapshotSizeLimitation()
 
@@ -2639,8 +2451,6 @@ int32_t OH_ArkUI_GetNodeSnapshotSizeLimitation(int32_t* maxWidth, int32_t* maxHe
 **Description**
 
 Query the size limitation of the component snapshot.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -2655,7 +2465,7 @@ Query the size limitation of the component snapshot.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Invalid function parameter. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Invalid function parameter. |
 
 ### OH_ArkUI_NodeUtils_GetPositionToParent()
 
@@ -2667,22 +2477,20 @@ int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntO
 
 Obtains the offset of a specific node relative to its parent node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node. |
-| ArkUI_IntOffset* globalOffset | Offset of the target node relative to its parent node, in px. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* globalOffset | Offset of the target node relative to its parent node, in px. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_AddSupportedUIStates()
 
@@ -2694,8 +2502,6 @@ ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiS
 
 Adds the UI state style supported by the component. To handle states change efficiently, need to specify the states of interest and the corresponding handler. When a state of interest occurs, the handler will be executed. - You can adjust the UI style based on the current state within the callback. If this API is called multiple times on the same node, the last set of states and handler will take precedence. - Some component types have default system handling for certain states. For example, the <b>Button</b> component has a default style effect for the PRESSED state. When custom state handling is implemented on such components, the default style effect will be applied first, followed by the custom style changes, resulting in a combined effect. To disable the default style effects, set <b>excludeInner</b> to <b>true</b>, if this is allowed by the system implementation. - And when this API is called, the provided handler function will be executed immediately. - There is no need to explicitly register a listener for the NORMAL state. Once a non-NORMAL state is registered, the system will automatically notify your application when the state changes back to NORMAL.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
@@ -2706,13 +2512,13 @@ Adds the UI state style supported by the component. To handle states change effi
 | int32_t uiStates | Target UI states to be handled on the node. The combined result of all target UI states can be calculated using the <b>\|</b> operator. Example: <b>targetUIStates = ArkUI_UIState::PRESSED \| ArkUI_UIState::FOCUSED</b>. |
 | void (statesChangeHandler)(int32_t currentStates | Handler for UI state changes. It rturns the current UI status. The value is the result of combining all current state enum values using the <b>\|</b> operator. You can determine the state using the <b>&</b> operator. Example: <b>if (currentStates & ArkUI_UIState::PRESSED == ArkUI_UIState::PRESSED)</b>. However, for checking the normal state, use the equality operator directly. Example: <b>if (currentStates == ArkUI_UIState::NORMAL)</b>. |
 | bool excludeInner | Whether to disable the default state styles. |
-| void\* userData) | Custom data used in the <b>statesChangeHandler</b> callback. |
+| void* userData) | Custom data used in the <b>statesChangeHandler</b> callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| ArkUI_ErrorCode | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RemoveSupportedUIStates()
 
@@ -2724,22 +2530,20 @@ ArkUI_ErrorCode OH_ArkUI_RemoveSupportedUIStates(ArkUI_NodeHandle node, int32_t 
 
 Removes registered UI states. When all states registered using **OH_ArkUI_AddSupportedUIStates** are removed, the registered **stateChangeHandler** will no longer be executed.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
 | int32_t uiStates | Target UI states to be removed. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RunTaskInScope()
 
@@ -2749,9 +2553,7 @@ int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, v
 
 **Description**
 
-Executes the specified callback in the target UI context. For the implementation example, see {@link Ensuring Multi-Instance Functionality in the NDK}.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Executes the specified callback in the target UI context. For the implementation example, see Ensuring Multi-Instance Functionality in the NDK.
 
 **Since**: 20
 
@@ -2760,14 +2562,14 @@ Executes the specified callback in the target UI context. For the implementation
 | Parameter | Description |
 | -- | -- |
 | rkUI_ContextHandle uiContext | Pointer to the target UI context. |
-| void\* userData | Pointer to the user-defined data for processing custom data within the callback function. You are responsible for ensuring the validity of the data when the custom function is executed. |
-| void(\*callback)(void\* userData) | The custom function. |
+| void* userData | Pointer to the user-defined data for processing custom data within the callback function. You are responsible for ensuring the validity of the data when the custom function is executed. |
+| void(*callback)(void* userData) | The custom function. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if C API initialization failed.      <br>Returns [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the UIContext object is invalid.      <br>Returns [ARKUI_ERROR_CODE_CALLBACK_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the callback function is invalid. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed. <br>Returns ARKUI_ERROR_CODE_UI_CONTEXT_INVALID if the **UIContext** object is invalid. <br>Returns ARKUI_ERROR_CODE_CALLBACK_INVALID if the callback function is invalid. |
 
 ### OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId()
 
@@ -2779,8 +2581,6 @@ int32_t OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(const uint32_t uniqueId, ArkU
 
 Obtain a node by its unique ID.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
@@ -2788,13 +2588,13 @@ Obtain a node by its unique ID.
 | Parameter | Description |
 | -- | -- |
 | const uint32_t uniqueId | Unique ID of the target node. |
-| ArkUI_NodeHandle* node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | Pointer to the target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if C API initialization failed. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed. |
 
 ### OH_ArkUI_NodeUtils_GetNodeUniqueId()
 
@@ -2806,22 +2606,20 @@ int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqu
 
 Obtains the unique ID of the target node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI node pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI node pointer. |
 | int32_t* uniqueId | Pointer to the unique ID of the target node. The component ID is read-only and unique in the process. If the node exists, the unique ID of the node is returned. Otherwise, **-1** is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if C API initialization failed. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed. |
 
 ### OH_ArkUI_NativeModule_IsInRenderState()
 
@@ -2831,9 +2629,7 @@ int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInR
 
 **Description**
 
-Obtains whether a node is in the render state. If {@link RenderNode} of a node is in the render tree, the node is in the render state.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains whether a node is in the render state. If RenderNode of a node is in the render tree, the node is in the render state.
 
 **Since**: 23
 
@@ -2841,14 +2637,14 @@ Obtains whether a node is in the render state. If {@link RenderNode} of a node i
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI node pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI node pointer. |
 | bool* isInRenderState | Pointer to the **isInRenderState** parameter indicating whether the node is in render state. *<br>*true**: The node is in the render state. **false**: The node is not in the render state. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if C API initialization failed. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed. |
 
 ### OH_ArkUI_NativeModule_AdoptChild()
 
@@ -2860,22 +2656,20 @@ int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle
 
 Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | **ArkUI_NodeHandle** pointer, which specifies the parent node of the node to be adopted. |
-| ArkUI_NodeHandle child | **ArkUI_NodeHandle** pointer, which specifies the child node to be adopted. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer, which specifies the parent node of the node to be adopted. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | **ArkUI_NodeHandle** pointer, which specifies the child node to be adopted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if C API initialization failed.      <br>Returns [ARKUI_ERROR_CODE_NODE_HAS_PARENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the adopted node already has a parent node.      <br>Returns [ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node cannot be adopted as an affiliated node.      <br>Returns [ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node cannot adopt other affiliated nodes. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed. <br>Returns ARKUI_ERROR_CODE_NODE_HAS_PARENT if the adopted node already has a parent node. <br>Returns ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED if the node cannot be adopted as an affiliated node. <br>Returns ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO if the node cannot adopt other affiliated nodes. |
 
 ### OH_ArkUI_NativeModule_RemoveAdoptedChild()
 
@@ -2887,22 +2681,20 @@ int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_No
 
 Removes a previously-adopted affiliated node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | **ArkUI_NodeHandle** pointer, which specifies the parent node. |
-| ArkUI_NodeHandle child | **ArkUI_NodeHandle** pointer, which specifies the child node to be removed. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer, which specifies the parent node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | **ArkUI_NodeHandle** pointer, which specifies the child node to be removed. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if C API initialization failed.      <br>Returns [ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node is not an affiliated node      adopted by the target node. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed. <br>Returns ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN if the node is not an affiliated node adopted by the target node. |
 
 ### OH_ArkUI_SetForceDarkConfig()
 
@@ -2914,8 +2706,6 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 
 Sets the inverse color algorithm for components and instances.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
@@ -2925,13 +2715,13 @@ Sets the inverse color algorithm for components and instances.
 | rkUI_ContextHandle uiContext | Indicates the context in which the inverse color feature should take effect. If the value is null, the feature applies to the entire application process. |
 | bool forceDark | Indicates whether the inverse color feature is enabled. |
 | [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) nodeType | Indicates the component type for which to enable the inverse color feature. If the value is ARKUI_NODE_UNDEFINED, enabling the feature for all components. |
-| uint32_t (\*colorInvertFunc)(uint32_t color) | Indicates the user-defined inverse color algorithm. |
+| uint32_t (*colorInvertFunc)(uint32_t color) | Indicates the user-defined inverse color algorithm. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if CAPI init error.          Returns [ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if force dark config is invalid. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if CAPI init error. Returns ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID if force dark config is invalid. |
 
 ### OH_ArkUI_NativeModule_RegisterCommonEvent()
 
@@ -2943,8 +2733,6 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_N
 
 Registers a basic event callback for the target node.<br> Currently, the following event types are supported: **NODE_ON_CLICK_EVENT**, **NODE_TOUCH_EVENT**, **NODE_EVENT_ON_APPEAR**, **NODE_EVENT_ON_DISAPPEAR**, **NODE_ON_KEY_EVENT**, **NODE_ON_FOCUS**, **NODE_ON_BLUR**, **NODE_ON_HOVER**, **NODE_ON_MOUSE**, and **NODE_ON_SIZE_CHANGE**. For details, see @{link ArkUI_NodeEventType}.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -2952,15 +2740,15 @@ Registers a basic event callback for the target node.<br> Currently, the followi
 | Parameter | Description |
 | -- | -- |
 | rkUI_NodeHandle node | Target node. |
-| [ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype) eventType | Event type. |
-| void\* userData | User-defined data pointer for processing custom data within the callback function. You are responsible for ensuring the validity of the data when the custom function is executed. |
-| void (\*callback)(ArkUI_NodeEvent\* event) | User-defined callback function. |
+| [ArkUI_NodeEventType](capi-arkui-nodeeventtype.md) eventType | Event type. |
+| void* userData | User-defined data pointer for processing custom data within the callback function. You are responsible for ensuring the validity of the data when the custom function is executed. |
+| void (*callback)(ArkUI_NodeEvent* event) | User-defined callback function. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE if the event type is not supported. |
 
 ### OH_ArkUI_NativeModule_UnregisterCommonEvent()
 
@@ -2972,22 +2760,20 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI
 
 Unregisters the basic event callback for the target node.<br> For details about the supported event types, see [OH_ArkUI_NativeModule_RegisterCommonEvent](capi-native-node-h.md#oh_arkui_nativemodule_registercommonevent).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node. |
-| [ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype) eventType | Event type. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeEventType](capi-arkui-nodeeventtype.md) eventType | Event type. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE if the event type is not supported. |
 
 ### OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent()
 
@@ -2999,8 +2785,6 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(Ar
 
 Registers a basic event callback for visible area changes with a constrained callback interval.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -3008,17 +2792,17 @@ Registers a basic event callback for visible area changes with a constrained cal
 | Parameter | Description |
 | -- | -- |
 | rkUI_NodeHandle node | Target node. |
-| float\* ratios | Array of threshold ratios, representing the visible area of the component. |
+| float* ratios | Array of threshold ratios, representing the visible area of the component. |
 | int32_t size | Size of the array of threshold ratios. |
 | float expectedUpdateInterval | Expected calculation interval. |
-| void\* userData | User-defined data pointer for processing custom data within the callback function. You are responsible for ensuring the validity of the data when the custom function is executed. |
-| void (\*callback)(ArkUI_NodeEvent\* event) | User-defined callback function. |
+| void* userData | User-defined data pointer for processing custom data within the callback function. You are responsible for ensuring the validity of the data when the custom function is executed. |
+| void (*callback)(ArkUI_NodeEvent* event) | User-defined callback function. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent()
 
@@ -3030,21 +2814,19 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(
 
 Unregisters the basic event callback for visible area changes with a constrained callback interval.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NativeModule_ConvertPositionToWindow()
 
@@ -3054,9 +2836,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNo
 
 **Description**
 
-Converts the coordinates of a point from the coordinate system of a specified node to that of the current window. For a coordinate system of a node, transformation of the node is considered. For example, if node A is translated leftward by 100, the coordinates of the points in its coordinate system will also be translated leftward by 100.<br> [](docroot://reference/apis-arkui/figures/ConvertToWindow.png)<br> As shown in the preceding figure, the coordinates (x0, y0) in the coordinate system of the specified node are converted to the coordinates (x1, y1) in the coordinate system of the window.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Converts the coordinates of a point from the coordinate system of a specified node to that of the current window. For a coordinate system of a node, transformation of the node is considered. For example, if node A is translated leftward by 100, the coordinates of the points in its coordinate system will also be translated leftward by 100.<br> [](../../../reference/apis-arkui/figures/ConvertToWindow.png)<br> As shown in the preceding figure, the coordinates (x0, y0) in the coordinate system of the specified node are converted to the coordinates (x1, y1) in the coordinate system of the window.
 
 **Since**: 23
 
@@ -3064,15 +2844,15 @@ Converts the coordinates of a point from the coordinate system of a specified no
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle currentNode | Specified node. |
-| ArkUI_IntOffset localPosition | Coordinates of the point in the coordinate system of the specified node, in px. |
-| ArkUI_IntOffset* windowPosition | Pointer to the converted coordinates (in the current window coordinate system, in px). |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) currentNode | Specified node. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) localPosition | Coordinates of the point in the coordinate system of the specified node, in px. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* windowPosition | Pointer to the converted coordinates (in the current window coordinate system, in px). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node is not mounted on the main component tree. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE if the node is not mounted on the main component tree. |
 
 ### OH_ArkUI_NativeModule_ConvertPositionFromWindow()
 
@@ -3082,9 +2862,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 
 **Description**
 
-Converts the coordinates of a point from the current window's coordinate system to the target node's coordinate system. For a coordinate system of a node, transformation of the node is considered. For example, if node A is translated leftward by 100, the coordinates of the points in its coordinate system will also be translated leftward by 100.<br> [](docroot://reference/apis-arkui/figures/ConvertFromWindow.png)<br> As shown in the preceding figure, the coordinates (x1, y1) in the window coordinate system are converted to the coordinates (x0, y0) in the coordinate system of the target node.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Converts the coordinates of a point from the current window's coordinate system to the target node's coordinate system. For a coordinate system of a node, transformation of the node is considered. For example, if node A is translated leftward by 100, the coordinates of the points in its coordinate system will also be translated leftward by 100.<br> [](../../../reference/apis-arkui/figures/ConvertFromWindow.png)<br> As shown in the preceding figure, the coordinates (x1, y1) in the window coordinate system are converted to the coordinates (x0, y0) in the coordinate system of the target node.
 
 **Since**: 23
 
@@ -3092,15 +2870,15 @@ Converts the coordinates of a point from the current window's coordinate system 
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle targetNode | The target node. |
-| ArkUI_IntOffset windowPosition | Coordinates of the point in the current window coordinate system, in px. |
-| ArkUI_IntOffset* localPosition | Pointer to the converted coordinates (in the coordinate system of the target node, in px). |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) targetNode | The target node. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) windowPosition | Coordinates of the point in the current window coordinate system, in px. |
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* localPosition | Pointer to the converted coordinates (in the coordinate system of the target node, in px). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node is not mounted on the main component tree. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE if the node is not mounted on the main component tree. |
 
 ### OH_ArkUI_Swiper_FinishAnimation()
 
@@ -3112,21 +2890,19 @@ int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)
 
 Stop the animation being executed by the Swiper node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_PostAsyncUITask()
 
@@ -3138,8 +2914,6 @@ int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskD
 
 Submits the **asyncUITask** function to a non-UI thread provided by the ArkUI framework for execution. After **asyncUITask** finishes execution, the **onFinish** function is called in the UI thread.<br> This is suitable for scenarios involving multi-threaded UI component creation. You can use this API to create UI components in non-UI threads and then mount the created components to the main tree in the UI thread.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3147,15 +2921,15 @@ Submits the **asyncUITask** function to a non-UI thread provided by the ArkUI fr
 | Parameter | Description |
 | -- | -- |
 | rkUI_ContextHandle context | Pointer to the UI instance object. |
-| void\* asyncUITaskData | Pointer to the user-defined data, which is passed as the input parameter of **asyncUITask**<br>and **onFinish**. A null pointer is allowed. |
-| void (\*asyncUITask)(void\* asyncUITaskData) | Function executed in the non-UI thread. |
-| void (\*onFinish)(void\* asyncUITaskData) | Function executed on the UI thread after **asyncUITask** is completed. A null pointer is allowed. |
+| void* asyncUITaskData | Pointer to the user-defined data, which is passed as the input parameter of **asyncUITask**<br>and **onFinish**. A null pointer is allowed. |
+| void (*asyncUITask)(void* asyncUITaskData) | Function executed in the non-UI thread. |
+| void (*onFinish)(void* asyncUITaskData) | Function executed on the UI thread after **asyncUITask** is completed. A null pointer is allowed. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the context object is invalid, or asyncUITask is a      null pointer. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if the context object is invalid, or **asyncUITask** is a null pointer. |
 
 ### OH_ArkUI_PostUITask()
 
@@ -3167,8 +2941,6 @@ int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (*
 
 Submits the **task** function to the UI thread for execution.<br> This is suitable for scenarios involving multi-threaded UI component creation. When you create UI components in a self-built thread, you can use this API to mount the created components to the main tree on the UI thread.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3176,14 +2948,14 @@ Submits the **task** function to the UI thread for execution.<br> This is suitab
 | Parameter | Description |
 | -- | -- |
 | rkUI_ContextHandle context | Pointer to the UI instance object. |
-| void\* taskData | Pointer to the user-defined data, which is passed as the input parameter of **task**. A null pointer is allowed. |
-| void (\*task)(void\* taskData) | Function executed in the UI thread. |
+| void* taskData | Pointer to the user-defined data, which is passed as the input parameter of **task**. A null pointer is allowed. |
+| void (*task)(void* taskData) | Function executed in the UI thread. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the context object is invalid, or task is a null      pointer. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if the context object is invalid, or **task** is a null pointer. |
 
 ### OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible()
 
@@ -3195,22 +2967,20 @@ int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle
 
 set the visiblity of the menubar.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_ContextHandle uiContext | ArkUI_ContextHandle. - The designated ArkUI container context. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | ArkUI_ContextHandle. - The designated ArkUI container context. |
 | bool visible | visibility. true indicate the menubar is visible,          false indicate the menubar is invisible. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the uiContext is invalid.           for example, 1.uiContext is nullptr 2.can not get container by uiContext.           3. the uiContext is not belong to atomic service. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_UI_CONTEXT_INVALID if the uiContext is invalid. for example, 1.uiContext is nullptr 2.can not get container by uiContext. 3. the uiContext is not belong to atomic service. |
 
 ### OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent()
 
@@ -3220,9 +2990,7 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_Nod
 
 **Description**
 
-Registers a callback for listening for component dimension and area changes.<br> This function can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node at any time. The newly registered callback will replace the previously registered callback for this event and will take effect from the next frame. When the callback is no longer needed, call [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Registers a callback for listening for component dimension and area changes.<br> This function can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node at any time. The newly registered callback will replace the previously registered callback for this event and will take effect from the next frame. When the callback is no longer needed, call [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.
 
 **Since**: 26.0.0
 
@@ -3230,16 +2998,16 @@ Registers a callback for listening for component dimension and area changes.<br>
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_NodeHandle node | Pointer to [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md). |
+| rkUI_NodeHandle node | Pointer to [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md). |
 | float expectedUpdateInterval | Expected calculation interval, in milliseconds. |
-| void\* userData | Pointer to custom data. |
-| void (\*callback)(ArkUI_NodeEvent\* event) | Event callback. |
+| void* userData | Pointer to custom data. |
+| void (*callback)(ArkUI_NodeEvent* event) | Event callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. \n          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful. \n          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. \n |
+| int32_t | Result code. \n Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. \n Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. \n |
 
 ### OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent()
 
@@ -3251,21 +3019,19 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_N
 
 Unregisters the callback bound to the dimensions and area changes of a component.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Pointer to [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md). |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. \n          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful. \n          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. \n |
+| int32_t | Result code. \n Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. \n Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. \n |
 
 ### OH_ArkUI_PostUITaskAndWait()
 
@@ -3277,8 +3043,6 @@ int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, 
 
 Post UI task to UI thread and wait until UI task finished.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3286,14 +3050,14 @@ Post UI task to UI thread and wait until UI task finished.
 | Parameter | Description |
 | -- | -- |
 | rkUI_ContextHandle context | UIContext pointer of the page where the UI task located. |
-| void\* taskData | Parameter of task. |
-| void (\*task)(void\* taskData) | Function executed by UI thread. |
+| void* taskData | Parameter of task. |
+| void (*task)(void* taskData) | Function executed by UI thread. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if context or task is nullptr. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if context or task is nullptr. |
 
 ### OH_ArkUI_Swiper_StartFakeDrag()
 
@@ -3305,22 +3069,20 @@ int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
 
 Start a fake drag of the Swiper node. Call OH_ArkUI_Swiper_FakeDragBy to simulate the drag motion. Call OH_ArkUI_Swiper_StopFakeDrag to complete the fake drag. A fake drag can be interrupted by a real drag. If you need to ignore touch events and other user input during a fake drag, use NODE_SWIPER_DISABLE_SWIPE.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 | bool* isSuccessful | If the fake drag started successfully, return true. If the Swiper is not ready to start the fake drag, or a real or fake drag is already in progress, return false. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_Swiper_FakeDragBy()
 
@@ -3332,15 +3094,13 @@ int32_t OH_ArkUI_Swiper_FakeDragBy(ArkUI_NodeHandle node, float offset, bool* is
 
 Fake drag by an offset of the Swiper node. The OH_ArkUI_Swiper_StartFakeDrag must be called first.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 | float offset | The offset that needs to be scrolled. The unit is vp. |
 | bool* isConsumedOffset | If not in a fake drag progress, or no offset is consumed, return false. If any offset is consumed, return true. |
 
@@ -3348,7 +3108,7 @@ Fake drag by an offset of the Swiper node. The OH_ArkUI_Swiper_StartFakeDrag mus
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_Swiper_StopFakeDrag()
 
@@ -3360,22 +3120,20 @@ int32_t OH_ArkUI_Swiper_StopFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
 
 Stop a fake drag of the Swiper node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 | bool* isSuccessful | If the fake drag stopped successfully, return true. If the Swiper is not ready to stop the fake drag, or no fake drag is in progress, return false. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_Swiper_IsFakeDragging()
 
@@ -3387,22 +3145,20 @@ int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDraggi
 
 Get the fake drag state of the Swiper node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 | bool* isFakeDragging | If a fake drag is in progress return true, otherwise return false |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_Swiper_ShowPrevious()
 
@@ -3414,21 +3170,19 @@ int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)
 
 Show the previous page of the Swiper node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_Swiper_ShowNext()
 
@@ -3440,21 +3194,19 @@ int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
 
 Show the next page of the Swiper node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_ArcSwiper_ShowPrevious()
 
@@ -3466,21 +3218,19 @@ int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)
 
 Show the previous page of the ArcSwiper node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_ArcSwiper_ShowNext()
 
@@ -3492,21 +3242,19 @@ int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)
 
 Show the next page of the ArcSwiper node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_ArcSwiper_FinishAnimation()
 
@@ -3518,21 +3266,19 @@ int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)
 
 Stop the animation executed by the ArcSwiper node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+| int32_t | Error code. ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. |
 
 ### OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext()
 
@@ -3544,22 +3290,20 @@ int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle
 
 Obtains the root node of the page of a specified instance.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_ContextHandle context | Pointer to the UI instance object. |
-| ArkUI_NodeHandle* rootNode | Handle to the target root node. If the page corresponding to the context does not have a root node, this parameter is set to null. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | Pointer to the UI instance object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* rootNode | Handle to the target root node. If the page corresponding to the context does not have a root node, this parameter is set to null. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if C API initialization failed.      <br>Returns [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if an instance error occurs.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed. <br>Returns ARKUI_ERROR_CODE_UI_CONTEXT_INVALID if an instance error occurs. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo()
 
@@ -3571,21 +3315,19 @@ ArkUI_GestureCollectInterceptInfo* OH_ArkUI_NodeEvent_GetGestureCollectIntercept
 
 Obtains the <b>ArkUI_GestureCollectInterceptInfo</b> object from a specified <b>ArkUI_NodeEvent</b> object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeEvent* nodeEvent | Pointer to the <b>ArkUI_NodeEvent</b> object. |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* nodeEvent | Pointer to the <b>ArkUI_NodeEvent</b> object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_GestureCollectInterceptInfo* | Returns the pointer to the <b>ArkUI_GestureCollectInterceptInfo</b> object.          It is valid only during callback and does not need to be released.          Returns <b>null</b> if the input parameter is invalid or the          information is not gesture collection interception information. |
+| [ArkUI_GestureCollectInterceptInfo*](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | Returns the pointer to the <b>ArkUI_GestureCollectInterceptInfo</b> object. It is valid only during callback and does not need to be released. Returns <b>null</b> if the input parameter is invalid or the information is not gesture collection interception information. |
 
 ### OH_ArkUI_NativeModule_SetChildMountPolicy()
 
@@ -3597,22 +3339,20 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node,
 
 Set the subnode mounting policy of the target node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | the target node handle. |
-| OH_ArkUI_NodeMountPolicy policy | the policy to set. Valid values correspond to [OH_ArkUI_NodeMountPolicy](capi-native-type-h.md#oh_arkui_nodemountpolicy). |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | the target node handle. |
+| [OH_ArkUI_NodeMountPolicy](capi-native-type-h.md#oh_arkui_nodemountpolicy) policy | the policy to set. Valid values correspond to [OH_ArkUI_NodeMountPolicy](capi-native-type-h.md#oh_arkui_nodemountpolicy). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Error code.      <ul><li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.      </li><li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception.      </li><li>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if CAPI init error.</li></ul> |
+| ArkUI_ErrorCode | Error code. <ul><li>ARKUI_ERROR_CODE_NO_ERROR Success. </li><li>ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. </li><li>ARKUI_ERROR_CODE_CAPI_INIT_ERROR if CAPI init error.</li></ul> |
 
 ### OH_ArkUI_NativeModule_GetChildMountPolicy()
 
@@ -3624,22 +3364,20 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node,
 
 Get the current child mount policy of the specified node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | the target node handle. |
-| OH_ArkUI_NodeMountPolicy* policy | the pointer to receive child mounting policy of the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | the target node handle. |
+| [OH_ArkUI_NodeMountPolicy](capi-native-type-h.md#oh_arkui_nodemountpolicy)* policy | the pointer to receive child mounting policy of the target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Error code.      <ul><li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.      </li><li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Function parameter exception.      </li><li>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if CAPI init error.</li></ul> |
+| ArkUI_ErrorCode | Error code. <ul><li>ARKUI_ERROR_CODE_NO_ERROR Success. </li><li>ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception. </li><li>ARKUI_ERROR_CODE_CAPI_INIT_ERROR if CAPI init error.</li></ul> |
 
 ### OH_ArkUI_NodeUtils_SetUiDvsyncSwitch()
 
@@ -3651,21 +3389,19 @@ ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context
 
 Sets the UI Dvsync switch.<br> When enabled, the system responds to Vsync requests more promptly and executes rendering tasks more frequently. It is typically enabled at the start of an animation in a self-rendering framework and disabled when the animation ends, to ensure smoother animation effects while preventing frequent Vsync requests from affecting other functionalities. Calling this function on a non-UI thread will cause the application to exit.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_ContextHandle context | [in] Pointer to an ArkUI_ContextHandle. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] Pointer to an ArkUI_ContextHandle. |
 | bool enable | [in] Whether to enable Dvsync. The value true enables Dvsync, and false disables Dvsync. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result.      <ul><li>[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) The operation is successful.      </li><li>[RKUI_ERROR_CODE_CAPI_INIT_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Failed to initialize the CAPI.      </li><li>[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) The function parameter is invalid.</li></ul> |
+| ArkUI_ErrorCode | Returns the result. <ul><li>ARKUI_ERROR_CODE_NO_ERROR The operation is successful. </li><li>RKUI_ERROR_CODE_CAPI_INIT_ERROR Failed to initialize the CAPI. </li><li>ARKUI_ERROR_CODE_PARAM_INVALID The function parameter is invalid.</li></ul> |
 
 

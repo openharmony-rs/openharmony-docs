@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供数字版权保护能力的API。<br> 开发者可根据开发需求，参考开发指南及样例：<br> - [数字版权保护(C/C++)](docroot://media/drm/drm-c-dev-guide.md) - [基于AVCodec播放DRM节目(C/C++)](docroot://media/drm/drm-avcodec-integration.md)
+提供数字版权保护能力的API。<br> 开发者可根据开发需求，参考开发指南及样例：<br> - [数字版权保护(C/C++)](../../../media/drm/drm-c-dev-guide.md) - [基于AVCodec播放DRM节目(C/C++)](../../../media/drm/drm-avcodec-integration.md)
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 

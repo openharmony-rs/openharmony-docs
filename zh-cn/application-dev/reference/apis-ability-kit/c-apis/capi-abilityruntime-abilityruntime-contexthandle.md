@@ -1,0 +1,18 @@
+# AbilityRuntime_ContextHandle
+
+```c
+typedef struct AbilityRuntime_ContextHandle AbilityRuntime_ContextHandle
+```
+
+## 概述
+
+定义AbilityRuntime_Context对象指针。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 24
+
+**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
+
+**所在头文件：** [context.h](capi-context-h.md)
+

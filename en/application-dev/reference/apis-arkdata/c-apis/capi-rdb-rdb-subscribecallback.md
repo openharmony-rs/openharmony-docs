@@ -1,7 +1,7 @@
 # Rdb_SubscribeCallback
 
 ```c
-typedef union Rdb_SubscribeCallback {...} Rdb_SubscribeCallback
+union Rdb_SubscribeCallback {...}
 ```
 
 ## Overview

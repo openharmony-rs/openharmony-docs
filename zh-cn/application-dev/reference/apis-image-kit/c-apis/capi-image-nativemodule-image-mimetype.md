@@ -1,0 +1,18 @@
+# Image_MimeType
+
+```c
+typedef struct Image_MimeType Image_MimeType
+```
+
+## 概述
+
+Defines the image encode format.
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 12
+
+**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+
+**所在头文件：** [image_common.h](capi-image-common-h.md)
+

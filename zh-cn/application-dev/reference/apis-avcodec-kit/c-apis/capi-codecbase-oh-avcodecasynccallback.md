@@ -1,7 +1,7 @@
 # OH_AVCodecAsyncCallback
 
 ```c
-typedef struct OH_AVCodecAsyncCallback {...} OH_AVCodecAsyncCallback
+struct OH_AVCodecAsyncCallback {...}
 ```
 
 ## 概述
@@ -14,7 +14,7 @@ OH_AVCodec中所有异步回调函数指针的集合。将该结构体的实例�
 
 **废弃版本：** 11
 
-**替代接口：** {@link OH_AVCodecCallback}
+**替代接口：** [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md)
 
 **相关模块：** [CodecBase](capi-codecbase.md)
 

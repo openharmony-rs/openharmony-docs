@@ -6,8 +6,6 @@
 
 **库：** libohi18n.so
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 **相关模块：** [i18n](capi-i18n.md)
@@ -16,14 +14,14 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [DateTimeRule](capi-i18n-datetimerule.md) | DateTimeRule | 时间日期规则。 |
-| [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md) | InitialTimeZoneRule | 起始时区规则。 |
-| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md) | TimeArrayTimeZoneRule | 起始时间戳数组定义的时区规则。 |
-| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md) | AnnualTimeZoneRule | 每年生效的时区规则。 |
-| [TimeZoneRules](capi-i18n-timezonerules.md) | TimeZoneRules | 完整的时区规则，包括起始时区规则、起始时间戳数组定义的时区规则和每年生效的时区规则，能够全面描述时区的历史和未来规则。 |
-| [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md) | TimeZoneRuleQuery | 用于传入查询的信息，并接收查询的结果。 |
+| 名称 | 描述 |
+| -- | -- |
+| [DateTimeRule](capi-i18n-datetimerule.md) | 时间日期规则。 |
+| [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md) | 起始时区规则。 |
+| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md) | 起始时间戳数组定义的时区规则。 |
+| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md) | 每年生效的时区规则。 |
+| [TimeZoneRules](capi-i18n-timezonerules.md) | 完整的时区规则，包括起始时区规则、起始时间戳数组定义的时区规则和每年生效的时区规则，能够全面描述时区的历史和未来规则。 |
+| [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md) | 用于传入查询的信息，并接收查询的结果。 |
 
 ### 枚举
 
@@ -66,8 +64,6 @@ enum DateRuleType
 
 日期规则类型的枚举。
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -86,8 +82,6 @@ enum TimeRuleType
 **描述：**
 
 时间规则类型的枚举。
-
-**系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22
 
@@ -110,8 +104,6 @@ I18n_ErrorCode OH_i18n_GetTimeZoneRules(const char* timeZoneID, TimeZoneRules* r
 
 通过时区ID，获取完整的时区规则。
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 **参数：**
@@ -125,7 +117,7 @@ I18n_ErrorCode OH_i18n_GetTimeZoneRules(const char* timeZoneID, TimeZoneRules* r
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetFirstStartFromTimeArrayTimeZoneRule()
 
@@ -137,8 +129,6 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 根据TimeArrayTimeZoneRule，获取时区规则的首次生效时间。
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 **参数：**
@@ -152,7 +142,7 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetFirstStartFromAnnualTimeZoneRule()
 
@@ -164,8 +154,6 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 根据AnnualTimeZoneRule，获取时区规则的首次生效时间。
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 **参数：**
@@ -179,7 +167,7 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetFinalStartFromTimeArrayTimeZoneRule()
 
@@ -191,8 +179,6 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 根据TimeArrayTimeZoneRule，获取时区规则的最后一次生效时间。
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 **参数：**
@@ -206,7 +192,7 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetFinalStartFromAnnualTimeZoneRule()
 
@@ -218,8 +204,6 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 根据AnnualTimeZoneRule，获取时区规则的最后一次生效时间。
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 **参数：**
@@ -233,7 +217,7 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetNextStartFromTimeArrayTimeZoneRule()
 
@@ -245,8 +229,6 @@ I18n_ErrorCode OH_i18n_GetNextStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 根据TimeArrayTimeZoneRule，获取时区规则在基准时间之后的下一次生效时间。
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 **参数：**
@@ -260,7 +242,7 @@ I18n_ErrorCode OH_i18n_GetNextStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetNextStartFromAnnualTimeZoneRule()
 
@@ -272,8 +254,6 @@ I18n_ErrorCode OH_i18n_GetNextStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 
 根据AnnualTimeZoneRule，获取时区规则在基准时间之后的下一次生效时间。
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 **参数：**
@@ -287,7 +267,7 @@ I18n_ErrorCode OH_i18n_GetNextStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetPrevStartFromTimeArrayTimeZoneRule()
 
@@ -298,8 +278,6 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 **描述：**
 
 根据TimeArrayTimeZoneRule，获取时区规则在基准时间之前的上一次生效时间。
-
-**系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22
 
@@ -314,7 +292,7 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetPrevStartFromAnnualTimeZoneRule()
 
@@ -325,8 +303,6 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 **描述：**
 
 根据AnnualTimeZoneRule，获取时区规则在基准时间之前的上一次生效时间。
-
-**系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22
 
@@ -341,7 +317,7 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetStartTimeAt()
 
@@ -352,8 +328,6 @@ I18n_ErrorCode OH_i18n_GetStartTimeAt(TimeArrayTimeZoneRule* rule, int32_t index
 **描述：**
 
 根据TimeArrayTimeZoneRule，获取时区规则指定索引的起始时间。
-
-**系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22
 
@@ -369,7 +343,7 @@ I18n_ErrorCode OH_i18n_GetStartTimeAt(TimeArrayTimeZoneRule* rule, int32_t index
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetStartInYear()
 
@@ -380,8 +354,6 @@ I18n_ErrorCode OH_i18n_GetStartInYear(AnnualTimeZoneRule* rule, int32_t year, Ti
 **描述：**
 
 根据AnnualTimeZoneRule，获取时区规则在指定年份的生效时间。
-
-**系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22
 
@@ -397,6 +369,6 @@ I18n_ErrorCode OH_i18n_GetStartInYear(AnnualTimeZoneRule* rule, int32_t year, Ti
 
 | 类型 | 说明 |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。[ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。[UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 

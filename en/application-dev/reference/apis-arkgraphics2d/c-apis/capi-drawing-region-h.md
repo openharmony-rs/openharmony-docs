@@ -6,9 +6,7 @@ This file declares the functions related to the region in the drawing module, in
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
-**Since**: 8
+**Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
 
@@ -53,8 +51,6 @@ enum OH_Drawing_RegionOpMode
 
 Enumerates the operation modes available for a region.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 | Enum item | Description |
@@ -79,15 +75,13 @@ OH_Drawing_Region* OH_Drawing_RegionCreate(void)
 
 Creates an **OH_Drawing_Region** object for more accurate graphical control.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Region* | Returns the pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object created. |
+| [OH_Drawing_Region*](capi-drawing-oh-drawing-region.md) | Returns the pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object created. |
 
 ### OH_Drawing_RegionCopy()
 
@@ -99,21 +93,19 @@ OH_Drawing_Region* OH_Drawing_RegionCopy(const OH_Drawing_Region* region)
 
 Creates a copy of a region object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object to be copied. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object to be copied. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Region* | Returns the pointer to the OH_Drawing_Region object created. |
+| [OH_Drawing_Region*](capi-drawing-oh-drawing-region.md) | Returns the pointer to the **OH_Drawing_Region** object created. |
 
 ### OH_Drawing_RegionContains()
 
@@ -125,15 +117,13 @@ bool OH_Drawing_RegionContains(OH_Drawing_Region* region, int32_t x, int32_t y)
 
 Checks whether a region contains the specified point. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **region** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 | int32_t x | X coordinate of the point. |
 | int32_t y | Y coordinate of the point. |
 
@@ -141,7 +131,7 @@ Checks whether a region contains the specified point. This API may return an err
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the region contains the specified point; returns false otherwise. |
+| bool | Returns **true** if the region contains the specified point; returns **false** otherwise. |
 
 ### OH_Drawing_RegionOp()
 
@@ -153,23 +143,21 @@ bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* oth
 
 Combines two regions based on the specified operation mode. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **region** or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **op** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Region* region | Pointer to an [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object, in which the resulting region is saved. |
-| const OH_Drawing_Region* other | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to an [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object, in which the resulting region is saved. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* other | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 | [OH_Drawing_RegionOpMode](capi-drawing-region-h.md#oh_drawing_regionopmode) op | Operation mode of the region. For details about the available options, see [OH_Drawing_RegionOpMode](capi-drawing-region-h.md#oh_drawing_regionopmode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the resulting region is not empty; returns false otherwise. |
+| bool | Returns **true** if the resulting region is not empty; returns false otherwise. |
 
 ### OH_Drawing_RegionSetRect()
 
@@ -181,22 +169,20 @@ bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* 
 
 Sets the boundary for an **OH_Drawing_Region** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **region** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
-| const OH_Drawing_Rect* rect | Pointer to an **OH_Drawing_Rect** object. |
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to an **OH_Drawing_Rect** object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the setting is successful; returns false otherwise. |
+| bool | Returns **true** if the setting is successful; returns **false** otherwise. |
 
 ### OH_Drawing_RegionSetPath()
 
@@ -208,23 +194,21 @@ bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* 
 
 Sets a region to the area described by the path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **region**, **path**, or **clip** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
-| const OH_Drawing_Path* path | Pointer to the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object. |
-| const OH_Drawing_Region* clip | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [const OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | Pointer to the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* clip | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the resulting region is not empty; returns false otherwise. |
+| bool | Returns **true** if the resulting region is not empty; returns false otherwise. |
 
 ### OH_Drawing_RegionDestroy()
 
@@ -236,15 +220,13 @@ void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)
 
 Destroys an **OH_Drawing_Region** object and reclaims the memory occupied by the object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 
 ### OH_Drawing_RegionEmpty()
 
@@ -256,21 +238,19 @@ OH_Drawing_ErrorCode OH_Drawing_RegionEmpty(OH_Drawing_Region* region)
 
 Sets the existing region to empty.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 22
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if the region parameter is empty. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if the **region** parameter is empty. |
 
 ### OH_Drawing_RegionGetBoundaryPath()
 
@@ -282,22 +262,20 @@ OH_Drawing_ErrorCode OH_Drawing_RegionGetBoundaryPath(const OH_Drawing_Region* r
 
 Sets the path as the boundary of the region. If the region is empty, the path is also empty.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
-| OH_Drawing_Path* path | Pointer to the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object. It is used as an output parameter. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | Pointer to the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object. It is used as an output parameter. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if region or path is a null pointer. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **region** or **path** is a null pointer. |
 
 ### OH_Drawing_RegionGetBounds()
 
@@ -309,22 +287,20 @@ OH_Drawing_ErrorCode OH_Drawing_RegionGetBounds(const OH_Drawing_Region* region,
 
 Obtains the smallest bounding rectangle that contains the region.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
-| OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. It is used as an output parameter. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. It is used as an output parameter. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if region or rect is a null pointer. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **region** or **rect** is a null pointer. |
 
 ### OH_Drawing_RegionIsComplex()
 
@@ -336,22 +312,20 @@ OH_Drawing_ErrorCode OH_Drawing_RegionIsComplex(const OH_Drawing_Region* region,
 
 Checks whether the region contains two or more rectangles.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 | bool* isComplex | Whether this region contains multiple rectangles. It is used as an output parameter. **true** means yes; **false** otherwise. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if region or isComplex is a null pointer. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **region** or **isComplex** is a null pointer. |
 
 ### OH_Drawing_RegionIsEmpty()
 
@@ -363,22 +337,20 @@ OH_Drawing_ErrorCode OH_Drawing_RegionIsEmpty(const OH_Drawing_Region* region, b
 
 Checks whether the region is empty.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 | bool* isEmpty | Whether the region is empty. It is used as an output parameter. **true** means yes; **false**<br>otherwise. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if region or isEmpty is a null pointer. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **region** or **isEmpty** is a null pointer. |
 
 ### OH_Drawing_RegionIsRect()
 
@@ -390,22 +362,20 @@ OH_Drawing_ErrorCode OH_Drawing_RegionIsRect(const OH_Drawing_Region* region, bo
 
 Checks whether the region the same as a rectangle.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 | bool* isRect | Whether the region the same as a rectangle. It is used as an output parameter. **true** means yes; **<br>false** otherwise. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if region or isRect is a null pointer. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **region** or **isRect** is a null pointer. |
 
 ### OH_Drawing_RegionQuickContains()
 
@@ -417,15 +387,13 @@ OH_Drawing_ErrorCode OH_Drawing_RegionQuickContains(const OH_Drawing_Region* reg
 
 Checks whether the region is the same as a single rectangle and contains the specified rectangle.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 | int32_t left | X coordinate of the upper left corner of the specified rectangle. |
 | int32_t top | Y coordinate of the upper left corner of the specified rectangle. |
 | int32_t right | X coordinate of the lower right corner of the specified rectangle. |
@@ -436,7 +404,7 @@ Checks whether the region is the same as a single rectangle and contains the spe
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if region or isContained is a null pointer. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **region** or **isContained** is a null pointer. |
 
 ### OH_Drawing_RegionQuickReject()
 
@@ -448,15 +416,13 @@ OH_Drawing_ErrorCode OH_Drawing_RegionQuickReject(const OH_Drawing_Region* regio
 
 Checks whether the region is empty or does not intersect the specified rectangle.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 | int32_t left | X coordinate of the upper left corner of the specified rectangle. |
 | int32_t top | Y coordinate of the upper left corner of the specified rectangle. |
 | int32_t right | X coordinate of the lower right corner of the specified rectangle. |
@@ -467,7 +433,7 @@ Checks whether the region is empty or does not intersect the specified rectangle
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if region or isReject is a null pointer. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **region** or **isReject** is a null pointer. |
 
 ### OH_Drawing_RegionTranslate()
 
@@ -479,15 +445,13 @@ OH_Drawing_ErrorCode OH_Drawing_RegionTranslate(OH_Drawing_Region* region, int32
 
 Translates the region by a specified distance on the X and Y axes. If the region is empty, no operation is performed.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 | int32_t dx | Distance to be translated on the X axis, in pixels. |
 | int32_t dy | Distance to be translated on the Y axis, in pixels. |
 
@@ -495,6 +459,6 @@ Translates the region by a specified distance on the X and Y axes. If the region
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if region is a null pointer. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **region** is a null pointer. |
 
 

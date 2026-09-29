@@ -24,7 +24,7 @@ typedef struct OH_Drawing_Image_Info {...} OH_Drawing_Image_Info
 | -- | -- |
 | int32_t width | 宽度，单位为像素。<br>**起始版本：** 12 |
 | int32_t height | 高度，单位为像素。<br>**起始版本：** 12 |
-| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorType | 颜色类型{@link OH_Drawing_ColorFormat}。<br>**起始版本：** 12 |
-| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaType | 透明度类型{@link OH_Drawing_AlphaFormat}。<br>**起始版本：** 12 |
+| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorType | 颜色类型[OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat)。<br>**起始版本：** 12 |
+| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaType | 透明度类型[OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat)。<br>**起始版本：** 12 |
 
 

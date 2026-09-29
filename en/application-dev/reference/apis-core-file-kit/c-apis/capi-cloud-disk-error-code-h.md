@@ -6,8 +6,6 @@ This file defines the error codes for the cloud disk management module.
 
 **Library**: libohclouddiskmanager.so
 
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
-
 **Since**: 21
 
 **Related module**: [CloudDisk](capi-clouddisk.md)
@@ -31,8 +29,6 @@ enum CloudDisk_ErrorCode
 **Description**
 
 Enumerates the error codes of the cloud disk management module.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -66,5 +62,12 @@ Enumerates the error codes of the cloud disk management module.
 | OH_CLOUD_DISK_NOT_A_DIRECTORY = 34400023 | The parent directory of the target path is not a directory.<br>**Since**: 26.0.1 |
 | OH_CLOUD_DISK_FILE_NOT_EXIST = 34400024 | The target path does not exist.<br>**Since**: 26.0.1 |
 | OH_CLOUD_DISK_NAME_TOO_LONG = 34400025 | The file name or path is too long.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_FILE_TOO_LARGE = 34400026 | The file is too large.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_PLACEHOLDER_NOT_FULLY_HYDRATED = 34400028 | The placeholder file is not fully hydrated.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_DEHYDRATE_DENIED = 34400029 | The dehydrate operation is denied by the application callback.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_CANCELLED = 34400030 | The hydration task has been cancelled.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_ALREADY_HYDRATED = 34400031 | The placeholder file is already hydrated.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_NO_HYDRATION_IN_PROGRESS = 34400032 | No hydration task is in progress.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_HYDRATION_TASK_LIMIT_REACHED = 34400034 | The number of pending placeholder hydration tasks has reached the limit.<br>**Since**: 26.0.1 |
 
 

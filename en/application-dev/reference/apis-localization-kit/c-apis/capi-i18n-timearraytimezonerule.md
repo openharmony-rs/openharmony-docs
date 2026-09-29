@@ -1,7 +1,7 @@
 # TimeArrayTimeZoneRule
 
 ```c
-typedef struct TimeArrayTimeZoneRule {...} TimeArrayTimeZoneRule
+struct TimeArrayTimeZoneRule {...}
 ```
 
 ## Overview

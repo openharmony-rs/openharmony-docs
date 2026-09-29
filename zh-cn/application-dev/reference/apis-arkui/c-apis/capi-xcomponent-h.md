@@ -8,8 +8,6 @@ XComponent组件枚举类型定义，用于描述XComponent的渲染类型，支
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -41,8 +39,6 @@ enum ArkUI_XComponentType
 **描述：**
 
 定义XComponent类型枚举值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 

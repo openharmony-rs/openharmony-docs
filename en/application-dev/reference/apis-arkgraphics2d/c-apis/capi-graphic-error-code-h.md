@@ -6,9 +6,7 @@ Defines the error codes.
 
 **Library**: libnative_window.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
-
-**Since**: 8
+**Since**: 12
 
 **Related module**: [NativeWindow](capi-nativewindow.md)
 
@@ -32,18 +30,16 @@ enum OHNativeErrorCode
 
 native error code.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
-
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
 | NATIVE_ERROR_OK = 0 | @error success |
-| NATIVE_ERROR_MEM_OPERATION_ERROR = 30001000 |  memory operation error<br>**Since**: 15 |
+| NATIVE_ERROR_MEM_OPERATION_ERROR = 30001000 | &nbsp;memory operation error<br>**Since**: 15 |
 | NATIVE_ERROR_INVALID_ARGUMENTS = 40001000 | @error invalid input parameter |
 | NATIVE_ERROR_NO_PERMISSION = 40301000 | @error unauthorized operation |
 | NATIVE_ERROR_NO_BUFFER = 40601000 | @error no idle buffer is available |
-| NATIVE_ERROR_INVALID_OPERATION = 41201000 |  invalid operation<br>**Since**: 26.0.0 |
+| NATIVE_ERROR_INVALID_OPERATION = 41201000 | &nbsp;invalid operation<br>**Since**: 26.0.0 |
 | NATIVE_ERROR_NO_CONSUMER = 41202000 | @error the consumer side doesn't exist |
 | NATIVE_ERROR_NOT_INIT = 41203000 | @error uninitialized |
 | NATIVE_ERROR_CONSUMER_CONNECTED = 41206000 | @error the consumer is connected |

@@ -354,7 +354,7 @@ NODE_TEXT_INPUT_CUSTOM_KEYBOARD
 
 **Description**
 
-Set up a custom keyboard.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: custom keyboard, The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0]?.i32: Sets whether the custom keyboard supports the avoidance feature, default value false.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: custom keyboard, The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0].i32: Set whether the custom keyboard supports the avoidance function.</li> </ul>
+Set up a custom keyboard.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: custom keyboard, The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0]?.i32: Sets whether the custom keyboard supports the avoidance feature, default value false.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: custom keyboard, The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0].i32: Set whether the custom keyboard supports the avoidance function.</li> </ul>
 
 **Since**: 12
 
@@ -438,7 +438,7 @@ NODE_TEXT_INPUT_KEYBOARD_APPEARANCE = 7035
 
 **Description**
 
-Set the keyboard style of textInput<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul><br><li>.value[0].i32: keyboard style, the parameter type is {@link ArkUI_KeyboardAppearanceType}.</li><br></ul><br>**Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul><br><li>.value[0].i32: keyboard style, the parameter type is {@link ArkUI_KeyboardAppearanceType}.</li> </ul>
+Set the keyboard style of textInput<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: keyboard style, the parameter type is ArkUI_KeyboardAppearanceType.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: keyboard style, the parameter type is ArkUI_KeyboardAppearanceType.</li> </ul>
 
 **Since**: 15
 
@@ -966,7 +966,7 @@ NODE_TEXT_AREA_KEYBOARD_APPEARANCE = 8026
 
 **Description**
 
-Set the keyboard style of textArea<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul><br><li>.value[0].i32: keyboard style, the parameter type is {@link ArkUI_KeyboardAppearanceType}.</li><br></ul><br>**Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul><br><li>.value[0].i32: keyboard style, the parameter type is {@link ArkUI_KeyboardAppearanceType}.</li> </ul>
+Set the keyboard style of textArea<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: keyboard style, the parameter type is ArkUI_KeyboardAppearanceType.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: keyboard style, the parameter type is ArkUI_KeyboardAppearanceType.</li> </ul>
 
 **Since**: 15
 
@@ -1074,7 +1074,7 @@ NODE_TEXT_AREA_CUSTOM_KEYBOARD = 8036
 
 **Description**
 
-Sets up a custom keyboard.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: custom keyboard, The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0]?.i32: Sets whether the custom keyboard supports the avoidance feature, default value false.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: custom keyboard, The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0].i32: Set whether the custom keyboard supports the avoidance function.</li> </ul>
+Sets up a custom keyboard.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: custom keyboard, The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0]?.i32: Sets whether the custom keyboard supports the avoidance feature, default value false.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: custom keyboard, The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0].i32: Set whether the custom keyboard supports the avoidance function.</li> </ul>
 
 **Since**: 22
 

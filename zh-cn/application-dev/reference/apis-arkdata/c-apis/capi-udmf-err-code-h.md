@@ -6,8 +6,6 @@
 
 **库：** libudmf.so
 
-**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
-
 **起始版本：** 12
 
 **相关模块：** [UDMF](capi-udmf.md)
@@ -33,8 +31,6 @@ enum Udmf_ErrCode
 
 错误码信息。
 
-**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -52,8 +48,6 @@ enum Udmf_ListenerStatus
 **描述：**
 
 异步获取数据时的状态码枚举。
-
-**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 15
 

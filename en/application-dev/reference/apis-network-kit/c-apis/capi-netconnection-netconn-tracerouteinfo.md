@@ -1,7 +1,7 @@
 # NetConn_TraceRouteInfo
 
 ```c
-typedef struct NetConn_TraceRouteInfo {...} NetConn_TraceRouteInfo
+struct NetConn_TraceRouteInfo {...}
 ```
 
 ## Overview

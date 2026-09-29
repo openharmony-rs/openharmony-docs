@@ -6,8 +6,6 @@
 
 **库：** libpixelmap_ndk.z.so
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 8
 
 **相关模块：** [Image](capi-image.md)
@@ -48,8 +46,6 @@ enum anonymous0
 
 函数方法返回值的错误码的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 8
 
 **废弃版本：** 10
@@ -68,8 +64,6 @@ enum anonymous1
 **描述：**
 
 像素格式的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 8
 
@@ -91,8 +85,6 @@ enum anonymous2
 
 PixelMap缩放类型的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -113,8 +105,6 @@ int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 
 获取PixelMap的信息，并记录信息到[OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)结构中。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 8
 
 **废弃版本：** 10
@@ -131,7 +121,7 @@ int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码：<br>  OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>  OHOS_IMAGE_RESULT_BAD_PARAMETER：操作失败。 |
+| int32_t | 错误码：<br> OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br> OHOS_IMAGE_RESULT_BAD_PARAMETER：操作失败。 |
 
 ### OH_AccessPixels()
 
@@ -142,8 +132,6 @@ int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 **描述：**
 
 获取PixelMap对象数据的内存地址，并锁定该内存。<br><br> 函数执行成功后，\*addrPtr就是获取的待访问的内存地址。访问操作完成后，必须要使用[OH_UnAccessPixels](capi-image-pixel-map-napi-h.md#oh_unaccesspixels)来释放锁，否则的话资源无法被释放。 待解锁后，内存地址就不可以再被访问和操作。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 8
 
@@ -161,7 +149,7 @@ int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码：<br>  OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>  OHOS_IMAGE_RESULT_BAD_PARAMETER：操作失败。 |
+| int32_t | 错误码：<br> OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br> OHOS_IMAGE_RESULT_BAD_PARAMETER：操作失败。 |
 
 ### OH_UnAccessPixels()
 
@@ -172,8 +160,6 @@ int32_t OH_UnAccessPixels(napi_env env, napi_value value)
 **描述：**
 
 释放PixelMap对象数据的内存锁，用于匹配方法[OH_AccessPixels](capi-image-pixel-map-napi-h.md#oh_accesspixels)。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 8
 
@@ -190,6 +176,6 @@ int32_t OH_UnAccessPixels(napi_env env, napi_value value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码：<br>  OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>  OHOS_IMAGE_RESULT_BAD_PARAMETER：操作失败。 |
+| int32_t | 错误码：<br> OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br> OHOS_IMAGE_RESULT_BAD_PARAMETER：操作失败。 |
 
 

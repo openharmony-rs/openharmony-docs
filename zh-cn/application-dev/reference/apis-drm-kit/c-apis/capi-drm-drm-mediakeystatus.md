@@ -1,7 +1,7 @@
 # DRM_MediaKeyStatus
 
 ```c
-typedef struct DRM_MediaKeyStatus {...} DRM_MediaKeyStatus
+struct DRM_MediaKeyStatus {...}
 ```
 
 ## 概述

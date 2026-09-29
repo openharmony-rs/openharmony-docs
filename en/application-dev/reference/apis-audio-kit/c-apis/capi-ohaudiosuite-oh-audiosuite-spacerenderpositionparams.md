@@ -1,7 +1,7 @@
 # OH_AudioSuite_SpaceRenderPositionParams
 
 ```c
-typedef struct OH_AudioSuite_SpaceRenderPositionParams {...} OH_AudioSuite_SpaceRenderPositionParams
+struct OH_AudioSuite_SpaceRenderPositionParams {...}
 ```
 
 ## Overview

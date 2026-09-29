@@ -6,8 +6,6 @@ Defines the native APIs used to obtain the location of a file.
 
 **Library**: libohfileio.so
 
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
 **Since**: 12
 
 **Related module**: [FileIO](capi-fileio.md)
@@ -38,8 +36,6 @@ enum FileIO_FileLocation
 
 Enumerates the file location.
 
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
 **Since**: 12
 
 | Enum item | Description |
@@ -61,8 +57,6 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileI
 
 Obtains the location of a file.
 
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
 **Since**: 12
 
 **Parameters**:
@@ -77,6 +71,6 @@ Obtains the location of a file.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Return the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>        {@link ERR_ENOENT} 13900002 - No such file or directory.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_ENOENT](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900002 - No such file or directory. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 

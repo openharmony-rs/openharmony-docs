@@ -6,8 +6,6 @@ Provides trusted storage APIs.<br> You can use these APIs to implement trusted s
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -48,7 +46,8 @@ Provides trusted storage APIs.<br> You can use these APIs to implement trusted s
 
 | Name | Description |
 | -- | -- |
-| uint32_t TEE_Whence | Defines the type for the data stream position.<br>**Since**: 20 |
+| uint32_t TEE_Whence | Defines the type for the data stream position.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| typedef uint32_t TEE_Whence | Defines the type for the data stream position.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
 
 ## Enum type description
 
@@ -61,8 +60,6 @@ enum __TEE_Whence
 **Description**
 
 Defines the start position in the data stream associated with an object. It is used in the <b>TEE_SeekObjectData</b> function.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -81,8 +78,6 @@ enum Object_Storage_Constants
 **Description**
 
 Defines the storage ID, which identifies the storage space of the application.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -105,8 +100,6 @@ enum Miscellaneous_Constants
 
 Defines the system resource constraints, such as the maximum value for the data stream position indicator.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -124,8 +117,6 @@ enum TEE_DATA_Size
 
 Defines the maximum number of bytes that can be held in a data stream.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -140,8 +131,6 @@ enum Data_Flag_Constants
 **Description**
 
 Defines the <b>handleFlags</b> of a <b>TEE_ObjectHandle</b>. The <b>handleFlags</b> determines the access permissions to the data stream associated with the object.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -175,8 +164,6 @@ TEE_Result TEE_CreatePersistentObject(uint32_t storageID, const void *objectID, 
 
 Creates a persistent object.<br> This function creates a persistent object with initialized <b>TEE_Attribute</b> and data stream. You can use the returned handle to access the <b>TEE_Attribute</b> and data stream of the object.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -196,7 +183,7 @@ Creates a persistent object.<br> This function creates a persistent object with 
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the storage specified by <b>storageID</b> does not exist.          Returns <b>TEE_ERROR_ACCESS_CONFLICT</b> if an access conflict occurs.          Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation.          Returns <b>TEE_ERROR_STORAGE_NO_SPACE</b> if there is no enough space to create the object. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the storage specified by <b>storageID</b> does not exist. Returns <b>TEE_ERROR_ACCESS_CONFLICT</b> if an access conflict occurs. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation. Returns <b>TEE_ERROR_STORAGE_NO_SPACE</b> if there is no enough space to create the object. |
 
 ### TEE_OpenPersistentObject()
 
@@ -207,8 +194,6 @@ TEE_Result TEE_OpenPersistentObject(uint32_t storageID, const void *objectID, si
 **Description**
 
 Opens an existing persistent object.<br> The handle returned can be used to access the <b>TEE_Attribute</b> and data stream of the object.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -226,7 +211,7 @@ Opens an existing persistent object.<br> The handle returned can be used to acce
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the storage specified by <b>storageID</b> does not exist  or the object identifier cannot be found in the storage.          Returns <b>TEE_ERROR_ACCESS_CONFLICT</b> if an access conflict occurs.          Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the storage specified by <b>storageID</b> does not exist or the object identifier cannot be found in the storage. Returns <b>TEE_ERROR_ACCESS_CONFLICT</b> if an access conflict occurs. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation. |
 
 ### TEE_ReadObjectData()
 
@@ -237,8 +222,6 @@ TEE_Result TEE_ReadObjectData(TEE_ObjectHandle object, void *buffer, size_t size
 **Description**
 
 Reads data from the data stream associated with an object into the buffer.<br> The <b>TEE_ObjectHandle</b> of the object must have been opened with the <b>TEE_DATA_FLAG_ACCESS_READ</b> permission.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -255,7 +238,7 @@ Reads data from the data stream associated with an object into the buffer.<br> T
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation. |
 
 ### TEE_WriteObjectData()
 
@@ -266,8 +249,6 @@ TEE_Result TEE_WriteObjectData(TEE_ObjectHandle object, const void *buffer, size
 **Description**
 
 Writes bytes from the buffer to the data stream associated with an object.<br> The <b>TEE_ObjectHandle</b> must have been opened with the <b>TEE_DATA_FLAG_ACCESS_WRITE</b> permission.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -283,7 +264,7 @@ Writes bytes from the buffer to the data stream associated with an object.<br> T
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation.          Returns <b>TEE_ERROR_STORAGE_NO_SPACE</b> if the storage space is not sufficient to complete the operation. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation. Returns <b>TEE_ERROR_STORAGE_NO_SPACE</b> if the storage space is not sufficient to complete the operation. |
 
 ### TEE_TruncateObjectData()
 
@@ -294,8 +275,6 @@ TEE_Result TEE_TruncateObjectData(TEE_ObjectHandle object, size_t size)
 **Description**
 
 Changes the size of a data stream.<br> If the size is less than the current size of the data stream, all bytes beyond <b>size</b> are deleted. If the size is greater than the current size of the data stream, add 0s at the end of the stream to extend the stream. The object handle must be opened with the <b>TEE_DATA_FLAG_ACCESS_WRITE</b> permission.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -310,7 +289,7 @@ Changes the size of a data stream.<br> If the size is less than the current size
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_STORAGE_NO_SPACE</b> if the storage space is not sufficient to complete the operation. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_STORAGE_NO_SPACE</b> if the storage space is not sufficient to complete the operation. |
 
 ### TEE_SeekObjectData()
 
@@ -321,8 +300,6 @@ TEE_Result TEE_SeekObjectData(TEE_ObjectHandle object, int32_t offset, TEE_Whenc
 **Description**
 
 Sets the position of the data stream to which <b>TEE_ObjectHandle</b> points.<br> The data position indicator is determined by the start position and an offset together. The <b>whence</b> parameter determines the start position. Its value is set in <b>TEE_Whence</b> as follows: <b>TEE_DATA_SEEK_SET = 0</b>: The start position is the beginning of the data stream. <b>TEE_DATA_SEEK_CUR</b>: The start position is the current position of the data stream. <b>TEE_DATA_SEEK_END</b>: The start position is the end of the data stream. If the parameter <b>offset</b> is a positive number, the data position is moved forward. If <b>offset</b> is a negative number, the data position is moved backward.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -338,7 +315,7 @@ Sets the position of the data stream to which <b>TEE_ObjectHandle</b> points.<br
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_OVERFLOW</b> if the position indicator resulting from this operation  is greater than <b>TEE_DATA_MAX_POSIT</b>. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OVERFLOW</b> if the position indicator resulting from this operation is greater than <b>TEE_DATA_MAX_POSIT</b>. |
 
 ### TEE_SyncPersistentObject()
 
@@ -349,8 +326,6 @@ TEE_Result TEE_SyncPersistentObject(TEE_ObjectHandle object)
 **Description**
 
 Synchronizes the opened <b>TEE_ObjectHandle</b> and the corresponding security attribute file to the disk.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -375,8 +350,6 @@ TEE_Result TEE_RenamePersistentObject(TEE_ObjectHandle object, void *newObjectID
 **Description**
 
 Changes the object identifier.<br> The <b>TEE_ObjectHandle</b> must have been opened with the <b>TEE_DATA_FLAG_ACCESS_WRITE_META</b> permission.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -404,8 +377,6 @@ TEE_Result TEE_CloseAndDeletePersistentObject1(TEE_ObjectHandle object)
 
 Closes a <b>TEE_ObjectHandle</b> and deletes the object.<br> The object must be a persistent object, and the object handle must have been opened with the <b>TEE_DATA_FLAG_ACCESS_WRITE_META</b> permission.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -418,6 +389,6 @@ Closes a <b>TEE_ObjectHandle</b> and deletes the object.<br> The object must be 
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_STORAGE_NOT_AVAILABLE</b> if the object is stored  in a storage area that is inaccessible currently. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_STORAGE_NOT_AVAILABLE</b> if the object is stored in a storage area that is inaccessible currently. |
 
 

@@ -6,8 +6,6 @@ Defines the functions for obtaining and using a native displaySoloist.
 
 **Library**: libnative_display_soloist.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
-
 **Since**: 12
 
 **Related module**: [NativeDisplaySoloist](capi-nativedisplaysoloist.md)
@@ -36,7 +34,7 @@ Defines the functions for obtaining and using a native displaySoloist.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data) | Defines the pointer to an OH_DisplaySoloist callback function.<br>**Since**: 12 |
+| void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data) | Defines the pointer to an OH_DisplaySoloist callback function.<br>**Since**: 12<br>**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager |
 
 ## Function description
 
@@ -50,8 +48,6 @@ typedef void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long t
 
 Defines the pointer to an OH_DisplaySoloist callback function.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
-
 **Since**: 12
 
 **Parameters**:
@@ -60,7 +56,7 @@ Defines the pointer to an OH_DisplaySoloist callback function.
 | -- | -- |
 | long long timestamp | Current frame VSync timestamp. |
 | long long targetTimestamp | Expected VSync timestamp of the next frame. |
-| void\* data | Pointer to user-defined data. |
+| void* data | Pointer to user-defined data. |
 
 ### OH_DisplaySoloist_Create()
 
@@ -71,8 +67,6 @@ OH_DisplaySoloist* OH_DisplaySoloist_Create(bool useExclusiveThread)
 **Description**
 
 Creates an **OH_DisplaySoloist** instance. A new **OH_DisplaySoloist** instance is created each time this API is called.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
 
 **Since**: 12
 
@@ -86,7 +80,7 @@ Creates an **OH_DisplaySoloist** instance. A new **OH_DisplaySoloist** instance 
 
 | Type | Description |
 | -- | -- |
-| [OH_DisplaySoloist*](capi-nativedisplaysoloist-oh-displaysoloist.md) | Returns the pointer to the [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance created if the operation is successful;  returns a null pointer otherwise. The failure cause may be out of memory. |
+| [OH_DisplaySoloist*](capi-nativedisplaysoloist-oh-displaysoloist.md) | Returns the pointer to the [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance created if the operation is successful; returns a null pointer otherwise. The failure cause may be out of memory. |
 
 ### OH_DisplaySoloist_Destroy()
 
@@ -97,8 +91,6 @@ int32_t OH_DisplaySoloist_Destroy(OH_DisplaySoloist* displaySoloist)
 **Description**
 
 Destroys an **OH_DisplaySoloist** object and reclaims the memory occupied.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
 
 **Since**: 12
 
@@ -112,7 +104,7 @@ Destroys an **OH_DisplaySoloist** object and reclaims the memory occupied.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns 0 if the operation is successful; returns -1 otherwise. |
+| int32_t | Returns **0** if the operation is successful; returns **-1** otherwise. |
 
 ### OH_DisplaySoloist_Start()
 
@@ -123,8 +115,6 @@ int32_t OH_DisplaySoloist_Start(OH_DisplaySoloist* displaySoloist, OH_DisplaySol
 **Description**
 
 Sets a callback function for each frame. The callback function is triggered each time a VSync signal arrives.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
 
 **Since**: 12
 
@@ -140,7 +130,7 @@ Sets a callback function for each frame. The callback function is triggered each
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns 0 if the operation is successful; returns -1 otherwise. |
+| int32_t | Returns **0** if the operation is successful; returns **-1** otherwise. |
 
 ### OH_DisplaySoloist_Stop()
 
@@ -151,8 +141,6 @@ int32_t OH_DisplaySoloist_Stop(OH_DisplaySoloist* displaySoloist)
 **Description**
 
 Stops requesting the next VSync signal and triggering the callback function.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
 
 **Since**: 12
 
@@ -166,7 +154,7 @@ Stops requesting the next VSync signal and triggering the callback function.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns 0 if the operation is successful; returns -1 otherwise. |
+| int32_t | Returns **0** if the operation is successful; returns **-1** otherwise. |
 
 ### OH_DisplaySoloist_SetExpectedFrameRateRange()
 
@@ -177,8 +165,6 @@ int32_t OH_DisplaySoloist_SetExpectedFrameRateRange(OH_DisplaySoloist* displaySo
 **Description**
 
 Sets the expected frame rate range.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
 
 **Since**: 12
 
@@ -193,6 +179,6 @@ Sets the expected frame rate range.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns 0 if the operation is successful; returns -1 otherwise. |
+| int32_t | Returns **0** if the operation is successful; returns **-1** otherwise. |
 
 

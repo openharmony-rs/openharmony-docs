@@ -6,9 +6,7 @@ Declare audio manager related interfaces.
 
 **Library**: libohaudio.so
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
-**Since**: 10
+**Since**: 12
 
 **Related module**: [OHAudio](capi-ohaudio.md)
 
@@ -40,7 +38,7 @@ Declare audio manager related interfaces.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_AudioManager_OnAudioSceneChangeCallback) ( void *userData, OH_AudioScene scene ) | Prototype for the audio scene change function that is passed to [OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback).<br>**Since**: 20 |
+| void (*OH_AudioManager_OnAudioSceneChangeCallback) ( void *userData, OH_AudioScene scene ) | Prototype for the audio scene change function that is passed to [OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback).<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 
 ## Function description
 
@@ -54,16 +52,14 @@ typedef void (*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_Au
 
 Prototype for the audio scene change function that is passed to [OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback).
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| void \*userData | userdata which is passed by register. |
-| OH_AudioScene scene | the latest audio scene. |
+| void *userData | userdata which is passed by register. |
+| [OH_AudioScene](capi-native-audio-common-h.md#oh_audioscene) scene | the latest audio scene. |
 
 ### OH_GetAudioManager()
 
@@ -74,8 +70,6 @@ OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)
 **Description**
 
 Get audio manager handle.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -89,7 +83,7 @@ Get audio manager handle.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | Function result code:          [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.          [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result):                                                         1.The param of audioManager is nullptr; |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | Function result code: [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful. [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result): 1.The param of audioManager is nullptr; |
 
 ### OH_GetAudioScene()
 
@@ -101,8 +95,6 @@ OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *
 
 Get audio scene.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -110,13 +102,13 @@ Get audio scene.
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioManager](capi-ohaudio-oh-audiomanager.md)* manager | the [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) handle received from [OH_GetAudioManager](capi-native-audio-manager-h.md#oh_getaudiomanager). |
-| OH_AudioScene *scene | the [OH_AudioScene](capi-native-audio-common-h.md#oh_audioscene) pointer to receive the result. |
+| [OH_AudioScene](capi-native-audio-common-h.md#oh_audioscene) *scene | the [OH_AudioScene](capi-native-audio-common-h.md#oh_audioscene) pointer to receive the result. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | Function result code:          [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.          [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result):                                                         1.The param of audioManager is nullptr;                                                         2.The param of scene is nullptr. |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | Function result code: [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful. [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result): 1.The param of audioManager is nullptr; 2.The param of scene is nullptr. |
 
 ### OH_AudioManager_RegisterAudioSceneChangeCallback()
 
@@ -127,8 +119,6 @@ OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioM
 **Description**
 
 Register callback to receive audio scene changed events.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -144,7 +134,7 @@ Register callback to receive audio scene changed events.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if the execution is successful      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)                                                    1.param of manager is nullptr                                                    2.param of callback is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if the execution is successful [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.param of manager is nullptr 2.param of callback is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioManager_UnregisterAudioSceneChangeCallback()
 
@@ -155,8 +145,6 @@ OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_Audi
 **Description**
 
 Unregister audio scene change callback.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -171,6 +159,6 @@ Unregister audio scene change callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if the execution is successful      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)                                                    1.param of manager is nullptr                                                    2.param of callback is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if the execution is successful [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.param of manager is nullptr 2.param of callback is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 

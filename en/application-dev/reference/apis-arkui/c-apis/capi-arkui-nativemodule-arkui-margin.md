@@ -6,7 +6,7 @@ typedef struct ArkUI_Margin {...} ArkUI_Margin
 
 ## Overview
 
-Describes the margins of a component.
+Describes the margins of a component, which is used to define the blank area between the component boundary and its parent container or adjacent components, affecting the actually occupied space and position of the component in the layout.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

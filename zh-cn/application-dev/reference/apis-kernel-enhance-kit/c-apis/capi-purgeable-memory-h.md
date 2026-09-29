@@ -6,8 +6,6 @@
 
 **库：** libpurgeable_memory_ndk.z.so
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **相关模块：** [memory](capi-memory.md)
@@ -18,7 +16,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [PurgMem](capi-memory-purgmem.md) | OH_PurgeableMemory | 可清除的内存结构。 |
+| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) | OH_PurgeableMemory | 可清除的内存结构。 |
 
 ### 函数
 
@@ -39,7 +37,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *) | 函数指针，它指向一个用于构建可丢弃内存对象内容的函数。<br> *<br>**起始版本：** 10 |
+| bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *) | 函数指针，它指向一个用于构建可丢弃内存对象内容的函数。<br> *<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Kernel.Memory |
 
 ## 函数说明
 
@@ -53,17 +51,15 @@ typedef bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *)
 
 函数指针，它指向一个用于构建可丢弃内存对象内容的函数。<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \* | *: data ptr, points to start address of a PurgMem obj's content. |
+| void * | *: data ptr, points to start address of a PurgMem obj's content. |
 | size_t | 内容的数据大小。 |
-| void \* |  *: 其他私有参数。 |
+| void * |  *: 其他私有参数。 |
 
 **返回值：**
 
@@ -81,8 +77,6 @@ OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_Mo
 
 create 一个可丢弃内存对象的指针。<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
@@ -97,7 +91,7 @@ create 一个可丢弃内存对象的指针。<br> *
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PurgeableMemory *](capi-memory-purgmem.md) | 一个可丢弃内存对象的指针。 |
+| [OH_PurgeableMemory *](capi-memory-oh-purgeablememory.md) | 一个可丢弃内存对象的指针。 |
 
 ### OH_PurgeableMemory_Destroy()
 
@@ -109,15 +103,13 @@ bool OH_PurgeableMemory_Destroy(OH_PurgeableMemory *purgObj)
 
 销毁一个可丢弃内存对象<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 待销毁的可丢弃内存对象。 |
+| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | 待销毁的可丢弃内存对象。 |
 
 **返回值：**
 
@@ -135,21 +127,19 @@ bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)
 
 开始读取可丢弃内存对象。<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。 |
+| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | 可丢弃内存对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果 purgObj 的内容存在，则返回 true；     如果内容已被清除（不存在），系统将尝试恢复其数据，如果内容已被清除且恢复失败，则返回 false，如果内容恢复成功，则返回 true；     当此函数返回 true 时，操作系统无法回收 purgObj 内容的内存，直到调用 PurgMemEndRead()。 |
+| bool | 如果 purgObj 的内容存在，则返回 true；如果内容已被清除（不存在），系统将尝试恢复其数据，如果内容已被清除且恢复失败，则返回 false，如果内容恢复成功，则返回 true；当此函数返回 true 时，操作系统无法回收 purgObj 内容的内存，直到调用 PurgMemEndRead()。 |
 
 ### OH_PurgeableMemory_EndRead()
 
@@ -161,15 +151,13 @@ void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)
 
 结束读取可丢弃内存对象。<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。当此函数执行结束，操作系统可能会稍后回收可丢弃内存对象的内容的内存。 |
+| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | 可丢弃内存对象。当此函数执行结束，操作系统可能会稍后回收可丢弃内存对象的内容的内存。 |
 
 ### OH_PurgeableMemory_BeginWrite()
 
@@ -181,21 +169,19 @@ bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)
 
 开始写入可丢弃内存对象。<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。 |
+| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | 可丢弃内存对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果 purgObj 的内容存在，则返回 true；      如果内容已被清除（不存在），系统将尝试恢复其数据，如果内容已被清除且恢复失败，则返回 false，如果内容成功恢复，则返回 true；      当此函数返回 true 时，操作系统无法回收 purgObj 内容的内存，直到调用 PurgMemEndWrite()。 |
+| bool | 如果 purgObj 的内容存在，则返回 true；如果内容已被清除（不存在），系统将尝试恢复其数据，如果内容已被清除且恢复失败，则返回 false，如果内容成功恢复，则返回 true；当此函数返回 true 时，操作系统无法回收 purgObj 内容的内存，直到调用 PurgMemEndWrite()。 |
 
 ### OH_PurgeableMemory_EndWrite()
 
@@ -207,15 +193,13 @@ void OH_PurgeableMemory_EndWrite(OH_PurgeableMemory *purgObj)
 
 结束写入可丢弃内存对象。<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。当此函数执行结束时，操作系统可能会稍后回收可丢弃内存对象的内容的内存。 |
+| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | 可丢弃内存对象。当此函数执行结束时，操作系统可能会稍后回收可丢弃内存对象的内容的内存。 |
 
 ### OH_PurgeableMemory_GetContent()
 
@@ -227,21 +211,19 @@ void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)
 
 获取可丢弃内存对象的内容指针。<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。 |
+| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | 可丢弃内存对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| void * | 返回可丢弃内存对象内容的起始地址。      如果 purgObj 为 NULL，则返回 NULL。      此函数应受 PurgMemBeginRead()/PurgMemEndRead() 或 PurgMemBeginWrite()/PurgMemEndWrite() 保护。 |
+| void * | 返回可丢弃内存对象内容的起始地址。如果 purgObj 为 NULL，则返回 NULL。此函数应受 PurgMemBeginRead()/PurgMemEndRead() 或 PurgMemBeginWrite()/PurgMemEndWrite() 保护。 |
 
 ### OH_PurgeableMemory_ContentSize()
 
@@ -253,21 +235,19 @@ size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)
 
 获取可丢弃内存对象的内容大小。<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。 |
+| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | 可丢弃内存对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| size_t | 返回 purgObj 的内容大小。      如果 purgObj 为 NULL，则返回 0。 |
+| size_t | 返回 purgObj 的内容大小。如果 purgObj 为 NULL，则返回 0。 |
 
 ### OH_PurgeableMemory_AppendModify()
 
@@ -279,15 +259,13 @@ bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMe
 
 向可丢弃内存对象追加修改。<br> *
 
-**系统能力：** SystemCapability.Kernel.Memory
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。 |
+| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | 可丢弃内存对象。 |
 | [OH_PurgeableMemory_ModifyFunc](capi-purgeable-memory-h.md#oh_purgeablememory_modifyfunc) func | 函数指针，用于修改可丢弃内存对象的内容。 |
 | void *funcPara | func 使用的参数。 |
 

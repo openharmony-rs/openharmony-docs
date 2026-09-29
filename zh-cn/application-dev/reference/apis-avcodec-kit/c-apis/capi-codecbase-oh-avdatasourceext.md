@@ -1,7 +1,7 @@
 # OH_AVDataSourceExt
 
 ```c
-typedef struct OH_AVDataSourceExt {...} OH_AVDataSourceExt
+struct OH_AVDataSourceExt {...}
 ```
 
 ## 概述

@@ -1,7 +1,7 @@
 # OH_AVRecorder_EncoderInfo
 
 ```c
-typedef struct OH_AVRecorder_EncoderInfo {...} OH_AVRecorder_EncoderInfo
+struct OH_AVRecorder_EncoderInfo {...}
 ```
 
 ## Overview

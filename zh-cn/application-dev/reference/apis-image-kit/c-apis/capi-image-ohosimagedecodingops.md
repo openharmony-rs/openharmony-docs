@@ -6,7 +6,7 @@ struct OhosImageDecodingOps {...}
 
 ## 概述
 
-定义图像源解码的范围选项。是{@link OhosImageDecodingOps}的成员变量。
+定义图像源解码的范围选项。是[OhosImageDecodingOps](capi-image-ohosimagedecodingops.md)的成员变量。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -28,7 +28,7 @@ struct OhosImageDecodingOps {...}
 | uint32_t index | Defines decoding index of image source. |
 | uint32_t sampleSize | Defines decoding sample size option. |
 | uint32_t rotate | Defines decoding rotate option. |
-| struct OhosImageSize size | Defines decoding target pixel size of width and height. |
-| struct [OhosImageRegion](capi-image-ohosimageregion.md) region | Defines image source pixel region for decoding. |
+| [struct OhosImageSize](capi-image-ohosimagesize.md) size | Defines decoding target pixel size of width and height. |
+| [struct OhosImageRegion](capi-image-ohosimageregion.md) region | Defines image source pixel region for decoding. |
 
 

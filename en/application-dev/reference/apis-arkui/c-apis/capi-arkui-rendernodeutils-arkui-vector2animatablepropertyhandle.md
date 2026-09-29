@@ -1,0 +1,18 @@
+# ArkUI_Vector2AnimatablePropertyHandle
+
+```c
+typedef struct ArkUI_Vector2AnimatablePropertyHandle ArkUI_Vector2AnimatablePropertyHandle
+```
+
+## Overview
+
+Defines an animatable 2D vector property pointer.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 20
+
+**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
+
+**Header file**: [native_render.h](capi-native-render-h.md)
+

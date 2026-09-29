@@ -342,7 +342,7 @@ NODE_SWIPER_NODE_ADAPTER
 
 **Description**
 
-Defines the swiper adapter. The attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: {@link ArkUI_NodeAdapter} object as the adapter.</li> </ul>
+Defines the swiper adapter. The attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: ArkUI_NodeAdapter object as the adapter.</li> </ul>
 
 **Since**: 12
 
@@ -546,7 +546,7 @@ NODE_ARC_SWIPER_DIGITAL_CROWN_SENSITIVITY
 
 **Description**
 
-Defines the sensitivity of rotating crown. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul><br><li>.value[0].i32: the sensitivity of rotating crown. The parameter type is {@link ArkUI_CrownSensitivity}.<br>The default value is <b>ARKUI_CROWN_SENSITIVITY_MEDIUM</b>.</li><br></ul><br>**Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul><br><li>.value[0].i32: the sensitivity of rotating crown.</li> </ul>
+Defines the sensitivity of rotating crown. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: the sensitivity of rotating crown. The parameter type is [ArkUI_CrownSensitivity](capi-native-type-h.md#arkui_crownsensitivity). The default value is <b>ARKUI_CROWN_SENSITIVITY_MEDIUM</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: the sensitivity of rotating crown.</li> </ul>
 
 **Since**: 26.0.1
 

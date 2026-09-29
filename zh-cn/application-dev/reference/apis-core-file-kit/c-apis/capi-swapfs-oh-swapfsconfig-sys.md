@@ -1,7 +1,7 @@
 # OH_SwapfsConfig（系统接口）
 
 ```c
-typedef struct OH_SwapfsConfig {...} OH_SwapfsConfig
+struct OH_SwapfsConfig {...}
 ```
 
 ## 概述

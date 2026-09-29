@@ -1,7 +1,7 @@
 # Location_BasicInfo
 
 ```c
-typedef struct Location_BasicInfo {...} Location_BasicInfo
+struct Location_BasicInfo {...}
 ```
 
 ## Overview

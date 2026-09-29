@@ -6,8 +6,6 @@
 
 **库：** libohaudio.so
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
@@ -40,7 +38,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_AudioManager_OnAudioSceneChangeCallback) ( void *userData, OH_AudioScene scene ) | 音频场景变化回调函数的原型定义，用于传递给[OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback)。<br>**起始版本：** 20 |
+| void (*OH_AudioManager_OnAudioSceneChangeCallback) ( void *userData, OH_AudioScene scene ) | 音频场景变化回调函数的原型定义，用于传递给[OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback)。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ## 函数说明
 
@@ -54,16 +52,14 @@ typedef void (*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_Au
 
 音频场景变化回调函数的原型定义，用于传递给[OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback)。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*userData | 用户自定义数据指针。 |
-| OH_AudioScene scene | 切换后的音频场景。 |
+| void *userData | 用户自定义数据指针。 |
+| [OH_AudioScene](capi-native-audio-common-h.md#oh_audioscene) scene | 切换后的音频场景。 |
 
 ### OH_GetAudioManager()
 
@@ -74,8 +70,6 @@ OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)
 **描述：**
 
 获取音频管理器。 <br>使用音频管理器相关功能，首先需要获取音频管理器实例。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -89,7 +83,7 @@ OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数audioManager为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数audioManager为nullptr。 |
 
 ### OH_GetAudioScene()
 
@@ -101,8 +95,6 @@ OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *
 
 获取音频场景模式。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -110,13 +102,13 @@ OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioManager](capi-ohaudio-oh-audiomanager.md)* manager | the [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) handle received from [OH_GetAudioManager](capi-native-audio-manager-h.md#oh_getaudiomanager). |
-| OH_AudioScene *scene | 指向[OH_AudioScene](capi-native-audio-common-h.md#oh_audioscene)用于接收返回的音频场景模式。 |
+| [OH_AudioScene](capi-native-audio-common-h.md#oh_audioscene) *scene | 指向[OH_AudioScene](capi-native-audio-common-h.md#oh_audioscene)用于接收返回的音频场景模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1.参数audioManager为nullptr;      <br>2.参数scene为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1.参数audioManager为nullptr; <br>2.参数scene为nullptr。 |
 
 ### OH_AudioManager_RegisterAudioSceneChangeCallback()
 
@@ -127,8 +119,6 @@ OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioM
 **描述：**
 
 注册音频场景切换回调函数。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -144,7 +134,7 @@ OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioM
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if the execution is successful      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)                                                    1.param of manager is nullptr                                                    2.param of callback is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if the execution is successful [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.param of manager is nullptr 2.param of callback is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioManager_UnregisterAudioSceneChangeCallback()
 
@@ -155,8 +145,6 @@ OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_Audi
 **描述：**
 
 取消注册音频场景切换回调函数。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -171,6 +159,6 @@ OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_Audi
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if the execution is successful      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)                                                    1.param of manager is nullptr                                                    2.param of callback is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if the execution is successful [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.param of manager is nullptr 2.param of callback is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 

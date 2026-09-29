@@ -118,4 +118,40 @@ Event triggered when the **TextEditor** component changes the content. <br>When 
 
 **Since**: 24
 
+### NODE_TEXT_EDITOR_ON_CONTENT_SCROLL
+
+```c
+NODE_TEXT_EDITOR_ON_CONTENT_SCROLL = 22009
+```
+
+**Description**
+
+This event is triggered when the text content of TextEditor is scrolled.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains 2 parameters:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].f32: Indicates the horizontal offset of the text in the content area.</li> <li>ArkUI_NodeComponentEvent.data[1].f32: Indicates the vertical offset of the text in the content area.</li> </ul>
+
+**Since**: 26.2.0
+
+### NODE_TEXT_EDITOR_ON_CONTENT_SIZE_CHANGE
+
+```c
+NODE_TEXT_EDITOR_ON_CONTENT_SIZE_CHANGE = 22010
+```
+
+**Description**
+
+This event is triggered when the content size of TextEditor changes.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains 2 parameters:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].f32: Indicates the width of the text.</li> <li>ArkUI_NodeComponentEvent.data[1].f32: Indicates the height of the text.</li> </ul>
+
+**Since**: 26.2.0
+
+### NODE_TEXT_EDITOR_ON_INPUT_FILTER_ERROR
+
+```c
+NODE_TEXT_EDITOR_ON_INPUT_FILTER_ERROR = 22011
+```
+
+**Description**
+
+Event triggered when input characters are rejected by the inputFilter regex of the **TextEditor** component. <br>This event is effective only in spanString mode. <br>The event is triggered only when the onInputFilterError callback has been registered and input characters are rejected by the inputFilter regex. <br>When the event callback occurs, you can obtain the rejected characters from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object by calling [OH_ArkUI_NodeEvent_GetStringAsyncEvent](capi-native-node-h.md#oh_arkui_nodeevent_getstringasyncevent). <br>The **ArkUI_StringAsyncEvent.pStr** field contains the rejected characters as a UTF-8 string.
+
+**Since**: 26.2.0
+
 

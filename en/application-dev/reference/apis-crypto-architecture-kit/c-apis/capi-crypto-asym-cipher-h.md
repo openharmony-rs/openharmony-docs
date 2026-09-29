@@ -8,8 +8,6 @@ Defines the asymmetric cipher interfaces.
 
 **Library**: libohcrypto.so
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Related module**: [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)
@@ -55,8 +53,6 @@ enum CryptoSm2CiphertextSpec_item
 
 Defines SM2 ciphertext specification item types.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 | Enum item | Description |
@@ -79,9 +75,9 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsym
 
 Creates an asymmetric cipher context based on the given algorithm name.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_asym_cipher/OH_CryptoAsymCipher_Destroy {ctx}
 
 **Parameters**:
 
@@ -94,7 +90,7 @@ Creates an asymmetric cipher context based on the given algorithm name.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if algoName or ctx is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if algoName or ctx is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 **Reference**:
 
@@ -111,8 +107,6 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_Ciph
 
 Initializes the asymmetric cipher context with the given cipher mode and key.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Parameters**:
@@ -120,14 +114,14 @@ Initializes the asymmetric cipher context with the given cipher mode and key.
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoAsymCipher](capi-cryptoasymcipherapi-oh-cryptoasymcipher.md) *ctx | [in] Asymmetric cipher context. Cannot be NULL. |
-| Crypto_CipherMode mode | [in] Cipher mode, encryption or decryption. |
-| OH_CryptoKeyPair *key | [in] Asymmetric key. Cannot be NULL. |
+| [Crypto_CipherMode](capi-crypto-common-h.md#crypto_ciphermode) mode | [in] Cipher mode, encryption or decryption. |
+| [OH_CryptoKeyPair](capi-cryptoasymkeyapi-oh-cryptokeypair.md) *key | [in] Asymmetric key. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or key is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if cipher init fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or key is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if cipher init fails.</li> </ul> |
 
 **Reference**:
 
@@ -144,23 +138,23 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Cryp
 
 Finishes the cipher operation.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoAsymCipher](capi-cryptoasymcipherapi-oh-cryptoasymcipher.md) *ctx | [in] Asymmetric cipher context. Cannot be NULL. |
-| const Crypto_DataBlob *in | [in] Data to be encrypted or decrypted. Cannot be NULL. |
-| Crypto_DataBlob *out | [out] Pointer to the Crypto_DataBlob structure for storing the encrypted or decrypted result. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
+| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] Data to be encrypted or decrypted. Cannot be NULL. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] Pointer to the Crypto_DataBlob structure for storing the encrypted or decrypted result. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx, in, or out is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if cipher final fails. Possible causes:             RSA encryption where plaintext exceeds the maximum length allowed by the key size and             padding mode; RSA decryption with incorrect key or corrupted ciphertext; SM2 decryption             with incorrect key or corrupted ciphertext; SM2 ciphertext with invalid ASN.1 structure.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx, in, or out is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if cipher final fails. Possible causes: RSA encryption where plaintext exceeds the maximum length allowed by the key size and padding mode; RSA decryption with incorrect key or corrupted ciphertext; SM2 decryption with incorrect key or corrupted ciphertext; SM2 ciphertext with invalid ASN.1 structure.</li> </ul> |
 
 ### OH_CryptoAsymCipher_Destroy()
 
@@ -171,8 +165,6 @@ void OH_CryptoAsymCipher_Destroy(OH_CryptoAsymCipher *ctx)
 **Description**
 
 Destroys the asymmetric cipher context.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -192,22 +184,22 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Cipherte
 
 Creates an SM2 ciphertext specification.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_asym_cipher/OH_CryptoSm2CiphertextSpec_Destroy {spec}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Crypto_DataBlob *sm2Ciphertext | [in] SM2 ciphertext in DER format. If NULL, an empty SM2 ciphertext specification is created. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *sm2Ciphertext | [in] SM2 ciphertext in DER format. If NULL, an empty SM2 ciphertext specification is created. |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) **spec | [out] Pointer to the SM2 ciphertext specification pointer. spec cannot be NULL, *spec must be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if parsing SM2 ciphertext fails. Possible causes:             the input data is not valid DER-encoded SM2 ciphertext.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if parsing SM2 ciphertext fails. Possible causes: the input data is not valid DER-encoded SM2 ciphertext.</li> </ul> |
 
 **Reference**:
 
@@ -225,9 +217,9 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec 
 
 Obtains the specified item of the SM2 ciphertext.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **Parameters**:
 
@@ -235,13 +227,13 @@ Obtains the specified item of the SM2 ciphertext.
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | [in] SM2 ciphertext specification. Cannot be NULL. |
 | [CryptoSm2CiphertextSpec_item](capi-crypto-asym-cipher-h.md#cryptosm2ciphertextspec_item) item | [in] SM2 ciphertext specification item. |
-| Crypto_DataBlob *out | [out] Pointer to the Crypto_DataBlob structure for storing the output data. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] Pointer to the Crypto_DataBlob structure for storing the output data. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or out is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or out is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 ### OH_CryptoSm2CiphertextSpec_SetItem()
 
@@ -253,8 +245,6 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec 
 
 Sets the specified item of the SM2 ciphertext specification.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Parameters**:
@@ -263,13 +253,13 @@ Sets the specified item of the SM2 ciphertext specification.
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | [in] SM2 ciphertext specification. Cannot be NULL. |
 | [CryptoSm2CiphertextSpec_item](capi-crypto-asym-cipher-h.md#cryptosm2ciphertextspec_item) item | [in] SM2 ciphertext specification item. |
-| Crypto_DataBlob *in | [in] Input data. Cannot be NULL. This function performs a deep copy of the input data. The caller can release in immediately after the function returns. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] Input data. Cannot be NULL. This function performs a deep copy of the input data. The caller can release in immediately after the function returns. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or in is NULL,             in->data is NULL, or in->len is 0.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation for deep copy fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or in is NULL, in->data is NULL, or in->len is 0.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation for deep copy fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 **Reference**:
 
@@ -286,22 +276,22 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *
 
 Encodes the SM2 ciphertext specification to DER format ciphertext.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | [in] SM2 ciphertext specification. Cannot be NULL. |
-| Crypto_DataBlob *out | [out] Pointer to the Crypto_DataBlob structure for storing the encoded data. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] Pointer to the Crypto_DataBlob structure for storing the encoded data. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or out is NULL,             or SM2 ciphertext fields (C1X, C1Y, C2, C3) have not been set, or C3 (hashData)             length is not 32 bytes.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if encoding fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or out is NULL, or SM2 ciphertext fields (C1X, C1Y, C2, C3) have not been set, or C3 (hashData) length is not 32 bytes.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if encoding fails.</li> </ul> |
 
 ### OH_CryptoSm2CiphertextSpec_Destroy()
 
@@ -312,8 +302,6 @@ void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)
 **Description**
 
 Destroys the SM2 ciphertext specification.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 

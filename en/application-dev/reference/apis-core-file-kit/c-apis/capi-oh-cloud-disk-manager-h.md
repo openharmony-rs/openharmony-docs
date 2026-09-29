@@ -6,8 +6,6 @@ This file defines the APIs for the cloud disk management module.
 
 **Library**: libohclouddiskmanager.so
 
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
-
 **Since**: 21
 
 **Related module**: [CloudDisk](capi-clouddisk.md)
@@ -18,16 +16,24 @@ This file defines the APIs for the cloud disk management module.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) | CloudDisk_PathInfo | A struct that encapsulates the file path information. |
-| [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) | CloudDisk_FileSyncState | A struct that encapsulates the file sync state. |
-| [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) | CloudDisk_ChangeData | A struct that encapsulates the event data generated when a single file under the sync root path is changed. It includes the file's unique ID, the parent directory's unique ID, relative path, change type, file size, and timestamp. |
-| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) | CloudDisk_ChangesResult | A struct that encapsulates the file change result under the sync root path. It includes the next change sequence number, end flag, and an array of change data items. |
-| [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) | CloudDisk_FailedList | A struct that encapsulates the list of files that failed to synchronize. It includes the file path information and the specific failure cause. |
-| [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) | CloudDisk_ResultList | A struct that encapsulates the file sync result. It includes the absolute path of the file, sync result, and sync state or failure cause. |
-| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) | CloudDisk_DisplayNameInfo | A struct that encapsulates the display name of the sync root path. |
-| [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | CloudDisk_SyncFolder | A struct that encapsulates the sync root property information. |
-| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) | OH_CloudDisk_SyncFolderEx | Defines the sync folder of cloud disk with placeholder support.<br> The version field must be set to a valid version macro (e.g. {@link OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1}) before passing this structure to any API. The runtime uses version to determine which fields are valid; fields introduced in a later version are ignored when a lower version is specified. |
-| [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) | OH_CloudDisk_PlaceholderInfo | Metadata information for the placeholder file. |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) | - | A struct that encapsulates the file path information. |
+| [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) | - | A struct that encapsulates the file sync state. |
+| [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) | - | A struct that encapsulates the event data generated when a single file under the sync root path is changed. It includes the file's unique ID, the parent directory's unique ID, relative path, change type, file size, and timestamp. |
+| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) | - | A struct that encapsulates the file change result under the sync root path. It includes the next change sequence number, end flag, and an array of change data items. |
+| [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) | - | A struct that encapsulates the list of files that failed to synchronize. It includes the file path information and the specific failure cause. |
+| [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) | - | A struct that encapsulates the file sync result. It includes the absolute path of the file, sync result, and sync state or failure cause. |
+| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) | - | A struct that encapsulates the display name of the sync root path. |
+| [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | - | A struct that encapsulates the sync root property information. |
+| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) | - | Defines the sync folder of cloud disk with placeholder support.<br> The version field must be set to a valid version macro (e.g. [OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#宏定义)) before passing this structure to any API. The runtime uses version to determine which fields are valid; fields introduced in a later version are ignored when a lower version is specified. |
+| [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) | - | Metadata information for the placeholder file. |
+| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) | - | A struct that encapsulates the cloud disk data buffer. |
+| [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md) | - | A struct that encapsulates the cloud disk callback request header. |
+| [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md) | - | A struct that encapsulates the dehydrate authorization information. |
+| [OH_CloudDisk_FetchRangeDataRequest](capi-clouddisk-oh-clouddisk-fetchrangedatarequest.md) | - | A struct that encapsulates the fetch range data request information. |
+| [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md) | - | A struct that encapsulates the fetch data request information. |
+| [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md) | - | A union that encapsulates callback request context information. |
+| [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md) | - | A struct that encapsulates fetched cloud file data. |
+| [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md) | - | A union that encapsulates callback response information. |
 
 ### Enum
 
@@ -37,6 +43,8 @@ This file defines the APIs for the cloud disk management module.
 | [CloudDisk_OperationType](#clouddisk_operationtype) | CloudDisk_OperationType | Enumerates the file change types. |
 | [CloudDisk_ErrorReason](#clouddisk_errorreason) | CloudDisk_ErrorReason | Enumerates the file sync failure causes. |
 | [CloudDisk_SyncFolderState](#clouddisk_syncfolderstate) | CloudDisk_SyncFolderState | Enumerates the sync root path states. |
+| [OH_CloudDisk_CallbackType](#oh_clouddisk_callbacktype) | OH_CloudDisk_CallbackType | Enumerates the cloud disk callback types. |
+| [OH_CloudDisk_HydratePriority](#oh_clouddisk_hydratepriority) | OH_CloudDisk_HydratePriority | Enumerates the hydrate priorities. |
 
 ### Macro
 
@@ -63,6 +71,11 @@ This file defines the APIs for the cloud disk management module.
 | [CloudDisk_ErrorCode OH_CloudDisk_IsPlaceholderFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, bool *isPlaceholder)](#oh_clouddisk_isplaceholderfile) | Checks whether a file in a sync folder is a placeholder file. |
 | [CloudDisk_ErrorCode OH_CloudDisk_ConvertPlaceholderToFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo)](#oh_clouddisk_convertplaceholdertofile) | Converts a placeholder file to a 0-byte normal file. |
 | [CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo)](#oh_clouddisk_updateplaceholder) | Updates file metadata (supports placeholder and normal files). |
+| [CloudDisk_ErrorCode OH_CloudDisk_RegisterCallbackTable(const CloudDisk_SyncFolderPath syncFolderPath, void (\*callback)(const OH_CloudDisk_CallbackReqHead reqHead, OH_CloudDisk_CallbackContext reqContext))](#oh_clouddisk_registercallbacktable) | Registers a callback table for hydration and dehydrate requests. |
+| [CloudDisk_ErrorCode OH_CloudDisk_UnregisterCallbackTable(const CloudDisk_SyncFolderPath syncFolderPath)](#oh_clouddisk_unregistercallbacktable) | Unregisters the callback table for hydration and dehydrate requests. |
+| [CloudDisk_ErrorCode OH_CloudDisk_Execute(const OH_CloudDisk_CallbackReqHead reqHead, OH_CloudDisk_CallbackContext reqContext, OH_CloudDisk_CallbackResponse rsp)](#oh_clouddisk_execute) | Responds to a callback request. |
+| [CloudDisk_ErrorCode OH_CloudDisk_HydratePlaceholder(const CloudDisk_SyncFolderPath *syncFolderPath, const CloudDisk_PathInfo *filePath, OH_CloudDisk_CallbackType type, OH_CloudDisk_HydratePriority priority)](#oh_clouddisk_hydrateplaceholder) | Actively hydrates a placeholder file or cancels hydration. |
+| [CloudDisk_ErrorCode OH_CloudDisk_DehydrateFile(const CloudDisk_SyncFolderPath *syncFolderPath, const CloudDisk_PathInfo *filePath)](#oh_clouddisk_dehydratefile) | Dehydrates a fully hydrated placeholder file. |
 | [CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderEx(const OH_CloudDisk_SyncFolderEx *syncFolder)](#oh_clouddisk_registersyncfolderex) | Registers a sync folder with placeholder support info. |
 | [CloudDisk_ErrorCode OH_CloudDisk_GetSyncFoldersEx(OH_CloudDisk_SyncFolderEx **syncFolders, size_t *count)](#oh_clouddisk_getsyncfoldersex) | Gets the sync folders with placeholder support info. |
 
@@ -70,8 +83,8 @@ This file defines the APIs for the cloud disk management module.
 
 | Name | Description |
 | -- | -- |
-| CloudDisk_PathInfo CloudDisk_FileIdInfo | a struct that encapsulates the file ID.<br>**Since**: 21 |
-| CloudDisk_PathInfo CloudDisk_SyncFolderPath | a struct that encapsulates the sync root path.<br>**Since**: 21 |
+| CloudDisk_PathInfo CloudDisk_FileIdInfo | a struct that encapsulates the file ID.<br>**Since**: 21<br>**System capability**: SystemCapability.FileManagement.CloudDiskManager |
+| CloudDisk_PathInfo CloudDisk_SyncFolderPath | a struct that encapsulates the sync root path.<br>**Since**: 21<br>**System capability**: SystemCapability.FileManagement.CloudDiskManager |
 
 ## Enum type description
 
@@ -84,8 +97,6 @@ enum CloudDisk_SyncState
 **Description**
 
 Enumerates the file sync states.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -107,8 +118,6 @@ enum CloudDisk_OperationType
 **Description**
 
 Enumerates the file change types.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -132,8 +141,6 @@ enum CloudDisk_ErrorReason
 
 Enumerates the file sync failure causes.
 
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
-
 **Since**: 21
 
 | Enum item | Description |
@@ -154,14 +161,49 @@ enum CloudDisk_SyncFolderState
 
 Enumerates the sync root path states.
 
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
-
 **Since**: 21
 
 | Enum item | Description |
 | -- | -- |
 | INACTIVE = 0 | The sync root path is inactive.<br>**Since**: 21 |
 | ACTIVE = 1 | The sync root path is active.<br>**Since**: 21 |
+
+### OH_CloudDisk_CallbackType
+
+```c
+enum OH_CloudDisk_CallbackType
+```
+
+**Description**
+
+Enumerates the cloud disk callback types.
+
+**Since**: 26.0.1
+
+| Enum item | Description |
+| -- | -- |
+| OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA = 0 | Fetch cloud file data for hydration.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA = 1 | Cancel fetching cloud file data.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_CALLBACK_TYPE_DEHYDRATE = 2 | Request authorization for dehydrate.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA = 3 | Fetch range data for read.<br>**Since**: 26.2.0 |
+
+### OH_CloudDisk_HydratePriority
+
+```c
+enum OH_CloudDisk_HydratePriority
+```
+
+**Description**
+
+Enumerates the hydrate priorities.
+
+**Since**: 26.0.1
+
+| Enum item | Description |
+| -- | -- |
+| OH_CLOUD_DISK_HYDRATE_PRIORITY_LOW = 0 | Low priority.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_HYDRATE_PRIORITY_NORMAL = 1 | Normal priority.<br>**Since**: 26.0.1 |
+| OH_CLOUD_DISK_HYDRATE_PRIORITY_HIGH = 2 | High priority.<br>**Since**: 26.0.1 |
 
 
 ## Function description
@@ -176,8 +218,6 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderChanges(const CloudDisk_SyncF
 
 Registers a callback to obtain file changes in the sync root path.
 
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
-
 **Since**: 21
 
 **Parameters**:
@@ -185,13 +225,13 @@ Registers a callback to obtain file changes in the sync root path.
 | Parameter | Description |
 | -- | -- |
 | onst CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md). |
-| void (\*callback)(const CloudDisk_SyncFolderPath syncFolderPath | Registered callback. |
+| void (*callback)(const CloudDisk_SyncFolderPath syncFolderPath | Registered callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_UnregisterSyncFolderChanges()
 
@@ -202,8 +242,6 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolderChanges(const CloudDisk_Syn
 **Description**
 
 Unregisters the callback for file changes in the sync root path.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -217,7 +255,7 @@ Unregisters the callback for file changes in the sync root path.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_GetSyncFolderChanges()
 
@@ -228,8 +266,6 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolderChanges(const CloudDisk_SyncFolder
 **Description**
 
 Obtains the change history in the sync root path.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -246,7 +282,7 @@ Obtains the change history in the sync root path.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_SetFileSyncStates()
 
@@ -257,8 +293,6 @@ CloudDisk_ErrorCode OH_CloudDisk_SetFileSyncStates(const CloudDisk_SyncFolderPat
 **Description**
 
 Sets the file sync state in the sync root path.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -276,7 +310,7 @@ Sets the file sync state in the sync root path.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_GetFileSyncStates()
 
@@ -287,8 +321,6 @@ CloudDisk_ErrorCode OH_CloudDisk_GetFileSyncStates(const CloudDisk_SyncFolderPat
 **Description**
 
 Obtains the file sync state in the sync root path.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -306,7 +338,7 @@ Obtains the file sync state in the sync root path.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_RegisterSyncFolder()
 
@@ -317,8 +349,6 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolder(const CloudDisk_SyncFolder *
 **Description**
 
 Registers a sync root.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -332,7 +362,7 @@ Registers a sync root.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_UnregisterSyncFolder()
 
@@ -344,8 +374,6 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolder(const CloudDisk_SyncFolder
 
 Unregisters the sync root.
 
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
-
 **Since**: 21
 
 **Parameters**:
@@ -358,7 +386,7 @@ Unregisters the sync root.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_ActiveSyncFolder()
 
@@ -370,8 +398,6 @@ CloudDisk_ErrorCode OH_CloudDisk_ActiveSyncFolder(const CloudDisk_SyncFolderPath
 
 Activates the sync root.
 
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
-
 **Since**: 21
 
 **Parameters**:
@@ -384,7 +410,7 @@ Activates the sync root.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_DeactiveSyncFolder()
 
@@ -396,8 +422,6 @@ CloudDisk_ErrorCode OH_CloudDisk_DeactiveSyncFolder(const CloudDisk_SyncFolderPa
 
 Deactivates the sync root.
 
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
-
 **Since**: 21
 
 **Parameters**:
@@ -410,7 +434,7 @@ Deactivates the sync root.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_GetSyncFolders()
 
@@ -421,8 +445,6 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolders(CloudDisk_SyncFolder **syncFolde
 **Description**
 
 Obtains all sync roots.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -437,7 +459,7 @@ Obtains all sync roots.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_UpdateCustomAlias()
 
@@ -448,8 +470,6 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdateCustomAlias(const CloudDisk_SyncFolderPat
 **Description**
 
 Updates the sync root alias.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
@@ -465,7 +485,7 @@ Updates the sync root alias.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)      otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_CreatePlaceholder()
 
@@ -476,8 +496,6 @@ CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPat
 **Description**
 
 Creates a placeholder in a registered sync folder.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 26.0.1
 
@@ -493,7 +511,7 @@ Creates a placeholder in a registered sync folder.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully;      <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_IsPlaceholderFile()
 
@@ -504,8 +522,6 @@ CloudDisk_ErrorCode OH_CloudDisk_IsPlaceholderFile(const CloudDisk_SyncFolderPat
 **Description**
 
 Checks whether a file in a sync folder is a placeholder file.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 26.0.1
 
@@ -521,7 +537,7 @@ Checks whether a file in a sync folder is a placeholder file.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully;      <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_ConvertPlaceholderToFile()
 
@@ -532,8 +548,6 @@ CloudDisk_ErrorCode OH_CloudDisk_ConvertPlaceholderToFile(const CloudDisk_SyncFo
 **Description**
 
 Converts a placeholder file to a 0-byte normal file.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 26.0.1
 
@@ -548,7 +562,7 @@ Converts a placeholder file to a 0-byte normal file.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully;      <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_UpdatePlaceholder()
 
@@ -559,8 +573,6 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPat
 **Description**
 
 Updates file metadata (supports placeholder and normal files).
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 26.0.1
 
@@ -576,7 +588,139 @@ Updates file metadata (supports placeholder and normal files).
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully;      <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+
+### OH_CloudDisk_RegisterCallbackTable()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_RegisterCallbackTable(const CloudDisk_SyncFolderPath syncFolderPath, void (*callback)(const OH_CloudDisk_CallbackReqHead reqHead, OH_CloudDisk_CallbackContext reqContext))
+```
+
+**Description**
+
+Registers a callback table for hydration and dehydrate requests.
+
+**Since**: 26.0.1
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| onst CloudDisk_SyncFolderPath syncFolderPath | [in] Indicates the registered sync folder path. |
+| void (*callback)(const OH_CloudDisk_CallbackReqHead reqHead | [in] Registered callback. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+
+**Reference**:
+
+[OH_CloudDisk_UnregisterCallbackTable](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_unregistercallbacktable)
+
+
+### OH_CloudDisk_UnregisterCallbackTable()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_UnregisterCallbackTable(const CloudDisk_SyncFolderPath syncFolderPath)
+```
+
+**Description**
+
+Unregisters the callback table for hydration and dehydrate requests.
+
+**Since**: 26.0.1
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| const CloudDisk_SyncFolderPath syncFolderPath | [in] Indicates the registered sync folder path. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+
+### OH_CloudDisk_Execute()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_Execute(const OH_CloudDisk_CallbackReqHead reqHead, OH_CloudDisk_CallbackContext reqContext, OH_CloudDisk_CallbackResponse rsp)
+```
+
+**Description**
+
+Responds to a callback request.
+
+**Since**: 26.0.1
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md) reqHead | [in] Callback request header. |
+| [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md) reqContext | [in] Callback request context. |
+| [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md) rsp | [in] Callback response. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+
+### OH_CloudDisk_HydratePlaceholder()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_HydratePlaceholder(const CloudDisk_SyncFolderPath *syncFolderPath, const CloudDisk_PathInfo *filePath, OH_CloudDisk_CallbackType type, OH_CloudDisk_HydratePriority priority)
+```
+
+**Description**
+
+Actively hydrates a placeholder file or cancels hydration.
+
+**Since**: 26.0.1
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| const CloudDisk_SyncFolderPath *syncFolderPath | [in] Indicates the registered sync folder path. |
+| [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) *filePath | [in] Indicates the relative path in the sync folder. |
+| [OH_CloudDisk_CallbackType](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype) type | [in] Indicates the callback type for hydration or cancellation. |
+| [OH_CloudDisk_HydratePriority](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_hydratepriority) priority | [in] Indicates the hydrate priority. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+
+### OH_CloudDisk_DehydrateFile()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_DehydrateFile(const CloudDisk_SyncFolderPath *syncFolderPath, const CloudDisk_PathInfo *filePath)
+```
+
+**Description**
+
+Dehydrates a fully hydrated placeholder file.
+
+**Since**: 26.0.1
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| const CloudDisk_SyncFolderPath *syncFolderPath | [in] Indicates the registered sync folder path. |
+| [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) *filePath | [in] Indicates the relative path in the sync folder. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the API is called successfully; <br>returns [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_RegisterSyncFolderEx()
 
@@ -587,8 +731,6 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderEx(const OH_CloudDisk_SyncFol
 **Description**
 
 Registers a sync folder with placeholder support info.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 26.0.1
 
@@ -602,7 +744,7 @@ Registers a sync folder with placeholder support info.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the operation is successful;      <br> returns an error code defined in [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the operation is successful; <br> returns an error code defined in [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 ### OH_CloudDisk_GetSyncFoldersEx()
 
@@ -613,8 +755,6 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFoldersEx(OH_CloudDisk_SyncFolderEx **sy
 **Description**
 
 Gets the sync folders with placeholder support info.
-
-**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 26.0.1
 
@@ -629,6 +769,6 @@ Gets the sync folders with placeholder support info.
 
 | Type | Description |
 | -- | -- |
-| CloudDisk_ErrorCode | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the operation is successful;      <br> returns an error code defined in [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns [CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) if the operation is successful; <br> returns an error code defined in [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) otherwise. |
 
 

@@ -1,7 +1,7 @@
 # OH_AVCodecCallback
 
 ```c
-typedef struct OH_AVCodecCallback {...} OH_AVCodecCallback
+struct OH_AVCodecCallback {...}
 ```
 
 ## 概述

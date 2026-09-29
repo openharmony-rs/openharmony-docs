@@ -6,8 +6,6 @@ Defines the code of the HiDebug module.
 
 **Library**: libohhidebug.so
 
-**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
-
 **Since**: 12
 
 **Related module**: [HiDebug](capi-hidebug.md)
@@ -18,20 +16,20 @@ Defines the code of the HiDebug module.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsage | Defines the struct for the CPU usage of all threads of an application. |
-| [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md) | HiDebug_SystemMemInfo | Defines a struct for the system memory information. |
-| [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md) | HiDebug_NativeMemInfo | Defines the struct for the local memory information of the application process. |
-| [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md) | HiDebug_MemoryLimit | Defines the struct for the memory limit of the application process. |
-| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) | OH_HiDebug_RequestTraceConfig | Defines a struct for the trace collection configuration. |
-| [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) | HiDebug_MallocDispatch | Defines the struct types of the replaceable/restorable **HiDebug_MallocDispatch** table of the application process. |
-| [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) | HiDebug_JsStackFrame | Defines a struct for the JS stack frame content. |
-| [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) | HiDebug_NativeStackFrame | Defines the native stack frame content. |
-| [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | HiDebug_StackFrame | Defines the stack frame content. |
-| [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md) | HiDebug_GraphicsMemorySummary | Defines a struct for the application graphics memory usage details. |
-| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | HiDebug_ProcessSamplerConfig | Defines a struct for sampling configuration. |
-| [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md) | OH_HiDebug_ProfilingResult | Defines a struct for encapsulating the result of a single resource collection. |
-| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | OH_HiDebug_ResProfilerConfig | Defines a struct for the resource collection configurations. |
-| [HiDebug_Backtrace_Object\_\_*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | Defines an object used for stack backtracing and stack parsing. |
+| [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) | - | Defines the struct for the CPU usage of all threads of an application. |
+| [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md) | - | Defines a struct for the system memory information. |
+| [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md) | - | Defines the struct for the local memory information of the application process. |
+| [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md) | - | Defines the struct for the memory limit of the application process. |
+| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) | - | Defines a struct for the trace collection configuration. |
+| [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) | - | Defines the struct types of the replaceable/restorable **HiDebug_MallocDispatch** table of the application process. |
+| [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) | - | Defines a struct for the JS stack frame content. |
+| [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) | - | Defines the native stack frame content. |
+| [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | - | Defines the stack frame content. |
+| [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md) | - | Defines a struct for the application graphics memory usage details. |
+| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | - | Defines a struct for sampling configuration. |
+| [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md) | - | Defines a struct for encapsulating the result of a single resource collection. |
+| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | - | Defines a struct for the resource collection configurations. |
+| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) | HiDebug_Backtrace_Object | Defines an object used for stack backtracing and stack parsing. |
 | [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage8h.md) | HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage. |
 
 ### Enum
@@ -44,6 +42,7 @@ Defines the code of the HiDebug module.
 | [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | Enumerates the data types of debugging information. |
 | [OH_HiDebug_ResourceType](#oh_hidebug_resourcetype) | OH_HiDebug_ResourceType | Enumerates the resource profiling types. |
 | [OH_HiDebug_MemListenerType](#oh_hidebug_memlistenertype) | OH_HiDebug_MemListenerType | Enumerates the memory listener callback types. You can process the related logic based on the callback type. |
+| [OH_HiDebug_ProfilerStackTraceMode](#oh_hidebug_profilerstacktracemode) | OH_HiDebug_ProfilerStackTraceMode | Defines an enum for stack trace mode. |
 
 ### Macro
 
@@ -93,9 +92,9 @@ Defines the code of the HiDebug module.
 
 | Name | Description |
 | -- | -- |
-| HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage.<br>**Since**: 12 |
-| void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath) | Triggered for the trace collection request.<br>**Since**: 24 |
-| void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result) | Triggered for the resource profiling.<br>**Since**: 24 |
+| HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage.<br>**Since**: 12<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
+| void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath) | Triggered for the trace collection request.<br>**Since**: 24<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
+| void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result) | Triggered for the resource profiling.<br>**Since**: 24<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
 
 ## Enum type description
 
@@ -108,8 +107,6 @@ enum HiDebug_ErrorCode
 **Description**
 
 Enumerates the error codes used in the HiDebug module.
-
-**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
 
@@ -147,6 +144,7 @@ Enumerates the error codes used in the HiDebug module.
 | HIDEBUG_RES_PROF_FAILURE = 11400430 |  |
 | HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | Invalid maximum asynchronous nesting depth.<br>**Since**: 26.0.1 |
 | HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | Invalid maximum asynchronous task stack depth.<br>**Since**: 26.0.1 |
+| HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433 | Invalid stack trace mode.<br>**Since**: 26.0.1 |
 
 ### HiDebug_TraceFlag
 
@@ -157,8 +155,6 @@ enum HiDebug_TraceFlag
 **Description**
 
 Enumerates the thread types for trace collection.
-
-**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
 
@@ -177,8 +173,6 @@ enum HiDebug_StackFrameType
 
 Enumerates the stack frame types.
 
-**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
-
 **Since**: 20
 
 | Enum item | Description |
@@ -195,8 +189,6 @@ enum HiDebug_CrashObjType
 **Description**
 
 Enumerates the data types of debugging information.
-
-**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 23
 
@@ -218,8 +210,6 @@ enum OH_HiDebug_ResourceType
 **Description**
 
 Enumerates the resource profiling types.
-
-**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 24
 
@@ -244,8 +234,6 @@ enum OH_HiDebug_MemListenerType
 
 Enumerates the memory listener callback types. You can process the related logic based on the callback type.
 
-**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
-
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -253,6 +241,23 @@ Enumerates the memory listener callback types. You can process the related logic
 | OH_HIDEBUG_DO_NOTHING = 0 |  |
 | OH_HIDEBUG_RUNNING_GC = 1 |  |
 | OH_HIDEBUG_DUMP_SNAPSHOT = 2 |  |
+
+### OH_HiDebug_ProfilerStackTraceMode
+
+```c
+enum OH_HiDebug_ProfilerStackTraceMode
+```
+
+**Description**
+
+Defines an enum for stack trace mode.
+
+**Since**: 26.0.1
+
+| Enum item | Description |
+| -- | -- |
+| OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0 | Keep all traces including destroyed ones.<br>**Since**: 26.0.1 |
+| OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1 | Discard destroyed traces.<br>**Since**: 26.0.1 |
 
 
 ## Function description
@@ -267,8 +272,6 @@ typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, con
 
 Triggered for the trace collection request.
 
-**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
-
 **Since**: 24
 
 **Parameters**:
@@ -276,7 +279,7 @@ Triggered for the trace collection request.
 | Parameter | Description |
 | -- | -- |
 | [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) errorCode | Result code. For details, see [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode). |
-| const char\* filePath | Pointer to the collected trace file. If the operation fails, a null pointer may be returned. |
+| const char* filePath | Pointer to the collected trace file. If the operation fails, a null pointer may be returned. |
 
 ### OH_HiDebug_ProfilingCallback()
 
@@ -288,14 +291,12 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 
 Triggered for the resource profiling.
 
-**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)\* result | Pointer to the parameters of the resource profiling callback function. |
+| [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)* result | Pointer to the parameters of the resource profiling callback function. |
 
 

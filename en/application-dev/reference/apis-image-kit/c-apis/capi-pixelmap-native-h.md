@@ -6,8 +6,6 @@ Declares the APIs that can access a pixel map.
 
 **Library**: libpixelmap.so
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)
@@ -18,10 +16,10 @@ Declares the APIs that can access a pixel map.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | OH_Pixelmap_HdrStaticMetadata | Value for HDR_STATIC_METADATA. |
-| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | OH_Pixelmap_HdrDynamicMetadata | Value for HDR_DYNAMIC_METADATA. |
-| [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | OH_Pixelmap_HdrGainmapMetadata | Value for HDR_GAINMAP_METADATA. |
-| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | OH_Pixelmap_HdrMetadataValue | Value for HDR_METADATA_KEY. Corresponding relationship with HDR_METADATA_KEY. |
+| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | - | Value for HDR_STATIC_METADATA. |
+| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | - | Value for HDR_DYNAMIC_METADATA. |
+| [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | - | Value for HDR_GAINMAP_METADATA. |
+| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | - | Value for HDR_METADATA_KEY. Corresponding relationship with HDR_METADATA_KEY. |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | - | Define a Pixelmap struct type, used for pixelmap pointer controls. |
 | [OH_NativeBuffer](capi-image-nativemodule-oh-nativebuffer.md) | - | Define a native buffer type, used for retrieving a native buffer. |
 | [OH_NativeColorSpaceManager](capi-image-nativemodule-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | Define a native ColorSpaceManager type, used for retrieving a native ColorSpaceManager. |
@@ -33,6 +31,7 @@ Declares the APIs that can access a pixel map.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type) | PIXELMAP_ALPHA_TYPE | Define a pixelmap alpha type. |
+| [PIXEL_FORMAT](#pixel_format) | PIXEL_FORMAT | Define a pixelmap alpha type. |
 | [OH_PixelmapNative_AntiAliasingLevel](#oh_pixelmapnative_antialiasinglevel) | OH_PixelmapNative_AntiAliasingLevel | Defines the anti-aliasing level. |
 | [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) | OH_Pixelmap_HdrMetadataKey | Enumerates the HDR metadata types that need to be stored in Pixelmap. |
 | [OH_Pixelmap_HdrMetadataType](#oh_pixelmap_hdrmetadatatype) | OH_Pixelmap_HdrMetadataType | Value for HDR_METADATA_TYPE. |
@@ -130,8 +129,6 @@ enum PIXELMAP_ALPHA_TYPE
 
 Define a pixelmap alpha type.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -140,6 +137,45 @@ Define a pixelmap alpha type.
 | PIXELMAP_ALPHA_TYPE_OPAQUE = 1 | Opaque format |
 | PIXELMAP_ALPHA_TYPE_PREMULTIPLIED = 2 | Premultiplied format |
 | PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED = 3 | Unpremultiplied format |
+
+### PIXEL_FORMAT
+
+```c
+enum PIXEL_FORMAT
+```
+
+**Description**
+
+Define a pixelmap alpha type.
+
+**Since**: 12 /
+typedef enum {
+    /    * Unknown format /
+    PIXELMAP_ALPHA_TYPE_UNKNOWN = 0,
+     /    * Opaque format /
+    PIXELMAP_ALPHA_TYPE_OPAQUE = 1,
+     /    * Premultiplied format /
+    PIXELMAP_ALPHA_TYPE_PREMULTIPLIED = 2,
+    /     * Unpremultiplied format /
+    PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED = 3,
+}PIXELMAP_ALPHA_TYPE;
+
+| Enum item | Description |
+| -- | -- |
+| PIXEL_FORMAT_UNKNOWN = 0 | Unknown format |
+| PIXEL_FORMAT_RGB_565 = 2 | RGB_565 format |
+| PIXEL_FORMAT_RGBA_8888 = 3 | RGBA_8888 format |
+| PIXEL_FORMAT_BGRA_8888 = 4 | BGRA_8888 format |
+| PIXEL_FORMAT_RGB_888 = 5 | RGB_888 format |
+| PIXEL_FORMAT_ALPHA_8 = 6 | ALPHA_8 format |
+| PIXEL_FORMAT_RGBA_F16 = 7 | RGBA_F16 format |
+| PIXEL_FORMAT_NV21 = 8 | NV21 format |
+| PIXEL_FORMAT_NV12 = 9 | NV12 format |
+| PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102 format |
+| PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010 format |
+| PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010 format |
+| PIXEL_FORMAT_ALPHA_U8 = 15 |  |
+| PIXEL_FORMAT_ALPHA_F16 = 16 |  |
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -150,8 +186,6 @@ enum OH_PixelmapNative_AntiAliasingLevel
 **Description**
 
 Defines the anti-aliasing level.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -172,8 +206,6 @@ enum OH_Pixelmap_HdrMetadataKey
 
 Enumerates the HDR metadata types that need to be stored in Pixelmap.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -192,8 +224,6 @@ enum OH_Pixelmap_HdrMetadataType
 **Description**
 
 Value for HDR_METADATA_TYPE.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -217,8 +247,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_Create(OH_Pixelmap_Initializati
 
 Create a for InitializationOtions struct.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -231,7 +259,7 @@ Create a for InitializationOtions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter is nullptr or          create OH_Pixelmap_InitializationOptions object failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter is nullptr or create OH_Pixelmap_InitializationOptions object failed. |
 
 ### OH_PixelmapInitializationOptions_GetWidth()
 
@@ -242,8 +270,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetWidth(OH_Pixelmap_Initializa
 **Description**
 
 Get width number for InitializationOtions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -258,7 +284,7 @@ Get width number for InitializationOtions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or width is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or width is null. |
 
 ### OH_PixelmapInitializationOptions_SetWidth()
 
@@ -269,8 +295,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetWidth(OH_Pixelmap_Initializa
 **Description**
 
 Set width number for InitializationOtions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -285,7 +309,7 @@ Set width number for InitializationOtions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
 
 ### OH_PixelmapInitializationOptions_GetHeight()
 
@@ -296,8 +320,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetHeight(OH_Pixelmap_Initializ
 **Description**
 
 Get height number for InitializationOtions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -312,7 +334,7 @@ Get height number for InitializationOtions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or height is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or height is null. |
 
 ### OH_PixelmapInitializationOptions_SetHeight()
 
@@ -323,8 +345,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetHeight(OH_Pixelmap_Initializ
 **Description**
 
 Set height number for InitializationOtions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -339,7 +359,7 @@ Set height number for InitializationOtions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
 
 ### OH_PixelmapInitializationOptions_GetPixelFormat()
 
@@ -350,8 +370,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetPixelFormat(OH_Pixelmap_Init
 **Description**
 
 Get pixelFormat number for InitializationOtions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -366,7 +384,7 @@ Get pixelFormat number for InitializationOtions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or pixelFormat is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or pixelFormat is null. |
 
 ### OH_PixelmapInitializationOptions_SetPixelFormat()
 
@@ -377,8 +395,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetPixelFormat(OH_Pixelmap_Init
 **Description**
 
 Set pixelFormat number for InitializationOptions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -393,7 +409,7 @@ Set pixelFormat number for InitializationOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
 
 ### OH_PixelmapInitializationOptions_GetSrcPixelFormat()
 
@@ -404,8 +420,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetSrcPixelFormat(OH_Pixelmap_I
 **Description**
 
 Get pixelFormat number for InitializationOptions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -420,7 +434,7 @@ Get pixelFormat number for InitializationOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or srcpixelFormat is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or srcpixelFormat is null. |
 
 ### OH_PixelmapInitializationOptions_SetSrcPixelFormat()
 
@@ -431,8 +445,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetSrcPixelFormat(OH_Pixelmap_I
 **Description**
 
 Set pixelFormat number for InitializationOptions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -447,7 +459,7 @@ Set pixelFormat number for InitializationOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
 
 ### OH_PixelmapInitializationOptions_GetRowStride()
 
@@ -458,8 +470,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetRowStride(OH_Pixelmap_Initia
 **Description**
 
 Get rowStride for InitializationOptions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -474,7 +484,7 @@ Get rowStride for InitializationOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if rowStride is null.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNKNOWN_ERROR - inner unknown error, maybe options is released. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if rowStride is null. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNKNOWN_ERROR - inner unknown error, maybe options is released. |
 
 ### OH_PixelmapInitializationOptions_SetRowStride()
 
@@ -485,8 +495,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetRowStride(OH_Pixelmap_Initia
 **Description**
 
 Set rowStride number for InitializationOptions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -501,7 +509,7 @@ Set rowStride number for InitializationOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if rowStride does not match width.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNKNOWN_ERROR - inner unknown error, maybe options is released. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if rowStride does not match width. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNKNOWN_ERROR - inner unknown error, maybe options is released. |
 
 ### OH_PixelmapInitializationOptions_GetAlphaType()
 
@@ -512,8 +520,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetAlphaType(OH_Pixelmap_Initia
 **Description**
 
 Get alphaType number for InitializationOtions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -528,7 +534,7 @@ Get alphaType number for InitializationOtions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or alphaType is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options or alphaType is null. |
 
 ### OH_PixelmapInitializationOptions_SetAlphaType()
 
@@ -539,8 +545,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetAlphaType(OH_Pixelmap_Initia
 **Description**
 
 Set alphaType number for InitializationOtions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -555,7 +559,7 @@ Set alphaType number for InitializationOtions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
 
 ### OH_PixelmapInitializationOptions_GetEditable()
 
@@ -566,8 +570,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetEditable(OH_Pixelmap_Initial
 **Description**
 
 Get editable for InitializationOptions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 18
 
@@ -582,7 +584,7 @@ Get editable for InitializationOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if options or editable is invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if options or editable is invalid. |
 
 ### OH_PixelmapInitializationOptions_SetEditable()
 
@@ -593,8 +595,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetEditable(OH_Pixelmap_Initial
 **Description**
 
 Set editable for InitializationOptions struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 18
 
@@ -609,7 +609,7 @@ Set editable for InitializationOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if options is invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if options is invalid. |
 
 ### OH_PixelmapInitializationOptions_Release()
 
@@ -620,8 +620,6 @@ Image_ErrorCode OH_PixelmapInitializationOptions_Release(OH_Pixelmap_Initializat
 **Description**
 
 delete InitializationOtions pointer.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -635,7 +633,7 @@ delete InitializationOtions pointer.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null. |
 
 ### OH_PixelmapImageInfo_Create()
 
@@ -646,8 +644,6 @@ Image_ErrorCode OH_PixelmapImageInfo_Create(OH_Pixelmap_ImageInfo **info)
 **Description**
 
 Create imageinfo struct .
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -661,7 +657,7 @@ Create imageinfo struct .
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter is nullptr or          create OH_Pixelmap_ImageInfo object failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter is nullptr or create OH_Pixelmap_ImageInfo object failed. |
 
 ### OH_PixelmapImageInfo_GetWidth()
 
@@ -672,8 +668,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetWidth(OH_Pixelmap_ImageInfo *info, uint3
 **Description**
 
 Get width number for imageinfo struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -688,7 +682,7 @@ Get width number for imageinfo struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or width is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or width is null. |
 
 ### OH_PixelmapImageInfo_GetHeight()
 
@@ -699,8 +693,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetHeight(OH_Pixelmap_ImageInfo *info, uint
 **Description**
 
 Get height number for imageinfo struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -715,7 +707,7 @@ Get height number for imageinfo struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or height is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or height is null. |
 
 ### OH_PixelmapImageInfo_GetAlphaMode()
 
@@ -726,8 +718,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaMode(OH_Pixelmap_ImageInfo *info, i
 **Description**
 
 Get alphaMode number for imageinfo struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 20
 
@@ -742,7 +732,7 @@ Get alphaMode number for imageinfo struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Image functions result code.      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or alphaMode is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Image functions result code. [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or alphaMode is nullptr. |
 
 ### OH_PixelmapImageInfo_GetRowStride()
 
@@ -753,8 +743,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetRowStride(OH_Pixelmap_ImageInfo *info, u
 **Description**
 
 Get rowStride number for imageinfo struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -769,7 +757,7 @@ Get rowStride number for imageinfo struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or rowStride is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or rowStride is null. |
 
 ### OH_PixelmapImageInfo_GetPixelFormat()
 
@@ -780,8 +768,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetPixelFormat(OH_Pixelmap_ImageInfo *info,
 **Description**
 
 Get pixelFormat number for imageinfo struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -796,7 +782,7 @@ Get pixelFormat number for imageinfo struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or pixelFormat is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or pixelFormat is null. |
 
 ### OH_PixelmapImageInfo_GetAlphaType()
 
@@ -807,8 +793,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, i
 **Description**
 
 Get alphaType number for imageinfo struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -823,7 +807,7 @@ Get alphaType number for imageinfo struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or alphaType is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or alphaType is null. |
 
 ### OH_PixelmapImageInfo_GetDynamicRange()
 
@@ -834,8 +818,6 @@ Image_ErrorCode OH_PixelmapImageInfo_GetDynamicRange(OH_Pixelmap_ImageInfo *info
 **Description**
 
 Get isHdr boolean for imageinfo struct.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -850,7 +832,7 @@ Get isHdr boolean for imageinfo struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or isHdr is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info or isHdr is null. |
 
 ### OH_PixelmapImageInfo_Release()
 
@@ -861,8 +843,6 @@ Image_ErrorCode OH_PixelmapImageInfo_Release(OH_Pixelmap_ImageInfo *info)
 **Description**
 
 Delete imageinfo struct pointer.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -876,7 +856,7 @@ Delete imageinfo struct pointer.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if info is null. |
 
 ### OH_PixelmapNative_CreatePixelmap()
 
@@ -887,8 +867,6 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLengt
 **Description**
 
 Creates a <b>PixelMap</b> object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -905,7 +883,7 @@ Creates a <b>PixelMap</b> object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Possible causes:          if data or options is null or failed to create pixelmap due to invalid options. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Possible causes: if data or options is null or failed to create pixelmap due to invalid options. |
 
 ### OH_PixelmapNative_CreatePixelmapUsingAllocator()
 
@@ -917,8 +895,6 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, si
 
 Creates a pixelmap based on options [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md), the memory type used by the pixelmap can be specified by allocatorType [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_errorcode). By default, the system selects the memory type based on the image type, image size, platform capability, etc. When processing the pixelmap returned by this interface, please always consider the impact of stride.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -928,14 +904,14 @@ Creates a pixelmap based on options [OH_Pixelmap_InitializationOptions](capi-ima
 | uint8_t *data | Input color buffer in BGRA_8888 format by default. |
 | size_t dataLength | Length of input buffer in bytes. |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pixelmap initialization properties including size, pixel format, alpha type, and editable flags. |
-| IMAGE_ALLOCATOR_MODE allocator | Indicate which memory type will be used by the returned pixelmap. |
+| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | Indicate which memory type will be used by the returned pixelmap. |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | Output parameter receiving the created pixelmap object pointer. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If the param is nullptr or invalid.          [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) too large data or image.          [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) unsupported operations.          [IMAGE_DMA_OPERATION_FAILED](capi-image-common-h.md#image_errorcode) DMA operation failed.          [IMAGE_ALLOCATOR_MODE_UNSUPPORTED](capi-image-common-h.md#image_errorcode) unsupported allocator mode, e.g.,          use share memory to create a HDR image as only DMA supported hdr metadata. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If the param is nullptr or invalid. [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) too large data or image. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) unsupported operations. [IMAGE_DMA_OPERATION_FAILED](capi-image-common-h.md#image_errorcode) DMA operation failed. [IMAGE_ALLOCATOR_MODE_UNSUPPORTED](capi-image-common-h.md#image_errorcode) unsupported allocator mode, e.g., use share memory to create a HDR image as only DMA supported hdr metadata. |
 
 ### OH_PixelmapNative_ConvertPixelmapNativeToNapi()
 
@@ -946,8 +922,6 @@ Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeToNapi(napi_env env, OH_P
 **Description**
 
 Convert a native <b>PixelMap</b> object to <b>PixelMap</b> napi object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -963,7 +937,7 @@ Convert a native <b>PixelMap</b> object to <b>PixelMap</b> napi object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Image functions result code.      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) pixelmapNative is nullptr |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Image functions result code. [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) pixelmapNative is nullptr |
 
 ### OH_PixelmapNative_ConvertPixelmapNativeFromNapi()
 
@@ -974,8 +948,6 @@ Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, na
 **Description**
 
 Convert a <b>PixelMap</b> napi object to native <b>PixelMap</b> object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -991,7 +963,7 @@ Convert a <b>PixelMap</b> napi object to native <b>PixelMap</b> object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Image functions result code.      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) pixelmapNative is nullptr, or pixelmapNapi is not a PixelMap |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Image functions result code. [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) pixelmapNative is nullptr, or pixelmapNapi is not a PixelMap |
 
 ### OH_PixelmapNative_ReadPixels()
 
@@ -1002,8 +974,6 @@ Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_
 **Description**
 
 Reads data of this pixel map to an Buffer. If this pixel map is created in the BGRA_8888 format, the data read is the same as the original data.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1019,7 +989,7 @@ Reads data of this pixel map to an Buffer. If this pixel map is created in the B
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) Parameter error. Possible causes:          1.Parameter is nullptr          2.pixelmap's inner pixelmap is nullptr.          3.Parameter bufferSize is less than the actual data size.          [IMAGE_UNKNOWN_ERROR](capi-image-common-h.md#image_errorcode) Internal unknown error, e.g.          memory copy failed or pixelmap's attributes are incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) Parameter error. Possible causes: 1.Parameter is nullptr 2.pixelmap's inner pixelmap is nullptr. 3.Parameter bufferSize is less than the actual data size. [IMAGE_UNKNOWN_ERROR](capi-image-common-h.md#image_errorcode) Internal unknown error, e.g. memory copy failed or pixelmap's attributes are incorrect. |
 
 ### OH_PixelmapNative_WritePixels()
 
@@ -1030,8 +1000,6 @@ Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8
 **Description**
 
 Reads image data in an Buffer and writes the data to a Pixelmap object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1047,7 +1015,7 @@ Reads image data in an Buffer and writes the data to a Pixelmap object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) Parameter error. Possible causes:          1.Parameter is nullptr          2.pixelmap's inner pixelmap is nullptr.          3.Parameter bufferSize is less than the actual data size.          [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) If the pixelmap is not editable.          [IMAGE_UNKNOWN_ERROR](capi-image-common-h.md#image_errorcode) Internal unknown error, e.g.          memory copy failed or pixelmap's attributes are incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) Parameter error. Possible causes: 1.Parameter is nullptr 2.pixelmap's inner pixelmap is nullptr. 3.Parameter bufferSize is less than the actual data size. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) If the pixelmap is not editable. [IMAGE_UNKNOWN_ERROR](capi-image-common-h.md#image_errorcode) Internal unknown error, e.g. memory copy failed or pixelmap's attributes are incorrect. |
 
 ### OH_PixelmapNative_ReadPixelsFromArea()
 
@@ -1058,8 +1026,6 @@ Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap
 **Description**
 
 Reads data from a certain area of the PixelMap to a buffer. The resulting data will be in BGRA_8888 format.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 22
 
@@ -1074,7 +1040,7 @@ Reads data from a certain area of the PixelMap to a buffer. The resulting data w
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. pixelmap or area is incorrect.          [IMAGE_UNKNOWN_ERROR](capi-image-common-h.md#image_errorcode) Internal unknown error, e.g. unsupported pixel format. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. pixelmap or area is incorrect. [IMAGE_UNKNOWN_ERROR](capi-image-common-h.md#image_errorcode) Internal unknown error, e.g. unsupported pixel format. |
 
 **Reference**:
 
@@ -1091,8 +1057,6 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap,
 
 Writes data from a buffer to a certain area of the PixelMap. The source data should be in BGRA_8888 format.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -1106,7 +1070,7 @@ Writes data from a buffer to a certain area of the PixelMap. The source data sho
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. pixelmap or area is incorrect.          [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) If the PixelMap is not editable.          [IMAGE_UNKNOWN_ERROR](capi-image-common-h.md#image_errorcode) Internal unknown error, e.g. unsupported pixel format. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. pixelmap or area is incorrect. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) If the PixelMap is not editable. [IMAGE_UNKNOWN_ERROR](capi-image-common-h.md#image_errorcode) Internal unknown error, e.g. unsupported pixel format. |
 
 **Reference**:
 
@@ -1123,8 +1087,6 @@ Image_ErrorCode OH_PixelmapNative_GetArgbPixels(OH_PixelmapNative *pixelmap, uin
 
 Get argb pixel buffer from pixelmap.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1139,7 +1101,7 @@ Get argb pixel buffer from pixelmap.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, destination and bufferSize are incorrect.          [IMAGE_UNSUPPORTED_CONVERSION](capi-image-common-h.md#image_errorcode) If format does not support conversion to argb or conversion failed.          [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) If device has no memory.          [IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) If memory copy failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, destination and bufferSize are incorrect. [IMAGE_UNSUPPORTED_CONVERSION](capi-image-common-h.md#image_errorcode) If format does not support conversion to argb or conversion failed. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) If device has no memory. [IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) If memory copy failed. |
 
 **Reference**:
 
@@ -1156,8 +1118,6 @@ Image_ErrorCode OH_PixelmapNative_ToSdr(OH_PixelmapNative *pixelmap)
 
 Convert [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) to standard dynamic range.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1170,7 +1130,7 @@ Convert [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) to sta
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - Parameter error.Possible causes:Parameter verification failed.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNSUPPORTED_OPERATION - Unsupported operation.Pixelmap can't be converted. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - Parameter error.Possible causes:Parameter verification failed. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNSUPPORTED_OPERATION - Unsupported operation.Pixelmap can't be converted. |
 
 ### OH_PixelmapNative_GetImageInfo()
 
@@ -1181,8 +1141,6 @@ Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_P
 **Description**
 
 Obtains pixel map information of this image.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1197,7 +1155,7 @@ Obtains pixel map information of this image.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes:          1.pixelmap is nullptr.          2.pixelmap's inner pixelmap is nullptr.          3.imageInfo is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes: 1.pixelmap is nullptr. 2.pixelmap's inner pixelmap is nullptr. 3.imageInfo is nullptr. |
 
 ### OH_PixelmapNative_SetOpacity()
 
@@ -1208,8 +1166,6 @@ Image_ErrorCode OH_PixelmapNative_SetOpacity(OH_PixelmapNative *pixelmap, float 
 **Description**
 
 Sets opacity of the PixelMap. Every pixel will be set to the same opacity value.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -1224,7 +1180,7 @@ Sets opacity of the PixelMap. Every pixel will be set to the same opacity value.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data.          Possible cause: Internal data is corrupted. Please check the logs for detailed information.      [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released.      [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked.      [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter.          Possible causes: 1. The rate is out of range. 2. The parameter is null.      [IMAGE_UNSUPPORTED_DATA_FORMAT](capi-image-common-h.md#image_errorcode) Unsupported data format. Possible cause: Alpha type is not supported. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked. [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible causes: 1. The rate is out of range. 2. The parameter is null. [IMAGE_UNSUPPORTED_DATA_FORMAT](capi-image-common-h.md#image_errorcode) Unsupported data format. Possible cause: Alpha type is not supported. |
 
 ### OH_PixelmapNative_Opacity()
 
@@ -1235,8 +1191,6 @@ Image_ErrorCode OH_PixelmapNative_Opacity(OH_PixelmapNative *pixelmap, float rat
 **Description**
 
 Sets an opacity rate for this image pixel map. It is recommended to use [OH_PixelmapNative_SetOpacity](capi-pixelmap-native-h.md#oh_pixelmapnative_setopacity).
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1251,7 +1205,7 @@ Sets an opacity rate for this image pixel map. It is recommended to use [OH_Pixe
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes:          1.pixelmap is nullptr.          2.pixelmap's inner pixelmap is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes: 1.pixelmap is nullptr. 2.pixelmap's inner pixelmap is nullptr. |
 
 ### OH_PixelmapNative_ApplyScale()
 
@@ -1263,8 +1217,6 @@ Image_ErrorCode OH_PixelmapNative_ApplyScale(OH_PixelmapNative *pixelmap, float 
 
 Scales the PixelMap in the horizontal and/or vertical dimensions.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1279,7 +1231,7 @@ Scales the PixelMap in the horizontal and/or vertical dimensions.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data.          Possible cause: Internal data is corrupted. Please check the logs for detailed information.      [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released.      [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked.      [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null.      [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory.          Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked. [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
 ### OH_PixelmapNative_Scale()
 
@@ -1291,8 +1243,6 @@ Image_ErrorCode OH_PixelmapNative_Scale(OH_PixelmapNative *pixelmap, float scale
 
 Scales this image based on the input width and height. It is recommended to use [OH_PixelmapNative_ApplyScale](capi-pixelmap-native-h.md#oh_pixelmapnative_applyscale).
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1307,7 +1257,7 @@ Scales this image based on the input width and height. It is recommended to use 
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes:          1.pixelmap is nullptr.          2.pixelmap's inner pixelmap is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes: 1.pixelmap is nullptr. 2.pixelmap's inner pixelmap is nullptr. |
 
 ### OH_PixelmapNative_ApplyScaleWithAntiAliasing()
 
@@ -1318,8 +1268,6 @@ Image_ErrorCode OH_PixelmapNative_ApplyScaleWithAntiAliasing(OH_PixelmapNative *
 **Description**
 
 Scales the PixelMap in the horizontal and/or vertical dimensions with anti-aliasing.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -1336,7 +1284,7 @@ Scales the PixelMap in the horizontal and/or vertical dimensions with anti-alias
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data.          Possible cause: Internal data is corrupted. Please check the logs for detailed information.      [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released.      [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked.      [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null.      [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory.          Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked. [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
 ### OH_PixelmapNative_ScaleWithAntiAliasing()
 
@@ -1347,8 +1295,6 @@ Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixel
 **Description**
 
 Scales this image based on the input width and height with anti-aliasing. It is recommended to use [OH_PixelmapNative_ApplyScaleWithAntiAliasing](capi-pixelmap-native-h.md#oh_pixelmapnative_applyscalewithantialiasing).
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1365,7 +1311,7 @@ Scales this image based on the input width and height with anti-aliasing. It is 
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if invalid parameter, x and y are incorrect.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_TOO_LARGE - if image is too large.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_ALLOC_FAILED - if device has no memory.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNKNOWN_ERROR - inner unknown error, maybe source pixelmap is released. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if invalid parameter, x and y are incorrect. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_TOO_LARGE - if image is too large. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_ALLOC_FAILED - if device has no memory. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNKNOWN_ERROR - inner unknown error, maybe source pixelmap is released. |
 
 **Reference**:
 
@@ -1382,8 +1328,6 @@ Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPix
 
 Create a scaled pixelmap based on the source pixelmap and the input width and height.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -1399,7 +1343,7 @@ Create a scaled pixelmap based on the source pixelmap and the input width and he
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the execution is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If the param is nullptr or invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If the param is nullptr or invalid. |
 
 **Reference**:
 
@@ -1416,8 +1360,6 @@ Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_Pixelm
 
 Create a scaled pixelmap based on the source pixelmap and the input width and height with anti-aliasing.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -1434,7 +1376,7 @@ Create a scaled pixelmap based on the source pixelmap and the input width and he
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the execution is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If the param is nullptr or invalid.          [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) If image is too large.          [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) If device has no memory. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If the param is nullptr or invalid. [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) If image is too large. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) If device has no memory. |
 
 **Reference**:
 
@@ -1451,8 +1393,6 @@ Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, fl
 
 Repositions the PixelMap in the horizontal and/or vertical directions.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1467,7 +1407,7 @@ Repositions the PixelMap in the horizontal and/or vertical directions.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data.          Possible cause: Internal data is corrupted. Please check the logs for detailed information.      [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released.      [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked.      [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null.      [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory.          Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked. [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
 ### OH_PixelmapNative_Translate()
 
@@ -1478,8 +1418,6 @@ Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x
 **Description**
 
 Translates this image based on the input coordinates. It is recommended to use [OH_PixelmapNative_ApplyTranslate](capi-pixelmap-native-h.md#oh_pixelmapnative_applytranslate).
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1495,7 +1433,7 @@ Translates this image based on the input coordinates. It is recommended to use [
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes:          1.pixelmap is nullptr.          2.pixelmap's inner pixelmap is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes: 1.pixelmap is nullptr. 2.pixelmap's inner pixelmap is nullptr. |
 
 ### OH_PixelmapNative_CreateAlphaPixelmap()
 
@@ -1506,8 +1444,6 @@ Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixe
 **Description**
 
 Creates a PixelMap with only alpha channel from the source PixelMap.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 22
 
@@ -1522,7 +1458,7 @@ Creates a PixelMap with only alpha channel from the source PixelMap.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. srcPixelmap or dstPixelmap is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. srcPixelmap or dstPixelmap is incorrect. |
 
 **Reference**:
 
@@ -1539,8 +1475,6 @@ Image_ErrorCode OH_PixelmapNative_Clone(OH_PixelmapNative *srcPixelmap, OH_Pixel
 
 Clones a PixelMap from the source PixelMap.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -1554,7 +1488,7 @@ Clones a PixelMap from the source PixelMap.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. srcPixelmap or dstPixelmap is incorrect.          [IMAGE_UNSUPPORTED_DATA_FORMAT](capi-image-common-h.md#image_errorcode) If the pixel format is unsupported.          [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) If the PixelMap size is too large.          [IMAGE_INIT_FAILED](capi-image-common-h.md#image_errorcode) If the PixelMap initialization failed.          [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) If the copying of PixelMap data failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. srcPixelmap or dstPixelmap is incorrect. [IMAGE_UNSUPPORTED_DATA_FORMAT](capi-image-common-h.md#image_errorcode) If the pixel format is unsupported. [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) If the PixelMap size is too large. [IMAGE_INIT_FAILED](capi-image-common-h.md#image_errorcode) If the PixelMap initialization failed. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) If the copying of PixelMap data failed. |
 
 **Reference**:
 
@@ -1571,8 +1505,6 @@ Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNati
 
 Creates a cropped and then scaled PixelMap based on the source PixelMap.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -1580,7 +1512,7 @@ Creates a cropped and then scaled PixelMap based on the source PixelMap.
 | Parameter | Description |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | The source PixelMap. |
-| Image_Region *region | The crop region. |
+| [Image_Region](capi-image-nativemodule-image-region.md) *region | The crop region. |
 | Image_Scale *scale | The scale ratio of width and height. |
 | [OH_PixelmapNative_AntiAliasingLevel](capi-pixelmap-native-h.md#oh_pixelmapnative_antialiasinglevel) level | The anti-aliasing algorithm to be used. |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | The target PixelMap to be created. |
@@ -1589,7 +1521,7 @@ Creates a cropped and then scaled PixelMap based on the source PixelMap.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. srcPixelmap, region, scale, or dstPixelmap is                                      incorrect.          [IMAGE_UNSUPPORTED_DATA_FORMAT](capi-image-common-h.md#image_errorcode) If the pixel format is unsupported.          [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) If the PixelMap size is too large.          [IMAGE_INIT_FAILED](capi-image-common-h.md#image_errorcode) If the PixelMap initialization failed.          [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) If the copying of PixelMap data failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. srcPixelmap, region, scale, or dstPixelmap is incorrect. [IMAGE_UNSUPPORTED_DATA_FORMAT](capi-image-common-h.md#image_errorcode) If the pixel format is unsupported. [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) If the PixelMap size is too large. [IMAGE_INIT_FAILED](capi-image-common-h.md#image_errorcode) If the PixelMap initialization failed. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) If the copying of PixelMap data failed. |
 
 **Reference**:
 
@@ -1606,8 +1538,6 @@ Image_ErrorCode OH_PixelmapNative_ApplyRotate(OH_PixelmapNative *pixelmap, float
 
 Rotates the PixelMap. Note: YUV format PixelMaps only support rotation angles that are multiples of 90 degrees.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1621,7 +1551,7 @@ Rotates the PixelMap. Note: YUV format PixelMaps only support rotation angles th
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data.          Possible cause: Internal data is corrupted. Please check the logs for detailed information.      [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released.      [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked.      [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null.      [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory.          Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked. [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
 ### OH_PixelmapNative_Rotate()
 
@@ -1632,8 +1562,6 @@ Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angl
 **Description**
 
 Rotates this image based on the input angle. It is recommended to use [OH_PixelmapNative_ApplyRotate](capi-pixelmap-native-h.md#oh_pixelmapnative_applyrotate).
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1648,7 +1576,7 @@ Rotates this image based on the input angle. It is recommended to use [OH_Pixelm
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes:          1.pixelmap is nullptr.          2.pixelmap's inner pixelmap is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes: 1.pixelmap is nullptr. 2.pixelmap's inner pixelmap is nullptr. |
 
 ### OH_PixelmapNative_ApplyFlip()
 
@@ -1659,8 +1587,6 @@ Image_ErrorCode OH_PixelmapNative_ApplyFlip(OH_PixelmapNative *pixelmap, bool sh
 **Description**
 
 Flips the PixelMap in the horizontal and/or vertical directions.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -1676,7 +1602,7 @@ Flips the PixelMap in the horizontal and/or vertical directions.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data.          Possible cause: Internal data is corrupted. Please check the logs for detailed information.      [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released.      [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked.      [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null.      [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory. Possible cause: The system is out of memory. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked. [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: The parameter is null. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory. Possible cause: The system is out of memory. |
 
 ### OH_PixelmapNative_Flip()
 
@@ -1687,8 +1613,6 @@ Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldF
 **Description**
 
 Flips this image horizontally or vertically, or both. It is recommended to use [OH_PixelmapNative_ApplyFlip](capi-pixelmap-native-h.md#oh_pixelmapnative_applyflip).
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1704,7 +1628,7 @@ Flips this image horizontally or vertically, or both. It is recommended to use [
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes:          1.pixelmap is nullptr.          2.pixelmap's inner pixelmap is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - Parameter error.Possible causes: 1.pixelmap is nullptr. 2.pixelmap's inner pixelmap is nullptr. |
 
 ### OH_PixelmapNative_ApplyCrop()
 
@@ -1716,8 +1640,6 @@ Image_ErrorCode OH_PixelmapNative_ApplyCrop(OH_PixelmapNative *pixelmap, Image_R
 
 Crops the PixelMap.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1725,13 +1647,13 @@ Crops the PixelMap.
 | Parameter | Description |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer of the PixelMap to be cropped. |
-| Image_Region *region | Pointer of the region to crop. |
+| [Image_Region](capi-image-nativemodule-image-region.md) *region | Pointer of the region to crop. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data.          Possible cause: Internal data is corrupted. Please check the logs for detailed information.      [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released.      [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked.      [IMAGE_INVALID_REGION](capi-image-common-h.md#image_errorcode) The specified region is invalid or out of range.      [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: Any parameter is null.      [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory.          Possible causes: 1. Failed to process pixel data. 2. The system is out of memory. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) The PixelMap has been released. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation because the PixelMap is locked. [IMAGE_INVALID_REGION](capi-image-common-h.md#image_errorcode) The specified region is invalid or out of range. [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible cause: Any parameter is null. [IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Failed to allocate memory. Possible causes: 1. Failed to process pixel data. 2. The system is out of memory. |
 
 ### OH_PixelmapNative_Crop()
 
@@ -1743,8 +1665,6 @@ Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region
 
 Crops this image based on the input size. It is recommended to use [OH_PixelmapNative_ApplyCrop](capi-pixelmap-native-h.md#oh_pixelmapnative_applycrop).
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1752,13 +1672,13 @@ Crops this image based on the input size. It is recommended to use [OH_PixelmapN
 | Parameter | Description |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | The Pixelmap pointer will be operated. |
-| Image_Region *region | Area size, read according to area. |
+| [Image_Region](capi-image-nativemodule-image-region.md) *region | Area size, read according to area. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode)  - Parameter error.Possible causes:          1.pixelmap is nullptr.          2.region is nullptr.          3.pixelmap's inner pixelmap is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - The operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode)  - Parameter error.Possible causes: 1.pixelmap is nullptr. 2.region is nullptr. 3.pixelmap's inner pixelmap is nullptr. |
 
 ### OH_PixelmapNative_Release()
 
@@ -1770,8 +1690,6 @@ Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)
 
 Releases an <b>OH_Pixelmap</b> object.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1784,7 +1702,7 @@ Releases an <b>OH_Pixelmap</b> object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if either:          1.Pixelmap is nullptr.          2.It's inner pixelmap is nullptr.          3.Pixelmap is not allowed to release. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if either: 1.Pixelmap is nullptr. 2.It's inner pixelmap is nullptr. 3.Pixelmap is not allowed to release. |
 
 ### OH_PixelmapNative_Destroy()
 
@@ -1795,8 +1713,6 @@ Image_ErrorCode OH_PixelmapNative_Destroy(OH_PixelmapNative **pixelmap)
 **Description**
 
 Destroys an <b>OH_PixelmapNative</b> object and deallocates its resources.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 18
 
@@ -1810,7 +1726,7 @@ Destroys an <b>OH_PixelmapNative</b> object and deallocates its resources.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if pixelmap is null or pixelmap is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if pixelmap is null or *pixelmap is null. |
 
 ### OH_PixelmapNative_ConvertAlphaType()
 
@@ -1821,8 +1737,6 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaType(OH_PixelmapNative *srcPixelma
 **Description**
 
 Converts the alpha type of the PixelMap to either premultiplied or unpremultiplied. The conversion only supports pixel formats that have an alpha channel, except RGBA_F16.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -1838,7 +1752,7 @@ Converts the alpha type of the PixelMap to either premultiplied or unpremultipli
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:      [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data.          Possible cause: Internal data is corrupted. Please check the logs for detailed information.      [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) Either PixelMap has been released.      [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter.          Possible causes: 1. Either PixelMap does not meet the requirements. 2. Any parameter is null.      [IMAGE_UNSUPPORTED_DATA_FORMAT](capi-image-common-h.md#image_errorcode) Unsupported pixel format for either PixelMap. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. [IMAGE_PIXELMAP_RELEASED](capi-image-common-h.md#image_errorcode) Either PixelMap has been released. [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter. Possible causes: 1. Either PixelMap does not meet the requirements. 2. Any parameter is null. [IMAGE_UNSUPPORTED_DATA_FORMAT](capi-image-common-h.md#image_errorcode) Unsupported pixel format for either PixelMap. |
 
 ### OH_PixelmapNative_ConvertAlphaFormat()
 
@@ -1849,8 +1763,6 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixel
 **Description**
 
 Converting images to alpha format It is recommended to use [OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype).
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1866,7 +1778,7 @@ Converting images to alpha format It is recommended to use [OH_PixelmapNative_Co
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if either:          1.srcpixelmap or dstpixelmap is null pointer.          2.Their inner pixelmap structures are unavailable. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if either: 1.srcpixelmap or dstpixelmap is null pointer. 2.Their inner pixelmap structures are unavailable. |
 
 ### OH_PixelmapNative_CreateEmptyPixelmap()
 
@@ -1877,8 +1789,6 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_Initialization
 **Description**
 
 Create a empty <b>PixelMap</b> object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -1893,7 +1803,7 @@ Create a empty <b>PixelMap</b> object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null or          failed to create pixelmap due to invalid options. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) - if the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) - if options is null or failed to create pixelmap due to invalid options. |
 
 ### OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator()
 
@@ -1905,8 +1815,6 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_
 
 Creates a empty pixelmap based on options [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md), the memory type used by the pixelmap can be specified by allocatorType [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_errorcode). By default, the system selects the memory type based on the image type, image size, platform capability, etc. When processing the pixelmap returned by this interface, please always consider the impact of stride.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -1914,14 +1822,14 @@ Creates a empty pixelmap based on options [OH_Pixelmap_InitializationOptions](ca
 | Parameter | Description |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pixelmap initialization properties including size, pixel format, alpha type, and editable flags. |
-| IMAGE_ALLOCATOR_MODE allocator | Indicate which memory type will be used by the returned pixelmap. |
+| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | Indicate which memory type will be used by the returned pixelmap. |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | Output parameter receiving the created pixelmap object pointer. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If the param is nullptr or invalid.          [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) too large data or image.          [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) unsupported operations.          [IMAGE_ALLOCATOR_MODE_UNSUPPORTED](capi-image-common-h.md#image_errorcode) unsupported allocator mode, e.g., use          share memory to create a HDR image as only DMA supported hdr metadata. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If the param is nullptr or invalid. [IMAGE_TOO_LARGE](capi-image-common-h.md#image_errorcode) too large data or image. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) unsupported operations. [IMAGE_ALLOCATOR_MODE_UNSUPPORTED](capi-image-common-h.md#image_errorcode) unsupported allocator mode, e.g., use share memory to create a HDR image as only DMA supported hdr metadata. |
 
 ### OH_PixelmapNative_CreatePixelmapFromSurface()
 
@@ -1932,8 +1840,6 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceI
 **Description**
 
 Creates a PixelMap from a Surface with the Surface ID.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 22
 
@@ -1949,7 +1855,7 @@ Creates a PixelMap from a Surface with the Surface ID.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. surfaceId or pixelmap is incorrect.          [IMAGE_CREATE_PIXELMAP_FAILED](capi-image-common-h.md#image_errorcode) If the PixelMap creation failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. surfaceId or pixelmap is incorrect. [IMAGE_CREATE_PIXELMAP_FAILED](capi-image-common-h.md#image_errorcode) If the PixelMap creation failed. |
 
 **Reference**:
 
@@ -1966,8 +1872,6 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurfaceWithTransformation(co
 
 Creates a PixelMap object based on the ID of a Surface with transformation.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -1983,7 +1887,7 @@ Creates a PixelMap object based on the ID of a Surface with transformation.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) Operation is successful.          [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter, e.g. surfaceId or pixelmap is incorrect.          [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation, e.g. on cross-platform.          [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get the data from Surface.          [IMAGE_CREATE_PIXELMAP_FAILED](capi-image-common-h.md#image_errorcode) Failed to create the PixelMap. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) Operation is successful. [IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) Invalid parameter, e.g. surfaceId or pixelmap is incorrect. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation, e.g. on cross-platform. [IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) Failed to get the data from Surface. [IMAGE_CREATE_PIXELMAP_FAILED](capi-image-common-h.md#image_errorcode) Failed to create the PixelMap. |
 
 **Reference**:
 
@@ -2000,8 +1904,6 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 Creates a PixelMap from a native buffer.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -2015,7 +1917,7 @@ Creates a PixelMap from a native buffer.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. nativeBuffer or pixelmap is incorrect.          [IMAGE_CREATE_PIXELMAP_FAILED](capi-image-common-h.md#image_errorcode) If the PixelMap creation failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. nativeBuffer or pixelmap is incorrect. [IMAGE_CREATE_PIXELMAP_FAILED](capi-image-common-h.md#image_errorcode) If the PixelMap creation failed. |
 
 **Reference**:
 
@@ -2032,8 +1934,6 @@ Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 
 Get metadata.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -2048,7 +1948,7 @@ Get metadata.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if invalid parameter, key and value are incorrect.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_DMA_NOT_EXIST - if DMA memory does not exist.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_COPY_FAILED - if memory copy failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if invalid parameter, key and value are incorrect. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_DMA_NOT_EXIST - if DMA memory does not exist. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_COPY_FAILED - if memory copy failed. |
 
 **Reference**:
 
@@ -2065,8 +1965,6 @@ Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 
 Set metadata.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -2081,7 +1979,7 @@ Set metadata.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if invalid parameter, key and value are incorrect.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_DMA_NOT_EXIST - if DMA memory does not exist.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_COPY_FAILED - if memory copy failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if invalid parameter, key and value are incorrect. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_DMA_NOT_EXIST - if DMA memory does not exist. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_COPY_FAILED - if memory copy failed. |
 
 **Reference**:
 
@@ -2098,8 +1996,6 @@ Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, O
 
 Get the native buffer from the PixelMap.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -2113,7 +2009,7 @@ Get the native buffer from the PixelMap.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_RESULT_SUCCESS - if the operation is successful.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if invalid parameter, pixelmap or nativeBuffer is null.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_DMA_NOT_EXIST - if DMA memory dose not exist.  returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_DMA_OPERATION_FAILED - if operations related to DMA memory has failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_RESULT_SUCCESS - if the operation is successful. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if invalid parameter, pixelmap or nativeBuffer is null. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_DMA_NOT_EXIST - if DMA memory dose not exist. returns [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_DMA_OPERATION_FAILED - if operations related to DMA memory has failed. |
 
 **Reference**:
 
@@ -2130,8 +2026,6 @@ Image_ErrorCode OH_PixelmapNative_GetColorSpaceNative(OH_PixelmapNative *pixelma
 
 Get the native colorspace from the PixelMap.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -2145,7 +2039,7 @@ Get the native colorspace from the PixelMap.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the execution is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) The param of pixelmap or colorSpaceNative is nullptr or invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) The param of pixelmap or colorSpaceNative is nullptr or invalid. |
 
 **Reference**:
 
@@ -2162,8 +2056,6 @@ Image_ErrorCode OH_PixelmapNative_SetColorSpaceNative(OH_PixelmapNative *pixelma
 
 Set the native colorspace for the PixelMap.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -2177,7 +2069,7 @@ Set the native colorspace for the PixelMap.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the execution is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) The param of pixelmap or colorSpaceNative is nullptr or invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) The param of pixelmap or colorSpaceNative is nullptr or invalid. |
 
 **Reference**:
 
@@ -2194,8 +2086,6 @@ Image_ErrorCode OH_PixelmapNative_SetMemoryName(OH_PixelmapNative *pixelmap, cha
 
 Set pixelmap memory name.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -2210,7 +2100,7 @@ Set pixelmap memory name.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, name and size are incorrect.          [IMAGE_UNSUPPORTED_MEMORY_FORMAT](capi-image-common-h.md#image_errorcode) If memory format is unsupported. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, name and size are incorrect. [IMAGE_UNSUPPORTED_MEMORY_FORMAT](capi-image-common-h.md#image_errorcode) If memory format is unsupported. |
 
 **Reference**:
 
@@ -2227,8 +2117,6 @@ Image_ErrorCode OH_PixelmapNative_GetByteCount(OH_PixelmapNative *pixelmap, uint
 
 Get the total number of bytes occupied by all pixels in the Pixelmap, without any padding.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -2242,7 +2130,7 @@ Get the total number of bytes occupied by all pixels in the Pixelmap, without an
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, pixelmap or byteCount are invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, pixelmap or byteCount are invalid. |
 
 **Reference**:
 
@@ -2259,8 +2147,6 @@ Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixe
 
 Get the size of the allocated memory used to store this pixelmap's pixels.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -2274,7 +2160,7 @@ Get the size of the allocated memory used to store this pixelmap's pixels.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, pixelmap or allocationByteCount are invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, pixelmap or allocationByteCount are invalid. |
 
 **Reference**:
 
@@ -2291,8 +2177,6 @@ Image_ErrorCode OH_PixelmapNative_AccessPixels(OH_PixelmapNative *pixelmap, void
 
 Obtains the memory address of a PixelMap and locks the memory. When the memory is locked, any operation that modifies or releases the PixelMap will fail and return [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode).
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 15
 
 **Parameters**:
@@ -2306,7 +2190,7 @@ Obtains the memory address of a PixelMap and locks the memory. When the memory i
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, pixelmap or addr are invalid.          [IMAGE_LOCK_UNLOCK_FAILED](capi-image-common-h.md#image_errorcode) If memory failed to be locked. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, pixelmap or addr are invalid. [IMAGE_LOCK_UNLOCK_FAILED](capi-image-common-h.md#image_errorcode) If memory failed to be locked. |
 
 **Reference**:
 
@@ -2323,8 +2207,6 @@ Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)
 
 Unlocks the memory of the PixelMap data. This function is used with [OH_PixelmapNative_AccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_accesspixels) in pairs.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 15
 
 **Parameters**:
@@ -2337,7 +2219,7 @@ Unlocks the memory of the PixelMap data. This function is used with [OH_Pixelmap
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, pixelmap is invalid.          [IMAGE_LOCK_UNLOCK_FAILED](capi-image-common-h.md#image_errorcode) If memory failed to be unlocked. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If invalid parameter, pixelmap is invalid. [IMAGE_LOCK_UNLOCK_FAILED](capi-image-common-h.md#image_errorcode) If memory failed to be unlocked. |
 
 **Reference**:
 
@@ -2354,8 +2236,6 @@ Image_ErrorCode OH_PixelmapNative_GetUniqueId(OH_PixelmapNative *pixelmap, uint3
 
 Gets the unique ID of a PixelMap.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -2369,7 +2249,7 @@ Gets the unique ID of a PixelMap.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. pixelmap or uniqueId is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. pixelmap or uniqueId is incorrect. |
 
 **Reference**:
 
@@ -2386,8 +2266,6 @@ Image_ErrorCode OH_PixelmapNative_IsReleased(OH_PixelmapNative *pixelmap, bool *
 
 Checks whether the PixelMap has been released.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -2401,7 +2279,7 @@ Checks whether the PixelMap has been released.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | Function result code:          [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful.          [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. pixelmap or released is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) If the operation is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) If any parameter is invalid, e.g. pixelmap or released is incorrect. |
 
 **Reference**:
 

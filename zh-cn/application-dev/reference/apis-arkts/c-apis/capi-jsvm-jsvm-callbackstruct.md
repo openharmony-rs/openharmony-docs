@@ -22,6 +22,8 @@ typedef struct JSVM_CallbackStruct {...} JSVM_CallbackStruct
 
 | 名称 | 描述 |
 | -- | -- |
+| JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,
+ JSVM_CallbackInfo info) | 用户提供的native回调函数的指针。 |
 | void* data | 用户提供的native回调函数的数据。 |
 
 

@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | AVPlayerCallback（AVPlayer回调）是AVPlayer（音视频播放器）的回调管理结构体， 包含了播放过程信息OH_AVPlayerOnInfo和错误信息OH_AVPlayerOnError的回调函数指针。 应用需注册此实例结构体到OH_AVPlayer实例中，并对回调上报的信息进行处理，保证AVPlayer的正常运行。 通过注册这些回调，开发者可以实时监控AVPlayer的播放状态、获取播放过程信息（如缓冲进度、播放位置等）和错误事件，及时响应和处理播放过程中的各种事件。 适用于需要对播放流程进行细粒度控制（Fine-grained Control）和监控的场景，如音乐播放器、视频播放器、直播应用等需要实时监控播放状态和异常处理的应用。 |
+| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | - | AVPlayerCallback（AVPlayer回调）是AVPlayer（音视频播放器）的回调管理结构体， 包含了播放过程信息OH_AVPlayerOnInfo和错误信息OH_AVPlayerOnError的回调函数指针。 应用需注册此实例结构体到OH_AVPlayer实例中，并对回调上报的信息进行处理，保证AVPlayer的正常运行。 通过注册这些回调，开发者可以实时监控AVPlayer的播放状态、获取播放过程信息（如缓冲进度、播放位置等）和错误事件，及时响应和处理播放过程中的各种事件。 适用于需要对播放流程进行细粒度控制（Fine-grained Control）和监控的场景，如音乐播放器、视频播放器、直播应用等需要实时监控播放状态和异常处理的应用。 |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | 声明OH_AVPlayer结构体类型。 |
 | [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md) | OH_AVSeiMessageArray | SEI（Supplemental Enhancement Information）消息数组的结构体类型。用于存储和管理SEI消息，支持批量获取和处理视频流中的SEI消息，适用于需要解析视频补充增强信息的场景。 |
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) | OH_AVPlaybackStrategy | 音视频播放策略的结构体类型，用于配置播放器在播放音视频内容时的策略参数，适用于需要精细控制播放行为的场景。若未设置该策略参数，播放器将采用默认播放策略。 |
@@ -289,7 +289,7 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | 信息类型。类型为[AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype)，与extra的对应关系可见方法描述。 |
 | int32_t extra | 其他信息，如播放文件的开始时间位置。 信息类型（type）：对应的extra描述 AV_INFO_TYPE_SEEKDONE	跳转到对应播放位置时返回消息，extra表示跳转到的位置。 AV_INFO_TYPE_SPEEDDONE	播放倍速设置完成时返回消息，extra表示播放倍速信息，具体请参考AVPlaybackSpeed。 AV_INFO_TYPE_BITRATEDONE	比特率设置完成时返回消息，extra表示比特率信息。 AV_INFO_TYPE_EOS	播放完成时返回消息。 AV_INFO_TYPE_STATE_CHANGE	状态改变时返回消息，extra表示当前播放状态，具体请参见AVPlayerState。 AV_INFO_TYPE_POSITION_UPDATE	返回当前播放位置，extra表示当前位置。 AV_INFO_TYPE_MESSAGE	视频开始渲染时返回消息，extra表示视频首帧渲染。 AV_INFO_TYPE_VOLUME_CHANGE	音量改变时返回消息，此场景下extra未定义。 AV_INFO_TYPE_RESOLUTION_CHANGE	首次获取视频大小或视频大小更新时返回消息，此场景下extra未定义。 AV_INFO_TYPE_BUFFERING_UPDATE	返回缓冲更新消息。此场景下extra表示缓冲相关数据，建议使用OH_AVPlayerOnInfoCallback获取详细的缓冲信息。 AV_INFO_TYPE_BITRATE_COLLECT	上报HLS视频比特率列表消息。上报时每个比特率已经转化为uint8_t字节数组，使用者需要将uint8_t字节数组强制转换为uint32_t整型数组。 AV_INFO_TYPE_INTERRUPT_EVENT	音频焦点改变时返回消息，extra表示音频打断提示，具体请参见OH_AudioInterrupt_Hint，应用可决定是否根据打断提示作进一步处理。 AV_INFO_TYPE_DURATION_UPDATE	返回播放时长，extra表示视频时长。 AV_INFO_TYPE_IS_LIVE_STREAM	播放为直播流时返回消息，extra表示是否为直播流，0表示非直播流，1表示直播流。 AV_INFO_TYPE_TRACKCHANGE	轨道改变时返回消息，此场景extra未定义。 AV_INFO_TYPE_TRACK_INFO_UPDATE	轨道更新时返回消息，此场景下extra参数无特定含义。 AV_INFO_TYPE_SUBTITLE_UPDATE	字幕信息更新时返回消息，此场景extra未定义。 AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE	音频输出设备改变时返回消息，extra表示设备改变原因，具体请参见OH_AudioStream_DeviceChangeReason。 |
 
@@ -309,10 +309,10 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | 信息类型。具体请参见[AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype)。 |
-| OH_AVFormat\* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
-| void \*userData | 指向应用调用者设置该回调函数时提供的实例的指针。 |
+| [OH_AVFormat](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md)* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
+| void *userData | 指向应用调用者设置该回调函数时提供的实例的指针。 |
 
 ### OH_AVPlayerOnError()
 
@@ -334,9 +334,9 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | int32_t errorCode | 错误码。 AV_ERR_NO_MEMORY：无内存，取值为1。可能原因：系统内存不足。处理方法：释放不必要的资源后重试。 AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。可能原因：当前状态下不允许执行该操作。处理方法：检查当前状态，在合适的状态下执行操作。 AV_ERR_INVALID_VAL：无效值，取值为3。可能原因：传入的参数值无效。处理方法：检查参数值是否在有效范围内。 AV_ERR_IO：IO错误，取值为4。可能原因：文件读写失败或网络IO异常。处理方法：检查文件是否存在或网络连接是否正常。 AV_ERR_TIMEOUT：超时错误，取值为5。可能原因：操作超时。处理方法：检查网络状况或增大超时时间。 AV_ERR_UNKNOWN：未知错误，取值为6。可能原因：发生未知错误。处理方法：查看日志或联系技术支持。 AV_ERR_SERVICE_DIED：服务死亡，取值为7。可能原因：媒体服务异常终止。处理方法：重新创建播放器实例。 AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。可能原因：在错误的状态下调用了该方法。处理方法：检查播放器当前状态是否支持该操作。 AV_ERR_UNSUPPORT：未支持的接口，取值为9。可能原因：调用了不支持的接口。处理方法：检查API版本支持情况。 AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。可能原因：扩展错误。处理方法：根据具体错误码进行处理。 |
-| const char \*errorMsg | 错误消息。由播放器返回的错误描述信息，具体内容取决于错误类型，可能为NULL或空字符串。 |
+| const char *errorMsg | 错误消息。由播放器返回的错误描述信息，具体内容取决于错误类型，可能为NULL或空字符串。 |
 
 ### OH_AVPlayerOnErrorCallback()
 
@@ -354,10 +354,10 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | int32_t errorCode | 错误码。 AV_ERR_NO_MEMORY：无内存，取值为1。可能原因：系统内存不足。处理方法：释放不必要的资源后重试。 AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。可能原因：当前状态下不允许执行该操作。处理方法：检查当前状态，在合适的状态下执行操作。 AV_ERR_INVALID_VAL：无效值，取值为3。可能原因：传入的参数值无效。处理方法：检查参数值是否在有效范围内。 AV_ERR_IO：IO错误。API version 12-13取值为4；API version 14及以后，对应错误细化为错误码5411001~5411011。 可能原因：文件读写失败或网络IO异常。处理方法：检查文件是否存在或网络连接是否正常。 AV_ERR_TIMEOUT：超时错误，取值为5。可能原因：操作超时。处理方法：检查网络状况或增大超时时间。 AV_ERR_UNKNOWN：未知错误，取值为6。可能原因：发生未知错误。处理方法：查看日志或联系技术支持。 AV_ERR_SERVICE_DIED：服务死亡，取值为7。可能原因：媒体服务异常终止。处理方法：重新创建播放器实例。 AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。可能原因：在错误的状态下调用了该方法。处理方法：检查播放器当前状态是否支持该操作。 AV_ERR_UNSUPPORT：未支持的接口，取值为9。可能原因：调用了不支持的接口。处理方法：检查API版本支持情况。 AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。可能原因：扩展错误。处理方法：根据具体错误码进行处理。 |
-| const char \*errorMsg | 错误消息，只在回调函数中有效。 |
-| void \*userData | 指向用户特定数据的指针。 |
+| const char *errorMsg | 错误消息，只在回调函数中有效。 |
+| void *userData | 指向用户特定数据的指针。 |
 
 ### OH_AVPlayerOnAmplitudeUpdateCallback()
 
@@ -375,10 +375,10 @@ typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
-| double \*amplitudes | 指向最大音频电平值数组的指针。 注意：最大音频电平值数组会在回调后自动释放。 如有需要，用户需自行拷贝数据以供后续使用。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| double *amplitudes | 指向最大音频电平值数组的指针。 注意：最大音频电平值数组会在回调后自动释放。 如有需要，用户需自行拷贝数据以供后续使用。 |
 | uint32_t size | 最大音频电平值数组的大小。 |
-| void \*userData | 指向用户特定数据的指针。 |
+| void *userData | 指向用户特定数据的指针。 |
 
 ### OH_AVPlayerOnSeiMessageReceivedCallback()
 
@@ -396,10 +396,10 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
-| [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md) \*message | SEI消息数组。 注意：SEI消息数组会在回调后自动释放。 如有需要，用户需自行拷贝数据以供后续使用。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md) *message | SEI消息数组。 注意：SEI消息数组会在回调后自动释放。 如有需要，用户需自行拷贝数据以供后续使用。 |
 | int32_t playbackPosition | 播放位置。 |
-| void \*userData | 指向用户特定数据的指针。 |
+| void *userData | 指向用户特定数据的指针。 |
 
 ### OH_AVPlayerPCMOutputCallback()
 
@@ -417,9 +417,9 @@ typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *p
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
-| OH_AVBuffer \*pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放。 |
-| void \*userData | 指向用户指定数据的指针。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVBuffer](../../apis-avcodec-kit/c-apis/capi-core-oh-avbuffer.md) *pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放。 |
+| void *userData | 指向用户指定数据的指针。 |
 
 ### OH_AVPlayerPCMProcessorCallback()
 
@@ -437,8 +437,8 @@ typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
-| OH_AVBuffer \*pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放。 |
-| void \*userData | 	指向用户指定数据的指针。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVBuffer](../../apis-avcodec-kit/c-apis/capi-core-oh-avbuffer.md) *pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放。 |
+| void *userData | 	指向用户指定数据的指针。 |
 
 

@@ -1,7 +1,7 @@
 # Hid_Device
 
 ```c
-typedef struct Hid_Device {...} Hid_Device
+struct Hid_Device {...}
 ```
 
 ## 概述
@@ -27,7 +27,7 @@ typedef struct Hid_Device {...} Hid_Device
 | uint16_t productId | 产品ID。 |
 | uint16_t version | 版本号。 |
 | uint16_t bustype | 总线类型，取值含义参考标准HID协议的总线类型定义。 |
-| [Hid_DeviceProp](capi-hid-ddk-types-h.md#hid_deviceprop) *properties | 设备特性。使用前应检查指针是否为空；该指针仅在Hid_Device对象有效期间有效，不应手动释放。 |
+| Hid_DeviceProp *properties | 设备特性。使用前应检查指针是否为空；该指针仅在Hid_Device对象有效期间有效，不应手动释放。 |
 | uint16_t propLength | 设备特性数量，表示properties数组的有效元素个数。注意：遍历数组时应以该值为边界条件；该值可能为0。 |
 
 

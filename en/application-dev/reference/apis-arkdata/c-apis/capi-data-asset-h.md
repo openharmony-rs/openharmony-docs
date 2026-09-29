@@ -6,9 +6,7 @@ Provides the data type of asset.
 
 **Library**: libnative_rdb_ndk.z.so
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since**: 10
+**Since**: 11
 
 **Related module**: [RDB](capi-rdb.md)
 
@@ -61,8 +59,6 @@ enum Data_AssetStatus
 
 Describes the status of asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 | Enum item | Description |
@@ -88,8 +84,6 @@ int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 
 Set the name of the Data_Asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -103,7 +97,7 @@ Set the name of the Data_Asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -120,8 +114,6 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 
 Set the uri of the Data_Asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -135,7 +127,7 @@ Set the uri of the Data_Asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -152,8 +144,6 @@ int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 
 Set the path of the Data_Asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -167,7 +157,7 @@ Set the path of the Data_Asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -184,8 +174,6 @@ int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 
 Set the create time of the Data_Asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -199,7 +187,7 @@ Set the create time of the Data_Asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -216,8 +204,6 @@ int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 
 Set the modify time of the Data_Asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -231,7 +217,7 @@ Set the modify time of the Data_Asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -248,8 +234,6 @@ int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 
 Set the size of the Data_Asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -263,7 +247,7 @@ Set the size of the Data_Asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -280,8 +264,6 @@ int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 
 Set the status of the Data_Asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -295,7 +277,7 @@ Set the status of the Data_Asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -312,8 +294,6 @@ int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 
 Obtains the name of the asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -328,7 +308,7 @@ Obtains the name of the asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_ERR} - Indicates that the function execution exception.<br>    {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_ERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) - Indicates that the function execution exception. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -345,8 +325,6 @@ int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 
 Obtains the uri of the asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -361,7 +339,7 @@ Obtains the uri of the asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_ERR} - Indicates that the function execution exception.<br>    {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_ERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) - Indicates that the function execution exception. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -378,8 +356,6 @@ int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 
 Obtains the path of the asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -394,7 +370,7 @@ Obtains the path of the asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_ERR} - Indicates that the function execution exception.<br>    {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_ERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) - Indicates that the function execution exception. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -411,8 +387,6 @@ int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)
 
 Obtains the create time of the asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -426,7 +400,7 @@ Obtains the create time of the asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_ERR} - Indicates that the function execution exception.<br>    {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_ERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) - Indicates that the function execution exception. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -443,8 +417,6 @@ int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 
 Obtains the modify time of the asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -458,7 +430,7 @@ Obtains the modify time of the asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_ERR} - Indicates that the function execution exception.<br>    {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_ERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) - Indicates that the function execution exception. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -475,8 +447,6 @@ int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 
 Obtains the size of the asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -490,7 +460,7 @@ Obtains the size of the asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_ERR} - Indicates that the function execution exception.<br>    {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_ERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) - Indicates that the function execution exception. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -507,8 +477,6 @@ int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 
 Obtains the status of the asset.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -522,7 +490,7 @@ Obtains the status of the asset.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code.      {@link RDB_OK} - success.<br>    {@link RDB_E_INVALID_ARGS} - The error code for common invalid args.<br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -539,15 +507,13 @@ Data_Asset *OH_Data_Asset_CreateOne(void)
 
 Creates an [Data_Asset](capi-rdb-data-asset.md) instance.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [Data_Asset *](capi-rdb-data-asset.md) | If the creation is successful, a pointer to the instance of the @link Data_Asset} structure is returned,  otherwise NULL is returned. |
+| [Data_Asset *](capi-rdb-data-asset.md) | If the creation is successful, a pointer to the instance of the @link Data_Asset} structure is returned, otherwise NULL is returned. |
 
 **Reference**:
 
@@ -564,8 +530,6 @@ int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 
 Destroy the [Data_Asset](capi-rdb-data-asset.md) object and reclaim the memory occupied by the object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -578,7 +542,7 @@ Destroy the [Data_Asset](capi-rdb-data-asset.md) object and reclaim the memory o
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. Successful execution returns RDB_OK,      <br>while failure returns a specific error code.      <br>{@link RDB_OK} - success.<br>    <br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns the status code of the execution. Successful execution returns RDB_OK, <br>while failure returns a specific error code. <br>[RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. <br>Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -595,8 +559,6 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 Creates [Data_Asset](capi-rdb-data-asset.md) instances of given number.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -609,7 +571,7 @@ Creates [Data_Asset](capi-rdb-data-asset.md) instances of given number.
 
 | Type | Description |
 | -- | -- |
-| [Data_Asset **](capi-rdb-data-asset.md) | If the creation is successful, a pointer to the instance of the [Data_Asset](capi-rdb-data-asset.md) structure is returned.          If the creation is unsuccessful, NULL is returned. |
+| [Data_Asset **](capi-rdb-data-asset.md) | If the creation is successful, a pointer to the instance of the [Data_Asset](capi-rdb-data-asset.md) structure is returned. If the creation is unsuccessful, NULL is returned. |
 
 **Reference**:
 
@@ -626,8 +588,6 @@ int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 
 Destroy the [Data_Asset](capi-rdb-data-asset.md) objects and reclaim the memory occupied by the objects.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -641,7 +601,7 @@ Destroy the [Data_Asset](capi-rdb-data-asset.md) objects and reclaim the memory 
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. Successful execution returns RDB_OK,      <br>while failure returns a specific error code.      <br>{@link RDB_OK} - success.<br>    <br>Specific error codes can be referenced {@link OH_Rdb_ErrCode}. |
+| int | Returns the status code of the execution. Successful execution returns RDB_OK, <br>while failure returns a specific error code. <br>[RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. <br>Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 

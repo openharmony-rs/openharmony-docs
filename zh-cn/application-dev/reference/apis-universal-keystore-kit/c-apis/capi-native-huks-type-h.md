@@ -8,8 +8,6 @@
 
 **库：** libhuks_ndk.z.so
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 **相关模块：** [HuksTypeApi](capi-hukstypeapi.md)
@@ -18,21 +16,21 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | OH_Huks_Result | 表示状态返回数据，包括返回码和消息。 |
-| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | OH_Huks_Blob | 定义存放数据的结构体类型。 |
-| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | OH_Huks_Param | 定义参数集中的参数结构体类型。 |
-| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | OH_Huks_ParamSet | 定义参数集的结构体类型。 |
-| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | OH_Huks_CertChain | 定义证书链的结构体类型。 |
-| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | OH_Huks_KeyInfo | 定义密钥信息的结构体类型。 |
-| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | OH_Huks_PubKeyInfo | 定义公钥信息的结构体类型。 |
-| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | OH_Huks_KeyMaterialRsa | 定义RSA密钥的结构体类型。 |
-| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | OH_Huks_KeyMaterialEcc | 定义ECC密钥的结构体类型。 |
-| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | OH_Huks_KeyMaterialDsa | 定义DSA密钥的结构体类型。 |
-| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | OH_Huks_KeyMaterialDh | 定义DH密钥的结构体类型。 |
-| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | OH_Huks_KeyMaterial25519 | 定义25519类型密钥的结构体类型。 |
-| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | OH_Huks_KeyAliasSet | 定义密钥别名集的结构体类型。 |
+| 名称 | 描述 |
+| -- | -- |
+| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 表示状态返回数据，包括返回码和消息。 |
+| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | 定义存放数据的结构体类型。 |
+| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | 定义参数集中的参数结构体类型。 |
+| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | 定义参数集的结构体类型。 |
+| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | 定义证书链的结构体类型。 |
+| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | 定义密钥信息的结构体类型。 |
+| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | 定义公钥信息的结构体类型。 |
+| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | 定义RSA密钥的结构体类型。 |
+| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | 定义ECC密钥的结构体类型。 |
+| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | 定义DSA密钥的结构体类型。 |
+| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | 定义DH密钥的结构体类型。 |
+| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | 定义25519类型密钥的结构体类型。 |
+| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | 定义密钥别名集的结构体类型。 |
 
 ### 枚举
 
@@ -96,8 +94,6 @@ enum OH_Huks_KeyPurpose
 
 密钥用途类型。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -122,8 +118,6 @@ enum OH_Huks_KeyDigest
 
 摘要算法类型。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -146,8 +140,6 @@ enum OH_Huks_KeyPadding
 **描述：**
 
 填充算法类型。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -172,8 +164,6 @@ enum OH_Huks_CipherMode
 
 加密模式。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -195,8 +185,6 @@ enum OH_Huks_KeySize
 **描述：**
 
 算法密钥长度。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -236,8 +224,6 @@ enum OH_Huks_KeyAlg
 
 密钥使用的算法。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -270,8 +256,6 @@ enum OH_Huks_AlgSuite
 
 密文导入所需的算法套件类型。 <br>OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING对应的密钥材料格式。 <br>\| x25519_plain_pubkey_length (4 Byte) \| x25519_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING对应的密钥材料格式。 <br>\| ECC_plain_pubkey_length (4 Byte) \| ECC_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING对应的密钥材料格式。 <br>\| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -290,8 +274,6 @@ enum OH_Huks_KeyGenerateType
 
 生成的密钥类型。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -309,8 +291,6 @@ enum OH_Huks_KeyFlag
 **描述：**
 
 密钥的产生方式。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -331,8 +311,6 @@ enum OH_Huks_KeyStorageType
 
 密钥的存储方式。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -352,8 +330,6 @@ enum OH_Huks_ImportKeyType
 
 导入密钥的类型，默认为导入公钥，导入对称密钥时不需要该字段。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -372,8 +348,6 @@ enum OH_Huks_RsaPssSaltLenType
 
 PSS填充模式下盐值长度类型。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -390,8 +364,6 @@ enum OH_Huks_ErrCode
 **描述：**
 
 错误码。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -437,8 +409,6 @@ enum OH_Huks_TagType
 
 参数集中参数的类型。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -465,8 +435,6 @@ enum OH_Huks_UserAuthType
 
 密钥访问控制中的用户认证类型。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -486,8 +454,6 @@ enum OH_Huks_AuthAccessType
 
 安全访问控制类型，表示密钥失效的原则。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -505,8 +471,6 @@ enum OH_Huks_AuthStorageLevel
 **描述：**
 
 表示生成或导入密钥时，指定该密钥的存储安全等级。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 11
 
@@ -526,8 +490,6 @@ enum OH_Huks_UserAuthMode
 
 密钥访问控制中的用户认证模式。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -544,8 +506,6 @@ enum OH_Huks_ChallengeType
 **描述：**
 
 密钥使用时生成challenge的类型。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -570,8 +530,6 @@ enum OH_Huks_ChallengePosition
 
 challenge类型为用户自定义类型时，生成的challenge有效长度仅为8字节连续的数据，且仅支持4种位置。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -591,8 +549,6 @@ enum OH_Huks_SecureSignType
 
 生成或导入密钥时，指定该密钥的安全签名类型。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -608,8 +564,6 @@ enum OH_Huks_KeyClassType
 **描述：**
 
 密钥类型。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 22
 
@@ -628,8 +582,6 @@ enum OH_Huks_KeyWrapType
 
 生成或导入密钥时，指定该密钥的封装类型。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -645,8 +597,6 @@ enum OH_Huks_Tag
 **描述：**
 
 参数集所用的TAG值枚举。 <br>1-200：密钥参数标签值。 <br>301-500：密钥使用访问控制和使用认证相关的标签值。 <br>501-600：密钥认证相关的标签值。 <br>601-1000：其他类型的标签值预留值。 <br>1001-9999：扩展标签值。 <br>11000-12000：预留值。 <br>20001-N：其他标签预留值。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 

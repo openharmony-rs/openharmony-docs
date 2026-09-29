@@ -6,7 +6,7 @@ typedef struct ArkUI_GridItemSize {...} ArkUI_GridItemSize
 
 ## Overview
 
-Defines the return value for the **onGetIrregularSizeByIndex** callback in **Grid** layout options.
+Defines the return value for the [OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback](capi-grid-h.md#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback) callback in **Grid** layout options, which is used to specify the row span and column span for an irregular grid item at the specified index.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +22,7 @@ Defines the return value for the **onGetIrregularSizeByIndex** callback in **Gri
 
 | Name | Description |
 | -- | -- |
-| uint32_t rowSpan | Number of rows occupied by the **GridItem** component. |
-| uint32_t columnSpan | Number of columns occupied by the **GridItem** component. |
+| uint32_t rowSpan | Number of rows occupied by a grid item, which is used to set the span of the grid item in the row direction. Value range: [1, +∞). If set to **0**, the value **1** is used. In a horizontal grid layout, if the value exceeds the actual number of rows, the actual number of rows is used. |
+| uint32_t columnSpan | Number of columns occupied by a grid item, which is used to set the span of the grid item in the column direction. Value range: [1, +∞). If set to **0**, the value **1** is used. In a vertical grid layout, if the value exceeds the actual number of columns, the actual number of columns is used. |
 
 

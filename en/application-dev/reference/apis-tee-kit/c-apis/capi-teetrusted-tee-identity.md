@@ -23,6 +23,6 @@ Definitions the TEE Identity.
 | Name | Description |
 | -- | -- |
 | uint32_t login | Login method. |
-| [TEE_UUID](capi-teetrusted-tee-uuid.md) uuid | The UUID of the identity. |
+| TEE_UUID uuid | The UUID of the identity. |
 
 

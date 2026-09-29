@@ -1,7 +1,7 @@
 # Http_Buffer
 
 ```c
-typedef struct Http_Buffer {...} Http_Buffer
+struct Http_Buffer {...}
 ```
 
 ## 概述

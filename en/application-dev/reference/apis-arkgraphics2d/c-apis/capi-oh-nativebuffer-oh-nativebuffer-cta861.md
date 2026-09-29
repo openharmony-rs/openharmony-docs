@@ -1,7 +1,7 @@
 # OH_NativeBuffer_Cta861
 
 ```c
-typedef struct OH_NativeBuffer_Cta861 {...} OH_NativeBuffer_Cta861
+struct OH_NativeBuffer_Cta861 {...}
 ```
 
 ## Overview

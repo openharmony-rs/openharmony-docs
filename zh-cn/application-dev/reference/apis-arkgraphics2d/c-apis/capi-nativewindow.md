@@ -6,7 +6,7 @@
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
-**起始版本：** 12
+**起始版本：** 8
 
 ## 文件汇总
 

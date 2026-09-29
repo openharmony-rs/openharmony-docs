@@ -6,8 +6,6 @@ Declare the Native API used for querying encoding and decoding capabilities.
 
 **Library**: libnative_media_codecbase.so
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 10
 
 **Related module**: [AVCapability](capi-avcapability.md)
@@ -18,7 +16,7 @@ Declare the Native API used for querying encoding and decoding capabilities.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AVRange](capi-avcapability-oh-avrange.md) | OH_AVRange | Range contain min and max value |
+| [OH_AVRange](capi-avcapability-oh-avrange.md) | - | Range contain min and max value |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) | OH_AVCapability | Forward declaration of OH_AVCapability. |
 
 ### Enum
@@ -79,8 +77,6 @@ enum OH_AVCodecCategory
 
 The codec category
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 10
 
 | Enum item | Description |
@@ -95,8 +91,6 @@ enum OH_AVCodecType
 **Description**
 
 The codec type
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 24
 
@@ -116,8 +110,6 @@ enum OH_AVCapabilityFeature
 **Description**
 
 The enum of optional features that can be used in specific codec seenarios.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 12
 
@@ -144,8 +136,6 @@ OH_AVCapability *OH_AVCodec_GetCapability(const char *mime, bool isEncoder)
 
 Get a system-recommended codec's capability.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 10
 
 **Parameters**:
@@ -159,7 +149,7 @@ Get a system-recommended codec's capability.
 
 | Type | Description |
 | -- | -- |
-| [OH_AVCapability *](capi-avcapability-oh-avcapability.md) | Returns a capability instance if an existing codec matches,  if the specified mime type doesn't match any existing codec, returns NULL. |
+| [OH_AVCapability *](capi-avcapability-oh-avcapability.md) | Returns a capability instance if an existing codec matches, if the specified mime type doesn't match any existing codec, returns NULL. |
 
 ### OH_AVCodec_GetCapabilityByCategory()
 
@@ -170,8 +160,6 @@ OH_AVCapability *OH_AVCodec_GetCapabilityByCategory(const char *mime, bool isEnc
 **Description**
 
 Get a codec's capability within the specified category. By specifying the category, the matched codec is limited to either hardware codecs or software codecs.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -187,7 +175,7 @@ Get a codec's capability within the specified category. By specifying the catego
 
 | Type | Description |
 | -- | -- |
-| [OH_AVCapability *](capi-avcapability-oh-avcapability.md) | Returns a capability instance if an existing codec matches,  if the specified mime type doesn't match any existing codec, returns NULL |
+| [OH_AVCapability *](capi-avcapability-oh-avcapability.md) | Returns a capability instance if an existing codec matches, if the specified mime type doesn't match any existing codec, returns NULL |
 
 ### OH_AVCodec_GetCapabilityList()
 
@@ -203,8 +191,6 @@ Obtains a list of codec capabilities for a specified codec type.<br> This functi
 >
 > The memory for the codec capability list is managed internally. Developers MUST NOT manually allocate or free this memory.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 24
 
 **Parameters**:
@@ -218,7 +204,7 @@ Obtains a list of codec capabilities for a specified codec type.<br> This functi
 
 | Type | Description |
 | -- | -- |
-| [OH_AVCapability **](capi-avcapability-oh-avcapability.md) | Returns a pointer to an array of [OH_AVCapability](capi-avcapability-oh-avcapability.md) instances if matches are found;          returns NULL if no matching codecs are found or if an error occurs. |
+| [OH_AVCapability **](capi-avcapability-oh-avcapability.md) | Returns a pointer to an array of [OH_AVCapability](capi-avcapability-oh-avcapability.md) instances if matches are found; returns NULL if no matching codecs are found or if an error occurs. |
 
 ### OH_AVCapability_IsHardware()
 
@@ -229,8 +215,6 @@ bool OH_AVCapability_IsHardware(OH_AVCapability *capability)
 **Description**
 
 Check if the capability instance is describing a hardware codec.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -244,7 +228,7 @@ Check if the capability instance is describing a hardware codec.
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the capability instance is describing a hardware codec,  false if the capability instance is describing a software codec |
+| bool | Returns true if the capability instance is describing a hardware codec, false if the capability instance is describing a software codec |
 
 ### OH_AVCapability_IsSecure()
 
@@ -255,8 +239,6 @@ bool OH_AVCapability_IsSecure(OH_AVCapability *capability)
 **Description**
 
 Check if the capability instance is describing a secure codec.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 24
 
@@ -270,7 +252,7 @@ Check if the capability instance is describing a secure codec.
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the capability instance is describing a secure codec,  false if the capability instance is describing a non-secure codec |
+| bool | Returns true if the capability instance is describing a secure codec, false if the capability instance is describing a non-secure codec |
 
 ### OH_AVCapability_GetName()
 
@@ -281,8 +263,6 @@ const char *OH_AVCapability_GetName(OH_AVCapability *capability)
 **Description**
 
 Get the codec name.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -308,8 +288,6 @@ const char *OH_AVCapability_GetMimeType(OH_AVCapability *capability)
 
 Get the codec mime type.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 24
 
 **Parameters**:
@@ -333,8 +311,6 @@ bool OH_AVCapability_CheckMimeType(OH_AVCapability *capability, const char *mime
 **Description**
 
 Check if the mime type of the codec of the capability matches the specified mime type.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 24
 
@@ -361,8 +337,6 @@ int32_t OH_AVCapability_GetMaxSupportedInstances(OH_AVCapability *capability)
 
 Get the supported max instance number of the codec.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 10
 
 **Parameters**:
@@ -387,8 +361,6 @@ OH_AVErrCode OH_AVCapability_GetEncoderBitrateRange(OH_AVCapability *capability,
 
 Get the encoder's supported bitrate range.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 10
 
 **Parameters**:
@@ -402,7 +374,7 @@ Get the encoder's supported bitrate range.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the bitrateRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the bitrateRange is nullptr. |
 
 ### OH_AVCapability_IsEncoderBitrateModeSupported()
 
@@ -414,8 +386,6 @@ bool OH_AVCapability_IsEncoderBitrateModeSupported(OH_AVCapability *capability, 
 
 Check if the encoder supports the specific bitrate mode.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 10
 
 **Parameters**:
@@ -423,7 +393,7 @@ Check if the encoder supports the specific bitrate mode.
 | Parameter | Description |
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Encoder capability pointer. If a decoder capability pointer is given, undefined behavior occurs |
-| OH_BitrateMode bitrateMode | Bitrate mode |
+| [OH_BitrateMode](capi-native-avcodec-base-h.md#oh_bitratemode) bitrateMode | Bitrate mode |
 
 **Returns**:
 
@@ -441,8 +411,6 @@ OH_AVErrCode OH_AVCapability_GetEncoderQualityRange(OH_AVCapability *capability,
 
 Get the encoder's supported quality range.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 10
 
 **Parameters**:
@@ -456,7 +424,7 @@ Get the encoder's supported quality range.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the qualityRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the qualityRange is nullptr. |
 
 ### OH_AVCapability_GetEncoderComplexityRange()
 
@@ -467,8 +435,6 @@ OH_AVErrCode OH_AVCapability_GetEncoderComplexityRange(OH_AVCapability *capabili
 **Description**
 
 Get the encoder's supported encoder complexity range.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -483,7 +449,7 @@ Get the encoder's supported encoder complexity range.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the complexityRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the complexityRange is nullptr. |
 
 ### OH_AVCapability_GetAudioSupportedSampleRates()
 
@@ -494,8 +460,6 @@ OH_AVErrCode OH_AVCapability_GetAudioSupportedSampleRates(OH_AVCapability *capab
 **Description**
 
 Get the audio codec's supported sample rates.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -511,7 +475,7 @@ Get the audio codec's supported sample rates.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the sampleRates is nullptr, or sampleRateNum is nullptr.  [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error.  [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the sampleRates is nullptr, or sampleRateNum is nullptr. [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error. [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
 
 ### OH_AVCapability_GetAudioSupportedSampleRateRanges()
 
@@ -522,8 +486,6 @@ OH_AVErrCode OH_AVCapability_GetAudioSupportedSampleRateRanges(OH_AVCapability *
 **Description**
 
 Get the audio codec's supported sample rate ranges.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 20
 
@@ -539,7 +501,7 @@ Get the audio codec's supported sample rate ranges.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the sampleRateRanges is nullptr, or rangesNum is nullptr.  [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error.  [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the sampleRateRanges is nullptr, or rangesNum is nullptr. [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error. [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
 
 ### OH_AVCapability_GetAudioChannelCountRange()
 
@@ -550,8 +512,6 @@ OH_AVErrCode OH_AVCapability_GetAudioChannelCountRange(OH_AVCapability *capabili
 **Description**
 
 Get the audio codec's supported audio channel count range.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -566,7 +526,7 @@ Get the audio codec's supported audio channel count range.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the channelCountRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the channelCountRange is nullptr. |
 
 ### OH_AVCapability_GetVideoWidthAlignment()
 
@@ -577,8 +537,6 @@ OH_AVErrCode OH_AVCapability_GetVideoWidthAlignment(OH_AVCapability *capability,
 **Description**
 
 Get the video codec's supported video width alignment.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -593,7 +551,7 @@ Get the video codec's supported video width alignment.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the widthAlignment is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the widthAlignment is nullptr. |
 
 ### OH_AVCapability_GetVideoHeightAlignment()
 
@@ -604,8 +562,6 @@ OH_AVErrCode OH_AVCapability_GetVideoHeightAlignment(OH_AVCapability *capability
 **Description**
 
 Get the video codec's supported video height alignment.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -620,7 +576,7 @@ Get the video codec's supported video height alignment.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the heightAlignment is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the heightAlignment is nullptr. |
 
 ### OH_AVCapability_GetVideoWidthRangeForHeight()
 
@@ -631,8 +587,6 @@ OH_AVErrCode OH_AVCapability_GetVideoWidthRangeForHeight(OH_AVCapability *capabi
 **Description**
 
 Get the video codec's supported video width range for a specific height.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -648,7 +602,7 @@ Get the video codec's supported video width range for a specific height.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the height is not within the supported range  obtained through [OH_AVCapability_GetVideoHeightRange](capi-native-avcapability-h.md#oh_avcapability_getvideoheightrange), or the widthRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the height is not within the supported range obtained through [OH_AVCapability_GetVideoHeightRange](capi-native-avcapability-h.md#oh_avcapability_getvideoheightrange), or the widthRange is nullptr. |
 
 ### OH_AVCapability_GetVideoHeightRangeForWidth()
 
@@ -659,8 +613,6 @@ OH_AVErrCode OH_AVCapability_GetVideoHeightRangeForWidth(OH_AVCapability *capabi
 **Description**
 
 Get the video codec's supported video height range for a specific width.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -676,7 +628,7 @@ Get the video codec's supported video height range for a specific width.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the width is not within the supported range  obtained through [OH_AVCapability_GetVideoWidthRange](capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange), or the heightRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the width is not within the supported range obtained through [OH_AVCapability_GetVideoWidthRange](capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange), or the heightRange is nullptr. |
 
 ### OH_AVCapability_GetVideoWidthRange()
 
@@ -687,8 +639,6 @@ OH_AVErrCode OH_AVCapability_GetVideoWidthRange(OH_AVCapability *capability, OH_
 **Description**
 
 Get the video codec's supported video width range.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -703,7 +653,7 @@ Get the video codec's supported video width range.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the widthRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the widthRange is nullptr. |
 
 ### OH_AVCapability_GetVideoHeightRange()
 
@@ -714,8 +664,6 @@ OH_AVErrCode OH_AVCapability_GetVideoHeightRange(OH_AVCapability *capability, OH
 **Description**
 
 Get the video codec's supported video height range.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -730,7 +678,7 @@ Get the video codec's supported video height range.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the heightRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the heightRange is nullptr. |
 
 ### OH_AVCapability_IsVideoSizeSupported()
 
@@ -741,8 +689,6 @@ bool OH_AVCapability_IsVideoSizeSupported(OH_AVCapability *capability, int32_t w
 **Description**
 
 Check if the video codec supports the specific video size.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -770,8 +716,6 @@ OH_AVErrCode OH_AVCapability_GetVideoFrameRateRange(OH_AVCapability *capability,
 
 Get the video codec's supported video frame rate range.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 10
 
 **Parameters**:
@@ -785,7 +729,7 @@ Get the video codec's supported video frame rate range.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the frameRateRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, or the frameRateRange is nullptr. |
 
 ### OH_AVCapability_GetVideoFrameRateRangeForSize()
 
@@ -796,8 +740,6 @@ OH_AVErrCode OH_AVCapability_GetVideoFrameRateRangeForSize(OH_AVCapability *capa
 **Description**
 
 Get the Video codec's supported video frame rate range for a specified video size.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -814,7 +756,7 @@ Get the Video codec's supported video frame rate range for a specified video siz
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the combination of width and height is  not supported, or the frameRateRange is nullptr. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the combination of width and height is not supported, or the frameRateRange is nullptr. |
 
 ### OH_AVCapability_AreVideoSizeAndFrameRateSupported()
 
@@ -825,8 +767,6 @@ bool OH_AVCapability_AreVideoSizeAndFrameRateSupported(OH_AVCapability *capabili
 **Description**
 
 Check if the video codec supports the specific combination of video size and frame rate.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -843,7 +783,7 @@ Check if the video codec supports the specific combination of video size and fra
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the combination of video size and frame rate is supported,  false if it is not supported |
+| bool | Returns true if the combination of video size and frame rate is supported, false if it is not supported |
 
 ### OH_AVCapability_GetVideoSupportedPixelFormats()
 
@@ -854,8 +794,6 @@ OH_AVErrCode OH_AVCapability_GetVideoSupportedPixelFormats(OH_AVCapability *capa
 **Description**
 
 Get the video codec's supported video pixel format.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -871,7 +809,7 @@ Get the video codec's supported video pixel format.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the pixelFormats is nullptr,  or the pixelFormatNum is nullptr.  [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error.  [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the pixelFormats is nullptr, or the pixelFormatNum is nullptr. [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error. [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
 
 ### OH_AVCapability_GetVideoSupportedNativeBufferFormats()
 
@@ -883,8 +821,6 @@ OH_AVErrCode OH_AVCapability_GetVideoSupportedNativeBufferFormats(OH_AVCapabilit
 
 Get the native buffer formats supported by the video codec.<br> This function provides information about the native buffer formats that the video codec can handle.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 22
 
 **Parameters**:
@@ -892,14 +828,14 @@ Get the native buffer formats supported by the video codec.<br> This function pr
 | Parameter | Description |
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | A pointer to a valid video codec capability instance. |
-| const OH_NativeBuffer_Format **nativeBufferFormats | Output parameter. A pointer to the native buffer format array, refer to {@link OH_NativeBuffer_Format} |
+| [const OH_NativeBuffer_Format](../../apis-arkgraphics2d/c-apis/capi-buffer-common-h.md#oh_nativebuffer_format) **nativeBufferFormats | Output parameter. A pointer to the native buffer format array, refer to [OH_NativeBuffer_Format](../../apis-arkgraphics2d/c-apis/capi-buffer-common-h.md#oh_nativebuffer_format) |
 | uint32_t *nativeBufferFormatNum | Output parameter. The element number of the native buffer format array |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the capability is an audio codec capability pointer,  the nativeBufferFormats is nullptr, or the nativeBufferFormatNum is nullptr.  [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error.  [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the capability is an audio codec capability pointer, the nativeBufferFormats is nullptr, or the nativeBufferFormatNum is nullptr. [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error. [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
 
 ### OH_AVCapability_GetSupportedProfiles()
 
@@ -910,8 +846,6 @@ OH_AVErrCode OH_AVCapability_GetSupportedProfiles(OH_AVCapability *capability, c
 **Description**
 
 Get the codec's supported profiles.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -927,7 +861,7 @@ Get the codec's supported profiles.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the profiles is nullptr, or the profileNum is nullptr.  [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error.  [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the profiles is nullptr, or the profileNum is nullptr. [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error. [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
 
 ### OH_AVCapability_GetSupportedLevelsForProfile()
 
@@ -938,8 +872,6 @@ OH_AVErrCode OH_AVCapability_GetSupportedLevelsForProfile(OH_AVCapability *capab
 **Description**
 
 Get codec's supported levels for a specific profile.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -956,7 +888,7 @@ Get codec's supported levels for a specific profile.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Returns AV_ERR_OK if the execution is successful,  otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)  [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the profile is not within the supported profile array  obtained through [OH_AVCapability_GetSupportedProfiles](capi-native-avcapability-h.md#oh_avcapability_getsupportedprofiles), the levels is nullptr, or the levelNum is nullptr.  [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error.  [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | Returns AV_ERR_OK if the execution is successful, otherwise returns a specific error code, refer to [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), the capability is invalid, the profile is not within the supported profile array obtained through [OH_AVCapability_GetSupportedProfiles](capi-native-avcapability-h.md#oh_avcapability_getsupportedprofiles), the levels is nullptr, or the levelNum is nullptr. [AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), unknown error. [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode), internal use memory malloc failed. |
 
 ### OH_AVCapability_AreProfileAndLevelSupported()
 
@@ -967,8 +899,6 @@ bool OH_AVCapability_AreProfileAndLevelSupported(OH_AVCapability *capability, in
 **Description**
 
 Check if the codec supports the specific combination of the profile and level.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 10
 
@@ -984,7 +914,7 @@ Check if the codec supports the specific combination of the profile and level.
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the combination of profile and level is supported,  false if it is not supported |
+| bool | Returns true if the combination of profile and level is supported, false if it is not supported |
 
 ### OH_AVCapability_IsFeatureSupported()
 
@@ -995,8 +925,6 @@ bool OH_AVCapability_IsFeatureSupported(OH_AVCapability *capability, OH_AVCapabi
 **Description**
 
 Check if the codec supports the specified feature.
-
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 12
 
@@ -1023,8 +951,6 @@ OH_AVFormat *OH_AVCapability_GetFeatureProperties(OH_AVCapability *capability, O
 
 Get the properties of the specified feature. It should be noted that the life cycle of the OH_AVFormat instance pointed to by the return value * needs to be manually released by the caller.
 
-**System capability**: SystemCapability.Multimedia.Media.CodecBase
-
 **Since**: 12
 
 **Parameters**:
@@ -1038,6 +964,6 @@ Get the properties of the specified feature. It should be noted that the life cy
 
 | Type | Description |
 | -- | -- |
-| OH_AVFormat * | Returns a pointer to an OH_AVFormat instance |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance |
 
 

@@ -1,7 +1,7 @@
 # MetadataOutput_Callbacks
 
 ```c
-typedef struct MetadataOutput_Callbacks {...} MetadataOutput_Callbacks
+struct MetadataOutput_Callbacks {...}
 ```
 
 ## Overview

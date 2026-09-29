@@ -6,9 +6,7 @@ The file declares the APIs related to moving photos. You can use the APIs to obt
 
 **Library**: libmedia_asset_manager.so
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since**: 12
+**Since**: 13
 
 **Related module**: [MediaAssetManager](capi-mediaassetmanager.md)
 
@@ -36,22 +34,20 @@ MediaLibrary_ErrorCode OH_MovingPhoto_GetUri(OH_MovingPhoto* movingPhoto, const 
 
 Obtains the URI of a moving photo.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MovingPhoto* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
+| [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
 | const char** uri | Double pointer to the URI of the moving photo obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
 
 ### OH_MovingPhoto_RequestContentWithUris()
 
@@ -63,8 +59,6 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* mov
 
 Requests the image data and video data of a moving photo and writes them to the specified URIs, respectively.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 13
@@ -73,7 +67,7 @@ Requests the image data and video data of a moving photo and writes them to the 
 
 | Parameter | Description |
 | -- | -- |
-| OH_MovingPhoto* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
+| [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
 | char* imageUri | Pointer to the URI of the file, to which the image data is written. |
 | char* videoUri | Pointer to the URI of the file, to which the video data is written. |
 
@@ -81,7 +75,7 @@ Requests the image data and video data of a moving photo and writes them to the 
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
 
 ### OH_MovingPhoto_RequestContentWithUri()
 
@@ -93,8 +87,6 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUri(OH_MovingPhoto* movi
 
 Requests the moving photo content of the specified resource type and writes it to the specified URI.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 13
@@ -103,15 +95,15 @@ Requests the moving photo content of the specified resource type and writes it t
 
 | Parameter | Description |
 | -- | -- |
-| OH_MovingPhoto* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
-| MediaLibrary_ResourceType resourceType | Resource type, which is specified by [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype). |
+| [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
+| [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype) resourceType | Resource type, which is specified by [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype). |
 | char* uri | Pointer to the URI of the file, to which the data is written. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
 
 ### OH_MovingPhoto_RequestContentWithBuffer()
 
@@ -123,8 +115,6 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithBuffer(OH_MovingPhoto* m
 
 Requests the moving photo content of the specified resource type and returns it in ArrayBuffer format.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 13
@@ -133,8 +123,8 @@ Requests the moving photo content of the specified resource type and returns it 
 
 | Parameter | Description |
 | -- | -- |
-| OH_MovingPhoto* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
-| MediaLibrary_ResourceType resourceType | Resource type, which is specified by [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype). |
+| [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
+| [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype) resourceType | Resource type, which is specified by [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype). |
 | const uint8_t** buffer | Double pointer to the buffer for storing the target file data. |
 | uint32_t* size | Pointer to the buffer size. |
 
@@ -142,7 +132,7 @@ Requests the moving photo content of the specified resource type and returns it 
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
 
 ### OH_MovingPhoto_Release()
 
@@ -154,20 +144,18 @@ MediaLibrary_ErrorCode OH_MovingPhoto_Release(OH_MovingPhoto* movingPhoto)
 
 Releases an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MovingPhoto* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
+| [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 

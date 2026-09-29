@@ -18,24 +18,10 @@ typedef struct ffrt_cond_t {...} ffrt_cond_t
 
 ## 汇总
 
-### 成员函数
+### 成员变量
 
 | 名称 | 描述 |
 | -- | -- |
-| [uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]](#sizeof) | 条件变量的内部存储。请勿直接访问，通过`ffrt_cond_*`等接口管理。 |
-
-## 成员函数说明
-
-### sizeof()
-
-```c
-uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]
-```
-
-**描述：**
-
-条件变量的内部存储。请勿直接访问，通过`ffrt_cond_*`等接口管理。
-
-**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+| uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | 条件变量的内部存储。请勿直接访问，通过`ffrt_cond_*`等接口管理。 |
 
 

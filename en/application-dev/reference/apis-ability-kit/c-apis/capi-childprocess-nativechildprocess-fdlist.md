@@ -1,7 +1,7 @@
 # NativeChildProcess_FdList
 
 ```c
-typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
+struct NativeChildProcess_FdList {...}
 ```
 
 ## Overview
@@ -22,6 +22,6 @@ The struct describes a list of file descriptors passed to the child process. The
 
 | Name | Description |
 | -- | -- |
-| struct [NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head |  |
+| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head |  |
 
 

@@ -4,6 +4,8 @@
 
 Provides APIs related to MindSpore Lite model inference.
 
+**System capability**: Syscap SystemCapability.Ai.MindSpore
+
 **Since**: 9
 
 ## Files

@@ -8,8 +8,6 @@ Declaration error code information.
 
 **Library**: libpasteboard.so
 
-**System capability**: SystemCapability.MiscServices.Pasteboard
-
 **Since**: 13
 
 **Related module**: [Pasteboard](capi-pasteboard.md)
@@ -34,21 +32,19 @@ enum PASTEBOARD_ErrCode
 
 Enumerates the error codes.
 
-**System capability**: SystemCapability.MiscServices.Pasteboard
-
 **Since**: 13
 
 | Enum item | Description |
 | -- | -- |
-| ERR_OK = 0 | The operation is successful. |
-| ERR_PERMISSION_ERROR = 201 | Permission verification failed. |
-| ERR_INVALID_PARAMETER = 401 | Invalid parameter is detected. |
-| ERR_DEVICE_NOT_SUPPORTED = 801 | The capability is not supported. |
-| ERR_INNER_ERROR = 12900000 | Inner error. |
-| ERR_BUSY = 12900003 | Another copy is in progress. |
-| ERR_PASTEBOARD_COPY_FILE_ERROR = 12900007 |  Copy file failed.<br>**Since**: 15 |
-| ERR_PASTEBOARD_PROGRESS_START_ERROR = 12900008 |  Failed to start progress.<br>**Since**: 15 |
-| ERR_PASTEBOARD_PROGRESS_ABNORMAL = 12900009 |  Progress exits abnormally.<br>**Since**: 15 |
-| ERR_PASTEBOARD_GET_DATA_FAILED = 12900010 |  Get Data failed.<br>**Since**: 15 |
+| ERR_OK = 0 | &nbsp;The operation is successful. |
+| ERR_PERMISSION_ERROR = 201 | &nbsp;Permission verification failed. |
+| ERR_INVALID_PARAMETER = 401 | &nbsp;Invalid parameter is detected. |
+| ERR_DEVICE_NOT_SUPPORTED = 801 | &nbsp;The capability is not supported. |
+| ERR_INNER_ERROR = 12900000 | &nbsp;Inner error. |
+| ERR_BUSY = 12900003 | &nbsp;Another copy is in progress. |
+| ERR_PASTEBOARD_COPY_FILE_ERROR = 12900007 | &nbsp;Copy file failed.<br>**Since**: 15 |
+| ERR_PASTEBOARD_PROGRESS_START_ERROR = 12900008 | &nbsp;Failed to start progress.<br>**Since**: 15 |
+| ERR_PASTEBOARD_PROGRESS_ABNORMAL = 12900009 | &nbsp;Progress exits abnormally.<br>**Since**: 15 |
+| ERR_PASTEBOARD_GET_DATA_FAILED = 12900010 | &nbsp;Get Data failed.<br>**Since**: 15 |
 
 

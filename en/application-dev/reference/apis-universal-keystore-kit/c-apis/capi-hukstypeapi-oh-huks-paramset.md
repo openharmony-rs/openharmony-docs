@@ -1,7 +1,7 @@
 # OH_Huks_ParamSet
 
 ```c
-typedef struct OH_Huks_ParamSet {...} OH_Huks_ParamSet
+struct OH_Huks_ParamSet {...}
 ```
 
 ## Overview
@@ -24,6 +24,6 @@ Defines the struct of a parameter set.
 | -- | -- |
 | uint32_t paramSetSize | Memory size of the parameter set. |
 | uint32_t paramsCnt | Number of parameters in the parameter set. |
-| struct [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) params[] | Parameter array. |
+| [struct OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) params[] | Parameter array. |
 
 

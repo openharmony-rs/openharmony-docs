@@ -1,12 +1,12 @@
 # NativeWindow
 
 ```c
-typedef struct NativeWindow OHNativeWindow
+struct NativeWindow
 ```
 
 ## 概述
 
-定义结构体NativeWindow的新类型名OHNativeWindow。
+提供对OHNativeWindow的访问功能。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 

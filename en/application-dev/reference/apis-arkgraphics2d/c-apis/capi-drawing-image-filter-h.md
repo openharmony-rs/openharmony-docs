@@ -6,9 +6,7 @@ This file declares the functions related to the image filter in the drawing modu
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
-**Since**: 8
+**Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
 
@@ -37,8 +35,6 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sig
 
 Creates an image filter with a given blur effect.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
@@ -47,14 +43,14 @@ Creates an image filter with a given blur effect.
 | -- | -- |
 | float sigmaX | Standard deviation of the Gaussian blur to apply along the X axis. The value must be greater than 0. |
 | float sigmaY | Standard deviation of the Gaussian blur to apply along the Y axis. The value must be greater than 0. |
-| OH_Drawing_TileMode tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) . |
+| [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) . |
 | OH_Drawing_ImageFilter* imageFilter | Pointer to the filter to which the image filter will be applied. If NULL is passed in, the image filter is directly applied to the original image. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ImageFilter* | Returns the pointer to the <b>OH_Drawing_ImageFilter</b> object created.  If nullptr is returned, the creation fails.  The possible cause of the failure is that the available memory is empty. |
+| OH_Drawing_ImageFilter* | Returns the pointer to the <b>OH_Drawing_ImageFilter</b> object created. If nullptr is returned, the creation fails. The possible cause of the failure is that the available memory is empty. |
 
 ### OH_Drawing_ImageFilterCreateBlurWithCrop()
 
@@ -66,8 +62,6 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, f
 
 Creates an image filter with a given blur effect.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 20
 
 **Parameters**:
@@ -76,7 +70,7 @@ Creates an image filter with a given blur effect.
 | -- | -- |
 | float sigmaX | Standard deviation of the Gaussian blur to apply along the X axis. The value must be greater than 0.0. |
 | float sigmaY | Standard deviation of the Gaussian blur to apply along the Y axis. The value must be greater than 0.0. |
-| OH_Drawing_TileMode tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) . |
+| [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) . |
 | OH_Drawing_ImageFilter* input | Pointer to the filter to which the image filter will be applied. If NULL is passed in, the image filter is directly applied to the original image. |
 | const OH_Drawing_Rect* rect | Pointer to the rectangular region to be cropped. If NULL is passed in, the blur effect is directly applied to the entire image. |
 
@@ -96,8 +90,6 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_C
 
 Creates an **OH_Drawing_ImageFilter** object with a color filter effect. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **colorFilter** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER**<br>is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
@@ -111,7 +103,7 @@ Creates an **OH_Drawing_ImageFilter** object with a color filter effect. This AP
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ImageFilter* | Returns the pointer to the <b>OH_Drawing_ImageFilter</b> object created.  If nullptr is returned, the creation fails.  The possible cause of the failure is that the available memory is empty or  a nullptr <b>OH_Drawing_ColorFilter</b> is passed. |
+| OH_Drawing_ImageFilter* | Returns the pointer to the <b>OH_Drawing_ImageFilter</b> object created. If nullptr is returned, the creation fails. The possible cause of the failure is that the available memory is empty or a nullptr <b>OH_Drawing_ColorFilter</b> is passed. |
 
 ### OH_Drawing_ImageFilterCreateOffset()
 
@@ -122,8 +114,6 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_
 **Description**
 
 Creates an offset filter to translate the input filter based on the specified vector.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -139,7 +129,7 @@ Creates an offset filter to translate the input filter based on the specified ve
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ImageFilter* | Returns the pointer to the <b>OH_Drawing_ImageFilter</b> object created.  If nullptr is returned, the creation fails.  The possible cause of the failure is that the available memory is empty. |
+| OH_Drawing_ImageFilter* | Returns the pointer to the <b>OH_Drawing_ImageFilter</b> object created. If nullptr is returned, the creation fails. The possible cause of the failure is that the available memory is empty. |
 
 ### OH_Drawing_ImageFilterCreateFromShaderEffect()
 
@@ -150,8 +140,6 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_
 **Description**
 
 Creates an **ImageFilter** object based on a shader.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -165,7 +153,7 @@ Creates an **ImageFilter** object based on a shader.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ImageFilter* | Returns the pointer to the <b>OH_Drawing_ImageFilter</b> object created.  If nullptr is returned, the creation fails.  The possible cause of the failure is that the available memory is empty or  a nullptr <b>OH_Drawing_ShaderEffect</b> is passed. |
+| OH_Drawing_ImageFilter* | Returns the pointer to the <b>OH_Drawing_ImageFilter</b> object created. If nullptr is returned, the creation fails. The possible cause of the failure is that the available memory is empty or a nullptr <b>OH_Drawing_ShaderEffect</b> is passed. |
 
 ### OH_Drawing_ImageFilterDestroy()
 
@@ -176,8 +164,6 @@ void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)
 **Description**
 
 Destroys an **OH_Drawing_ImageFilter** object and reclaims the memory occupied by the object.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 

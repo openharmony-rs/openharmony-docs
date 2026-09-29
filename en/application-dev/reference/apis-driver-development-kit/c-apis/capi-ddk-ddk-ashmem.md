@@ -1,12 +1,12 @@
 # DDK_Ashmem
 
 ```c
-typedef struct DDK_Ashmem {...} DDK_Ashmem
+struct DDK_Ashmem {...}
 ```
 
 ## Overview
 
-Device memory map created by calling {@link OH_DDK_CreateAshmem}. A buffer using the device memory map can provide better performance.
+Device memory map created by calling OH_DDK_CreateAshmem. A buffer using the device memory map can provide better performance.
 
 **System capability**: SystemCapability.Driver.DDK.Extension
 

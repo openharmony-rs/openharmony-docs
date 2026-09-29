@@ -1,7 +1,7 @@
 # VkExternalFormatOHOS
 
 ```c
-typedef struct VkExternalFormatOHOS {...} VkExternalFormatOHOS
+struct VkExternalFormatOHOS {...}
 ```
 
 ## Overview

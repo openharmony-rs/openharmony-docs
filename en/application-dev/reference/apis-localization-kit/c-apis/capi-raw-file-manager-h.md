@@ -6,8 +6,6 @@ This module allows you to create and release `NativeResourceManager` objects, an
 
 **Library**: librawfile.z.so
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 8
 
 **Related module**: [rawfile](capi-rawfile.md)
@@ -18,7 +16,7 @@ This module allows you to create and release `NativeResourceManager` objects, an
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) | NativeResourceManager | Represents a `ResourceManager` object at the Native layer. `NativeResourceManager` encapsulates the Native implementation of JavaScript ResourceManager, and can be obtained through {@link OH_ResourceManager_InitNativeResourceManager}. |
+| [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) | NativeResourceManager | Represents a `ResourceManager` object at the Native layer. `NativeResourceManager` encapsulates the Native implementation of JavaScript ResourceManager, and can be obtained through [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager). |
 
 ### Macro
 
@@ -49,8 +47,6 @@ NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env
 
 Initializes a `NativeResourceManager` object.
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 8
 
 **Parameters**:
@@ -64,7 +60,7 @@ Initializes a `NativeResourceManager` object.
 
 | Type | Description |
 | -- | -- |
-| [NativeResourceManager *](capi-rawfile-nativeresourcemanager.md) | Pointer to the `NativeResourceManager` object. If the initialization fails, `NULL` is returned. The possible      cause is that the `env` or `jsResMgr` parameter is invalid.      <br>The memory is allocated by this function and must be released through      [OH_ResourceManager_ReleaseNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_releasenativeresourcemanager) after use. |
+| [NativeResourceManager *](capi-rawfile-nativeresourcemanager.md) | Pointer to the `NativeResourceManager` object. If the initialization fails, `NULL` is returned. The possible cause is that the `env` or `jsResMgr` parameter is invalid. <br>The memory is allocated by this function and must be released through [OH_ResourceManager_ReleaseNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_releasenativeresourcemanager) after use. |
 
 ### OH_ResourceManager_ReleaseNativeResourceManager()
 
@@ -75,8 +71,6 @@ void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resM
 **Description**
 
 Releases a `NativeResourceManager` object and its associated resources.
-
-**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 
@@ -96,8 +90,6 @@ RawDir *OH_ResourceManager_OpenRawDir(const NativeResourceManager *mgr, const ch
 
 Opens the `rawfile` directory.
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 8
 
 **Parameters**:
@@ -111,7 +103,7 @@ Opens the `rawfile` directory.
 
 | Type | Description |
 | -- | -- |
-| RawDir * | Pointer to the `RawDir` object. If the call fails or `mgr` is null, `NULL` is returned. After use, call      [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) to release it. |
+| [RawDir *](capi-rawfile-rawdir.md) | Pointer to the `RawDir` object. If the call fails or `mgr` is null, `NULL` is returned. After use, call [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) to release it. |
 
 **Reference**:
 
@@ -129,8 +121,6 @@ RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const 
 
 Opens a rawfile and returns a `RawFile` object for reading the rawfile content.
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 8
 
 **Parameters**:
@@ -144,7 +134,7 @@ Opens a rawfile and returns a `RawFile` object for reading the rawfile content.
 
 | Type | Description |
 | -- | -- |
-| RawFile * | Pointer to the `RawFile` object. If the call fails or the input parameter is null, `NULL` is returned. After      use, call [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile) to release it. |
+| [RawFile *](capi-rawfile-rawfile.md) | Pointer to the `RawFile` object. If the call fails or the input parameter is null, `NULL` is returned. After use, call [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile) to release it. |
 
 **Reference**:
 
@@ -162,8 +152,6 @@ RawFile64 *OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, co
 
 Opens a rawfile and returns a `RawFile` object for reading the rawfile content. Files larger than 2 GB are supported.
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 11
 
 **Parameters**:
@@ -177,7 +165,7 @@ Opens a rawfile and returns a `RawFile` object for reading the rawfile content. 
 
 | Type | Description |
 | -- | -- |
-| RawFile64 * | Pointer to the `RawFile` object. If the call fails or the input parameter is null, `NULL` is returned. After      use, call [OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64) to release it. |
+| [RawFile64 *](capi-rawfile-rawfile64.md) | Pointer to the `RawFile` object. If the call fails or the input parameter is null, `NULL` is returned. After use, call [OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64) to release it. |
 
 **Reference**:
 
@@ -195,8 +183,6 @@ bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *p
 
 Checks whether the specified path is a subdirectory of `rawfile`. It is used to determine whether the specified path is a directory before traversing it, or whether the specified path is a file before opening it.
 
-**System capability**: SystemCapability.Global.ResourceManager
-
 **Since**: 12
 
 **Parameters**:
@@ -210,6 +196,6 @@ Checks whether the specified path is a subdirectory of `rawfile`. It is used to 
 
 | Type | Description |
 | -- | -- |
-| bool | true if the path is a subdirectory in the rawfile directory; false otherwise. |
+| bool | **true** if the path is a subdirectory in the **rawfile** directory; **false** otherwise. |
 
 

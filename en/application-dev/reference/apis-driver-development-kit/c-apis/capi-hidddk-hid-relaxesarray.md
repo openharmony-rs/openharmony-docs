@@ -1,7 +1,7 @@
 # Hid_RelAxesArray
 
 ```c
-typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
+struct Hid_RelAxesArray {...}
 ```
 
 ## Overview
@@ -22,7 +22,7 @@ Defines an array of relative coordinates.
 
 | Name | Description |
 | -- | -- |
-| [Hid_RelAxes](capi-hid-ddk-types-h.md#hid_relaxes) *hidRelAxes | Array of relative coordinates. |
+| Hid_RelAxes *hidRelAxes | Array of relative coordinates. |
 | uint16_t length | Valid length of an array. |
 
 

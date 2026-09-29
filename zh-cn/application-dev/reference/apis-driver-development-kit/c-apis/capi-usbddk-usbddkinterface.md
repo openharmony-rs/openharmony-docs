@@ -1,7 +1,7 @@
 # UsbDdkInterface
 
 ```c
-typedef struct UsbDdkInterface {...} UsbDdkInterface
+struct UsbDdkInterface {...}
 ```
 
 ## 概述
@@ -23,6 +23,6 @@ USB接口，是特定接口下备用设置的集合。
 | 名称 | 描述 |
 | -- | -- |
 | uint8_t numAltsetting | USB接口的备用设置数量。 |
-| struct [UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) *altsetting | USB接口的备用设置数组的指针，数组的长度由numAltsetting指定。 |
+| struct UsbDdkInterfaceDescriptor *altsetting | USB接口的备用设置数组的指针，数组的长度由numAltsetting指定。 |
 
 

@@ -1,7 +1,7 @@
 # OH_NativeXComponent_MouseEvent_Callback
 
 ```c
-typedef struct OH_NativeXComponent_MouseEvent_Callback {...} OH_NativeXComponent_MouseEvent_Callback
+struct OH_NativeXComponent_MouseEvent_Callback {...}
 ```
 
 ## 概述
@@ -43,7 +43,7 @@ void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向{@link OH_NativeXComponent}实例的指针。 |
+| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 |  void* window | 表示触发鼠标事件时关联的NativeWindow句柄。 |
 
 ### DispatchHoverEvent()
@@ -62,7 +62,7 @@ void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向{@link OH_NativeXComponent}实例的指针。 |
+| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 |  bool isHover | 表示鼠标或手写笔是否悬停在组件上，进入时为true，离开时为false。 |
 
 

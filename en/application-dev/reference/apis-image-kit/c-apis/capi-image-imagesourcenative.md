@@ -1,0 +1,18 @@
+# ImageSourceNative
+
+```c
+typedef struct ImageSourceNative ImageSourceNative
+```
+
+## Overview
+
+Defines a native image source object for the image source APIs.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Since**: 10
+
+**Related module**: [Image](capi-image.md)
+
+**Header file**: [image_source_mdk.h](capi-image-source-mdk-h.md)
+

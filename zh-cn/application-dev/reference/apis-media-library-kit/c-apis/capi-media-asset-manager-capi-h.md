@@ -6,8 +6,6 @@
 
 **库：** libmedia_asset_manager.so
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **起始版本：** 12
 
 **相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)
@@ -39,15 +37,13 @@ OH_MediaAssetManager* OH_MediaAssetManager_Create(void)
 
 创建一个媒体资产管理器。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **起始版本：** 12
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_MediaAssetManager* | 返回一个指向OH_MediaAssetManager实例的指针。 |
+| [OH_MediaAssetManager*](capi-mediaassetmanager-oh-mediaassetmanager.md) | 返回一个指向OH_MediaAssetManager实例的指针。 |
 
 ### OH_MediaAssetManager_RequestImageForPath()
 
@@ -59,8 +55,6 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestImageForPath(OH_MediaAssetMan
 
 请求具有目标路径的图像资源。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -69,17 +63,17 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestImageForPath(OH_MediaAssetMan
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | 指向OH_MediaAssetManager实例的指针。 |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | 指向OH_MediaAssetManager实例的指针。 |
 | const char* uri | 请求的图像资源的uri。 |
-| MediaLibrary_RequestOptions requestOptions | 请求策略模式配置项。 |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | 请求策略模式配置项。 |
 | const char* destPath | 请求资源的目标地址。 |
-| OH_MediaLibrary_OnDataPrepared callback | 媒体资源处理器，当所请求的媒体资源准备完成时会触发回调。 |
+| [OH_MediaLibrary_OnDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_ondataprepared) callback | 媒体资源处理器，当所请求的媒体资源准备完成时会触发回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| MediaLibrary_RequestId | 返回请求Id。 |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | 返回请求Id。 |
 
 ### OH_MediaAssetManager_RequestVideoForPath()
 
@@ -91,8 +85,6 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestVideoForPath(OH_MediaAssetMan
 
 请求具有目标路径的视频资源。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -101,17 +93,17 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestVideoForPath(OH_MediaAssetMan
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | 指向OH_MediaAssetManager实例的指针。 |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | 指向OH_MediaAssetManager实例的指针。 |
 | const char* uri | 请求的视频资源的uri。 |
-| MediaLibrary_RequestOptions requestOptions | 请求策略模式配置项。 |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | 请求策略模式配置项。 |
 | const char* destPath | 请求资源的目标地址。 |
-| OH_MediaLibrary_OnDataPrepared callback | 媒体资源处理器，当所请求的媒体资源准备完成时会触发回调。 |
+| [OH_MediaLibrary_OnDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_ondataprepared) callback | 媒体资源处理器，当所请求的媒体资源准备完成时会触发回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| MediaLibrary_RequestId | 返回请求Id。 |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | 返回请求Id。 |
 
 ### OH_MediaAssetManager_CancelRequest()
 
@@ -123,8 +115,6 @@ bool OH_MediaAssetManager_CancelRequest(OH_MediaAssetManager* manager, const Med
 
 通过请求Id取消请求。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -133,8 +123,8 @@ bool OH_MediaAssetManager_CancelRequest(OH_MediaAssetManager* manager, const Med
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | 指向OH_MediaAssetManager实例的指针。 |
-| const MediaLibrary_RequestId requestId | 待取消的请求Id。 |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | 指向OH_MediaAssetManager实例的指针。 |
+| [const MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 待取消的请求Id。 |
 
 **返回值：**
 
@@ -152,8 +142,6 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestMovingPhoto(OH_MediaAssetMana
 
 根据不同的策略模式请求动态照片资源。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 13
@@ -162,17 +150,17 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestMovingPhoto(OH_MediaAssetMana
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例指针。 |
-| OH_MediaAsset* mediaAsset | 要请求的媒体文件对象的[OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)实例。 |
-| MediaLibrary_RequestOptions requestOptions | 用于图像请求策略模式的[MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)。 |
-| MediaLibrary_RequestId* requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)，出参。 |
-| OH_MediaLibrary_OnMovingPhotoDataPrepared callback | 当请求的动态照片准备就绪时调用[OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared)。 |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例指针。 |
+| [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | 要请求的媒体文件对象的[OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)实例。 |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | 用于图像请求策略模式的[MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)。 |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)，出参。 |
+| [OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared) callback | 当请求的动态照片准备就绪时调用[OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK：方法调用成功。      <br>MEDIA_LIBRARY_PARAMETER_ERROR：参数错误。可能的原因：      <br>1. 未指定强制参数。      <br>2. 参数类型不正确。      <br>3. 参数验证失败。      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED：不支持该操作。      <br>MEDIA_LIBRARY_PERMISSION_DENIED：没有权限。      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR：内部系统错误。 |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK：方法调用成功。<br>MEDIA_LIBRARY_PARAMETER_ERROR：参数错误。可能的原因：<br>1. 未指定强制参数。<br>2. 参数类型不正确。<br>3. 参数验证失败。<br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED：不支持该操作。<br>MEDIA_LIBRARY_PERMISSION_DENIED：没有权限。<br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR：内部系统错误。 |
 
 ### OH_MediaAssetManager_RequestImage()
 
@@ -184,8 +172,6 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestImage(OH_MediaAssetManager* m
 
 根据不同的策略模式请求图像资源。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -194,17 +180,17 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestImage(OH_MediaAssetManager* m
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例指针。 |
-| OH_MediaAsset* mediaAsset | 要请求的媒体文件对象的[OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)实例。 |
-| MediaLibrary_RequestOptions requestOptions | 用于图像请求策略模式的[MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)。 |
-| MediaLibrary_RequestId* requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)，出参。 |
-| OH_MediaLibrary_OnImageDataPrepared callback | 当请求的图像源准备就绪时调用[OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared)。 |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例指针。 |
+| [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | 要请求的媒体文件对象的[OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)实例。 |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | 用于图像请求策略模式的[MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)。 |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)，出参。 |
+| [OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared) callback | 当请求的图像源准备就绪时调用[OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK：方法调用成功。      <br>MEDIA_LIBRARY_PARAMETER_ERROR：参数错误。可能的原因：      <br>1. 未指定强制参数。      <br>2. 参数类型不正确。      <br>3. 参数验证失败。      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED：不支持该操作。      <br>MEDIA_LIBRARY_PERMISSION_DENIED：没有权限。      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR：内部系统错误。 |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK：方法调用成功。<br>MEDIA_LIBRARY_PARAMETER_ERROR：参数错误。可能的原因：<br>1. 未指定强制参数。<br>2. 参数类型不正确。<br>3. 参数验证失败。<br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED：不支持该操作。<br>MEDIA_LIBRARY_PERMISSION_DENIED：没有权限。<br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR：内部系统错误。 |
 
 ### OH_MediaAssetManager_QuickRequestImage()
 
@@ -216,8 +202,6 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_QuickRequestImage(OH_MediaAssetManag
 
 根据不同的策略模式请求图像资源。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 23
@@ -226,17 +210,17 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_QuickRequestImage(OH_MediaAssetManag
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | OH_MediaAssetManager的实例指针。 |
-| OH_MediaAsset* mediaAsset | 要请求的媒体文件对象的OH_MediaAsset实例。 |
-| MediaLibrary_RequestOptions requestOptions | 用于图像请求策略模式的MediaLibrary_RequestOptions。 |
-| MediaLibrary_RequestId* requestId | 请求的MediaLibrary_RequestId，该参数为输出参数。 |
-| OH_MediaLibrary_OnQuickImageDataPrepared callback | 当请求的源数据准备就绪时，将会调用OH_MediaLibrary_OnQuickImageDataPrepared方法。 |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | OH_MediaAssetManager的实例指针。 |
+| [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | 要请求的媒体文件对象的OH_MediaAsset实例。 |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | 用于图像请求策略模式的MediaLibrary_RequestOptions。 |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | 请求的MediaLibrary_RequestId，该参数为输出参数。 |
+| [OH_MediaLibrary_OnQuickImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onquickimagedataprepared) callback | 当请求的源数据准备就绪时，将会调用OH_MediaLibrary_OnQuickImageDataPrepared方法。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK：方法调用成功。      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED：不支持该操作。      <br>MEDIA_LIBRARY_PERMISSION_DENIED：没有权限。      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR：内部系统错误。 |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK：方法调用成功。<br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED：不支持该操作。<br>MEDIA_LIBRARY_PERMISSION_DENIED：没有权限。<br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR：内部系统错误。 |
 
 ### OH_MediaAssetManager_Release()
 
@@ -248,20 +232,18 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_Release(OH_MediaAssetManager* manage
 
 释放[OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MediaAssetManager* manager | 要释放的[OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例。 |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | 要释放的[OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK：方法调用成功。      <br>MEDIA_LIBRARY_PARAMETER_ERROR：参数错误。可能的原因：      <br>1. 未指定强制参数。      <br>2. 参数类型不正确。      <br>3. 参数验证失败。 |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK：方法调用成功。<br>MEDIA_LIBRARY_PARAMETER_ERROR：参数错误。可能的原因：<br>1. 未指定强制参数。<br>2. 参数类型不正确。<br>3. 参数验证失败。 |
 
 

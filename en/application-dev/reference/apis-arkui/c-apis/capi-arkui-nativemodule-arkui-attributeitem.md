@@ -22,7 +22,7 @@ Defines the general input parameter structure of the node attribute functions.
 
 | Name | Description |
 | -- | -- |
-| const [ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value |  |
+| [const ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value |  |
 | int32_t size |  |
 | const char* string |  |
 | void* object |  |

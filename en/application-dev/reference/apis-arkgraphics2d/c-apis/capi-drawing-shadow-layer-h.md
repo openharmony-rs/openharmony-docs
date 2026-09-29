@@ -6,9 +6,7 @@ This file declares the functions related to the shadow in the drawing module.
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
-**Since**: 8
+**Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
 
@@ -33,8 +31,6 @@ OH_Drawing_ShadowLayer* OH_Drawing_ShadowLayerCreate(float blurRadius, float x, 
 
 Creates an **OH_Drawing_ShadowLayer** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **blurRadius** is less than or equal to 0, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
@@ -50,7 +46,7 @@ Creates an **OH_Drawing_ShadowLayer** object. This API may return an error code.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ShadowLayer* | Returns the pointer to the OH_Drawing_ShadowLayer object created. |
+| [OH_Drawing_ShadowLayer*](capi-drawing-oh-drawing-shadowlayer.md) | Returns the pointer to the **OH_Drawing_ShadowLayer** object created. |
 
 ### OH_Drawing_ShadowLayerDestroy()
 
@@ -62,14 +58,12 @@ void OH_Drawing_ShadowLayerDestroy(OH_Drawing_ShadowLayer* shadowLayer)
 
 Destroys an **OH_Drawing_ShadowLayer** object and reclaims the memory occupied by the object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_ShadowLayer* shadowLayer | Pointer to the shadow layer. |
+| [OH_Drawing_ShadowLayer](capi-drawing-oh-drawing-shadowlayer.md)* shadowLayer | Pointer to the shadow layer. |
 
 

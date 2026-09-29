@@ -2,11 +2,9 @@
 
 ## Overview
 
-Defines a set of Text enum and interface.
+Defines enumerations and APIs related to **Text** for configuring text styles, controlling marquee effects, implementing text entity recognition, and managing text controllers. It is applicable to scenarios such as customizing text display effects, implementing dynamic text interaction, recognizing special entities in text (such as addresses and phone numbers), and precisely controlling text font weight. With these configuration APIs, you can flexibly control the display effects and interaction behaviors of text components to improve user experience.
 
 **Library**: libace_ndk.z.so
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -18,66 +16,66 @@ Defines a set of Text enum and interface.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | OH_ArkUI_TextDataDetectorConfig | Defines the configuration of text entity recognition. |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md) | ArkUI_TextMarqueeOptions | Defines the marquee options of text. |
-| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | Defines controller for text. |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | Defines the font weight configuration of text. |
-| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | Defines the font configuration of text. |
-| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) | OH_ArkUI_NativeModule_LineSpacingOptions | Defines the line spacing options for text. |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | OH_ArkUI_TextDataDetectorConfig | Defines the configuration for text entity detection. By setting the entity types to be detected (such as phone numbers, URLs, emails, addresses, and dates), the corresponding entity detection feature is enabled in the text component, and the detected entities are presented in an interactive format. This applies to scenarios such as automatically recognizing contact information in chat messages and extracting links from documents. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md) | ArkUI_TextMarqueeOptions | Defines text marquee mode options, which are used to configure the display parameters of the text marquee effect. It is suitable for scenarios where long text content needs to be displayed cyclically in limited space, such as scrolling notification messages and scrolling titles, effectively solving the display problem when text exceeds the display area. |
+| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | Defines a text component controller, which is used to control and interact with the text component on the native side. You can create a controller object through [OH_ArkUI_TextController_Create](capi-text-h.md#oh_arkui_textcontroller_create). When the object is created, you must call [OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy) to destroy it and release resources after use. The two must be used in pairs; otherwise, memory leaks will occur. After the controller is created, you can use APIs such as OH_ArkUI_TextController_SetStyledString to set the styled string of the text component, implementing dynamic management and style control of the text content. This is applicable to scenarios where the text component needs to be operated at the native layer. |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | Defines the font weight configurations of text. It is suitable for scenarios that require precise control over text font weight or where the text font weight needs to follow device font setting changes. You can create a text font weight configuration object through [OH_ArkUI_FontWeightConfigs_Create](capi-text-h.md#oh_arkui_fontweightconfigs_create), and must call [OH_ArkUI_FontWeightConfigs_Destroy](capi-text-h.md#oh_arkui_fontweightconfigs_destroy) to destroy the object and release resources after use to avoid memory leaks. After the configuration object is created, you can set and query the information through the following APIs: use [OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight](capi-text-h.md#oh_arkui_fontweightconfigs_setenablevariablefontweight) to set whether to enable variable font weight adjustment, use [OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight](capi-text-h.md#oh_arkui_fontweightconfigs_getenablevariablefontweight) to check whether variable font weight adjustment is enabled, use [OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory](capi-text-h.md#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) to set whether the text font weight is updated with the font weight level of the device, and use [OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory](capi-text-h.md#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) to check whether the text font weight is updated with the font weight level of the device. When this configuration object is used and is not a null pointer, if the user does not explicitly make the configuration through the APIs, each configuration item uses its default value (variable font weight adjustment is disabled by default, and text font weight is updated with the font weight level of the device by default). When this configuration object is a null pointer, the default values are not used, and the text font weight behavior is the same as that of the parent component. |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | Defines the font configurations of text. Currently, it supports setting and obtaining the font weight configuration through related APIs, and is applicable to scenarios that require custom font weight display effects. You can create a font configuration object through the [OH_ArkUI_FontConfigs_Create](capi-text-h.md#oh_arkui_fontconfigs_create) API and destroy it through the [OH_ArkUI_FontConfigs_Destroy](capi-text-h.md#oh_arkui_fontconfigs_destroy) API. After the configurations are created, you can set and query them through the following APIs: set the font weight configuration through the [OH_ArkUI_FontConfigs_SetFontWeightConfigs](capi-text-h.md#oh_arkui_fontconfigs_setfontweightconfigs) API, and obtain the font weight configuration through the [OH_ArkUI_FontConfigs_GetFontWeightConfigs](capi-text-h.md#oh_arkui_fontconfigs_getfontweightconfigs) API. |
+| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) | OH_ArkUI_NativeModule_LineSpacingOptions | Defines a text line spacing option object, which is used to set whether the text line spacing takes effect only between lines. You can create a line spacing option object by calling [OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create). After the object is used, you must call [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it and release resources. The two APIs must be used in pairs; otherwise, a memory leak occurs. After the object is created, you can call [OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_setonlybetweenlines) to set whether the line spacing takes effect only between lines, and call [OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_getonlybetweenlines) to obtain the line spacing configuration. This struct is applicable to scenarios that require precise control over the display effect of text line spacing, such as text display where no line spacing is added to the first and last lines. |
 
 ### Enum
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkUI_FontStyle](#arkui_fontstyle) | ArkUI_FontStyle | Enumerates the font styles. |
-| [ArkUI_FontWeight](#arkui_fontweight) | ArkUI_FontWeight | Enumerates the font weights. |
-| [ArkUI_TextHeightAdaptivePolicy](#arkui_textheightadaptivepolicy) | ArkUI_TextHeightAdaptivePolicy | Defines how the adaptive height is determined for the text. |
-| [ArkUI_TextDataDetectorType](#arkui_textdatadetectortype) | ArkUI_TextDataDetectorType | Defines the entity type for text recognition. |
-| [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy) | ArkUI_MarqueeStartPolicy | Enumerates the MarqueeStartPolicy. |
-| [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy) | ArkUI_MarqueeUpdatePolicy | Enumerates the MarqueeUpdatePolicy. |
+| [ArkUI_FontStyle](#arkui_fontstyle) | ArkUI_FontStyle | Enumerates font styles. |
+| [ArkUI_FontWeight](#arkui_fontweight) | ArkUI_FontWeight | Enumerates font weights. |
+| [ArkUI_TextHeightAdaptivePolicy](#arkui_textheightadaptivepolicy) | ArkUI_TextHeightAdaptivePolicy | Enumerates how the adaptive height is determined for the text. |
+| [ArkUI_TextDataDetectorType](#arkui_textdatadetectortype) | ArkUI_TextDataDetectorType | Enumerates the entity types of text recognition. |
+| [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy) | ArkUI_MarqueeStartPolicy | Enumerates marquee startup policies. |
+| [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy) | ArkUI_MarqueeUpdatePolicy | Enumerates marquee update policies. |
 
 ### Function
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()](#oh_arkui_textmarqueeoptions_create) | Create an option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_dispose) | Dispose the option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)](#oh_arkui_textmarqueeoptions_setstart) | Sets the start flag of the option object for marquee animation of text. |
-| [bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstart) | Gets the start flag of the option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)](#oh_arkui_textmarqueeoptions_setstep) | Sets the step size of the option object for marquee animation of text. |
-| [float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstep) | Gets the step size of the option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, float spacing)](#oh_arkui_textmarqueeoptions_setspacing) | Sets the spacing between two rounds of the option object for marquee animation of text. |
-| [float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getspacing) | Gets the spacing between two rounds of the option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32_t loop)](#oh_arkui_textmarqueeoptions_setloop) | Sets the rounds of the option object for marquee animation of text. |
-| [int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getloop) | Gets the rounds of the option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, bool fromStart)](#oh_arkui_textmarqueeoptions_setfromstart) | Sets the fromStart flag of the option object for marquee animation of text. |
-| [bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfromstart) | Gets the fromStart flag of the option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)](#oh_arkui_textmarqueeoptions_setdelay) | Sets the delay time between each round of the option object for marquee animation of text. |
-| [int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getdelay) | Gets the delay time between each round of the option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | Sets the fadeout flag of the option object for marquee animation of text. |
-| [bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfadeout) | Gets the fadeout flag of the option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)](#oh_arkui_textmarqueeoptions_setstartpolicy) | Sets the start policy of the option object for marquee animation of text. |
-| [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | Gets the start policy of the option object for marquee animation of text. |
-| [void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeUpdatePolicy updatePolicy)](#oh_arkui_textmarqueeoptions_setupdatepolicy) | Sets the update policy of the option object for marquee animation of text. |
-| [ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getupdatepolicy) | Gets the update policy of the option object for marquee animation of text. |
-| [OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()](#oh_arkui_textdatadetectorconfig_create) | Creates a text entity recognition configuration object. When the object is no longer used, call [OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy) to destroy it. |
+| [ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()](#oh_arkui_textmarqueeoptions_create) | Creates a text marquee option object. When the object is no longer used, call [OH_ArkUI_TextMarqueeOptions_Dispose](capi-text-h.md#oh_arkui_textmarqueeoptions_dispose) to dispose of it and release resources to avoid memory leaks. |
+| [void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_dispose) | Disposes of the text marquee option object. This API must be used in pair with [OH_ArkUI_TextMarqueeOptions_Create](capi-text-h.md#oh_arkui_textmarqueeoptions_create); otherwise, memory leaks will occur. |
+| [void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)](#oh_arkui_textmarqueeoptions_setstart) | Sets whether to play the text marquee option. |
+| [bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstart) | Obtains whether the text marquee option is played. |
+| [void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)](#oh_arkui_textmarqueeoptions_setstep) | Sets the step of the text marquee option. |
+| [float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstep) | Obtains the step of the text marquee option. |
+| [void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, float spacing)](#oh_arkui_textmarqueeoptions_setspacing) | Sets the distance between the start and end items of the text marquee option. |
+| [float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getspacing) | Obtains the spacing between the start and end items of the text marquee option. |
+| [void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32_t loop)](#oh_arkui_textmarqueeoptions_setloop) | Sets the number of repetitions for looping the text marquee option. The value less than or equal to **0**<br>indicates infinite looping. |
+| [int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getloop) | Obtains the number of repetitions for looping the text marquee option. |
+| [void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, bool fromStart)](#oh_arkui_textmarqueeoptions_setfromstart) | Sets the direction for scrolling the text marquee option. |
+| [bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfromstart) | Obtains the direction for scrolling the text marquee option. |
+| [void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)](#oh_arkui_textmarqueeoptions_setdelay) | Sets the delay of each loop for the text marquee option. |
+| [int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getdelay) | Obtains the delay of each loop for the text marquee option. |
+| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | Sets whether the text marquee option supports a fade-out effect when the text is too long. When this parameter is set to **true**: if the text content exceeds the display range, a fade-out effect is applied to the edges of the partially visible text; <br>if text is partially visible at both ends, the fade-out effect is applied to both ends. <br>When the fade-out effect is enabled, the **NODE_CLIP** attribute in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) is automatically locked to **true** and cannot be set to **false**. |
+| [bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfadeout) | Obtains whether the text marquee option supports a fade-out effect when the text is too long. |
+| [void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)](#oh_arkui_textmarqueeoptions_setstartpolicy) | Sets the start policy of the text marquee option. |
+| [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | Obtains the startup policy of the text marquee option. |
+| [void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeUpdatePolicy updatePolicy)](#oh_arkui_textmarqueeoptions_setupdatepolicy) | Sets the update policy of the text marquee option. |
+| [ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getupdatepolicy) | Obtains the update policy of the text marquee option. |
+| [OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()](#oh_arkui_textdatadetectorconfig_create) | Creates a text entity recognition configuration object. When the object is no longer used, call [OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy) to destroy it and release resources to avoid memory leaks. |
 | [void OH_ArkUI_TextDataDetectorConfig_Destroy(OH_ArkUI_TextDataDetectorConfig* config)](#oh_arkui_textdatadetectorconfig_destroy) | Destroys the text entity recognition configuration object. |
-| [OH_ArkUI_TextController* OH_ArkUI_TextController_Create()](#oh_arkui_textcontroller_create) | Create a controller object for text. |
-| [void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)](#oh_arkui_textcontroller_destroy) | Destroys the text controller. |
-| [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | Create an option object for font weight configuration of text. |
-| [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | Destroy an option object for font weight configuration of text. |
-| [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | Sets the enableVariableFontWeight flag of an option object for font weight configuration of text. The flag defines whether VariableFontWeight is supported. The default value is false. True means enable VariableFontWeight, false means disable VariableFontWeight. |
-| [bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenablevariablefontweight) | Gets the enableVariableFontWeight flag of an option object for font weight configuration of text. The flag defines whether VariableFontWeight is supported. The default value is false. True means enable VariableFontWeight, false means disable VariableFontWeight. |
-| [void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) | Sets the enableDeviceFontWeightCategory flag of an option object for font weight configuration of text. Defines whether font weight will be automatically updated when the device's font weight category changes. The default value is true. True means font weight will be automatically updated when the device's font weight category changes. False means font weight will not be automatically updated when the device's font weight category changes. |
-| [bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) | Gets the enableDeviceFontWeightCategory flag of an option object for font weight configuration of text. Defines whether font weight will be automatically updated when the device's font weight category changes. The default value is true. True means font weight will be automatically updated when the device's font weight category changes. False means font weight will not be automatically updated when the device's font weight category changes. |
-| [OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()](#oh_arkui_fontconfigs_create) | Create an option object for font configuration of text. |
-| [void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_destroy) | Destroy an option object for font configuration of text. |
-| [void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_ArkUI_FontWeightConfigs* fontWeightConfigs)](#oh_arkui_fontconfigs_setfontweightconfigs) | Sets the font weight configs of an option object for font configuration of text. |
-| [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_getfontweightconfigs) | Gets the font weight configs of an option object for font configuration of text. |
-| [OH_ArkUI_NativeModule_LineSpacingOptions *OH_ArkUI_NativeModule_LineSpacingOptions_Create()](#oh_arkui_nativemodule_linespacingoptions_create) | Creates a line spacing options object for text. When the object is no longer used, call [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it. |
-| [void OH_ArkUI_NativeModule_LineSpacingOptions_Destroy(OH_ArkUI_NativeModule_LineSpacingOptions *options)](#oh_arkui_nativemodule_linespacingoptions_destroy) | Destroys the line spacing options object. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_ArkUI_NativeModule_LineSpacingOptions *options, bool onlyBetweenLines)](#oh_arkui_nativemodule_linespacingoptions_setonlybetweenlines) | Sets the onlyBetweenLines parameter for the line spacing options. When set to true, line spacing is only applied between lines, not for the first and last lines. When set to false, line spacing is applied uniformly to all lines. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(const OH_ArkUI_NativeModule_LineSpacingOptions *options, bool *onlyBetweenLines)](#oh_arkui_nativemodule_linespacingoptions_getonlybetweenlines) | Gets the onlyBetweenLines parameter from the line spacing options. |
+| [OH_ArkUI_TextController* OH_ArkUI_TextController_Create()](#oh_arkui_textcontroller_create) | Creates a text controller object. When the object is no longer used, call [OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy) to destroy it and release resources to avoid memory leaks. |
+| [void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)](#oh_arkui_textcontroller_destroy) | Destroys the text controller object. This API must be used in pair with [OH_ArkUI_TextController_Create](capi-text-h.md#oh_arkui_textcontroller_create); otherwise, memory leaks will occur. |
+| [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | Creates a text font weight configuration object. When the object is no longer used, call [OH_ArkUI_FontWeightConfigs_Destroy](capi-text-h.md#oh_arkui_fontweightconfigs_destroy) to destroy it and release resources to avoid memory leaks. |
+| [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | Destroys the text font weight configuration object. This API must be used in pair with [OH_ArkUI_FontWeightConfigs_Create](capi-text-h.md#oh_arkui_fontweightconfigs_create); otherwise, memory leaks will occur. |
+| [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | Sets whether to enable variable font weight adjustment. Variable font weight adjustment allows the font to display weight at any integer value from 100 to 900, enabling finer control over font weight. |
+| [bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenablevariablefontweight) | Obtains whether variable font weight adjustment is enabled for the text font weight configuration object. |
+| [void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) | Sets whether to automatically update the text font weight when the font weight level of the device changes. The font weight level of the device refers to the global font weight configuration in system settings, which users can adjust in system settings. |
+| [bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) | Obtains whether the text font weight is updated along with the font weight level of the device. |
+| [OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()](#oh_arkui_fontconfigs_create) | Creates a text font configuration object. When the object is no longer used, call [OH_ArkUI_FontConfigs_Destroy](capi-text-h.md#oh_arkui_fontconfigs_destroy) to destroy it and release resources to avoid memory leaks. |
+| [void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_destroy) | Destroys the text font configuration object. This API must be used in pair with [OH_ArkUI_FontConfigs_Create](capi-text-h.md#oh_arkui_fontconfigs_create); otherwise, memory leaks will occur. |
+| [void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_ArkUI_FontWeightConfigs* fontWeightConfigs)](#oh_arkui_fontconfigs_setfontweightconfigs) | Sets the text font weight configurations for the text font configuration object. |
+| [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_getfontweightconfigs) | Obtains the text font weight configurations of the text font configuration object. |
+| [OH_ArkUI_NativeModule_LineSpacingOptions *OH_ArkUI_NativeModule_LineSpacingOptions_Create()](#oh_arkui_nativemodule_linespacingoptions_create) | Creates a text line spacing option object. After use, call [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy the object. |
+| [void OH_ArkUI_NativeModule_LineSpacingOptions_Destroy(OH_ArkUI_NativeModule_LineSpacingOptions *options)](#oh_arkui_nativemodule_linespacingoptions_destroy) | Destroys a text line spacing option object. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_ArkUI_NativeModule_LineSpacingOptions *options, bool onlyBetweenLines)](#oh_arkui_nativemodule_linespacingoptions_setonlybetweenlines) | Sets the **onlyBetweenLines** parameter of the text line spacing options. When set to **true**, the line spacing is applied only between lines, with no extra line spacing above the first line or below the last line. When set to **false**, line spacing also exists above the first line and below the last line. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(const OH_ArkUI_NativeModule_LineSpacingOptions *options, bool *onlyBetweenLines)](#oh_arkui_nativemodule_linespacingoptions_getonlybetweenlines) | Obtains the **onlyBetweenLines** parameter of the text line spacing options. |
 
 ## Enum type description
 
@@ -89,9 +87,7 @@ enum ArkUI_FontStyle
 
 **Description**
 
-Enumerates the font styles.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates font styles.
 
 **Since**: 12
 
@@ -108,9 +104,7 @@ enum ArkUI_FontWeight
 
 **Description**
 
-Enumerates the font weights.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates font weights.
 
 **Since**: 12
 
@@ -140,9 +134,7 @@ enum ArkUI_TextHeightAdaptivePolicy
 
 **Description**
 
-Defines how the adaptive height is determined for the text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates how the adaptive height is determined for the text.
 
 **Since**: 12
 
@@ -160,9 +152,7 @@ enum ArkUI_TextDataDetectorType
 
 **Description**
 
-Defines the entity type for text recognition.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates the entity types of text recognition.
 
 **Since**: 12
 
@@ -181,9 +171,7 @@ enum ArkUI_MarqueeStartPolicy
 
 **Description**
 
-Enumerates the MarqueeStartPolicy.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates marquee startup policies.
 
 **Since**: 23
 
@@ -200,9 +188,7 @@ enum ArkUI_MarqueeUpdatePolicy
 
 **Description**
 
-Enumerates the MarqueeUpdatePolicy.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates marquee update policies.
 
 **Since**: 23
 
@@ -222,9 +208,7 @@ ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()
 
 **Description**
 
-Create an option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Creates a text marquee option object. When the object is no longer used, call [OH_ArkUI_TextMarqueeOptions_Dispose](capi-text-h.md#oh_arkui_textmarqueeoptions_dispose) to dispose of it and release resources to avoid memory leaks.
 
 **Since**: 23
 
@@ -232,7 +216,7 @@ Create an option object for marquee animation of text.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions*](capi-arkui-nativemodule-arkui-textmarqueeoptions.md) | A pointer to the option object. |
+| [ArkUI_TextMarqueeOptions*](capi-arkui-nativemodule-arkui-textmarqueeoptions.md) | Pointer to the text marquee option object. If creation fails, a null pointer is returned. You need to call [OH_ArkUI_TextMarqueeOptions_Dispose](capi-text-h.md#oh_arkui_textmarqueeoptions_dispose) to dispose of it after use. |
 
 ### OH_ArkUI_TextMarqueeOptions_Dispose()
 
@@ -242,9 +226,7 @@ void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Dispose the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Disposes of the text marquee option object. This API must be used in pair with [OH_ArkUI_TextMarqueeOptions_Create](capi-text-h.md#oh_arkui_textmarqueeoptions_create); otherwise, memory leaks will occur.
 
 **Since**: 23
 
@@ -252,7 +234,7 @@ Dispose the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be disposed. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 ### OH_ArkUI_TextMarqueeOptions_SetStart()
 
@@ -262,9 +244,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool
 
 **Description**
 
-Sets the start flag of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets whether to play the text marquee option.
 
 **Since**: 23
 
@@ -272,8 +252,8 @@ Sets the start flag of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be modified. |
-| bool start | Flag of is need to start marquee. True means start marquee, false means stop marquee. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
+| bool start | Whether to play the text marquee option. **true** indicates to play; **false** otherwise. Default value: **true**. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetStart()
 
@@ -283,9 +263,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Gets the start flag of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains whether the text marquee option is played.
 
 **Since**: 23
 
@@ -293,13 +271,13 @@ Gets the start flag of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns the start flag. |
+| bool | Whether the text marquee option is played. **true** indicates the text marquee option is played; **false** indicates the text marquee option is not played. |
 
 ### OH_ArkUI_TextMarqueeOptions_SetStep()
 
@@ -309,9 +287,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float
 
 **Description**
 
-Sets the step size of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the step of the text marquee option.
 
 **Since**: 23
 
@@ -319,8 +295,8 @@ Sets the step size of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be modified. |
-| float step | The step size of the marquee. The unit is vp. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
+| float step | Step length. Unit: vp. Value range: (0, Text length]. If the value is out of range, **4.0vp** is used. Default value: **4.0vp**. After the step is set, the marquee moves by this step value each time. A larger step results in faster scrolling. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetStep()
 
@@ -330,9 +306,7 @@ float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Gets the step size of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the step of the text marquee option.
 
 **Since**: 23
 
@@ -340,13 +314,13 @@ Gets the step size of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| float | Returns the step size of the marquee. The unit is vp. |
+| float | Step. The unit is vp. |
 
 ### OH_ArkUI_TextMarqueeOptions_SetSpacing()
 
@@ -356,9 +330,7 @@ void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, fl
 
 **Description**
 
-Sets the spacing between two rounds of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the distance between the start and end items of the text marquee option.
 
 **Since**: 23
 
@@ -366,8 +338,8 @@ Sets the spacing between two rounds of the option object for marquee animation o
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be modified. |
-| float spacing | The spacing between two rounds of marquee. The unit is vp. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
+| float spacing | Spacing between the start and end items. Unit: vp. Value range: [0, +∞). If the value is less than 0, the default value **48.0vp** is used. Default value: **48.0vp**. After setting, when the marquee finishes one scroll cycle, the distance between the start and end text is this spacing value. It is recommended to set this value based on the width of the display area. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetSpacing()
 
@@ -377,9 +349,7 @@ float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Gets the spacing between two rounds of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the spacing between the start and end items of the text marquee option.
 
 **Since**: 23
 
@@ -387,13 +357,13 @@ Gets the spacing between two rounds of the option object for marquee animation o
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| float | Returns the spacing between two rounds of marquee. The unit is vp. |
+| float | Spacing between the start and end items. The unit is vp. |
 
 ### OH_ArkUI_TextMarqueeOptions_SetLoop()
 
@@ -403,9 +373,7 @@ void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32
 
 **Description**
 
-Sets the rounds of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the number of repetitions for looping the text marquee option. The value less than or equal to **0**<br>indicates infinite looping.
 
 **Since**: 23
 
@@ -413,8 +381,8 @@ Sets the rounds of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be modified. |
-| int32_t loop | The rounds of the marquee. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
+| int32_t loop | Number of loops. The value less than or equal to **0** indicates infinite looping. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetLoop()
 
@@ -424,9 +392,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Gets the rounds of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the number of repetitions for looping the text marquee option.
 
 **Since**: 23
 
@@ -434,13 +400,13 @@ Gets the rounds of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the rounds of the marquee. |
+| int32_t | Number of loops. |
 
 ### OH_ArkUI_TextMarqueeOptions_SetFromStart()
 
@@ -450,9 +416,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, 
 
 **Description**
 
-Sets the fromStart flag of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the direction for scrolling the text marquee option.
 
 **Since**: 23
 
@@ -460,8 +424,8 @@ Sets the fromStart flag of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be modified. |
-| bool fromStart | The running direction of the marquee, true means running from start. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
+| bool fromStart | Whether to scroll the text marquee option from the start. **true** to scroll from the start; **<br>false** to scroll in reverse. Default value: **true**. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetFromStart()
 
@@ -471,9 +435,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Gets the fromStart flag of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the direction for scrolling the text marquee option.
 
 **Since**: 23
 
@@ -481,13 +443,13 @@ Gets the fromStart flag of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns the fromStart flag. |
+| bool | Whether the text marquee option is scrolled from the start. **true** to scroll from the start; **false** to scroll in reverse. |
 
 ### OH_ArkUI_TextMarqueeOptions_SetDelay()
 
@@ -497,9 +459,7 @@ void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int3
 
 **Description**
 
-Sets the delay time between each round of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the delay of each loop for the text marquee option.
 
 **Since**: 23
 
@@ -507,8 +467,8 @@ Sets the delay time between each round of the option object for marquee animatio
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be modified. |
-| int32_t delay | The delay time between each round of the marquee. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
+| int32_t delay | Delay of each loop, in milliseconds. Value range: [0, +∞). Default value: **0**. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetDelay()
 
@@ -518,9 +478,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Gets the delay time between each round of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the delay of each loop for the text marquee option.
 
 **Since**: 23
 
@@ -528,13 +486,13 @@ Gets the delay time between each round of the option object for marquee animatio
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the delay time between each round of the marquee. |
+| int32_t | Delay of each loop, in milliseconds. |
 
 ### OH_ArkUI_TextMarqueeOptions_SetFadeout()
 
@@ -544,9 +502,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bo
 
 **Description**
 
-Sets the fadeout flag of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets whether the text marquee option supports a fade-out effect when the text is too long. When this parameter is set to **true**: if the text content exceeds the display range, a fade-out effect is applied to the edges of the partially visible text; <br>if text is partially visible at both ends, the fade-out effect is applied to both ends. <br>When the fade-out effect is enabled, the **NODE_CLIP** attribute in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) is automatically locked to **true** and cannot be set to **false**.
 
 **Since**: 23
 
@@ -554,8 +510,8 @@ Sets the fadeout flag of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be modified. |
-| bool fadeout | The flag of whether the text is faded out. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
+| bool fadeout | Whether the text marquee option supports a fade-out effect when the text is too long. <br>The value **true** means to apply a fade-out effect when the text is too long, in which case the **NODE_CLIP** attribute is automatically locked to **true** and cannot be set to **false**. <br>The value **false** means not to apply a fade-out effect. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetFadeout()
 
@@ -565,9 +521,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Gets the fadeout flag of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains whether the text marquee option supports a fade-out effect when the text is too long.
 
 **Since**: 23
 
@@ -575,13 +529,13 @@ Gets the fadeout flag of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns the fadeout flag. |
+| bool | Whether the text marquee option supports a fade-out effect when the text is too long. The value **true** means the fade-out effect is supported, and **false** means the opposite. |
 
 ### OH_ArkUI_TextMarqueeOptions_SetStartPolicy()
 
@@ -591,9 +545,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option
 
 **Description**
 
-Sets the start policy of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the start policy of the text marquee option.
 
 **Since**: 23
 
@@ -601,8 +553,8 @@ Sets the start policy of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be modified. |
-| [ArkUI_MarqueeStartPolicy](capi-text-h.md#arkui_marqueestartpolicy) startPolicy | The start policy for marquee. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
+| [ArkUI_MarqueeStartPolicy](capi-text-h.md#arkui_marqueestartpolicy) startPolicy | Start policy. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetStartPolicy()
 
@@ -612,9 +564,7 @@ ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMa
 
 **Description**
 
-Gets the start policy of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the startup policy of the text marquee option.
 
 **Since**: 23
 
@@ -622,13 +572,13 @@ Gets the start policy of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_MarqueeStartPolicy](capi-text-h.md#arkui_marqueestartpolicy) | Returns the start policy for marquee. |
+| [ArkUI_MarqueeStartPolicy](capi-text-h.md#arkui_marqueestartpolicy) | Start policy. |
 
 ### OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy()
 
@@ -638,9 +588,7 @@ void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* optio
 
 **Description**
 
-Sets the update policy of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the update policy of the text marquee option.
 
 **Since**: 23
 
@@ -648,8 +596,8 @@ Sets the update policy of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object to be modified. |
-| [ArkUI_MarqueeUpdatePolicy](capi-text-h.md#arkui_marqueeupdatepolicy) updatePolicy | The update policy for marquee. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
+| [ArkUI_MarqueeUpdatePolicy](capi-text-h.md#arkui_marqueeupdatepolicy) updatePolicy | Update policy. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy()
 
@@ -659,9 +607,7 @@ ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_Text
 
 **Description**
 
-Gets the update policy of the option object for marquee animation of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the update policy of the text marquee option.
 
 **Since**: 23
 
@@ -669,13 +615,13 @@ Gets the update policy of the option object for marquee animation of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the option object. |
+| [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_MarqueeUpdatePolicy](capi-text-h.md#arkui_marqueeupdatepolicy) | Returns the update policy for marquee. |
+| [ArkUI_MarqueeUpdatePolicy](capi-text-h.md#arkui_marqueeupdatepolicy) | Update policy. |
 
 ### OH_ArkUI_TextDataDetectorConfig_Create()
 
@@ -685,9 +631,7 @@ OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()
 
 **Description**
 
-Creates a text entity recognition configuration object. When the object is no longer used, call [OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy) to destroy it.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Creates a text entity recognition configuration object. When the object is no longer used, call [OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy) to destroy it and release resources to avoid memory leaks.
 
 **Since**: 24
 
@@ -695,7 +639,7 @@ Creates a text entity recognition configuration object. When the object is no lo
 
 | Type | Description |
 | -- | -- |
-| [OH_ArkUI_TextDataDetectorConfig*](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | Pointer to the [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) object. |
+| [OH_ArkUI_TextDataDetectorConfig*](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | Pointer to the [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) object.<br> If creation fails, a null pointer is returned.<br> This object must be destroyed by calling [OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy) after use. |
 
 ### OH_ArkUI_TextDataDetectorConfig_Destroy()
 
@@ -706,8 +650,6 @@ void OH_ArkUI_TextDataDetectorConfig_Destroy(OH_ArkUI_TextDataDetectorConfig* co
 **Description**
 
 Destroys the text entity recognition configuration object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -725,9 +667,7 @@ OH_ArkUI_TextController* OH_ArkUI_TextController_Create()
 
 **Description**
 
-Create a controller object for text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Creates a text controller object. When the object is no longer used, call [OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy) to destroy it and release resources to avoid memory leaks.
 
 **Since**: 26.0.0
 
@@ -735,7 +675,7 @@ Create a controller object for text.
 
 | Type | Description |
 | -- | -- |
-| [OH_ArkUI_TextController*](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | A pointer to the text controller object. |
+| [OH_ArkUI_TextController*](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | Pointer to the text controller object. If creation fails, a null pointer is returned. After use, call [OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy) to destroy it. |
 
 ### OH_ArkUI_TextController_Destroy()
 
@@ -745,9 +685,7 @@ void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)
 
 **Description**
 
-Destroys the text controller.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Destroys the text controller object. This API must be used in pair with [OH_ArkUI_TextController_Create](capi-text-h.md#oh_arkui_textcontroller_create); otherwise, memory leaks will occur.
 
 **Since**: 26.0.0
 
@@ -755,7 +693,7 @@ Destroys the text controller.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)* controller | <b>Text</b> controller. |
+| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)* controller | Pointer to the text component controller object. |
 
 ### OH_ArkUI_FontWeightConfigs_Create()
 
@@ -765,9 +703,7 @@ OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()
 
 **Description**
 
-Create an option object for font weight configuration of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Creates a text font weight configuration object. When the object is no longer used, call [OH_ArkUI_FontWeightConfigs_Destroy](capi-text-h.md#oh_arkui_fontweightconfigs_destroy) to destroy it and release resources to avoid memory leaks.
 
 **Since**: 24
 
@@ -775,7 +711,7 @@ Create an option object for font weight configuration of text.
 
 | Type | Description |
 | -- | -- |
-| [OH_ArkUI_FontWeightConfigs*](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | A pointer to the option object. |
+| [OH_ArkUI_FontWeightConfigs*](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | Pointer to the text font weight configuration object. If creation fails, a null pointer is returned. You need to call [OH_ArkUI_FontWeightConfigs_Destroy](capi-text-h.md#oh_arkui_fontweightconfigs_destroy) to destroy it after use. When the configuration object is a null pointer, no default value is applied, and the text font weight behavior remains consistent with that of the parent component. |
 
 ### OH_ArkUI_FontWeightConfigs_Destroy()
 
@@ -785,9 +721,7 @@ void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)
 
 **Description**
 
-Destroy an option object for font weight configuration of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Destroys the text font weight configuration object. This API must be used in pair with [OH_ArkUI_FontWeightConfigs_Create](capi-text-h.md#oh_arkui_fontweightconfigs_create); otherwise, memory leaks will occur.
 
 **Since**: 24
 
@@ -795,7 +729,7 @@ Destroy an option object for font weight configuration of text.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the option object to be destroyed. |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the text font weight configuration object to be destroyed. |
 
 ### OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight()
 
@@ -805,9 +739,7 @@ void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 
 **Description**
 
-Sets the enableVariableFontWeight flag of an option object for font weight configuration of text. The flag defines whether VariableFontWeight is supported. The default value is false. True means enable VariableFontWeight, false means disable VariableFontWeight.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets whether to enable variable font weight adjustment. Variable font weight adjustment allows the font to display weight at any integer value from 100 to 900, enabling finer control over font weight.
 
 **Since**: 24
 
@@ -815,8 +747,8 @@ Sets the enableVariableFontWeight flag of an option object for font weight confi
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the option object to be modified. |
-| bool enable | enableVariableFontWeight Flag. |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the text font weight configuration object to be modified. |
+| bool enable | Whether to enable variable font weight adjustment. The default value is **false**. The value true means to enable variable font weight adjustment. In this case, if the value of **weight** is any integer in the range [100, 900], the value is used; otherwise, the default value **400** is used. The value **false** means to disable variable font weight adjustment. In this case, the value of **weight** can only be multiples of 100 in the range [100, 900]; for a non-multiple of 100, the default value **400** is used. |
 
 ### OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight()
 
@@ -826,9 +758,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 
 **Description**
 
-Gets the enableVariableFontWeight flag of an option object for font weight configuration of text. The flag defines whether VariableFontWeight is supported. The default value is false. True means enable VariableFontWeight, false means disable VariableFontWeight.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains whether variable font weight adjustment is enabled for the text font weight configuration object.
 
 **Since**: 24
 
@@ -836,13 +766,13 @@ Gets the enableVariableFontWeight flag of an option object for font weight confi
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the option object. |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the text font weight configuration object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns the enableVariableFontWeight flag. |
+| bool | Whether variable font weight adjustment is enabled. <br>**true** indicates variable font weight adjustment is enabled. If the value of **weight** is any integer in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used. <br>**false** indicates variable font weight adjustment is disabled. If the value of **weight** is an integer multiple of 100 in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used. <br>If the value of **weight** is not within the range of [100, 900], the default value **400** is used. |
 
 ### OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory()
 
@@ -852,9 +782,7 @@ void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontW
 
 **Description**
 
-Sets the enableDeviceFontWeightCategory flag of an option object for font weight configuration of text. Defines whether font weight will be automatically updated when the device's font weight category changes. The default value is true. True means font weight will be automatically updated when the device's font weight category changes. False means font weight will not be automatically updated when the device's font weight category changes.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets whether to automatically update the text font weight when the font weight level of the device changes. The font weight level of the device refers to the global font weight configuration in system settings, which users can adjust in system settings.
 
 **Since**: 24
 
@@ -862,8 +790,8 @@ Sets the enableDeviceFontWeightCategory flag of an option object for font weight
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the option object to be modified. |
-| bool enable | enableDeviceFontWeightCategory Flag. |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the text font weight configuration object to be modified. |
+| bool enable | Whether to enable the text font weight to be updated along with the font weight level of the device. **<br>true** indicates that the text font weight is automatically updated when the font weight level of the device changes. **false** indicates that the text font weight is not automatically updated when the font weight level of the device changes. The default value is **true**. |
 
 ### OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory()
 
@@ -873,9 +801,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontW
 
 **Description**
 
-Gets the enableDeviceFontWeightCategory flag of an option object for font weight configuration of text. Defines whether font weight will be automatically updated when the device's font weight category changes. The default value is true. True means font weight will be automatically updated when the device's font weight category changes. False means font weight will not be automatically updated when the device's font weight category changes.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains whether the text font weight is updated along with the font weight level of the device.
 
 **Since**: 24
 
@@ -883,13 +809,13 @@ Gets the enableDeviceFontWeightCategory flag of an option object for font weight
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the option object. |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the text font weight configuration object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns the enableDeviceFontWeightCategory flag. |
+| bool | Whether the text font weight is updated along with the font weight level of the device. <br>**true** indicates that the text font weight is automatically updated when the font weight level of the device changes. <br>**false** indicates that the text font weight is not automatically updated when the font weight level of the device changes. |
 
 ### OH_ArkUI_FontConfigs_Create()
 
@@ -899,9 +825,7 @@ OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()
 
 **Description**
 
-Create an option object for font configuration of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Creates a text font configuration object. When the object is no longer used, call [OH_ArkUI_FontConfigs_Destroy](capi-text-h.md#oh_arkui_fontconfigs_destroy) to destroy it and release resources to avoid memory leaks.
 
 **Since**: 24
 
@@ -909,7 +833,7 @@ Create an option object for font configuration of text.
 
 | Type | Description |
 | -- | -- |
-| [OH_ArkUI_FontConfigs*](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | A pointer to the option object. |
+| [OH_ArkUI_FontConfigs*](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | Pointer to the text font configuration object. If creation fails, a null pointer is returned. After use, call [OH_ArkUI_FontConfigs_Destroy](capi-text-h.md#oh_arkui_fontconfigs_destroy) to destroy it. |
 
 ### OH_ArkUI_FontConfigs_Destroy()
 
@@ -919,9 +843,7 @@ void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)
 
 **Description**
 
-Destroy an option object for font configuration of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Destroys the text font configuration object. This API must be used in pair with [OH_ArkUI_FontConfigs_Create](capi-text-h.md#oh_arkui_fontconfigs_create); otherwise, memory leaks will occur.
 
 **Since**: 24
 
@@ -929,7 +851,7 @@ Destroy an option object for font configuration of text.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | Pointer to the option object to be destroyed. |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | Pointer to the text font configuration object to be destroyed. |
 
 ### OH_ArkUI_FontConfigs_SetFontWeightConfigs()
 
@@ -939,9 +861,7 @@ void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_
 
 **Description**
 
-Sets the font weight configs of an option object for font configuration of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the text font weight configurations for the text font configuration object.
 
 **Since**: 24
 
@@ -949,8 +869,8 @@ Sets the font weight configs of an option object for font configuration of text.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | Pointer to the option object to be modified. |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | font weight configs. |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | Pointer to the text font configuration object to be modified. |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | Pointer to the text font weight configuration. When this parameter is not a null pointer, if the user does not explicitly set it, each configuration item uses the default value (variable font weight adjustment is disabled by default, and the text font weight following the device font weight level update is enabled by default). When this parameter is a null pointer, the above default values are not applied, and the text font weight behavior keeps consistent with that of the parent component. |
 
 ### OH_ArkUI_FontConfigs_GetFontWeightConfigs()
 
@@ -960,9 +880,7 @@ OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_F
 
 **Description**
 
-Gets the font weight configs of an option object for font configuration of text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the text font weight configurations of the text font configuration object.
 
 **Since**: 24
 
@@ -970,13 +888,13 @@ Gets the font weight configs of an option object for font configuration of text.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | Pointer to the option object. |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | Pointer to the text font configuration object. If not set or set to a null pointer, a null pointer is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_ArkUI_FontWeightConfigs*](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | Returns the font weight configs. |
+| [OH_ArkUI_FontWeightConfigs*](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | Pointer to the text font weight configuration object. |
 
 ### OH_ArkUI_NativeModule_LineSpacingOptions_Create()
 
@@ -986,11 +904,11 @@ OH_ArkUI_NativeModule_LineSpacingOptions *OH_ArkUI_NativeModule_LineSpacingOptio
 
 **Description**
 
-Creates a line spacing options object for text. When the object is no longer used, call [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Creates a text line spacing option object. After use, call [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy the object.
 
 **Since**: 26.0.1
+
+**Resource release**: OH_ArkUI_NativeModule_LineSpacingOptions_Destroy {return}
 
 **Returns**:
 
@@ -1006,9 +924,7 @@ void OH_ArkUI_NativeModule_LineSpacingOptions_Destroy(OH_ArkUI_NativeModule_Line
 
 **Description**
 
-Destroys the line spacing options object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Destroys a text line spacing option object.
 
 **Since**: 26.0.1
 
@@ -1016,7 +932,7 @@ Destroys the line spacing options object.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) *options | [in] Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
+| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) *options | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
 
 ### OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines()
 
@@ -1026,9 +942,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_
 
 **Description**
 
-Sets the onlyBetweenLines parameter for the line spacing options. When set to true, line spacing is only applied between lines, not for the first and last lines. When set to false, line spacing is applied uniformly to all lines.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the **onlyBetweenLines** parameter of the text line spacing options. When set to **true**, the line spacing is applied only between lines, with no extra line spacing above the first line or below the last line. When set to **false**, line spacing also exists above the first line and below the last line.
 
 **Since**: 26.0.1
 
@@ -1036,14 +950,14 @@ Sets the onlyBetweenLines parameter for the line spacing options. When set to tr
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) *options | [in] Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
-| bool onlyBetweenLines | [in] Whether line spacing is only applied between lines. True means only between lines, false means uniformly to all lines. The default value is false. |
+| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) *options | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
+| bool onlyBetweenLines | Whether the line spacing is applied only between lines. The value **true** indicates that the line spacing is applied only between lines, and **false** indicates that line spacing also exists above the first line and below the last line. The default value is **false**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <ul>      <li>{@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.</li><br>    <li>{@link ARKUI_ERROR_CODE_PARAM_INVALID} if the options parameter is null.</li>      </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> Returns ARKUI_ERROR_CODE_PARAM_INVALID if the **options** parameter is a null pointer. |
 
 ### OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines()
 
@@ -1053,9 +967,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(con
 
 **Description**
 
-Gets the onlyBetweenLines parameter from the line spacing options.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the **onlyBetweenLines** parameter of the text line spacing options.
 
 **Since**: 26.0.1
 
@@ -1063,13 +975,13 @@ Gets the onlyBetweenLines parameter from the line spacing options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) *options | [in] Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
-| bool *onlyBetweenLines | [out] Output parameter. Pointer to a bool variable to receive the value. True means only between lines, false means uniformly to all lines. The default value is false. |
+| [const OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) *options | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
+| bool *onlyBetweenLines | Output parameter, which is a pointer to a variable of the bool type, used to receive the value. The value **true** indicates that the line spacing is applied only between lines, and the value **false**<br>indicates that the line spacing also exists above the first line and below the last line. The default value is **<br>false**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <ul>      <li>{@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.</li><br>    <li>{@link ARKUI_ERROR_CODE_PARAM_INVALID} if any parameter is null.</li>      </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> Returns ARKUI_ERROR_CODE_PARAM_INVALID if any parameter is a null pointer. |
 
 

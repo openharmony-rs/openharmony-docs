@@ -6,8 +6,6 @@ Provides TEE log APIs.<br> Reference of TEE log APIs and internal definitions.
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -61,15 +59,12 @@ Provides TEE log APIs.<br> Reference of TEE log APIs and internal definitions.
 | [void uart_printf_func(const char *fmt, ...)](#uart_printf_func) | Provides to print UART logs. |
 | [void tee_print(LOG_LEVEL log_level, const char *fmt, ...)](#tee_print) | Provides to print TEE logs. |
 | [void tee_print_driver(LOG_LEVEL log_level, const char *log_tag, const char *fmt, ...)](#tee_print_driver) | Provides to print TEE driver logs. |
-| [extern const char *g_debug_prefix
-
-#if (TA_LOG_LEVEL >= TA_LOG_LEVEL_VERBO)](#) | Defines the debug prefix string. |
 
 ### Variable
 
 | Name | Description |
 | -- | -- |
-| const char *g_debug_prefix | Defines the debug prefix string.<br>**Since**: 20 |
+| const char *g_debug_prefix | Defines the debug prefix string.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
 
 ## Enum type description
 
@@ -82,8 +77,6 @@ enum LOG_LEVEL
 **Description**
 
 Enumerates the levels of the log.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -109,8 +102,6 @@ void uart_cprintf(const char *fmt, ...)
 
 Provides to print UART logs.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -129,8 +120,6 @@ void uart_printf_func(const char *fmt, ...)
 
 Provides to print UART logs.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -148,8 +137,6 @@ void tee_print(LOG_LEVEL log_level, const char *fmt, ...)
 **Description**
 
 Provides to print TEE logs.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -170,8 +157,6 @@ void tee_print_driver(LOG_LEVEL log_level, const char *log_tag, const char *fmt,
 
 Provides to print TEE driver logs.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -181,21 +166,5 @@ Provides to print TEE driver logs.
 | [LOG_LEVEL](capi-tee-log-h.md#log_level) log_level | [IN] The level of the log. |
 | const char *log_tag | [IN] The tag of the log. |
 | const char *fmt | [IN] The log information. |
-
-### ()
-
-```c
-extern const char *g_debug_prefix
-
-#if (TA_LOG_LEVEL >= TA_LOG_LEVEL_VERBO)
-```
-
-**Description**
-
-Defines the debug prefix string.
-
-**System capability**: SystemCapability.Tee.TeeClient
-
-**Since**: 20
 
 

@@ -6,8 +6,6 @@
 
 **Library**: libohinput.so
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
-
 **Since**: 12
 
 **Related module**: [input](capi-input.md)
@@ -31,8 +29,6 @@ enum Input_KeyCode
 **Description**
 
 Enumerates the key codes.
-
-**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
@@ -392,5 +388,14 @@ Enumerates the key codes.
 | KEYCODE_XKEY = 3232 | Custom Shortcut Keys<br>**Since**: 26.0.0 |
 | KEYCODE_FINGERPRINT_SLIDE_UP = 3233 | Smart control Key slide-up<br>**Since**: 26.0.0 |
 | KEYCODE_FINGERPRINT_SLIDE_DOWN = 3234 | Smart control Key slide-down<br>**Since**: 26.0.0 |
+| OH_INPUT_KEYCODE_PTZ_CLICK = 3235 | PTZ click<br>**Since**: 26.0.1 |
+| OH_INPUT_KEYCODE_PTZ_FOCUS_LEFT = 3236 | PTZ focus left<br>**Since**: 26.0.1 |
+| OH_INPUT_KEYCODE_PTZ_FOCUS_RIGHT = 3237 | PTZ focus right<br>**Since**: 26.0.1 |
+| OH_INPUT_KEYCODE_PTZ_EXPOSURE_LEFT = 3238 | PTZ exposure left<br>**Since**: 26.0.1 |
+| OH_INPUT_KEYCODE_PTZ_EXPOSURE_RIGHT = 3239 | PTZ exposure right<br>**Since**: 26.0.1 |
+| OH_INPUT_KEYCODE_PTZ_SHUTTER_LEFT = 3240 | PTZ shutter left<br>**Since**: 26.0.1 |
+| OH_INPUT_KEYCODE_PTZ_SHUTTER_RIGHT = 3241 | PTZ shutter right<br>**Since**: 26.0.1 |
+| OH_INPUT_KEYCODE_PTZ_APERTURE_LEFT = 3242 | PTZ aperture left<br>**Since**: 26.0.1 |
+| OH_INPUT_KEYCODE_PTZ_APERTURE_RIGHT = 3243 | PTZ aperture right<br>**Since**: 26.0.1 |
 
 

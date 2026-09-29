@@ -1,7 +1,7 @@
 # Input_DeviceListener
 
 ```c
-typedef struct Input_DeviceListener {...} Input_DeviceListener
+struct Input_DeviceListener {...}
 ```
 
 ## Overview

@@ -6,8 +6,6 @@
 
 **库：** libnative_fence.so
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
-
 **起始版本：** 20
 
 **相关模块：** [NativeFence](capi-nativefence.md)
@@ -35,8 +33,6 @@ bool OH_NativeFence_IsValid(int fenceFd)
 
 检查fenceFd是否有效。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
-
 **起始版本：** 20
 
 **参数：**
@@ -61,8 +57,6 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 
 阻塞传入的fenceFd。最大阻塞时间由超时参数决定。传入的fenceFd需要用户自己关闭。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
-
 **起始版本：** 20
 
 **参数：**
@@ -76,7 +70,7 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示对应的fenceFd有信号触发；\n          在以下情况会返回false：\n          1.传入的fenceFd为负整数。\n          2.在指定的超时时间内无信号触发。\n          3.调用底层poll接口失败。\n          4.超时时间设置为0。\n          5.接口中复制文件描述符执行失败。 |
+| bool | 返回true表示对应的fenceFd有信号触发；\n在以下情况会返回false：\n 1.传入的fenceFd为负整数。\n 2.在指定的超时时间内无信号触发。\n 3.调用底层poll接口失败。\n 4.超时时间设置为0。\n 5.接口中复制文件描述符执行失败。 |
 
 ### OH_NativeFence_WaitForever()
 
@@ -87,8 +81,6 @@ bool OH_NativeFence_WaitForever(int fenceFd)
 **描述：**
 
 永久阻塞传入的fenceFd。传入的fenceFd需要用户自己关闭。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 20
 
@@ -102,7 +94,7 @@ bool OH_NativeFence_WaitForever(int fenceFd)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示对应的fenceFd有信号触发；\n          在以下情况会返回false：\n          1.传入的fenceFd为负整数。\n          2.在指定的超时时间内无信号触发，永久等待。\n          3.接口中复制文件描述符执行失败。 |
+| bool | 返回true表示对应的fenceFd有信号触发；\n在以下情况会返回false：\n 1.传入的fenceFd为负整数。\n 2.在指定的超时时间内无信号触发，永久等待。\n 3.接口中复制文件描述符执行失败。 |
 
 ### OH_NativeFence_Close()
 
@@ -113,8 +105,6 @@ void OH_NativeFence_Close(int fenceFd)
 **描述：**
 
 关闭fenceFd。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 20
 

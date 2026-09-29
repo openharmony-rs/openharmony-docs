@@ -22,8 +22,8 @@ Provides the custom dialog box APIs for the native side.
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | Provides the custom dialog box APIs for the native side. The API scope is {@link ArkUI_NativeDialogAPI_1}<br>**Since**: 19 |
-| [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) nativeDialogAPI2 | Provides the custom dialog box APIs for the native side. The API scope is {@link ArkUI_NativeDialogAPI_2}<br>**Since**: 19 |
+| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | Provides the custom dialog box APIs for the native side. The API scope is [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)<br>**Since**: 19 |
+| [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) nativeDialogAPI2 | Provides the custom dialog box APIs for the native side. The API scope is [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md)<br>**Since**: 19 |
 
 
 ### Member functions
@@ -72,14 +72,14 @@ Sets the display order for a custom dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Indicates the pointer to the custom dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Indicates the pointer to the custom dialog box controller. |
 |  double levelOrder | Indicates the display order. The valid range is [-100000.0, 100000.0]. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### registerOnWillAppear()
 
@@ -105,7 +105,7 @@ Registers a listener callback before the dialog openAnimation starts.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### registerOnDidAppear()
 
@@ -131,7 +131,7 @@ Registers a listener callback when the dialog appears.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### registerOnWillDisappear()
 
@@ -157,7 +157,7 @@ Registers a listener callback before the dialog closeAnimation starts.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### registerOnDidDisappear()
 
@@ -183,7 +183,7 @@ Registers a listener callback when the dialog disappears.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### setBorderWidth()
 
@@ -205,18 +205,18 @@ Sets the border width of the dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
 |  float top | Width of the top border. |
 |  float right | Width of the right border. |
 |  float bottom | Width of the bottom border. |
 |  float left | Width of the left border. |
-|  ArkUI_LengthMetricUnit unit | Unit of the width. The default value is vp. |
+|  [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | Unit of the width. The default value is vp. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### setBorderColor()
 
@@ -238,7 +238,7 @@ Sets the border color of the dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
 |  uint32_t top | Color of the top border. |
 |  uint32_t right | Color of the right border. |
 |  uint32_t bottom | Color of the bottom border. |
@@ -248,7 +248,7 @@ Sets the border color of the dialog box.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### setBorderStyle()
 
@@ -270,7 +270,7 @@ Sets the border style of the dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
 |  int32_t top | Style of the top border. |
 |  int32_t right | Style of the right border. |
 |  int32_t bottom | Style of the bottom border. |
@@ -280,7 +280,7 @@ Sets the border style of the dialog box.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### setWidth()
 
@@ -302,15 +302,15 @@ Sets the width of the dialog box background.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
 |  float width | Width of the background. |
-|  ArkUI_LengthMetricUnit unit | Unit of the width. The default value is vp. |
+|  [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | Unit of the width. The default value is vp. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### setHeight()
 
@@ -332,15 +332,15 @@ Sets the height of the dialog box background.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
 |  float height | Height of the background. |
-|  ArkUI_LengthMetricUnit unit | Unit of the height. The default value is vp. |
+|  [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | Unit of the height. The default value is vp. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### setShadow()
 
@@ -362,14 +362,14 @@ Sets the shadow of the dialog box background.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
 |  ArkUI_ShadowStyle shadow | Shadow style of the background, specified by an enumerated value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### setCustomShadow()
 
@@ -391,14 +391,14 @@ Sets the custom shadow of the dialog box background.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
-|  const ArkUI_AttributeItem* customShadow | Custom shadow parameter. The format is the same as that of the <b>NODE_SHADOW</b> property. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
+|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* customShadow | Custom shadow parameter. The format is the same as that of the <b>NODE_SHADOW</b> property. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### setBackgroundBlurStyle()
 
@@ -420,14 +420,14 @@ Sets the background blur style of the dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
 |  ArkUI_BlurStyle blurStyle | Background blur style, specified by an enumerated value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### setKeyboardAvoidMode()
 
@@ -449,14 +449,14 @@ Sets the keyboard avoidance mode of the dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
-|  ArkUI_KeyboardAvoidMode keyboardAvoidMode | Keyboard avoidance mode, specified by an enumerated value. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
+|  [ArkUI_KeyboardAvoidMode](capi-native-type-h.md#arkui_keyboardavoidmode) keyboardAvoidMode | Keyboard avoidance mode, specified by an enumerated value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### enableHoverMode()
 
@@ -478,14 +478,14 @@ Sets whether to enable the hover mode for the dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
 |  bool enableHoverMode | Whether to enable the hover mode. The default value is <b>false</b>. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur.. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur.. |
 
 ### setHoverModeArea()
 
@@ -507,14 +507,14 @@ Set the default display area of the dialog box in hover mode.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Pointer to the dialog box controller. |
-|  ArkUI_HoverModeAreaType hoverModeAreaType | Display area in hover mode, specified by an enumerated value. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Pointer to the dialog box controller. |
+|  [ArkUI_HoverModeAreaType](capi-native-type-h.md#arkui_hovermodeareatype) hoverModeAreaType | Display area in hover mode, specified by an enumerated value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occur. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occur. |
 
 ### setFocusable()
 
@@ -532,14 +532,14 @@ Sets whether to get focus when the custom dialog is displayed.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Indicates the pointer to the custom dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Indicates the pointer to the custom dialog box controller. |
 |  bool focusable | Specifies whether to get focus when the custom dialog is displayed. The default value is true. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### setBackgroundBlurStyleOptions()
 
@@ -561,14 +561,14 @@ Sets the background blur effect for a custom dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Indicates the pointer to the custom dialog box controller. |
-|  const ArkUI_AttributeItem* backgroundBlurStyleOptions | Background blur effect options. Format of the {@link ArkUI_AttributeItem} parameter: <br>       .value[0].i32: color mode. The value is an enum of {@link ArkUI_ColorMode}. <br>       .value[1]?.i32: adaptive color mode. The value is an enum of {@link ArkUI_AdaptiveColor}. <br>       .value[2]?.f32: blur degree. The value range is [0.0, 1.0]. <br>       .value[3]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. <br>       .value[4]?.u32: degree of darkening the white color in the grayscale blur. The value range is [0, 127]. <br>       .value[5]?.i32: blur activation policy. The value is an enum of {@link ArkUI_BlurStyleActivePolicy}.  .value[6]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed). |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Indicates the pointer to the custom dialog box controller. |
+|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | Background blur effect options. Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter:  .value[0].i32: color mode. The value is an enum of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).  .value[1]?.i32: adaptive color mode. The value is an enum of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).  .value[2]?.f32: blur degree. The value range is [0.0, 1.0].  .value[3]?.u32: brightness of black in the grayscale blur. The value range is [0, 127].  .value[4]?.u32: degree of darkening the white color in the grayscale blur. The value range is [0, 127].  .value[5]?.i32: blur activation policy. The value is an enum of [ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy).  .value[6]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### setBackgroundEffect()
 
@@ -590,13 +590,13 @@ Sets the background effect parameters for a custom dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NativeDialogHandle handle | Indicates the pointer to the custom dialog box controller. |
-|  const ArkUI_AttributeItem* backgroundEffect | Background effect. Format of the {@link ArkUI_AttributeItem} parameter: <br>       .value[0].f32: blur radius, in vp. <br>       .value[1]?.f32: saturation. <br>       .value[2]?.f32: brightness. <br>       .value[3]?.u32: color, in 0xARGB format. <br>       .value[4]?.i32: adaptive color mode. The value is an enum of {@link ArkUI_AdaptiveColor}. <br>       .value[5]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. <br>       .value[6]?.u32: degree of darkening the white color in the grayscale blur. The value range is [0, 127]. <br>       .value[7]?.i32: blur activation policy. The value is an enum of {@link ArkUI_BlurStyleActivePolicy}.  .value[8]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed). |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Indicates the pointer to the custom dialog box controller. |
+|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | Background effect. Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter:  .value[0].f32: blur radius, in vp.  .value[1]?.f32: saturation.  .value[2]?.f32: brightness.  .value[3]?.u32: color, in 0xARGB format.  .value[4]?.i32: adaptive color mode. The value is an enum of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).  .value[5]?.u32: brightness of black in the grayscale blur. The value range is [0, 127].  .value[6]?.u32: degree of darkening the white color in the grayscale blur. The value range is [0, 127].  .value[7]?.i32: blur activation policy. The value is an enum of [ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy).  .value[8]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.              Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 

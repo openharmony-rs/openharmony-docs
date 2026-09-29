@@ -1,7 +1,7 @@
 # OH_NN_UInt32Array
 
 ```c
-typedef struct OH_NN_UInt32Array {...} OH_NN_UInt32Array
+struct OH_NN_UInt32Array {...}
 ```
 
 ## Overview

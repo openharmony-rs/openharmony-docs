@@ -6,8 +6,6 @@ Declare audio stream related interfaces for output type.
 
 **Library**: libohaudio.so
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Related module**: [OHAudio](capi-ohaudio.md)
@@ -64,10 +62,10 @@ Declare audio stream related interfaces for output type.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint) | Called when an interrupt event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnInterruptEvent.<br>**Since**: 20 |
-| void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error) | Called when an error event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnError.<br>**Since**: 20 |
-| void (*OH_AudioRenderer_OnFastStatusChange)( OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status ) | Callback function of fast status change event for audio renderer.<br>**Since**: 20 |
-| int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize) | Callback function of write data on Render.<br> Different with OH_AudioRenderer_OnWriteDataCallback, this function allows the caller to write partial data which ranges from 0 to the callback buffer size. If 0 is returned, the callback thread will sleep for a while. Otherwise, the system may callback again immediately.<br>**Since**: 20 |
+| void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint) | Called when an interrupt event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnInterruptEvent.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error) | Called when an error event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnError.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioRenderer_OnFastStatusChange)( OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status ) | Callback function of fast status change event for audio renderer.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize) | Callback function of write data on Render.<br> Different with OH_AudioRenderer_OnWriteDataCallback, this function allows the caller to write partial data which ranges from 0 to the callback buffer size. If 0 is returned, the callback thread will sleep for a while. Otherwise, the system may callback again immediately.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 
 ## Function description
 
@@ -79,21 +77,19 @@ OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioRenderer_Start()
 
@@ -103,21 +99,19 @@ OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | reference created by OH_AudioStreamBuilder |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | reference created by OH_AudioStreamBuilder |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioRenderer_Pause()
 
@@ -127,21 +121,19 @@ OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioRenderer_Stop()
 
@@ -151,21 +143,19 @@ OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioRenderer_Flush()
 
@@ -175,21 +165,19 @@ OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioRenderer_GetCurrentState()
 
@@ -199,22 +187,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* rendere
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioStream_State* state | Pointer to a variable that will be set for the state value. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioStream_State](capi-native-audiostream-base-h.md#oh_audiostream_state)* state | Pointer to a variable that will be set for the state value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetSamplingRate()
 
@@ -224,22 +210,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* rendere
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int32_t* rate | Pointer to a variable that will be set for the sampling rate. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetStreamId()
 
@@ -249,22 +233,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, u
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | uint32_t* streamId | Pointer to a variable that will be set for the stream id. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetChannelCount()
 
@@ -274,22 +256,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* rendere
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int32_t* channelCount | Pointer to a variable that will be set for the channel count. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetSampleFormat()
 
@@ -299,22 +279,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* rendere
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioStream_SampleFormat* sampleFormat | Pointer to a variable that will be set for the sample format. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioStream_SampleFormat](capi-native-audiostream-base-h.md#oh_audiostream_sampleformat)* sampleFormat | Pointer to a variable that will be set for the sample format. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetLatencyMode()
 
@@ -324,22 +302,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioStream_LatencyMode* latencyMode | Pointer to a variable that will be set for the latency mode. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode)* latencyMode | Pointer to a variable that will be set for the latency mode. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetRendererInfo()
 
@@ -349,22 +325,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* rendere
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioStream_Usage* usage | Pointer to a variable that will be set for the stream usage. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)* usage | Pointer to a variable that will be set for the stream usage. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetEncodingType()
 
@@ -374,22 +348,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* rendere
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioStream_EncodingType* encodingType | Pointer to a variable that will be set for the encoding type. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype)* encodingType | Pointer to a variable that will be set for the encoding type. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetFramesWritten()
 
@@ -399,22 +371,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* render
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int64_t* frames | Pointer to a variable that will be set for the frame count number. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetTimestamp()
 
@@ -424,16 +394,14 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
-| clockid_t clockId | {@link #CLOCK_MONOTONIC} |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| clockid_t clockId | CLOCK_MONOTONIC |
 | int64_t* framePosition | Pointer to a variable to receive the position. |
 | int64_t* timestamp | Pointer to a variable to receive the timestamp, unit is nanosecond. |
 
@@ -441,7 +409,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of renderer is nullptr;                                                  2.The param of clockId invalid.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr; 2.The param of clockId invalid. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. |
 
 ### OH_AudioRenderer_GetFrameSizeInCallback()
 
@@ -451,22 +419,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* 
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int32_t* frameSize | Pointer to a variable that will be set for the frame size. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetSpeed()
 
@@ -476,22 +442,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, floa
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float* speed | Pointer to a variable to receive the playback speed. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_SetSpeed()
 
@@ -501,22 +465,20 @@ OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, floa
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float speed | The playback speed, from 0.25 to 4.0. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_SetVolume()
 
@@ -526,22 +488,20 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, flo
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float volume | Volume to set which changes from 0.0 to 1.0. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of renderer is nullptr;                                                  2.The param of volume invalid.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception.          [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) An system error has occurred. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr; 2.The param of volume invalid. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) An system error has occurred. |
 
 ### OH_AudioRenderer_SetVolumeWithRamp()
 
@@ -551,15 +511,13 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* rende
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float volume | Volume to set which changes from 0.0 to 1.0. |
 | int32_t durationMs | Duration for volume ramp, in millisecond. |
 
@@ -567,7 +525,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* rende
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of renderer is nullptr;                                                  2.The param of volume invalid.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception.          [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) An system error has occurred. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr; 2.The param of volume invalid. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) An system error has occurred. |
 
 ### OH_AudioRenderer_GetVolume()
 
@@ -577,22 +535,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, flo
 
 **Description**
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float* volume | Pointer to a variable to receive the volume. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of renderer is nullptr;                                                  2.The param of volume is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr; 2.The param of volume is nullptr. |
 
 ### OH_AudioRenderer_SetMarkPosition()
 
@@ -604,24 +560,22 @@ OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* rendere
 
 Set mark position on current renderer. Calling this function will overwrite the mark postion which has already set.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | uint32_t samplePos | Mark position in samples. |
-| OH_AudioRenderer_OnMarkReachedCallback callback | Callback used when the samplePos has reached. |
+| [OH_AudioRenderer_OnMarkReachedCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_onmarkreachedcallback) callback | Callback used when the samplePos has reached. |
 | void* userData | User data which is passed by user. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of renderer is nullptr;                                                  2.The param of samplePos invalid.          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception.          [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) An system error has occurred. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr; 2.The param of samplePos invalid. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception. [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) An system error has occurred. |
 
 ### OH_AudioRenderer_CancelMark()
 
@@ -633,21 +587,19 @@ OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)
 
 Cancel mark which has set by [OH_AudioRenderer_SetMarkPosition](capi-native-audiorenderer-h.md#oh_audiorenderer_setmarkposition).
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetUnderflowCount()
 
@@ -659,22 +611,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* rende
 
 Gets the underflow count on this stream.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | uint32_t* count | Pointer to a variable to receive the underflow count number. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of renderer is nullptr;                                                  2.The param of count is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr; 2.The param of count is nullptr. |
 
 ### OH_AudioRenderer_GetChannelLayout()
 
@@ -686,22 +636,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* render
 
 Query the channel layout of the renderer client.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioChannelLayout* channelLayout | Pointer to a variable to receive the channel layout |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)* channelLayout | Pointer to a variable to receive the channel layout |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetEffectMode()
 
@@ -713,22 +661,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetEffectMode(OH_AudioRenderer* renderer,
 
 Query current audio effect mode.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioStream_AudioEffectMode* effectMode | Pointer to a variable to receive current audio effect mode |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioStream_AudioEffectMode](capi-native-audiostream-base-h.md#oh_audiostream_audioeffectmode)* effectMode | Pointer to a variable to receive current audio effect mode |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_SetEffectMode()
 
@@ -740,22 +686,20 @@ OH_AudioStream_Result OH_AudioRenderer_SetEffectMode(OH_AudioRenderer* renderer,
 
 Set current audio effect mode.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioStream_AudioEffectMode effectMode | Audio effect mode that will be set for the stream |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioStream_AudioEffectMode](capi-native-audiostream-base-h.md#oh_audiostream_audioeffectmode) effectMode | Audio effect mode that will be set for the stream |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_GetRendererPrivacy()
 
@@ -767,22 +711,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererPrivacy(OH_AudioRenderer* rend
 
 Get the privacy of this stream.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioStream_PrivacyType* privacy | Pointer to a variable which receives the results. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioStream_PrivacyType](capi-native-audiostream-base-h.md#oh_audiostream_privacytype)* privacy | Pointer to a variable which receives the results. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of renderer is nullptr. |
 
 ### OH_AudioRenderer_SetSilentModeAndMixWithOthers()
 
@@ -794,22 +736,20 @@ OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRen
 
 Set silent and mix with other streams for this stream.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | bool on | The silent and mix with other streams mode. true: set the silent mode and mix with other streams. false: unset the silent mode, current stream will trigger the audio focus internally. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | result code for this function.      [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) succeed in setting to the silent and mix with other streams.      [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) this stream is not allowed to set/unset the silent mode. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | result code for this function. [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) succeed in setting to the silent and mix with other streams. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) this stream is not allowed to set/unset the silent mode. |
 
 ### OH_AudioRenderer_GetSilentModeAndMixWithOthers()
 
@@ -821,22 +761,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRen
 
 Query silent and mix with other streams status for this stream.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | bool* on | Pointer to the silent and mix with other streams status. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | result code for this function.      [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) succeed in getting silent and mix with other streams status      [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) system error when calling this function. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | result code for this function. [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) succeed in getting silent and mix with other streams status [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) system error when calling this function. |
 
 ### OH_AudioRenderer_SetDefaultOutputDevice()
 
@@ -848,22 +786,20 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 Temporarily changes the current audio device This function applys on audiorenderers whose StreamUsage are STREAM_USAGE_VOICE_COMMUNICATIN/STREAM_USAGE_VIDEO_COMMUNICATION/STREAM_USAGE_VOICE_MESSAGE. Setting the device will only takes effect if no other accessory such as headphones are in use.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
-| OH_AudioDevice_Type deviceType | The target device. The available deviceTypes are: EARPIECE: Built-in earpiece SPEAKER: Built-in speaker DEFAULT: System default output device |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type) deviceType | The target device. The available deviceTypes are: EARPIECE: Built-in earpiece SPEAKER: Built-in speaker DEFAULT: System default output device |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | result code for this function.          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) succeed in setting the default output device          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of renderer is nullptr;                                                  2.The param of deviceType is not valid          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) This audiorenderer can not reset the output device          [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) system error when calling this function. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | result code for this function. [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) succeed in setting the default output device [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr; 2.The param of deviceType is not valid [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) This audiorenderer can not reset the output device [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) system error when calling this function. |
 
 ### OH_AudioRenderer_GetAudioTimestampInfo()
 
@@ -875,15 +811,13 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 Query the timestamp at which a particular frame was presented in clock monotonic timebase, the frame at the returned position was just committed to hardware. This is often used in video synchronization and recording stream alignment.<br> Position is 0 and timestamp is fixed until stream really runs and frame is committed. Position will also be reset while flush function is called. When a audio route change happens, like in device or output type change situations, the position may also be reset but timestamp remains monotonically increasing. So it is better to use the values until they becomes regularly after the change. This interface also adapts to playback speed change. For example, the increseing speed for position will be double for 2x speed playback.<br> For video synchronization usage, there is a best practice document for developer to refer **AV Synchronization**.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 15
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int64_t* framePosition | Pointer to a variable to receive the position |
 | int64_t* timestamp | Pointer to a variable to receive the timestamp |
 
@@ -891,7 +825,7 @@ Query the timestamp at which a particular frame was presented in clock monotonic
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                          1.The param of renderer is nullptr;                                          2.The param of framePosition or timestamp is nullptr;          [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result):                                          1.Only running state is legal for getting audio timestamp.          [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                          1.Crash or blocking occurs in system process.                                          2.Other unexpected error from internal system. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr; 2.The param of framePosition or timestamp is nullptr; [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.Only running state is legal for getting audio timestamp. [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.Crash or blocking occurs in system process. 2.Other unexpected error from internal system. |
 
 ### OH_AudioRenderer_OnInterruptCallback()
 
@@ -903,18 +837,16 @@ typedef void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer,
 
 Called when an interrupt event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnInterruptEvent.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer\* renderer | Pointer to the AudioRenderer instance that triggers the callback. |
-| void\* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetRendererInterruptCallback. |
-| OH_AudioInterrupt_ForceType type | Type of force that causes the interrupt event. |
-| OH_AudioInterrupt_Hint hint | Hint provided along with the interrupt event. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Pointer to the AudioRenderer instance that triggers the callback. |
+| void* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetRendererInterruptCallback. |
+| [OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) type | Type of force that causes the interrupt event. |
+| [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) hint | Hint provided along with the interrupt event. |
 
 **Reference**:
 
@@ -931,17 +863,15 @@ typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, voi
 
 Called when an error event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnError.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer\* renderer | Pointer to the AudioRenderer instance that triggers the callback. |
-| void\* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetRendererErrorCallback. |
-| OH_AudioStream_Result error | Specific error information. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Pointer to the AudioRenderer instance that triggers the callback. |
+| void* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetRendererErrorCallback. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | Specific error information. |
 
 **Reference**:
 
@@ -958,22 +888,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer,
 
 Gets audio renderer running status, check if it works in fast status.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer. |
-| OH_AudioStream_FastStatus* status | Pointer to a variable to receive the status. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer. |
+| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus)* status | Pointer to a variable to receive the status. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | @return      [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) if the execution is successful.      [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) the param of renderer is nullptr.      [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) function called in invalid state, only available before release state. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) if the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) the param of renderer is nullptr. [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) function called in invalid state, only available before release state. |
 
 ### OH_AudioRenderer_OnFastStatusChange()
 
@@ -985,17 +913,15 @@ typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, 
 
 Callback function of fast status change event for audio renderer.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer\* renderer | Pointer to an audio renderer instance for which this callback occurs. |
-| void\* userData | Userdata which is passed by register. |
-| OH_AudioStream_FastStatus status | Current fast status. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Pointer to an audio renderer instance for which this callback occurs. |
+| void* userData | Userdata which is passed by register. |
+| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | Current fast status. |
 
 ### OH_AudioRenderer_SetLoudnessGain()
 
@@ -1007,22 +933,20 @@ OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* rendere
 
 Sets the loudness gain of current renderer. The default loudness gain is 0.0dB. The stream usage of the audio renderer must be [AUDIOSTREAM_USAGE_MUSIC](capi-native-audiostream-base-h.md#oh_audiostream_usage), [AUDIOSTREAM_USAGE_MOVIE](capi-native-audiostream-base-h.md#oh_audiostream_usage) or [AUDIOSTREAM_USAGE_AUDIOBOOK](capi-native-audiostream-base-h.md#oh_audiostream_usage). The latency mode of the audio renderer must be [AUDIOSTREAM_LATENCY_MODE_NORMAL](capi-native-audiostream-base-h.md#oh_audiostream_latencymode). If AudioRenderer is played through the high-resolution pipe, this operation is not supported.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | AudioRender created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRender created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float loudnessGain | Loudness gain to set which changes from -90.0 to 24.0, expressing in dB. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of renderer is nullptr or not supported to set gain;                                                  2.The param of loudnessGain is invalid. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr or not supported to set gain; 2.The param of loudnessGain is invalid. |
 
 ### OH_AudioRenderer_GetLoudnessGain()
 
@@ -1034,22 +958,20 @@ OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* rendere
 
 Get the loudness gain of current renderer.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | AudioRender created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRender created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float* loudnessGain | Pointer to a variable to receive the loudness gain, unit is dB. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of renderer is nullptr;                                                  2.The param of loudnessGain is nullptr. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of renderer is nullptr; 2.The param of loudnessGain is nullptr. |
 
 ### OH_AudioRenderer_OnWriteDataCallbackAdvanced()
 
@@ -1061,24 +983,22 @@ typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer
 
 Callback function of write data on Render.<br> Different with OH_AudioRenderer_OnWriteDataCallback, this function allows the caller to write partial data which ranges from 0 to the callback buffer size. If 0 is returned, the callback thread will sleep for a while. Otherwise, the system may callback again immediately.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer\* renderer | AudioRenderer where this callback occurs. |
-| void\* userData | User data which is passed by user. |
-| void\* audioData | Audio data pointer, where user should fill in audio data. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer where this callback occurs. |
+| void* userData | User data which is passed by user. |
+| void* audioData | Audio data pointer, where user should fill in audio data. |
 | int32_t audioDataSize | Size of audio data that user should fill in, unit is byte. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Length of the valid data that has written into audioData buffer. The return value must be in range of  [0, audioDataSize]. If the return value is less than 0, the system changes it to 0. And, if the return value is  greater than audioDataSize, the system changes it to audioDataSize. Note that the length of the returned buffer  must be an integer multiple of the length of the single sample data. For example, for 2 channels and S16 format  audio data, it must be an integer multiple of 4(216/8). Otherwise, it may cause noise during playback. |
+| int32_t | Length of the valid data that has written into audioData buffer. The return value must be in range of [0, audioDataSize]. If the return value is less than 0, the system changes it to 0. And, if the return value is greater than audioDataSize, the system changes it to audioDataSize. Note that the length of the returned buffer must be an integer multiple of the length of the single sample data. For example, for 2 channels and S16 format audio data, it must be an integer multiple of 4(2*16/8). Otherwise, it may cause noise during playback. |
 
 **Reference**:
 
@@ -1095,23 +1015,21 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH
 
 Gets the estimated audio latency in milliseconds for current audio route. For wireless connection audio devices cases, the latency result may not be very accurate, system just provides it for reference only. The real-time buffer status is also not taken into consideration, so it is recommended to get it only at the beginning of audio playback, and do not call th function very frequently because it may be blocked by route change. Applications should still use [OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo) to handle A/V sync after audio data has been output to hardware.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | AudioRenderer created by OH_AudioStreamBuilder_GenerateRenderer(). |
-| OH_AudioStream_LatencyType type | Type of audio latency to get. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer created by OH_AudioStreamBuilder_GenerateRenderer(). |
+| [OH_AudioStream_LatencyType](capi-native-audiostream-base-h.md#oh_audiostream_latencytype) type | Type of audio latency to get. |
 | int32_t* latencyMs | Pointer to a variable to receive the latency in milliseconds. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | Function result code:          [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.          [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result)              1.The param of renderer is nullptr.              2.The param of latencyMs is nullptr.              3.The param of type is invalid value.          [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) System internal error, like audio service error. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | Function result code: [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) 1.The param of renderer is nullptr. 2.The param of latencyMs is nullptr. 3.The param of type is invalid value. [AUDIOSTREAM_ERROR_SYSTEM](capi-native-audiostream-base-h.md#oh_audiostream_result) System internal error, like audio service error. |
 
 ### OH_AudioRenderer_SetIndependentAudioSessionStrategy()
 
@@ -1123,22 +1041,20 @@ OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_Aud
 
 Configure audio session strategy and behavior parameters to adjust the focus preemption policy. Each time you call this interface to set parameters, you need to call the interface [OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start) again for the settings to take effect.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_AudioRenderer* renderer | AudioRenderer created by OH_AudioStreamBuilder_GenerateRenderer(). |
-| const OH_AudioSession_Strategy* strategy | pointer to [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) which is used to set the audio session strategy. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer created by OH_AudioStreamBuilder_GenerateRenderer(). |
+| [const OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md)* strategy | pointer to [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) which is used to set the audio session strategy. |
 | uint32_t behavior | Audio session behavior flag, which can be a single flag or a bitwise OR combination of multiple flags [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.      or [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) If the parameter is null or out of range.      or [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Running and released are illegal states. |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. or [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) If the parameter is null or out of range. or [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Running and released are illegal states. |
 
 

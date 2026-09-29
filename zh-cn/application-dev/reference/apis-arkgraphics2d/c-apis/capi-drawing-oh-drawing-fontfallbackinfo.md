@@ -1,7 +1,7 @@
 # OH_Drawing_FontFallbackInfo
 
 ```c
-typedef struct OH_Drawing_FontFallbackInfo {...} OH_Drawing_FontFallbackInfo
+struct OH_Drawing_FontFallbackInfo {...}
 ```
 
 ## 概述

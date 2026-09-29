@@ -6,8 +6,6 @@ Defines the native APIs for swapfs.
 
 **Library**: libohswapfs.so
 
-**System capability**: SystemCapability.FileManagement.File.Swapfs
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -20,11 +18,11 @@ Defines the native APIs for swapfs.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_SwapfsConfig(System API)](capi-swapfs-oh-swapfsconfig-sys.md) | OH_SwapfsConfig | Configuration for creating a swapfs manager.<br>**System API:** This is a system API. |
-| [OH_SwapfsSwapOutRequest(System API)](capi-swapfs-oh-swapfsswapoutrequest-sys.md) | OH_SwapfsSwapOutRequest | Request parameters for swap-out operation.<br>**System API:** This is a system API. |
-| [OH_SwapfsSwapInRequest(System API)](capi-swapfs-oh-swapfsswapinrequest-sys.md) | OH_SwapfsSwapInRequest | Request parameters for swap-in operation.<br>**System API:** This is a system API. |
-| [OH_SwapfsDataInfo(System API)](capi-swapfs-oh-swapfsdatainfo-sys.md) | OH_SwapfsDataInfo | Information about a single swap key.<br>**System API:** This is a system API. |
-| [OH_SwapfsStats(System API)](capi-swapfs-oh-swapfsstats-sys.md) | OH_SwapfsStats | Statistics of the current swapfs manager.<br>**System API:** This is a system API. |
+| [OH_SwapfsConfig(System API)](capi-swapfs-oh-swapfsconfig-sys.md) | - | Configuration for creating a swapfs manager.<br>**System API:** This is a system API. |
+| [OH_SwapfsSwapOutRequest(System API)](capi-swapfs-oh-swapfsswapoutrequest-sys.md) | - | Request parameters for swap-out operation.<br>**System API:** This is a system API. |
+| [OH_SwapfsSwapInRequest(System API)](capi-swapfs-oh-swapfsswapinrequest-sys.md) | - | Request parameters for swap-in operation.<br>**System API:** This is a system API. |
+| [OH_SwapfsDataInfo(System API)](capi-swapfs-oh-swapfsdatainfo-sys.md) | - | Information about a single swap key.<br>**System API:** This is a system API. |
+| [OH_SwapfsStats(System API)](capi-swapfs-oh-swapfsstats-sys.md) | - | Statistics of the current swapfs manager.<br>**System API:** This is a system API. |
 | [OH_SwapfsManager(System API)](capi-swapfs-oh-swapfsmanager-sys.md) | OH_SwapfsManager | The struct is used to perform operations related to swapfs manager.<br>**System API:** This is a system API. |
 
 ### Enum
@@ -65,8 +63,6 @@ enum OH_SwapfsKeyStatus
 
 Defines the status of a swap key.
 
-**System capability**: SystemCapability.FileManagement.File.Swapfs
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -85,8 +81,6 @@ enum OH_SwapfsDisableReason
 **Description**
 
 Defines the reason why the swap-out feature is disabled.
-
-**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -110,9 +104,9 @@ OH_Swapfs_ErrCode OH_Swapfs_CreateManager(const OH_SwapfsConfig *config, OH_Swap
 
 Creates a swapfs manager.
 
-**System capability**: SystemCapability.FileManagement.File.Swapfs
-
 **Since**: 26.0.0
+
+**Resource release**: swapfs/OH_Swapfs_DestroyManager {manager}
 
 **System API:** This is a system API.
 
@@ -127,7 +121,7 @@ Creates a swapfs manager.
 
 | Type | Description |
 | -- | -- |
-| OH_Swapfs_ErrCode | Returns the error code of the execution.          <ul>          <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li>          <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr.</li>          <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li>          <li>[SWAPFS_E_ACCES](capi-swapfs-errcode-h.md#oh_swapfs_errcode) permission denied for the swap root path.</li>          <li>[SWAPFS_E_PATH_UNAVAILABLE](capi-swapfs-errcode-h.md#oh_swapfs_errcode) swap root path cannot be created.</li>          <li>202 if a non-system application calls this system API.</li>          </ul> |
+| OH_Swapfs_ErrCode | Returns the error code of the execution. <ul> <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li> <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr.</li> <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li> <li>[SWAPFS_E_ACCES](capi-swapfs-errcode-h.md#oh_swapfs_errcode) permission denied for the swap root path.</li> <li>[SWAPFS_E_PATH_UNAVAILABLE](capi-swapfs-errcode-h.md#oh_swapfs_errcode) swap root path cannot be created.</li> <li>202 if a non-system application calls this system API.</li> </ul> |
 
 ### OH_Swapfs_DestroyManager()
 
@@ -138,8 +132,6 @@ OH_Swapfs_ErrCode OH_Swapfs_DestroyManager(OH_SwapfsManager *manager)
 **Description**
 
 Destroys a swapfs manager and releases all resources.<br> This function enters the shutting-down state and rejects new swap-out, swap-in, remove, and remove-all operations. It waits up to 5 seconds for active operations to complete. If all operations complete within the timeout, all swap data owned by the manager is automatically removed and the manager is destroyed. If the wait times out, this function cancels the shutting-down state and returns SWAPFS_E_BUSY; the caller can retry later.
-
-**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -155,7 +147,7 @@ Destroys a swapfs manager and releases all resources.<br> This function enters t
 
 | Type | Description |
 | -- | -- |
-| OH_Swapfs_ErrCode | Returns the error code of the execution.          <ul>          <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li>          <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr.</li>          <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) there are active operations in progress.</li>          <li>202 if a non-system application calls this system API.</li>          </ul> |
+| OH_Swapfs_ErrCode | Returns the error code of the execution. <ul> <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li> <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr.</li> <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) there are active operations in progress.</li> <li>202 if a non-system application calls this system API.</li> </ul> |
 
 ### OH_Swapfs_SwapOut()
 
@@ -166,8 +158,6 @@ OH_Swapfs_ErrCode OH_Swapfs_SwapOut(OH_SwapfsManager *manager, const OH_SwapfsSw
 **Description**
 
 Swaps out data from memory to disk.<br> When config.useDirectIo is false, buffered IO is used. When true, Direct IO is required and misaligned buffers cause an error. In DIO mode, the swap file size is padded to SWAPFS_DIO_ALIGNMENT (occupiedSize is greater than or equal to dataSize).
-
-**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -185,7 +175,7 @@ Swaps out data from memory to disk.<br> When config.useDirectIo is false, buffer
 
 | Type | Description |
 | -- | -- |
-| OH_Swapfs_ErrCode | Returns the error code of the execution.          <ul>          <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li>          <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr, request is nullptr, keyId is nullptr,              buffer is nullptr, or bufferSize is 0.</li>          <li>[SWAPFS_E_DIO_ALIGN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) useDirectIo is true and buffer is not aligned.</li>          <li>[SWAPFS_E_NOSPC](capi-swapfs-errcode-h.md#oh_swapfs_errcode) insufficient device storage space.</li>          <li>[SWAPFS_E_QUOTA_EXCEEDED](capi-swapfs-errcode-h.md#oh_swapfs_errcode) swap space quota exceeded.</li>          <li>[SWAPFS_E_FEATURE_DISABLED](capi-swapfs-errcode-h.md#oh_swapfs_errcode) swap-out is disabled due to low space or policy.</li>          <li>[SWAPFS_E_IO_ERROR](capi-swapfs-errcode-h.md#oh_swapfs_errcode) IO write failure.</li>          <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li>          <li>[SWAPFS_E_ACCES](capi-swapfs-errcode-h.md#oh_swapfs_errcode) permission denied.</li>          <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) RemoveAllData is in progress or too many concurrent operations.</li>          <li>[SWAPFS_E_SHUTTING_DOWN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is shutting down.</li>          <li>202 if a non-system application calls this system API.</li>          </ul> |
+| OH_Swapfs_ErrCode | Returns the error code of the execution. <ul> <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li> <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr, request is nullptr, keyId is nullptr, buffer is nullptr, or bufferSize is 0.</li> <li>[SWAPFS_E_DIO_ALIGN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) useDirectIo is true and buffer is not aligned.</li> <li>[SWAPFS_E_NOSPC](capi-swapfs-errcode-h.md#oh_swapfs_errcode) insufficient device storage space.</li> <li>[SWAPFS_E_QUOTA_EXCEEDED](capi-swapfs-errcode-h.md#oh_swapfs_errcode) swap space quota exceeded.</li> <li>[SWAPFS_E_FEATURE_DISABLED](capi-swapfs-errcode-h.md#oh_swapfs_errcode) swap-out is disabled due to low space or policy.</li> <li>[SWAPFS_E_IO_ERROR](capi-swapfs-errcode-h.md#oh_swapfs_errcode) IO write failure.</li> <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li> <li>[SWAPFS_E_ACCES](capi-swapfs-errcode-h.md#oh_swapfs_errcode) permission denied.</li> <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) RemoveAllData is in progress or too many concurrent operations.</li> <li>[SWAPFS_E_SHUTTING_DOWN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is shutting down.</li> <li>202 if a non-system application calls this system API.</li> </ul> |
 
 ### OH_Swapfs_SwapIn()
 
@@ -196,8 +186,6 @@ OH_Swapfs_ErrCode OH_Swapfs_SwapIn(OH_SwapfsManager *manager, const OH_SwapfsSwa
 **Description**
 
 Swaps in data from disk back to memory.<br> In DIO mode, the buffer address and size must be aligned to SWAPFS_DIO_ALIGNMENT, and bufferSize must be greater than or equal to occupiedSize. In buffered mode, bufferSize must be greater than or equal to dataSize. On success, readSize receives the original dataSize (not occupiedSize).
-
-**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -215,7 +203,7 @@ Swaps in data from disk back to memory.<br> In DIO mode, the buffer address and 
 
 | Type | Description |
 | -- | -- |
-| OH_Swapfs_ErrCode | Returns the error code of the execution.          <ul>          <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li>          <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr, request is nullptr, keyId is 0,              buffer is nullptr, or bufferSize is 0.</li>          <li>[SWAPFS_E_DIO_ALIGN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) buffer address or size is not aligned to SWAPFS_DIO_ALIGNMENT.</li>          <li>[SWAPFS_E_BUFFER_TOO_SMALL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) bufferSize is smaller than the required size.</li>          <li>[SWAPFS_E_KEY_NOT_FOUND](capi-swapfs-errcode-h.md#oh_swapfs_errcode) keyId does not exist.</li>          <li>[SWAPFS_E_KEY_STATE_INVALID](capi-swapfs-errcode-h.md#oh_swapfs_errcode) key is in REMOVING state.</li>          <li>[SWAPFS_E_IO_ERROR](capi-swapfs-errcode-h.md#oh_swapfs_errcode) IO read failure.</li>          <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li>          <li>[SWAPFS_E_ACCES](capi-swapfs-errcode-h.md#oh_swapfs_errcode) permission denied.</li>          <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) too many concurrent operations.</li>          <li>[SWAPFS_E_SHUTTING_DOWN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is shutting down.</li>          <li>202 if a non-system application calls this system API.</li>          </ul> |
+| OH_Swapfs_ErrCode | Returns the error code of the execution. <ul> <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li> <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr, request is nullptr, keyId is 0, buffer is nullptr, or bufferSize is 0.</li> <li>[SWAPFS_E_DIO_ALIGN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) buffer address or size is not aligned to SWAPFS_DIO_ALIGNMENT.</li> <li>[SWAPFS_E_BUFFER_TOO_SMALL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) bufferSize is smaller than the required size.</li> <li>[SWAPFS_E_KEY_NOT_FOUND](capi-swapfs-errcode-h.md#oh_swapfs_errcode) keyId does not exist.</li> <li>[SWAPFS_E_KEY_STATE_INVALID](capi-swapfs-errcode-h.md#oh_swapfs_errcode) key is in REMOVING state.</li> <li>[SWAPFS_E_IO_ERROR](capi-swapfs-errcode-h.md#oh_swapfs_errcode) IO read failure.</li> <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li> <li>[SWAPFS_E_ACCES](capi-swapfs-errcode-h.md#oh_swapfs_errcode) permission denied.</li> <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) too many concurrent operations.</li> <li>[SWAPFS_E_SHUTTING_DOWN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is shutting down.</li> <li>202 if a non-system application calls this system API.</li> </ul> |
 
 ### OH_Swapfs_QueryData()
 
@@ -226,8 +214,6 @@ OH_Swapfs_ErrCode OH_Swapfs_QueryData(OH_SwapfsManager *manager, uint64_t keyId,
 **Description**
 
 Queries information about a specific swap key.
-
-**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -245,7 +231,7 @@ Queries information about a specific swap key.
 
 | Type | Description |
 | -- | -- |
-| OH_Swapfs_ErrCode | Returns the error code of the execution.          <ul>          <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li>          <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr, keyId is 0, or info is nullptr.</li>          <li>[SWAPFS_E_KEY_NOT_FOUND](capi-swapfs-errcode-h.md#oh_swapfs_errcode) keyId does not exist.</li>          <li>[SWAPFS_E_KEY_STATE_INVALID](capi-swapfs-errcode-h.md#oh_swapfs_errcode) key is in REMOVING state.</li>          <li>202 if a non-system application calls this system API.</li>          </ul> |
+| OH_Swapfs_ErrCode | Returns the error code of the execution. <ul> <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li> <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr, keyId is 0, or info is nullptr.</li> <li>[SWAPFS_E_KEY_NOT_FOUND](capi-swapfs-errcode-h.md#oh_swapfs_errcode) keyId does not exist.</li> <li>[SWAPFS_E_KEY_STATE_INVALID](capi-swapfs-errcode-h.md#oh_swapfs_errcode) key is in REMOVING state.</li> <li>202 if a non-system application calls this system API.</li> </ul> |
 
 ### OH_Swapfs_GetStats()
 
@@ -256,8 +242,6 @@ OH_Swapfs_ErrCode OH_Swapfs_GetStats(OH_SwapfsManager *manager, OH_SwapfsStats *
 **Description**
 
 Obtains statistics of the current swapfs manager.
-
-**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -274,7 +258,7 @@ Obtains statistics of the current swapfs manager.
 
 | Type | Description |
 | -- | -- |
-| OH_Swapfs_ErrCode | Returns the error code of the execution.          <ul>          <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li>          <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr, or stats is nullptr.</li>          <li>202 if a non-system application calls this system API.</li>          </ul> |
+| OH_Swapfs_ErrCode | Returns the error code of the execution. <ul> <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li> <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr, or stats is nullptr.</li> <li>202 if a non-system application calls this system API.</li> </ul> |
 
 ### OH_Swapfs_RemoveData()
 
@@ -285,8 +269,6 @@ OH_Swapfs_ErrCode OH_Swapfs_RemoveData(OH_SwapfsManager *manager, uint64_t keyId
 **Description**
 
 Logically deletes a specific swap key.<br> The key is marked as REMOVING state immediately. Existing swap-in operations can still complete. New swap-in or query operations on this key will return SWAPFS_E_KEY_STATE_INVALID. This function does not return SWAPFS_E_BUSY for concurrent swap-in operations.
-
-**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -303,7 +285,7 @@ Logically deletes a specific swap key.<br> The key is marked as REMOVING state i
 
 | Type | Description |
 | -- | -- |
-| OH_Swapfs_ErrCode | Returns the error code of the execution.          <ul>          <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li>          <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr or keyId is 0.</li>          <li>[SWAPFS_E_KEY_NOT_FOUND](capi-swapfs-errcode-h.md#oh_swapfs_errcode) keyId does not exist.</li>          <li>[SWAPFS_E_KEY_STATE_INVALID](capi-swapfs-errcode-h.md#oh_swapfs_errcode) key is already in REMOVING state.</li>          <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li>          <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) too many concurrent operations.</li>          <li>[SWAPFS_E_SHUTTING_DOWN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is shutting down.</li>          <li>202 if a non-system application calls this system API.</li>          </ul> |
+| OH_Swapfs_ErrCode | Returns the error code of the execution. <ul> <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li> <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr or keyId is 0.</li> <li>[SWAPFS_E_KEY_NOT_FOUND](capi-swapfs-errcode-h.md#oh_swapfs_errcode) keyId does not exist.</li> <li>[SWAPFS_E_KEY_STATE_INVALID](capi-swapfs-errcode-h.md#oh_swapfs_errcode) key is already in REMOVING state.</li> <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li> <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) too many concurrent operations.</li> <li>[SWAPFS_E_SHUTTING_DOWN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is shutting down.</li> <li>202 if a non-system application calls this system API.</li> </ul> |
 
 ### OH_Swapfs_RemoveAllData()
 
@@ -314,8 +296,6 @@ OH_Swapfs_ErrCode OH_Swapfs_RemoveAllData(OH_SwapfsManager *manager)
 **Description**
 
 Removes all swap keys in the manager.<br> If there are active operations in progress (swap-out or swap-in), or any key is in REMOVING state, this function returns SWAPFS_E_BUSY without starting any removal.
-
-**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -331,6 +311,6 @@ Removes all swap keys in the manager.<br> If there are active operations in prog
 
 | Type | Description |
 | -- | -- |
-| OH_Swapfs_ErrCode | Returns the error code of the execution.          <ul>          <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li>          <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr.</li>          <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li>          <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) there are active operations in progress or pending keys in REMOVING state.</li>          <li>[SWAPFS_E_SHUTTING_DOWN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is shutting down.</li>          <li>202 if a non-system application calls this system API.</li>          </ul> |
+| OH_Swapfs_ErrCode | Returns the error code of the execution. <ul> <li>[SWAPFS_E_OK](capi-swapfs-errcode-h.md#oh_swapfs_errcode) if the execution is successful.</li> <li>[SWAPFS_E_INVAL](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is nullptr.</li> <li>[SWAPFS_E_NOMEM](capi-swapfs-errcode-h.md#oh_swapfs_errcode) memory allocation failed.</li> <li>[SWAPFS_E_BUSY](capi-swapfs-errcode-h.md#oh_swapfs_errcode) there are active operations in progress or pending keys in REMOVING state.</li> <li>[SWAPFS_E_SHUTTING_DOWN](capi-swapfs-errcode-h.md#oh_swapfs_errcode) manager is shutting down.</li> <li>202 if a non-system application calls this system API.</li> </ul> |
 
 

@@ -1,7 +1,7 @@
 # HiCollie_SetTimerParam
 
 ```c
-typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
+struct HiCollie_SetTimerParam {...}
 ```
 
 ## Overview

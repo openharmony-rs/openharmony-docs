@@ -546,7 +546,7 @@ NODE_TEXT_BIND_SELECTION_MENU = 1045
 
 **Description**
 
-Bind the selection menu for text.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: the custom selection menu of text. The parameter type is {@link ArkUI_SelectionMenuOptions}.</li> </ul>
+Bind the selection menu for text.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: the custom selection menu of text. The parameter type is ArkUI_SelectionMenuOptions.</li> </ul>
 
 **Since**: 22
 
@@ -858,7 +858,7 @@ NODE_IMAGE_SPAN_RESIZABLE = 3006
 
 **Description**
 
-Resizes the image span when stretching it with array or a lattice object. This attribute can be set, reset, and obtained as required through APIs. The parameter types for setting and getting should be the same.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul><br><li>.value[0].f32: width of the left edge, in vp.</li><br><li>.value[1].f32: width of the top edge, in vp.</li><br><li>.value[2].f32: width of the right edge, in vp.</li><br><li>.value[3].f32: width of the bottom edge, in vp.</li><br><li>.object: The parameter type is {@link OH_Drawing_Lattice}.</li><br></ul><br>**Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul><br><li>.value[0].f32: width of the left edge, in vp.</li><br><li>.value[1].f32: width of the top edge, in vp.</li><br><li>.value[2].f32: width of the right edge, in vp.</li><br><li>.value[3].f32: width of the bottom edge, in vp.</li> <li>.object: The parameter type is {@link OH_Drawing_Lattice}.</li> </ul>
+Resizes the image span when stretching it with array or a lattice object. This attribute can be set, reset, and obtained as required through APIs. The parameter types for setting and getting should be the same.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: width of the left edge, in vp.</li> <li>.value[1].f32: width of the top edge, in vp.</li> <li>.value[2].f32: width of the right edge, in vp.</li> <li>.value[3].f32: width of the bottom edge, in vp.</li> <li>.object: The parameter type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: width of the left edge, in vp.</li> <li>.value[1].f32: width of the top edge, in vp.</li> <li>.value[2].f32: width of the right edge, in vp.</li> <li>.value[3].f32: width of the bottom edge, in vp.</li> <li>.object: The parameter type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md).</li> </ul>
 
 **Since**: 26.0.1
 

@@ -56,7 +56,7 @@ Defines an explicit animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>               <li>{@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.</li><br>        <li>{@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter exception occurs.</li>              </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### keyframeAnimateTo()
 
@@ -79,7 +79,7 @@ Defines a keyframe animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>               <li>{@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.</li><br>        <li>{@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter exception occurs.</li>              </ul> |
+| int32_t | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs.</li> </ul> |
 
 ### createAnimator()
 
@@ -102,7 +102,7 @@ Creates an animator object.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) | Returns the pointer to the animator object; returns NULL if a parameter error occurs. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) | Returns the pointer to the animator object; returns **NULL** if a parameter error occurs. |
 
 ### disposeAnimator()
 
@@ -118,6 +118,6 @@ Disposes of an animator object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator object. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator object. |
 
 

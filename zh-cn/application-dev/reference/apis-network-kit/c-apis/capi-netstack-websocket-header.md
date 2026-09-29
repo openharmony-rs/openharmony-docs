@@ -24,6 +24,6 @@ websocket客户端增加header的链表节点。
 | -- | -- |
 | const char *fieldName | header的字段名。 |
 | const char *fieldValue | header的字段内容。 |
-| struct [WebSocket_Header](capi-netstack-websocket-header.md) *next | header链表的next指针。 |
+| struct WebSocket_Header *next | header链表的next指针。 |
 
 

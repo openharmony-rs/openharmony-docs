@@ -6,9 +6,7 @@
 
 **Library**: libohweb.so
 
-**System capability**: SystemCapability.Web.Webview.Core
-
-**Since**: 11
+**Since**: 12
 
 **Related module**: [Web](capi-web.md)
 
@@ -18,7 +16,7 @@
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkWeb_AnyNativeAPI](capi-web-arkweb-anynativeapi.md) | ArkWeb_AnyNativeAPI | ArkWeb_AnyNativeAPI is the basic struct type of ArkWeb Native API, used to uniformly represent pointers to various Native API structs obtained through the {@link OH_ArkWeb_GetNativeAPI} API. This struct contains a size member of the size_t type, which records the size of the current struct. |
+| [ArkWeb_AnyNativeAPI](capi-web-arkweb-anynativeapi.md) | ArkWeb_AnyNativeAPI | ArkWeb_AnyNativeAPI is the basic struct type of ArkWeb Native API, used to uniformly represent pointers to various Native API structs obtained through the [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) API. This struct contains a size member of the size_t type, which records the size of the current struct. |
 
 ### Enum
 
@@ -45,8 +43,6 @@ enum ArkWeb_NativeAPIVariantKind
 
 Enumerates the native API types.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -71,8 +67,6 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 Obtains the corresponding Native API struct based on the API type passed in. It is used in scenarios such as obtaining a Controller in native code to control Web component behavior, obtaining a CookieManager to manage cookies, obtaining a WebMessagePort for message communication, and obtaining a JavaScriptValue to operate JavaScript objects.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -85,7 +79,7 @@ Obtains the corresponding Native API struct based on the API type passed in. It 
 
 | Type | Description |
 | -- | -- |
-| [ArkWeb_AnyNativeAPI*](capi-web-arkweb-anynativeapi.md) | Returns the pointer to the corresponding Native API struct based on the passed-in API type. The first member      of the struct is the size of the current struct. It can be used to access specific Native API functions such as      Controller, Component, and CookieManager. <br> If the passed-in API type is not supported in the current system      version (for example, ARKWEB_NATIVE_JAVASCRIPT_VALUE is unavailable in versions earlier than 18), NULL is      returned. |
+| [ArkWeb_AnyNativeAPI*](capi-web-arkweb-anynativeapi.md) | Returns the pointer to the corresponding Native API struct based on the passed-in API type. The first member of the struct is the size of the current struct. It can be used to access specific Native API functions such as Controller, Component, and CookieManager. <br> If the passed-in API type is not supported in the current system version (for example, ARKWEB_NATIVE_JAVASCRIPT_VALUE is unavailable in versions earlier than 18), NULL is returned. |
 
 ### OH_ArkWeb_RegisterScrollCallback()
 
@@ -97,8 +91,6 @@ bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallbac
 
 Registers a callback for the component scroll event. It is used in scenarios such as monitoring user scroll behavior for lazy loading, detecting scroll position for back-to-top functionality, recording user browsing behavior for data analysis, and implementing visual effects during scrolling.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -106,13 +98,13 @@ Registers a callback for the component scroll event. It is used in scenarios suc
 | Parameter | Description |
 | -- | -- |
 | const char* webTag | Name of the **Web** component. |
-| ArkWeb_OnScrollCallback callback | Callback used when a page is scrolled. |
+| [ArkWeb_OnScrollCallback](capi-arkweb-type-h.md#arkweb_onscrollcallback) callback | Callback used when a page is scrolled. |
 | void* userData | Pointer to user-defined data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | true is returned if the operation is successful; otherwise, false is returned. |
+| bool | **true** is returned if the operation is successful; otherwise, **false** is returned. |
 
 

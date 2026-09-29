@@ -6,8 +6,6 @@ Provides C APIs for the Ethernet NIC module.
 
 **Library**: libnet_ethernet.so
 
-**System capability**: SystemCapability.Communication.NetManager.Ethernet
-
 **Since**: 26.0.0
 
 **Related module**: [netmanager_ext](capi-netmanager-ext.md)
@@ -33,8 +31,6 @@ int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)
 
 Obtains the MAC address list of Ethernet NICs.
 
-**System capability**: SystemCapability.Communication.NetManager.Ethernet
-
 **Required permission**: ohos.permission.GET_ETHERNET_LOCAL_MAC
 
 **Since**: 26.0.0
@@ -43,13 +39,13 @@ Obtains the MAC address list of Ethernet NICs.
 
 | Parameter | Description |
 | -- | -- |
-| Ethernet_MacAddrInfoList *macAddrList | Pointer to the MAC address list of NICs. |
+| [Ethernet_MacAddrInfoList](capi-netmanager-ext-ethernet-macaddrinfolist.md) *macAddrList | Pointer to the MAC address list of NICs. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>201: Missing permissions.      <br>2200001: Parameter error. 2200002: Service connection failure.      <br>2201005: Device information does not exist. |
+| int32_t | **0**: Success. <br>**201**: Missing permissions. <br>**2200001**: Parameter error. **2200002**: Service connection failure. <br>**2201005**: Device information does not exist. |
 
 ### OH_Ethernet_GetNetAddress()
 
@@ -61,8 +57,6 @@ int32_t OH_Ethernet_GetNetAddress(Ethernet_NetAddrList *netAddrList)
 
 Obtains the IP address list of Ethernet NICs.
 
-**System capability**: SystemCapability.Communication.NetManager.Ethernet
-
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 26.0.0
@@ -71,12 +65,12 @@ Obtains the IP address list of Ethernet NICs.
 
 | Parameter | Description |
 | -- | -- |
-| Ethernet_NetAddrList *netAddrList | Pointer to the IP address list of NICs. |
+| [Ethernet_NetAddrList](capi-netmanager-ext-ethernet-netaddrlist.md) *netAddrList | Pointer to the IP address list of NICs. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>201: Missing permissions.      <br>2200001: Parameter error. 2200002: Service connection failure.      <br>2201005: Device information does not exist. |
+| int32_t | **0**: Success. <br>**201**: Missing permissions. <br>**2200001**: Parameter error. **2200002**: Service connection failure. <br>**2201005**: Device information does not exist. |
 
 

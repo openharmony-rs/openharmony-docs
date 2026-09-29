@@ -1,12 +1,12 @@
 # NativeWindow
 
 ```c
-typedef struct NativeWindow OHNativeWindow
+struct NativeWindow
 ```
 
 ## Overview
 
-define the new type name OHNativeWindow for struct NativeWindow.
+native window.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 

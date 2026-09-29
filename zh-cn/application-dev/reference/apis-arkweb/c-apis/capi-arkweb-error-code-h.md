@@ -6,8 +6,6 @@
 
 **库：** libohweb.so
 
-**系统能力：** SystemCapability.Web.Webview.Core
-
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)
@@ -39,19 +37,17 @@ enum ArkWeb_ErrorCode
 
 定义ArkWeb NDK接口异常错误码。
 
-**系统能力：** SystemCapability.Web.Webview.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKWEB_SUCCESS = 0 | 成功。 |
-| ARKWEB_INIT_ERROR = 17100001 | 初始化失败。请检查系统环境，确保依赖库已安装，重试初始化。 |
-| ARKWEB_ERROR_UNKNOWN = 17100100 | 未知错误，请收集日志反馈。 |
-| ARKWEB_INVALID_PARAM = 17100101 | 参数无效。请检查传入参数的格式、范围和类型是否符合接口要求。 |
-| ARKWEB_SCHEME_REGISTER_FAILED = 17100102 | 注册scheme的配置失败，应该在创建ArkWeb之前注册。 |
-| ARKWEB_INVALID_URL = 17100103 | 无效的URL，请检查URL格式或协议支持。 |
-| ARKWEB_INVALID_COOKIE_VALUE = 17100104 | 无效的cookie值，请检查cookie格式与有效性。 |
+| ARKWEB_SUCCESS = 0 | &nbsp;成功。 |
+| ARKWEB_INIT_ERROR = 17100001 | &nbsp;初始化失败。请检查系统环境，确保依赖库已安装，重试初始化。 |
+| ARKWEB_ERROR_UNKNOWN = 17100100 | &nbsp;未知错误，请收集日志反馈。 |
+| ARKWEB_INVALID_PARAM = 17100101 | &nbsp;参数无效。请检查传入参数的格式、范围和类型是否符合接口要求。 |
+| ARKWEB_SCHEME_REGISTER_FAILED = 17100102 | &nbsp;注册scheme的配置失败，应该在创建ArkWeb之前注册。 |
+| ARKWEB_INVALID_URL = 17100103 | &nbsp;无效的URL，请检查URL格式或协议支持。 |
+| ARKWEB_INVALID_COOKIE_VALUE = 17100104 | &nbsp;无效的cookie值，请检查cookie格式与有效性。 |
 | ARKWEB_LIBRARY_OPEN_FAILURE = 17100105 | 打开动态链接库失败。请检查动态链接库文件是否存在、路径是否正确、以及是否有读取权限。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core |
 | ARKWEB_LIBRARY_SYMBOL_NOT_FOUND = 17100106 | 动态链接库中找不到所需的符号。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core |
 | ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED = 17100107 | CookieManager未初始化。请先调用初始化接口完成CookieManager的初始化。<br>**起始版本：** 20 |
@@ -68,18 +64,16 @@ enum ArkWeb_BlanklessErrorCode
 
 定义无白屏加载的异常错误码。
 
-**系统能力：** SystemCapability.Web.Webview.Core
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKWEB_BLANKLESS_SUCCESS = 0 | 成功。 |
-| ARKWEB_BLANKLESS_ERR_UNKNOWN = -1 | 未知错误，内部状态错误等。 |
-| ARKWEB_BLANKLESS_ERR_INVALID_ARGS = -2 | 参数不合法。 |
-| ARKWEB_BLANKLESS_ERR_CONTROLLER_NOT_INITED = -3 | WebViewController未绑定组件。 |
-| ARKWEB_BLANKLESS_ERR_KEY_NOT_MATCH = -4 | 未匹配到key值，对于OH_NativeArkWeb_SetBlanklessLoadingWithKey需与OH_NativeArkWeb_GetBlanklessInfoWithKey配套使用 并且key值一致，否则返回该错误码。 |
-| ARKWEB_BLANKLESS_ERR_SIGNIFICANT_CHANGE = -5 | 当相似度较低时，系统会判定为跳变太大，OH_NativeArkWeb_SetBlanklessLoadingWithKey接口启用插帧不成功。 |
-| ARKWEB_BLANKLESS_ERR_DEVICE_NOT_SUPPORT = 801 | 该设备不适用于此功能。 |
+| ARKWEB_BLANKLESS_SUCCESS = 0 | &nbsp;成功。 |
+| ARKWEB_BLANKLESS_ERR_UNKNOWN = -1 | &nbsp;未知错误，内部状态错误等。 |
+| ARKWEB_BLANKLESS_ERR_INVALID_ARGS = -2 | &nbsp;参数不合法。 |
+| ARKWEB_BLANKLESS_ERR_CONTROLLER_NOT_INITED = -3 | &nbsp;WebViewController未绑定组件。 |
+| ARKWEB_BLANKLESS_ERR_KEY_NOT_MATCH = -4 | &nbsp;未匹配到key值，对于OH_NativeArkWeb_SetBlanklessLoadingWithKey需与OH_NativeArkWeb_GetBlanklessInfoWithKey配套使用 并且key值一致，否则返回该错误码。 |
+| ARKWEB_BLANKLESS_ERR_SIGNIFICANT_CHANGE = -5 | &nbsp;当相似度较低时，系统会判定为跳变太大，OH_NativeArkWeb_SetBlanklessLoadingWithKey接口启用插帧不成功。 |
+| ARKWEB_BLANKLESS_ERR_DEVICE_NOT_SUPPORT = 801 | &nbsp;该设备不适用于此功能。 |
 
 

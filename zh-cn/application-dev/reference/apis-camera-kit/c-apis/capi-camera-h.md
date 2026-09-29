@@ -6,8 +6,6 @@
 
 **库：** libohcamera.so
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)
@@ -18,35 +16,35 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Camera_Size](capi-oh-camera-camera-size.md) | Camera_Size | 大小参数。 |
-| [Camera_Profile](capi-oh-camera-camera-profile.md) | Camera_Profile | 相机流的配置文件。 |
-| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) | Camera_FrameRateRange | 帧速率范围。 |
-| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md) | Camera_VideoProfile | 录像配置文件。 |
-| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md) | Camera_OutputCapability | 相机输出能力。 |
-| [Camera_Device](capi-oh-camera-camera-device.md) | Camera_Device | 相机设备对象。 |
-| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md) | Camera_StatusInfo | 相机状态信息。 |
-| [Camera_Point](capi-oh-camera-camera-point.md) | Camera_Point | 点参数。 |
-| [Camera_Location](capi-oh-camera-camera-location.md) | Camera_Location | 拍照位置。 |
-| [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | 要设置的拍照捕获选项。 |
-| [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | 帧快门回调信息。 |
-| [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | 捕获结束信息。 |
-| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 相机矩形。用于各类检测对象的矩形框绘制。<br> 检测点坐标系以设备横向位置（充电口朝右）为基准。<br> 坐标系原点位于左上角 (0, 0)，右下角对应相机预览流的像素分辨率。<br> 所有参数均为整型像素值， 其中topLeftX与topLeftY表示矩形左上角坐标，width与height分别表示矩形的宽高。 |
-| [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | Camera_MetadataObject | 元数据对象基础。 |
-| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | Camera_TorchStatusInfo | 手电筒状态信息。 |
-| [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | Camera_SmoothZoomInfo | 平滑变焦参数信息。 |
-| [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) | Camera_CaptureStartInfo | 拍照开始信息。 |
-| [Camera_FrameShutterEndInfo](capi-oh-camera-camera-frameshutterendinfo.md) | Camera_FrameShutterEndInfo | 拍照曝光结束信息。 |
-| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md) | Camera_FoldStatusInfo | 折叠状态信息。 |
-| [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | Camera_AutoDeviceSwitchStatusInfo | 自动设备切换状态信息。 |
-| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | 相机并发能力信息。 |
-| [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | 控制器效果激活状态信息。 |
-| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md) | Camera_DeviceQueryInfo | 相机设备的查询信息。 |
-| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
-| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | OH_Camera_ZoomRange | 变焦范围配置。 |
-| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | 物理光圈配置。 |
-| [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | OH_Camera_ZoomPointInfo | 描述变焦点信息。 |
-| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | OH_Camera_Rect_Ext | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
-| [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用{@link OH_Camera_GetCameraManager}方法创建指针。 |
+| [Camera_Size](capi-oh-camera-camera-size.md) | - | 大小参数。 |
+| [Camera_Profile](capi-oh-camera-camera-profile.md) | - | 相机流的配置文件。 |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) | - | 帧速率范围。 |
+| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md) | - | 录像配置文件。 |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md) | - | 相机输出能力。 |
+| [Camera_Device](capi-oh-camera-camera-device.md) | - | 相机设备对象。 |
+| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md) | - | 相机状态信息。 |
+| [Camera_Point](capi-oh-camera-camera-point.md) | - | 点参数。 |
+| [Camera_Location](capi-oh-camera-camera-location.md) | - | 拍照位置。 |
+| [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | - | 要设置的拍照捕获选项。 |
+| [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | - | 帧快门回调信息。 |
+| [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | - | 捕获结束信息。 |
+| [Camera_Rect](capi-oh-camera-camera-rect.md) | - | 相机矩形。用于各类检测对象的矩形框绘制。<br> 检测点坐标系以设备横向位置（充电口朝右）为基准。<br> 坐标系原点位于左上角 (0, 0)，右下角对应相机预览流的像素分辨率。<br> 所有参数均为整型像素值， 其中topLeftX与topLeftY表示矩形左上角坐标，width与height分别表示矩形的宽高。 |
+| [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | - | 元数据对象基础。 |
+| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | - | 手电筒状态信息。 |
+| [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | - | 平滑变焦参数信息。 |
+| [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) | - | 拍照开始信息。 |
+| [Camera_FrameShutterEndInfo](capi-oh-camera-camera-frameshutterendinfo.md) | - | 拍照曝光结束信息。 |
+| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md) | - | 折叠状态信息。 |
+| [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | - | 自动设备切换状态信息。 |
+| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | - | 相机并发能力信息。 |
+| [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | - | 控制器效果激活状态信息。 |
+| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md) | - | 相机设备的查询信息。 |
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | - | 相机镜头遮挡、脏污检测结果。 |
+| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | - | 变焦范围配置。 |
+| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | - | 物理光圈配置。 |
+| [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | - | 描述变焦点信息。 |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | - | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用[OH_Camera_GetCameraManager](capi-camera-h.md#oh_camera_getcameramanager)方法创建指针。 |
 
 ### 枚举
 
@@ -66,6 +64,7 @@
 | [Camera_ExposureMode](#camera_exposuremode) | Camera_ExposureMode | 曝光模式的枚举。 |
 | [OH_Camera_ExposureMeteringMode](#oh_camera_exposuremeteringmode) | OH_Camera_ExposureMeteringMode | 曝光测光模式枚举。 |
 | [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | 枚举相机曝光状态。 |
+| [Camera_WhiteBalanceMode](#camera_whitebalancemode) | Camera_WhiteBalanceMode | 白平衡模式枚举。 |
 | [Camera_FocusMode](#camera_focusmode) | Camera_FocusMode | 聚焦模式的枚举。 |
 | [Camera_FocusState](#camera_focusstate) | Camera_FocusState | 焦点状态的枚举。 |
 | [Camera_VideoStabilizationMode](#camera_videostabilizationmode) | Camera_VideoStabilizationMode | 录像防抖模式的枚举。 |
@@ -80,6 +79,7 @@
 | [Camera_FoldStatus](#camera_foldstatus) | Camera_FoldStatus | 折叠状态枚举。 |
 | [Camera_QualityPrioritization](#camera_qualityprioritization) | Camera_QualityPrioritization | 录像质量优先级的枚举。 |
 | [Camera_ConcurrentType](#camera_concurrenttype) | Camera_ConcurrentType | 相机并发状态的枚举。 |
+| [Camera_SystemPressureLevel](#camera_systempressurelevel) | Camera_SystemPressureLevel | 系统压力等级的枚举。 |
 | [Camera_PhotoQualityPrioritization](#camera_photoqualityprioritization) | Camera_PhotoQualityPrioritization | 拍照画质优先策略枚举。 |
 | [Camera_ControlCenterEffectType](#camera_controlcentereffecttype) | Camera_ControlCenterEffectType | 控制器效果类型枚举。 |
 | [OH_Camera_OISMode](#oh_camera_oismode) | OH_Camera_OISMode | 光学防抖（Optical Image Stabilization）模式枚举。 |
@@ -104,8 +104,6 @@ enum Camera_ErrorCode
 **描述：**
 
 相机错误代码的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -136,8 +134,6 @@ enum Camera_Status
 
 相机状态的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -157,15 +153,13 @@ enum Camera_SceneMode
 
 相机模式的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
 | NORMAL_PHOTO = 1 | 普通相机模式。 |
 | NORMAL_VIDEO = 2 | 普通视频模式。 |
-| SECURE_PHOTO = 12 | 安全相机模式，主要为银行等有活体检测等安全诉求的应用提供。安全相机的使用需要加密算法框架及可信应用服务，详情请参见{@link Device Certificate Kit简介}。 |
+| SECURE_PHOTO = 12 | 安全相机模式，主要为银行等有活体检测等安全诉求的应用提供。安全相机的使用需要加密算法框架及可信应用服务，详情请参见Device Certificate Kit简介。 |
 
 ### Camera_Position
 
@@ -176,8 +170,6 @@ enum Camera_Position
 **描述：**
 
 相机位置的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -196,8 +188,6 @@ enum OH_Camera_AutomotiveCameraPosition
 **描述：**
 
 Car设备摄像头位置的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 
@@ -229,8 +219,6 @@ enum Camera_Type
 
 相机类型的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -251,8 +239,6 @@ enum Camera_Connection
 
 相机连接类型的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -270,8 +256,6 @@ enum OH_Camera_SensorColorFilterArrangement
 **描述：**
 
 传感器滤色阵列排列方式。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
 
@@ -291,8 +275,6 @@ enum Camera_Format
 **描述：**
 
 相机格式类型的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -317,8 +299,6 @@ enum Camera_FlashMode
 
 闪光模式的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -338,8 +318,6 @@ enum OH_Camera_FlashState
 
 闪光灯状态枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -358,15 +336,13 @@ enum Camera_ExposureMode
 
 曝光模式的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
 | -- | -- |
 | EXPOSURE_MODE_UNSPECIFIED = -1 |  |
 | EXPOSURE_MODE_LOCKED = 0 | 锁定曝光模式。 不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。 |
-| EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用{@link OH_CaptureSession_SetMeteringPoint}接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。 |
+| EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用OH_CaptureSession_SetMeteringPoint接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。 |
 | EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | 连续自动曝光。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。 |
 | EXPOSURE_MODE_MANUAL = 3 |  |
 
@@ -379,8 +355,6 @@ enum OH_Camera_ExposureMeteringMode
 **描述：**
 
 曝光测光模式枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
 
@@ -400,14 +374,34 @@ enum OH_Camera_ExposureState
 
 枚举相机曝光状态。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_CAMERA_EXPOSURE_STATE_SCAN = 0 |  |
 | OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 |  |
+
+### Camera_WhiteBalanceMode
+
+```c
+enum Camera_WhiteBalanceMode
+```
+
+**描述：**
+
+白平衡模式枚举。
+
+**起始版本：** 20
+
+| 枚举项 | 描述 |
+| -- | -- |
+| CAMERA_WHITE_BALANCE_MODE_AUTO = 0 | 白平衡模式：自动。 |
+| CAMERA_WHITE_BALANCE_MODE_CLOUDY = 1 | 白平衡模式：阴天。 |
+| CAMERA_WHITE_BALANCE_MODE_INCANDESCENT = 2 | 白平衡模式：白炽灯。 |
+| CAMERA_WHITE_BALANCE_MODE_FLUORESCENT = 3 | 白平衡模式：荧光。 |
+| CAMERA_WHITE_BALANCE_MODE_DAYLIGHT = 4 | 白平衡模式：晴天。 |
+| CAMERA_WHITE_BALANCE_MODE_MANUAL = 5 | 白平衡模式：手动。 |
+| CAMERA_WHITE_BALANCE_MODE_LOCKED = 6 | 白平衡模式：锁定。 |
 
 ### Camera_FocusMode
 
@@ -418,8 +412,6 @@ enum Camera_FocusMode
 **描述：**
 
 聚焦模式的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -440,8 +432,6 @@ enum Camera_FocusState
 
 焦点状态的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -459,8 +449,6 @@ enum Camera_VideoStabilizationMode
 **描述：**
 
 录像防抖模式的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -481,8 +469,6 @@ enum Camera_ImageRotation
 **描述：**
 
 图像旋转角度的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -507,8 +493,6 @@ enum Camera_QualityLevel
 
 图像质量等级的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -526,8 +510,6 @@ enum Camera_MetadataObjectType
 **描述：**
 
 元数据对象类型的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -554,8 +536,6 @@ enum Camera_TorchMode
 
 手电筒模式的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -577,8 +557,6 @@ enum Camera_SmoothZoomMode
 
 平滑变焦模式的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -595,8 +573,6 @@ enum Camera_PreconfigType
 **描述：**
 
 预配置照片分辨率的枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
@@ -618,8 +594,6 @@ enum Camera_PreconfigRatio
 
 预配置照片比例的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -638,8 +612,6 @@ enum Camera_HostDeviceType
 
 远程设备类型枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 15
 
 | 枚举项 | 描述 |
@@ -657,8 +629,6 @@ enum Camera_FoldStatus
 **描述：**
 
 折叠状态枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 13
 
@@ -681,8 +651,6 @@ enum Camera_QualityPrioritization
 
 录像质量优先级的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 14
 
 | 枚举项 | 描述 |
@@ -700,14 +668,32 @@ enum Camera_ConcurrentType
 
 相机并发状态的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 18
 
 | 枚举项 | 描述 |
 | -- | -- |
 | CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY  = 0 | 相机限制并发。 |
 | CAMERA_CONCURRENT_TYPE_FULL_CAPABILITY = 1 | 相机全量并发。 |
+
+### Camera_SystemPressureLevel
+
+```c
+enum Camera_SystemPressureLevel
+```
+
+**描述：**
+
+系统压力等级的枚举。
+
+**起始版本：** 20
+
+| 枚举项 | 描述 |
+| -- | -- |
+| SYSTEM_PRESSURE_NORMAL = 0 | 系统压力正常。 |
+| SYSTEM_PRESSURE_MILD = 1 | 系统压力升高，但是系统不会主动管控。 |
+| SYSTEM_PRESSURE_SEVERE = 2 | 系统压力可能对图像总质量、性能产生影响。 |
+| SYSTEM_PRESSURE_CRITICAL = 3 | 系统图像质量、性能产生显著影响。 |
+| SYSTEM_PRESSURE_SHUTDOWN = 4 | 系统压力过高，停止工作。 |
 
 ### Camera_PhotoQualityPrioritization
 
@@ -718,8 +704,6 @@ enum Camera_PhotoQualityPrioritization
 **描述：**
 
 拍照画质优先策略枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -737,8 +721,6 @@ enum Camera_ControlCenterEffectType
 **描述：**
 
 控制器效果类型枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 20
 
@@ -759,8 +741,6 @@ enum OH_Camera_OISMode
 
 光学防抖（Optical Image Stabilization）模式枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -779,8 +759,6 @@ enum OH_Camera_OISAxes
 
 光学防抖（OIS）轴枚举。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -797,8 +775,6 @@ enum OH_Camera_MetadataObjectEmotion
 **描述：**
 
 元数据对象情绪类型枚举。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 
@@ -822,8 +798,6 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 
 创建CameraManager实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -836,7 +810,7 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_Camera_DeleteCameraManager()
 
@@ -847,8 +821,6 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 **描述：**
 
 删除CameraManager实例。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -862,6 +834,6 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 

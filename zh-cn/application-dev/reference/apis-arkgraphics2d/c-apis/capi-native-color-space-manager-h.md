@@ -6,8 +6,6 @@
 
 **库：** libnative_color_space_manager.so
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
 **起始版本：** 13
 
 **相关模块：** [NativeColorSpaceManager](capi-nativecolorspacemanager.md)
@@ -50,8 +48,6 @@ enum ColorSpaceName
 **描述：**
 
 色彩空间枚举。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 13
 
@@ -104,8 +100,6 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpace
 
 通过colorSpaceName创建OH_NativeColorSpaceManager实例。 <br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -130,8 +124,6 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 
 通过原色和伽马值创建OH_NativeColorSpaceManager实例。 <br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -145,7 +137,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeColorSpaceManager*](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) | 返回一个指向[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)实例的指针。      <br>内存不足时，会导致创建OH_NativeColorSpaceManager实例失败。 |
+| [OH_NativeColorSpaceManager*](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) | 返回一个指向[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)实例的指针。<br>内存不足时，会导致创建OH_NativeColorSpaceManager实例失败。 |
 
 ### OH_NativeColorSpaceManager_Destroy()
 
@@ -156,8 +148,6 @@ void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorS
 **描述：**
 
 销毁OH_NativeColorSpaceManager实例。当不再需要OH_NativeColorSpaceManager实例时，需要调用此函数进行销毁以释放内存。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 13
 
@@ -177,8 +167,6 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 
 获取色彩空间名称。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -191,7 +179,7 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回色彩空间枚举[ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename)对应的值。其中，当返回值为0时，表示接口操作失败。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：      检查参数是否为有效指针。 |
+| int | 返回色彩空间枚举[ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename)对应的值。其中，当返回值为0时，表示接口操作失败。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：检查参数是否为有效指针。 |
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 
@@ -202,8 +190,6 @@ WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceMana
 **描述：**
 
 获取白点。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 13
 
@@ -228,8 +214,6 @@ float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColo
 **描述：**
 
 获取伽马值。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 13
 

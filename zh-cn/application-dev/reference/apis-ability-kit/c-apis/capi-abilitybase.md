@@ -2,7 +2,7 @@
 
 ## 概述
 
-作为Ability Kit的基础定义模块，AbilityBase提供了组件启动参数{@link Want}的定义与接口，可以用于应用组件间的信息传递。
+作为Ability Kit的基础定义模块，AbilityBase提供了组件启动参数Want的定义与接口，可以用于应用组件间的信息传递。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 

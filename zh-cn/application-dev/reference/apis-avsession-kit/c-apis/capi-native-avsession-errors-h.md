@@ -6,8 +6,6 @@
 
 **库：** libohavsession.so
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)
@@ -35,20 +33,18 @@ enum AVSession_ErrCode
 
 播控错误码。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_SESSION_ERR_SUCCESS = 0 | 操作成功。 |
-| AV_SESSION_ERR_INVALID_PARAMETER = 401 | 参数检查失败。 |
-| AV_SESSION_ERR_SERVICE_EXCEPTION = 6600101 | 会话服务端异常。 |
-| AV_SESSION_ERR_CODE_SESSION_NOT_EXIST = 6600102 | 会话不存在。 |
-| AV_SESSION_ERR_CODE_COMMAND_INVALID = 6600105 | 无效会话命令。 |
-| AV_SESSION_ERR_CODE_SESSION_INACTIVE = 6600106 | 会话未激活。 |
-| AV_SESSION_ERR_CODE_MESSAGE_OVERLOAD = 6600107 | 命令和消息过载。 |
-| AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST = 6600109 |  远端会话不存在。<br>**起始版本：** 23 |
+| AV_SESSION_ERR_SUCCESS = 0 | &nbsp;操作成功。 |
+| AV_SESSION_ERR_INVALID_PARAMETER = 401 | &nbsp;参数检查失败。 |
+| AV_SESSION_ERR_SERVICE_EXCEPTION = 6600101 | &nbsp;会话服务端异常。 |
+| AV_SESSION_ERR_CODE_SESSION_NOT_EXIST = 6600102 | &nbsp;会话不存在。 |
+| AV_SESSION_ERR_CODE_COMMAND_INVALID = 6600105 | &nbsp;无效会话命令。 |
+| AV_SESSION_ERR_CODE_SESSION_INACTIVE = 6600106 | &nbsp;会话未激活。 |
+| AV_SESSION_ERR_CODE_MESSAGE_OVERLOAD = 6600107 | &nbsp;命令和消息过载。 |
+| AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST = 6600109 | &nbsp;远端会话不存在。<br>**起始版本：** 23 |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_UNSPECIFIED = 6611000 |  |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_REMOTE_ERROR = 6611001 |  |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_BEHIND_LIVE_WINDOW = 6611002 |  |
@@ -105,8 +101,6 @@ enum AVSessionCallback_Result
 
 定义音视频会话回调结果枚举。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -124,15 +118,13 @@ enum AVMetadata_Result
 
 播控元数据错误码。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVMETADATA_SUCCESS = 0 | 接口执行成功。 |
-| AVMETADATA_ERROR_INVALID_PARAM = 1 | 该函数是使用无效的输入参数执行的。 |
-| AVMETADATA_ERROR_NO_MEMORY = 2 | 内存分配失败。 |
+| AVMETADATA_SUCCESS = 0 | &nbsp;接口执行成功。 |
+| AVMETADATA_ERROR_INVALID_PARAM = 1 | &nbsp;该函数是使用无效的输入参数执行的。 |
+| AVMETADATA_ERROR_NO_MEMORY = 2 | &nbsp;内存分配失败。 |
 
 ### AVQueueItem_Result
 
@@ -144,14 +136,12 @@ enum AVQueueItem_Result
 
 播放列表中单项的错误码。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVQUEUEITEM_SUCCESS = 0 |  接口执行成功。<br>**起始版本：** 23 |
-| AVQUEUEITEM_ERROR_INVALID_PARAM = 1 |  该函数是使用无效的输入参数执行的。<br>**起始版本：** 23 |
-| AVQUEUEITEM_ERROR_NO_MEMORY = 2 |  内存分配失败。<br>**起始版本：** 23 |
+| AVQUEUEITEM_SUCCESS = 0 | &nbsp;接口执行成功。<br>**起始版本：** 23 |
+| AVQUEUEITEM_ERROR_INVALID_PARAM = 1 | &nbsp;该函数是使用无效的输入参数执行的。<br>**起始版本：** 23 |
+| AVQUEUEITEM_ERROR_NO_MEMORY = 2 | &nbsp;内存分配失败。<br>**起始版本：** 23 |
 
 

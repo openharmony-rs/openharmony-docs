@@ -1,7 +1,7 @@
 # OH_NativeXComponent_MouseEvent_Callback
 
 ```c
-typedef struct OH_NativeXComponent_MouseEvent_Callback {...} OH_NativeXComponent_MouseEvent_Callback
+struct OH_NativeXComponent_MouseEvent_Callback {...}
 ```
 
 ## Overview

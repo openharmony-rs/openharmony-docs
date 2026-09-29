@@ -6,8 +6,6 @@
 
 **库：** libohvibrator.z.so
 
-**系统能力：** SystemCapability.Sensors.MiscDevice
-
 **起始版本：** 11
 
 **相关模块：** [Vibrator](capi-vibrator.md)
@@ -16,10 +14,10 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) | Vibrator_Attribute | Vibrator_Attribute结构体用于描述马达的属性信息。开发者使用该结构体可以指定马达ID和振动场景。具体使用场景和实现机制请参见{@link Vibrator}模块文档。 |
-| [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md) | Vibrator_FileDescription | 振动文件描述。用于描述自定义振动序列的文件信息，支持使用自定义振动文件实现精确振动控制。 |
+| 名称 | 描述 |
+| -- | -- |
+| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) | Vibrator_Attribute结构体用于描述马达的属性信息。开发者使用该结构体可以指定马达ID和振动场景。具体使用场景和实现机制请参见Vibrator模块文档。 |
+| [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md) | 振动文件描述。用于描述自定义振动序列的文件信息，支持使用自定义振动文件实现精确振动控制。 |
 
 ### 枚举
 
@@ -40,8 +38,6 @@ enum Vibrator_ErrorCode
 
 定义错误码，在使用振动相关API时，若发生异常情况会返回相应的错误码。
 
-**系统能力：** SystemCapability.Sensors.MiscDevice
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -60,8 +56,6 @@ enum Vibrator_Usage
 **描述：**
 
 振动优先级，用于定义不同场景下振动的优先级，高优先级的振动会打断低优先级的振动。使用时建议：根据应用场景选择合适的优先级；在需要连续振动的场景中保持一致优先级，避免频繁切换导致性能损耗； 物理反馈和触摸类振动建议使用较高优先级以确保及时响应。
-
-**系统能力：** SystemCapability.Sensors.MiscDevice
 
 **起始版本：** 11
 

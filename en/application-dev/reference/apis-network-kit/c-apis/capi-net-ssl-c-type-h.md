@@ -6,8 +6,6 @@ Defines the data structures for the C APIs of the SSL/TLS certificate chain veri
 
 **Library**: libnet_ssl.so
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)
@@ -16,11 +14,11 @@ Defines the data structures for the C APIs of the SSL/TLS certificate chain veri
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [NetStack_CertBlob](capi-netstack-netstack-certblob.md) | - | Defines the certificate data structure. |
-| [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md) | NetStack_CertificatePinning | Defines certificate pinning information. |
-| [NetStack_Certificates](capi-netstack-netstack-certificates.md) | NetStack_Certificates | Define certificate information. |
+| Name | Description |
+| -- | -- |
+| [NetStack_CertBlob](capi-netstack-netstack-certblob.md) | Defines the certificate data structure. |
+| [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md) | Defines certificate pinning information. |
+| [NetStack_Certificates](capi-netstack-netstack-certificates.md) | Define certificate information. |
 
 ### Enum
 
@@ -42,8 +40,6 @@ enum NetStack_CertType
 
 Certificate type enums.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 11
 
 | Enum item | Description |
@@ -62,8 +58,6 @@ enum NetStack_CertificatePinningKind
 
 Certificate pinning type enums.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 12
 
 | Enum item | Description |
@@ -79,8 +73,6 @@ enum NetStack_HashAlgorithm
 **Description**
 
 Hash algorithm enums.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 12
 

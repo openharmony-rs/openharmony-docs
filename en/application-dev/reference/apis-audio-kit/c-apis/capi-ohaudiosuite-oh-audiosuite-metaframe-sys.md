@@ -1,7 +1,7 @@
 # OH_AudioSuite_MetaFrame(System API)
 
 ```c
-typedef struct OH_AudioSuite_MetaFrame {...} OH_AudioSuite_MetaFrame
+struct OH_AudioSuite_MetaFrame {...}
 ```
 
 ## Overview

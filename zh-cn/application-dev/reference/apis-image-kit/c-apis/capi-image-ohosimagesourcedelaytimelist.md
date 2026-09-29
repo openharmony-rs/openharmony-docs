@@ -6,7 +6,7 @@ struct OhosImageSourceDelayTimeList {...}
 
 ## 概述
 
-定义图像源延迟时间列表。由{@link OH_ImageSource_GetDelayTime}获取。
+定义图像源延迟时间列表。由[OH_ImageSource_GetDelayTime](capi-image-source-mdk-h.md#oh_imagesource_getdelaytime)获取。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -23,10 +23,8 @@ struct OhosImageSourceDelayTimeList {...}
 | 名称 | 描述 |
 | -- | -- |
 | int32_t* delayTimeList |  |
-| size_t size = 0;
-#else |  |
+| size_t size = 0 |  |
 | int32_t* delayTimeList |  |
-| size_t size;
-#endif |  |
+| size_t size |  |
 
 

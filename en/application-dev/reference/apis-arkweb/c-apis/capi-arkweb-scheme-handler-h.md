@@ -6,9 +6,7 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 
 **Library**: libohweb.so
 
-**System capability**: SystemCapability.Web.Webview.Core
-
-**Since**: 11
+**Since**: 12
 
 **Related module**: [Web](capi-web.md)
 
@@ -18,13 +16,13 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkWeb_SchemeHandler_](capi-web-arkweb-schemehandler-.md) | ArkWeb_SchemeHandler | ArkWeb_SchemeHandler is a struct used to register custom scheme (protocol) interceptors. It defines two function pointers: the onRequestStart callback for request start and the onRequestStop callback for request stop. With this struct, network requests of a specified scheme in the Web component can be intercepted, which is applicable to scenarios such as resource localization, data simulation, request filtering, and protocol extension: in onRequestStart, whether to intercept is determined and custom data is returned; in onRequestStop, resource cleanup is performed; and onRequestStart and onRequestStop are called sequentially in the order of the request lifecycle. This struct works with ArkWeb_ResourceHandler and ArkWeb_Response to implement a complete request interception and custom response process. The call sequence is: ArkWeb_SchemeHandler intercepts the request → ArkWeb_ResourceHandler processes the resource → ArkWeb_Response returns the response. |
-| [ArkWeb_ResourceHandler_](capi-web-arkweb-resourcehandler-.md) | ArkWeb_ResourceHandler | The ArkWeb_ResourceHandler struct is a resource handler for processing intercepted scheme requests. After ArkWeb_SchemeHandler intercepts a request of a specified scheme, this struct can be used to return custom response data to the Web component, including the response status code, response headers, and response body. This struct is passed as a parameter in the onRequestStart callback, through which developers can implement fully custom responses to intercepted requests. |
-| [ArkWeb_Response_](capi-web-arkweb-response-.md) | ArkWeb_Response | Defines an **ArkWeb_Response** for the intercepted request. |
-| [ArkWeb_ResourceRequest_](capi-web-arkweb-resourcerequest-.md) | ArkWeb_ResourceRequest | ArkWeb_ResourceRequest is a struct that contains detailed information about an intercepted scheme request, including the request URL, HTTP method, request headers, and other metadata. This struct is passed as a parameter in the onRequestStart callback of ArkWeb_SchemeHandler and is applicable to scenarios such as custom protocol handling and resource interception. It helps developers implement features like cross-origin request control and local resource mapping, thereby enhancing security and performance. Developers can use it to obtain complete information about the intercepted request and decide whether to intercept it and how to construct a custom response. |
-| [ArkWeb_RequestHeaderList_](capi-web-arkweb-requestheaderlist-.md) | ArkWeb_RequestHeaderList | ArkWeb_RequestHeaderList is an HTTP request header list struct used to represent and manage a collection of key-value pairs of HTTP request headers in the ArkWeb NDK. This struct contains a request header array (headers) and the array length (headerCount), where headers is a pointer array of ArkWeb_RequestHeader and headerCount indicates the number of elements in the array. This struct is used together with ArkWeb_ResourceRequest and other structs to provide the capability of reading and setting network request headers for Web components. Use cases: processing HTTP request headers in a custom protocol handler, modifying request headers in a network request interceptor, adding authentication headers in API authentication scenarios, and configuring request headers in scenarios such as cache control and content negotiation. |
-| [ArkWeb_HttpBodyStream_](capi-web-arkweb-httpbodystream-.md) | ArkWeb_HttpBodyStream | Defines the uploaded data of the request. You can use the **OH_ArkWebHttpBodyStream_** API to read the uploaded data. |
-| [ArkWeb_ErrorInfo_](capi-web-arkweb-errorinfo-.md) | ArkWeb_ErrorInfo | The error info for setting response error details. |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md) | ArkWeb_SchemeHandler | ArkWeb_SchemeHandler is a struct used to register custom scheme (protocol) interceptors. It defines two function pointers: the onRequestStart callback for request start and the onRequestStop callback for request stop. With this struct, network requests of a specified scheme in the Web component can be intercepted, which is applicable to scenarios such as resource localization, data simulation, request filtering, and protocol extension: in onRequestStart, whether to intercept is determined and custom data is returned; in onRequestStop, resource cleanup is performed; and onRequestStart and onRequestStop are called sequentially in the order of the request lifecycle. This struct works with ArkWeb_ResourceHandler and ArkWeb_Response to implement a complete request interception and custom response process. The call sequence is: ArkWeb_SchemeHandler intercepts the request → ArkWeb_ResourceHandler processes the resource → ArkWeb_Response returns the response. |
+| [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md) | ArkWeb_ResourceHandler | The ArkWeb_ResourceHandler struct is a resource handler for processing intercepted scheme requests. After ArkWeb_SchemeHandler intercepts a request of a specified scheme, this struct can be used to return custom response data to the Web component, including the response status code, response headers, and response body. This struct is passed as a parameter in the onRequestStart callback, through which developers can implement fully custom responses to intercepted requests. |
+| [ArkWeb_Response](capi-web-arkweb-response.md) | ArkWeb_Response | Defines an **ArkWeb_Response** for the intercepted request. |
+| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md) | ArkWeb_ResourceRequest | ArkWeb_ResourceRequest is a struct that contains detailed information about an intercepted scheme request, including the request URL, HTTP method, request headers, and other metadata. This struct is passed as a parameter in the onRequestStart callback of ArkWeb_SchemeHandler and is applicable to scenarios such as custom protocol handling and resource interception. It helps developers implement features like cross-origin request control and local resource mapping, thereby enhancing security and performance. Developers can use it to obtain complete information about the intercepted request and decide whether to intercept it and how to construct a custom response. |
+| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md) | ArkWeb_RequestHeaderList | ArkWeb_RequestHeaderList is an HTTP request header list struct used to represent and manage a collection of key-value pairs of HTTP request headers in the ArkWeb NDK. This struct contains a request header array (headers) and the array length (headerCount), where headers is a pointer array of ArkWeb_RequestHeader and headerCount indicates the number of elements in the array. This struct is used together with ArkWeb_ResourceRequest and other structs to provide the capability of reading and setting network request headers for Web components. Use cases: processing HTTP request headers in a custom protocol handler, modifying request headers in a network request interceptor, adding authentication headers in API authentication scenarios, and configuring request headers in scenarios such as cache control and content negotiation. |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md) | ArkWeb_HttpBodyStream | Defines the uploaded data of the request. You can use the **OH_ArkWebHttpBodyStream_** API to read the uploaded data. |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md) | ArkWeb_ErrorInfo | The error info for setting response error details. |
 
 ### Enum
 
@@ -129,9 +127,9 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 | Name | Description |
 | -- | -- |
 | void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler, ArkWeb_ResourceRequest* resourceRequest, const ArkWeb_ResourceHandler* resourceHandler, bool* intercept) | Called when a request starts. This callback is used on the IO thread. It intercepts and handles network requests of a specified scheme at the start of the request. Developers can use this callback to implement custom protocol handling, local resource replacement, encrypted data transmission, and other features.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, const ArkWeb_ResourceRequest* resourceRequest) | Called when the request stops. This callback is used on the IO thread. It is used to perform resource cleanup, status updates, or logging when the request completes. You should use **OH_ArkWebResourceRequest_Destroy** to destroy the **resourceRequest** and use **OH_ArkWebResourceHandler_Destroy** to destroy the **ArkWeb_ResourceHandler** received in **ArkWeb_OnRequestStart**.<br>**Since**: 12 |
+| void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, const ArkWeb_ResourceRequest* resourceRequest) | Called when the request stops. This callback is used on the IO thread. It is used to perform resource cleanup, status updates, or logging when the request completes. You should use **OH_ArkWebResourceRequest_Destroy** to destroy the **resourceRequest** and use **OH_ArkWebResourceHandler_Destroy** to destroy the **ArkWeb_ResourceHandler** received in **ArkWeb_OnRequestStart**.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
 | void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bytesRead) | Called when the **OH_ArkWebHttpBodyStream_Read** read operation is complete. This callback runs on the ArkWeb worker thread.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream *httpBodyStream, uint8_t *buffer, int bytesRead) | Called when the **OH_ArkWebHttpBodyStream_AsyncRead** read operation is complete. This callback runs on the ArkWeb worker thread.<br>**Since**: 20 |
+| void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream *httpBodyStream, uint8_t *buffer, int bytesRead) | Called when the **OH_ArkWebHttpBodyStream_AsyncRead** read operation is complete. This callback runs on the ArkWeb worker thread.<br>**Since**: 20<br>**System capability**: SystemCapability.Web.Webview.Core |
 | void (*ArkWeb_HttpBodyStreamInitCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, ArkWeb_NetError result) | Called when **ArkWeb_HttpBodyStream** initialization is complete.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
 
 ## Enum type description
@@ -145,8 +143,6 @@ enum ArkWeb_CustomSchemeOption
 **Description**
 
 Enumerates the custom scheme options.
-
-**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -170,8 +166,6 @@ enum ArkWeb_ResourceType
 **Description**
 
 Enumerates the resource types of the request. The resource types match the corresponding items of **ResourceType** in Chromium and should not be renumbered.
-
-**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -211,18 +205,16 @@ typedef void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler,
 
 Called when a request starts. This callback is used on the IO thread. It intercepts and handles network requests of a specified scheme at the start of the request. Developers can use this callback to implement custom protocol handling, local resource replacement, encrypted data transmission, and other features.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)\* schemeHandler | **ArkWeb_SchemeHandler**. |
-| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)\* resourceRequest | Object used to obtain the request information. |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)\* resourceHandler | **ArkWeb_ResourceHandler** of the request. If **intercept** is set to **false**, this parameter should not be used. |
-| bool\* intercept | Whether to intercept the request. If the value is **true**, the request will be intercepted. Otherwise, the request will not be intercepted. |
+| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | **ArkWeb_SchemeHandler**. |
+| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | Object used to obtain the request information. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | **ArkWeb_ResourceHandler** of the request. If **intercept** is set to **false**, this parameter should not be used. |
+| bool* intercept | Whether to intercept the request. If the value is **true**, the request will be intercepted. Otherwise, the request will not be intercepted. |
 
 ### ArkWeb_OnRequestStop()
 
@@ -234,16 +226,14 @@ typedef void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, 
 
 Called when the request stops. This callback is used on the IO thread. It is used to perform resource cleanup, status updates, or logging when the request completes. You should use **OH_ArkWebResourceRequest_Destroy** to destroy the **resourceRequest** and use **OH_ArkWebResourceHandler_Destroy** to destroy the **ArkWeb_ResourceHandler** received in **ArkWeb_OnRequestStart**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)\* schemeHandler | **ArkWeb_SchemeHandler**. |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)\* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | **ArkWeb_SchemeHandler**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 
 ### ArkWeb_HttpBodyStreamReadCallback()
 
@@ -255,16 +245,14 @@ typedef void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* h
 
 Called when the **OH_ArkWebHttpBodyStream_Read** read operation is complete. This callback runs on the ArkWeb worker thread.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)\* httpBodyStream | **ArkWeb_HttpBodyStream**. |
-| uint8_t\* buffer | Buffer for receiving data. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| uint8_t* buffer | Buffer for receiving data. |
 | int bytesRead | Number of bytes read. If bytesRead is greater than 0, the buffer has been filled with bytesRead bytes of data. The developer can read data from the buffer. If the return value of OH_ArkWebHttpBodyStream_IsEof is false, the developer can continue to read the remaining data. |
 
 ### ArkWeb_HttpBodyStreamAsyncReadCallback()
@@ -277,16 +265,14 @@ typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStre
 
 Called when the **OH_ArkWebHttpBodyStream_AsyncRead** read operation is complete. This callback runs on the ArkWeb worker thread.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md) \*httpBodyStream | **ArkWeb_HttpBodyStream**. |
-| uint8_t \*buffer | Pointer to the buffer for receiving data. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md) *httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| uint8_t *buffer | Pointer to the buffer for receiving data. |
 | int bytesRead | Byte count representing the result of the asynchronous read operation. If bytesRead is greater than 0, the buffer has been filled with bytesRead bytes of data. The developer can read data from the buffer. If OH_ArkWebHttpBodyStream_IsEof returns false, the developer can continue reading the remaining data. |
 
 ### ArkWeb_HttpBodyStreamInitCallback()
@@ -299,16 +285,14 @@ typedef void (*ArkWeb_HttpBodyStreamInitCallback)(const ArkWeb_HttpBodyStream* h
 
 Called when **ArkWeb_HttpBodyStream** initialization is complete.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)\* httpBodyStream | **ArkWeb_HttpBodyStream**. |
-| ArkWeb_NetError result | Operation result. If the operation is successful, **ARKWEB_NET_OK** is returned. Otherwise, see {@link arkweb_net_error_list.h}. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) result | Operation result. If the operation is successful, **ARKWEB_NET_OK** is returned. Otherwise, see [arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md). |
 
 ### OH_ArkWebRequestHeaderList_Destroy()
 
@@ -320,15 +304,13 @@ void OH_ArkWebRequestHeaderList_Destroy(ArkWeb_RequestHeaderList* requestHeaderL
 
 Destroys an **ArkWeb_RequestHeaderList** object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist-.md)* requestHeaderList | The **ArkWeb_RequestHeaderList** to be destroyed. |
+| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md)* requestHeaderList | The **ArkWeb_RequestHeaderList** to be destroyed. |
 
 ### OH_ArkWebRequestHeaderList_GetSize()
 
@@ -340,21 +322,19 @@ int32_t OH_ArkWebRequestHeaderList_GetSize(const ArkWeb_RequestHeaderList* reque
 
 Obtains the size of a request header list.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist-.md)* requestHeaderList | Request header list. |
+| [const ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md)* requestHeaderList | Request header list. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Size of the request header. If requestHeaderList is invalid, the value is -1. |
+| int32_t | Size of the request header. If **requestHeaderList** is invalid, the value is **-1**. |
 
 ### OH_ArkWebRequestHeaderList_GetHeader()
 
@@ -366,15 +346,13 @@ void OH_ArkWebRequestHeaderList_GetHeader(const ArkWeb_RequestHeaderList* reques
 
 Obtains a specified request header.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist-.md)* requestHeaderList | Request header list. |
+| [const ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md)* requestHeaderList | Request header list. |
 | int32_t index | Index of the request header. The value ranges from [0, size-1], where size is the size of the request header list. The behavior is undefined when the value is out of range. |
 | char** key | Key of the request header. You should use the **OH_ArkWeb_ReleaseString** function to release this string. |
 | char** value | Value of the request header. You should use the **OH_ArkWeb_ReleaseString** function to release this string. |
@@ -389,22 +367,20 @@ int32_t OH_ArkWebResourceRequest_SetUserData(ArkWeb_ResourceRequest* resourceReq
 
 Sets user data to the **ArkWeb_ResourceRequest** object. It is used to pass context information between different request callbacks or store request-associated state, which can later be retrieved through [OH_ArkWebResourceRequest_GetUserData()](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcerequest_getuserdata()).
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 | void* userData | User data to be set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResourceRequest_GetUserData()
 
@@ -416,21 +392,19 @@ void* OH_ArkWebResourceRequest_GetUserData(const ArkWeb_ResourceRequest* resourc
 
 Obtains user data from **ArkWeb_ResourceRequest**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| void* | Pointer to the user data. This pointer is set by the developer through      [OH_ArkWebResourceRequest_SetUserData](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcerequest_setuserdata) and can be used to pass custom context information in the callback. |
+| void* | Pointer to the user data. This pointer is set by the developer through [OH_ArkWebResourceRequest_SetUserData](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcerequest_setuserdata) and can be used to pass custom context information in the callback. |
 
 ### OH_ArkWebResourceRequest_GetMethod()
 
@@ -442,15 +416,13 @@ void OH_ArkWebResourceRequest_GetMethod(const ArkWeb_ResourceRequest* resourceRe
 
 Obtains the method of a request.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 | char** method | HTTP request method. This function allocates memory for the **method** string. You should use **OH_ArkWeb_ReleaseString** to release the string. |
 
 ### OH_ArkWebResourceRequest_GetUrl()
@@ -463,15 +435,13 @@ void OH_ArkWebResourceRequest_GetUrl(const ArkWeb_ResourceRequest* resourceReque
 
 Obtains the URL of a request.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 | char** url | URL of a request. This function allocates memory for the **url** string. You should release the string using **OH_ArkWeb_ReleaseString**. |
 
 ### OH_ArkWebResourceRequest_GetHttpBodyStream()
@@ -484,16 +454,14 @@ void OH_ArkWebResourceRequest_GetHttpBodyStream(const ArkWeb_ResourceRequest* re
 
 Creates an **ArkWeb_HttpBodyStream** to read the uploaded data of the request.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)** httpBodyStream | Uploaded data of the request. This function allocates memory for **httpBodyStream**. You should use **OH_ArkWebResourceRequest_DestroyHttpBodyStream** to release **httpBodyStream**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)** httpBodyStream | Uploaded data of the request. This function allocates memory for **httpBodyStream**. You should use **OH_ArkWebResourceRequest_DestroyHttpBodyStream** to release **httpBodyStream**. |
 
 ### OH_ArkWebResourceRequest_DestroyHttpBodyStream()
 
@@ -505,15 +473,13 @@ void OH_ArkWebResourceRequest_DestroyHttpBodyStream(ArkWeb_HttpBodyStream* httpB
 
 Destroys an **ArkWeb_HttpBodyStream** object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | The **httpBodyStream** to be destroyed. |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | The **httpBodyStream** to be destroyed. |
 
 ### OH_ArkWebResourceRequest_GetResourceType()
 
@@ -525,21 +491,19 @@ int32_t OH_ArkWebResourceRequest_GetResourceType(const ArkWeb_ResourceRequest* r
 
 Obtains the resource type of a request.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Resource type of the request. If resourceRequest is invalid, the value is -1, indicating that the      request object is null or invalid. For other values, see [ArkWeb_ResourceType](capi-arkweb-scheme-handler-h.md#arkweb_resourcetype). |
+| int32_t | Resource type of the request. If resourceRequest is invalid, the value is **-1**, indicating that the request object is null or invalid. For other values, see [ArkWeb_ResourceType](capi-arkweb-scheme-handler-h.md#arkweb_resourcetype). |
 
 ### OH_ArkWebResourceRequest_GetFrameUrl()
 
@@ -551,15 +515,13 @@ void OH_ArkWebResourceRequest_GetFrameUrl(const ArkWeb_ResourceRequest* resource
 
 Obtains the URL of the frame that triggers this request.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 | char** frameUrl | URL of the frame that triggers the request. This function allocates memory for the URL string. You should release the string using **OH_ArkWeb_ReleaseString**. |
 
 ### OH_ArkWebHttpBodyStream_SetUserData()
@@ -572,22 +534,20 @@ int32_t OH_ArkWebHttpBodyStream_SetUserData(ArkWeb_HttpBodyStream* httpBodyStrea
 
 Sets user data to the **ArkWeb_HttpBodyStream** object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 | void* userData | User data to be set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebHttpBodyStream_GetUserData()
 
@@ -599,21 +559,19 @@ void* OH_ArkWebHttpBodyStream_GetUserData(const ArkWeb_HttpBodyStream* httpBodyS
 
 Obtains user data from **ArkWeb_HttpBodyStream**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| void* | Pointer to the user data. This pointer is set by the developer through OH_ArkWebHttpBodyStream_SetUserData      and can be used to pass custom context information in the callback. |
+| void* | Pointer to the user data. This pointer is set by the developer through OH_ArkWebHttpBodyStream_SetUserData and can be used to pass custom context information in the callback. |
 
 ### OH_ArkWebHttpBodyStream_SetReadCallback()
 
@@ -625,22 +583,20 @@ int32_t OH_ArkWebHttpBodyStream_SetReadCallback(ArkWeb_HttpBodyStream* httpBodyS
 
 Sets a callback for **OH_ArkWebHttpBodyStream_Read**. The result of **OH_ArkWebHttpBodyStream_Read** is notified to the caller through **readCallback**, <br>which will run in the same thread as **OH_ArkWebHttpBodyStream_Read**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 | [ArkWeb_HttpBodyStreamReadCallback](capi-arkweb-scheme-handler-h.md#arkweb_httpbodystreamreadcallback) readCallback | Callback of **OH_ArkWebHttpBodyStream_Read**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebHttpBodyStream_SetAsyncReadCallback()
 
@@ -652,22 +608,20 @@ int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* http
 
 Sets a callback for **OH_ArkWebHttpBodyStream_AsyncRead**. The result of **OH_ArkWebHttpBodyStream_AsyncRead**<br>is notified to the caller through **readCallback**, which runs in the ArkWeb worker thread.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 | [ArkWeb_HttpBodyStreamAsyncReadCallback](capi-arkweb-scheme-handler-h.md#arkweb_httpbodystreamasyncreadcallback) readCallback | Callback of **OH_ArkWebHttpBodyStream_AsyncRead**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebHttpBodyStream_Init()
 
@@ -679,22 +633,20 @@ int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream, ArkW
 
 Initializes **ArkWeb_HttpBodyStream**. This function establishes the internal data structures and connections of **httpBodyStream** in preparation for subsequent read operations. During initialization, it allocates necessary resources and establishes a communication mechanism with the worker thread. This function must be called before any other function; otherwise, other operations will not execute properly. This API needs to be called on the IO thread to ensure thread safety and correct initialization order.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 | [ArkWeb_HttpBodyStreamInitCallback](capi-arkweb-scheme-handler-h.md#arkweb_httpbodystreaminitcallback) initCallback | Callback of the initialization. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebHttpBodyStream_Read()
 
@@ -706,15 +658,13 @@ void OH_ArkWebHttpBodyStream_Read(const ArkWeb_HttpBodyStream* httpBodyStream, u
 
 Reads the upload data of a request into the buffer. This function uses an asynchronous read mechanism, submitting the read task to the worker thread for execution and returning the result through a callback. The buffer size must be greater than or equal to **bufLen** to accommodate the data to be read. Data is read from the worker thread into the buffer, so the buffer should not be used in other threads before the callback returns, to avoid concurrency issues. After the read operation completes, the caller is notified through the previously set callback, which returns the actual number of bytes read.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 | uint8_t* buffer | Buffer for receiving data. The buffer size must be greater than bufLen. |
 | int bufLen | Number of bytes to read. The value must be a positive integer. The behavior is undefined if a negative number is passed. |
 
@@ -728,15 +678,13 @@ void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStre
 
 Exports the uploaded data of a request to the buffer. The buffer size must be greater than **bufLen**. The data from the worker thread is exported to the buffer. Therefore, before the callback returns the data, the buffer should not be used in other threads to avoid concurrency problems.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 | uint8_t* buffer | Buffer that receives data. |
 | int bufLen | Number of bytes to read. |
 
@@ -750,21 +698,19 @@ uint64_t OH_ArkWebHttpBodyStream_GetSize(const ArkWeb_HttpBodyStream* httpBodySt
 
 Obtains the size of **httpBodyStream**. When data is chunked or **httpBodyStream** is invalid, **0** is always returned.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| uint64_t | Size of httpBodyStream. |
+| uint64_t | Size of **httpBodyStream**. |
 
 ### OH_ArkWebHttpBodyStream_GetPosition()
 
@@ -776,21 +722,19 @@ uint64_t OH_ArkWebHttpBodyStream_GetPosition(const ArkWeb_HttpBodyStream* httpBo
 
 Obtains the position of **httpBodyStream**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| uint64_t | Current read position of httpBodyStream. The value is 0 if httpBodyStream is invalid. |
+| uint64_t | Current read position of httpBodyStream. The value is **0** if httpBodyStream is invalid. |
 
 ### OH_ArkWebHttpBodyStream_IsChunked()
 
@@ -802,21 +746,19 @@ bool OH_ArkWebHttpBodyStream_IsChunked(const ArkWeb_HttpBodyStream* httpBodyStre
 
 Determines whether **httpBodyStream** is chunked.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if chunked transfer is used; returns false otherwise. |
+| bool | Returns **true** if chunked transfer is used; returns **false** otherwise. |
 
 ### OH_ArkWebHttpBodyStream_IsEof()
 
@@ -828,21 +770,19 @@ bool OH_ArkWebHttpBodyStream_IsEof(const ArkWeb_HttpBodyStream* httpBodyStream)
 
 Determines whether all data in **httpBodyStream** has been read. **true** is returned if all data in **httpBodyStream** has been read. **false** is returned before the chunked **httpBodyStream** is read for the first time.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | true is returned if all data has been read. Otherwise, false is returned. |
+| bool | **true** is returned if all data has been read. Otherwise, **false** is returned. |
 
 ### OH_ArkWebHttpBodyStream_IsInMemory()
 
@@ -854,21 +794,19 @@ bool OH_ArkWebHttpBodyStream_IsInMemory(const ArkWeb_HttpBodyStream* httpBodyStr
 
 Determines whether all the uploaded data in **httpBodyStream** is in memory and all read requests are synchronized successfully. If yes, **true** is returned. **false** is returned if the data is chunked.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | **ArkWeb_HttpBodyStream**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | true is returned if all the uploaded data is stored in the memory. Otherwise, false is returned. |
+| bool | **true** is returned if all the uploaded data is stored in the memory. Otherwise, **false** is returned. |
 
 ### OH_ArkWebResourceRequest_Destroy()
 
@@ -880,21 +818,19 @@ int32_t OH_ArkWebResourceRequest_Destroy(const ArkWeb_ResourceRequest* resourceR
 
 Destroys an **ArkWeb_ResourceRequest** object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResourceRequest_GetReferrer()
 
@@ -906,15 +842,13 @@ void OH_ArkWebResourceRequest_GetReferrer(const ArkWeb_ResourceRequest* resource
 
 Obtains the referrer of a request.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 | char** referrer | Referrer of the request. This function allocates memory for the referrer string. The caller must release the string using OH_ArkWeb_ReleaseString. |
 
 ### OH_ArkWebResourceRequest_GetRequestHeaders()
@@ -927,16 +861,14 @@ void OH_ArkWebResourceRequest_GetRequestHeaders(const ArkWeb_ResourceRequest* re
 
 Obtains the request header list **ArkWeb_RequestHeaderList** of the request. This function allocates memory for **requestHeaderList**, and the caller must use **OH_ArkWebRequestHeaderList_Destroy** to release **requestHeaderList**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
-| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist-.md)** requestHeaderList | List of request headers. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md)** requestHeaderList | List of request headers. |
 
 ### OH_ArkWebResourceRequest_IsRedirect()
 
@@ -948,21 +880,19 @@ bool OH_ArkWebResourceRequest_IsRedirect(const ArkWeb_ResourceRequest* resourceR
 
 Determines whether a request is redirected.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Whether this is a redirect. The value true indicates it is a redirect, and false indicates it is not. |
+| bool | Whether this is a redirect. The value **true** indicates it is a redirect, and **false** indicates it is not. |
 
 ### OH_ArkWebResourceRequest_IsMainFrame()
 
@@ -974,15 +904,13 @@ bool OH_ArkWebResourceRequest_IsMainFrame(const ArkWeb_ResourceRequest* resource
 
 Determines whether a request is from main frame.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 
 **Returns**:
 
@@ -1000,15 +928,13 @@ bool OH_ArkWebResourceRequest_HasGesture(const ArkWeb_ResourceRequest* resourceR
 
 Determines whether a request is triggered by a user gesture.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | **ArkWeb_ResourceRequest**. |
 
 **Returns**:
 
@@ -1026,8 +952,6 @@ int32_t OH_ArkWeb_RegisterCustomSchemes(const char* scheme, int32_t option)
 
 Registers a custom scheme with **ArkWeb**. This function should not be called for built-in HTTP, HTTPS, FILE, FTP, ABOUT, and DATA protocols. This function should be called on the main thread before kernel initialization.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1041,7 +965,7 @@ Registers a custom scheme with **ArkWeb**. This function should not be called fo
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. Returns 0 if successful; returns 17100100 if an unknown error occurs, in which case check the      call timing and parameter configuration; returns 17100101 if the parameter is invalid; returns 17100102 if the      scheme configuration fails to be registered, in which case register before creating ArkWeb. |
+| int32_t | Result code. Returns 0 if successful; returns 17100100 if an unknown error occurs, in which case check the call timing and parameter configuration; returns 17100101 if the parameter is invalid; returns 17100102 if the scheme configuration fails to be registered, in which case register before creating ArkWeb. |
 
 ### OH_ArkWebServiceWorker_SetSchemeHandler()
 
@@ -1053,8 +977,6 @@ bool OH_ArkWebServiceWorker_SetSchemeHandler(const char* scheme, ArkWeb_SchemeHa
 
 Sets an **ArkWeb_SchemeHandler** for a specified scheme to intercept requests of the scheme type triggered by **ServiceWorker**. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1062,13 +984,13 @@ Sets an **ArkWeb_SchemeHandler** for a specified scheme to intercept requests of
 | Parameter | Description |
 | -- | -- |
 | const char* scheme | Scheme to be intercepted, which must comply with RFC 3986. |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | **ArkWeb_SchemeHandler** of the scheme. Only requests triggered by **ServiceWorker** are notified through this **schemeHandler**. |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | **ArkWeb_SchemeHandler** of the scheme. Only requests triggered by **ServiceWorker** are notified through this **schemeHandler**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | true is returned if the SchemeHandler is successfully set for the specified scheme. Otherwise,      false is returned. |
+| bool | **true** is returned if the **SchemeHandler** is successfully set for the specified scheme. Otherwise, **false** is returned. |
 
 ### OH_ArkWeb_SetSchemeHandler()
 
@@ -1080,8 +1002,6 @@ bool OH_ArkWeb_SetSchemeHandler(const char* scheme, const char* webTag, ArkWeb_S
 
 Sets an **ArkWeb_SchemeHandler** to intercept requests of a specified scheme type. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1090,13 +1010,13 @@ Sets an **ArkWeb_SchemeHandler** to intercept requests of a specified scheme typ
 | -- | -- |
 | const char* scheme | Scheme to be intercepted. |
 | const char* webTag | Tag name of the Web component, used to identify a unique component. The developer must ensure the uniqueness of the name. The recommended length does not exceed 256 characters. |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | **ArkWeb_SchemeHandler** of the scheme. Only requests triggered from the specified web are notified through this **SchemeHandler**. |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | **ArkWeb_SchemeHandler** of the scheme. Only requests triggered from the specified web are notified through this **SchemeHandler**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | true is returned if the SchemeHandler is successfully set for the specified scheme. Otherwise,      false is returned. |
+| bool | **true** is returned if the **SchemeHandler** is successfully set for the specified scheme. Otherwise, **false** is returned. |
 
 ### OH_ArkWebServiceWorker_ClearSchemeHandlers()
 
@@ -1108,15 +1028,13 @@ int32_t OH_ArkWebServiceWorker_ClearSchemeHandlers()
 
 Clears the **SchemeHandler** registered for **ServiceWorker**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned if the operation is successful. |
+| int32_t | **0** is returned if the operation is successful. |
 
 ### OH_ArkWeb_ClearSchemeHandlers()
 
@@ -1127,8 +1045,6 @@ int32_t OH_ArkWeb_ClearSchemeHandlers(const char* webTag)
 **Description**
 
 Clears the **SchemeHandler** registered for the specified **Web** component.
-
-**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1142,7 +1058,7 @@ Clears the **SchemeHandler** registered for the specified **Web** component.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWeb_CreateSchemeHandler()
 
@@ -1154,15 +1070,13 @@ void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)
 
 Creates an **ArkWeb_SchemeHandler** object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)** schemeHandler | Created ArkWeb_SchemeHandler. Destroy it using [OH_ArkWeb_DestroySchemeHandler](capi-arkweb-scheme-handler-h.md#oh_arkweb_destroyschemehandler) when it is no longer needed. |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)** schemeHandler | Created ArkWeb_SchemeHandler. Destroy it using [OH_ArkWeb_DestroySchemeHandler](capi-arkweb-scheme-handler-h.md#oh_arkweb_destroyschemehandler) when it is no longer needed. |
 
 ### OH_ArkWeb_DestroySchemeHandler()
 
@@ -1174,15 +1088,13 @@ void OH_ArkWeb_DestroySchemeHandler(ArkWeb_SchemeHandler* schemeHandler)
 
 Destroys an **ArkWeb_SchemeHandler** object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | The **ArkWeb_SchemeHandler** to be destroyed. |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | The **ArkWeb_SchemeHandler** to be destroyed. |
 
 ### OH_ArkWebSchemeHandler_SetUserData()
 
@@ -1194,22 +1106,20 @@ int32_t OH_ArkWebSchemeHandler_SetUserData(ArkWeb_SchemeHandler* schemeHandler, 
 
 Sets user data to the **ArkWeb_SchemeHandler** object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | **ArkWeb_SchemeHandler**. |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | **ArkWeb_SchemeHandler**. |
 | void* userData | User data to be set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebSchemeHandler_GetUserData()
 
@@ -1221,21 +1131,19 @@ void* OH_ArkWebSchemeHandler_GetUserData(const ArkWeb_SchemeHandler* schemeHandl
 
 Obtains the user data from **ArkWeb_SchemeHandler**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | **ArkWeb_SchemeHandler**. |
+| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | **ArkWeb_SchemeHandler**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| void* | Pointer to user data. This pointer is set by the developer through OH_ArkWebSchemeHandler_SetUserData and      can be used to pass custom context information in callbacks. |
+| void* | Pointer to user data. This pointer is set by the developer through OH_ArkWebSchemeHandler_SetUserData and can be used to pass custom context information in callbacks. |
 
 ### OH_ArkWebSchemeHandler_SetOnRequestStart()
 
@@ -1247,22 +1155,20 @@ int32_t OH_ArkWebSchemeHandler_SetOnRequestStart(ArkWeb_SchemeHandler* schemeHan
 
 Sets an **OnRequestStart** callback for **SchemeHandler**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | **SchemeHandler** of the scheme. |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | **SchemeHandler** of the scheme. |
 | [ArkWeb_OnRequestStart](capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart) onRequestStart | The callback function **OnRequestStart**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebSchemeHandler_SetOnRequestStop()
 
@@ -1274,22 +1180,20 @@ int32_t OH_ArkWebSchemeHandler_SetOnRequestStop(ArkWeb_SchemeHandler* schemeHand
 
 Sets an **OnRequestStop** callback for **SchemeHandler**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | **SchemeHandler** of the scheme. |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | **SchemeHandler** of the scheme. |
 | [ArkWeb_OnRequestStop](capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop) onRequestStop | The callback function **OnRequestStop**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWeb_CreateResponse()
 
@@ -1301,15 +1205,13 @@ void OH_ArkWeb_CreateResponse(ArkWeb_Response** response)
 
 Creates an **ArkWeb_Response** object for the intercepted request.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)** response | A created **ArkWeb_Response**. Use **OH_ArkWeb_DestroyResponse** to destroy it when it is not required. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)** response | A created **ArkWeb_Response**. Use **OH_ArkWeb_DestroyResponse** to destroy it when it is not required. |
 
 ### OH_ArkWeb_DestroyResponse()
 
@@ -1321,15 +1223,13 @@ void OH_ArkWeb_DestroyResponse(ArkWeb_Response* response)
 
 Destroys an **ArkWeb_Response** object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | The **ArkWeb_Response** to be destroyed. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)* response | The **ArkWeb_Response** to be destroyed. |
 
 ### OH_ArkWebResponse_SetUrl()
 
@@ -1341,22 +1241,20 @@ int32_t OH_ArkWebResponse_SetUrl(ArkWeb_Response* response, const char* url)
 
 Sets the resolved URL after redirection or HSTS changes. After setting, a navigation is triggered. It is used to implement URL redirection in custom responses, such as URL normalization, domain redirection, and HTTP-to-HTTPS upgrade.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | const char* url | Parsed URL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResponse_GetUrl()
 
@@ -1368,15 +1266,13 @@ void OH_ArkWebResponse_GetUrl(const ArkWeb_Response* response, char** url)
 
 Obtains the parsed URL that has been redirected or changed due to HSTS.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | char** url | Parsed URL. This function allocates memory for the URL string. The caller must release the string using OH_ArkWeb_ReleaseString. |
 
 ### OH_ArkWebResponse_SetError()
@@ -1389,22 +1285,20 @@ int32_t OH_ArkWebResponse_SetError(ArkWeb_Response* response, ArkWeb_NetError er
 
 Sets an error code for the **ArkWeb_Response** object. It is used together with **DidFailWithError** to inform the client of the specific reason for the request failure through the error code, such as permission errors or resource not found.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
-| ArkWeb_NetError errorCode | Error code of the failed request. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
+| [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | Error code of the failed request. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResponse_GetError()
 
@@ -1416,21 +1310,19 @@ ArkWeb_NetError OH_ArkWebResponse_GetError(const ArkWeb_Response* response)
 
 Obtains the error code of **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkWeb_NetError | Error code of ArkWeb_Response. |
+| [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) | Error code of **ArkWeb_Response**. |
 
 ### OH_ArkWebResponse_SetStatus()
 
@@ -1442,22 +1334,20 @@ int32_t OH_ArkWebResponse_SetStatus(ArkWeb_Response* response, int status)
 
 Sets an HTTP status code for **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | int status | HTTP status code of the response. The value ranges from 100 to 599 and must comply with HTTP standard status code specifications (informational 100-199, success 200-299, redirection 300-399, client error 400-499, server error 500-599). The behavior is undefined when the value is out of range. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResponse_GetStatus()
 
@@ -1469,21 +1359,19 @@ int OH_ArkWebResponse_GetStatus(const ArkWeb_Response* response)
 
 Obtains the HTTP status code of **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | HTTP status code of ArkWeb_Response. If ArkWeb_Response is invalid, the value is -1. |
+| int | HTTP status code of **ArkWeb_Response**. If **ArkWeb_Response** is invalid, the value is **-1**. |
 
 ### OH_ArkWebResponse_SetStatusText()
 
@@ -1495,22 +1383,20 @@ int32_t OH_ArkWebResponse_SetStatusText(ArkWeb_Response* response, const char* s
 
 Sets a status text for **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | const char* statusText | Status text of the response. Setting the status text provides a more detailed description for the HTTP status code. For example, status code 200 can correspond to "OK", status code 404 can correspond to "Not Found", etc., helping the client better understand the request result. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResponse_GetStatusText()
 
@@ -1522,15 +1408,13 @@ void OH_ArkWebResponse_GetStatusText(const ArkWeb_Response* response, char** sta
 
 Obtains the status text of **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | char** statusText | Status text of **ArkWeb_Response**. This function allocates memory for the **statusText** string. You need to release the string using **OH_ArkWeb_ReleaseString**. |
 
 ### OH_ArkWebResponse_SetMimeType()
@@ -1543,22 +1427,20 @@ int32_t OH_ArkWebResponse_SetMimeType(ArkWeb_Response* response, const char* mim
 
 Sets a mime type for **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | const char* mimeType | Media type of the response. Setting the media type tells the client the type of the response content, for example, text/html indicates an HTML document, application/json indicates JSON data, image/png indicates a PNG image, etc. The browser selects an appropriate rendering mode based on the media type. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResponse_GetMimeType()
 
@@ -1570,15 +1452,13 @@ void OH_ArkWebResponse_GetMimeType(const ArkWeb_Response* response, char** mimeT
 
 Obtains the mime type of **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | char** mimeType | Mime type of **ArkWeb_Response**. This function allocates memory for the **mimeType** string. You need to release the string using **OH_ArkWeb_ReleaseString**. |
 
 ### OH_ArkWebResponse_SetCharset()
@@ -1591,22 +1471,20 @@ int32_t OH_ArkWebResponse_SetCharset(ArkWeb_Response* response, const char* char
 
 Sets a character set for **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | const char* charset | Character set of the response. Setting the character set tells the client the character encoding used for the response content. For example, UTF-8 indicates that UTF-8 encoding is used, GBK indicates that GBK encoding is used, and so on. The browser correctly parses and displays the text content based on the character set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResponse_GetCharset()
 
@@ -1618,15 +1496,13 @@ void OH_ArkWebResponse_GetCharset(const ArkWeb_Response* response, char** charse
 
 Obtains the character set of **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | char** charset | Character set of **ArkWeb_Response**. This function allocates memory for the **charset** string. You need to release the string using **OH_ArkWeb_ReleaseString**. |
 
 ### OH_ArkWebResponse_SetHeaderByName()
@@ -1639,15 +1515,13 @@ int32_t OH_ArkWebResponse_SetHeaderByName(ArkWeb_Response* response, const char*
 
 Sets a header for **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | const char* name | Name of the header. Specifies the name of the HTTP response header to set, for example, Content-Type, Content-Length, or Cache-Control. Different headers affect how the browser processes the response. |
 | const char* value | Value of the header. Specifies the value of the HTTP response header, for example, text/html for Content-Type or no-cache for Cache-Control. The actual effect depends on the combination of the header name and value. |
 | bool overwrite | Whether to overwrite the existing header. The value **true** means to overwrite the existing header, and **false** means the opposite. |
@@ -1656,7 +1530,7 @@ Sets a header for **ArkWeb_Response**.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResponse_GetHeaderByName()
 
@@ -1668,15 +1542,13 @@ void OH_ArkWebResponse_GetHeaderByName(const ArkWeb_Response* response, const ch
 
 Obtains the header from **ArkWeb_Response**.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response**. |
+| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response**. |
 | const char* name | Name of the header. |
 | char** value | Value of the header. This function allocates memory for the **value **string. You need to release the string using **OH_ArkWeb_ReleaseString**. |
 
@@ -1690,21 +1562,19 @@ int32_t OH_ArkWebResourceHandler_Destroy(const ArkWeb_ResourceHandler* resourceH
 
 Destroys an **ArkWeb_ResourceHandler** object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | **ArkWeb_ResourceHandler**. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | **ArkWeb_ResourceHandler**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResourceHandler_DidReceiveResponse()
 
@@ -1716,22 +1586,20 @@ int32_t OH_ArkWebResourceHandler_DidReceiveResponse(const ArkWeb_ResourceHandler
 
 Passes the constructed response header to the intercepted request. Called when intercepting a request and preparing to return a custom response, it is used to set response header information such as the HTTP response status code, media type, and character set.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | **ArkWeb_ResourceHandler** of the request. |
-| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | **ArkWeb_Response** of the intercepted request. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | **ArkWeb_ResourceHandler** of the request. |
+| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | **ArkWeb_Response** of the intercepted request. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResourceHandler_DidReceiveData()
 
@@ -1743,15 +1611,13 @@ int32_t OH_ArkWebResourceHandler_DidReceiveData(const ArkWeb_ResourceHandler* re
 
 Passes the constructed response body to the intercepted request. Called after setting the response header, it is used to send response data. It can be called multiple times for chunked transfer of data. After the transfer is complete, **OH_ArkWebResourceHandler_DidFinish** must be called to notify the end of the request.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | **ArkWeb_ResourceHandler** of the request. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | **ArkWeb_ResourceHandler** of the request. |
 | const uint8_t* buffer | Buffer data to be sent. |
 | int64_t bufLen | Size of the buffer, in bytes. |
 
@@ -1759,7 +1625,7 @@ Passes the constructed response body to the intercepted request. Called after se
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResourceHandler_DidFinish()
 
@@ -1771,21 +1637,19 @@ int32_t OH_ArkWebResourceHandler_DidFinish(const ArkWeb_ResourceHandler* resourc
 
 Notifies the ArkWeb kernel that the intercepted request is complete and no more data is available. This function sends a completion signal to the kernel, which will end the processing of the request and clean up related internal resources. After calling this function, no other processing functions can be called for this request. If an error occurs during the request, use **OH_ArkWebResourceHandler_DidFailWithError** to notify the kernel.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | **ArkWeb_ResourceHandler** of the request. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | **ArkWeb_ResourceHandler** of the request. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResourceHandler_DidFailWithError()
 
@@ -1797,22 +1661,20 @@ int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* 
 
 Notifies the ArkWeb kernel that the intercepted request should fail. Called in scenarios such as permission verification failure, resource not found, or network errors, it is used to mark the request as failed and inform the client of the specific failure reason through an error code.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies. |
-| ArkWeb_NetError errorCode | Error code of the request. For details, see {@link arkweb_net_error_list.h}. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies. |
+| [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | Error code of the request. For details, see [arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWebResourceHandler_DidFailWithErrorV2()
 
@@ -1824,23 +1686,21 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler
 
 Notifies the ArkWeb kernel that the intercepted request fails. Compared with the [OH_ArkWebResourceHandler_DidFailWithError](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror) API, the **completeIfNoResponse** parameter is added. With this parameter set to **true**, if [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) has not been called, a response is automatically generated to complete the network request and the network error code is **-104**. With this parameter set to **false**, the system waits for the application to call [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) and pass the response.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies. |
-| ArkWeb_NetError errorCode | Error code of the request. For details, see {@link arkweb_net_error_list.h}. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies. |
+| [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | Error code of the request. For details, see [arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md). |
 | bool completeIfNoResponse | Whether the network request is complete when [OH_ArkWebResourceHandler_DidFailWithErrorV2](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2) is called if [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) is not called before. If the value is **true** and [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) is not called before, a response is automatically generated to complete the network request, and the network error code is **-104**. If the value is **false**, the system waits for the application to call [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) and pass the response. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0 is returned when the operation is successful; 17100101 is returned when the parameter is invalid. |
+| int32_t | **0** is returned when the operation is successful; **17100101** is returned when the parameter is invalid. |
 
 ### OH_ArkWeb_CreateErrorInfo()
 
@@ -1852,15 +1712,13 @@ void OH_ArkWeb_CreateErrorInfo(ArkWeb_ErrorInfo** errorInfo)
 
 Creates an ArkWeb_ErrorInfo object.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)** errorInfo | The created ArkWeb_ErrorInfo object. If errorInfo is nullptr, this function does nothing. If the creation succeeds, *errorInfo points to the newly created object, which must be destroyed using [OH_ArkWeb_DestroyErrorInfo](capi-arkweb-scheme-handler-h.md#oh_arkweb_destroyerrorinfo) when no longer needed. If the creation fails, *errorInfo is set to NULL. |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)** errorInfo | The created ArkWeb_ErrorInfo object. If errorInfo is nullptr, this function does nothing. If the creation succeeds, *errorInfo points to the newly created object, which must be destroyed using [OH_ArkWeb_DestroyErrorInfo](capi-arkweb-scheme-handler-h.md#oh_arkweb_destroyerrorinfo) when no longer needed. If the creation fails, *errorInfo is set to NULL. |
 
 ### OH_ArkWeb_DestroyErrorInfo()
 
@@ -1872,15 +1730,13 @@ void OH_ArkWeb_DestroyErrorInfo(ArkWeb_ErrorInfo* errorInfo)
 
 Destroys the ArkWeb_ErrorInfo.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | The ArkWeb_ErrorInfo to be destroyed. |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | The ArkWeb_ErrorInfo to be destroyed. |
 
 ### OH_ArkWebErrorInfo_SetCompleteIfNoResponse()
 
@@ -1892,22 +1748,20 @@ int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, 
 
 Sets whether to automatically generate a response if no response has been received.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | The ArkWeb_ErrorInfo. |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | The ArkWeb_ErrorInfo. |
 | bool completeIfNoResponse | If true, a response will be automatically constructed when no response has been received. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, errorInfo is nullptr. |
+| int32_t | [ARKWEB_NET_OK](capi-arkweb-net-error-list-h.md#arkweb_neterror) 0 - Success. [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, errorInfo is nullptr. |
 
 ### OH_ArkWebErrorInfo_GetCompleteIfNoResponse()
 
@@ -1919,21 +1773,19 @@ bool OH_ArkWebErrorInfo_GetCompleteIfNoResponse(const ArkWeb_ErrorInfo* errorInf
 
 Gets whether to automatically generate a response if no response has been received.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | The ArkWeb_ErrorInfo. |
+| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | The ArkWeb_ErrorInfo. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if automatically generating a response when no response has been received is enabled,          returns false otherwise. |
+| bool | Returns true if automatically generating a response when no response has been received is enabled, returns false otherwise. |
 
 ### OH_ArkWebErrorInfo_SetCustomErrorCode()
 
@@ -1945,22 +1797,20 @@ int32_t OH_ArkWebErrorInfo_SetCustomErrorCode(ArkWeb_ErrorInfo* errorInfo, int32
 
 Sets the custom error code for ArkWeb_ErrorInfo.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | The ArkWeb_ErrorInfo. |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | The ArkWeb_ErrorInfo. |
 | int32_t errorCode | The custom error code, the web engine will pass the custom error code directly to the application through onErrorReceive. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, errorInfo is nullptr. |
+| int32_t | [ARKWEB_NET_OK](capi-arkweb-net-error-list-h.md#arkweb_neterror) 0 - Success. [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, errorInfo is nullptr. |
 
 ### OH_ArkWebErrorInfo_GetCustomErrorCode()
 
@@ -1972,15 +1822,13 @@ int32_t OH_ArkWebErrorInfo_GetCustomErrorCode(const ArkWeb_ErrorInfo* errorInfo)
 
 Gets the custom error code from the ArkWeb_ErrorInfo.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | The ArkWeb_ErrorInfo. |
+| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | The ArkWeb_ErrorInfo. |
 
 **Returns**:
 
@@ -1998,22 +1846,20 @@ int32_t OH_ArkWebErrorInfo_SetErrorCode(ArkWeb_ErrorInfo* errorInfo, ArkWeb_NetE
 
 Sets the error code for ArkWeb_ErrorInfo.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | The ArkWeb_ErrorInfo. |
-| ArkWeb_NetError errorCode | The error code for this request. Refer to arkweb_net_error_list.h. |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | The ArkWeb_ErrorInfo. |
+| [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | The error code for this request. Refer to arkweb_net_error_list.h. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, errorInfo is nullptr. |
+| int32_t | [ARKWEB_NET_OK](capi-arkweb-net-error-list-h.md#arkweb_neterror) 0 - Success. [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, errorInfo is nullptr. |
 
 ### OH_ArkWebErrorInfo_GetErrorCode()
 
@@ -2025,21 +1871,19 @@ ArkWeb_NetError OH_ArkWebErrorInfo_GetErrorCode(const ArkWeb_ErrorInfo* errorInf
 
 Gets the error code from the ArkWeb_ErrorInfo. Refer to arkweb_net_error_list.h.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | The ArkWeb_ErrorInfo. |
+| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | The ArkWeb_ErrorInfo. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkWeb_NetError | The error code. |
+| [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) | The error code. |
 
 ### OH_ArkWebResponse_SetErrorInfo()
 
@@ -2051,22 +1895,20 @@ int32_t OH_ArkWebResponse_SetErrorInfo(ArkWeb_Response* response, ArkWeb_ErrorIn
 
 Sets the error info for the ArkWeb_Response.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | The ArkWeb_Response. |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | The ArkWeb_ErrorInfo to set. Ownership is not transferred; the caller must keep errorInfo valid until [ArkWeb_OnRequestStop](capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop) is triggered. |
+| [ArkWeb_Response](capi-web-arkweb-response.md)* response | The ArkWeb_Response. |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | The ArkWeb_ErrorInfo to set. Ownership is not transferred; the caller must keep errorInfo valid until [ArkWeb_OnRequestStop](capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop) is triggered. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, response or errorInfo is nullptr. |
+| int32_t | [ARKWEB_NET_OK](capi-arkweb-net-error-list-h.md#arkweb_neterror) 0 - Success. [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, response or errorInfo is nullptr. |
 
 ### OH_ArkWebResponse_GetErrorInfo()
 
@@ -2078,21 +1920,19 @@ ArkWeb_ErrorInfo* OH_ArkWebResponse_GetErrorInfo(const ArkWeb_Response* response
 
 Gets the error info from the ArkWeb_Response.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | The ArkWeb_Response. |
+| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | The ArkWeb_Response. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkWeb_ErrorInfo*](capi-web-arkweb-errorinfo-.md) | The pointer to the ArkWeb_ErrorInfo if set; NULL otherwise. |
+| [ArkWeb_ErrorInfo*](capi-web-arkweb-errorinfo.md) | The pointer to the ArkWeb_ErrorInfo if set; NULL otherwise. |
 
 ### OH_ArkWebResourceHandler_DidFailWithErrorInfo()
 
@@ -2104,22 +1944,20 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorInfo(const ArkWeb_ResourceHandl
 
 Notify the web engine that this request should fail with error info.
 
-**System capability**: SystemCapability.Web.Webview.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | The ArkWeb_ResourceHandler for the request. |
-| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | The error info for this request. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | The ArkWeb_ResourceHandler for the request. |
+| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | The error info for this request. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 - Success.          [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, resourceHandler or errorInfo is nullptr. |
+| int32_t | [ARKWEB_NET_OK](capi-arkweb-net-error-list-h.md#arkweb_neterror) 0 - Success. [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 - Invalid param, resourceHandler or errorInfo is nullptr. |
 
 ### OH_ArkWeb_ReleaseString()
 
@@ -2130,8 +1968,6 @@ void OH_ArkWeb_ReleaseString(char* string)
 **Description**
 
 Releases the string created by NDK APIs.
-
-**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -2150,8 +1986,6 @@ void OH_ArkWeb_ReleaseByteArray(uint8_t* byteArray)
 **Description**
 
 Releases the byte array created by NDK APIs.
-
-**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 

@@ -6,7 +6,7 @@ typedef struct OH_VideoProcessing OH_VideoProcessing
 
 ## Overview
 
-Define the video processing object.<br> Define a null pointer of OH_VideoProcessing and call {@link OH_VideoProcessing_Create} to create a video processing instance. The pointer should be null before creating instance. User can create multiple video processing instances for different processing types.
+Define the video processing object.<br> Define a null pointer of OH_VideoProcessing and call OH_VideoProcessing_Create to create a video processing instance. The pointer should be null before creating instance. User can create multiple video processing instances for different processing types.
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 

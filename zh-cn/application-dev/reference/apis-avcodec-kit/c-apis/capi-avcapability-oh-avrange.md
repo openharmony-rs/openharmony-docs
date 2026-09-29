@@ -1,7 +1,7 @@
 # OH_AVRange
 
 ```c
-typedef struct OH_AVRange {...} OH_AVRange
+struct OH_AVRange {...}
 ```
 
 ## 概述

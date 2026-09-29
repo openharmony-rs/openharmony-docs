@@ -8,8 +8,6 @@
 
 **库：** libnative_drm.so
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **相关模块：** [Drm](capi-drm.md)
@@ -18,10 +16,10 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | MediaKeySession_Callback | MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等事件，不返回媒体密钥会话实例，适用于单媒体密钥会话解密场景。 |
-| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | OH_MediaKeySession_Callback | OH_MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等事件，返回媒体密钥会话实例，适用于多个媒体密钥会话的解密场景。 |
+| 名称 | 描述 |
+| -- | -- |
+| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等事件，不返回媒体密钥会话实例，适用于单媒体密钥会话解密场景。 |
+| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | OH_MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等事件，返回媒体密钥会话实例，适用于多个媒体密钥会话的解密场景。 |
 
 ### 函数
 
@@ -48,10 +46,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | MediaKeySession事件触发时将调用的回调函数，如密钥过期事件。<br>**起始版本：** 11 |
-| Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable) | 密钥变更时调用的回调函数。<br>**起始版本：** 11 |
-| Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | 事件触发时将调用的回调函数。事件信息来源于媒体播放过程中的DRM事件，通过MediaKeySession实例触发。<br>**起始版本：** 12 |
-| Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable) | 密钥变更时将调用的回调。<br>**起始版本：** 12 |
+| Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | MediaKeySession事件触发时将调用的回调函数，如密钥过期事件。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Drm.Core |
+| Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable) | 密钥变更时调用的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Drm.Core |
+| Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | 事件触发时将调用的回调函数。事件信息来源于媒体播放过程中的DRM事件，通过MediaKeySession实例触发。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Drm.Core |
+| Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable) | 密钥变更时将调用的回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Drm.Core |
 
 ## 函数说明
 
@@ -65,24 +63,22 @@ typedef Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, ui
 
 MediaKeySession事件触发时将调用的回调函数，如密钥过期事件。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| DRM_EventType eventType | 输入参数，事件类型。 |
-| uint8_t \*info | 输出参数，从媒体密钥会话获取的事件信息。 |
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | 输入参数，事件类型。 |
+| uint8_t *info | 输出参数，从媒体密钥会话获取的事件信息。 |
 | int32_t infoLen | 输出参数，事件信息长度。 |
-| char \*extra | 输出参数，从媒体密钥会话中获得的额外信息。 |
+| char *extra | 输出参数，从媒体密钥会话中获得的额外信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | 错误码。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | 错误码。 |
 
 ### MediaKeySession_KeyChangeCallback()
 
@@ -94,22 +90,20 @@ typedef Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo,
 
 密钥变更时调用的回调函数。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| DRM_KeysInfo \*keysInfo | 密钥信息。 |
+| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) *keysInfo | 密钥信息。 |
 | bool newKeysAvailable | 新密钥是否可用，true表示可用，false表示不可用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：参数检查失败。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：参数检查失败。 |
 
 ### OH_MediaKeySession_EventCallback()
 
@@ -121,25 +115,23 @@ typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKe
 
 事件触发时将调用的回调函数。事件信息来源于媒体播放过程中的DRM事件，通过MediaKeySession实例触发。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession \*mediaKeySession | 输入参数，会话实例，用于标识事件来源。 |
-| DRM_EventType eventType | 输入参数，事件类型。 |
-| uint8_t \*info | 输出参数，事件信息，来源于DRM事件。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | 输入参数，会话实例，用于标识事件来源。 |
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | 输入参数，事件类型。 |
+| uint8_t *info | 输出参数，事件信息，来源于DRM事件。 |
 | int32_t infoLen | 输出参数，事件信息长度。 |
-| char \*extra | 输出参数，增量信息，来源于DRM事件。 |
+| char *extra | 输出参数，增量信息，来源于DRM事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | 错误码。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | 错误码。 |
 
 ### OH_MediaKeySession_KeyChangeCallback()
 
@@ -151,23 +143,21 @@ typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *med
 
 密钥变更时将调用的回调。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession \*mediaKeySession | 媒体密钥会话实例。 |
-| DRM_KeysInfo \*keysInfo | 密钥信息。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | 媒体密钥会话实例。 |
+| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) *keysInfo | 密钥信息。 |
 | bool newKeysAvailable | 新密钥是否可用，true表示可用，false表示不可用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：参数检查失败。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：参数检查失败。 |
 
 ### OH_MediaKeySession_GenerateMediaKeyRequest()
 
@@ -179,23 +169,21 @@ Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKey
 
 生成媒体密钥请求。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | 输入参数，MediaKeySession实例。 |
-| DRM_MediaKeyRequestInfo *info | 媒体密钥请求信息。 |
-| DRM_MediaKeyRequest *mediaKeyRequest | 媒体密钥请求。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | 输入参数，MediaKeySession实例。 |
+| [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md) *info | 媒体密钥请求信息。 |
+| [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md) *mediaKeyRequest | 媒体密钥请求。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数info为空指针，或输入参数mediaKeyRequest为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数info为空指针，或输入参数mediaKeyRequest为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySession_ProcessMediaKeyResponse()
 
@@ -207,15 +195,13 @@ Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKey
 
 处理媒体密钥请求响应。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | MediaKeySession实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
 | uint8_t *response | 媒体密钥请求响应。 |
 | int32_t responseLen | 媒体密钥请求响应长度。 |
 | uint8_t *offlineMediaKeyId | 离线媒体密钥标识。 |
@@ -225,7 +211,7 @@ Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKey
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySession_CheckMediaKeyStatus()
 
@@ -237,22 +223,20 @@ Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySess
 
 检查媒体密钥状态。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | 输入参数，必填，MediaKeySession实例。 |
-| DRM_MediaKeyStatus *mediaKeyStatus | 输出参数，必填，媒体密钥状态。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | 输入参数，必填，MediaKeySession实例。 |
+| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) *mediaKeyStatus | 输出参数，必填，媒体密钥状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数mediaKeyStatus为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数mediaKeyStatus为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySession_ClearMediaKeys()
 
@@ -264,21 +248,19 @@ Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)
 
 清除当前会话的媒体密钥。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | MediaKeySession实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySession_GenerateOfflineReleaseRequest()
 
@@ -290,15 +272,13 @@ Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *me
 
 生成离线媒体密钥释放请求。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | 输入参数，MediaKeySession实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | 输入参数，MediaKeySession实例。 |
 | uint8_t *offlineMediaKeyId | 输入参数，离线媒体密钥标识。取值范围为[1, 64]，单位为字节。 |
 | int32_t offlineMediaKeyIdLen | 输入参数，离线媒体密钥标识长度，取值范围为[1, 64]。 |
 | uint8_t *releaseRequest | 输出参数，离线媒体密钥释放请求。 |
@@ -308,7 +288,7 @@ Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *me
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误或设备上的DRM解决方案不支持离线媒体密钥释放，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误或设备上的DRM解决方案不支持离线媒体密钥释放，请查看日志详细信息。 |
 
 ### OH_MediaKeySession_ProcessOfflineReleaseResponse()
 
@@ -320,15 +300,13 @@ Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *me
 
 处理离线媒体密钥释放请求响应。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | MediaKeySession实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
 | uint8_t *offlineMediaKeyId | 离线媒体密钥标识。 |
 | int32_t offlineMediaKeyIdLen | 离线媒体密钥标识长度。 |
 | uint8_t *releaseResponse | 媒体密钥释放请求响应。 |
@@ -338,7 +316,7 @@ Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *me
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误或设备上的DRM解决方案不支持离线媒体密钥释放，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误或设备上的DRM解决方案不支持离线媒体密钥释放，请查看日志详细信息。 |
 
 ### OH_MediaKeySession_RestoreOfflineMediaKeys()
 
@@ -350,15 +328,13 @@ Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKey
 
 恢复离线媒体密钥到当前会话。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | MediaKeySession实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
 | uint8_t *offlineMediaKeyId | 离线媒体密钥标识。 |
 | int32_t offlineMediaKeyIdLen | 离线媒体密钥标识长度。 |
 
@@ -366,7 +342,7 @@ Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKey
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySession_GetContentProtectionLevel()
 
@@ -378,22 +354,20 @@ Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaK
 
 获取会话的内容保护级别。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | MediaKeySession实例。 |
-| DRM_ContentProtectionLevel *contentProtectionLevel | 内容保护级别。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) *contentProtectionLevel | 内容保护级别。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数contentProtectionLevel为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数contentProtectionLevel为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySession_RequireSecureDecoderModule()
 
@@ -405,15 +379,13 @@ Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *media
 
 是否需要安全解码。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | MediaKeySession实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
 | const char *mimeType | 媒体类型，支持的媒体类型取决于DRM解决方案，如：video/avc、video/hevc。 |
 | bool *status | 安全解码模块状态。true表示需要安全解码模块，false表示不需要安全解码模块。 |
 
@@ -421,7 +393,7 @@ Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *media
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或其他指针类型输入参数为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySession_SetMediaKeySessionCallback()
 
@@ -433,22 +405,20 @@ Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *media
 
 设置MediaKeySession事件回调。该回调不返回MediaKeySession实例，适用于单个MediaKeySession场景。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | MediaKeySession实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
 | [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) *callback | 输入参数，MediaKeySession的回调结构体。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数callback为空指针。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数callback为空指针。 |
 
 ### OH_MediaKeySession_SetCallback()
 
@@ -460,22 +430,20 @@ Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_
 
 设置MediaKeySession事件回调。该回调返回MediaKeySession实例，适用于多个MediaKeySession场景。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | MediaKeySession实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
 | [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) *callback | 输入参数，MediaKeySession的回调结构体。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数callback为空指针。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效，或输入参数callback为空指针。 |
 
 ### OH_MediaKeySession_Destroy()
 
@@ -487,20 +455,18 @@ Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)
 
 销毁MediaKeySession实例。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySession *mediaKeySession | MediaKeySession实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySession为空指针或无效。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 

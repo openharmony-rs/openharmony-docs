@@ -6,8 +6,6 @@
 
 **库：** libpicture.so
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 13
 
 **系统接口：** 此接口为系统接口。
@@ -47,9 +45,9 @@ Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, ui
 
 创建一个具有指定内存类型的OH_AuxiliaryPictureNative对象。<ul><li>系统默认根据图像类型、图像大小、平台能力等因素选择内存类型。</li><li>处理该接口返回的辅助图时， 需要考虑stride的影响。</li><li>如果data为null或dataLength小于等于0，则不会初始化辅助图数据。</li></ul>
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 26.0.0
+
+**资源释放：** picture_native/OH_AuxiliaryPictureNative_Release {auxiliaryPicture}
 
 **系统接口：** 此接口为系统接口。
 
@@ -60,14 +58,14 @@ Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, ui
 | uint8_t *data | 指向图像数据的指针。 |
 | uint32_t dataLength | 图像数据的长度。 |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | 指向辅助图基本信息的指针。 |
-| IMAGE_ALLOCATOR_MODE allocator | 辅助图使用的内存类型。有关可用选项的详细信息，请参阅[IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_errorcode)。 |
+| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | 辅助图使用的内存类型。有关可用选项的详细信息，请参阅[IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_errorcode)。 |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) **auxiliaryPicture | 输出参数，用于接收新创建的OH_AuxiliaryPictureNative对象地址。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>      <br><li>IMAGE_SUCCESS：执行成功。</li>      <br><li>202：非系统应用程序调用该接口则返回此错误码。</li>      <br><li>IMAGE_INVALID_PARAMETER：info或auxiliaryPicture为空指针、allocator无效、辅助图大小无效或类型不支持、dataLength小于所需大小。</li>      <br><li>IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE：不支持的内存类型。      <br>例如使用共享内存创建增益图，仅DMA支持HDR元数据。</li>      <br><li>IMAGE_ALLOC_FAILED：内存分配失败。</li>      <br></ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <br><li>IMAGE_SUCCESS：执行成功。</li> <br><li>202：非系统应用程序调用该接口则返回此错误码。</li> <br><li>IMAGE_INVALID_PARAMETER：info或auxiliaryPicture为空指针、allocator无效、辅助图大小无效或类型不支持、dataLength小于所需大小。</li> <br><li>IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE：不支持的内存类型。<br>例如使用共享内存创建增益图，仅DMA支持HDR元数据。</li> <br><li>IMAGE_ALLOC_FAILED：内存分配失败。</li> <br></ul> |
 
 ### OH_DecomposeOptions_Create()
 
@@ -79,9 +77,9 @@ Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions
 
 创建OH_DecomposeOptions实例。创建的实例需通过[OH_DecomposeOptions_Release](capi-picture-native-h.md#oh_decomposeoptions_release)释放。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 26.0.0
+
+**资源释放：** picture_native/OH_DecomposeOptions_Release {outOwnedOptions}
 
 **系统接口：** 此接口为系统接口。
 
@@ -95,7 +93,7 @@ Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_INVALID_PARAMETER：参数错误，例如outOwnedOptions为nullptr。      <br>IMAGE_ALLOC_FAILED：内存分配失败。      <br>202：非系统应用程序调用该接口则返回此错误码。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_INVALID_PARAMETER：参数错误，例如outOwnedOptions为nullptr。<br>IMAGE_ALLOC_FAILED：内存分配失败。<br>202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_SetIsFullSizeGainmap()
 
@@ -106,8 +104,6 @@ Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *op
 **描述：**
 
 设置是否生成全尺寸增益图（指增益图和主图尺寸一致）。若不自行设置，默认值为false，即增益图的尺寸是主图的一半。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 
@@ -124,7 +120,7 @@ Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。      <br>202：非系统应用程序调用该接口则返回此错误码。      @systemapi |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_GetIsFullSizeGainmap()
 
@@ -135,8 +131,6 @@ Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *op
 **描述：**
 
 获取是否生成全尺寸增益图（指增益图和主图尺寸一致）。如果isFullSizeGainmap为true，则增益图和主图尺寸一致；否则，增益图为主图尺寸的一半。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 
@@ -153,7 +147,7 @@ Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_INVALID_PARAMETER：参数错误，例如options或isFullSizeGainmap为nullptr。      <br>202：非系统应用程序调用该接口则返回此错误码。      @systemapi |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_INVALID_PARAMETER：参数错误，例如options或isFullSizeGainmap为nullptr。<br>202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_SetDesiredPixelFormat()
 
@@ -164,8 +158,6 @@ Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *o
 **描述：**
 
 设置HDR分解后的SDR PixelMap和增益图的像素格式。若不设置，默认值为RGBA_8888。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 
@@ -182,7 +174,7 @@ Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *o
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。      <br>IMAGE_UNSUPPORTED_OPERATION：不支持的像素格式。      <br>202：非系统应用程序调用该接口则返回此错误码。      @systemapi |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>IMAGE_UNSUPPORTED_OPERATION：不支持的像素格式。<br>202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_GetDesiredPixelFormat()
 
@@ -193,8 +185,6 @@ Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *o
 **描述：**
 
 获取HDR分解后的SDR PixelMap和增益图的像素格式。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 
@@ -211,7 +201,7 @@ Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *o
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_INVALID_PARAMETER：参数错误，例如options或desiredPixelFormat为nullptr。      <br>202：非系统应用程序调用该接口则返回此错误码。      @systemapi |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_INVALID_PARAMETER：参数错误，例如options或desiredPixelFormat为nullptr。<br>202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_Release()
 
@@ -222,8 +212,6 @@ Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)
 **描述：**
 
 释放OH_DecomposeOptions指针。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 
@@ -239,7 +227,7 @@ Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。      <br>202：非系统应用程序调用该接口则返回此错误码。      @systemapi |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_PictureNative_DecomposeToPicture()
 
@@ -251,9 +239,9 @@ Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelm
 
 将HDR PixelMap分解为包含SDR PixelMap和增益图（gainmap）的Picture对象。创建的Picture实例需通过[OH_PictureNative_Release](capi-picture-native-h.md#oh_picturenative_release)释放。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 26.0.0
+
+**资源释放：** picture_native/OH_PictureNative_Release {outOwnedPicture}
 
 **系统接口：** 此接口为系统接口。
 
@@ -261,7 +249,7 @@ Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelm
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_PixelmapNative *hdrPixelmap | 被分解的HDR PixelMap指针，像素格式需为RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *hdrPixelmap | 被分解的HDR PixelMap指针，像素格式需为RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。 |
 | [OH_DecomposeOptions](capi-image-nativemodule-oh-decomposeoptions-sys.md) *options | HDR分解配置选项，此参数为必填。 |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **outOwnedPicture | 指向被创建的Picture对象指针。 |
 
@@ -269,6 +257,6 @@ Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelm
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_INVALID_PARAMETER：参数错误，例如hdrPixelmap、options或outOwnedPicture为nullptr。      <br>IMAGE_UNSUPPORTED_OPERATION：hdrPixelmap的像素格式不是RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。      <br>IMAGE_DECOMPOSE_FAILED：HDR分解处理失败。      <br>IMAGE_ALLOC_FAILED：内存分配失败。      <br>202：非系统应用程序调用该接口则返回此错误码。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_INVALID_PARAMETER：参数错误，例如hdrPixelmap、options或outOwnedPicture为nullptr。<br>IMAGE_UNSUPPORTED_OPERATION：hdrPixelmap的像素格式不是RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。<br>IMAGE_DECOMPOSE_FAILED：HDR分解处理失败。<br>IMAGE_ALLOC_FAILED：内存分配失败。<br>202：非系统应用程序调用该接口则返回此错误码。 |
 
 

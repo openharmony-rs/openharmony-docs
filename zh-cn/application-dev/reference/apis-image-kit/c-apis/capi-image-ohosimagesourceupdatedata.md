@@ -6,7 +6,7 @@ struct OhosImageSourceUpdateData {...}
 
 ## 概述
 
-定义图像源更新数据选项，由{@link OH_ImageSource_UpdateData}获取。
+定义图像源更新数据选项，由[OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata)获取。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -26,13 +26,11 @@ struct OhosImageSourceUpdateData {...}
 | size_t bufferSize = 0 |  |
 | uint32_t offset = 0 |  |
 | uint32_t updateLength = 0 |  |
-| int8_t isCompleted = 0;
-#else |  |
+| int8_t isCompleted = 0 |  |
 | uint8_t* buffer |  |
 | size_t bufferSize |  |
 | uint32_t offset |  |
 | uint32_t updateLength |  |
-| int8_t isCompleted;
-#endif |  |
+| int8_t isCompleted |  |
 
 

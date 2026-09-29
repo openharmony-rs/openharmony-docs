@@ -6,8 +6,6 @@ Defines the common property and method types for the native module.
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -29,6 +27,7 @@ Defines the common property and method types for the native module.
 | [ArkUI_Visibility](#arkui_visibility) | ArkUI_Visibility | 控制组件的显隐枚举值。 |
 | [ArkUI_HoverEffect](#arkui_hovereffect) | ArkUI_HoverEffect | 组件被悬停时的效果。 |
 | [ArkUI_FocusPriority](#arkui_focuspriority) | ArkUI_FocusPriority | 应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。 |
+| [ArkUI_UIState](#arkui_uistate) | ArkUI_UIState | 组件的UI状态枚举，用于处理状态样式。 |
 | [ArkUI_FocusMove](#arkui_focusmove) | ArkUI_FocusMove | 定义焦点移动方向的枚举值。 |
 | [ArkUI_ResponseRegionSupportedTool](#arkui_responseregionsupportedtool) | ArkUI_ResponseRegionSupportedTool | 定义支持响应区域设置的事件工具类型。 |
 | [ArkUI_RawInputEventType](#arkui_rawinputeventtype) | ArkUI_RawInputEventType | 原始输入事件类型枚举。 |
@@ -63,8 +62,6 @@ enum ArkUI_HitTestMode
 
 触摸测试控制枚举值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -86,8 +83,6 @@ enum ArkUI_Visibility
 
 控制组件的显隐枚举值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -105,8 +100,6 @@ enum ArkUI_HoverEffect
 **描述：**
 
 组件被悬停时的效果。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -127,8 +120,6 @@ enum ArkUI_FocusPriority
 
 应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -136,6 +127,27 @@ enum ArkUI_FocusPriority
 | ARKUI_FOCUS_PRIORITY_AUTO = 0 | 默认优先级。 |
 | ARKUI_FOCUS_PRIORITY_PRIOR = 2000 | 容器内优先获焦的优先级。 |
 | ARKUI_FOCUS_PRIORITY_PREVIOUS = 3000 | 上一次容器整体失焦时获焦节点的优先级。 |
+
+### ArkUI_UIState
+
+```c
+enum ArkUI_UIState
+```
+
+**描述：**
+
+组件的UI状态枚举，用于处理状态样式。
+
+**起始版本：** 20
+
+| 枚举项 | 描述 |
+| -- | -- |
+| UI_STATE_NORMAL = 0 | 正常状态。 |
+| UI_STATE_PRESSED = 1 << 0 | 按压状态。 |
+| UI_STATE_FOCUSED = 1 << 1 | 获焦状态。 |
+| UI_STATE_DISABLED = 1 << 2 | 禁用状态。 |
+| UI_STATE_SELECTED = 1 << 3 | 选中状态，此状态仅由某些特定类型的组件支持，分别是Checkbox、Radio、Toggle、List、Grid和MenuItem。 |
+| UI_STATE_HOVERED = 1 << 4 |  |
 
 ### ArkUI_FocusMove
 
@@ -146,8 +158,6 @@ enum ArkUI_FocusMove
 **描述：**
 
 定义焦点移动方向的枚举值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
 
@@ -170,8 +180,6 @@ enum ArkUI_ResponseRegionSupportedTool
 
 定义支持响应区域设置的事件工具类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -190,8 +198,6 @@ enum ArkUI_RawInputEventType
 **描述：**
 
 原始输入事件类型枚举。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -213,8 +219,6 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions())释放。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 **返回值：**
@@ -232,8 +236,6 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 **描述：**
 
 销毁截图选项指针。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -253,8 +255,6 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 
 配置截图选项中的缩放属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 **参数：**
@@ -268,7 +268,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_SnapshotOptions_SetColorMode()
 
@@ -279,8 +279,6 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 **描述：**
 
 设置截图选项中的色彩空间。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -296,7 +294,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_SnapshotOptions_SetDynamicRangeMode()
 
@@ -308,8 +306,6 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 设置截图选项中的动态范围模式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 **参数：**
@@ -317,14 +313,14 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项指针。 |
-| int32_t dynamicRangeMode | 指定截图使用的动态范围模式。 <br>如果知道截图对象使用的动态范围模式，可通过dynamicRangeMode参数指定动态范围模式，并将isAuto设置为false，以达到预期的截图效果。 <br>支持的取值为：{@link ArkUI_DynamicRangeMode}枚举值。 <br>默认值：ARKUI_DYNAMIC_RANGE_MODE_STANDARD <br>仅当isAuto设置为false，该参数设置生效。 |
+| int32_t dynamicRangeMode | 指定截图使用的动态范围模式。 <br>如果知道截图对象使用的动态范围模式，可通过dynamicRangeMode参数指定动态范围模式，并将isAuto设置为false，以达到预期的截图效果。 <br>支持的取值为：[ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode)枚举值。 <br>默认值：ARKUI_DYNAMIC_RANGE_MODE_STANDARD <br>仅当isAuto设置为false，该参数设置生效。 |
 | bool isAuto | 是否由系统自动决定所使用的动态范围模式。 <br>true表示系统自动决定所使用的动态范围模式。在不确定组件使用的动态范围模式时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的动态范围模式。 <br>false表示使用通过dynamicRangeMode字段设置的动态范围模式进行截图。 <br>默认值：false |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>	<br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_Create()
 
@@ -335,8 +331,6 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 **描述：**
 
 创建可见区域变化监听的参数。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
 
@@ -356,8 +350,6 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 
 销毁可见区域变化监听的参数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 17
 
 **参数：**
@@ -376,8 +368,6 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 
 设置阈值数组。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 17
 
 **参数：**
@@ -392,7 +382,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>   <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。    <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval()
 
@@ -403,8 +393,6 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 **描述：**
 
 设置预期更新间隔，单位为ms。定义了开发者期望的更新间隔。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
 
@@ -419,7 +407,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>   <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常    <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport()
 
@@ -430,8 +418,6 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 **描述：**
 
 设置可见区域计算模式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -446,7 +432,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetRatios()
 
@@ -457,8 +443,6 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 **描述：**
 
 获取阈值数组。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
 
@@ -474,7 +458,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 数组大小不够。     <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 数组大小不够。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
 
@@ -485,8 +469,6 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_Visible
 **描述：**
 
 获取预期更新间隔。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
 
@@ -512,8 +494,6 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 
 获取可见区域计算模式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
@@ -526,6 +506,6 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 获取可见区域计算模式。     当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的NODE_CLIP属性设置。如果父组件的NODE_CLIP为false，则认为其内的子组件可以超出其区域进行显示，     因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的NODE_CLIP设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。     而当measureFromViewport设置为false时，则不考虑NODE_CLIP的影响，直接将组件超出父组件的部分视为不可见区域。     默认值：false |
+| bool | 获取可见区域计算模式。当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的NODE_CLIP属性设置。如果父组件的NODE_CLIP为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的NODE_CLIP设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑NODE_CLIP的影响，直接将组件超出父组件的部分视为不可见区域。默认值：false |
 
 

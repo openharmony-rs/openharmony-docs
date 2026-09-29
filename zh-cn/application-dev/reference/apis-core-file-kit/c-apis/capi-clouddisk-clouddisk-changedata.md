@@ -1,7 +1,7 @@
 # CloudDisk_ChangeData
 
 ```c
-typedef struct CloudDisk_ChangeData {...} CloudDisk_ChangeData
+struct CloudDisk_ChangeData {...}
 ```
 
 ## 概述

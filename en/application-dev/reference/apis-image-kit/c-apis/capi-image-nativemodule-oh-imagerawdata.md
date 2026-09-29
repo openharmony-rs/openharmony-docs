@@ -6,7 +6,7 @@ typedef struct OH_ImageRawData OH_ImageRawData
 
 ## Overview
 
-Defines raw data in an image. It is used in {@link OH_ImageSourceNative_CreateImageRawData}.
+Defines raw data in an image. It is used in [OH_ImageSourceNative_CreateImageRawData](capi-image-source-native-h.md#oh_imagesourcenative_createimagerawdata).
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 

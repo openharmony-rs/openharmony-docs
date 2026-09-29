@@ -23,7 +23,7 @@ ArkWeb_ProxyObjectWithResult is a JavaScript proxy object struct with a return v
 | Name | Description |
 | -- | -- |
 | const char* objName | Name of the injected object. The name must follow JavaScript identifier rules and cannot contain special characters. |
-| const [ArkWeb_ProxyMethodWithResult*](capi-web-arkweb-proxymethodwithresult.md) methodList | Array of method structs carried by the injected object. The array length is specified by the **size** parameter. Each method in the array is registered to the web page, and JavaScript can call it in the format of "objectName. methodName". |
+| [const ArkWeb_ProxyMethodWithResult*](capi-web-arkweb-proxymethodwithresult.md) methodList | Array of method structs carried by the injected object. The array length is specified by the **size** parameter. Each method in the array is registered to the web page, and JavaScript can call it in the format of "objectName. methodName". |
 | size_t size | Length of the method struct array. Must be consistent with the actual number of elements in the methodList array. |
 
 

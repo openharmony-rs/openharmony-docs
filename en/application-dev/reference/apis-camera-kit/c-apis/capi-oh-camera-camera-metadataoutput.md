@@ -6,7 +6,7 @@ typedef struct Camera_MetadataOutput Camera_MetadataOutput
 
 ## Overview
 
-Defines a struct for the metadata output object.<br>You can use the {@link OH_CameraManager_CreateMetadataOutput} method and **OH_CameraManager_CreateMetadataOutputWithObjectTypes** method (supported since API version 23) to create a pointer.
+Defines a struct for the metadata output object.<br>You can use the [OH_CameraManager_CreateMetadataOutput](capi-camera-manager-h.md#oh_cameramanager_createmetadataoutput) method and **OH_CameraManager_CreateMetadataOutputWithObjectTypes** method (supported since API version 23) to create a pointer.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

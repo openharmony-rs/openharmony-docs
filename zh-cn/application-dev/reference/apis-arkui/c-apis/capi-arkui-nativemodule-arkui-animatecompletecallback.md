@@ -22,7 +22,7 @@ typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback
 
 | 名称 | 描述 |
 | -- | -- |
-| ArkUI_FinishCallbackType type | 在动画中定义结束回调的回调类型，用于指定回调的触发方式。取值原则：ARKUI_FINISH_CALLBACK_REMOVED(0)表示动画结束并立即删除时触发回调， ARKUI_FINISH_CALLBACK_LOGICALLY(1)表示动画逻辑上完成（可能仍处于长尾状态）时触发回调。不同回调类型的触发时机不同，请根据业务场景选择合适的类型。未显式设置type时， 按ARKUI_FINISH_CALLBACK_REMOVED处理。 |
+| [ArkUI_FinishCallbackType](capi-native-type-h.md#arkui_finishcallbacktype) type | 在动画中定义结束回调的回调类型，用于指定回调的触发方式。取值原则：ARKUI_FINISH_CALLBACK_REMOVED(0)表示动画结束并立即删除时触发回调， ARKUI_FINISH_CALLBACK_LOGICALLY(1)表示动画逻辑上完成（可能仍处于长尾状态）时触发回调。不同回调类型的触发时机不同，请根据业务场景选择合适的类型。未显式设置type时， 按ARKUI_FINISH_CALLBACK_REMOVED处理。 |
 | void* userData | 用于动画播放结束回调，传递用户自定义数据。需确保userData在动画播放结束回调触发时仍有效，避免悬空指针导致未定义行为。设置该成员为NULL时，回调函数将不会接收到userData参数。 |
 
 

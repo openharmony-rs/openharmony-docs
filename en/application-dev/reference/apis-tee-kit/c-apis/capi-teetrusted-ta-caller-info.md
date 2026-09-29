@@ -1,7 +1,7 @@
 # ta_caller_info
 
 ```c
-typedef struct ta_caller_info {...} caller_info
+struct ta_caller_info {...}
 ```
 
 ## Overview

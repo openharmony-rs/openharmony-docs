@@ -23,7 +23,7 @@ ArkWeb_ProxyObject is a JavaScript proxy object struct injected into a web page.
 | Name | Description |
 | -- | -- |
 | const char* objName | Name of the injected object. The name must follow JavaScript identifier rules and cannot contain special characters. |
-| const [ArkWeb_ProxyMethod*](capi-web-arkweb-proxymethod.md) methodList | Pointer to the method struct array of an object to be injected. |
+| [const ArkWeb_ProxyMethod*](capi-web-arkweb-proxymethod.md) methodList | Pointer to the method struct array of an object to be injected. |
 | size_t size | Length of the method struct array. Must be consistent with the actual number of elements in the methodList array. |
 
 

@@ -2,11 +2,9 @@
 
 ## Overview
 
-Defines a set of TextArea enum and interface.
+Defines enumerations related to **TextArea**. The **TextArea** component is used for receiving multi-line text input. The enumerated values specify different input types, which affect the validation rules for input content, such as basic input, pure numbers, phone numbers, email addresses, and verification codes. You can select the appropriate enumerated value based on the form type, and the system will automatically provide corresponding content validation, thereby optimizing the user input experience and ensuring the correctness of the data format.
 
 **Library**: libace_ndk.z.so
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -18,7 +16,7 @@ Defines a set of TextArea enum and interface.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkUI_TextAreaType](#arkui_textareatype) | ArkUI_TextAreaType | Enumerates the text box types. |
+| [ArkUI_TextAreaType](#arkui_textareatype) | ArkUI_TextAreaType | Enumerates the input types of multi-line text. Different enumerated values specify the input types of the **<br>TextArea** component and affect the validation rules for the input content. |
 
 ## Enum type description
 
@@ -30,9 +28,7 @@ enum ArkUI_TextAreaType
 
 **Description**
 
-Enumerates the text box types.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates the input types of multi-line text. Different enumerated values specify the input types of the **<br>TextArea** component and affect the validation rules for the input content.
 
 **Since**: 12
 

@@ -6,9 +6,7 @@ Provides functions and enumerations related to the data value.
 
 **Library**: libnative_rdb_ndk.z.so
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since**: 10
+**Since**: 18
 
 **Related module**: [RDB](capi-rdb.md)
 
@@ -67,8 +65,6 @@ enum OH_ColumnType
 
 Indicates the column type.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 10
 
 | Enum item | Description |
@@ -96,15 +92,13 @@ OH_Data_Value *OH_Value_Create(void)
 
 Creates an OH_Data_Value instance object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_Data_Value *](capi-rdb-oh-data-value.md) | Returns a pointer to OH_Data_Value instance when the execution is successful.  Otherwise, nullptr is returned. The memory must be released through the OH_Value_Destroy  interface after the use is complete. |
+| [OH_Data_Value *](capi-rdb-oh-data-value.md) | Returns a pointer to OH_Data_Value instance when the execution is successful. Otherwise, nullptr is returned. The memory must be released through the OH_Value_Destroy interface after the use is complete. |
 
 **Reference**:
 
@@ -121,8 +115,6 @@ int OH_Value_Destroy(OH_Data_Value *value)
 
 Destroys an OH_Data_Value instance object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -135,7 +127,7 @@ Destroys an OH_Data_Value instance object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_PutNull()
 
@@ -147,8 +139,6 @@ int OH_Value_PutNull(OH_Data_Value *value)
 
 Set empty data to the OH_Data_Value object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -161,7 +151,7 @@ Set empty data to the OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_PutInt()
 
@@ -172,8 +162,6 @@ int OH_Value_PutInt(OH_Data_Value *value, int64_t val)
 **Description**
 
 Set integer data to the OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -188,7 +176,7 @@ Set integer data to the OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_PutReal()
 
@@ -199,8 +187,6 @@ int OH_Value_PutReal(OH_Data_Value *value, double val)
 **Description**
 
 Set decimal data to the OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -215,7 +201,7 @@ Set decimal data to the OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_PutText()
 
@@ -226,8 +212,6 @@ int OH_Value_PutText(OH_Data_Value *value, const char *val)
 **Description**
 
 Set string data to the OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -242,7 +226,7 @@ Set string data to the OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_PutBlob()
 
@@ -253,8 +237,6 @@ int OH_Value_PutBlob(OH_Data_Value *value, const unsigned char *val, size_t leng
 **Description**
 
 Set binary data to the OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -270,7 +252,7 @@ Set binary data to the OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_PutAsset()
 
@@ -282,8 +264,6 @@ int OH_Value_PutAsset(OH_Data_Value *value, const Data_Asset *val)
 
 Set Data_Asset data to the OH_Data_Value object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -291,13 +271,13 @@ Set Data_Asset data to the OH_Data_Value object.
 | Parameter | Description |
 | -- | -- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Represents a pointer to an instance of OH_Data_Value. |
-| const Data_Asset *val | Represents a pointer to an instance of Data_Asset. |
+| [const Data_Asset](capi-rdb-data-asset.md) *val | Represents a pointer to an instance of Data_Asset. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_PutAssets()
 
@@ -309,8 +289,6 @@ int OH_Value_PutAssets(OH_Data_Value *value, const Data_Asset * const * val, siz
 
 Set multiple Data_Asset data to the OH_Data_Value object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -318,14 +296,14 @@ Set multiple Data_Asset data to the OH_Data_Value object.
 | Parameter | Description |
 | -- | -- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Represents a pointer to an instance of OH_Data_Value. |
-| const Data_Asset * const * val | Represents a pointer to multiple Data_Asset. |
+| [const Data_Asset * const ](capi-rdb-data-asset.md)* val | Represents a pointer to multiple Data_Asset. |
 | size_t length | Represents the count of multiple data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_PutFloatVector()
 
@@ -336,8 +314,6 @@ int OH_Value_PutFloatVector(OH_Data_Value *value, const float *val, size_t lengt
 **Description**
 
 Set float array data to the OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -353,7 +329,7 @@ Set float array data to the OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_PutUnlimitedInt()
 
@@ -364,8 +340,6 @@ int OH_Value_PutUnlimitedInt(OH_Data_Value *value, int sign, const uint64_t *tru
 **Description**
 
 Set an integer of any length data to the OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -382,7 +356,7 @@ Set an integer of any length data to the OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_GetType()
 
@@ -393,8 +367,6 @@ int OH_Value_GetType(OH_Data_Value *value, OH_ColumnType *type)
 **Description**
 
 Get data type from OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -409,7 +381,7 @@ Get data type from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_IsNull()
 
@@ -420,8 +392,6 @@ int OH_Value_IsNull(OH_Data_Value *value, bool *val)
 **Description**
 
 Check whether the data is empty from OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -436,7 +406,7 @@ Check whether the data is empty from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Value_GetInt()
 
@@ -447,8 +417,6 @@ int OH_Value_GetInt(OH_Data_Value *value, int64_t *val)
 **Description**
 
 Get integer data from OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -463,7 +431,7 @@ Get integer data from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 ### OH_Value_GetReal()
 
@@ -474,8 +442,6 @@ int OH_Value_GetReal(OH_Data_Value *value, double *val)
 **Description**
 
 Get decimal data from OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -490,7 +456,7 @@ Get decimal data from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 ### OH_Value_GetText()
 
@@ -501,8 +467,6 @@ int OH_Value_GetText(OH_Data_Value *value, const char **val)
 **Description**
 
 Get string data from OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -517,7 +481,7 @@ Get string data from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 ### OH_Value_GetBlob()
 
@@ -528,8 +492,6 @@ int OH_Value_GetBlob(OH_Data_Value *value, const uint8_t **val, size_t *length)
 **Description**
 
 Get binary data from OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -545,7 +507,7 @@ Get binary data from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 ### OH_Value_GetAsset()
 
@@ -557,8 +519,6 @@ int OH_Value_GetAsset(OH_Data_Value *value, Data_Asset *val)
 
 Get Data_Asset data from OH_Data_Value object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -566,13 +526,13 @@ Get Data_Asset data from OH_Data_Value object.
 | Parameter | Description |
 | -- | -- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Represents a pointer to an instance of OH_Data_Value. |
-| Data_Asset *val | Represents a pointer to an instance of Data_Asset. The caller needs to apply for data memory. This function only fills data. Otherwise, the execution fails. |
+| [Data_Asset](capi-rdb-data-asset.md) *val | Represents a pointer to an instance of Data_Asset. The caller needs to apply for data memory. This function only fills data. Otherwise, the execution fails. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 ### OH_Value_GetAssetsCount()
 
@@ -583,8 +543,6 @@ int OH_Value_GetAssetsCount(OH_Data_Value *value, size_t *length)
 **Description**
 
 Get multiple Data_Asset size from OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -599,7 +557,7 @@ Get multiple Data_Asset size from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 ### OH_Value_GetAssets()
 
@@ -611,8 +569,6 @@ int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, siz
 
 Get multiple Data_Asset data from OH_Data_Value object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -620,7 +576,7 @@ Get multiple Data_Asset data from OH_Data_Value object.
 | Parameter | Description |
 | -- | -- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Represents a pointer to an instance of OH_Data_Value. |
-| Data_Asset **val | Represents a pointer to Data_Asset array. The caller needs to apply for data memory. This function only fills data. Otherwise, the execution fails. |
+| [Data_Asset](capi-rdb-data-asset.md) **val | Represents a pointer to Data_Asset array. The caller needs to apply for data memory. This function only fills data. Otherwise, the execution fails. |
 | size_t inLen | Represents the size of val. It can be obtained through the OH_Value_GetAssetsCount function. |
 | size_t *outLen | Represents the actual amount of data obtained. It is an output parameter. |
 
@@ -628,7 +584,7 @@ Get multiple Data_Asset data from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 **Reference**:
 
@@ -645,8 +601,6 @@ int OH_Value_GetFloatVectorCount(OH_Data_Value *value, size_t *length)
 
 Get float array data size from OH_Data_Value object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -660,7 +614,7 @@ Get float array data size from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 ### OH_Value_GetFloatVector()
 
@@ -671,8 +625,6 @@ int OH_Value_GetFloatVector(OH_Data_Value *value, float *val, size_t inLen, size
 **Description**
 
 Get float array from OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -689,7 +641,7 @@ Get float array from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 **Reference**:
 
@@ -706,8 +658,6 @@ int OH_Value_GetUnlimitedIntBand(OH_Data_Value *value, size_t *length)
 
 Get an integer of any length data size from OH_Data_Value object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -721,7 +671,7 @@ Get an integer of any length data size from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 ### OH_Value_GetUnlimitedInt()
 
@@ -732,8 +682,6 @@ int OH_Value_GetUnlimitedInt(OH_Data_Value *value, int *sign, uint64_t *trueForm
 **Description**
 
 Get an integer of any length data from OH_Data_Value object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -751,7 +699,7 @@ Get an integer of any length data from OH_Data_Value object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null.          Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_DATA_TYPE_NULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) the content stored in parameter value is null. Returns [RDB_E_TYPE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) storage data type mismatch. |
 
 **Reference**:
 

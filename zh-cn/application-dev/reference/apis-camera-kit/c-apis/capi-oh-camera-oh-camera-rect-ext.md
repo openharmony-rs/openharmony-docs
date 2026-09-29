@@ -1,7 +1,7 @@
 # OH_Camera_Rect_Ext
 
 ```c
-typedef struct OH_Camera_Rect_Ext {...} OH_Camera_Rect_Ext
+struct OH_Camera_Rect_Ext {...}
 ```
 
 ## 概述

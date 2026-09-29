@@ -6,8 +6,6 @@
 
 **库：** libohaudio.so
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
@@ -18,7 +16,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) | OH_AudioDeviceDescriptorArray | 声明音频设备描述符数组。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) | - | 声明音频设备描述符数组。 |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) | OH_AudioDeviceDescriptor | 声明音频设备描述符。该实例用于获取更多音频设备详细信息属性。 |
 
 ### 枚举
@@ -58,8 +56,6 @@ enum OH_AudioDevice_ChangeType
 
 定义音频设备更改类型。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -77,8 +73,6 @@ enum OH_AudioDevice_Role
 
 定义音频设备角色。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -95,8 +89,6 @@ enum OH_AudioDevice_Type
 **描述：**
 
 定义音频设备类型。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -131,8 +123,6 @@ enum OH_AudioDevice_Flag
 
 定义音频设备标志。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -151,8 +141,6 @@ enum OH_AudioDevice_Usage
 **描述：**
 
 定义可获取的设备种类。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -175,8 +163,6 @@ enum OH_AudioDevice_BlockStatus
 
 声明音频设备的堵塞状态。默认情况下，音频设备被视为未堵塞。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -197,22 +183,20 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescr
 
 查询目标音频设备描述符的设备角色。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 {@link OH_AudioRoutingManager_GetDevices} 或者<br>    {@link OH_AudioRoutingManager_OnDeviceChangedCallback}获取。 |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 OH_AudioRoutingManager_GetDevices 或者 OH_AudioRoutingManager_OnDeviceChangedCallback获取。 |
 | [OH_AudioDevice_Role](capi-native-audio-device-base-h.md#oh_audiodevice_role) *deviceRole | 设备角色指针。将设置设备角色值的变量，指向[OH_AudioDevice_Role](capi-native-audio-device-base-h.md#oh_audiodevice_role)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 ### OH_AudioDeviceDescriptor_GetDeviceType()
 
@@ -224,22 +208,20 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescr
 
 查询目标音频设备描述符的设备类型。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 {@link OH_AudioRoutingManager_GetDevices} 或者<br>    {@link OH_AudioRoutingManager_OnDeviceChangedCallback}获取。 |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 OH_AudioRoutingManager_GetDevices 或者 OH_AudioRoutingManager_OnDeviceChangedCallback获取。 |
 | [OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type) *deviceType | 设备类型指针。将设置设备类型值的变量，指向[OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 ### OH_AudioDeviceDescriptor_GetDeviceId()
 
@@ -251,22 +233,20 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescrip
 
 查询目标音频设备描述符的设备id。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 {@link OH_AudioRoutingManager_GetDevices} 或者<br>    {@link OH_AudioRoutingManager_OnDeviceChangedCallback}获取。 |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 OH_AudioRoutingManager_GetDevices 或者 OH_AudioRoutingManager_OnDeviceChangedCallback获取。 |
 | uint32_t *id | 设备id指针，将设置设备角色值的变量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS 或 AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS 或 AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 ### OH_AudioDeviceDescriptor_GetDeviceName()
 
@@ -278,22 +258,20 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescr
 
 查询目标音频设备描述符的设备名称。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 {@link OH_AudioRoutingManager_GetDevices} 或者<br>    {@link OH_AudioRoutingManager_OnDeviceChangedCallback}获取。 |
-| char **name | 设备名称指针，将设置设备名称值的变量。 <br>不要单独释放音频设备名称指针，而是调用{@link OH_AudioRoutingManager_ReleaseDevices}，以便在不再使用时释放所有DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 OH_AudioRoutingManager_GetDevices 或者 OH_AudioRoutingManager_OnDeviceChangedCallback获取。 |
+| char **name | 设备名称指针，将设置设备名称值的变量。 <br>不要单独释放音频设备名称指针，而是调用OH_AudioRoutingManager_ReleaseDevices，以便在不再使用时释放所有DeviceDescriptor数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 ### OH_AudioDeviceDescriptor_GetDeviceAddress()
 
@@ -305,22 +283,20 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDe
 
 查询目标音频设备描述符的设备地址。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 {@link OH_AudioRoutingManager_GetDevices} 或者<br>    {@link OH_AudioRoutingManager_OnDeviceChangedCallback}获取。 |
-| char **address | 设备MAC地址指针，将设置设备MAC地址值的变量。 <br>不要单独释放音频设备MAC地址指针，而是调用{@link OH_AudioRoutingManager_ReleaseDevices}，以便在不再使用时释放所有DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 OH_AudioRoutingManager_GetDevices 或者 OH_AudioRoutingManager_OnDeviceChangedCallback获取。 |
+| char **address | 设备MAC地址指针，将设置设备MAC地址值的变量。 <br>不要单独释放音频设备MAC地址指针，而是调用OH_AudioRoutingManager_ReleaseDevices，以便在不再使用时释放所有DeviceDescriptor数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 ### OH_AudioDeviceDescriptor_GetDeviceSampleRates()
 
@@ -332,23 +308,21 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDevi
 
 查询目标音频设备描述符的采样率数组。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 {@link OH_AudioRoutingManager_GetDevices} 或者<br>    {@link OH_AudioRoutingManager_OnDeviceChangedCallback}获取。 |
-| uint32_t **sampleRates | 设置采样率数组值的数组指针变量。 <br>不要单独释放音频设备采样率指针，而是调用{@link OH_AudioRoutingManager_ReleaseDevices}，以便在不再使用时释放所有DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 OH_AudioRoutingManager_GetDevices 或者 OH_AudioRoutingManager_OnDeviceChangedCallback获取。 |
+| uint32_t **sampleRates | 设置采样率数组值的数组指针变量。 <br>不要单独释放音频设备采样率指针，而是调用OH_AudioRoutingManager_ReleaseDevices，以便在不再使用时释放所有DeviceDescriptor数组。 |
 | uint32_t *size | 设置采样率大小值的指针变量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 ### OH_AudioDeviceDescriptor_GetDeviceChannelCounts()
 
@@ -360,23 +334,21 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDe
 
 查询目标音频设备描述符的设备通道计数数组。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 {@link OH_AudioRoutingManager_GetDevices} 或者<br>    {@link OH_AudioRoutingManager_OnDeviceChangedCallback}获取。 |
-| uint32_t **channelCounts | 数组指针变量，该变量将设置通道计数数组值。 <br>不要单独释放音频设备通道数指针，而是调用{@link OH_AudioRoutingManager_ReleaseDevices}，以便在不再使用时释放所有DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 OH_AudioRoutingManager_GetDevices 或者 OH_AudioRoutingManager_OnDeviceChangedCallback获取。 |
+| uint32_t **channelCounts | 数组指针变量，该变量将设置通道计数数组值。 <br>不要单独释放音频设备通道数指针，而是调用OH_AudioRoutingManager_ReleaseDevices，以便在不再使用时释放所有DeviceDescriptor数组。 |
 | uint32_t *size | 设置通道计数大小值的指针变量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 ### OH_AudioDeviceDescriptor_GetDeviceDisplayName()
 
@@ -388,22 +360,20 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDevi
 
 查询目标音频设备描述符的显示名称。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 {@link OH_AudioRoutingManager_GetDevices} 或者<br>    {@link OH_AudioRoutingManager_OnDeviceChangedCallback}获取。 |
-| char **displayName | 设置显示名称值的指针变量。 <br>不要单独释放音频设备显示名称指针，而是调用{@link OH_AudioRoutingManager_ReleaseDevices}，以便在不再使用时释放所有DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 OH_AudioRoutingManager_GetDevices 或者 OH_AudioRoutingManager_OnDeviceChangedCallback获取。 |
+| char **displayName | 设置显示名称值的指针变量。 <br>不要单独释放音频设备显示名称指针，而是调用OH_AudioRoutingManager_ReleaseDevices，以便在不再使用时释放所有DeviceDescriptor数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 ### OH_AudioDeviceDescriptor_GetDeviceEncodingTypes()
 
@@ -415,22 +385,20 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDe
 
 查询目标音频设备描述符的编码类型数组。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 {@link OH_AudioRoutingManager_GetDevices} 或者<br>    {@link OH_AudioRoutingManager_OnDeviceChangedCallback}获取。 |
-| OH_AudioStream_EncodingType **encodingTypes | 音频设备编码类型，指向[OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype)。 <br>不要单独释放音频设备编码类型指针，而是调用{@link OH_AudioRoutingManager_ReleaseDevices}，以便在不再使用时释放所有DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 OH_AudioRoutingManager_GetDevices 或者 OH_AudioRoutingManager_OnDeviceChangedCallback获取。 |
+| [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) **encodingTypes | 音频设备编码类型，指向[OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype)。 <br>不要单独释放音频设备编码类型指针，而是调用OH_AudioRoutingManager_ReleaseDevices，以便在不再使用时释放所有DeviceDescriptor数组。 |
 | uint32_t *size | 设置编码类型大小值的指针变量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
 
 

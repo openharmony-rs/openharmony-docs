@@ -6,8 +6,6 @@ Defines the common types for the native module.
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -23,8 +21,8 @@ Defines the common types for the native module.
 | [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md) | ArkUI_ScaleOptions | Defines the scaling options for component transition. |
 | [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md) | ArkUI_RotationOptions | Defines the rotation options for component transition. |
 | [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | - | Defines the custom dialog box controller of ArkUI on the native side. |
-| [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md) | ArkUI_NativeDialogHandle | Defines the pointer to the custom dialog box controller of ArkUI on the native side. |
-| [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | ArkUI_GestureCollectInterceptInfo | 定义手势收集拦截信息。在触摸测试收集手势的过程中，该类型用于向拦截回调提供响应链中的手势识别器和触摸识别器，并承载回调设置的手势收集干预结果。 相关接口请参见{@link native_gesture.h}中的手势收集拦截接口说明。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) | ArkUI_NativeDialogHandle | Defines the pointer to the custom dialog box controller of ArkUI on the native side. |
+| [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | ArkUI_GestureCollectInterceptInfo | 定义手势收集拦截信息。在触摸测试收集手势的过程中，该类型用于向拦截回调提供响应链中的手势识别器和触摸识别器，并承载回调设置的手势收集干预结果。 相关接口请参见[native_gesture.h](capi-native-gesture-h.md)中的手势收集拦截接口说明。 |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | Defines the navigation indicator style for the swiper. |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the digital indicator style for the swiper. |
 | [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the arrow style for the swiper. |
@@ -92,6 +90,8 @@ Defines the common types for the native module.
 | [ArkUI_TransitionEdge](#arkui_transitionedge) | ArkUI_TransitionEdge | Enumerates the slide-in and slide-out positions of the component from the screen edge during transition. |
 | [ArkUI_BlendApplyType](#arkui_blendapplytype) | ArkUI_BlendApplyType | Defines how the specified blend mode is applied. |
 | [ArkUI_FinishCallbackType](#arkui_finishcallbacktype) | ArkUI_FinishCallbackType | Enumerates the animation onFinish callback types. |
+| [ArkUI_BarrierDirection](#arkui_barrierdirection) | ArkUI_BarrierDirection | defines the direction of the barrier line. |
+| [ArkUI_RelativeLayoutChainStyle](#arkui_relativelayoutchainstyle) | ArkUI_RelativeLayoutChainStyle | defines the style of the chain. |
 | [ArkUI_LengthMetricUnit](#arkui_lengthmetricunit) | ArkUI_LengthMetricUnit | Enumerates the component units. |
 | [ArkUI_RenderFit](#arkui_renderfit) | ArkUI_RenderFit | Enumerates the render fit. |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype) | ArkUI_SwiperIndicatorType | Define the navigation indicator type of the swiper. |
@@ -293,8 +293,8 @@ Defines the common types for the native module.
 | [const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_getstringvalue) | 获取自定义属性对象的value信息。 |
 | [const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_getname) | 获取[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象中的窗口名称。 |
 | [void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_destroy) | 销毁[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象。 |
-| [void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_destroy) | 销毁{@link OH_ArkUI_ActiveChildrenInfo}实例，释放获取活跃子节点信息时分配的资源。 |
-| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | 获取{@link OH_ArkUI_ActiveChildrenInfo}结构体的下标为index的子节点。 |
+| [void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_destroy) | 销毁OH_ArkUI_ActiveChildrenInfo实例，释放获取活跃子节点信息时分配的资源。 |
+| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | 获取OH_ArkUI_ActiveChildrenInfo结构体的下标为index的子节点。 |
 | [int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_getcount) | 获取[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)结构体内的子节点数量，适用于遍历活跃子节点前确定数量。 |
 | [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | 创建跨语言配置项实例。 |
 | [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | 销毁跨语言配置项实例。 |
@@ -572,8 +572,6 @@ enum ArkUI_Alignment
 
 Enumerates the alignment modes.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -598,8 +596,6 @@ enum ArkUI_XComponentType
 
 Enumerates the types of the <b><XComponent></b> component.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -616,8 +612,6 @@ enum ArkUI_CopyOptions
 **描述：**
 
 Enumerates the text copy and paste modes.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -638,8 +632,6 @@ enum ArkUI_ShadowType
 
 Enumerates the shadow types.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -657,8 +649,6 @@ enum ArkUI_FocusWrapMode
 
 Enumerates the focus wrap mode of components.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -675,8 +665,6 @@ enum ArkUI_ItemFillPolicy
 **描述：**
 
 Specifies the number of columns for different responsive breakpoint specifications.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -697,8 +685,6 @@ enum ArkUI_Axis
 
 Enumerates the scroll directions for the <b><List></b> component.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -715,8 +701,6 @@ enum ArkUI_BorderStyle
 **描述：**
 
 Enumerates the border styles.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -735,8 +719,6 @@ enum ArkUI_ShadowStyle
 **描述：**
 
 Enumerates the shadow styles.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -758,8 +740,6 @@ enum ArkUI_AnimationCurve
 **描述：**
 
 Enumerates the animation curves.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -789,8 +769,6 @@ enum ArkUI_SwiperArrow
 
 Enumerates arrow styles of the navigation point indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -809,14 +787,12 @@ enum ArkUI_SwiperNestedScrollMode
 
 Nested scrolling mode for Swiper components and parent components.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper only scrolls on its own and is not linked to its parent component. |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | The Swiper itself scrolls first, and the parent component scrolls after it reaches the edge. After the parent component scrolls to the edge, if the parent component has an edge effect, the parent component triggers the edge |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | The Swiper itself scrolls first, and the parent component scrolls after it reaches the edge. After the parent component scrolls to the edge, if the parent component has an edge effect, the parent component triggers the edge effect; otherwise, the Swiper triggers the edge effect. |
 
 ### ArkUI_PageFlipMode
 
@@ -828,13 +804,11 @@ enum ArkUI_PageFlipMode
 
 Enumerates the page flipping modes using the mouse wheel for the <b>Swiper</b> component.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | When the mouse wheel is scrolled continuously, multiple pages are flipped, which is determined by the number of |
+| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | When the mouse wheel is scrolled continuously, multiple pages are flipped, which is determined by the number of times that mouse events are reported. |
 | ARKUI_PAGE_FLIP_MODE_SINGLE | The system does not respond to other mouse wheel events until the page flipping animation ends. |
 
 ### ArkUI_SwiperAnimationMode
@@ -846,8 +820,6 @@ enum ArkUI_SwiperAnimationMode
 **描述：**
 
 Enumerates the animation modes for [NODE_SWIPER_INDEX](capi-native-node-h.md#arkui_nodeattributetype).
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -866,8 +838,6 @@ enum ArkUI_AccessibilityMode
 **描述：**
 
 Enumerates the accessibility modes.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -888,16 +858,14 @@ enum ArkUI_AnimationPlayMode
 
 Enumerates the animation playback modes.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | The animation is played forwards. |
 | ARKUI_ANIMATION_PLAY_MODE_REVERSE | The animation is played reversely. |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE | The animation is played normally for an odd number of times (1, 3, 5...) and reversely for an even number |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE | The animation is played reversely for an odd number of times (1, 3, 5...) and normally for an even number |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE | The animation is played normally for an odd number of times (1, 3, 5...) and reversely for an even number of times (2, 4, 6...). |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE | The animation is played reversely for an odd number of times (1, 3, 5...) and normally for an even number of times (2, 4, 6...). |
 
 ### ArkUI_AdaptiveColor
 
@@ -908,8 +876,6 @@ enum ArkUI_AdaptiveColor
 **描述：**
 
 Enumerates the adaptive color modes.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -927,8 +893,6 @@ enum ArkUI_ColorMode
 **描述：**
 
 Enumerates the color modes.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -948,8 +912,6 @@ enum ArkUI_SystemColorMode
 
 Enumerates the system color modes.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -966,8 +928,6 @@ enum ArkUI_BlurStyle
 **描述：**
 
 Enumerates the blur styles.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -997,13 +957,11 @@ enum ArkUI_BlurStyleActivePolicy
 
 Enumerates the activation policies for the background blur effect.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0 | The blur effect changes according to the window's focus state; |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0 | The blur effect changes according to the window's focus state; it is inactive when the window is not in focus and active when the window is in focus. |
 | ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE | The blur effect is always active. |
 | ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE | The blur effect is always inactive. |
 
@@ -1016,8 +974,6 @@ enum ArkUI_VerticalAlignment
 **描述：**
 
 Enumerates the vertical alignment modes.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1037,8 +993,6 @@ enum ArkUI_HorizontalAlignment
 
 Enumerates the alignment mode in the horizontal direction.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1057,8 +1011,6 @@ enum ArkUI_BlendMode
 
 Enumerates the blend modes.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1075,24 +1027,24 @@ Enumerates the blend modes.
 | ARKUI_BLEND_MODE_DST_OUT | r = d * (1 - sa): Only the part of the target pixels that do not overlap with the source pixels is displayed. |
 | ARKUI_BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa): The part of the source pixels that overlap with the target pixels is displayed and the part of the target pixels that do not overlap with the source pixels are displayed. |
 | ARKUI_BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da): The part of the target pixels that overlap with the source pixels and the part of the source pixels that do not overlap with the target pixels are displayed. |
-| ARKUI_BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa): Only the non-overlapping part between the source pixels and the target pixels |
+| ARKUI_BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa): Only the non-overlapping part between the source pixels and the target pixels is displayed. |
 | ARKUI_BLEND_MODE_PLUS | r = min(s + d, 1): New pixels resulting from adding the source pixels to the target pixels are displayed. |
 | ARKUI_BLEND_MODE_MODULATE | r = s * d: New pixels resulting from multiplying the source pixels with the target pixels are displayed. |
-| ARKUI_BLEND_MODE_SCREEN | r = s + d - s * d: Pixels are blended by adding the source pixels to the target pixels and subtracting the |
+| ARKUI_BLEND_MODE_SCREEN | r = s + d - s * d: Pixels are blended by adding the source pixels to the target pixels and subtracting the product of their multiplication. |
 | ARKUI_BLEND_MODE_OVERLAY | The MULTIPLY or SCREEN mode is used based on the target pixels. |
 | ARKUI_BLEND_MODE_DARKEN | rc = s + d - max(s * da, d * sa), ra = kSrcOver: When two colors overlap, whichever is darker is used. |
-| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = |
+| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = kSrcOver: The final pixels are composed of the lightest values of pixels. |
 | ARKUI_BLEND_MODE_COLOR_DODGE | The colors of the target pixels are lightened to reflect the source pixels. |
 | ARKUI_BLEND_MODE_COLOR_BURN | The colors of the target pixels are darkened to reflect the source pixels. |
 | ARKUI_BLEND_MODE_HARD_LIGHT | The MULTIPLY or SCREEN mode is used, depending on the source pixels. |
 | ARKUI_BLEND_MODE_SOFT_LIGHT | The LIGHTEN or DARKEN mode is used, depending on the source pixels. |
-| ARKUI_BLEND_MODE_DIFFERENCE | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the result of subtracting the darker of the two pixels (source and target) from |
+| ARKUI_BLEND_MODE_DIFFERENCE | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the result of subtracting the darker of the two pixels (source and target) from the lighter one. |
 | ARKUI_BLEND_MODE_EXCLUSION | rc = s + d - two(s * d), ra = kSrcOver: The final pixel is similar to <b>DIFFERENCE</b>, but with less contrast. |
-| ARKUI_BLEND_MODE_MULTIPLY | r = s * (1 - da) + d * (1 - sa) + s * d: The final pixel is the result of multiplying the source pixel |
-| ARKUI_BLEND_MODE_HUE | The resultant image is created with the luminance and saturation of the source image and the hue of the target |
-| ARKUI_BLEND_MODE_SATURATION | The resultant image is created with the luminance and hue of the target image and the saturation of the source |
-| ARKUI_BLEND_MODE_COLOR | The resultant image is created with the saturation and hue of the source image and the luminance of the target |
-| ARKUI_BLEND_MODE_LUMINOSITY | The resultant image is created with the saturation and hue of the target image and the luminance of the source |
+| ARKUI_BLEND_MODE_MULTIPLY | r = s * (1 - da) + d * (1 - sa) + s * d: The final pixel is the result of multiplying the source pixel by the target pixel. |
+| ARKUI_BLEND_MODE_HUE | The resultant image is created with the luminance and saturation of the source image and the hue of the target image. |
+| ARKUI_BLEND_MODE_SATURATION | The resultant image is created with the luminance and hue of the target image and the saturation of the source image. |
+| ARKUI_BLEND_MODE_COLOR | The resultant image is created with the saturation and hue of the source image and the luminance of the target image. |
+| ARKUI_BLEND_MODE_LUMINOSITY | The resultant image is created with the saturation and hue of the target image and the luminance of the source image. |
 
 ### ArkUI_Direction
 
@@ -1103,8 +1055,6 @@ enum ArkUI_Direction
 **描述：**
 
 Enumerates the modes in which components are laid out along the main axis of the container.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1124,8 +1074,6 @@ enum ArkUI_ItemAlignment
 
 Enumerates the modes in which components are laid out along the cross axis of the container.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1135,7 +1083,7 @@ Enumerates the modes in which components are laid out along the cross axis of th
 | ARKUI_ITEM_ALIGNMENT_CENTER | The items in the container are centered along the cross axis. |
 | ARKUI_ITEM_ALIGNMENT_END | The items in the container are aligned with the cross-end edge. |
 | ARKUI_ITEM_ALIGNMENT_STRETCH | The items in the container are stretched and padded along the cross axis. |
-| ARKUI_ITEM_ALIGNMENT_BASELINE | The items in the container are aligned in such a manner that their text baselines are aligned along the |
+| ARKUI_ITEM_ALIGNMENT_BASELINE | The items in the container are aligned in such a manner that their text baselines are aligned along the cross axis. |
 
 ### ArkUI_ColorStrategy
 
@@ -1146,8 +1094,6 @@ enum ArkUI_ColorStrategy
 **描述：**
 
 Enumerates the foreground colors.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1167,8 +1113,6 @@ enum ArkUI_FlexAlignment
 
 Enumerates the vertical alignment modes.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1176,9 +1120,9 @@ Enumerates the vertical alignment modes.
 | ARKUI_FLEX_ALIGNMENT_START = 1 | The child components are aligned with the start edge of the main axis. |
 | ARKUI_FLEX_ALIGNMENT_CENTER = 2 | The child components are aligned in the center of the main axis. |
 | ARKUI_FLEX_ALIGNMENT_END = 3 | The child components are aligned with the end edge of the main axis. |
-| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with |
-| ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and |
-| ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent |
+| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with the main-end. |
+| ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and cross-main are both half the size of the space between two adjacent components. |
+| ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent components are the same. |
 
 ### ArkUI_FlexDirection
 
@@ -1189,8 +1133,6 @@ enum ArkUI_FlexDirection
 **描述：**
 
 Enumerates the directions of the main axis in the flex container.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1211,8 +1153,6 @@ enum ArkUI_FlexWrap
 
 Defines whether the flex container has a single line or multiple lines.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1230,8 +1170,6 @@ enum ArkUI_MaskType
 **描述：**
 
 Enumerates the mask types.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1253,8 +1191,6 @@ enum ArkUI_ClipType
 
 Enumerates the clipping region types.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1274,8 +1210,6 @@ enum ArkUI_ShapeType
 
 Enumerates the custom shapes.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1294,8 +1228,6 @@ enum ArkUI_LinearGradientDirection
 **描述：**
 
 Enumerates the gradient directions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1322,8 +1254,6 @@ enum ArkUI_TransitionEdge
 
 Enumerates the slide-in and slide-out positions of the component from the screen edge during transition.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1343,14 +1273,12 @@ enum ArkUI_BlendApplyType
 
 Defines how the specified blend mode is applied.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
 | BLEND_APPLY_TYPE_FAST = 0 | The content of the view is blended in sequence on the target image. |
-| BLEND_APPLY_TYPE_OFFSCREEN | The content of the component and its child components are drawn on the offscreen canvas, and then blended with |
+| BLEND_APPLY_TYPE_OFFSCREEN | The content of the component and its child components are drawn on the offscreen canvas, and then blended with the existing content on the canvas. |
 
 ### ArkUI_FinishCallbackType
 
@@ -1362,14 +1290,49 @@ enum ArkUI_FinishCallbackType
 
 Enumerates the animation onFinish callback types.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FINISH_CALLBACK_REMOVED = 0 | The callback is invoked when the entire animation is removed once it has finished. |
-| ARKUI_FINISH_CALLBACK_LOGICALLY | The callback is invoked when the animation logically enters the falling state, though it may still be in its |
+| ARKUI_FINISH_CALLBACK_LOGICALLY | The callback is invoked when the animation logically enters the falling state, though it may still be in its long tail state. |
+
+### ArkUI_BarrierDirection
+
+```c
+enum ArkUI_BarrierDirection
+```
+
+**描述：**
+
+defines the direction of the barrier line.
+
+**起始版本：** 12
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_BARRIER_DIRECTION_START = 0 | The barrier is the leftmost of all its referencedIds. |
+| ARKUI_BARRIER_DIRECTION_END | The barrier is on the rightmost side of all its referencedIds. |
+| ARKUI_BARRIER_DIRECTION_TOP | The barrier is at the top of all its referencedIds. |
+| ARKUI_BARRIER_DIRECTION_BOTTOM | The barrier is at the bottom of all its referencedIds. |
+
+### ArkUI_RelativeLayoutChainStyle
+
+```c
+enum ArkUI_RelativeLayoutChainStyle
+```
+
+**描述：**
+
+defines the style of the chain.
+
+**起始版本：** 12
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | Components are evenly distributed among constraint anchor points. |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE | Except for the first and last two sub-components, other components are evenly distributed between the constraint anchor points. |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED | No gaps in subcomponents within the chain. |
 
 ### ArkUI_LengthMetricUnit
 
@@ -1380,8 +1343,6 @@ enum ArkUI_LengthMetricUnit
 **描述：**
 
 Enumerates the component units.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1402,28 +1363,26 @@ enum ArkUI_RenderFit
 
 Enumerates the render fit.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RENDER_FIT_CENTER = 0 | Maintains the content size of the animation's final state, |
-| ARKUI_RENDER_FIT_TOP | Maintains the content size of the animation's final state, |
-| ARKUI_RENDER_FIT_BOTTOM | Maintains the content size of the animation's final state, |
-| ARKUI_RENDER_FIT_LEFT | Maintains the content size of the animation's final state, |
-| ARKUI_RENDER_FIT_RIGHT | Maintains the content size of the animation's final state, |
-| ARKUI_RENDER_FIT_TOP_LEFT | Maintains the content size of the animation's final state, |
-| ARKUI_RENDER_FIT_TOP_RIGHT | Keep the content size of the animation final state, |
-| ARKUI_RENDER_FIT_BOTTOM_LEFT | Keep the content size of the animation final state, |
-| ARKUI_RENDER_FIT_BOTTOM_RIGHT | Keep the content size of the animation final state, |
-| ARKUI_RENDER_FIT_RESIZE_FILL | The aspect ratio of the animation's final state content is not considered, |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN | Reduce or enlarge the aspect ratio of the animation final state content, so that the content is fully displayed in the component, |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT | Keep the aspect ratio of the animation final state content to reduce or enlarge, so that the content is fully displayed in the component. When there is left over in the broad direction of the component, the content is aligned to the left of the component, and when there is left over in the high direction of the component, |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT | Keep the aspect ratio of the animation final state content to reduce or enlarge, so that the content is fully displayed in the component. When there is left in the wide direction of the component, the content is aligned with the component on the right. When there is left in the high direction of the component, |
-| ARKUI_RENDER_FIT_RESIZE_COVER | Keep the aspect ratio of the animation final state content reduced or enlarged, so that both sides of the content are greater than or equal to both sides of the component, |
-| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT | Keep the aspect ratio of the final content of the animation reduced or enlarged so that both sides of the content are exactly greater than or equal to both sides of the component. When the content width is left, the content is aligned to the left of the component, and the left portion of the content is displayed. When the content is left in the high direction, |
-| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT | Keep the aspect ratio of the final content of the animation reduced or enlarged so that both sides of the content are exactly greater than or equal to both sides of the component. When the content width is left, the content and the component remain right aligned, and the right part of the content is displayed. When the content is left in the high direction, the content and the component remain aligned at the bottom, |
+| ARKUI_RENDER_FIT_CENTER = 0 | Maintains the content size of the animation's final state, and the content is always centered with the component. |
+| ARKUI_RENDER_FIT_TOP | Maintains the content size of the animation's final state, and the content is always aligned with the top center of the component. |
+| ARKUI_RENDER_FIT_BOTTOM | Maintains the content size of the animation's final state, and the content is always aligned with the bottom center of the component. |
+| ARKUI_RENDER_FIT_LEFT | Maintains the content size of the animation's final state, and the content is always aligned to the left of the component. |
+| ARKUI_RENDER_FIT_RIGHT | Maintains the content size of the animation's final state, and the content is always right-aligned with the component. |
+| ARKUI_RENDER_FIT_TOP_LEFT | Maintains the content size of the animation's final state, and the content is always aligned with the top left corner of the component. |
+| ARKUI_RENDER_FIT_TOP_RIGHT | Keep the content size of the animation final state, and the content is always aligned with the upper right corner of the component. |
+| ARKUI_RENDER_FIT_BOTTOM_LEFT | Keep the content size of the animation final state, and the content always aligns with the lower-left corner of the component. |
+| ARKUI_RENDER_FIT_BOTTOM_RIGHT | Keep the content size of the animation final state, and the content always aligns with the lower-right corner of the component. |
+| ARKUI_RENDER_FIT_RESIZE_FILL | The aspect ratio of the animation's final state content is not considered, and the content is always scaled to the size of the component. |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN | Reduce or enlarge the aspect ratio of the animation final state content, so that the content is fully displayed in the component, and keep the center aligned with the component. |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT | Keep the aspect ratio of the animation final state content to reduce or enlarge, so that the content is fully displayed in the component. When there is left over in the broad direction of the component, the content is aligned to the left of the component, and when there is left over in the high direction of the component, the content is aligned to the top of the component. |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT | Keep the aspect ratio of the animation final state content to reduce or enlarge, so that the content is fully displayed in the component. When there is left in the wide direction of the component, the content is aligned with the component on the right. When there is left in the high direction of the component, the content is aligned with the component on the bottom. |
+| ARKUI_RENDER_FIT_RESIZE_COVER | Keep the aspect ratio of the animation final state content reduced or enlarged, so that both sides of the content are greater than or equal to both sides of the component, and keep the center aligned with the component to display the middle part of the content. |
+| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT | Keep the aspect ratio of the final content of the animation reduced or enlarged so that both sides of the content are exactly greater than or equal to both sides of the component. When the content width is left, the content is aligned to the left of the component, and the left portion of the content is displayed. When the content is left in the high direction, the content and the component remain top aligned, showing the top side of the content. |
+| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT | Keep the aspect ratio of the final content of the animation reduced or enlarged so that both sides of the content are exactly greater than or equal to both sides of the component. When the content width is left, the content and the component remain right aligned, and the right part of the content is displayed. When the content is left in the high direction, the content and the component remain aligned at the bottom, and the bottom part of the content is displayed. |
 
 ### ArkUI_SwiperIndicatorType
 
@@ -1434,8 +1393,6 @@ enum ArkUI_SwiperIndicatorType
 **描述：**
 
 Define the navigation indicator type of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1453,8 +1410,6 @@ enum ArkUI_AnimationStatus
 **描述：**
 
 Defines the playback status for the image animator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1475,16 +1430,14 @@ enum ArkUI_AnimationFillMode
 
 Defines the status before and after execution of the animation in the current playback direction.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_FILL_MODE_NONE | Before execution, the animation does not apply any styles to the target component. |
-| ARKUI_ANIMATION_FILL_MODE_FORWARDS | The target component retains the state set by the last keyframe encountered |
-| ARKUI_ANIMATION_FILL_MODE_BACKWARDS | The animation applies the values defined in the first relevant keyframe once it is applied to |
-| ARKUI_ANIMATION_FILL_MODE_BOTH | The animation follows the rules for both Forwards and Backwards, |
+| ARKUI_ANIMATION_FILL_MODE_NONE | Before execution, the animation does not apply any styles to the target component. After execution, the animation restores the target component to its default state. |
+| ARKUI_ANIMATION_FILL_MODE_FORWARDS | The target component retains the state set by the last keyframe encountered during execution of the animation. |
+| ARKUI_ANIMATION_FILL_MODE_BACKWARDS | The animation applies the values defined in the first relevant keyframe once it is applied to the target component, and retains the values during the period set by delay. |
+| ARKUI_ANIMATION_FILL_MODE_BOTH | The animation follows the rules for both Forwards and Backwards, extending the animation attributes in both directions. |
 
 ### ArkUI_AccessibilityCheckedState
 
@@ -1495,8 +1448,6 @@ enum ArkUI_AccessibilityCheckedState
 **描述：**
 
 Defines the state type for the accessibility checkbox.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1515,16 +1466,14 @@ enum ArkUI_AnimationDirection
 
 Enumerates the animation playback modes.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | The animation plays in forward loop mode. |
 | ARKUI_ANIMATION_DIRECTION_REVERSE | The animation plays in reverse loop mode. |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE | The animation plays in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE | The animation plays in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE | The animation plays in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction. |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE | The animation plays in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction. |
 
 ### ArkUI_AccessibilityActionType
 
@@ -1535,8 +1484,6 @@ enum ArkUI_AccessibilityActionType
 **描述：**
 
 Define accessible action types.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1558,8 +1505,6 @@ enum ArkUI_NavDestinationState
 
 Defines the state of the NavDestination component.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1572,6 +1517,8 @@ Defines the state of the NavDestination component.
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | Before the NavDestination hide. |
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | Before the NavDestination mount to the component tree. |
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | Before the NavDestination removed from the component tree. |
+| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 |  |
+| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 |  |
 | ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | The NavDestination returns from the component. |
 
 ### ArkUI_RouterPageState
@@ -1583,8 +1530,6 @@ enum ArkUI_RouterPageState
 **描述：**
 
 Define the state of Router Page.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1606,8 +1551,6 @@ enum ArkUI_SafeAreaType
 
 defines the enumerated value of the extended security zone.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1625,8 +1568,6 @@ enum ArkUI_SafeAreaEdge
 **描述：**
 
 defines the enumerated value of the direction of the extended security zone.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1647,8 +1588,6 @@ enum ArkUI_KeyboardAvoidMode
 
 defines the enumerated value of the customDialog's keyboard avoid mode.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 | 枚举项 | 描述 |
@@ -1665,8 +1604,6 @@ enum ArkUI_HoverModeAreaType
 **描述：**
 
 defines the enumerated value of area in hover mode.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -1685,15 +1622,13 @@ enum ArkUI_ExpandMode
 
 定义子节点展开模式枚举值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_NOT_EXPAND = 0 | 不展开。 |
 | ARKUI_EXPAND = 1 | 展开。 |
-| ARKUI_LAZY_EXPAND = 2 | 懒展开，按需展开当前节点的子节点，节点展开条件可以参考{@link LazyForEach：数据懒加载}。 |
+| ARKUI_LAZY_EXPAND = 2 | 懒展开，按需展开当前节点的子节点，节点展开条件可以参考LazyForEach：数据懒加载。 |
 
 ### ArkUI_EdgeDirection
 
@@ -1704,8 +1639,6 @@ enum ArkUI_EdgeDirection
 **描述：**
 
 定义矩形边方向。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1727,8 +1660,6 @@ enum ArkUI_CornerDirection
 
 定义角度方向。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -1749,8 +1680,6 @@ enum ArkUI_PixelRoundCalcPolicy
 
 Enumerates the PixelRoundPolicy.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 | 枚举项 | 描述 |
@@ -1768,8 +1697,6 @@ enum ArkUI_MenuPolicy
 **描述：**
 
 Menu pop-up strategy.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -1789,8 +1716,6 @@ enum ArkUI_LayoutSafeAreaType
 
 Define the types for expanding the safe area in layout.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -1806,8 +1731,6 @@ enum ArkUI_LayoutSafeAreaEdge
 **描述：**
 
 Define the edges for expanding the safe area in layout.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -1830,8 +1753,6 @@ enum ArkUI_LocalizedAlignment
 **描述：**
 
 Enumerates the localizedAlignment modes.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -1857,8 +1778,6 @@ enum ArkUI_RenderStrategy
 
 Enumerates the graphics rendering strategy.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -1875,8 +1794,6 @@ enum ArkUI_LayoutPolicy
 **描述：**
 
 Enumerates the LayoutPolicy.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -1896,8 +1813,6 @@ enum OH_ArkUI_CrossLanguageOperatingStatus
 
 Enumerates the tree operating status for the cross-language option.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -1915,8 +1830,6 @@ enum OH_ArkUI_NodeMountPolicy
 **描述：**
 
 Enumeration of the policy for mounting child node to the target node.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -1938,8 +1851,6 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()
 
 Creates a size constraint.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 ### OH_ArkUI_LayoutConstraint_Copy()
@@ -1952,21 +1863,19 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstra
 
 Creates a deep copy of a size constraint.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_LayoutConstraint* | Returns the pointer to the new size constraint. |
+| [ArkUI_LayoutConstraint*](capi-arkui-nativemodule-arkui-layoutconstraint.md) | Returns the pointer to the new size constraint. |
 
 ### OH_ArkUI_LayoutConstraint_Dispose()
 
@@ -1978,15 +1887,13 @@ void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)
 
 Destroys the pointer to a size constraint.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 ### OH_ArkUI_LayoutConstraint_GetMaxWidth()
 
@@ -1998,15 +1905,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Cons
 
 Obtains the maximum width for a size constraint, in px.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回值：**
 
@@ -2024,15 +1929,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Cons
 
 Obtains the minimum width for a size constraint, in px.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回值：**
 
@@ -2050,15 +1953,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Con
 
 Obtains the maximum height for a size constraint, in px.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回值：**
 
@@ -2076,15 +1977,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Con
 
 Obtains the minimum height for a size constraint, in px.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回值：**
 
@@ -2102,15 +2001,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutCon
 
 Obtains the width percentage reference for a size constraint, in px.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回值：**
 
@@ -2128,15 +2025,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutCo
 
 Obtains the height percentage reference for a size constraint, in px.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回值：**
 
@@ -2154,15 +2049,13 @@ void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, i
 
 Sets the maximum width.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the maximum width, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetMinWidth()
@@ -2175,15 +2068,13 @@ void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, i
 
 Sets the minimum width.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the minimum width, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetMaxHeight()
@@ -2196,15 +2087,13 @@ void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, 
 
 Sets the maximum height.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the maximum height, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetMinHeight()
@@ -2217,15 +2106,13 @@ void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, 
 
 Sets the minimum height.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the minimum height, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth()
@@ -2238,15 +2125,13 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* 
 
 Sets the width percentage reference.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the width percentage reference, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight()
@@ -2259,15 +2144,13 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint*
 
 Sets the height percentage reference.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the height percentage reference, in px. |
 
 ### OH_ArkUI_DrawContext_GetCanvas()
@@ -2280,15 +2163,13 @@ void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)
 
 Obtains the pointer to a canvas for drawing, which can be converted into the <b>OH_Drawing_Canvas</b> pointer in the <b>Drawing</b> module.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_DrawContext* context | Indicates the pointer to the drawing context. |
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Indicates the pointer to the drawing context. |
 
 **返回值：**
 
@@ -2306,21 +2187,19 @@ ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)
 
 Obtains the size of a drawing area.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_DrawContext* context | Indicates the pointer to the drawing context. |
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Indicates the pointer to the drawing context. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_IntSize | Returns the size of the drawing area. |
+| [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | Returns the size of the drawing area. |
 
 ### OH_ArkUI_SwiperIndicator_Create()
 
@@ -2331,8 +2210,6 @@ ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType
 **描述：**
 
 Creates a navigation indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2358,8 +2235,6 @@ void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)
 
 Destroys the pointer to the indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2377,8 +2252,6 @@ void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator,
 **描述：**
 
 Sets the distance between the navigation point and the start of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2398,8 +2271,6 @@ float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator
 **描述：**
 
 Obtains the distance between the navigation point and the start of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2425,8 +2296,6 @@ void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, f
 
 Sets the distance between the navigation point and the top of the swiper.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2445,8 +2314,6 @@ float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)
 **描述：**
 
 Obtains the distance between the navigation point and the top of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2472,8 +2339,6 @@ void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, f
 
 Sets the distance between the navigation point and the right of the swiper.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2492,8 +2357,6 @@ float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)
 **描述：**
 
 Obtains the distance between the navigation point and the end of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2519,8 +2382,6 @@ void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator
 
 Sets the distance between the navigation point and the bottom of the swiper.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2539,8 +2400,6 @@ float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicato
 **描述：**
 
 Obtains the distance between the navigation point and the bottom of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2566,8 +2425,6 @@ void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, flo
 
 Sets the width of the dot for the dot indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2586,8 +2443,6 @@ float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)
 **描述：**
 
 Obtains the width of the dot for the dot indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2613,8 +2468,6 @@ void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, fl
 
 Sets the height of the dot for the dot indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2633,8 +2486,6 @@ float OH_ArkUI_SwiperIndicator_GetItemHeight(ArkUI_SwiperIndicator* indicator)
 **描述：**
 
 Obtains the height of the dot for the dot indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2660,8 +2511,6 @@ void OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(ArkUI_SwiperIndicator* indica
 
 Sets the width of the selected dot for the dot indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2680,8 +2529,6 @@ float OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(ArkUI_SwiperIndicator* indic
 **描述：**
 
 Obtains the width of the selected dot for the dot indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2707,8 +2554,6 @@ void OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(ArkUI_SwiperIndicator* indic
 
 Sets the height of the selected dot for the dot indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2727,8 +2572,6 @@ float OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(ArkUI_SwiperIndicator* indi
 **描述：**
 
 Obtains the height of the selected dot for the dot indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2754,8 +2597,6 @@ void OH_ArkUI_SwiperIndicator_SetMask(ArkUI_SwiperIndicator* indicator, int32_t 
 
 Sets whether to display the mask style of the dot navigation indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2774,8 +2615,6 @@ int32_t OH_ArkUI_SwiperIndicator_GetMask(ArkUI_SwiperIndicator* indicator)
 **描述：**
 
 Obtains whether to display the mask style of the dot navigation indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2801,8 +2640,6 @@ void OH_ArkUI_SwiperIndicator_SetColor(ArkUI_SwiperIndicator* indicator, uint32_
 
 Sets the color of the dot navigation indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2821,8 +2658,6 @@ uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)
 **描述：**
 
 Obtains the color of the dot navigation indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2848,8 +2683,6 @@ void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator,
 
 Sets the color of the selected dot for the navigation indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2868,8 +2701,6 @@ uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indica
 **描述：**
 
 Obtains the color of the selected dot for the dot navigation indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2895,8 +2726,6 @@ int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 
 Sets the number of maxDisplayCount for the dot navigation indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -2910,7 +2739,7 @@ Sets the number of maxDisplayCount for the dot navigation indicator.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) Success.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) indicator is null or maxDisplayCount less then 6 or          maxDisplayCount more then 9 |
+| int32_t | ARKUI_ERROR_CODE_NO_ERROR Success. ARKUI_ERROR_CODE_PARAM_INVALID indicator is null or maxDisplayCount less then 6 or maxDisplayCount more then 9 |
 
 ### OH_ArkUI_SwiperIndicator_GetMaxDisplayCount()
 
@@ -2921,8 +2750,6 @@ int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 **描述：**
 
 Obtains the number of maxDisplayCount for the dot navigation indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2936,7 +2763,7 @@ Obtains the number of maxDisplayCount for the dot navigation indicator.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the number of the maxDisplayCount, span is 6-9.          0 - indicator is null |
+| int32_t | Returns the number of the maxDisplayCount, span is 6-9. 0 - indicator is null |
 
 ### OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom()
 
@@ -2947,8 +2774,6 @@ void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indic
 **描述：**
 
 Sets whether to ignore the size of the indicator for [OH_ArkUI_SwiperIndicator_SetBottomPosition](capi-native-type-h.md#oh_arkui_swiperindicator_setbottomposition).
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -2968,8 +2793,6 @@ int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* in
 **描述：**
 
 Obtains whether to ignore the size of the indicator for [OH_ArkUI_SwiperIndicator_SetBottomPosition](capi-native-type-h.md#oh_arkui_swiperindicator_setbottomposition).
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -2995,8 +2818,6 @@ void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float s
 
 Sets the space between the dots of the navigation indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3015,8 +2836,6 @@ float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)
 **描述：**
 
 Obtains the space between the dots of the navigation indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3042,8 +2861,6 @@ ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()
 
 Creates a digital indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **返回值：**
@@ -3061,8 +2878,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* 
 **描述：**
 
 Sets the distance between the digital indicator and the start of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3082,8 +2897,6 @@ float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator*
 **描述：**
 
 Gets the distance between the digital indicator and the start of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3109,8 +2922,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* in
 
 Sets the distance between the digital indicator and the top of the swiper.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3129,8 +2940,6 @@ float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* i
 **描述：**
 
 Gets the distance between the digital indicator and the top of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3156,8 +2965,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* in
 
 Sets the distance between the digital indicator and the end of the swiper.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3176,8 +2983,6 @@ float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* i
 **描述：**
 
 Gets the distance between the digital indicator and the end of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3203,8 +3008,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator*
 
 Sets the distance between the digital indicator and the bottom of the swiper.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3223,8 +3026,6 @@ float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator
 **描述：**
 
 Gets the distance between the digital indicator and the bottom of the swiper.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3250,8 +3051,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indi
 
 Sets the font color of total count in the digital indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3270,8 +3069,6 @@ uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* 
 **描述：**
 
 Gets the font color of total count in the digital indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3297,8 +3094,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor(ArkUI_SwiperDigitIndicat
 
 Sets the font color of selected index in the digital indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3317,8 +3112,6 @@ uint32_t OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor(ArkUI_SwiperDigitInd
 **描述：**
 
 Gets the font color of selected index in the digital indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3344,8 +3137,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontSize(ArkUI_SwiperDigitIndicator* indic
 
 Sets the font size of total count in the digital indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3364,8 +3155,6 @@ float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indi
 **描述：**
 
 Gets the font size of total count in the digital indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3391,8 +3180,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicato
 
 Sets the font size of selected index in the digital indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3411,8 +3198,6 @@ float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicat
 **描述：**
 
 Gets the font size of selected index in the digital indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3438,8 +3223,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontWeight(ArkUI_SwiperDigitIndicator *ind
 
 Sets the font weight of total count in the digital indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3447,7 +3230,7 @@ Sets the font weight of total count in the digital indicator.
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) *indicator | The pointer to the digital indicator. |
-| ArkUI_FontWeight fontWeight | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is <b>ARKUI_FONT_WEIGHT_NORMAL</b>. |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) fontWeight | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is <b>ARKUI_FONT_WEIGHT_NORMAL</b>. |
 
 ### OH_ArkUI_SwiperDigitIndicator_GetFontWeight()
 
@@ -3459,8 +3242,6 @@ ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIn
 
 Gets the font weight of total count in the digital indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3473,7 +3254,7 @@ Gets the font weight of total count in the digital indicator.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_FontWeight | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
 
 ### OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight()
 
@@ -3485,8 +3266,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndica
 
 Sets the font weight of selected index in the digital indicator.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3494,7 +3273,7 @@ Sets the font weight of selected index in the digital indicator.
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) *indicator | The pointer to the digital indicator. |
-| ArkUI_FontWeight selectedFontWeight | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is <b>ARKUI_FONT_WEIGHT_NORMAL</b>. |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) selectedFontWeight | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is <b>ARKUI_FONT_WEIGHT_NORMAL</b>. |
 
 ### OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight()
 
@@ -3505,8 +3284,6 @@ ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_Swipe
 **描述：**
 
 Gets the font weight of selected index in the digital indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3520,7 +3297,7 @@ Gets the font weight of selected index in the digital indicator.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_FontWeight | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
 
 ### OH_ArkUI_SwiperDigitIndicator_Destroy()
 
@@ -3531,8 +3308,6 @@ void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator *indicator
 **描述：**
 
 Destroys the digital indicator.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3552,8 +3327,6 @@ void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndica
 
 Sets whether to ignore the size of the indicator for [OH_ArkUI_SwiperDigitIndicator_SetBottomPosition](capi-native-type-h.md#oh_arkui_swiperdigitindicator_setbottomposition).
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3572,8 +3345,6 @@ int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitInd
 **描述：**
 
 Obtains whether to ignore the size of the indicator for [OH_ArkUI_SwiperDigitIndicator_SetBottomPosition](capi-native-type-h.md#oh_arkui_swiperdigitindicator_setbottomposition).
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3599,8 +3370,6 @@ ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()
 
 Creates a arrow style for swiper.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **返回值：**
@@ -3618,8 +3387,6 @@ void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle *arrowSt
 **描述：**
 
 Sets whether to show the background for the arrow.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3640,8 +3407,6 @@ int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arro
 
 Gets whether to show the background for the arrow.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3654,7 +3419,7 @@ Gets whether to show the background for the arrow.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | whether to show the background for the arrow.          The value <b>1</b> means to show the background, and <b>0</b> means the opposite. |
+| int32_t | whether to show the background for the arrow. The value <b>1</b> means to show the background, and <b>0</b> means the opposite. |
 
 ### OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle()
 
@@ -3665,8 +3430,6 @@ void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arro
 **描述：**
 
 Sets the display position of the arrow.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3687,8 +3450,6 @@ int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* a
 
 Gets the display position of the arrow.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3701,7 +3462,7 @@ Gets the display position of the arrow.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | the display position of the arrow. The value <b>1</b> means to display on boths sides of the swiper,          and <b>0</b> means display on boths sides of the swiper indicator. |
+| int32_t | the display position of the arrow. The value <b>1</b> means to display on boths sides of the swiper, and <b>0</b> means display on boths sides of the swiper indicator. |
 
 ### OH_ArkUI_SwiperArrowStyle_SetBackgroundSize()
 
@@ -3712,8 +3473,6 @@ void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowSt
 **描述：**
 
 Sets the background size of the arrow.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3733,8 +3492,6 @@ float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle *arrowS
 **描述：**
 
 Gets the background size of the arrow.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3760,8 +3517,6 @@ void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle *arrowStyle)
 
 Destroys the arrow style.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3779,8 +3534,6 @@ void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle *arrowS
 **描述：**
 
 Sets the background color of the arrow.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3800,8 +3553,6 @@ uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* ar
 **描述：**
 
 Gets the background color of the arrow.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3827,8 +3578,6 @@ void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, 
 
 Sets the size of the arrow.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3847,8 +3596,6 @@ float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)
 **描述：**
 
 Gets the size of the arrow.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3874,8 +3621,6 @@ void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle,
 
 Sets the color of the arrow.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 19
 
 **参数：**
@@ -3894,8 +3639,6 @@ uint32_t OH_ArkUI_SwiperArrowStyle_GetArrowColor(ArkUI_SwiperArrowStyle* arrowSt
 **描述：**
 
 Gets the color of the arrow.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -3921,8 +3664,6 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 
 Create auxiliary line information in the RelativeContaine container.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -3947,8 +3688,6 @@ void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)
 
 Destroy auxiliary line information.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -3966,8 +3705,6 @@ void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char
 **描述：**
 
 Set the Id of the auxiliary line.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -3989,8 +3726,6 @@ void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, Ark
 
 Set the direction of the auxiliary line.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4010,8 +3745,6 @@ void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline,
 **描述：**
 
 Set the distance from the left or top of the container.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4033,8 +3766,6 @@ void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, f
 
 Set the distance from the right or bottom of the container.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4054,8 +3785,6 @@ const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int
 **描述：**
 
 Get the Id of the auxiliary line.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4082,8 +3811,6 @@ ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guidelin
 
 Get the direction of the auxiliary line.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4108,8 +3835,6 @@ float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline
 **描述：**
 
 Get the distance from the left or top of the container.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4136,8 +3861,6 @@ float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, 
 
 Get the distance from the right side or bottom of the container.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4163,8 +3886,6 @@ ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 
 creates barrier information within the RelativeContaine container.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4189,8 +3910,6 @@ void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)
 
 Destroy barrier information.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4208,8 +3927,6 @@ void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char*
 **描述：**
 
 Set the Id of the barrier.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4231,8 +3948,6 @@ void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkU
 
 Set the direction of the barrier.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4240,7 +3955,7 @@ Set the direction of the barrier.
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_BarrierOption* barrierStyle | barrier information. |
-| ArkUI_BarrierDirection value | direction. |
+| [ArkUI_BarrierDirection](capi-native-type-h.md#arkui_barrierdirection) value | direction. |
 | int32_t index | Barrier index value. |
 
 ### OH_ArkUI_BarrierOption_SetReferencedId()
@@ -4252,8 +3967,6 @@ void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, c
 **描述：**
 
 Sets the dependent component of the barrier.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4274,8 +3987,6 @@ const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int3
 **描述：**
 
 Get the Id of the barrier.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4302,8 +4013,6 @@ ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* 
 
 Gets the direction of the barrier.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4317,7 +4026,7 @@ Gets the direction of the barrier.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_BarrierDirection | The direction of the barrier. |
+| [ArkUI_BarrierDirection](capi-native-type-h.md#arkui_barrierdirection) | The direction of the barrier. |
 
 ### OH_ArkUI_BarrierOption_GetReferencedId()
 
@@ -4328,8 +4037,6 @@ const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierS
 **描述：**
 
 Get the dependent components of the barrier.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4357,8 +4064,6 @@ int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierS
 
 Gets the number of dependent components of the barrier.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4384,8 +4089,6 @@ ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t t
 
 创建内容切换动画效果。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -4410,8 +4113,6 @@ ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()
 
 creates alignment rule information for subcomponents in relative containers.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **返回值：**
@@ -4430,8 +4131,6 @@ void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)
 
 Destroys the alignment rule information of subcomponents in relative containers.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4449,8 +4148,6 @@ void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, co
 **描述：**
 
 Set the start alignment parameter.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4472,8 +4169,6 @@ void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, cons
 
 Set the end alignment parameter.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4493,8 +4188,6 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption*
 **描述：**
 
 Set the parameters for horizontal center alignment.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4516,8 +4209,6 @@ void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, cons
 
 Set the parameters for top alignment.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4537,8 +4228,6 @@ void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, c
 **描述：**
 
 Set the bottom alignment parameters.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4560,8 +4249,6 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* o
 
 Set the parameters for vertical center alignment.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4582,8 +4269,6 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* o
 
 Sets the horizontal offset parameter of the component under the anchor point constraint.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4603,8 +4288,6 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* opt
 
 Set the vertical offset parameter of the component under the anchor point constraint.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4623,8 +4306,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* o
 **描述：**
 
 Get the Id of the start-aligned parameter.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4650,8 +4331,6 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_A
 
 Gets the alignment of the start-aligned parameter.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4675,8 +4354,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* opt
 **描述：**
 
 Get the end alignment parameter.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4702,8 +4379,6 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_Ali
 
 Get the end alignment parameter.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4727,8 +4402,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRu
 **描述：**
 
 Gets the parameters of horizontal center alignment.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4754,8 +4427,6 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizon
 
 Gets the parameters of horizontal center alignment.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4779,8 +4450,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* opt
 **描述：**
 
 Get the top-aligned parameters.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4806,8 +4475,6 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_Align
 
 Get the top-aligned parameters.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4831,8 +4498,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* 
 **描述：**
 
 Get the bottom alignment parameters.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4858,8 +4523,6 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_Al
 
 Get the bottom alignment parameters.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4883,8 +4546,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRule
 **描述：**
 
 Gets the parameters of vertical center alignment.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4910,8 +4571,6 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(
 
 Gets the parameters of vertical center alignment.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4935,8 +4594,6 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* 
 **描述：**
 
 Get the bias value in the horizontal direction.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -4962,8 +4619,6 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* op
 
 Get the bias value in the vertical direction.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -4988,8 +4643,6 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(c
 
 Create a image frame from the image path.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5002,7 +4655,7 @@ Create a image frame from the image path.
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo*](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | Returns the pointer to the image frame object.  If a null pointer is returned, the object fails to be created. The possible cause is that  the src parameter is abnormal, for example, the pointer is null. |
+| [ArkUI_ImageAnimatorFrameInfo*](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | Returns the pointer to the image frame object. If a null pointer is returned, the object fails to be created. The possible cause is that the src parameter is abnormal, for example, the pointer is null. |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor()
 
@@ -5014,21 +4667,19 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 
 Create a image frame from the drawable descriptor.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_DrawableDescriptor* drawable | Indicates the pointer to the drawable descriptor. |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawable | Indicates the pointer to the drawable descriptor. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo*](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | Returns the pointer to the image frame object.  If a null pointer is returned, the object fails to be created. The possible cause is that  the drawable parameter is abnormal, for example, the pointer is null. |
+| [ArkUI_ImageAnimatorFrameInfo*](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | Returns the pointer to the image frame object. If a null pointer is returned, the object fails to be created. The possible cause is that the drawable parameter is abnormal, for example, the pointer is null. |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_Dispose()
 
@@ -5039,8 +4690,6 @@ void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* image
 **描述：**
 
 Destroy the pointer to the image frame.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5060,8 +4709,6 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imag
 
 Set the width of the image frame.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5080,8 +4727,6 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* i
 **描述：**
 
 Get the width of the image frame.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5107,8 +4752,6 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* ima
 
 Set the height of the image frame.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5127,8 +4770,6 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* 
 **描述：**
 
 Get the height of the image frame.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5154,8 +4795,6 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageI
 
 Set the vertical coordinate of the image relative to the upper left corner of the widget.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5175,8 +4814,6 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* ima
 
 Get the vertical coordinate of the image relative to the upper left corner of the widget.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5189,7 +4826,7 @@ Get the vertical coordinate of the image relative to the upper left corner of th
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the vertical coordinate of the image relative to the upper left corner of the widget,  and the unit is PX. Return 0 when the imageInfo is null. |
+| int32_t | Returns the vertical coordinate of the image relative to the upper left corner of the widget, and the unit is PX. Return 0 when the imageInfo is null. |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetLeft()
 
@@ -5200,8 +4837,6 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* image
 **描述：**
 
 Set the horizontal coordinate of the image relative to the upper left corner of the widget.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5222,8 +4857,6 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* im
 
 Get the horizontal coordinate of the image relative to the upper left corner of the widget.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5236,7 +4869,7 @@ Get the horizontal coordinate of the image relative to the upper left corner of 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the horizontal coordinate of the image relative to the upper left corner of the widget,  and the unit is PX. Return 0 when the imageInfo is null. |
+| int32_t | Returns the horizontal coordinate of the image relative to the upper left corner of the widget, and the unit is PX. Return 0 when the imageInfo is null. |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetDuration()
 
@@ -5247,8 +4880,6 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* i
 **描述：**
 
 Set the playback duration of the image frame.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5269,8 +4900,6 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo
 
 Get the playback duration of the image frame.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5283,7 +4912,7 @@ Get the playback duration of the image frame.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the playback duration of the image frame, and the unit is milliseconds.  Return 0 when the imageInfo is null. |
+| int32_t | Returns the playback duration of the image frame, and the unit is milliseconds. Return 0 when the imageInfo is null. |
 
 ### OH_ArkUI_AccessibilityState_Create()
 
@@ -5295,15 +4924,13 @@ ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)
 
 Create accessibility state.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AccessibilityState*](capi-arkui-nativemodule-arkui-accessibilitystate.md) | Returns the pointer to the accessibility state object.  If a null pointer is returned, the object fails to be created. The possible cause is that the address space is full. |
+| [ArkUI_AccessibilityState*](capi-arkui-nativemodule-arkui-accessibilitystate.md) | Returns the pointer to the accessibility state object. If a null pointer is returned, the object fails to be created. The possible cause is that the address space is full. |
 
 ### OH_ArkUI_AccessibilityState_Dispose()
 
@@ -5314,8 +4941,6 @@ void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)
 **描述：**
 
 Dispose accessibility state.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5334,8 +4959,6 @@ void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, in
 **描述：**
 
 Set accessibility state disabled.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5356,8 +4979,6 @@ int32_t OH_ArkUI_AccessibilityState_IsDisabled(ArkUI_AccessibilityState* state)
 
 Get accessibility state disabled.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5370,7 +4991,7 @@ Get accessibility state disabled.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | accessibility state disabled, Value 1 indicates disabled and 0 indicates enbled. The default value is 0.          If the function parameter is abnormal, return the default value. |
+| int32_t | accessibility state disabled, Value 1 indicates disabled and 0 indicates enbled. The default value is 0. If the function parameter is abnormal, return the default value. |
 
 ### OH_ArkUI_AccessibilityState_SetSelected()
 
@@ -5381,8 +5002,6 @@ void OH_ArkUI_AccessibilityState_SetSelected(ArkUI_AccessibilityState* state, in
 **描述：**
 
 Set accessibility state selected.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5403,8 +5022,6 @@ int32_t OH_ArkUI_AccessibilityState_IsSelected(ArkUI_AccessibilityState* state)
 
 Get accessibility state selected.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5417,7 +5034,7 @@ Get accessibility state selected.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | accessibility state selected, Value 1 indicates selected, and 0 indicates not selected.          The default value is 0.          If the function parameter is abnormal, return the default value. |
+| int32_t | accessibility state selected, Value 1 indicates selected, and 0 indicates not selected. The default value is 0. If the function parameter is abnormal, return the default value. |
 
 ### OH_ArkUI_AccessibilityState_SetCheckedState()
 
@@ -5428,8 +5045,6 @@ void OH_ArkUI_AccessibilityState_SetCheckedState(ArkUI_AccessibilityState* state
 **描述：**
 
 Set accessibility checked state.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5450,8 +5065,6 @@ int32_t OH_ArkUI_AccessibilityState_GetCheckedState(ArkUI_AccessibilityState* st
 
 Get accessibility checked state.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5464,7 +5077,7 @@ Get accessibility checked state.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | checked state, and uses the [ArkUI_AccessibilityCheckedState](capi-native-type-h.md#arkui_accessibilitycheckedstate) enumeration value,          The default value is ARKUI_ACCESSIBILITY_UNCHECKED.          If the function parameter is abnormal, return the default value. |
+| int32_t | checked state, and uses the [ArkUI_AccessibilityCheckedState](capi-native-type-h.md#arkui_accessibilitycheckedstate) enumeration value, The default value is ARKUI_ACCESSIBILITY_UNCHECKED. If the function parameter is abnormal, return the default value. |
 
 ### OH_ArkUI_AccessibilityValue_Create()
 
@@ -5476,15 +5089,13 @@ ArkUI_AccessibilityValue* OH_ArkUI_AccessibilityValue_Create(void)
 
 Create accessibility value.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AccessibilityValue*](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | Returns the pointer to the accessibility state object.  If a null pointer is returned, the object fails to be created. The possible cause is that the address space is full. |
+| [ArkUI_AccessibilityValue*](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | Returns the pointer to the accessibility state object. If a null pointer is returned, the object fails to be created. The possible cause is that the address space is full. |
 
 ### OH_ArkUI_AccessibilityValue_Dispose()
 
@@ -5495,8 +5106,6 @@ void OH_ArkUI_AccessibilityValue_Dispose(ArkUI_AccessibilityValue* value)
 **描述：**
 
 Dispose accessibility value.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5515,8 +5124,6 @@ void OH_ArkUI_AccessibilityValue_SetMin(ArkUI_AccessibilityValue* value, int32_t
 **描述：**
 
 Set accessibility minimum value.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5537,8 +5144,6 @@ int32_t OH_ArkUI_AccessibilityValue_GetMin(ArkUI_AccessibilityValue* value)
 
 Get accessibility minimum value.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5551,7 +5156,7 @@ Get accessibility minimum value.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | minimum value based on range components, The default value is -1.          If the function parameter is abnormal, return -1. |
+| int32_t | minimum value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
 
 ### OH_ArkUI_AccessibilityValue_SetMax()
 
@@ -5562,8 +5167,6 @@ void OH_ArkUI_AccessibilityValue_SetMax(ArkUI_AccessibilityValue* value, int32_t
 **描述：**
 
 Set accessibility minimum value.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5584,8 +5187,6 @@ int32_t OH_ArkUI_AccessibilityValue_GetMax(ArkUI_AccessibilityValue* value)
 
 Get accessibility minimum value.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5598,7 +5199,7 @@ Get accessibility minimum value.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | maximum value based on range components, The default value is -1.          If the function parameter is abnormal, return -1. |
+| int32_t | maximum value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
 
 ### OH_ArkUI_AccessibilityValue_SetCurrent()
 
@@ -5609,8 +5210,6 @@ void OH_ArkUI_AccessibilityValue_SetCurrent(ArkUI_AccessibilityValue* value, int
 **描述：**
 
 Set accessibility current value.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5631,8 +5230,6 @@ int32_t OH_ArkUI_AccessibilityValue_GetCurrent(ArkUI_AccessibilityValue* value)
 
 Get accessibility current value.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5645,7 +5242,7 @@ Get accessibility current value.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | current value based on range components, The default value is -1.          If the function parameter is abnormal, return -1. |
+| int32_t | current value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
 
 ### OH_ArkUI_AccessibilityValue_SetRangeMin()
 
@@ -5656,8 +5253,6 @@ void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, in
 **描述：**
 
 Set accessibility minimum value.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
 
@@ -5678,8 +5273,6 @@ int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value)
 
 Get accessibility minimum value.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 18
 
 **参数：**
@@ -5692,7 +5285,7 @@ Get accessibility minimum value.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | minimum value based on range components, The default value is -1.          If the function parameter is abnormal, return -1. |
+| int32_t | minimum value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
 
 ### OH_ArkUI_AccessibilityValue_SetRangeMax()
 
@@ -5703,8 +5296,6 @@ void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, in
 **描述：**
 
 Set accessibility maximum value.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
 
@@ -5725,8 +5316,6 @@ int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value)
 
 Get accessibility maximum value.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 18
 
 **参数：**
@@ -5739,7 +5328,7 @@ Get accessibility maximum value.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | maximum value based on range components, The default value is -1.          If the function parameter is abnormal, return -1. |
+| int32_t | maximum value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
 
 ### OH_ArkUI_AccessibilityValue_SetRangeCurrent()
 
@@ -5750,8 +5339,6 @@ void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value
 **描述：**
 
 Set accessibility current value.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
 
@@ -5772,8 +5359,6 @@ int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* va
 
 Get accessibility current value.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 18
 
 **参数：**
@@ -5786,7 +5371,7 @@ Get accessibility current value.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | current value based on range components, The default value is -1.          If the function parameter is abnormal, return -1. |
+| int32_t | current value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
 
 ### OH_ArkUI_AccessibilityValue_SetText()
 
@@ -5797,8 +5382,6 @@ void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const 
 **描述：**
 
 Set accessibility text value.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -5819,8 +5402,6 @@ const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)
 
 Get accessibility text value.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **参数：**
@@ -5833,7 +5414,7 @@ Get accessibility text value.
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | The textual description information of the component, which defaults to an empty string;          If the function parameter is abnormal, return null. |
+| const char* | The textual description information of the component, which defaults to an empty string; If the function parameter is abnormal, return null. |
 
 ### OH_ArkUI_CustomProperty_Destroy()
 
@@ -5844,8 +5425,6 @@ void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)
 **描述：**
 
 销毁[ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)实例。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -5864,8 +5443,6 @@ const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)
 **描述：**
 
 获取自定义属性对象的value信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -5891,8 +5468,6 @@ const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)
 
 获取[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象中的窗口名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 **参数：**
@@ -5917,8 +5492,6 @@ void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)
 
 销毁[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 **参数：**
@@ -5935,9 +5508,7 @@ void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)
 
 **描述：**
 
-销毁{@link OH_ArkUI_ActiveChildrenInfo}实例，释放获取活跃子节点信息时分配的资源。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+销毁OH_ArkUI_ActiveChildrenInfo实例，释放获取活跃子节点信息时分配的资源。
 
 **起始版本：** 14
 
@@ -5955,9 +5526,7 @@ ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildren
 
 **描述：**
 
-获取{@link OH_ArkUI_ActiveChildrenInfo}结构体的下标为index的子节点。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+获取OH_ArkUI_ActiveChildrenInfo结构体的下标为index的子节点。
 
 **起始版本：** 14
 
@@ -5972,7 +5541,7 @@ ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildren
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_NodeHandle | 下标对应的子节点指针，异常时返回nullptr。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | 下标对应的子节点指针，异常时返回nullptr。 |
 
 ### OH_ArkUI_ActiveChildrenInfo_GetCount()
 
@@ -5983,8 +5552,6 @@ int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 **描述：**
 
 获取[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)结构体内的子节点数量，适用于遍历活跃子节点前确定数量。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -6010,8 +5577,6 @@ ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)
 
 创建跨语言配置项实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 **返回值：**
@@ -6029,8 +5594,6 @@ void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)
 **描述：**
 
 销毁跨语言配置项实例。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -6050,8 +5613,6 @@ void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageO
 
 设置配置项中是否允许跨语言修改属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 15
 
 **参数：**
@@ -6070,8 +5631,6 @@ bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageO
 **描述：**
 
 获取配置项中是否允许跨语言修改属性。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -6097,8 +5656,6 @@ ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
 
 Create an object for the EmbeddedComponent option.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 20
 
 **返回值：**
@@ -6116,8 +5673,6 @@ void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* opt
 **描述：**
 
 Destroy the object by EmbeddedComponent option.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -6137,18 +5692,16 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* 
 
 Set the onError of EmbeddedComponent.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_EmbeddedComponentOption\* option | Pointer to the object option by the EmbeddedComponent. |
-| void (\*callback)(int32_t code | Common error information about the API invoking failure. |
-| const char\* name | Common error name information about the API invoking failure. |
-| const char\* message) | Common error message information about the API invoking failure. |
+| rkUI_EmbeddedComponentOption* option | Pointer to the object option by the EmbeddedComponent. |
+| void (*callback)(int32_t code | Common error information about the API invoking failure. |
+| const char* name | Common error name information about the API invoking failure. |
+| const char* message) | Common error message information about the API invoking failure. |
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnTerminated()
 
@@ -6160,17 +5713,15 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 
 Set the onTerminated of EmbeddedComponent.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_EmbeddedComponentOption\* option | Pointer to the object option by the EmbeddedComponent. |
-| void (\*callback)(int32_t code | Result code returned when the EmbeddedUIExtensionAbility exits. |
-| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)\* want) | Data returned when the EmbeddedUIExtensionAbility exits. |
+| rkUI_EmbeddedComponentOption* option | Pointer to the object option by the EmbeddedComponent. |
+| void (*callback)(int32_t code | Result code returned when the EmbeddedUIExtensionAbility exits. |
+| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | Data returned when the EmbeddedUIExtensionAbility exits. |
 
 ### OH_ArkUI_PositionEdges_Create()
 
@@ -6181,8 +5732,6 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
 **描述：**
 
 Create an edge object for position attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6201,8 +5750,6 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edge
 **描述：**
 
 Creates a deep copy of an edge object for position attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6228,8 +5775,6 @@ void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)
 
 Dispose an edge object for position attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6247,8 +5792,6 @@ void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)
 **描述：**
 
 Sets the top edge of an edge object for position attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6269,8 +5812,6 @@ int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 
 Gets the top edge of an edge object for position attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6284,7 +5825,7 @@ Gets the top edge of an edge object for position attribute.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.       Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.       Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PositionEdges_SetLeft()
 
@@ -6295,8 +5836,6 @@ void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)
 **描述：**
 
 Sets the left edge of an edge object for position attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6317,8 +5856,6 @@ int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 
 Gets the left edge of an edge object for position attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6332,7 +5869,7 @@ Gets the left edge of an edge object for position attribute.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.       Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.       Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PositionEdges_SetBottom()
 
@@ -6343,8 +5880,6 @@ void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 **描述：**
 
 Sets the bottom edge of an edge object for position attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6365,8 +5900,6 @@ int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* valu
 
 Gets the bottom edge of an edge object for position attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6380,7 +5913,7 @@ Gets the bottom edge of an edge object for position attribute.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.       Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.       Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PositionEdges_SetRight()
 
@@ -6391,8 +5924,6 @@ void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)
 **描述：**
 
 Sets the right edge of an edge object for position attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6413,8 +5944,6 @@ int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value
 
 Gets the right edge of an edge object for position attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6428,7 +5957,7 @@ Gets the right edge of an edge object for position attribute.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.       Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.       Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PixelRoundPolicy_Create()
 
@@ -6439,8 +5968,6 @@ ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 **描述：**
 
 Create a policy object for PixelRound attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6460,8 +5987,6 @@ void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)
 
 Dispose a policy object for PixelRound attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6479,8 +6004,6 @@ void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 **描述：**
 
 Sets the top edge of a policy object for PixelRound attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6501,8 +6024,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 Gets the top edge of a policy object for PixelRound attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6516,7 +6037,7 @@ Gets the top edge of a policy object for PixelRound attribute.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.       Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.       Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
@@ -6527,8 +6048,6 @@ void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_Pi
 **描述：**
 
 Sets the start edge of a policy object for PixelRound attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6549,8 +6068,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 
 Gets the start edge of a policy object for PixelRound attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6564,7 +6081,7 @@ Gets the start edge of a policy object for PixelRound attribute.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.       Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.       Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
@@ -6575,8 +6092,6 @@ void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 **描述：**
 
 Sets the bottom edge of a policy object for PixelRound attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6597,8 +6112,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 
 Gets the bottom edge of a policy object for PixelRound attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6612,7 +6125,7 @@ Gets the bottom edge of a policy object for PixelRound attribute.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.       Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.       Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
@@ -6623,8 +6136,6 @@ void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 **描述：**
 
 Sets the end edge of a policy object for PixelRound attribute.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -6645,8 +6156,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 Gets the end edge of a policy object for PixelRound attribute.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 21
 
 **参数：**
@@ -6660,7 +6169,7 @@ Gets the end edge of a policy object for PixelRound attribute.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the result code.       Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.       Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_TextMenuItem_SetContent()
 
@@ -6672,22 +6181,20 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetContent(ArkUI_TextMenuItem* item, const
 
 Set text menu item title.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextMenuItem* item | The text menu item. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item. |
 | const char* content | The name of the text menu item, which defaults to an empty string. The string will copy to framework. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextMenuItem_GetContent()
 
@@ -6699,24 +6206,22 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetContent(const ArkUI_TextMenuItem* item,
 
 Get text menu item title.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_TextMenuItem* item | The text menu item object. |
+| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item object. |
 | char* buffer | The buffer of the text menu content, memory space needs to be allocated by the developer. |
 | int32_t bufferSize | The name of the text menu item, which defaults to an empty string; |
-| int32_t* writeLength | Indicates the string length actually written to the buffer when returning [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode). Indicates the minimum buffer size that can accommodate the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| int32_t* writeLength | Indicates the string length actually written to the buffer when returning ARKUI_ERROR_CODE_NO_ERROR. Indicates the minimum buffer size that can accommodate the target when ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | The error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node, buffer or writeLength is null.          [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) If the buffer size is less than the minimum buffer size. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | The error code. ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if the node, buffer or writeLength is null. ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR If the buffer size is less than the minimum buffer size. |
 
 ### OH_ArkUI_TextMenuItem_SetIcon()
 
@@ -6728,22 +6233,20 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetIcon(ArkUI_TextMenuItem* item, const ch
 
 Set text menu item icon.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextMenuItem* item | The text menu item. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item. |
 | const char* icon | The text menu item icon resource, which defaults to an empty string. The string will copy to framework. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextMenuItem_GetIcon()
 
@@ -6755,24 +6258,22 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetIcon(const ArkUI_TextMenuItem* item, ch
 
 Get text menu item icon.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_TextMenuItem* item | The text menu item object |
+| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item object |
 | char* buffer | The buffer of the text menu content, memory space needs to be allocated by the developer. |
 | int32_t bufferSize | The icon of the text menu item, which defaults to an empty string; |
-| int32_t* writeLength | Indicates the string length actually written to the buffer when returning [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode). Indicates the minimum buffer size that can accommodate the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| int32_t* writeLength | Indicates the string length actually written to the buffer when returning ARKUI_ERROR_CODE_NO_ERROR. Indicates the minimum buffer size that can accommodate the target when ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | The error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node, buffer or writeLength is null.          [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) If the buffer size is less than the minimum buffer size. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | The error code. ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if the node, buffer or writeLength is null. ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR If the buffer size is less than the minimum buffer size. |
 
 ### OH_ArkUI_TextMenuItem_SetLabelInfo()
 
@@ -6784,22 +6285,20 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetLabelInfo(ArkUI_TextMenuItem* item, con
 
 Set text menu item label info for keyboard shortcut.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextMenuItem* item | The text menu item. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item. |
 | const char* labelInfo | The text menu item shortcut displays, which defaults to an empty string. The string will copy to framework. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextMenuItem_GetLabelInfo()
 
@@ -6811,24 +6310,22 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetLabelInfo(const ArkUI_TextMenuItem* ite
 
 Get text menu item label info for keyboard shortcut..
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_TextMenuItem* item | The text menu item object |
+| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item object |
 | char* buffer | The buffer of the text menu content, memory space needs to be allocated by the developer. |
 | int32_t bufferSize | The shortcuts of the text menu item, which defaults to an empty string; |
-| int32_t* writeLength | Indicates the string length actually written to the buffer when returning [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode). Indicates the minimum buffer size that can accommodate the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| int32_t* writeLength | Indicates the string length actually written to the buffer when returning ARKUI_ERROR_CODE_NO_ERROR. Indicates the minimum buffer size that can accommodate the target when ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | The error code.          [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node, buffer or writeLength is null.          [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) If the buffer size is less than the minimum buffer size. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | The error code. ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if the node, buffer or writeLength is null. ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR If the buffer size is less than the minimum buffer size. |
 
 ### OH_ArkUI_TextMenuItem_SetId()
 
@@ -6840,22 +6337,20 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetId(ArkUI_TextMenuItem* item, int32_t id
 
 Set text menu item id.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextMenuItem* item | The text menu item. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item. |
 | int32_t id | The text menu id. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextMenuItem_GetId()
 
@@ -6867,22 +6362,20 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetId(const ArkUI_TextMenuItem* item, int3
 
 Get text menu item id.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_TextMenuItem* item | The text menu item object |
+| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item object |
 | int32_t* id | The text menu item id; |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_GetSize()
 
@@ -6894,22 +6387,20 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetSize(ArkUI_TextMenuItemArray* item
 
 Get the size of text menu items.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextMenuItemArray* items | The text menu items. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
 | int32_t* size | The size of text menu items. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_GetItem()
 
@@ -6921,23 +6412,21 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetItem(ArkUI_TextMenuItemArray* item
 
 Get text menu item at index.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextMenuItemArray* items | The text menu items. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
 | int32_t index | The index of text menu items. |
-| ArkUI_TextMenuItem** item | The text menu item at index of array. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | The text menu item at index of array. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_Insert()
 
@@ -6949,23 +6438,21 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Insert(ArkUI_TextMenuItemArray* items
 
 Insert text menu item at index.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextMenuItemArray* items | The text menu items. |
-| ArkUI_TextMenuItem* item | The text menu item at index of array. The item will copy by framework. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item at index of array. The item will copy by framework. |
 | int32_t index | The index of text menu items. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_Erase()
 
@@ -6977,22 +6464,20 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Erase(ArkUI_TextMenuItemArray* items,
 
 Erase text menu item at index.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextMenuItemArray* items | The text menu items. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
 | int32_t index | The index of text menu items. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_Clear()
 
@@ -7004,21 +6489,19 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Clear(ArkUI_TextMenuItemArray* items)
 
 Clear all the items.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextMenuItemArray* items | The text menu items. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback()
 
@@ -7030,23 +6513,21 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback(ArkUI_
 
 Set the event to be called when text menu create.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextEditMenuOptions* editMenuOptions | Pointer to the ArkUI_TextEditMenuOptions object. |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the ArkUI_TextEditMenuOptions object. |
 | void* userData | The user data. |
-| ArkUI_TextCreateMenuCallback cb | The create callback function. |
+| [ArkUI_TextCreateMenuCallback](capi-text-common-h.md#arkui_textcreatemenucallback) cb | The create callback function. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback()
 
@@ -7058,23 +6539,21 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI
 
 Set the event to be called when menu prepare.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextEditMenuOptions* editMenuOptions | Pointer to the ArkUI_TextEditMenuOptions object. |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the ArkUI_TextEditMenuOptions object. |
 | void* userData | The user data. |
-| ArkUI_TextPrepareMenuCallback cb | The prepare callback function. |
+| [ArkUI_TextPrepareMenuCallback](capi-text-common-h.md#arkui_textpreparemenucallback) cb | The prepare callback function. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback()
 
@@ -7086,23 +6565,21 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(Ark
 
 Set the event to be called when menu item click.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextEditMenuOptions* editMenuOptions | Pointer to the ArkUI_TextEditMenuOptions object. |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the ArkUI_TextEditMenuOptions object. |
 | void* userData | The user data. |
-| ArkUI_TextMenuItemClickCallback cb | The menu item click callback function. |
+| [ArkUI_TextMenuItemClickCallback](capi-text-common-h.md#arkui_textmenuitemclickcallback) cb | The menu item click callback function. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_SetSpanType()
 
@@ -7114,22 +6591,20 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectio
 
 Sets the recognition types of a configuration object for selected text recognition.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| ArkUI_TextSpanType textSpanType | The span type of [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype). |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
+| [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype) textSpanType | The span type of [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_GetSpanType()
 
@@ -7141,22 +6616,20 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectio
 
 Gets the span type select menu options.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| ArkUI_TextSpanType* spanType | the text span type [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype). |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
+| [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype)* spanType | the text span type [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_SetContentNode()
 
@@ -7168,22 +6641,20 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelec
 
 Set custom text menu node of text.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| ArkUI_NodeHandle node | The custom menu node. |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | The custom menu node. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_GetContentNode()
 
@@ -7195,22 +6666,20 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelec
 
 Get custom text menu node of text.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| ArkUI_NodeHandle* node | The custom menu node. |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | The custom menu node. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_SetResponseType()
 
@@ -7222,22 +6691,20 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSele
 
 Sets the recognition types of a configuration object for selected text recognition.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| ArkUI_TextResponseType responseType | The response type of [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype). |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
+| [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype) responseType | The response type of [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_GetResponseType()
 
@@ -7249,22 +6716,20 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSele
 
 Gets the response type select menu options.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| ArkUI_TextResponseType* responseType | The text response type [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype). |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
+| [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype)* responseType | The text response type [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback()
 
@@ -7276,23 +6741,21 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(Ark
 
 Set the event to be called when selection menu show.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_TextSelectionMenuOptions\* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| void\* userData | The user data. |
-| void (\*callback)(int32_t start | The callback function of menu show. start The start offset of the selected content. end The end offset of the selected content. userData The user data. |
+| rkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
+| void* userData | The user data. |
+| void (*callback)(int32_t start | The callback function of menu show. start The start offset of the selected content. end The end offset of the selected content. userData The user data. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback()
 
@@ -7304,23 +6767,21 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(Ark
 
 Set the event to be called when selection menu hide.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_TextSelectionMenuOptions\* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| void\* userData | The user data. |
-| void (\*callback)(int32_t start | The callback function of menu hide. start The start offset of the selected content. end The end offset of the selected content. userData The user data. |
+| rkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
+| void* userData | The user data. |
+| void (*callback)(int32_t start | The callback function of menu hide. start The start offset of the selected content. end The end offset of the selected content. userData The user data. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_SelectionOptions_Create()
 
@@ -7331,8 +6792,6 @@ ArkUI_SelectionOptions* OH_ArkUI_SelectionOptions_Create()
 **描述：**
 
 Create selection options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7352,8 +6811,6 @@ void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)
 
 Dispose selection options object.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 **参数：**
@@ -7371,8 +6828,6 @@ void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, Ar
 **描述：**
 
 Sets the menu policy for selection options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7392,8 +6847,6 @@ ArkUI_MenuPolicy OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions*
 **描述：**
 
 Gets the menu policy of selection options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7419,8 +6872,6 @@ ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()
 
 Create an object of the motion path options for path animation. In the newly created ArkUI_MotionPathOptions, the "path" value is an empty string, the "from" value is 0, the "to" value is 1, and the "rotatable" value is false.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 **返回值：**
@@ -7438,8 +6889,6 @@ void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)
 **描述：**
 
 Dispose the ArkUI_MotionPathOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7459,8 +6908,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* opti
 
 Sets the the motion path for the animation using an SVG path string. The path supports using "start" and "end" as placeholders for the starting and ending points, for example: "Mstart.x start.y L50 50 Lend.x end.y Z". Refer to the SVG path format for the path string. When set to an empty string, it is equivalent to not setting a path animation.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 **参数：**
@@ -7474,7 +6921,7 @@ Sets the the motion path for the animation using an SVG path string. The path su
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_MotionPathOptions_GetPath()
 
@@ -7486,8 +6933,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions
 
 Gets the motion path string in the ArkUI_MotionPathOptions object.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 **参数：**
@@ -7497,13 +6942,13 @@ Gets the motion path string in the ArkUI_MotionPathOptions object.
 | [const ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object. |
 | char* svgPathBuffer | Buffer pointer to the motion path string. |
 | const int32_t bufferSize | The buffer size of the svgPathBuffer parameter. |
-| int32_t* writeLength | Indicates the string length actually written to the buffer when returning [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode). Indicates the minimum buffer size that can accommodate the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) is returned. |
+| int32_t* writeLength | Indicates the string length actually written to the buffer when returning ARKUI_ERROR_CODE_NO_ERROR. Indicates the minimum buffer size that can accommodate the target when ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.          Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the buffer size is less than the minimum buffer size. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. Returns ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size is less than the minimum buffer size. |
 
 ### OH_ArkUI_MotionPathOptions_SetFrom()
 
@@ -7514,8 +6959,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* opti
 **描述：**
 
 Sets the starting progress in the ArkUI_MotionPathOptions. Progress refers to the ratio of the length of the path that has been traveled to the total length of the entire path. The value range is [0.0, 1.0], and the "from" value should be less than or equal to the "to" value; otherwise, an ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE error code will be returned.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7530,7 +6973,7 @@ Sets the starting progress in the ArkUI_MotionPathOptions. Progress refers to th
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.          Returns [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the "from" value is out of range or the "from" value                  is greater than the "to" value. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. Returns ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE if the "from" value is out of range or the "from" value is greater than the "to" value. |
 
 ### OH_ArkUI_MotionPathOptions_GetFrom()
 
@@ -7541,8 +6984,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions
 **描述：**
 
 Gets the starting progress in the ArkUI_MotionPathOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7557,7 +6998,7 @@ Gets the starting progress in the ArkUI_MotionPathOptions object.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_MotionPathOptions_SetTo()
 
@@ -7568,8 +7009,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* option
 **描述：**
 
 Sets the endpoint progress in the ArkUI_MotionPathOptions. Progress refers to the ratio of the length of the path that has been traveled to the total length of the entire path. The value range is [0.0, 1.0], and the "from" value should be less than or equal to the "to" value; otherwise, an ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE error code will be returned.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7584,7 +7023,7 @@ Sets the endpoint progress in the ArkUI_MotionPathOptions. Progress refers to th
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs.          Returns [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the "to" value is out of range or the "to" value                  is less than the "from" value. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. Returns ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE if the "to" value is out of range or the "to" value is less than the "from" value. |
 
 ### OH_ArkUI_MotionPathOptions_GetTo()
 
@@ -7595,8 +7034,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* 
 **描述：**
 
 Gets the endpoint progress in the ArkUI_MotionPathOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7611,7 +7048,7 @@ Gets the endpoint progress in the ArkUI_MotionPathOptions object.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_MotionPathOptions_SetRotatable()
 
@@ -7622,8 +7059,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions*
 **描述：**
 
 Sets the rotatable parameter in the ArkUI_MotionPathOptions. It indicates whether to rotate along the path. True means rotating along the path, while false means not rotating along the path.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7638,7 +7073,7 @@ Sets the rotatable parameter in the ArkUI_MotionPathOptions. It indicates whethe
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_MotionPathOptions_GetRotatable()
 
@@ -7649,8 +7084,6 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOp
 **描述：**
 
 Gets the rotatable parameter in the ArkUI_MotionPathOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7665,7 +7098,7 @@ Gets the rotatable parameter in the ArkUI_MotionPathOptions.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_SelectedDragPreviewStyle_Create()
 
@@ -7676,8 +7109,6 @@ ArkUI_SelectedDragPreviewStyle* OH_ArkUI_SelectedDragPreviewStyle_Create()
 **描述：**
 
 Create a configuration object for selected drag preview style.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7697,8 +7128,6 @@ void OH_ArkUI_SelectedDragPreviewStyle_Dispose(ArkUI_SelectedDragPreviewStyle* c
 
 Dispose a configuration object for selected drag preview style.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 **参数：**
@@ -7716,8 +7145,6 @@ void OH_ArkUI_SelectedDragPreviewStyle_SetColor(ArkUI_SelectedDragPreviewStyle* 
 **描述：**
 
 设置选中态拖拽文本预览样式的背景色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7737,8 +7164,6 @@ uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewSty
 **描述：**
 
 获取选中态拖拽文本预览样式的背景色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -7764,22 +7189,20 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationType(OH_ArkUI_D
 
 设置装饰线样式的装饰类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
-| ArkUI_TextDecorationType type | 装饰类型[ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype) type | 装饰类型[ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_DecorationStyleOptions_GetTextDecorationType()
 
@@ -7791,22 +7214,20 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationType(OH_ArkUI_D
 
 获取装饰线样式的装饰类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
-| ArkUI_TextDecorationType* type | 装饰类型[ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)* type | 装饰类型[ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_DecorationStyleOptions_SetColor()
 
@@ -7818,22 +7239,20 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetColor(OH_ArkUI_DecorationStyl
 
 设置装饰线的颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
 | uint32_t color | 装饰线的颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_DecorationStyleOptions_GetColor()
 
@@ -7845,22 +7264,20 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetColor(OH_ArkUI_DecorationStyl
 
 获取装饰线的颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
 | uint32_t* color | 装饰线的颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_DecorationStyleOptions_SetTextDecorationStyle()
 
@@ -7872,22 +7289,20 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationStyle(OH_ArkUI_
 
 设置装饰线的样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
-| ArkUI_TextDecorationStyle style | 装饰线的样式[ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle) style | 装饰线的样式[ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_DecorationStyleOptions_GetTextDecorationStyle()
 
@@ -7899,22 +7314,20 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationStyle(OH_ArkUI_
 
 获取装饰线的样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
-| ArkUI_TextDecorationStyle* style | 装饰线的样式[ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)* style | 装饰线的样式[ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_DecorationStyleOptions_SetThicknessScale()
 
@@ -7926,22 +7339,20 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetThicknessScale(OH_ArkUI_Decor
 
 设置装饰线的粗细缩放比例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
 | float thicknessScale | 装饰线的粗细缩放比例。取值范围为[0, +∞)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_DecorationStyleOptions_GetThicknessScale()
 
@@ -7953,22 +7364,20 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetThicknessScale(OH_ArkUI_Decor
 
 获取装饰线的粗细缩放比例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
 | float* thicknessScale | 装饰线的粗细缩放比例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_SetTypes()
 
@@ -7980,23 +7389,21 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetTypes(OH_ArkUI_TextDataDetect
 
 设置文本实体识别配置的类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextDataDetectorConfig* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
-| const ArkUI_TextDataDetectorType* types | 文本实体识别配置的类型，取值为[ArkUI_TextDataDetectorType](capi-text-h.md#arkui_textdatadetectortype)枚举。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [const ArkUI_TextDataDetectorType](capi-text-h.md#arkui_textdatadetectortype)* types | 文本实体识别配置的类型，取值为[ArkUI_TextDataDetectorType](capi-text-h.md#arkui_textdatadetectortype)枚举。 |
 | int32_t length | 类型的数量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_GetTypes()
 
@@ -8008,16 +7415,14 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetTypes(OH_ArkUI_TextDataDetect
 
 获取文本实体识别配置的类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextDataDetectorConfig* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
-| ArkUI_TextDataDetectorType* buffer | 指向类型数组的缓冲区指针。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [ArkUI_TextDataDetectorType](capi-text-h.md#arkui_textdatadetectortype)* buffer | 指向类型数组的缓冲区指针。 |
 | int32_t bufferSize | 开发者为类型预留的缓冲区最多可以写入的类型的数量。 |
 | int32_t* writeLength | 实际写入缓冲区的类型的数量。 |
 
@@ -8025,7 +7430,7 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetTypes(OH_ArkUI_TextDataDetect
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若bufferSize小于writeLength，返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。<br>若bufferSize小于writeLength，返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback()
 
@@ -8037,23 +7442,21 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCall
 
 设置文本实体识别结果更新回调。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| H_ArkUI_TextDataDetectorConfig\* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
-| void\* userData | 用户数据。 |
-| void (\*callback)(const char\* result | detect result update callback. |
+| H_ArkUI_TextDataDetectorConfig* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| void* userData | 用户数据。 |
+| void (*callback)(const char* result | detect result update callback. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_SetColor()
 
@@ -8065,22 +7468,20 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetColor(OH_ArkUI_TextDataDetect
 
 设置识别内容的颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextDataDetectorConfig* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
 | uint32_t color | 识别内容的颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_GetColor()
 
@@ -8092,22 +7493,20 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetColor(OH_ArkUI_TextDataDetect
 
 获取识别内容的颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextDataDetectorConfig* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
 | uint32_t* color | 识别内容的颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_SetDecorationStyleOptions()
 
@@ -8119,22 +7518,20 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetDecorationStyleOptions(OH_Ark
 
 设置识别内容的装饰样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextDataDetectorConfig* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
-| OH_ArkUI_DecorationStyleOptions* decoration | 识别内容的装饰样式，取值为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)中的枚举。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | 识别内容的装饰样式，取值为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_GetDecorationStyleOptions()
 
@@ -8146,22 +7543,20 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetDecorationStyleOptions(OH_Ark
 
 获取识别内容的装饰样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextDataDetectorConfig* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
-| OH_ArkUI_DecorationStyleOptions* decoration | 识别内容的装饰样式，取值为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)中的枚举。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | 识别内容的装饰样式，取值为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_SetEnablePreviewMenu()
 
@@ -8173,22 +7568,20 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetEnablePreviewMenu(OH_ArkUI_Te
 
 设置长按识别内容时是否显示预览菜单。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextDataDetectorConfig* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
 | bool enablePreviewMenu | 长按识别内容时是否显示预览菜单。true表示启用预览菜单，false表示不启用预览菜单。默认值为false。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_GetEnablePreviewMenu()
 
@@ -8200,22 +7593,20 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetEnablePreviewMenu(OH_ArkUI_Te
 
 获取长按识别内容时是否显示预览菜单。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextDataDetectorConfig* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
 | bool* enablePreviewMenu | 长按识别内容时是否显示预览菜单。true表示显示预览菜单，false表示不显示预览菜单。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextController_SetStyledString()
 
@@ -8227,22 +7618,20 @@ ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController*
 
 Set the StyledString of the text.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextController* controller | the controller of the text. |
-| ArkUI_StyledString_Descriptor* descriptor | Pointer to an <b>ArkUI_StyledString_Descriptor</b> object, which will be set to Text. |
+| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)* controller | the controller of the text. |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | Pointer to an <b>ArkUI_StyledString_Descriptor</b> object, which will be set to Text. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_SetValue()
 
@@ -8254,22 +7643,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetValue(OH_ArkUI_TextEdit
 
 设置无输入时的提示文本选项的提示文字。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | const char* value | 提示文字。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_GetValue()
 
@@ -8281,15 +7668,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetValue(OH_ArkUI_TextEdit
 
 获取无输入时的提示文本选项的提示文字。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | char* buffer | 提示文字写入内存的缓冲区，内存空间需由开发者分配。 |
 | int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
 | int32_t* writeLength | 实际表示写入缓冲区的字符的数量。 |
@@ -8298,7 +7683,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetValue(OH_ArkUI_TextEdit
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若节点、缓冲区或writeLength为空，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若bufferSize小于writeLength，返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 错误码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若节点、缓冲区或writeLength为空，返回ARKUI_ERROR_CODE_PARAM_INVALID。<br>若bufferSize小于writeLength，返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_SetFontSize()
 
@@ -8310,22 +7695,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontSize(OH_ArkUI_TextE
 
 设置无输入时的提示文本选项的字体大小。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | float fontSize | 字体大小，单位为fp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_GetFontSize()
 
@@ -8337,22 +7720,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontSize(OH_ArkUI_TextE
 
 获取无输入时的提示文本选项的字体大小。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | float* fontSize | 字体大小，单位为fp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_SetFontWeight()
 
@@ -8364,22 +7745,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontWeight(OH_ArkUI_Tex
 
 设置无输入时的提示文本选项的字体粗细。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | uint32_t fontWeight | 字体粗细。取值范围为[100, 900]中的整百数值，例如100、900。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_GetFontWeight()
 
@@ -8391,22 +7770,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontWeight(OH_ArkUI_Tex
 
 获取无输入时的提示文本选项的字体粗细。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | uint32_t* fontWeight | 字体粗细。取值范围为[100, 900]中的整百数值，例如100、900。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_SetFontFamily()
 
@@ -8418,22 +7795,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontFamily(OH_ArkUI_Tex
 
 设置无输入时的提示文本选项的字体家族。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | const char* fontFamily | 字体家族。存放待设置的字体名称，不同字体名称通过逗号拼接。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_GetFontFamily()
 
@@ -8445,15 +7820,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontFamily(OH_ArkUI_Tex
 
 获取无输入时的提示文本选项的字体家族。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | char* buffer | 字体家族写入内存的缓冲区，内存空间需由开发者分配。 |
 | int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
 | int32_t* writeLength | 实际写入缓冲区的字符的数量。 |
@@ -8462,7 +7835,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontFamily(OH_ArkUI_Tex
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若节点、缓冲区或writeLength为空，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若bufferSize小于writeLength，返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 错误码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若节点、缓冲区或writeLength为空，返回ARKUI_ERROR_CODE_PARAM_INVALID。<br>若bufferSize小于writeLength，返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_SetFontStyle()
 
@@ -8474,22 +7847,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontStyle(OH_ArkUI_Text
 
 设置无输入时的提示文本选项的字体样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
-| ArkUI_FontStyle fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)中的枚举。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle) fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_GetFontStyle()
 
@@ -8501,22 +7872,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontStyle(OH_ArkUI_Text
 
 获取无输入时的提示文本选项的字体样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
-| ArkUI_FontStyle* fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)中的枚举。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)* fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_SetFontColor()
 
@@ -8528,22 +7897,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontColor(OH_ArkUI_Text
 
 设置无输入时的提示文本选项的字体颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | uint32_t fontColor | 字体颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_GetFontColor()
 
@@ -8555,22 +7922,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontColor(OH_ArkUI_Text
 
 获取无输入时的提示文本选项的字体颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorPlaceholderOptions* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | 指向[OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)对象的指针。 |
 | uint32_t* fontColor | 字体颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_SetCaretOffset()
 
@@ -8582,22 +7947,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetCaretOffset(OH_ArkU
 
 通过属性字符串控制器设置光标偏移量。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 | int32_t caretOffset | 索引位置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_GetCaretOffset()
 
@@ -8609,22 +7972,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetCaretOffset(OH_ArkU
 
 通过属性字符串控制器获取光标索引位置。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 | int32_t* caretOffset | 索引位置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_SetSelection()
 
@@ -8636,15 +7997,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetSelection(OH_ArkUI_
 
 通过属性字符串控制器设置选中区域。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 | uint32_t start | 选中区域的起始位置。 |
 | uint32_t end | 选中区域的结束位置。 |
 | [ArkUI_MenuPolicy](capi-native-type-h.md#arkui_menupolicy) menuPolicy | 选区内菜单弹出的策略。取值为[ArkUI_MenuPolicy](capi-native-type-h.md#arkui_menupolicy)中的枚举。 |
@@ -8653,7 +8012,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetSelection(OH_ArkUI_
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_IsEditing()
 
@@ -8665,22 +8024,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_IsEditing(OH_ArkUI_Tex
 
 通过属性字符串控制器获取文本编辑器的编辑状态。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 | bool* isEditing | 编辑状态。true表示是编辑态，false表示不是编辑态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_StopEditing()
 
@@ -8692,21 +8049,19 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_StopEditing(OH_ArkUI_T
 
 通过属性字符串控制器退出文本编辑器的编辑状态。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_GetPreviewText()
 
@@ -8718,15 +8073,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetPreviewText(OH_ArkU
 
 通过属性字符串控制器获取预上屏文本内容。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 | uint32_t* offset | 预上屏文本位置。 |
 | char* buffer | 预上屏文本内容写入内存的缓冲区，内存空间需由开发者分配。 |
 | int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
@@ -8736,7 +8089,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetPreviewText(OH_ArkU
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_GetCaretRect()
 
@@ -8748,22 +8101,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetCaretRect(OH_ArkUI_
 
 通过属性字符串控制器获取光标矩形区域。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
-| ArkUI_Rect* rect | 光标区域信息。取值为[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)中的枚举。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* rect | 光标区域信息。取值为[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_DeleteBackward()
 
@@ -8775,21 +8126,19 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_DeleteBackward(OH_ArkU
 
 通过属性字符串控制器删除字符。没有内容被选中时，删除当前光标位置前的1个字符。有内容被选中时，删除选中内容。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_SetTextAlign()
 
@@ -8801,22 +8150,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextAlign(OH_ArkUI_TextEdit
 
 设置段落样式中的文本对齐方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| ArkUI_TextAlignment align | 文本对齐方式。取值为[ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment) align | 文本对齐方式。取值为[ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_GetTextAlign()
 
@@ -8828,22 +8175,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextAlign(OH_ArkUI_TextEdit
 
 获取段落样式中的文本对齐方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| ArkUI_TextAlignment* align | 文本对齐方式。取值为[ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment)* align | 文本对齐方式。取值为[ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginPixelMap()
 
@@ -8855,22 +8200,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginPixelMap(OH_Ar
 
 设置段落样式中段落缩进的像素图。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| struct OH_PixelmapNative* pixelmap | 段落缩进的像素图。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [struct OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md)* pixelmap | 段落缩进的像素图。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginPixelMap()
 
@@ -8882,22 +8225,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginPixelMap(OH_Ar
 
 获取段落样式中段落缩进的像素图。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| struct OH_PixelmapNative** pixelmap | 段落缩进的像素图。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [struct OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md)** pixelmap | 段落缩进的像素图。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginWidth()
 
@@ -8909,22 +8250,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginWidth(OH_ArkUI
 
 设置段落样式中段落缩进的宽度。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
 | uint32_t width | 段落缩进的宽度，单位为vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginWidth()
 
@@ -8936,22 +8275,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginWidth(OH_ArkUI
 
 获取段落样式中段落缩进的宽度。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
 | uint32_t* width | 段落缩进的宽度，单位为vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginHeight()
 
@@ -8963,22 +8300,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginHeight(OH_ArkU
 
 设置段落样式中段落缩进的高度。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
 | uint32_t height | 段落缩进的高度，单位为vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginHeight()
 
@@ -8990,22 +8325,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginHeight(OH_ArkU
 
 获取段落样式中段落缩进的高度。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
 | uint32_t* height | 段落缩进的高度，单位为vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_SetWordBreak()
 
@@ -9017,22 +8350,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetWordBreak(OH_ArkUI_TextEdit
 
 设置段落样式的断字方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| ArkUI_WordBreak wordBreak | 断字方式。取值为[ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak) wordBreak | 断字方式。取值为[ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_GetWordBreak()
 
@@ -9044,22 +8375,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetWordBreak(OH_ArkUI_TextEdit
 
 获取段落样式的断字方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| ArkUI_WordBreak* wordBreak | 断字方式。取值为[ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak)* wordBreak | 断字方式。取值为[ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_SetLineBreakStrategy()
 
@@ -9071,22 +8400,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLineBreakStrategy(OH_ArkUI_
 
 设置段落样式的换行策略。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| OH_ArkUI_LineBreakStrategy lineBreakStrategy | 换行策略。取值为[OH_ArkUI_LineBreakStrategy](capi-text-common-h.md#oh_arkui_linebreakstrategy)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_LineBreakStrategy](capi-text-common-h.md#oh_arkui_linebreakstrategy) lineBreakStrategy | 换行策略。取值为[OH_ArkUI_LineBreakStrategy](capi-text-common-h.md#oh_arkui_linebreakstrategy)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_GetLineBreakStrategy()
 
@@ -9098,22 +8425,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLineBreakStrategy(OH_ArkUI_
 
 获取段落样式的换行策略。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| OH_ArkUI_LineBreakStrategy* lineBreakStrategy | 换行策略。取值为[OH_ArkUI_LineBreakStrategy](capi-text-common-h.md#oh_arkui_linebreakstrategy)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_LineBreakStrategy](capi-text-common-h.md#oh_arkui_linebreakstrategy)* lineBreakStrategy | 换行策略。取值为[OH_ArkUI_LineBreakStrategy](capi-text-common-h.md#oh_arkui_linebreakstrategy)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_SetParagraphSpacing()
 
@@ -9125,22 +8450,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetParagraphSpacing(OH_ArkUI_T
 
 设置段落样式的段落间距。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
 | uint32_t paragraphSpacing | 段落间距，单位为vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_GetParagraphSpacing()
 
@@ -9152,22 +8475,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetParagraphSpacing(OH_ArkUI_T
 
 获取段落样式的段落间距。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
 | uint32_t* paragraphSpacing | 段落间距，单位为vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_SetTextVerticalAlign()
 
@@ -9179,22 +8500,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextVerticalAlign(OH_ArkUI_
 
 设置段落样式的文本垂直对齐方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| ArkUI_TextVerticalAlignment verticalAlignment | 文本垂直对齐方式。取值为[ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment) verticalAlignment | 文本垂直对齐方式。取值为[ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_GetTextVerticalAlign()
 
@@ -9206,22 +8525,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextVerticalAlign(OH_ArkUI_
 
 获取段落样式的文本垂直对齐方式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| ArkUI_TextVerticalAlignment* verticalAlignment | 文本垂直对齐方式。取值为[ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment)* verticalAlignment | 文本垂直对齐方式。取值为[ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_SetTextDirection()
 
@@ -9233,22 +8550,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextDirection(OH_ArkUI_Text
 
 设置段落样式的文本方向。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| ArkUI_TextDirection textDirection | 文本方向。取值为[ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection) textDirection | 文本方向。取值为[ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorParagraphStyle_GetTextDirection()
 
@@ -9260,22 +8575,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextDirection(OH_ArkUI_Text
 
 获取段落样式的文本方向。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorParagraphStyle* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| ArkUI_TextDirection* textDirection | 文本方向。取值为[ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)中的枚举。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
+| [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)* textDirection | 文本方向。取值为[ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_SetTypingParagraphStyle()
 
@@ -9287,22 +8600,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingParagraphStyl
 
 通过属性字符串控制器设置预设段落样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
-| OH_ArkUI_TextEditorParagraphStyle* style | 预设段落样式。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 预设段落样式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_Create()
 
@@ -9313,8 +8624,6 @@ OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()
 **描述：**
 
 创建一个阴影选项对象。当该对象不再使用时，请调用[OH_ArkUI_ShadowOptions_Destroy](capi-native-type-h.md#oh_arkui_shadowoptions_destroy)销毁。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9334,8 +8643,6 @@ void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)
 
 销毁阴影选项对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -9354,8 +8661,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options
 
 设置阴影选项的模糊半径。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -9369,7 +8674,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_GetRadius()
 
@@ -9380,8 +8685,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options
 **描述：**
 
 获取阴影选项的模糊半径。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9396,7 +8699,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_SetType()
 
@@ -9407,8 +8710,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, 
 **描述：**
 
 设置阴影选项的阴影类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9423,7 +8724,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_GetType()
 
@@ -9434,8 +8735,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, 
 **描述：**
 
 获取阴影选项的阴影类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9450,7 +8749,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_SetColor()
 
@@ -9461,8 +8760,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options,
 **描述：**
 
 设置阴影选项的阴影颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9477,7 +8774,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options,
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_GetColor()
 
@@ -9488,8 +8785,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options,
 **描述：**
 
 获取阴影选项的阴影颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9504,7 +8799,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options,
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_SetOffsetX()
 
@@ -9515,8 +8810,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* option
 **描述：**
 
 设置阴影在x轴上的偏移量。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9531,7 +8824,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_GetOffsetX()
 
@@ -9542,8 +8835,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* option
 **描述：**
 
 获取阴影在x轴上的偏移量。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9558,7 +8849,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_SetOffsetY()
 
@@ -9569,8 +8860,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* option
 **描述：**
 
 设置阴影在y轴上的偏移量。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9585,7 +8874,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_GetOffsetY()
 
@@ -9596,8 +8885,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* option
 **描述：**
 
 获取阴影在y轴上的偏移量。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9612,7 +8899,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_SetFill()
 
@@ -9623,8 +8910,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, 
 **描述：**
 
 设置是否用阴影填充组件内部。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9639,7 +8924,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_ShadowOptions_GetFill()
 
@@ -9650,8 +8935,6 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, 
 **描述：**
 
 获取是否用阴影填充组件内部。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -9666,7 +8949,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetFontColor()
 
@@ -9678,22 +8961,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontColor(OH_ArkUI_TextEditorTex
 
 设置文本样式的字体颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | uint32_t color | 字体颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetFontColor()
 
@@ -9705,22 +8986,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontColor(OH_ArkUI_TextEditorTex
 
 获取文本样式的字体颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | uint32_t* color | 字体颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetFontSize()
 
@@ -9732,22 +9011,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontSize(OH_ArkUI_TextEditorText
 
 设置文本样式的字体大小。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | float size | 字体大小，单位为fp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetFontSize()
 
@@ -9759,22 +9036,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontSize(OH_ArkUI_TextEditorText
 
 获取文本样式的字体大小。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | float* size | 字体大小，单位为fp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetFontStyle()
 
@@ -9786,22 +9061,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontStyle(OH_ArkUI_TextEditorTex
 
 设置文本样式的字体样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
-| ArkUI_FontStyle fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)中的枚举。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle) fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetFontStyle()
 
@@ -9813,22 +9086,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontStyle(OH_ArkUI_TextEditorTex
 
 获取文本样式的字体样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
-| ArkUI_FontStyle* fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)中的枚举。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)* fontStyle | 字体样式。取值为[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetFontWeight()
 
@@ -9840,22 +9111,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontWeight(OH_ArkUI_TextEditorTe
 
 设置文本样式的字体粗细。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | uint32_t fontWeight | 字体粗细。取值范围为[100, 900]中的整百数值，例如100、900。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetFontWeight()
 
@@ -9867,22 +9136,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontWeight(OH_ArkUI_TextEditorTe
 
 获取文本样式的字体粗细。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | uint32_t* fontWeight | 字体粗细。取值范围为[100, 900]中的整百数值，例如100、900。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetFontFamily()
 
@@ -9894,22 +9161,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontFamily(OH_ArkUI_TextEditorTe
 
 设置文本样式的字体家族。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | const char* fontFamily | 字体家族。存放待设置的字体名称，不同字体名称通过逗号拼接。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetFontFamily()
 
@@ -9921,15 +9186,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFamily(OH_ArkUI_TextEditorTe
 
 获取文本样式的字体家族。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | char* buffer | 字体家族内容写入内存的缓冲区，内存空间需由开发者分配。 |
 | int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
 | int32_t* writeLength | 实际写入缓冲区的字符的数量。 |
@@ -9938,7 +9201,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFamily(OH_ArkUI_TextEditorTe
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetDecoration()
 
@@ -9950,22 +9213,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetDecoration(OH_ArkUI_TextEditorTe
 
 设置文本样式的文本装饰选项。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetDecoration()
 
@@ -9977,22 +9238,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetDecoration(OH_ArkUI_TextEditorTe
 
 获取文本样式的文本装饰选项。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
-| OH_ArkUI_DecorationStyleOptions* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | 指向[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetTextShadows()
 
@@ -10004,15 +9263,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextShadows(OH_ArkUI_TextEditorT
 
 设置文本样式的文本阴影选项。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | [const OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)** options | 文本阴影选项。 |
 | int32_t length | 文本阴影选项的长度。 |
 
@@ -10020,7 +9277,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextShadows(OH_ArkUI_TextEditorT
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetTextShadows()
 
@@ -10032,15 +9289,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextShadows(OH_ArkUI_TextEditorT
 
 获取文本样式的文本阴影选项。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)** shadowOptions | 文本阴影选项。 |
 | uint32_t shadowOptionsSize | 阴影选项的缓冲区大小。 |
 | uint32_t* writeLength | 文本样式中实际的文本阴影选项数量。 |
@@ -10049,7 +9304,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextShadows(OH_ArkUI_TextEditorT
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetLineHeight()
 
@@ -10061,22 +9316,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetLineHeight(OH_ArkUI_TextEditorTe
 
 设置文本样式的文本行高。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | int32_t lineHeight | 文本行高。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetLineHeight()
 
@@ -10088,22 +9341,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetLineHeight(OH_ArkUI_TextEditorTe
 
 获取文本样式的文本行高。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | int32_t* lineHeight | 文本行高。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetLetterSpacing()
 
@@ -10115,22 +9366,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetLetterSpacing(OH_ArkUI_TextEdito
 
 设置文本样式的字符间距。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | int32_t letterSpacing | 字符间距。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetLetterSpacing()
 
@@ -10142,22 +9391,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetLetterSpacing(OH_ArkUI_TextEdito
 
 获取文本样式的字符间距。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | int32_t* letterSpacing | 字符间距。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetFontFeature()
 
@@ -10169,22 +9416,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontFeature(OH_ArkUI_TextEditorT
 
 设置文本样式的文字特性效果，比如数字等宽的特性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | const char* fontFeature | 字体特性。存放待设置的字体特性，多个特性通过逗号拼接。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetFontFeature()
 
@@ -10196,15 +9441,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFeature(OH_ArkUI_TextEditorT
 
 获取文本样式的文字特性效果，比如数字等宽的特性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | char* buffer | 字体特性内容写入内存的缓冲区，内存空间需由开发者分配。 |
 | int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
 | int32_t* writeLength | 实际表示写入缓冲区的字符的数量。 |
@@ -10213,7 +9456,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFeature(OH_ArkUI_TextEditorT
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetHalfLeading()
 
@@ -10225,22 +9468,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetHalfLeading(OH_ArkUI_TextEditorT
 
 设置文本样式中文本是否将行间距平分至行的顶部与底部。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | bool halfLeading | 文本是否将行间距平分至行的顶部与底部。 <br>true表示将行间距平分至行的顶部与底部，false表示不将行间距平分至行的顶部与底部。默认值为false。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetHalfLeading()
 
@@ -10252,22 +9493,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetHalfLeading(OH_ArkUI_TextEditorT
 
 获取文本样式中文本是否将行间距平分至行的顶部与底部。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | bool* halfLeading | 文本是否将行间距平分至行的顶部与底部。 <br>true表示将行间距平分至行的顶部与底部，false表示不将行间距平分至行的顶部与底部。默认值为false。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetTextBackgroundColor()
 
@@ -10279,22 +9518,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundColor(OH_ArkUI_Tex
 
 设置文本样式中的文本背景颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | uint32_t color | 文本背景颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetTextBackgroundColor()
 
@@ -10306,22 +9543,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundColor(OH_ArkUI_Tex
 
 获取文本样式中的文本背景颜色。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | uint32_t* color | 文本背景颜色，0xARGB格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_SetTextBackgroundRadius()
 
@@ -10333,15 +9568,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundRadius(OH_ArkUI_Te
 
 设置文本样式中文本背景的圆角半径。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | float topLeft | 文本背景左上角的圆角半径。单位为vp。 |
 | float topRight | 文本背景右上角的圆角半径。单位为vp。 |
 | float bottomLeft | 文本背景左下角的圆角半径。单位为vp。 |
@@ -10351,7 +9584,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundRadius(OH_ArkUI_Te
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius()
 
@@ -10363,15 +9596,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius(OH_ArkUI_Te
 
 获取文本样式中文本背景的圆角半径。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorTextStyle* style | TextEditor组件文本样式。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | TextEditor组件文本样式。 |
 | float* topLeft | 文本背景左上角的圆角半径。单位为vp。 |
 | float* topRight | 文本背景右上角的圆角半径。单位为vp。 |
 | float* bottomLeft | 文本背景左下角的圆角半径。单位为vp。 |
@@ -10381,7 +9612,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius(OH_ArkUI_Te
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_SetTypingStyle()
 
@@ -10393,22 +9624,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingStyle(OH_ArkU
 
 通过属性字符串控制器设置预设输入样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
-| OH_ArkUI_TextEditorTextStyle* style | 预设输入样式。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | 预设输入样式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_GetTypingStyle()
 
@@ -10420,22 +9649,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetTypingStyle(OH_ArkU
 
 通过属性字符串控制器获取预设输入样式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
-| OH_ArkUI_TextEditorTextStyle* style | 预设输入样式。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | 预设输入样式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_SetSpanType()
 
@@ -10447,22 +9674,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetSpanType(OH_ArkUI_Tex
 
 设置文本编辑器中文本选择菜单的span的类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| OH_ArkUI_TextEditorSpanType textEditorSpanType | span的类型。取值为[OH_ArkUI_TextEditorSpanType](capi-rich-editor-h.md#oh_arkui_texteditorspantype)中的枚举。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorSpanType](capi-rich-editor-h.md#oh_arkui_texteditorspantype) textEditorSpanType | span的类型。取值为[OH_ArkUI_TextEditorSpanType](capi-rich-editor-h.md#oh_arkui_texteditorspantype)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_GetSpanType()
 
@@ -10474,22 +9699,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetSpanType(OH_ArkUI_Tex
 
 获取文本编辑器中文本选择菜单的span的类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| OH_ArkUI_TextEditorSpanType* textEditorSpanType | span的类型。取值为[OH_ArkUI_TextEditorSpanType](capi-rich-editor-h.md#oh_arkui_texteditorspantype)中的枚举。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorSpanType](capi-rich-editor-h.md#oh_arkui_texteditorspantype)* textEditorSpanType | span的类型。取值为[OH_ArkUI_TextEditorSpanType](capi-rich-editor-h.md#oh_arkui_texteditorspantype)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_SetContentNode()
 
@@ -10501,22 +9724,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetContentNode(OH_ArkUI_
 
 设置文本编辑器中文本选择菜单的内容节点。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| ArkUI_NodeHandle node | 内容节点。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 内容节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_GetContentNode()
 
@@ -10528,22 +9749,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetContentNode(OH_ArkUI_
 
 获取文本编辑器中文本选择菜单的内容节点。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| ArkUI_NodeHandle* node | 内容节点。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | 内容节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_SetResponseType()
 
@@ -10555,22 +9774,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetResponseType(OH_ArkUI
 
 设置文本编辑器中文本选择菜单的响应类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| OH_ArkUI_TextEditorResponseType responseType | 响应类型。取值为[OH_ArkUI_TextEditorResponseType](capi-rich-editor-h.md#oh_arkui_texteditorresponsetype)中的枚举。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorResponseType](capi-rich-editor-h.md#oh_arkui_texteditorresponsetype) responseType | 响应类型。取值为[OH_ArkUI_TextEditorResponseType](capi-rich-editor-h.md#oh_arkui_texteditorresponsetype)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_GetResponseType()
 
@@ -10582,22 +9799,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetResponseType(OH_ArkUI
 
 获取文本编辑器中文本选择菜单的响应类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| OH_ArkUI_TextEditorResponseType* responseType | 响应类型。取值为[OH_ArkUI_TextEditorResponseType](capi-rich-editor-h.md#oh_arkui_texteditorresponsetype)中的枚举。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextEditorResponseType](capi-rich-editor-h.md#oh_arkui_texteditorresponsetype)* responseType | 响应类型。取值为[OH_ArkUI_TextEditorResponseType](capi-rich-editor-h.md#oh_arkui_texteditorresponsetype)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_SetMenuType()
 
@@ -10609,22 +9824,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetMenuType(OH_ArkUI_Tex
 
 设置文本编辑器中文本选择菜单的类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| OH_ArkUI_TextMenuType menuType | 菜单类型。取值为[OH_ArkUI_TextMenuType](capi-rich-editor-h.md#oh_arkui_textmenutype)中的枚举。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextMenuType](capi-rich-editor-h.md#oh_arkui_textmenutype) menuType | 菜单类型。取值为[OH_ArkUI_TextMenuType](capi-rich-editor-h.md#oh_arkui_textmenutype)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_GetMenuType()
 
@@ -10636,22 +9849,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetMenuType(OH_ArkUI_Tex
 
 获取文本编辑器中文本选择菜单的类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| OH_ArkUI_TextMenuType* menuType | 菜单类型。取值为[OH_ArkUI_TextMenuType](capi-rich-editor-h.md#oh_arkui_textmenutype)中的枚举。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_TextMenuType](capi-rich-editor-h.md#oh_arkui_textmenutype)* menuType | 菜单类型。取值为[OH_ArkUI_TextMenuType](capi-rich-editor-h.md#oh_arkui_textmenutype)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuShowCallback()
 
@@ -10663,23 +9874,21 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuShowCallba
 
 设置文本选择菜单显示时触发的事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| H_ArkUI_TextEditorSelectionMenuOptions\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| void\* userData | 用户数据。 |
-| void (\*callback)(int32_t start | 菜单显示时的回调函数。 start 选中内容的起始偏移量。 end 选中内容的结束偏移量。 callbackUserData 用户数据。 |
+| H_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| void* userData | 用户数据。 |
+| void (*callback)(int32_t start | 菜单显示时的回调函数。 start 选中内容的起始偏移量。 end 选中内容的结束偏移量。 callbackUserData 用户数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuHideCallback()
 
@@ -10691,23 +9900,21 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuHideCallba
 
 设置文本选择菜单隐藏时触发的事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| H_ArkUI_TextEditorSelectionMenuOptions\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| void\* userData | 用户数据。 |
-| void (\*callback)(int32_t start | 菜单隐藏时的回调函数。 start 选中内容的起始偏移量。 end 选中内容的结束偏移量。 userData 用户数据。 |
+| H_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| void* userData | 用户数据。 |
+| void (*callback)(int32_t start | 菜单隐藏时的回调函数。 start 选中内容的起始偏移量。 end 选中内容的结束偏移量。 userData 用户数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuAppearCallback()
 
@@ -10719,23 +9926,21 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuAppearCall
 
 设置文本选择菜单出现时触发的事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| H_ArkUI_TextEditorSelectionMenuOptions\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| void\* userData | 用户数据。 |
-| void (\*callback)(int32_t start | 菜单出现时的回调函数。 start 选中内容的起始偏移量。 end 选中内容的结束偏移量。 userData 用户数据。 |
+| H_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| void* userData | 用户数据。 |
+| void (*callback)(int32_t start | 菜单出现时的回调函数。 start 选中内容的起始偏移量。 end 选中内容的结束偏移量。 userData 用户数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuDisappearCallback()
 
@@ -10747,23 +9952,21 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuDisappearC
 
 设置文本选择菜单消失时触发的事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| H_ArkUI_TextEditorSelectionMenuOptions\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| void\* userData | 用户数据。 |
-| void (\*callback)(void\* callbackUserData) | 菜单消失时的回调函数。 userData 用户数据。 |
+| H_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| void* userData | 用户数据。 |
+| void (*callback)(void* callbackUserData) | 菜单消失时的回调函数。 userData 用户数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_SetHapticFeedbackMode()
 
@@ -10775,22 +9978,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetHapticFeedbackMode(OH
 
 设置文本编辑器中文本选择菜单的触觉反馈模式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| OH_ArkUI_HapticFeedbackMode mode | 触觉反馈模式。取值为[OH_ArkUI_HapticFeedbackMode](capi-rich-editor-h.md#oh_arkui_hapticfeedbackmode)中的枚举。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_HapticFeedbackMode](capi-rich-editor-h.md#oh_arkui_hapticfeedbackmode) mode | 触觉反馈模式。取值为[OH_ArkUI_HapticFeedbackMode](capi-rich-editor-h.md#oh_arkui_hapticfeedbackmode)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorSelectionMenuOptions_GetHapticFeedbackMode()
 
@@ -10802,22 +10003,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetHapticFeedbackMode(OH
 
 获取文本编辑器中文本选择菜单的触觉反馈模式。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorSelectionMenuOptions* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| OH_ArkUI_HapticFeedbackMode* mode | 触觉反馈模式。取值为[OH_ArkUI_HapticFeedbackMode](capi-rich-editor-h.md#oh_arkui_hapticfeedbackmode)中的枚举。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
+| [OH_ArkUI_HapticFeedbackMode](capi-rich-editor-h.md#oh_arkui_hapticfeedbackmode)* mode | 触觉反馈模式。取值为[OH_ArkUI_HapticFeedbackMode](capi-rich-editor-h.md#oh_arkui_hapticfeedbackmode)中的枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu()
 
@@ -10829,21 +10028,19 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu(OH_
 
 关闭文本编辑器属性字符串控制器的文本选择菜单。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_GetSelection()
 
@@ -10859,15 +10056,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetSelection(const OH_
 >
 > 所有输入指针参数必须由调用者分配、管理和释放。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [const OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 | uint32_t* start | 选中区域的起始位置。 |
 | uint32_t* end | 选中区域的结束位置。 |
 
@@ -10875,7 +10070,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetSelection(const OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_SetStyledString()
 
@@ -10891,22 +10086,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledString(const 
 >
 > 所有输入指针参数必须由调用者分配、管理和释放。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
-| const ArkUI_StyledString_Descriptor* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
+| [const OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [const ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_GetStyledString()
 
@@ -10922,22 +10115,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetStyledString(const 
 >
 > 所有输入指针参数必须由调用者分配、管理和释放。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
-| ArkUI_StyledString_Descriptor* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
+| [const OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder()
 
@@ -10953,22 +10144,20 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder(c
 >
 > 所有输入指针参数必须由调用者分配、管理和释放。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
-| const ArkUI_StyledString_Descriptor* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
+| [const OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [const ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。      <br>若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_TextEditorStyledStringController_ScrollToVisible()
 
@@ -10980,15 +10169,13 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const 
 
 通过属性字符串控制器使指定起始索引至结束索引范围内的内容滚动至可视区域。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_ArkUI_TextEditorStyledStringController* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [const OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 | int32_t start | 起始内容索引值。 起始索引应小于等于结束索引，否则接口调用无效。取值范围[0, TextEditor组件内容总长度]， 起始索引小于0视为0，大于总长度视为总长度。 |
 | int32_t end | 结束内容索引值。 结束索引应大于等于起始索引，否则接口调用无效。取值范围[0, TextEditor组件内容总长度]， 结束索引小于0视为0，大于总长度视为总长度。 |
 
@@ -10996,7 +10183,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。          若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。          若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 ### OH_ArkUI_PickerIndicatorStyle_ConfigureBackground()
 
@@ -11008,22 +10195,20 @@ ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIn
 
 Set the parameters of background style.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_PickerIndicatorStyle* style | The ArkUI_PickerIndicatorStyle instance. |
-| ArkUI_PickerIndicatorBackground* background | The parameters of background style. |
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | The ArkUI_PickerIndicatorStyle instance. |
+| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)* background | The parameters of background style. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if success.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) The parameters set need to be consistent with          the type of the created instance. If they are not consistent, this error code will be returned.          This interface only takes effect when the type is "background". |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns ARKUI_ERROR_CODE_NO_ERROR if success. Returns ARKUI_ERROR_CODE_PARAM_INVALID The parameters set need to be consistent with the type of the created instance. If they are not consistent, this error code will be returned. This interface only takes effect when the type is "background". |
 
 ### OH_ArkUI_PickerIndicatorStyle_ConfigureDivider()
 
@@ -11035,22 +10220,20 @@ ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndic
 
 Set the parameters of divider style.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_PickerIndicatorStyle* style | The ArkUI_PickerIndicatorStyle instance. |
-| ArkUI_PickerIndicatorDivider* divider | The parameters of divider style. |
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | The ArkUI_PickerIndicatorStyle instance. |
+| [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)* divider | The parameters of divider style. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if success.         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) The parameters set need to be consistent with         the type of the created instance. If they are not consistent, this error code will be returned.         This interface only takes effect when the type is "divider". |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns ARKUI_ERROR_CODE_NO_ERROR if success. Returns ARKUI_ERROR_CODE_PARAM_INVALID The parameters set need to be consistent with the type of the created instance. If they are not consistent, this error code will be returned. This interface only takes effect when the type is "divider". |
 
 ### OH_ArkUI_Matrix4ScaleOptions_Create()
 
@@ -11061,8 +10244,6 @@ ArkUI_Matrix4ScaleOptions* OH_ArkUI_Matrix4ScaleOptions_Create()
 **描述：**
 
 Create an object of ArkUI_Matrix4ScaleOptions. In the newly created options, the default values for the scaling coefficients in the x, y and z directions are 1, and the default values for centerX, centerY are 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11082,8 +10263,6 @@ void OH_ArkUI_Matrix4ScaleOptions_Dispose(ArkUI_Matrix4ScaleOptions* options)
 
 Disposes the ArkUI_Matrix4ScaleOptions object.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -11102,8 +10281,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetX(ArkUI_Matrix4ScaleOptions* opt
 
 Set the scaling factor in the x direction in ArkUI_Matrix4ScaleOptions.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -11117,7 +10294,7 @@ Set the scaling factor in the x direction in ArkUI_Matrix4ScaleOptions.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetX()
 
@@ -11128,8 +10305,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetX(const ArkUI_Matrix4ScaleOption
 **描述：**
 
 Get the scaling factor in the x direction in ArkUI_Matrix4ScaleOptions. If the value of x is never set, its default value is 1.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11144,7 +10319,7 @@ Get the scaling factor in the x direction in ArkUI_Matrix4ScaleOptions. If the v
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetY()
 
@@ -11155,8 +10330,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetY(ArkUI_Matrix4ScaleOptions* opt
 **描述：**
 
 Set the scaling factor in the y direction in ArkUI_Matrix4ScaleOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11171,7 +10344,7 @@ Set the scaling factor in the y direction in ArkUI_Matrix4ScaleOptions.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetY()
 
@@ -11182,8 +10355,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetY(const ArkUI_Matrix4ScaleOption
 **描述：**
 
 Get the scaling factor in the y direction in ArkUI_Matrix4ScaleOptions. If the value of y is never set, its default value is 1.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11198,7 +10369,7 @@ Get the scaling factor in the y direction in ArkUI_Matrix4ScaleOptions. If the v
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetZ()
 
@@ -11209,8 +10380,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetZ(ArkUI_Matrix4ScaleOptions* opt
 **描述：**
 
 Set the scaling factor in the z direction in ArkUI_Matrix4ScaleOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11225,7 +10394,7 @@ Set the scaling factor in the z direction in ArkUI_Matrix4ScaleOptions.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetZ()
 
@@ -11236,8 +10405,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetZ(const ArkUI_Matrix4ScaleOption
 **描述：**
 
 Get the scaling factor in the z direction in ArkUI_Matrix4ScaleOptions. If the value of z is never set, its default value is 1.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11252,7 +10419,7 @@ Get the scaling factor in the z direction in ArkUI_Matrix4ScaleOptions. If the v
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetCenterX()
 
@@ -11263,8 +10430,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterX(ArkUI_Matrix4ScaleOption
 **描述：**
 
 Set x offset relative to the transformation center. 0 means no additional x-direction offset from the transformation center. The unit is px.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11279,7 +10444,7 @@ Set x offset relative to the transformation center. 0 means no additional x-dire
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetCenterX()
 
@@ -11290,8 +10455,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterX(const ArkUI_Matrix4Scale
 **描述：**
 
 Get the value of centerX from the options, which represents the x-direction offset relative to the transformation center. The unit is px. If the value of centerX is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11306,7 +10469,7 @@ Get the value of centerX from the options, which represents the x-direction offs
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetCenterY()
 
@@ -11317,8 +10480,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterY(ArkUI_Matrix4ScaleOption
 **描述：**
 
 Set y offset relative to the transformation center. 0 means no additional y-direction offset from the transformation center. The unit is px.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11333,7 +10494,7 @@ Set y offset relative to the transformation center. 0 means no additional y-dire
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetCenterY()
 
@@ -11344,8 +10505,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterY(const ArkUI_Matrix4Scale
 **描述：**
 
 Get the value of centerY from the options, which represents the y-direction offset relative to the transformation center. The unit is px. If the value of centerY is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11360,7 +10519,7 @@ Get the value of centerY from the options, which represents the y-direction offs
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_Create()
 
@@ -11371,8 +10530,6 @@ ArkUI_Matrix4RotationOptions* OH_ArkUI_Matrix4RotationOptions_Create()
 **描述：**
 
 Create an object of ArkUI_Matrix4RotationOptions. In the newly created options, the x, y, and z values in the direction vector specifying the rotation axis are undetermined; The default values for centerX, centerY are 0; The default value for angle is 0. If none of x, y, z are specified, it is equivalent to x=0, y=0, z=1, which means rotation around the z-axis. Once any one of x, y, z is specified, the remaining unspecified values are equivalent to 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11392,8 +10549,6 @@ void OH_ArkUI_Matrix4RotationOptions_Dispose(ArkUI_Matrix4RotationOptions* optio
 
 Disposes the ArkUI_Matrix4RotationOptions object.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -11412,8 +10567,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetX(ArkUI_Matrix4RotationOption
 
 Set the value of the direction vector for the x-axis direction in ArkUI_Matrix4RotationOptions.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -11427,7 +10580,7 @@ Set the value of the direction vector for the x-axis direction in ArkUI_Matrix4R
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetX()
 
@@ -11438,8 +10591,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4Rotation
 **描述：**
 
 Get the value of the direction vector for the x-axis direction in ArkUI_Matrix4RotationOptions. If the value of x is never set, its value will be undefined, so the function will return ARKUI_ERROR_CODE_PARAM_INVALID.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11454,7 +10605,7 @@ Get the value of the direction vector for the x-axis direction in ArkUI_Matrix4R
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetY()
 
@@ -11465,8 +10616,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetY(ArkUI_Matrix4RotationOption
 **描述：**
 
 Set the value of the direction vector for the y-axis direction in ArkUI_Matrix4RotationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11481,7 +10630,7 @@ Set the value of the direction vector for the y-axis direction in ArkUI_Matrix4R
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetY()
 
@@ -11492,8 +10641,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4Rotation
 **描述：**
 
 Get the value of the direction vector for the y-axis direction in ArkUI_Matrix4RotationOptions. If the value of y is never set, its value will be undefined, so the function will return ARKUI_ERROR_CODE_PARAM_INVALID.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11508,7 +10655,7 @@ Get the value of the direction vector for the y-axis direction in ArkUI_Matrix4R
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetZ()
 
@@ -11519,8 +10666,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetZ(ArkUI_Matrix4RotationOption
 **描述：**
 
 Set the value of the direction vector for the z-axis direction in ArkUI_Matrix4RotationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11535,7 +10680,7 @@ Set the value of the direction vector for the z-axis direction in ArkUI_Matrix4R
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetZ()
 
@@ -11546,8 +10691,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4Rotation
 **描述：**
 
 Get the value of the direction vector for the z-axis direction in ArkUI_Matrix4RotationOptions. If the value of z is never set, its value will be undefined, so the function will return ARKUI_ERROR_CODE_PARAM_INVALID.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11562,7 +10705,7 @@ Get the value of the direction vector for the z-axis direction in ArkUI_Matrix4R
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetAngle()
 
@@ -11573,8 +10716,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetAngle(ArkUI_Matrix4RotationOp
 **描述：**
 
 Set the value of the rotation angle in ArkUI_Matrix4RotationOptions. The unit is degree.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11589,7 +10730,7 @@ Set the value of the rotation angle in ArkUI_Matrix4RotationOptions. The unit is
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetAngle()
 
@@ -11600,8 +10741,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetAngle(const ArkUI_Matrix4Rota
 **描述：**
 
 Get the value of the rotation angle in ArkUI_Matrix4RotationOptions. The unit is degree. If the value of angle is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11616,7 +10755,7 @@ Get the value of the rotation angle in ArkUI_Matrix4RotationOptions. The unit is
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetCenterX()
 
@@ -11627,8 +10766,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterX(ArkUI_Matrix4Rotation
 **描述：**
 
 Set x offset relative to the transformation center. 0 means no additional x-direction offset from the transformation center. The unit is px.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11643,7 +10780,7 @@ Set x offset relative to the transformation center. 0 means no additional x-dire
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetCenterX()
 
@@ -11654,8 +10791,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterX(const ArkUI_Matrix4Ro
 **描述：**
 
 Get the value of centerX from the options, which represents the x-direction offset relative to the transformation center. The unit is px. If the value of centerX is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11670,7 +10805,7 @@ Get the value of centerX from the options, which represents the x-direction offs
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetCenterY()
 
@@ -11681,8 +10816,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterY(ArkUI_Matrix4Rotation
 **描述：**
 
 Set y offset relative to the transformation center. 0 means no additional y-direction offset from the transformation center. The unit is px.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11697,7 +10830,7 @@ Set y offset relative to the transformation center. 0 means no additional y-dire
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetCenterY()
 
@@ -11708,8 +10841,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4Ro
 **描述：**
 
 Get the value of centerY from the options, which represents the y-direction offset relative to the transformation center. The unit is px. If the value of centerY is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11724,7 +10855,7 @@ Get the value of centerY from the options, which represents the y-direction offs
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4TranslationOptions_Create()
 
@@ -11735,8 +10866,6 @@ ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()
 **描述：**
 
 Create an object of ArkUI_Matrix4TranslationOptions. In the newly created options, the default values for x, y and z are 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11756,8 +10885,6 @@ void OH_ArkUI_Matrix4TranslationOptions_Dispose(ArkUI_Matrix4TranslationOptions*
 
 Disposes the ArkUI_Matrix4TranslationOptions object.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -11776,8 +10903,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4Translation
 
 Set the translation value in the x-axis direction. The unit is px. If the value of x is never set, its default value is 0.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -11791,7 +10916,7 @@ Set the translation value in the x-axis direction. The unit is px. If the value 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4TranslationOptions_GetX()
 
@@ -11802,8 +10927,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4Trans
 **描述：**
 
 Get the translation value in the x-axis direction from ArkUI_Matrix4TranslationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11818,7 +10941,7 @@ Get the translation value in the x-axis direction from ArkUI_Matrix4TranslationO
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4TranslationOptions_SetY()
 
@@ -11829,8 +10952,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4Translation
 **描述：**
 
 Set the translation value in the y-axis direction. The unit is px. If the value of y is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11845,7 +10966,7 @@ Set the translation value in the y-axis direction. The unit is px. If the value 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4TranslationOptions_GetY()
 
@@ -11856,8 +10977,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4Trans
 **描述：**
 
 Get the translation value in the y-axis direction from ArkUI_Matrix4TranslationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11872,7 +10991,7 @@ Get the translation value in the y-axis direction from ArkUI_Matrix4TranslationO
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4TranslationOptions_SetZ()
 
@@ -11883,8 +11002,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4Translation
 **描述：**
 
 Set the translation value in the z-axis direction. The unit is px. If the value of z is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11899,7 +11016,7 @@ Set the translation value in the z-axis direction. The unit is px. If the value 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4TranslationOptions_GetZ()
 
@@ -11910,8 +11027,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4Trans
 **描述：**
 
 Get the translation value in the z-axis direction from ArkUI_Matrix4TranslationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11926,7 +11041,7 @@ Get the translation value in the z-axis direction from ArkUI_Matrix4TranslationO
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4_CreateIdentity()
 
@@ -11937,8 +11052,6 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()
 **描述：**
 
 Create an identity matrix4 object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -11958,8 +11071,6 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)
 
 Specify each element of the matrix to create a matrix4 object.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -11972,7 +11083,7 @@ Specify each element of the matrix to create a matrix4 object.
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_Matrix4*](capi-arkui-nativemodule-arkui-matrix4.md) | Returns the newly created matrix4 object.          If the pointer of elements is null, the function will return null. |
+| [ArkUI_Matrix4*](capi-arkui-nativemodule-arkui-matrix4.md) | Returns the newly created matrix4 object. If the pointer of elements is null, the function will return null. |
 
 ### OH_ArkUI_Matrix4_Dispose()
 
@@ -11983,8 +11094,6 @@ void OH_ArkUI_Matrix4_Dispose(ArkUI_Matrix4* matrix)
 **描述：**
 
 Disposes a matrix4 object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12003,8 +11112,6 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_Copy(const ArkUI_Matrix4* matrix)
 **描述：**
 
 Create a copy of the matrix4 object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12030,8 +11137,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Invert(ArkUI_Matrix4* matrix)
 
 Perform an inverse matrix transformation on the input matrix. If the matrix is invertible, this function will modify the input matrix; otherwise, the matrix will remain unchanged and an error code will be returned.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 24
 
 **参数：**
@@ -12044,7 +11149,7 @@ Perform an inverse matrix transformation on the input matrix. If the matrix is i
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the matrix is not invertible. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the matrix is not invertible. |
 
 ### OH_ArkUI_Matrix4_Combine()
 
@@ -12055,8 +11160,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Combine(ArkUI_Matrix4* oriMatrix, const ArkUI_M
 **描述：**
 
 Combine another matrix with the original matrix, and storing the resulting matrix in oriMatrix. The resulting matrix is equivalent to first applying the transformation of oriMatrix and then applying the transformation of anotherMatrix. This function will alter the oriMatrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12071,7 +11174,7 @@ Combine another matrix with the original matrix, and storing the resulting matri
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4_Translate()
 
@@ -12082,8 +11185,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Translate(ArkUI_Matrix4* matrix, const ArkUI_Ma
 **描述：**
 
 Apply a tranlation transformation to the original matrix to obtain the translated matrix. Each translation transformation is applied cumulatively. This function will alter the input matrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12098,7 +11199,7 @@ Apply a tranlation transformation to the original matrix to obtain the translate
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4_Scale()
 
@@ -12109,8 +11210,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Scale(ArkUI_Matrix4* matrix, const ArkUI_Matrix
 **描述：**
 
 Apply a scale transformation to the original matrix to obtain the scaled matrix. Each scale transformation is applied cumulatively. This function will alter the input matrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12125,7 +11224,7 @@ Apply a scale transformation to the original matrix to obtain the scaled matrix.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4_Rotate()
 
@@ -12136,8 +11235,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Rotate(ArkUI_Matrix4* matrix, const ArkUI_Matri
 **描述：**
 
 Apply a rotation transformation to the original matrix to obtain the rotated matrix. Each rotation transformation is applied cumulatively. This function will alter the input matrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12152,7 +11249,7 @@ Apply a rotation transformation to the original matrix to obtain the rotated mat
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4_Skew()
 
@@ -12163,8 +11260,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Skew(ArkUI_Matrix4* matrix, const float skewX, 
 **描述：**
 
 Apply a skew transformation to the original matrix to obtain the skewed matrix. Each skew transformation is applied cumulatively. This function will alter the input matrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12180,7 +11275,7 @@ Apply a skew transformation to the original matrix to obtain the skewed matrix. 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4_TransformPoint()
 
@@ -12191,8 +11286,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, con
 **描述：**
 
 Calculate the new coordinate position of a point after it has been transformed by a matrix. The calculated transformed coordinate point will be filled into the ArkUI_PointF structure pointed to by result.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12208,7 +11301,7 @@ Calculate the new coordinate position of a point after it has been transformed b
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4_SetPolyToPoly()
 
@@ -12219,8 +11312,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkU
 **描述：**
 
 Map the vertex coordinates of one polygon to the vertex coordinates of another polygon, and calculate the required matrix. The resulting matrix will be filled into the object pointed to by matrix.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12237,7 +11328,7 @@ Map the vertex coordinates of one polygon to the vertex coordinates of another p
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4_GetElements()
 
@@ -12248,8 +11339,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float*
 **描述：**
 
 Obtain the 16 elements of the matrix and fill them into the array pointed to by result. The array pointed to by result must have space for 16 float elements.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -12264,7 +11353,7 @@ Obtain the 16 elements of the matrix and fill them into the array pointed to by 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus()
 
@@ -12275,8 +11364,6 @@ void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOpti
 **描述：**
 
 Sets the tree operating status for the cross-language option.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12296,8 +11383,6 @@ OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperat
 **描述：**
 
 Gets the tree operating status of the cross-language option.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12323,8 +11408,6 @@ OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()
 
 Creates a linear gradient options object. The returned object must be released by calling <b>OH_ArkUI_LinearGradientOptions_Destroy</b>.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 **返回值：**
@@ -12342,8 +11425,6 @@ void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* opti
 **描述：**
 
 Destroys a linear gradient options object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12363,8 +11444,6 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientO
 
 Sets angle of linear gradient options.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -12378,7 +11457,7 @@ Sets angle of linear gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_LinearGradientOptions_GetAngle()
 
@@ -12389,8 +11468,6 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGra
 **描述：**
 
 Gets angle of linear gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12405,7 +11482,7 @@ Gets angle of linear gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_LinearGradientOptions_SetDirection()
 
@@ -12416,8 +11493,6 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradi
 **描述：**
 
 Sets direction of linear gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12432,7 +11507,7 @@ Sets direction of linear gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_LinearGradientOptions_GetDirection()
 
@@ -12443,8 +11518,6 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_Linea
 **描述：**
 
 Gets direction of linear gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12459,7 +11532,7 @@ Gets direction of linear gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_LinearGradientOptions_SetRepeating()
 
@@ -12470,8 +11543,6 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetRepeating(OH_ArkUI_LinearGradi
 **描述：**
 
 Sets whether colors are repeated in linear gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12486,7 +11557,7 @@ Sets whether colors are repeated in linear gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_LinearGradientOptions_GetRepeating()
 
@@ -12497,8 +11568,6 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetRepeating(const OH_ArkUI_Linea
 **描述：**
 
 Gets whether colors are repeated in linear gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12513,7 +11582,7 @@ Gets whether colors are repeated in linear gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_LinearGradientOptions_SetColorStop()
 
@@ -12524,8 +11593,6 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetColorStop(OH_ArkUI_LinearGradi
 **描述：**
 
 Sets color stops of linear gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12542,7 +11609,7 @@ Sets color stops of linear gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_LinearGradientOptions_GetColorStop()
 
@@ -12553,8 +11620,6 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetColorStop(const OH_ArkUI_Linea
 **描述：**
 
 Gets color stops of linear gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12572,7 +11637,7 @@ Gets color stops of linear gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_Create()
 
@@ -12583,8 +11648,6 @@ OH_ArkUI_RadialGradientOptions* OH_ArkUI_RadialGradientOptions_Create()
 **描述：**
 
 Creates a radial gradient options object. The returned object must be released by calling <b>OH_ArkUI_RadialGradientOptions_Destroy</b>.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12604,8 +11667,6 @@ void OH_ArkUI_RadialGradientOptions_Destroy(OH_ArkUI_RadialGradientOptions* opti
 
 Destroys a radial gradient options object.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -12624,8 +11685,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterX(OH_ArkUI_RadialGradien
 
 Sets centerX of radial gradient options.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -12639,7 +11698,7 @@ Sets centerX of radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_RadialGradientOptions_GetCenterX()
 
@@ -12650,8 +11709,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterX(const OH_ArkUI_RadialG
 **描述：**
 
 Gets centerX of radial gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12666,7 +11723,7 @@ Gets centerX of radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_RadialGradientOptions_SetCenterY()
 
@@ -12677,8 +11734,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterY(OH_ArkUI_RadialGradien
 **描述：**
 
 Sets centerY of radial gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12693,7 +11748,7 @@ Sets centerY of radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_RadialGradientOptions_GetCenterY()
 
@@ -12704,8 +11759,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterY(const OH_ArkUI_RadialG
 **描述：**
 
 Gets centerY of radial gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12720,7 +11773,7 @@ Gets centerY of radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_RadialGradientOptions_SetRadius()
 
@@ -12731,8 +11784,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRadius(OH_ArkUI_RadialGradient
 **描述：**
 
 Sets radius of radial gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12747,7 +11798,7 @@ Sets radius of radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_RadialGradientOptions_GetRadius()
 
@@ -12758,8 +11809,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRadius(const OH_ArkUI_RadialGr
 **描述：**
 
 Gets radius of radial gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12774,7 +11823,7 @@ Gets radius of radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_RadialGradientOptions_SetRepeating()
 
@@ -12785,8 +11834,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRepeating(OH_ArkUI_RadialGradi
 **描述：**
 
 Sets whether colors are repeated in radial gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12801,7 +11848,7 @@ Sets whether colors are repeated in radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_RadialGradientOptions_GetRepeating()
 
@@ -12812,8 +11859,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRepeating(const OH_ArkUI_Radia
 **描述：**
 
 Gets whether colors are repeated in radial gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12828,7 +11873,7 @@ Gets whether colors are repeated in radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_RadialGradientOptions_SetColorStop()
 
@@ -12839,8 +11884,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetColorStop(OH_ArkUI_RadialGradi
 **描述：**
 
 Sets color stops of radial gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12857,7 +11900,7 @@ Sets color stops of radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
 
 ### OH_ArkUI_RadialGradientOptions_GetColorStop()
 
@@ -12868,8 +11911,6 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetColorStop(const OH_ArkUI_Radia
 **描述：**
 
 Gets color stops of radial gradient options.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -12887,6 +11928,6 @@ Gets color stops of radial gradient options.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 

@@ -1,7 +1,7 @@
 # UsbControlRequestSetup
 
 ```c
-typedef struct UsbControlRequestSetup {...} __attribute__((aligned(8))) UsbControlRequestSetup
+struct UsbControlRequestSetup {...}
 ```
 
 ## Overview

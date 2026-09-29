@@ -27,7 +27,7 @@ Includes some memory-related methods and structures, such as: malloc, calloc, re
 
 struct mallinfo 
 
-struct mallinfo2](#malloc_check_from_ptr) | This function determines whether a given memory block was allocated using Standard C library Memory Allocator. This function is MT-Safe(multi-thread safe) but not signal-safe. |
+struct mallinfo2 {size_t arenasize_t ordblkssize_t smblkssize_t hblkssize_t hblkhdsize_t usmblkssize_t fsmblkssize_t uordblkssize_t fordblkssize_t keepcost](#malloc_check_from_ptr) | This function determines whether a given memory block was allocated using Standard C library Memory Allocator. This function is MT-Safe(multi-thread safe) but not signal-safe. |
 | [struct mallinfo mallinfo(void)](#mallinfo) | Obtains the memory information allocated by malloc-related operations. |
 | [struct mallinfo2 mallinfo2(void)](#mallinfo2) | Obtains the memory information allocated by malloc-related operations. |
 
@@ -42,7 +42,6 @@ struct mallinfo {int arenaint ordblksint smblksint hblksint hblkhdint usmblksint
 }
 
 struct mallinfo2 {size_t arenasize_t ordblkssize_t smblkssize_t hblkssize_t hblkhdsize_t usmblkssize_t fsmblkssize_t uordblkssize_t fordblkssize_t keepcost
-}
 ```
 
 **Description**
@@ -61,7 +60,7 @@ This function determines whether a given memory block was allocated using Standa
 
 | Type | Description |
 | -- | -- |
-| int | 1 - The memory block was allocated using Standard C library Memory Allocator.           0 - The memory block was not allocated using Standard C library Memory Allocator.           -1 - The function is not implemented or other error. |
+| int | 1 - The memory block was allocated using Standard C library Memory Allocator. 0 - The memory block was not allocated using Standard C library Memory Allocator. -1 - The function is not implemented or other error. |
 
 ### mallinfo()
 
@@ -97,6 +96,6 @@ Obtains the memory information allocated by malloc-related operations.
 
 | Type | Description |
 | -- | -- |
-| [struct mallinfo2](capi-muslmalloc-mallinfo2.md) | A mallinfo2 struct containing details about memory allocation. Unlike mallinfo, this struct uses  size_t for its counters, providing a larger range. |
+| [struct mallinfo2](capi-muslmalloc-mallinfo2.md) | A mallinfo2 struct containing details about memory allocation. Unlike mallinfo, this struct uses size_t for its counters, providing a larger range. |
 
 

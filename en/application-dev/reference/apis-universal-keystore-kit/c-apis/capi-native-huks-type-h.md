@@ -8,8 +8,6 @@ Defines enums, structs, macros, and error codes in HUKS.
 
 **Library**: libhuks_ndk.z.so
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)
@@ -18,21 +16,21 @@ Defines enums, structs, macros, and error codes in HUKS.
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | OH_Huks_Result | Defines the returned data, including a status code and related description. |
-| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | OH_Huks_Blob | Defines the struct of a binary large object (BLOB). |
-| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | OH_Huks_Param | Defines the types of the parameters in a parameter set. |
-| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | OH_Huks_ParamSet | Defines the struct of a parameter set. |
-| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | OH_Huks_CertChain | Defines the struct of a certificate chain. |
-| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | OH_Huks_KeyInfo | Defines the struct of key information. |
-| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | OH_Huks_PubKeyInfo | Defines the struct of a public key. |
-| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | OH_Huks_KeyMaterialRsa | Defines the struct for an RSA key. |
-| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | OH_Huks_KeyMaterialEcc | Defines the struct for an ECC key. |
-| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | OH_Huks_KeyMaterialDsa | Defines the struct for a DSA key. |
-| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | OH_Huks_KeyMaterialDh | Defines the struct for a DH key. |
-| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | OH_Huks_KeyMaterial25519 | Defines a struct of a 25519 key. |
-| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | OH_Huks_KeyAliasSet | Defines the struct of a key alias set. |
+| Name | Description |
+| -- | -- |
+| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Defines the returned data, including a status code and related description. |
+| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | Defines the struct of a binary large object (BLOB). |
+| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | Defines the types of the parameters in a parameter set. |
+| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | Defines the struct of a parameter set. |
+| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | Defines the struct of a certificate chain. |
+| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | Defines the struct of key information. |
+| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | Defines the struct of a public key. |
+| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | Defines the struct for an RSA key. |
+| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | Defines the struct for an ECC key. |
+| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | Defines the struct for a DSA key. |
+| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | Defines the struct for a DH key. |
+| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | Defines a struct of a 25519 key. |
+| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | Defines the struct of a key alias set. |
 
 ### Enum
 
@@ -44,18 +42,7 @@ Defines enums, structs, macros, and error codes in HUKS.
 | [OH_Huks_CipherMode](#oh_huks_ciphermode) | OH_Huks_CipherMode | Cipher mode. |
 | [OH_Huks_KeySize](#oh_huks_keysize) | OH_Huks_KeySize | Enumerates the key sizes of different algorithms. |
 | [OH_Huks_KeyAlg](#oh_huks_keyalg) | OH_Huks_KeyAlg | Enumerates the algorithms for keys. |
-| [OH_Huks_AlgSuite](#oh_huks_algsuite) | OH_Huks_AlgSuite | Enumerates the algorithm suites that can be used for importing of a key in ciphertext. <br>Key material format for **OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING**:
-\| x25519_plain_pubkey_length (4 Byte) \| x25519_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad
-\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag
-\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad
-\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag
-\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING**:
-\| ECC_plain_pubkey_length (4 Byte) \| ECC_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad
-\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag
-\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad
-\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag
-\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**:
-\| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc |
+| [OH_Huks_AlgSuite](#oh_huks_algsuite) | OH_Huks_AlgSuite | Enumerates the algorithm suites that can be used for importing of a key in ciphertext. <br>Key material format for **OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING**: <br>\| x25519_plain_pubkey_length (4 Byte) \| x25519_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING**: <br>\| ECC_plain_pubkey_length (4 Byte) \| ECC_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**: <br>\| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc |
 | [OH_Huks_KeyGenerateType](#oh_huks_keygeneratetype) | OH_Huks_KeyGenerateType | Enumerates the types of the key generated. |
 | [OH_Huks_KeyFlag](#oh_huks_keyflag) | OH_Huks_KeyFlag | Enumerates the key generation types. |
 | [OH_Huks_KeyStorageType](#oh_huks_keystoragetype) | OH_Huks_KeyStorageType | Enumerates the key storage types. |
@@ -71,7 +58,7 @@ Defines enums, structs, macros, and error codes in HUKS.
 | [OH_Huks_ChallengePosition](#oh_huks_challengeposition) | OH_Huks_ChallengePosition | Enumerates the positions of the 8-byte valid value in a custom challenge generated. |
 | [OH_Huks_SecureSignType](#oh_huks_securesigntype) | OH_Huks_SecureSignType | Enumerates the signature types of the key generated or imported. |
 | [OH_Huks_KeyClassType](#oh_huks_keyclasstype) | OH_Huks_KeyClassType | Key type. |
-| [OH_Huks_KeyWrapType](#oh_huks_keywraptype) | OH_Huks_KeyWrapType |  |
+| [OH_Huks_KeyWrapType](#oh_huks_keywraptype) | OH_Huks_KeyWrapType | Enumerates the wrap type of the key generated or imported. |
 | [OH_Huks_Tag](#oh_huks_tag) | OH_Huks_Tag | Enumerates the tags contained in a parameter set. <br>1 to 200: key parameter tag values. <br>301 to 500: tag values related to access control and authentication of key usage. <br>501 to 600: tag values related to key authentication. <br>601 to 1000: reserved values for other types of tag values. <br>1001 to 9999: extended tag values. <br>11000 to 12000: reserved values. <br>20001 to N: reserved tag values. |
 
 ### Macro
@@ -107,8 +94,6 @@ enum OH_Huks_KeyPurpose
 
 Enumerates the key purposes. Multiple purposes can be combined using bitwise OR (\\|).
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -133,8 +118,6 @@ enum OH_Huks_KeyDigest
 
 Enumerates the digest algorithms.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -158,8 +141,6 @@ enum OH_Huks_KeyPadding
 
 Enumerates the padding algorithm types.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -170,8 +151,8 @@ Enumerates the padding algorithm types.
 | OH_HUKS_PADDING_PKCS1_V1_5 = 3 | PKCS1_V1_5. |
 | OH_HUKS_PADDING_PKCS5 = 4 | PKCS #5. |
 | OH_HUKS_PADDING_PKCS7 = 5 | PKCS #7. |
-| OH_HUKS_PADDING_ISO_IEC_9796_2 = 6 |  |
-| OH_HUKS_PADDING_ISO_IEC_9797_1 = 7 |  |
+| OH_HUKS_PADDING_ISO_IEC_9796_2 = 6 | ISO IEC 9796-2.<br>**Since**: 18 |
+| OH_HUKS_PADDING_ISO_IEC_9797_1 = 7 | ISO IEC 9797-1.<br>**Since**: 18 |
 
 ### OH_Huks_CipherMode
 
@@ -183,8 +164,6 @@ enum OH_Huks_CipherMode
 
 Cipher mode.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -193,7 +172,7 @@ Cipher mode.
 | OH_HUKS_MODE_CBC = 2 | CBC. |
 | OH_HUKS_MODE_CTR = 3 | CTR. |
 | OH_HUKS_MODE_OFB = 4 | OFB. |
-| OH_HUKS_MODE_CFB = 5 |  |
+| OH_HUKS_MODE_CFB = 5 | CFB.<br>**Since**: 12 |
 | OH_HUKS_MODE_CCM = 31 | CCM. |
 | OH_HUKS_MODE_GCM = 32 | GCM. |
 
@@ -206,8 +185,6 @@ enum OH_Huks_KeySize
 **Description**
 
 Enumerates the key sizes of different algorithms.
-
-**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -233,9 +210,9 @@ Enumerates the key sizes of different algorithms.
 | OH_HUKS_DH_KEY_SIZE_4096 = 4096 | DH key of 4096 bits. |
 | OH_HUKS_SM2_KEY_SIZE_256 = 256 | SM2 key of 256 bits. |
 | OH_HUKS_SM4_KEY_SIZE_128 = 128 | SM4 key of 128 bits. |
-| OH_HUKS_DES_KEY_SIZE_64 = 64 |  |
-| OH_HUKS_3DES_KEY_SIZE_128 = 128 |  |
-| OH_HUKS_3DES_KEY_SIZE_192 = 192 |  |
+| OH_HUKS_DES_KEY_SIZE_64 = 64 | DES key of 64 bits.<br>**Since**: 18 |
+| OH_HUKS_3DES_KEY_SIZE_128 = 128 | 3DES key of 128 bits.<br>**Since**: 18 |
+| OH_HUKS_3DES_KEY_SIZE_192 = 192 | 3DES key of 192 bits.<br>**Since**: 18 |
 
 ### OH_Huks_KeyAlg
 
@@ -246,8 +223,6 @@ enum OH_Huks_KeyAlg
 **Description**
 
 Enumerates the algorithms for keys.
-
-**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -267,9 +242,9 @@ Enumerates the algorithms for keys.
 | OH_HUKS_ALG_SM2 = 150 | ShangMi2 (SM2). |
 | OH_HUKS_ALG_SM3 = 151 | SM3. |
 | OH_HUKS_ALG_SM4 = 152 | SM4. |
-| OH_HUKS_ALG_DES = 160 |  |
-| OH_HUKS_ALG_3DES = 161 |  |
-| OH_HUKS_ALG_CMAC = 162 |  |
+| OH_HUKS_ALG_DES = 160 | DES.<br>**Since**: 18 |
+| OH_HUKS_ALG_3DES = 161 | 3DES.<br>**Since**: 18 |
+| OH_HUKS_ALG_CMAC = 162 | CMAC.<br>**Since**: 18 |
 
 ### OH_Huks_AlgSuite
 
@@ -279,20 +254,7 @@ enum OH_Huks_AlgSuite
 
 **Description**
 
-Enumerates the algorithm suites that can be used for importing of a key in ciphertext. <br>Key material format for **OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING**:
-\| x25519_plain_pubkey_length (4 Byte) \| x25519_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad
-\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag
-\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad
-\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag
-\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING**:
-\| ECC_plain_pubkey_length (4 Byte) \| ECC_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad
-\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag
-\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad
-\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag
-\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**:
-\| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc
-
-**System capability**: SystemCapability.Security.Huks.Core
+Enumerates the algorithm suites that can be used for importing of a key in ciphertext. <br>Key material format for **OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING**: <br>\| x25519_plain_pubkey_length (4 Byte) \| x25519_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING**: <br>\| ECC_plain_pubkey_length (4 Byte) \| ECC_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**: <br>\| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc
 
 **Since**: 9
 
@@ -312,8 +274,6 @@ enum OH_Huks_KeyGenerateType
 
 Enumerates the types of the key generated.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -331,8 +291,6 @@ enum OH_Huks_KeyFlag
 **Description**
 
 Enumerates the key generation types.
-
-**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -353,8 +311,6 @@ enum OH_Huks_KeyStorageType
 
 Enumerates the key storage types.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -374,8 +330,6 @@ enum OH_Huks_ImportKeyType
 
 Enumerates the types of the key to import. By default, a public key is imported. This field is not required when a symmetric key is imported.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -394,8 +348,6 @@ enum OH_Huks_RsaPssSaltLenType
 
 Enumerates the length types of the salt value in PSS padding mode of the RSA algorithm.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 10
 
 | Enum item | Description |
@@ -412,8 +364,6 @@ enum OH_Huks_ErrCode
 **Description**
 
 Enumerates error codes.
-
-**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -438,16 +388,16 @@ Enumerates error codes.
 | OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013 | The authentication credential does not exist. |
 | OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 | Insufficient memory. |
 | OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015 | Failed to invoke the service. |
-| OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016 |  |
-| OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 |  |
-| OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 |  |
-| OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 |  |
-| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 |  |
-| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 |  |
-| OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 |  |
-| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 |  |
-| OH_HUKS_ERR_CODE_BUSY = 12000024 |  |
-| OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 |  |
+| OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016 | The lock screen password required is not set.<br>**Since**: 11 |
+| OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 | A key with the same name already exists.<br>**Since**: 20 |
+| OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 | An input parameter is invalid.<br>**Since**: 20 |
+| OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 | The entity already exists.<br>**Since**: 22 |
+| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | The provider or UKey internal execution fails.<br>**Since**: 22 |
+| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | The PIN is locked.<br>**Since**: 22 |
+| OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | Incorrect PIN.<br>**Since**: 22 |
+| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | PIN authentication fails.<br>**Since**: 22 |
+| OH_HUKS_ERR_CODE_BUSY = 12000024 | The provider or UKey resources are being used.<br>**Since**: 22 |
+| OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | The resource limit is exceeded.<br>**Since**: 22 |
 
 ### OH_Huks_TagType
 
@@ -458,8 +408,6 @@ enum OH_Huks_TagType
 **Description**
 
 Enumerates parameter types.
-
-**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -487,8 +435,6 @@ enum OH_Huks_UserAuthType
 
 Enumerates the user authentication types in key access control.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -496,7 +442,7 @@ Enumerates the user authentication types in key access control.
 | OH_HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0 | Fingerprint authentication. |
 | OH_HUKS_USER_AUTH_TYPE_FACE = 1 << 1 | Facial authentication. |
 | OH_HUKS_USER_AUTH_TYPE_PIN = 1 << 2 | PIN authentication. |
-| OH_HUKS_USER_AUTH_TYPE_TUI_PIN = 1 << 5 |  |
+| OH_HUKS_USER_AUTH_TYPE_TUI_PIN = 1 << 5 | TUI PIN authentication.<br>**Since**: 20 |
 
 ### OH_Huks_AuthAccessType
 
@@ -507,8 +453,6 @@ enum OH_Huks_AuthAccessType
 **Description**
 
 Enumerates the rules for invalidating a key.
-
-**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -528,15 +472,13 @@ enum OH_Huks_AuthStorageLevel
 
 Enumerates the security levels for storing the key generated or imported.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 11
 
 | Enum item | Description |
 | -- | -- |
-| OH_HUKS_AUTH_STORAGE_LEVEL_DE = 0 |  |
-| OH_HUKS_AUTH_STORAGE_LEVEL_CE = 1 |  |
-| OH_HUKS_AUTH_STORAGE_LEVEL_ECE = 2 |  |
+| OH_HUKS_AUTH_STORAGE_LEVEL_DE = 0 | The key can be accessed only after the device is started.<br>**Since**: 11 |
+| OH_HUKS_AUTH_STORAGE_LEVEL_CE = 1 | The key can be accessed only after the first unlock of the device.<br>**Since**: 11 |
+| OH_HUKS_AUTH_STORAGE_LEVEL_ECE = 2 | The key can be accessed only when the device is unlocked.<br>**Since**: 11 |
 
 ### OH_Huks_UserAuthMode
 
@@ -548,14 +490,12 @@ enum OH_Huks_UserAuthMode
 
 Enumerates the user authentication modes in key access control.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| OH_HUKS_USER_AUTH_MODE_LOCAL = 0 |  |
-| OH_HUKS_USER_AUTH_MODE_COAUTH = 1 |  |
+| OH_HUKS_USER_AUTH_MODE_LOCAL = 0 | Local authentication.<br>**Since**: 12 |
+| OH_HUKS_USER_AUTH_MODE_COAUTH = 1 | Cross-device collaborative authentication.<br>**Since**: 12 |
 
 ### OH_Huks_ChallengeType
 
@@ -566,8 +506,6 @@ enum OH_Huks_ChallengeType
 **Description**
 
 Enumerates the types of the challenge generated when a key is used.
-
-**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -592,8 +530,6 @@ enum OH_Huks_ChallengePosition
 
 Enumerates the positions of the 8-byte valid value in a custom challenge generated.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -613,8 +549,6 @@ enum OH_Huks_SecureSignType
 
 Enumerates the signature types of the key generated or imported.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 9
 
 | Enum item | Description |
@@ -631,8 +565,6 @@ enum OH_Huks_KeyClassType
 
 Key type.
 
-**System capability**: SystemCapability.Security.Huks.Core
-
 **Since**: 22
 
 | Enum item | Description |
@@ -648,11 +580,13 @@ enum OH_Huks_KeyWrapType
 
 **Description**
 
-**System capability**: SystemCapability.Security.Huks.Core
+Enumerates the wrap type of the key generated or imported.
+
+**Since**: 20
 
 | Enum item | Description |
 | -- | -- |
-| OH_HUKS_KEY_WRAP_TYPE_HUK_BASED = 2 |  |
+| OH_HUKS_KEY_WRAP_TYPE_HUK_BASED = 2 | Wrap type of the unique hardware key.<br>**Since**: 20 |
 
 ### OH_Huks_Tag
 
@@ -663,8 +597,6 @@ enum OH_Huks_Tag
 **Description**
 
 Enumerates the tags contained in a parameter set. <br>1 to 200: key parameter tag values. <br>301 to 500: tag values related to access control and authentication of key usage. <br>501 to 600: tag values related to key authentication. <br>601 to 1000: reserved values for other types of tag values. <br>1001 to 9999: extended tag values. <br>11000 to 12000: reserved values. <br>20001 to N: reserved tag values.
-
-**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -705,8 +637,8 @@ Enumerates the tags contained in a parameter set. <br>1 to 200: key parameter ta
 | OH_HUKS_TAG_CHALLENGE_TYPE = OH_HUKS_TAG_TYPE_UINT \| 309 | Challenge type. For details, see [OH_Huks_ChallengeType](capi-native-huks-type-h.md#oh_huks_challengetype). |
 | OH_HUKS_TAG_CHALLENGE_POS = OH_HUKS_TAG_TYPE_UINT \| 310 | Position of the 8-byte valid value in a custom challenge. For details, see [OH_Huks_ChallengePosition](capi-native-huks-type-h.md#oh_huks_challengeposition). |
 | OH_HUKS_TAG_KEY_AUTH_PURPOSE = OH_HUKS_TAG_TYPE_UINT \| 311 | Type of the key authentication purpose. |
-| OH_HUKS_TAG_AUTH_STORAGE_LEVEL = OH_HUKS_TAG_TYPE_UINT \| 316 |  |
-| OH_HUKS_TAG_USER_AUTH_MODE = OH_HUKS_TAG_TYPE_UINT \| 319 |  |
+| OH_HUKS_TAG_AUTH_STORAGE_LEVEL = OH_HUKS_TAG_TYPE_UINT \| 316 | Security levels for storing the key. For details, see [OH_Huks_AuthStorageLevel](capi-native-huks-type-h.md#oh_huks_authstoragelevel).<br>**Since**: 11 |
+| OH_HUKS_TAG_USER_AUTH_MODE = OH_HUKS_TAG_TYPE_UINT \| 319 | User authentication mode in key access control. For details, see [OH_Huks_UserAuthMode](capi-native-huks-type-h.md#oh_huks_userauthmode).<br>**Since**: 12 |
 | OH_HUKS_TAG_ATTESTATION_CHALLENGE = OH_HUKS_TAG_TYPE_BYTES \| 501 | Challenge value used in the attestation. |
 | OH_HUKS_TAG_ATTESTATION_APPLICATION_ID = OH_HUKS_TAG_TYPE_BYTES \| 502 | ID of the application that has the key during key authentication. |
 | OH_HUKS_TAG_ATTESTATION_ID_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 511 | Key alias. |
@@ -725,7 +657,7 @@ Enumerates the tags contained in a parameter set. <br>1 to 200: key parameter ta
 | OH_HUKS_TAG_KEY_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1007 | Key flag. For details, see [OH_Huks_KeyFlag](capi-native-huks-type-h.md#oh_huks_keyflag). |
 | OH_HUKS_TAG_IS_ASYNCHRONIZED = OH_HUKS_TAG_TYPE_UINT \| 1008 | Whether the invocation is asynchronous. |
 | OH_HUKS_TAG_KEY_DOMAIN = OH_HUKS_TAG_TYPE_UINT \| 1011 | Key domain. |
-| OH_HUKS_TAG_IS_DEVICE_PASSWORD_SET = OH_HUKS_TAG_TYPE_BOOL \| 1012 |  |
+| OH_HUKS_TAG_IS_DEVICE_PASSWORD_SET = OH_HUKS_TAG_TYPE_BOOL \| 1012 | Whether the key is accessible only when the user sets a lock screen password.<br> **true** indicates that the key can be generated and used only when a password is set. **false** indicates that the key can be generated and used without setting a password.<br>**Since**: 11 |
 | OH_HUKS_TAG_AE_TAG = OH_HUKS_TAG_TYPE_BYTES \| 10009 | AEAD in GCM mode. |
 | OH_HUKS_TAG_SYMMETRIC_KEY_DATA = OH_HUKS_TAG_TYPE_BYTES \| 20001 | Symmetric key data. |
 | OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA = OH_HUKS_TAG_TYPE_BYTES \| 20002 | Public key data of the asymmetric key pair. |

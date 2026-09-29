@@ -6,8 +6,6 @@ Defines public data and constants.
 
 **Library**: libteec.so
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeClient](capi-teeclient.md)
@@ -42,8 +40,6 @@ enum TEEC_ReturnCode
 
 Defines the error codes returned.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -63,22 +59,22 @@ Defines the error codes returned.
 | TEEC_ERROR_RENAME_OBJECT | Failed to rename the file. |
 | TEEC_ERROR_TRUSTED_APP_LOAD_ERROR | Failed to load the TA when opening a session. |
 | TEEC_ERROR_GENERIC = 0xFFFF0000 | Failed to initialize the TA. |
-| TEEC_ERROR_ACCESS_DENIED = 0xFFFF0001 | Permission verification failed. Permission verification is performed before a TEE or session is opened or |
-| TEEC_ERROR_CANCEL = 0xFFFF0002 | The operation is canceled. This error code is returned when you operate the parameter with |
-| TEEC_ERROR_ACCESS_CONFLICT = 0xFFFF0003 | Concurrent access causes permission conflict. Concurrent access to files in the trusted storage |
+| TEEC_ERROR_ACCESS_DENIED = 0xFFFF0001 | Permission verification failed. Permission verification is performed before a TEE or session is opened or a command is sent. |
+| TEEC_ERROR_CANCEL = 0xFFFF0002 | The operation is canceled. This error code is returned when you operate the parameter with the cancallation flag. |
+| TEEC_ERROR_ACCESS_CONFLICT = 0xFFFF0003 | Concurrent access causes permission conflict. Concurrent access to files in the trusted storage service may cause this error. |
 | TEEC_ERROR_EXCESS_DATA = 0xFFFF0004 | Too much data is passed in the requested operation for the TA to parse. |
 | TEEC_ERROR_BAD_FORMAT = 0xFFFF0005 | Incorrect data format. The TA failed to parse the parameters sent from the CA. |
 | TEEC_ERROR_BAD_PARAMETERS = 0xFFFF0006 | Invalid parameter. The input parameter is null or invalid. |
-| TEEC_ERROR_BAD_STATE = 0xFFFF0007 | The operation in the current state is invalid. This error code is returned if the trusted storage service is not |
+| TEEC_ERROR_BAD_STATE = 0xFFFF0007 | The operation in the current state is invalid. This error code is returned if the trusted storage service is not initialized when a trusted storage service operation is requested. |
 | TEEC_ERROR_ITEM_NOT_FOUND = 0xFFFF0008 | The requested data is not found. |
-| TEEC_ERROR_NOT_IMPLEMENTED = 0xFFFF0009 | The requested operation has not been implemented yet. This error code is returned when |
-| TEEC_ERROR_NOT_SUPPORTED = 0xFFFF000A | The requested operation is valid but is not supported in this implementation. This error code is returned |
+| TEEC_ERROR_NOT_IMPLEMENTED = 0xFFFF0009 | The requested operation has not been implemented yet. This error code is returned when <b>TEEC_RequestCancellation</b> is called. |
+| TEEC_ERROR_NOT_SUPPORTED = 0xFFFF000A | The requested operation is valid but is not supported in this implementation. This error code is returned when certain algorithms of the secure encryption and decryption service, such as DSA, are requested. |
 | TEEC_ERROR_NO_DATA = 0xFFFF000B | Expected data for the requested operation is not found. |
 | TEEC_ERROR_OUT_OF_MEMORY = 0xFFFF000C | The available system resources are insufficient. |
 | TEEC_ERROR_BUSY = 0xFFFF000D | The system is busy. Some resources are exclusively used by the system. |
 | TEEC_ERROR_COMMUNICATION = 0xFFFF000E | Communication between an application in the REE and a TA failed. |
 | TEEC_ERROR_SECURITY = 0xFFFF000F | A security fault is detected in the TEE. |
-| TEEC_ERROR_SHORT_BUFFER = 0xFFFF0010 | The supplied buffer is too short for the output generated. |
+| TEEC_ERROR_SHORT_BUFFER = 0xFFFF0010 | The supplied buffer is too short for the output generated. This error may occur when {@code TEEC_MEMREF_TEMP_OUTPUT} is used. |
 | TEEC_ERROR_MAC_INVALID = 0xFFFF3071 | MAC value check error. |
 | TEEC_ERROR_TARGET_DEAD = 0xFFFF3024 | The TA crashed. |
 | TEEC_FAIL = 0xFFFF5002 | Common error. |
@@ -92,8 +88,6 @@ enum TEEC_ReturnCodeOrigin
 **Description**
 
 Defines the sources of the error codes returned.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -114,8 +108,6 @@ enum TEEC_SharedMemCtl
 
 Defines the identifiers of the shared memory.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -134,8 +126,6 @@ enum TEEC_ParamType
 
 Defines the parameter types.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -146,13 +136,13 @@ Defines the parameter types.
 | TEEC_VALUE_INOUT = 0x03 | The parameter is a {@code TEEC_Value} tagged as both input and output. |
 | TEEC_MEMREF_TEMP_INPUT = 0x05 | The parameter is a {@code TEEC_TempMemoryReference} tagged as input. Data flows from a CA to a TA. |
 | TEEC_MEMREF_TEMP_OUTPUT = 0x06 | The parameter is a {@code TEEC_TempMemoryReference} tagged as output. Data flows from a TA to a CA. |
-| TEEC_MEMREF_TEMP_INOUT = 0x07 | The parameter is a {@code TEEC_TempMemoryReference} tagged as both input and output. |
+| TEEC_MEMREF_TEMP_INOUT = 0x07 | The parameter is a {@code TEEC_TempMemoryReference} tagged as both input and output. Data is transmitted between a TA and a CA. |
 | TEEC_ION_INPUT = 0x08 | The parameter is a {@code TEEC_IonReference} tagged as input. Data flows from a CA to a TA |
 | TEEC_ION_SGLIST_INPUT = 0x09 | The parameter is a {@code TEEC_IonSglistReference} tagged as input. Data flows from a CA to a TA |
-| TEEC_MEMREF_WHOLE = 0xc | The parameter is a {@code TEEC_RegisteredMemoryReference} that refers to the entire memory block. |
+| TEEC_MEMREF_WHOLE = 0xc | The parameter is a {@code TEEC_RegisteredMemoryReference} that refers to the entire memory block. The data flow is the same as that of {@code TEEC_SharedMemCtl}. |
 | TEEC_MEMREF_PARTIAL_INPUT = 0xd | The parameter is a {@code TEEC_RegisteredMemoryReference} tagged as input. Data flows from a CA to a TA. |
 | TEEC_MEMREF_PARTIAL_OUTPUT = 0xe | The parameter is a {@code TEEC_RegisteredMemoryReference} tagged as output. Data flows from a TA to a CA. |
-| TEEC_MEMREF_PARTIAL_INOUT = 0xf | The parameter is a {@code TEEC_RegisteredMemoryReference} tagged as both input and output. |
+| TEEC_MEMREF_PARTIAL_INOUT = 0xf | The parameter is a {@code TEEC_RegisteredMemoryReference} tagged as both input and output. Data is transmitted between a TA and a CA. |
 
 ### TEEC_LoginMethod
 
@@ -163,8 +153,6 @@ enum TEEC_LoginMethod
 **Description**
 
 Defines the login methods.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

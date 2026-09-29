@@ -1,7 +1,7 @@
 # DateTimeRule
 
 ```c
-typedef struct DateTimeRule {...} DateTimeRule
+struct DateTimeRule {...}
 ```
 
 ## Overview

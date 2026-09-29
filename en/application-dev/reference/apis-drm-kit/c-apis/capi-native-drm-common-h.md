@@ -6,8 +6,6 @@ The file declares the DRM data types.
 
 **Library**: libnative_drm.so
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Related module**: [Drm](capi-drm.md)
@@ -18,15 +16,15 @@ The file declares the DRM data types.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md) | DRM_MediaKeyRequestInfo | The struct describes the information about a media key request. |
-| [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md) | DRM_MediaKeyRequest | The struct describes a media key request. |
-| [DRM_Statistics](capi-drm-drm-statistics.md) | DRM_Statistics | The struct describes the metrics for a media key system. |
-| [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md) | DRM_OfflineMediakeyIdArray | The struct describes an array of offline media key IDs. |
-| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) | DRM_KeysInfo | The struct describes the information about media keys. |
-| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) | DRM_MediaKeyStatus | The struct describes the media key status. |
-| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) | DRM_PsshInfo | The struct describes the Protection System Specific Header (PSSH) data for a DRM system. |
-| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | The struct describes the DRM information for encrypted content. |
-| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) | DRM_MediaKeySystemDescription | The struct describes the DRM solution name and UUID list. |
+| [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md) | - | The struct describes the information about a media key request. |
+| [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md) | - | The struct describes a media key request. |
+| [DRM_Statistics](capi-drm-drm-statistics.md) | - | The struct describes the metrics for a media key system. |
+| [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md) | - | The struct describes an array of offline media key IDs. |
+| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) | - | The struct describes the information about media keys. |
+| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) | - | The struct describes the media key status. |
+| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) | - | The struct describes the Protection System Specific Header (PSSH) data for a DRM system. |
+| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) | - | The struct describes the DRM information for encrypted content. |
+| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) | - | The struct describes the DRM solution name and UUID list. |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) | MediaKeySystem | The struct describes a media key system. |
 | [MediaKeySession](capi-drm-mediakeysession.md) | MediaKeySession | The struct describes a media key session. |
 
@@ -79,7 +77,7 @@ The file declares the DRM data types.
 
 | Name | Description |
 | -- | -- |
-| void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo) | Defines the callback used to obtain DRM information from a media source.<br>**Since**: 11 |
+| void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo) | Defines the callback used to obtain DRM information from a media source.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
 
 ## Enum type description
 
@@ -92,8 +90,6 @@ enum DRM_EventType
 **Description**
 
 Enumerates the types of events that can be subscribed to.
-
-**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -116,8 +112,6 @@ enum DRM_ContentProtectionLevel
 
 Enumerates the content protection levels.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 | Enum item | Description |
@@ -138,8 +132,6 @@ enum DRM_MediaKeyType
 
 Enumerates the types of media keys.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 | Enum item | Description |
@@ -156,8 +148,6 @@ enum DRM_MediaKeyRequestType
 **Description**
 
 Enumerates the types of media key requests.
-
-**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -180,8 +170,6 @@ enum DRM_OfflineMediaKeyStatus
 
 Enumerates the statuses of offline media keys.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 | Enum item | Description |
@@ -199,8 +187,6 @@ enum DRM_CertificateStatus
 **Description**
 
 Enumerates the device certificate statuses.
-
-**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -224,8 +210,6 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 **Description**
 
 Defines the callback used to obtain DRM information from a media source.
-
-**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 

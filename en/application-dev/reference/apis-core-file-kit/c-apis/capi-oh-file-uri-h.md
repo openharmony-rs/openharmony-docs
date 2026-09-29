@@ -6,8 +6,6 @@ uri verification and conversion This class is mainly for URI format verification
 
 **Library**: libohfileuri.so
 
-**System capability**: SystemCapability.FileManagement.AppFileService
-
 **Since**: 12
 
 **Related module**: [fileUri](capi-fileuri.md)
@@ -36,8 +34,6 @@ FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int 
 
 Get uri From path.
 
-**System capability**: SystemCapability.FileManagement.AppFileService
-
 **Since**: 12
 
 **Parameters**:
@@ -52,7 +48,7 @@ Get uri From path.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution.          {@link ERR_INVALID_PARAMETER}  401 - Invalid input parameter.<br>        {@link ERR_UNKNOWN} 13900042 - Unknow error. The length of the output uri string is 0.<br>        {@link ERR_ENOMEM}  13900011 - Failed to apply for memory or failed to copy memory.<br>        {@link ERR_OK} 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  401 - Invalid input parameter. [ERR_UNKNOWN](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900042 - Unknow error. The length of the output uri string is 0. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileUri_GetPathFromUri()
 
@@ -63,8 +59,6 @@ FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int l
 **Description**
 
 Get path From uri.
-
-**System capability**: SystemCapability.FileManagement.AppFileService
 
 **Since**: 12
 
@@ -80,7 +74,7 @@ Get path From uri.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter.<br>        {@link ERR_UNKNOWN} 13900042 - Unknow error. The length of the output path string is 0.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory or failed to copy memory.<br>        {@link ERR_OK} 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_UNKNOWN](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900042 - Unknow error. The length of the output path string is 0. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileUri_GetFullDirectoryUri()
 
@@ -91,8 +85,6 @@ FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned 
 **Description**
 
 Gets the uri of the path or directory where the uri is located.
-
-**System capability**: SystemCapability.FileManagement.AppFileService
 
 **Since**: 12
 
@@ -108,7 +100,7 @@ Gets the uri of the path or directory where the uri is located.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory or failed to copy memory.<br>        {@link ERR_ENOENT} 13900002 - No such file or directory.<br>        {@link ERR_UNKNOWN} 13900042 - Unknow error. The length of the output path string is 0.<br>        {@link ERR_OK} 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_ENOENT](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900002 - No such file or directory. [ERR_UNKNOWN](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900042 - Unknow error. The length of the output path string is 0. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileUri_IsValidUri()
 
@@ -119,8 +111,6 @@ bool OH_FileUri_IsValidUri(const char *uri, unsigned int length)
 **Description**
 
 Check that the incoming uri is valid
-
-**System capability**: SystemCapability.FileManagement.AppFileService
 
 **Since**: 12
 
@@ -147,8 +137,6 @@ FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int leng
 
 Gets the fileName From uri. This function obtains that the last segment of the URI string is the return value of the function, and the URI of the media type is not supported
 
-**System capability**: SystemCapability.FileManagement.AppFileService
-
 **Since**: 13
 
 **Parameters**:
@@ -163,6 +151,6 @@ Gets the fileName From uri. This function obtains that the last segment of the U
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution.         {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory or failed to copy memory.<br>        {@link ERR_OK} 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 

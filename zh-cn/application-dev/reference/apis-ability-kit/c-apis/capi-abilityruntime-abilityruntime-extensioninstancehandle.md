@@ -1,0 +1,18 @@
+# AbilityRuntime_ExtensionInstanceHandle
+
+```c
+typedef struct AbilityRuntime_ExtensionInstanceHandle AbilityRuntime_ExtensionInstanceHandle
+```
+
+## 概述
+
+定义AbilityRuntime_ExtensionInstance对象指针。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 24
+
+**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
+
+**所在头文件：** [extension_ability.h](capi-extension-ability-h.md)
+

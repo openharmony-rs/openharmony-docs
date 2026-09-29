@@ -6,9 +6,7 @@ Declares APIs for focus management, mainly used for actively transferring focus,
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Since**: 12
+**Since**: 15
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
@@ -42,8 +40,6 @@ enum ArkUI_KeyProcessingMode
 
 Enumerates the key event processing priority modes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 | Enum item | Description |
@@ -64,8 +60,6 @@ ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 
 Requests focus for a specific node.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -78,7 +72,7 @@ Requests focus for a specific node.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node cannot receive focus.      <br>Returns [ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the ancestor node cannot receive focus.      <br>Returns [ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the node does not exist. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE if the node cannot receive focus. <br>Returns ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR if the ancestor node cannot receive focus. <br>Returns ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT if the node does not exist. |
 
 ### OH_ArkUI_FocusClear()
 
@@ -89,8 +83,6 @@ void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 **Description**
 
 Clears the focus to the root container node.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -109,8 +101,6 @@ void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool i
 **Description**
 
 Sets the focus activation state for the current page. When activated, the focused node displays a focus box.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -132,8 +122,6 @@ void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTrans
 
 Configures the focus transfer behavior when pages are switched.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -152,8 +140,6 @@ void OH_ArkUI_FocusSetKeyProcessingMode(ArkUI_ContextHandle uiContext, ArkUI_Key
 **Description**
 
 Sets the mode for processing key events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 

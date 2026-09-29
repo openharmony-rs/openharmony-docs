@@ -1,7 +1,7 @@
 # OH_Huks_PubKeyInfo
 
 ```c
-typedef struct OH_Huks_PubKeyInfo {...} OH_Huks_PubKeyInfo
+struct OH_Huks_PubKeyInfo {...}
 ```
 
 ## 概述
@@ -22,7 +22,7 @@ typedef struct OH_Huks_PubKeyInfo {...} OH_Huks_PubKeyInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 公钥的算法类型。 |
+| enum OH_Huks_KeyAlg keyAlg | 公钥的算法类型。 |
 | uint32_t keySize | 公钥的长度，单位：Bit。 |
 | uint32_t nOrXSize | n或X值的长度，单位：Byte。 |
 | uint32_t eOrYSize | e或Y值的长度，单位：Byte。 |

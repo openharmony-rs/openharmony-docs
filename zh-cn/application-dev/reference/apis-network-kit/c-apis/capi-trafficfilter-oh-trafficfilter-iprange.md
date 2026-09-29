@@ -1,7 +1,7 @@
 # OH_TrafficFilter_IPRange
 
 ```c
-typedef struct OH_TrafficFilter_IPRange {...} OH_TrafficFilter_IPRange
+struct OH_TrafficFilter_IPRange {...}
 ```
 
 ## 概述

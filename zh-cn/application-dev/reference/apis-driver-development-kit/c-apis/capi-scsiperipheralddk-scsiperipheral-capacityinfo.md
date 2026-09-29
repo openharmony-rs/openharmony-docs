@@ -1,7 +1,7 @@
 # ScsiPeripheral_CapacityInfo
 
 ```c
-typedef struct ScsiPeripheral_CapacityInfo {...} ScsiPeripheral_CapacityInfo
+struct ScsiPeripheral_CapacityInfo {...}
 ```
 
 ## 概述

@@ -6,8 +6,6 @@ Declare the error codes of file management module.
 
 **Library**: NA
 
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
 **Since**: 12
 
 **Related module**: [FileIO](capi-fileio.md)
@@ -31,8 +29,6 @@ enum FileManagement_ErrCode
 **Description**
 
 error codes of file management
-
-**System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Since**: 12
 

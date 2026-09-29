@@ -8,8 +8,6 @@ Provides methods for creating, destroying, reading, and writing cursor informati
 
 **Library**: libohinputmethod.so
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 **Related module**: [InputMethod](capi-inputmethod.md)
@@ -43,8 +41,6 @@ InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double wid
 
 Create a new [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -60,7 +56,7 @@ Create a new [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_CursorInfo *](capi-inputmethod-inputmethod-cursorinfo.md) | If the creation succeeds, a pointer to the newly created [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)  instance is returned. If the creation fails, NULL is returned, possible cause is insufficient memory. |
+| [InputMethod_CursorInfo *](capi-inputmethod-inputmethod-cursorinfo.md) | If the creation succeeds, a pointer to the newly created [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance is returned. If the creation fails, NULL is returned, possible cause is insufficient memory. |
 
 ### OH_CursorInfo_Destroy()
 
@@ -71,8 +67,6 @@ void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 **Description**
 
 Destroy a [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -92,8 +86,6 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 
 Set cursor info.
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -110,7 +102,7 @@ Set cursor info.
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_CursorInfo_GetRect()
 
@@ -121,8 +113,6 @@ InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, 
 **Description**
 
 Get cursor info.
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -140,6 +130,6 @@ Get cursor info.
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 

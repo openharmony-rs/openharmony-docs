@@ -6,7 +6,7 @@ typedef struct RawFile RawFile
 
 ## Overview
 
-`RawFile` represents an opened rawfile object. It is obtained through {@link OH_ResourceManager_OpenRawFile},<br>and must be closed and released through {@link OH_ResourceManager_CloseRawFile} after use.
+`RawFile` represents an opened rawfile object. It is obtained through OH_ResourceManager_OpenRawFile, and must be closed and released through [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile) after use.
 
 **System capability**: SystemCapability.Global.ResourceManager
 

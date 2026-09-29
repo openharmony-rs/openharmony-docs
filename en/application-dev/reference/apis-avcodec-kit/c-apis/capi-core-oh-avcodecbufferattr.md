@@ -1,7 +1,7 @@
 # OH_AVCodecBufferAttr
 
 ```c
-typedef struct OH_AVCodecBufferAttr {...} OH_AVCodecBufferAttr
+struct OH_AVCodecBufferAttr {...}
 ```
 
 ## Overview

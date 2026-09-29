@@ -6,8 +6,6 @@ Defines xcomponent attribute enum value.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -37,8 +35,6 @@ enum ArkUI_XComponentType
 **Description**
 
 Enumerates the types of the **XComponent** component.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

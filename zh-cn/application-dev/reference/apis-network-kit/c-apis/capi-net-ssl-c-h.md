@@ -6,8 +6,6 @@
 
 **库：** libnet_ssl.so
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 11
 
 **相关模块：** [netstack](capi-netstack.md)
@@ -40,22 +38,20 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 
 对外暴露的证书链校验接口。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const struct NetStack_CertBlob *cert | 用户传入的待校验证书。 |
-| const struct NetStack_CertBlob *caCert | 用户指定的证书，若为空则以系统预置证书进行校验。 |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *cert | 用户传入的待校验证书。 |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *caCert | 用户指定的证书，若为空则以系统预置证书进行校验。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 0 - 成功。      <br>2305001 - 未指定的错误。      <br>2305002 - 无法获取颁发者证书。      <br>2305003 - 无法获取证书吊销列表（CRL）。      <br>2305004 - 无法解密证书签名。      <br>2305005 - 无法解密CRL签名。      <br>2305006 - 无法解码颁发者公钥。      <br>2305007 - 证书签名失败。      <br>2305008 - CRL签名失败。      <br>2305009 - 证书尚未生效。      <br>2305010 - 证书已过期。      <br>2305011 - CRL尚未有效。      <br>2305012 - CRL已过期。      <br>2305023 - 证书已被吊销。      <br>2305024 - 证书颁发机构（CA）无效。      <br>2305027 - 证书不受信任。 |
+| uint32_t | 0 - 成功。<br>2305001 - 未指定的错误。<br>2305002 - 无法获取颁发者证书。<br>2305003 - 无法获取证书吊销列表（CRL）。<br>2305004 - 无法解密证书签名。<br>2305005 - 无法解密CRL签名。<br>2305006 - 无法解码颁发者公钥。<br>2305007 - 证书签名失败。<br>2305008 - CRL签名失败。<br>2305009 - 证书尚未生效。<br>2305010 - 证书已过期。<br>2305011 - CRL尚未有效。<br>2305012 - CRL已过期。<br>2305023 - 证书已被吊销。<br>2305024 - 证书颁发机构（CA）无效。<br>2305027 - 证书不受信任。 |
 
 ### OH_NetStack_GetPinSetForHostName()
 
@@ -67,8 +63,6 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 
 获取证书锁定信息。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 12
 
 **参数：**
@@ -76,13 +70,13 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 | 参数项 | 描述 |
 | -- | -- |
 | const char *hostname | 主机名。 |
-| NetStack_CertificatePinning *pin | 证书锁定信息的结构体。 |
+| [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md) *pin | 证书锁定信息的结构体。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>401 - 参数设置错误。      <br>2305999 - 内存错误。 |
+| int32_t | 0 - 成功。<br>401 - 参数设置错误。<br>2305999 - 内存错误。 |
 
 ### OH_NetStack_GetCertificatesForHostName()
 
@@ -94,8 +88,6 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 
 获取证书信息。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 12
 
 **参数：**
@@ -103,13 +95,13 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 | 参数项 | 描述 |
 | -- | -- |
 | const char *hostname | 主机名。 |
-| NetStack_Certificates *certs | 证书信息的结构体。 |
+| [NetStack_Certificates](capi-netstack-netstack-certificates.md) *certs | 证书信息的结构体。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>401 - 参数设置错误。      <br>2305999 - 内存错误。 |
+| int32_t | 0 - 成功。<br>401 - 参数设置错误。<br>2305999 - 内存错误。 |
 
 ### OH_Netstack_DestroyCertificatesContent()
 
@@ -121,15 +113,13 @@ void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 
 释放证书内容。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NetStack_Certificates *certs | 证书信息。 |
+| [NetStack_Certificates](capi-netstack-netstack-certificates.md) *certs | 证书信息。 |
 
 ### OH_Netstack_IsCleartextPermitted()
 
@@ -140,8 +130,6 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 **描述：**
 
 整体明文HTTP是否允许。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -157,7 +145,7 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>201 - 权限被拒。      <br>401 - 参数错误。 |
+| int32_t | 0 - 成功。<br>201 - 权限被拒。<br>401 - 参数错误。 |
 
 ### OH_Netstack_IsCleartextPermittedByHostName()
 
@@ -168,8 +156,6 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 **描述：**
 
 按域名明文HTTP是否允许。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -186,7 +172,7 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>201 - 权限被拒。      <br>401 - 参数错误。 |
+| int32_t | 0 - 成功。<br>201 - 权限被拒。<br>401 - 参数错误。 |
 
 ### OH_Netstack_IsCleartextCfgByComponent()
 
@@ -197,8 +183,6 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 **描述：**
 
 检查组件是否已配置开启明文HTTP拦截功能。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
@@ -213,7 +197,7 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>2100001 - 无效的参数值。 |
+| int32_t | 0 - 成功。<br>2100001 - 无效的参数值。 |
 
 ### OH_NetStack_CreateAndVerifySortedCertChain()
 
@@ -229,26 +213,24 @@ uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBl
 >
 > After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const struct NetStack_CertBlob *cert | 要验证的证书链。不能为NULL或空。 |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *cert | 要验证的证书链。不能为NULL或空。 |
 | size_t certCount | 证书链中的证书数量。 |
-| const struct NetStack_CertBlob *caCert | 用户指定的CA证书。如果为NULL，则使用预设证书。 |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *caCert | 用户指定的CA证书。如果为NULL，则使用预设证书。 |
 | const char *hostname | 预期的服务器主机名。 |
-| struct NetStack_CertBlob **outSortedChain | 用于接收排序证书链的指针。 如果调用者不需要链数据，可以为NULL。 仅在返回值为0时有效。 必须使用OH_NetStack_FreeCertChain释放分配的内存。 |
+| [struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) **outSortedChain | 用于接收排序证书链的指针。 如果调用者不需要链数据，可以为NULL。 仅在返回值为0时有效。 必须使用OH_NetStack_FreeCertChain释放分配的内存。 |
 | size_t *outSortedCount | 用于接收排序证书数量的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 0 - 成功。          2305001 - 未指定的错误。          2305002 - 无法获取颁发者证书。          2305004 - 无法解密证书签名。          2305006 - 无法解码颁发者公钥。          2305007 - 证书签名失败。          2305009 - 证书尚未生效。          2305010 - 证书已过期。          2305024 - 无效的证书颁发机构(CA)。          2305062 - 主机名验证失败。          2305027 - 证书不受信任。 |
+| uint32_t | 0 - 成功。2305001 - 未指定的错误。2305002 - 无法获取颁发者证书。2305004 - 无法解密证书签名。2305006 - 无法解码颁发者公钥。2305007 - 证书签名失败。2305009 - 证书尚未生效。2305010 - 证书已过期。2305024 - 无效的证书颁发机构(CA)。2305062 - 主机名验证失败。2305027 - 证书不受信任。 |
 
 ### OH_NetStack_FreeCertChain()
 
@@ -260,15 +242,13 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 
 释放由OH_NetStack_CreateAndVerifySortedCertChain分配的证书链。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| struct NetStack_CertBlob *certChain | 从outSortedChain接收的证书链指针。 如果为NULL，此函数不执行任何操作。 |
+| [struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *certChain | 从outSortedChain接收的证书链指针。 如果为NULL，此函数不执行任何操作。 |
 | size_t certCount | 证书链中的证书数量。 |
 
 

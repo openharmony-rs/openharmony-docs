@@ -8,8 +8,6 @@
 
 **库：** libnative_rdb_ndk.z.so
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -63,8 +61,6 @@ enum Data_AssetStatus
 
 资产状态值类型。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -90,8 +86,6 @@ int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 
 设置资产类型数据的名称。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -105,7 +99,7 @@ int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -122,8 +116,6 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 
 设置资产类型数据在系统里的绝对路径，即URI。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -137,7 +129,7 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -154,8 +146,6 @@ int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 
 设置资产类型数据在应用沙箱里的相对路径。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -169,7 +159,7 @@ int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -186,8 +176,6 @@ int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 
 设置资产类型数据创建的时间。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -201,7 +189,7 @@ int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -218,8 +206,6 @@ int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 
 设置资产类型数据最后修改的时间。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -233,7 +219,7 @@ int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -250,8 +236,6 @@ int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 
 设置资产类型数据占用空间的大小。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -265,7 +249,7 @@ int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -282,8 +266,6 @@ int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 
 设置资产类型数据的状态码。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -297,7 +279,7 @@ int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -314,8 +296,6 @@ int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 
 获取资产类型数据的名称。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -330,7 +310,7 @@ int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_ERR表示函数执行异常。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -347,8 +327,6 @@ int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 
 获取资产类型数据的绝对路径。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -363,7 +341,7 @@ int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_ERR表示函数执行异常。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -380,8 +358,6 @@ int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 
 获取资产类型数据的相对路径。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -396,7 +372,7 @@ int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_ERR表示函数执行异常。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -413,8 +389,6 @@ int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)
 
 获取资产类型数据的创建时间。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -428,7 +402,7 @@ int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_ERR表示函数执行异常。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -445,8 +419,6 @@ int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 
 获取资产类型数据的最后修改的时间。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -460,7 +432,7 @@ int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_ERR表示函数执行异常。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -477,8 +449,6 @@ int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 
 获取资产类型数据占用空间的大小。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -492,7 +462,7 @@ int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_ERR表示函数执行异常。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -509,8 +479,6 @@ int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 
 获取资产类型数据的状态码。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -524,7 +492,7 @@ int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -541,15 +509,13 @@ Data_Asset *OH_Data_Asset_CreateOne(void)
 
 创建一个[Data_Asset](capi-rdb-data-asset.md)类型实例。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Data_Asset *](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。      <br>使用完成后，必须通过[OH_Data_Asset_DestroyOne](capi-data-asset-h.md#oh_data_asset_destroyone)接口释放内存。 |
+| [Data_Asset *](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。<br>使用完成后，必须通过[OH_Data_Asset_DestroyOne](capi-data-asset-h.md#oh_data_asset_destroyone)接口释放内存。 |
 
 **参考：**
 
@@ -565,8 +531,6 @@ int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 **描述：**
 
 销毁[Data_Asset](capi-rdb-data-asset.md) 对象并回收该对象占用的内存。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -597,8 +561,6 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 创建指定数量的[Data_Asset](capi-rdb-data-asset.md)类型实例。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -611,7 +573,7 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Data_Asset **](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体指针数组的指针，否则返回NULL。      <br>使用完成后，必须通过[OH_Data_Asset_DestroyMultiple](capi-data-asset-h.md#oh_data_asset_destroymultiple)接口释放内存。 |
+| [Data_Asset **](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体指针数组的指针，否则返回NULL。<br>使用完成后，必须通过[OH_Data_Asset_DestroyMultiple](capi-data-asset-h.md#oh_data_asset_destroymultiple)接口释放内存。 |
 
 **参考：**
 
@@ -627,8 +589,6 @@ int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 **描述：**
 
 销毁多个[Data_Asset](capi-rdb-data-asset.md) 对象并回收该对象占用的内存。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 

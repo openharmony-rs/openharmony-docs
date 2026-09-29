@@ -1,7 +1,7 @@
 # HiDebug_NativeStackFrame
 
 ```c
-typedef struct HiDebug_NativeStackFrame {...} HiDebug_NativeStackFrame
+struct HiDebug_NativeStackFrame {...}
 ```
 
 ## 概述

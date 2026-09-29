@@ -1,0 +1,18 @@
+# OHNativeWindow
+
+```c
+typedef struct OHNativeWindow OHNativeWindow
+```
+
+## 概述
+
+提供封装的NativeWindow实例。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 19
+
+**相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+
+**所在头文件：** [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
+

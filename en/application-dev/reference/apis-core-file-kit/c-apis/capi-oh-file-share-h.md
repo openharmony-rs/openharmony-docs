@@ -6,8 +6,6 @@ Provides URI-based file and directory authorization and persistence, permission 
 
 **Library**: libohfileshare.so
 
-**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
 **Since**: 12
 
 **Related module**: [fileShare](capi-fileshare.md)
@@ -16,10 +14,10 @@ Provides URI-based file and directory authorization and persistence, permission 
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | FileShare_PolicyErrorResult | Define the FileShare_PolicyErrorResult structure type.<br> Failed policy result on URI. |
-| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | FileShare_PolicyInfo | Define the FileShare_PolicyInfo structure type.<br> Policy information to manager permissions on a URI. |
+| Name | Description |
+| -- | -- |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | Define the FileShare_PolicyErrorResult structure type.<br> Failed policy result on URI. |
+| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | Define the FileShare_PolicyInfo structure type.<br> Policy information to manager permissions on a URI. |
 
 ### Enum
 
@@ -51,8 +49,6 @@ enum FileShare_OperationMode
 
 Enumerates the uri operate mode types.
 
-**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
 **Since**: 12
 
 | Enum item | Description |
@@ -69,8 +65,6 @@ enum FileShare_PolicyErrorCode
 **Description**
 
 Enumerates the error code of the permission policy for the URI operation.
-
-**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Since**: 12
 
@@ -94,8 +88,6 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 
 Set persistent permissions for the URI.
 
-**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
 **Since**: 12
@@ -113,7 +105,7 @@ Set persistent permissions for the URI.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_PERMISSION_ERROR} 201 - No permission to perform this operation.<br>        {@link ERR_EPERM} 13900001 - operation not permitted.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory or failed to copy memory.<br>        {@link ERR_OK} 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_RevokePermission()
 
@@ -125,8 +117,6 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 Revoke persistent permissions for the URI.
 
-**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
 **Since**: 12
@@ -144,7 +134,7 @@ Revoke persistent permissions for the URI.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_PERMISSION_ERROR} 201 - No permission to perform this operation.<br>        {@link ERR_EPERM} 13900001 - operation not permitted.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory or failed to copy memory.<br>        {@link ERR_OK} 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_ActivatePermission()
 
@@ -156,8 +146,6 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 
 Enable the URI that have been permanently authorized.
 
-**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
 **Since**: 12
@@ -175,7 +163,7 @@ Enable the URI that have been permanently authorized.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_PERMISSION_ERROR} 201 - No permission to perform this operation.<br>        {@link ERR_EPERM} 13900001 - operation not permitted.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory or failed to copy memory.<br>        {@link ERR_OK} 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_DeactivatePermission()
 
@@ -187,8 +175,6 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 Stop the authorized URI that has been enabled.
 
-**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
 **Since**: 12
@@ -206,7 +192,7 @@ Stop the authorized URI that has been enabled.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_PERMISSION_ERROR} 201 - No permission to perform this operation.<br>        {@link ERR_EPERM} 13900001 - operation not permitted.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory or failed to copy memory.<br>        {@link ERR_OK} 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_CheckPersistentPermission()
 
@@ -217,8 +203,6 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 **Description**
 
 Check persistent permissions for the URI.
-
-**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Required permission**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -237,7 +221,7 @@ Check persistent permissions for the URI.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_PERMISSION_ERROR} 201 - No permission to perform this operation.<br>        {@link ERR_EPERM} 13900001 - operation not permitted.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory or failed to copy memory.<br>        {@link ERR_OK} 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_ReleasePolicyErrorResult()
 
@@ -248,8 +232,6 @@ void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorRes
 **Description**
 
 Free FileShare_PolicyErrorResult pointer points to address memory.
-
-**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Since**: 12
 

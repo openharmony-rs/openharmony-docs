@@ -6,8 +6,6 @@ The file declares the structs and enums of the LowPowerVideoSink.
 
 **Library**: liblowpower_avsink.so
 
-**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **Since**: 20
 
 **Related module**: [LowPowerVideoSink](capi-lowpowervideosink.md)
@@ -37,13 +35,13 @@ The file declares the structs and enums of the LowPowerVideoSink.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_LowPowerVideoSink_OnDataNeeded)( OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* buffer, void *userData) | Called when the LowPowerVideoSink needs more data. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20 |
-| void (*OH_LowPowerVideoSink_OnError)( OH_LowPowerVideoSink* sink, OH_AVErrCode errCode, const char* errMsg, void* userData) | Called when an error occurs in the LowPowerVideoSink.<br>**Since**: 20 |
-| void (*OH_LowPowerVideoSink_OnTargetArrived)( OH_LowPowerVideoSink* sink, const int64_t targetPts, const bool isTimeout, void* userData) | Called when the LowPowerVideoSink reaches the target point. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20 |
-| void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink, void* userData) | Called when the LowPowerVideoSink starts rendering. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20 |
-| void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData) | Called when the stream changes in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20 |
-| void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* sink, void* userData) | Called when the first frame is successfully decoded in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20 |
-| void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* userData) | Called when the playback is completed in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20 |
+| void (*OH_LowPowerVideoSink_OnDataNeeded)( OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* buffer, void *userData) | Called when the LowPowerVideoSink needs more data. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink |
+| void (*OH_LowPowerVideoSink_OnError)( OH_LowPowerVideoSink* sink, OH_AVErrCode errCode, const char* errMsg, void* userData) | Called when an error occurs in the LowPowerVideoSink.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink |
+| void (*OH_LowPowerVideoSink_OnTargetArrived)( OH_LowPowerVideoSink* sink, const int64_t targetPts, const bool isTimeout, void* userData) | Called when the LowPowerVideoSink reaches the target point. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink |
+| void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink, void* userData) | Called when the LowPowerVideoSink starts rendering. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink |
+| void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData) | Called when the stream changes in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink |
+| void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* sink, void* userData) | Called when the first frame is successfully decoded in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink |
+| void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* userData) | Called when the playback is completed in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink |
 
 ## Function description
 
@@ -57,17 +55,15 @@ typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH
 
 Called when the LowPowerVideoSink needs more data. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
-**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
-| OH_AVSamplesBuffer\* buffer | OH_AVSamplesBuffer instance that will be written in |
-| void \*userData | User specific data |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | OH_LowPowerVideoSink instance |
+| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* buffer | OH_AVSamplesBuffer instance that will be written in |
+| void *userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnError()
 
@@ -79,18 +75,16 @@ typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink, OH_AVEr
 
 Called when an error occurs in the LowPowerVideoSink.
 
-**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | OH_LowPowerVideoSink instance |
 | errorCode | The error code returned when an error occurs during service operation. See the definition of {@OH_AVErrCode} |
 | errorMsg | string of Error description information returned when an error occurs during service operation |
-| void\* userData | User specific data |
+| void* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnTargetArrived()
 
@@ -102,18 +96,16 @@ typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink,
 
 Called when the LowPowerVideoSink reaches the target point. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
-**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | OH_LowPowerVideoSink instance |
 | const int64_t targetPts | Target pts of renderred frame, in microseconds |
 | const bool isTimeout | If wait target pts timeout, it is false |
-| void\* userData | User specific data |
+| void* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnRenderStarted()
 
@@ -125,16 +117,14 @@ typedef void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink,
 
 Called when the LowPowerVideoSink starts rendering. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
-**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
-| void\* userData | User specific data |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | OH_LowPowerVideoSink instance |
+| void* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnStreamChanged()
 
@@ -146,17 +136,15 @@ typedef void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink,
 
 Called when the stream changes in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
-**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
-| OH_AVFormat\* format | Carrying changing parameters and corresponding values |
-| void\* userData | User specific data |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | OH_LowPowerVideoSink instance |
+| [OH_AVFormat](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md)* format | Carrying changing parameters and corresponding values |
+| void* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnFirstFrameDecoded()
 
@@ -168,16 +156,14 @@ typedef void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* s
 
 Called when the first frame is successfully decoded in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
-**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
-| void\* userData | User specific data |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | OH_LowPowerVideoSink instance |
+| void* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnEos()
 
@@ -189,15 +175,13 @@ typedef void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* use
 
 Called when the playback is completed in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
-**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
-| void\* userData | User specific data |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | OH_LowPowerVideoSink instance |
+| void* userData | User specific data |
 
 

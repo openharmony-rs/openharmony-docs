@@ -2,13 +2,11 @@
 
 ## Overview
 
-The **background_process_manager.h** file declares the APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through {@link OH_Ability_StartNativeChildProcess}.
+The **background_process_manager.h** file declares the APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through OH_Ability_StartNativeChildProcess.
 
 **Include**: <background_process_manager/background_process_manager.h>
 
 **Library**: libbackground_process_manager.z.so
-
-**System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **Since**: 17
 
@@ -42,8 +40,6 @@ enum BackgroundProcessManager_ProcessPriority
 
 Enumerates child process priorities.
 
-**System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
-
 **Since**: 17
 
 | Enum item | Description |
@@ -60,8 +56,6 @@ enum BackgroundProcessManager_ErrorCode
 **Description**
 
 Enumerates the error codes used by the background child process management.
-
-**System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **Since**: 17
 
@@ -84,22 +78,20 @@ int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessMan
 
 Sets the child process priority. After a child process is suppressed, the CPU resources that can be obtained will be limited. If the scheduling policy of the main process changes, for example, from the background to the foreground, the child process changes with the main process. To suppress the child process, call this API again.
 
-**System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
-
 **Since**: 17
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| int pid | ID of the child process to be suppressed, which is the value of the **pid** parameter after the child process is created through the {@link OH_Ability_StartNativeChildProcess} API. |
+| int pid | ID of the child process to be suppressed, which is the value of the **pid** parameter after the child process is created through the OH_Ability_StartNativeChildProcess API. |
 | [BackgroundProcessManager_ProcessPriority](capi-background-process-manager-h.md#backgroundprocessmanager_processpriority) priority | Suppression priority. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | [ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS](capi-background-process-manager-h.md#backgroundprocessmanager_errorcode) is returned if the suppression parameter is sent successfully      [ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM](capi-background-process-manager-h.md#backgroundprocessmanager_errorcode) is returned if the parameter check fails. |
+| int | [ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS](capi-background-process-manager-h.md#backgroundprocessmanager_errorcode) is returned if the suppression parameter is sent successfully [ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM](capi-background-process-manager-h.md#backgroundprocessmanager_errorcode) is returned if the parameter check fails. |
 
 ### OH_BackgroundProcessManager_ResetProcessPriority()
 
@@ -111,15 +103,13 @@ int OH_BackgroundProcessManager_ResetProcessPriority(int pid)
 
 Unsuppresses the child process. In this case, the child process follows the scheduling policy of the main process. If the scheduling policy of the main process changes, for example, from the background to the foreground, the child process changes with the main process. The effect is the same as calling **resetProcessPriority**.
 
-**System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
-
 **Since**: 17
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| int pid | ID of the child process, which is the value of the **pid** parameter of the {@link OH_Ability_StartNativeChildProcess} API. |
+| int pid | ID of the child process, which is the value of the **pid** parameter of the OH_Ability_StartNativeChildProcess API. |
 
 **Returns**:
 

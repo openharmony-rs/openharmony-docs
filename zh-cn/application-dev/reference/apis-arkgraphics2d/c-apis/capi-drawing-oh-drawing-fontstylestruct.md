@@ -1,7 +1,7 @@
 # OH_Drawing_FontStyleStruct
 
 ```c
-typedef struct OH_Drawing_FontStyleStruct {...} OH_Drawing_FontStyleStruct
+struct OH_Drawing_FontStyleStruct {...}
 ```
 
 ## 概述

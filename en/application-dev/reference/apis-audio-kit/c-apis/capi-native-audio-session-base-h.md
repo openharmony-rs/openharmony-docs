@@ -6,9 +6,7 @@ Declares the audio session base data structure.
 
 **Library**: libohaudio.so
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
-**Since**: 10
+**Since**: 24
 
 **Related module**: [OHAudio](capi-ohaudio.md)
 
@@ -16,9 +14,9 @@ Declares the audio session base data structure.
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) | OH_AudioSession_Strategy | Declares the audio session strategy. |
+| Name | Description |
+| -- | -- |
+| [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) | Declares the audio session strategy. |
 
 ### Enum
 
@@ -39,15 +37,13 @@ enum OH_AudioSession_BehaviorFlags
 
 Enumerates the audio session behavior flags.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 24
 
 | Enum item | Description |
 | -- | -- |
 | DEFAULT_BEHAVIOR  = 0x00000000 | Default behavior, used to clear behavior settings.<br>**Since**: 24 |
-| MUTE_WHEN_INTERRUPTED = 0x00000002 | When the system needs to stop or pause the audio stream, it performs a forced mute instead. In the audio session scenario, the application will receive a notification {@link AUDIO_SESSION_STATE_CHANGE_HINT_MUTE} when muted<br>and a notification {@link AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE} when resumed.<br>In the OH_AudioRenderer and OH_AudioCapturer scenarios, the application will receive a notification<br>{@link AUDIOSTREAM_INTERRUPT_HINT_MUTE} when muted<br>and a notification {@link AUDIOSTREAM_INTERRUPT_HINT_UNMUTE} when resumed. This flag cannot coexist with [PAUSE_WHEN_INTERRUPTED](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags); if both flags are set,<br>only [PAUSE_WHEN_INTERRUPTED](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags) will take effect.<br>**Since**: 24 |
-| PAUSE_WHEN_INTERRUPTED = 0x00000004 | When the system needs to stop the audio stream, it performs a pause instead. In the audio session scenario, the application will receive a notification {@link AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE} when paused<br>and a notification {@link AUDIO_SESSION_STATE_CHANGE_HINT_RESUME} when resumed.<br>In the OH_AudioRenderer and OH_AudioCapturer scenarios, the application will receive a notification<br>{@link AUDIOSTREAM_INTERRUPT_HINT_PAUSE} when paused<br>and a notification {@link AUDIOSTREAM_INTERRUPT_HINT_RESUME} when resumed. This flag cannot coexist with [MUTE_WHEN_INTERRUPTED](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags); if both flags are set, only this flag will take effect.<br>**Since**: 26.0.0 |
+| MUTE_WHEN_INTERRUPTED = 0x00000002 | When the system needs to stop or pause the audio stream, it performs a forced mute instead. In the audio session scenario, the application will receive a notification [AUDIO_SESSION_STATE_CHANGE_HINT_MUTE](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) when muted and a notification [AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) when resumed. In the OH_AudioRenderer and OH_AudioCapturer scenarios, the application will receive a notification [AUDIOSTREAM_INTERRUPT_HINT_MUTE](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) when muted and a notification [AUDIOSTREAM_INTERRUPT_HINT_UNMUTE](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) when resumed. This flag cannot coexist with [PAUSE_WHEN_INTERRUPTED](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags); if both flags are set, only [PAUSE_WHEN_INTERRUPTED](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags) will take effect.<br>**Since**: 24 |
+| PAUSE_WHEN_INTERRUPTED = 0x00000004 | When the system needs to stop the audio stream, it performs a pause instead. In the audio session scenario, the application will receive a notification [AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) when paused and a notification [AUDIO_SESSION_STATE_CHANGE_HINT_RESUME](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) when resumed. In the OH_AudioRenderer and OH_AudioCapturer scenarios, the application will receive a notification [AUDIOSTREAM_INTERRUPT_HINT_PAUSE](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) when paused and a notification [AUDIOSTREAM_INTERRUPT_HINT_RESUME](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) when resumed. This flag cannot coexist with [MUTE_WHEN_INTERRUPTED](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags); if both flags are set, only this flag will take effect.<br>**Since**: 26.0.0 |
 
 ### OH_AudioSession_ConcurrencyMode
 
@@ -58,8 +54,6 @@ enum OH_AudioSession_ConcurrencyMode
 **Description**
 
 Declares the audio concurrency modes.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 

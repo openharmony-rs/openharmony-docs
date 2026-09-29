@@ -6,8 +6,6 @@ The file declares the functions for basic display management. You can call the f
 
 **库：** libnative_display_manager.so
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **相关模块：** [OH_DisplayManager](capi-oh-displaymanager.md)
@@ -63,11 +61,11 @@ The file declares the functions for basic display management. You can call the f
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId) | 注册屏幕状态变化的回调函数。<br>**起始版本：** 12 |
-| void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)( NativeDisplayManager_FoldDisplayMode displayMode) | 注册屏幕展开、折叠状态变化的回调函数。<br>**起始版本：** 12 |
-| void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId) | 注册屏幕可用区域变化的回调函数。<br>**起始版本：** 20 |
-| void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId) | 注册屏幕连接的回调函数。<br>**起始版本：** 20 |
-| void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId) | 注册屏幕移除的回调函数。<br>**起始版本：** 20 |
+| void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId) | 注册屏幕状态变化的回调函数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
+| void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)( NativeDisplayManager_FoldDisplayMode displayMode) | 注册屏幕展开、折叠状态变化的回调函数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
+| void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId) | 注册屏幕可用区域变化的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
+| void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId) | 注册屏幕连接的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
+| void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId) | 注册屏幕移除的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
 
 ## 函数说明
 
@@ -81,8 +79,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayId(uint6
 
 获取默认屏幕的id号。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -95,7 +91,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayId(uint6
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayWidth()
 
@@ -106,8 +102,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayWidth(in
 **描述：**
 
 获取默认屏幕的宽度。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -121,7 +115,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayWidth(in
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayHeight()
 
@@ -132,8 +126,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayHeight(i
 **描述：**
 
 获取默认屏幕的高度。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -147,7 +139,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayHeight(i
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayRotation()
 
@@ -159,21 +151,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRotation
 
 获取默认屏幕的顺时针旋转角度。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_Rotation *displayRotation | 默认屏幕的顺时针旋转角度，具体可见[NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation)，此处作为出参返回。 |
+| [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation) *displayRotation | 默认屏幕的顺时针旋转角度，具体可见[NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation)，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayOrientation()
 
@@ -185,21 +175,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayOrientat
 
 获取默认屏幕的旋转方向。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_Orientation *displayOrientation | 屏幕当前显示的方向，具体可见[NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation)，此处作为出参返回。 |
+| [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation) *displayOrientation | 屏幕当前显示的方向，具体可见[NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation)，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayVirtualPixelRatio()
 
@@ -210,8 +198,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayVirtualP
 **描述：**
 
 获取默认屏幕的虚拟像素密度。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -225,7 +211,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayVirtualP
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayRefreshRate()
 
@@ -236,8 +222,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRefreshR
 **描述：**
 
 获取默认屏幕的刷新率。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -251,7 +235,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRefreshR
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityDpi()
 
@@ -262,8 +246,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityD
 **描述：**
 
 获取屏幕的物理像素密度。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -277,7 +259,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityD
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityPixels()
 
@@ -288,8 +270,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityP
 **描述：**
 
 获取屏幕逻辑像素的密度。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -303,7 +283,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityP
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayScaledDensity()
 
@@ -314,8 +294,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayScaledDe
 **描述：**
 
 获取屏幕显示字体的缩放因子。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -329,7 +307,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayScaledDe
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi()
 
@@ -340,8 +318,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityX
 **描述：**
 
 获取屏幕X方向中每英寸屏幕的物理像素值。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -355,7 +331,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityX
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi()
 
@@ -366,8 +342,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityY
 **描述：**
 
 获取Y方向中每英寸屏幕的物理像素值。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -381,7 +355,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityY
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo()
 
@@ -393,21 +367,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDefaultDisplayCutou
 
 获取挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_CutoutInfo **cutoutInfo | 挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息，具体可见[NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md)，此处作为出参返回。 |
+| [NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md) **cutoutInfo | 挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息，具体可见[NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md)，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo()
 
@@ -419,21 +391,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyDefaultDisplayCuto
 
 销毁挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_CutoutInfo *cutoutInfo | 销毁通过[OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdefaultdisplaycutoutinfo)接口获取的挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息对象， 具体可见[NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md)。 |
+| [NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md) *cutoutInfo | 销毁通过[OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdefaultdisplaycutoutinfo)接口获取的挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息对象， 具体可见[NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。 |
 
 ### OH_NativeDisplayManager_IsFoldable()
 
@@ -444,8 +414,6 @@ bool OH_NativeDisplayManager_IsFoldable()
 **描述：**
 
 查询设备是否可折叠。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -465,21 +433,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetFoldDisplayMode(Native
 
 获取可折叠设备的显示模式。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_FoldDisplayMode *displayMode | 折叠设备当前的显示模式，具体可见[NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode)，此处作为出参返回。 |
+| [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode) *displayMode | 折叠设备当前的显示模式，具体可见[NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode)，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。 |
 
 ### OH_NativeDisplayManager_DisplayChangeCallback()
 
@@ -490,8 +456,6 @@ typedef void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId
 **描述：**
 
 注册屏幕状态变化的回调函数。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -511,8 +475,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayChangeList
 
 注册屏幕状态变化监听（如旋转变化、刷新率、DPI、分辨率等变化）。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -526,7 +488,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayChangeList
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_UnregisterDisplayChangeListener()
 
@@ -537,8 +499,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayChangeLi
 **描述：**
 
 取消屏幕状态变化的监听。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -552,7 +512,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayChangeLi
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_FoldDisplayModeChangeCallback()
 
@@ -564,15 +524,13 @@ typedef void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)(NativeDisp
 
 注册屏幕展开、折叠状态变化的回调函数。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_FoldDisplayMode displayMode | 折叠/展开动作执行后屏幕的状态，具体可见[NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode)。 |
+| [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode) displayMode | 折叠/展开动作执行后屏幕的状态，具体可见[NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode)。 |
 
 ### OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener()
 
@@ -583,8 +541,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterFoldDisplayModeCh
 **描述：**
 
 注册屏幕展开、折叠状态变化的监听。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -599,7 +555,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterFoldDisplayModeCh
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener()
 
@@ -610,8 +566,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterFoldDisplayMode
 **描述：**
 
 取消屏幕展开、折叠状态变化的监听。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
@@ -625,7 +579,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterFoldDisplayMode
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_CreateAllDisplays()
 
@@ -637,21 +591,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAllDisplays(NativeD
 
 获取当前所有屏幕信息对象。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_DisplaysInfo **allDisplays | 当前所有的屏幕信息，具体可见[NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md)，此处作为出参返回。 |
+| [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md) **allDisplays | 当前所有的屏幕信息，具体可见[NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md)，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_DestroyAllDisplays()
 
@@ -663,15 +615,13 @@ void OH_NativeDisplayManager_DestroyAllDisplays(NativeDisplayManager_DisplaysInf
 
 销毁所有屏幕的信息对象。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_DisplaysInfo *allDisplays | 销毁通过[OH_NativeDisplayManager_CreateAllDisplays](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays)接口获取的所有的屏幕信息，具体可见 [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md)。 |
+| [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md) *allDisplays | 销毁通过[OH_NativeDisplayManager_CreateAllDisplays](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays)接口获取的所有的屏幕信息，具体可见 [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md)。 |
 
 ### OH_NativeDisplayManager_CreateDisplayById()
 
@@ -683,8 +633,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_
 
 获取指定屏幕的信息对象。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 14
 
 **参数：**
@@ -692,13 +640,13 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t displayId | 指定屏幕的id编号，该值为非负整数。 |
-| NativeDisplayManager_DisplayInfo **displayInfo | 指定的屏幕信息对象，具体可见[NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md)，此处作为出参返回。 |
+| [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md) **displayInfo | 指定的屏幕信息对象，具体可见[NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md)，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_DestroyDisplay()
 
@@ -710,15 +658,13 @@ void OH_NativeDisplayManager_DestroyDisplay(NativeDisplayManager_DisplayInfo *di
 
 销毁指定屏幕的信息对象。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_DisplayInfo *displayInfo | 销毁通过[OH_NativeDisplayManager_CreateDisplayById](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdisplaybyid)或者 [OH_NativeDisplayManager_CreatePrimaryDisplay](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createprimarydisplay)接口获取到的屏幕信息，具体可见[NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md)。 |
+| [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md) *displayInfo | 销毁通过[OH_NativeDisplayManager_CreateDisplayById](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdisplaybyid)或者 [OH_NativeDisplayManager_CreatePrimaryDisplay](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createprimarydisplay)接口获取到的屏幕信息，具体可见[NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md)。 |
 
 ### OH_NativeDisplayManager_CreatePrimaryDisplay()
 
@@ -730,21 +676,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(Nati
 
 获取主屏信息对象。除2in1之外的设备获取的是设备自带屏幕的屏幕信息；2in1设备外接屏幕时获取的是当前主屏幕的屏幕信息；2in1设备没有外接屏幕时获取的是自带屏幕的屏幕信息。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_DisplayInfo **displayInfo | 主屏的屏幕信息对象，具体可见[NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md)，此处作为出参返回。 |
+| [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md) **displayInfo | 主屏的屏幕信息对象，具体可见[NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md)，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_AvailableAreaChangeCallback()
 
@@ -755,8 +699,6 @@ typedef void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t dis
 **描述：**
 
 注册屏幕可用区域变化的回调函数。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 20
 
@@ -776,8 +718,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterAvailableAreaChan
 
 注册屏幕可用区域变化监听。<br> 在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。 针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -791,7 +731,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterAvailableAreaChan
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener()
 
@@ -802,8 +742,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterAvailableAreaCh
 **描述：**
 
 取消屏幕可用区域变化的监听。<br> 在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。 针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 20
 
@@ -817,7 +755,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterAvailableAreaCh
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_CreateAvailableArea()
 
@@ -829,8 +767,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint6
 
 获取屏幕的可用区域。<br> 在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。 针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过 [OH_NativeDisplayManager_GetDefaultDisplayWidth](capi-oh-display-manager-h.md#oh_nativedisplaymanager_getdefaultdisplaywidth)、[OH_NativeDisplayManager_GetDefaultDisplayHeight](capi-oh-display-manager-h.md#oh_nativedisplaymanager_getdefaultdisplayheight) 获取当前设备屏幕的可用区域。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -838,13 +774,13 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint6
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t displayId | 查询屏幕的id号，非负整数。 |
-| NativeDisplayManager_Rect **availableArea | 屏幕可用区域，具体可见[NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md)，此处作为出参返回。 |
+| [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md) **availableArea | 屏幕可用区域，具体可见[NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md)，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_DestroyAvailableArea()
 
@@ -856,21 +792,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyAvailableArea(Nati
 
 销毁屏幕的可用区域。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NativeDisplayManager_Rect *availableArea | 销毁通过[OH_NativeDisplayManager_CreateAvailableArea](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createavailablearea)获取的屏幕可用区域， 可用区域定义具体可见[NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md)。 |
+| [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md) *availableArea | 销毁通过[OH_NativeDisplayManager_CreateAvailableArea](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createavailablearea)获取的屏幕可用区域， 可用区域定义具体可见[NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。 |
 
 ### OH_NativeDisplayManager_DisplayAddCallback()
 
@@ -881,8 +815,6 @@ typedef void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId)
 **描述：**
 
 注册屏幕连接的回调函数。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 20
 
@@ -902,8 +834,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayAddListene
 
 注册屏幕连接变化监听（如插入显示器）。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -917,7 +847,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayAddListene
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_UnregisterDisplayAddListener()
 
@@ -928,8 +858,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayAddListe
 **描述：**
 
 取消屏幕连接的监听。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 20
 
@@ -943,7 +871,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayAddListe
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_DisplayRemoveCallback()
 
@@ -954,8 +882,6 @@ typedef void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId
 **描述：**
 
 注册屏幕移除的回调函数。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 20
 
@@ -975,8 +901,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayRemoveList
 
 注册屏幕移除变化监听（如移除显示器）。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -990,7 +914,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayRemoveList
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_UnregisterDisplayRemoveListener()
 
@@ -1001,8 +925,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayRemoveLi
 **描述：**
 
 取消屏幕移除的监听。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 20
 
@@ -1016,7 +938,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayRemoveLi
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示非法参数。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDisplaySourceMode()
 
@@ -1028,8 +950,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint
 
 获取屏幕的显示模式，默认值为DisplaySourceMode.None。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -1037,13 +957,13 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t displayId | 查询屏幕的id号，非负整数。 |
-| NativeDisplayManager_SourceMode *sourceMode | 屏幕当前的显示模式，具体可见[NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode)，此处作为出参返回。 |
+| [NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode) *sourceMode | 屏幕当前的显示模式，具体可见[NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode)，此处作为出参返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDisplayPosition()
 
@@ -1054,8 +974,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 **描述：**
 
 获取屏幕的位置信息，即相对于原点（主屏左上角）的x坐标和y坐标。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 20
 
@@ -1071,6 +989,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 | 类型 | 说明 |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。      当前仅支持主屏幕和扩展屏幕查询屏幕位置信息，其他屏幕查询会返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。当前仅支持主屏幕和扩展屏幕查询屏幕位置信息，其他屏幕查询会返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM。 |
 
 

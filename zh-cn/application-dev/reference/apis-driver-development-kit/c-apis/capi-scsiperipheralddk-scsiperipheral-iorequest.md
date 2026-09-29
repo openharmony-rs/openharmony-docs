@@ -1,7 +1,7 @@
 # ScsiPeripheral_IORequest
 
 ```c
-typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
+struct ScsiPeripheral_IORequest {...}
 ```
 
 ## 概述

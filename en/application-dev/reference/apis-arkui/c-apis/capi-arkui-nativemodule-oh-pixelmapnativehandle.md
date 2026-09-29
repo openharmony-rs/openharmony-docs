@@ -1,0 +1,18 @@
+# OH_PixelmapNativeHandle
+
+```c
+typedef struct OH_PixelmapNativeHandle OH_PixelmapNativeHandle
+```
+
+## Overview
+
+Defines a struct for the pointer to an **OH_PixelmapNative** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 12
+
+**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Header file**: [drawable_descriptor.h](capi-drawable-descriptor-h.md)
+

@@ -1,7 +1,7 @@
 # OH_UsbManager_UsbDevice
 
 ```c
-typedef struct OH_UsbManager_UsbDevice {...} OH_UsbManager_UsbDevice
+struct OH_UsbManager_UsbDevice {...}
 ```
 
 ## 概述
@@ -33,7 +33,7 @@ typedef struct OH_UsbManager_UsbDevice {...} OH_UsbManager_UsbDevice
 | uint8_t clazz | 设备类。<br>**起始版本：** 26.0.1 |
 | uint8_t subClass | 设备子类。<br>**起始版本：** 26.0.1 |
 | uint8_t protocol | 设备协议。<br>**起始版本：** 26.0.1 |
-| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) *configs | 设备配置描述符信息。<br>**起始版本：** 26.0.1 |
+| OH_UsbManager_UsbConfig *configs | 设备配置描述符信息。<br>**起始版本：** 26.0.1 |
 | uint32_t configCount | 设备中的配置数量。<br>**起始版本：** 26.0.1 |
 
 

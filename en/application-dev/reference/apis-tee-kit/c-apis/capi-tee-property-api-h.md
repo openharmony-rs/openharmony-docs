@@ -6,8 +6,6 @@ Reference of TEE object api definitions.
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -42,7 +40,8 @@ Reference of TEE object api definitions.
 
 | Name | Description |
 | -- | -- |
-| uint32_t TEE_PropSetHandle | Defines the property set handle type.<br>**Since**: 20 |
+| uint32_t TEE_PropSetHandle | Defines the property set handle type.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| typedef uint32_t TEE_PropSetHandle | Defines the property set handle type.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
 
 ## Enum type description
 
@@ -55,8 +54,6 @@ enum Pseudo_PropSetHandle
 **Description**
 
 Enumerates the types of the property set.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -80,8 +77,6 @@ TEE_Result TEE_GetPropertyAsString(TEE_PropSetHandle propsetOrEnumerator, const 
 
 Obtains a property from a property set and converts its value into a printable string.<br> *
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -97,7 +92,7 @@ Obtains a property from a property set and converts its value into a printable s
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the target property cannot be obtained. Returns <b>TEE_ERROR_SHORT_BUFFER</b> if the value buffer is too small to hold the property value obtained. |
 
 ### TEE_GetPropertyAsBool()
 
@@ -108,8 +103,6 @@ TEE_Result TEE_GetPropertyAsBool(TEE_PropSetHandle propsetOrEnumerator, const ch
 **Description**
 
 Obtains a property from a property set and converts its value into a Boolean value.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -125,7 +118,7 @@ Obtains a property from a property set and converts its value into a Boolean val
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the target property cannot be obtained. |
 
 ### TEE_GetPropertyAsU32()
 
@@ -136,8 +129,6 @@ TEE_Result TEE_GetPropertyAsU32(TEE_PropSetHandle propsetOrEnumerator, const cha
 **Description**
 
 Obtains a property from a property set and converts its value into a 32-bit unsigned integer.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -153,7 +144,7 @@ Obtains a property from a property set and converts its value into a 32-bit unsi
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the target property cannot be obtained. |
 
 ### TEE_GetPropertyAsU64()
 
@@ -164,8 +155,6 @@ TEE_Result TEE_GetPropertyAsU64(TEE_PropSetHandle propsetOrEnumerator, const cha
 **Description**
 
 Obtains a property from a property set and converts its value into a 64-bit unsigned integer.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -181,7 +170,7 @@ Obtains a property from a property set and converts its value into a 64-bit unsi
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the target property cannot be obtained. |
 
 ### TEE_GetPropertyAsBinaryBlock()
 
@@ -192,8 +181,6 @@ TEE_Result TEE_GetPropertyAsBinaryBlock(TEE_PropSetHandle propsetOrEnumerator, c
 **Description**
 
 Obtains a property from a property set and converts its value into a binary block.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -210,7 +197,7 @@ Obtains a property from a property set and converts its value into a binary bloc
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the target property cannot be obtained. TEE_ERROR_SHORT_BUFFER the value buffer is not large enough to hold the whole property value |
 
 ### TEE_GetPropertyAsUUID()
 
@@ -221,8 +208,6 @@ TEE_Result TEE_GetPropertyAsUUID(TEE_PropSetHandle propsetOrEnumerator, const ch
 **Description**
 
 Obtains a property from a property set and converts its value to the <b>TEE_UUID</b> struct.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -238,7 +223,7 @@ Obtains a property from a property set and converts its value to the <b>TEE_UUID
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the target property cannot be obtained. |
 
 ### TEE_GetPropertyAsIdentity()
 
@@ -250,8 +235,6 @@ TEE_Result TEE_GetPropertyAsIdentity(TEE_PropSetHandle propsetOrEnumerator, cons
 
 Obtains a property from a property set and converts its value to the <b>TEE_Identity</b> struct.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -260,13 +243,13 @@ Obtains a property from a property set and converts its value to the <b>TEE_Iden
 | -- | -- |
 | TEE_PropSetHandle propsetOrEnumerator | Indicates one of the TEE_PROPSET_XXX pseudo-handles or a handle on a property enumerator. |
 | const char *name | Indicates the pointer to the zero-terminated string containing the name of the property to obtain. |
-| TEE_Identity *value | Indicates the pointer to the variable that holds the property value obtained. |
+| [TEE_Identity](capi-teetrusted-tee-identity.md) *value | Indicates the pointer to the variable that holds the property value obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the target property cannot be obtained. |
 
 ### TEE_AllocatePropertyEnumerator()
 
@@ -277,8 +260,6 @@ TEE_Result TEE_AllocatePropertyEnumerator(TEE_PropSetHandle *enumerator)
 **Description**
 
 Allocates a property enumerator object.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -292,7 +273,7 @@ Allocates a property enumerator object.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if there is no enough resources to allocate the property enumerator. |
 
 ### TEE_FreePropertyEnumerator()
 
@@ -303,8 +284,6 @@ void TEE_FreePropertyEnumerator(TEE_PropSetHandle enumerator)
 **Description**
 
 Releases a property enumerator object.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -323,8 +302,6 @@ void TEE_StartPropertyEnumerator(TEE_PropSetHandle enumerator, TEE_PropSetHandle
 **Description**
 
 Starts to enumerate the properties in an enumerator.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -345,8 +322,6 @@ void TEE_ResetPropertyEnumerator(TEE_PropSetHandle enumerator)
 
 Resets a property enumerator immediately after allocation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -365,8 +340,6 @@ TEE_Result TEE_GetPropertyName(TEE_PropSetHandle enumerator, void *nameBuffer, s
 
 Obtains the name of this property in an enumerator.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -381,7 +354,7 @@ Obtains the name of this property in an enumerator.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the property is not found because the enumerator has not started or has reached the end of the property set. Returns <b>TEE_ERROR_SHORT_BUFFER</b> if the buffer is too small to hold the property name. |
 
 ### TEE_GetNextProperty()
 
@@ -392,8 +365,6 @@ TEE_Result TEE_GetNextProperty(TEE_PropSetHandle enumerator)
 **Description**
 
 Obtains the next property in an enumerator.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -407,6 +378,6 @@ Obtains the next property in an enumerator.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the property is not found because the enumerator has not started or has reached the end of the property set. |
 
 

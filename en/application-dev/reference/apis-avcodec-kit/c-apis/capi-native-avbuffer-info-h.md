@@ -6,8 +6,6 @@ The file declares the attribute definition of the media struct AVBuffer.
 
 **Library**: libnative_media_core.so
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 9
 
 **Related module**: [Core](capi-core.md)
@@ -16,9 +14,9 @@ The file declares the attribute definition of the media struct AVBuffer.
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) | OH_AVCodecBufferAttr | The struct describes the description information about the buffer of an OH_AVCodec instance. |
+| Name | Description |
+| -- | -- |
+| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) | The struct describes the description information about the buffer of an OH_AVCodec instance. |
 
 ### Enum
 
@@ -37,8 +35,6 @@ enum OH_AVCodecBufferFlags
 **Description**
 
 Enumerates the flags for the buffer of an OH_AVCodec instance.
-
-**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 

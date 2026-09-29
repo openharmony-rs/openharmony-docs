@@ -6,8 +6,6 @@ Define interfaces for querying wifi switch status.
 
 **Library**: libwifi_ndk.so
 
-**System capability**: SystemCapability.Communication.WiFi.STA
-
 **Since**: 13
 
 **Related module**: [Wifi](capi-wifi.md)
@@ -18,7 +16,7 @@ Define interfaces for querying wifi switch status.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md) | OH_WifiLinkedInfo | Represents the Wi-Fi connection information.<br> This structure describes the hotspot information of the current station connection. The information can be obtained by calling {@link OH_Wifi_GetLinkedInfo}. |
+| [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md) | OH_WifiLinkedInfo | Represents the Wi-Fi connection information.<br> This structure describes the hotspot information of the current station connection. The information can be obtained by calling [OH_Wifi_GetLinkedInfo](capi-oh-wifi-h.md#oh_wifi_getlinkedinfo). |
 
 ### Enum
 
@@ -58,18 +56,16 @@ enum Wifi_ResultCode
 
 Enumerates the wifi result codes.
 
-**System capability**: SystemCapability.Communication.WiFi.STA
-
 **Since**: 13
 
 | Enum item | Description |
 | -- | -- |
-| WIFI_SUCCESS = 0 | The operation is successful. |
-| WIFI_PERMISSION_DENIED = 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| WIFI_INVALID_PARAM = 401 | Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range. |
-| WIFI_NOT_SUPPORTED = 801 | Capability not supported. Failed to call function due to limited device capabilities. |
-| WIFI_OPERATION_FAILED = 2501000 | Operation failed. Possible reasons: Internal execution failed. |
-| WIFI_STA_DISABLED = 2501001 |  Wi-Fi STA disabled.<br>**Since**: 21 |
+| WIFI_SUCCESS = 0 | &nbsp;The operation is successful. |
+| WIFI_PERMISSION_DENIED = 201 | &nbsp;Permission verification failed. The application does not have the permission required to call the API. |
+| WIFI_INVALID_PARAM = 401 | &nbsp;Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range. |
+| WIFI_NOT_SUPPORTED = 801 | &nbsp;Capability not supported. Failed to call function due to limited device capabilities. |
+| WIFI_OPERATION_FAILED = 2501000 | &nbsp;Operation failed. Possible reasons: Internal execution failed. |
+| WIFI_STA_DISABLED = 2501001 | &nbsp;Wi-Fi STA disabled.<br>**Since**: 21 |
 
 ### OH_WifiLinkType
 
@@ -80,8 +76,6 @@ enum OH_WifiLinkType
 **Description**
 
 Enumerates Wi-Fi link types.
-
-**System capability**: SystemCapability.Communication.WiFi.STA
 
 **Since**: 24
 
@@ -104,8 +98,6 @@ enum OH_WifiConnState
 **Description**
 
 Enumerates Wi-Fi connection states.
-
-**System capability**: SystemCapability.Communication.WiFi.STA
 
 **Since**: 24
 
@@ -131,8 +123,6 @@ enum OH_WifiChannelWidth
 
 Enumerates Wi-Fi channel widths.
 
-**System capability**: SystemCapability.Communication.WiFi.STA
-
 **Since**: 24
 
 | Enum item | Description |
@@ -154,8 +144,6 @@ enum OH_WifiCategory
 
 Wi-Fi categories.
 
-**System capability**: SystemCapability.Communication.WiFi.STA
-
 **Since**: 24
 
 | Enum item | Description |
@@ -175,8 +163,6 @@ enum OH_WifiStandard
 **Description**
 
 Enumerates Wi-Fi standards.
-
-**System capability**: SystemCapability.Communication.WiFi.STA
 
 **Since**: 24
 
@@ -204,8 +190,6 @@ Wifi_ResultCode OH_Wifi_IsWifiEnabled(bool *enabled)
 
 Check whether the wifi switch is enabled.
 
-**System capability**: SystemCapability.Communication.WiFi.STA
-
 **Since**: 13
 
 **Parameters**:
@@ -218,7 +202,7 @@ Check whether the wifi switch is enabled.
 
 | Type | Description |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | wifi functions result code.\n      For a detailed definition, please refer to [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode).\n      [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) Successfully obtained the wifi switch status.\n      [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) The input parameter enabled is a null pointer.\n      [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) Internal execution failed.\n |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | wifi functions result code.\n For a detailed definition, please refer to [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode).\n [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) Successfully obtained the wifi switch status.\n [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) The input parameter enabled is a null pointer.\n [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) Internal execution failed.\n |
 
 ### OH_Wifi_GetDeviceMacAddress()
 
@@ -229,8 +213,6 @@ Wifi_ResultCode OH_Wifi_GetDeviceMacAddress(char *macAddr, unsigned int *macAddr
 **Description**
 
 Get the device Mac address.
-
-**System capability**: SystemCapability.Communication.WiFi.STA
 
 **Required permission**: ohos.permission.GET_WIFI_LOCAL_MAC and ohos.permission.GET_WIFI_INFO.
 
@@ -247,7 +229,7 @@ Get the device Mac address.
 
 | Type | Description |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | wifi functions result code.      For a detailed definition, please refer to [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode).      [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) Successfully obtained the device Mac address.      [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) Permission denied.      [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) Capability not supported.      [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) The input parameter macAddr is a null pointer.      [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) Internal execution failed.      [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) Wi-Fi STA disabled. |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | wifi functions result code. For a detailed definition, please refer to [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode). [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) Successfully obtained the device Mac address. [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) Permission denied. [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) Capability not supported. [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) The input parameter macAddr is a null pointer. [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) Internal execution failed. [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) Wi-Fi STA disabled. |
 
 ### OH_Wifi_GetLinkedInfo()
 
@@ -258,8 +240,6 @@ Wifi_ResultCode OH_Wifi_GetLinkedInfo(OH_WifiLinkedInfo *info)
 **Description**
 
 Get wifi linked info. When macType is 1 (device MAC address), obtaining macAddress also requires the ohos.permission.GET_WIFI_LOCAL_MAC permission. This permission is available only to system apps in API versions 8–15. Starting from API 16, it is available to regular apps on PC/2-in-1 devices, while on other devices it remains restricted to system apps. If the permission is not granted, macAddress will be returned as empty. If the application has requested the ohos.permission.GET_WIFI_PEERS_MAC permission, the bssid in the returned result will be the real BSSID address; otherwise, it will be a randomized device address.
-
-**System capability**: SystemCapability.Communication.WiFi.STA
 
 **Required permission**: ohos.permission.GET_WIFI_INFO.
 
@@ -275,6 +255,6 @@ Get wifi linked info. When macType is 1 (device MAC address), obtaining macAddre
 
 | Type | Description |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | wifi functions result code.      For a detailed definition, please refer to [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode).      [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) Successfully obtained the wifi linked info.      [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) Permission denied.      [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) Capability not supported.      [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) The input parameter info is a null pointer.      [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) Internal execution failed. |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | wifi functions result code. For a detailed definition, please refer to [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode). [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) Successfully obtained the wifi linked info. [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) Permission denied. [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) Capability not supported. [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) The input parameter info is a null pointer. [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) Internal execution failed. |
 
 

@@ -1,0 +1,18 @@
+# ImageReceiverNative
+
+```c
+typedef struct ImageReceiverNative ImageReceiverNative
+```
+
+## Overview
+
+Defines the data type name of a native image receiver.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageReceiver
+
+**Since**: 10
+
+**Related module**: [Image](capi-image.md)
+
+**Header file**: [image_receiver_mdk.h](capi-image-receiver-mdk-h.md)
+

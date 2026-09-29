@@ -6,7 +6,7 @@ typedef struct ArkWeb_ControllerAPI {...} ArkWeb_ControllerAPI
 
 ## 概述
 
-ArkWeb_ControllerAPI是Controller相关Native API结构体。该结构体提供了JavaScript注入、同步和异步JavaScript代理注册、代理删除、页面刷新、Web Message Port创建和管理、Frame URL查询等功能，特点包括支持同步与异步代理并存、统一管理控制WebView行为。适用于需要从Native代码注入并调用JavaScript、实现Native与页面双向通信的场景， 可解决JSBridge互通与安全注入问题，提升开发效率与可控性。这是从Native代码控制WebView行为的主要接口。<br>Controller相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取， 调用前建议通过{@link ARKWEB_MEMBER_MISSING}校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
+ArkWeb_ControllerAPI是Controller相关Native API结构体。该结构体提供了JavaScript注入、同步和异步JavaScript代理注册、代理删除、页面刷新、Web Message Port创建和管理、Frame URL查询等功能，特点包括支持同步与异步代理并存、统一管理控制WebView行为。适用于需要从Native代码注入并调用JavaScript、实现Native与页面双向通信的场景， 可解决JSBridge互通与安全注入问题，提升开发效率与可控性。这是从Native代码控制WebView行为的主要接口。<br>Controller相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取， 调用前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -124,7 +124,7 @@ void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md)** ports | Post Message端口结构体指针数组。 |
+| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md)** ports | Post Message端口结构体指针数组。 |
 |  size_t size | 端口数量，必须等于ports数组中的端口数量。 |
 
 ### postWebMessage()
@@ -150,7 +150,7 @@ ArkWeb_ErrorCode (*postWebMessage)(const char* webTag, const char* name, ArkWeb_
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkWeb_ErrorCode | 返回值错误码。              {@link ARKWEB_SUCCESS} 执行成功。<br>        {@link ARKWEB_INVALID_PARAM} 参数无效。<br>        {@link ARKWEB_INIT_ERROR} 初始化失败，没有找到与webTag绑定的Web组件。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 执行成功。[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 参数无效。[ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode) 初始化失败，没有找到与webTag绑定的Web组件。 |
 
 ### getLastJavascriptProxyCallingFrameUrl()
 

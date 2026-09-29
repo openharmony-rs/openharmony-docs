@@ -6,8 +6,6 @@ Declare avsession related error.
 
 **Library**: libohavsession.so
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
-
 **Since**: 13
 
 **Related module**: [OHAVSession](capi-ohavsession.md)
@@ -35,20 +33,18 @@ enum AVSession_ErrCode
 
 AVSession error code
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
-
 **Since**: 13
 
 | Enum item | Description |
 | -- | -- |
-| AV_SESSION_ERR_SUCCESS = 0 | The operation completed successfully. |
-| AV_SESSION_ERR_INVALID_PARAMETER = 401 | Invalid parameter. |
-| AV_SESSION_ERR_SERVICE_EXCEPTION = 6600101 | Service exception. |
-| AV_SESSION_ERR_CODE_SESSION_NOT_EXIST = 6600102 | The session does not exist. |
-| AV_SESSION_ERR_CODE_COMMAND_INVALID = 6600105 | Invalid session command. |
-| AV_SESSION_ERR_CODE_SESSION_INACTIVE = 6600106 | The session is not activated. |
-| AV_SESSION_ERR_CODE_MESSAGE_OVERLOAD = 6600107 | Too many commands or events. |
-| AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST = 6600109 |  The remote connection is not established.<br>**Since**: 23 |
+| AV_SESSION_ERR_SUCCESS = 0 | &nbsp;The operation completed successfully. |
+| AV_SESSION_ERR_INVALID_PARAMETER = 401 | &nbsp;Invalid parameter. |
+| AV_SESSION_ERR_SERVICE_EXCEPTION = 6600101 | &nbsp;Service exception. |
+| AV_SESSION_ERR_CODE_SESSION_NOT_EXIST = 6600102 | &nbsp;The session does not exist. |
+| AV_SESSION_ERR_CODE_COMMAND_INVALID = 6600105 | &nbsp;Invalid session command. |
+| AV_SESSION_ERR_CODE_SESSION_INACTIVE = 6600106 | &nbsp;The session is not activated. |
+| AV_SESSION_ERR_CODE_MESSAGE_OVERLOAD = 6600107 | &nbsp;Too many commands or events. |
+| AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST = 6600109 | &nbsp;The remote connection is not established.<br>**Since**: 23 |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_UNSPECIFIED = 6611000 |  |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_REMOTE_ERROR = 6611001 |  |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_BEHIND_LIVE_WINDOW = 6611002 |  |
@@ -105,8 +101,6 @@ enum AVSessionCallback_Result
 
 Defines enumeration of avsession callback result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
-
 **Since**: 13
 
 | Enum item | Description |
@@ -124,15 +118,13 @@ enum AVMetadata_Result
 
 AVMetadata error code
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
-
 **Since**: 13
 
 | Enum item | Description |
 | -- | -- |
-| AVMETADATA_SUCCESS = 0 | The call was successful. |
-| AVMETADATA_ERROR_INVALID_PARAM = 1 | This means that the function was executed with an invalid input parameter. |
-| AVMETADATA_ERROR_NO_MEMORY = 2 | This means there is no memory left. |
+| AVMETADATA_SUCCESS = 0 | &nbsp;The call was successful. |
+| AVMETADATA_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter. |
+| AVMETADATA_ERROR_NO_MEMORY = 2 | &nbsp;This means there is no memory left. |
 
 ### AVQueueItem_Result
 
@@ -144,14 +136,12 @@ enum AVQueueItem_Result
 
 AVQUEUEITEM error code
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
-
 **Since**: 23
 
 | Enum item | Description |
 | -- | -- |
-| AVQUEUEITEM_SUCCESS = 0 |  The call was successful.<br>**Since**: 23 |
-| AVQUEUEITEM_ERROR_INVALID_PARAM = 1 |  This means that the function was executed with an invalid input parameter.<br>**Since**: 23 |
-| AVQUEUEITEM_ERROR_NO_MEMORY = 2 |  This means there is no memory left.<br>**Since**: 23 |
+| AVQUEUEITEM_SUCCESS = 0 | &nbsp;The call was successful.<br>**Since**: 23 |
+| AVQUEUEITEM_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter.<br>**Since**: 23 |
+| AVQUEUEITEM_ERROR_NO_MEMORY = 2 | &nbsp;This means there is no memory left.<br>**Since**: 23 |
 
 

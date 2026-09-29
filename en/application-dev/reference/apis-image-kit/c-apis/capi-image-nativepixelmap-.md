@@ -1,12 +1,12 @@
 # NativePixelMap_
 
 ```c
-typedef struct NativePixelMap_ NativePixelMap
+struct NativePixelMap_
 ```
 
 ## Overview
 
-Defines the data type name of the native pixel map.
+Defines the native pixel map information.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

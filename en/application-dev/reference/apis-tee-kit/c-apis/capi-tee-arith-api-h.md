@@ -6,8 +6,6 @@ Provides APIs for operating big integers.
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -66,9 +64,12 @@ Provides APIs for operating big integers.
 
 | Name | Description |
 | -- | -- |
-| uint32_t TEE_BigInt | Defines the handle type representing a big integer.<br>**Since**: 20 |
-| uint32_t TEE_BigIntFMM | Defines the handle of a big integer for Fast Modular Multiplication (FMM).<br>**Since**: 20 |
-| uint32_t TEE_BigIntFMMContext | Defines the handle of a context container for FMM operations.<br>**Since**: 20 |
+| uint32_t TEE_BigInt | Defines the handle type representing a big integer.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| uint32_t TEE_BigIntFMM | Defines the handle of a big integer for Fast Modular Multiplication (FMM).<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| uint32_t TEE_BigIntFMMContext | Defines the handle of a context container for FMM operations.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| typedef uint32_t TEE_BigInt | Defines the handle type representing a big integer.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| typedef uint32_t TEE_BigIntFMM | Defines the handle of a big integer for Fast Modular Multiplication (FMM).<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| typedef uint32_t TEE_BigIntFMMContext | Defines the handle of a context container for FMM operations.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
 
 ## Function description
 
@@ -82,8 +83,6 @@ size_t TEE_BigIntFMMSizeInU32(size_t modulusSizeInBits)
 
 Obtains the size of the array of uint32_t values.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -96,7 +95,7 @@ Obtains the size of the array of uint32_t values.
 
 | Type | Description |
 | -- | -- |
-| size_t | Returns the number of bytes required to store a <b>TEE_BigIntFMM</b>,  given a modulus of length <b>modSizeInBits</b>. |
+| size_t | Returns the number of bytes required to store a <b>TEE_BigIntFMM</b>, given a modulus of length <b>modSizeInBits</b>. |
 
 ### TEE_BigIntFMMContextSizeInU32()
 
@@ -108,8 +107,6 @@ size_t TEE_BigIntFMMContextSizeInU32(size_t modulusSizeInBits)
 
 Obtains the size of an array of uint32_t values required to represent a fast modular context.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -122,7 +119,7 @@ Obtains the size of an array of uint32_t values required to represent a fast mod
 
 | Type | Description |
 | -- | -- |
-| size_t | Returns the number of bytes required to store a <b>TEE_BigIntFMMContext</b>,  given a modulus of length <b>modSizeInBits</b>. |
+| size_t | Returns the number of bytes required to store a <b>TEE_BigIntFMMContext</b>, given a modulus of length <b>modSizeInBits</b>. |
 
 ### TEE_BigIntInit()
 
@@ -133,8 +130,6 @@ void TEE_BigIntInit(TEE_BigInt *bigInt, size_t len)
 **Description**
 
 Initializes a <b>TEE_BigInt</b>.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -154,8 +149,6 @@ void TEE_BigIntInitFMMContext(TEE_BigIntFMMContext *context, size_t len, const T
 **Description**
 
 Calculates the necessary prerequisites for fast modular multiplication and stores them in a context.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -177,8 +170,6 @@ TEE_Result TEE_BigIntInitFMMContext1(TEE_BigIntFMMContext *context, size_t len, 
 
 Calculates the necessary prerequisites for fast modular multiplication and stores them in a context.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -193,7 +184,7 @@ Calculates the necessary prerequisites for fast modular multiplication and store
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns other values if the operation fails. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns other values if the operation fails. |
 
 ### TEE_BigIntInitFMM()
 
@@ -204,8 +195,6 @@ void TEE_BigIntInitFMM(TEE_BigIntFMM *bigIntFMM, size_t len)
 **Description**
 
 Initializes a <b>TEE_BigIntFMM</b> and sets its represented value to zero.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -226,8 +215,6 @@ TEE_Result TEE_BigIntConvertFromOctetString(TEE_BigInt *dest, const uint8_t *buf
 
 Converts an octet string buffer into the <b>TEE_BigInt</b> format.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -243,7 +230,7 @@ Converts an octet string buffer into the <b>TEE_BigInt</b> format.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_OVERFLOW</b> if the memory allocated for <b>dest</b> is too small. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OVERFLOW</b> if the memory allocated for <b>dest</b> is too small. |
 
 ### TEE_BigIntConvertToOctetString()
 
@@ -254,8 +241,6 @@ TEE_Result TEE_BigIntConvertToOctetString(void *buffer, size_t *bufferLen, const
 **Description**
 
 Converts the absolute value of an integer in <b>TEE_BigInt</b> format into an octet string.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -271,7 +256,7 @@ Converts the absolute value of an integer in <b>TEE_BigInt</b> format into an oc
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_SHORT_BUFFER</b> if the output buffer is too small to hold the octet string. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_SHORT_BUFFER</b> if the output buffer is too small to hold the octet string. |
 
 ### TEE_BigIntConvertFromS32()
 
@@ -282,8 +267,6 @@ void TEE_BigIntConvertFromS32(TEE_BigInt *dest, int32_t shortVal)
 **Description**
 
 Sets <b>dest</b> to the value <b>shortVal</b>.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -304,8 +287,6 @@ TEE_Result TEE_BigIntConvertToS32(int32_t *dest, const TEE_BigInt *src)
 
 Sets <b>dest</b> to the value of <b>src</b>, including the sign of <b>src</b>.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -319,7 +300,7 @@ Sets <b>dest</b> to the value of <b>src</b>, including the sign of <b>src</b>.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_OVERFLOW</b> if <b>src</b> does not fit within an <b> int32_t</b>. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OVERFLOW</b> if <b>src</b> does not fit within an <b> int32_t</b>. |
 
 ### TEE_BigIntCmp()
 
@@ -330,8 +311,6 @@ int32_t TEE_BigIntCmp(const TEE_BigInt *op1, const TEE_BigInt *op2)
 **Description**
 
 Checks whether op1 > op2, op1 == op2, or op1 < op2.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -346,7 +325,7 @@ Checks whether op1 > op2, op1 == op2, or op1 < op2.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns <b>0</b> if op1 == op2.          Returns a positive number if op1 > op2. |
+| int32_t | Returns <b>0</b> if op1 == op2. Returns a positive number if op1 > op2. |
 
 ### TEE_BigIntCmpS32()
 
@@ -357,8 +336,6 @@ int32_t TEE_BigIntCmpS32(const TEE_BigInt *op, int32_t shortVal)
 **Description**
 
 Checks whether op > shortVal, op == shortVal, or op < shortVal.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -373,7 +350,7 @@ Checks whether op > shortVal, op == shortVal, or op < shortVal.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns <b>0</b> if op1 == shortVal.          Returns a positive number if op1 > shortVal. |
+| int32_t | Returns <b>0</b> if op1 == shortVal. Returns a positive number if op1 > shortVal. |
 
 ### TEE_BigIntShiftRight()
 
@@ -384,8 +361,6 @@ void TEE_BigIntShiftRight(TEE_BigInt *dest, const TEE_BigInt *op, size_t bits)
 **Description**
 
 Computes \|dest\| = \|op\| >> bits.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -407,8 +382,6 @@ bool TEE_BigIntGetBit(const TEE_BigInt *src, uint32_t bitIndex)
 
 Obtains the <b>bitIndex</b> bit of the natural binary representation of \|src\|.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -422,7 +395,7 @@ Obtains the <b>bitIndex</b> bit of the natural binary representation of \|src\|.
 
 | Type | Description |
 | -- | -- |
-| bool | Returns the Boolean value of <b>bitIndexth</b> in \|src\|. The value <b>true</b> represents a <b>1</b>,  and <b>false</b> represents a <b>0</b>. |
+| bool | Returns the Boolean value of <b>bitIndexth</b> in \|src\|. The value <b>true</b> represents a <b>1</b>, and <b>false</b> represents a <b>0</b>. |
 
 ### TEE_BigIntGetBitCount()
 
@@ -433,8 +406,6 @@ uint32_t TEE_BigIntGetBitCount(const TEE_BigInt *src)
 **Description**
 
 Obtains the number of bits in the natural binary representation of \|src\|, that is, the magnitude of <b>src</b>.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -448,7 +419,7 @@ Obtains the number of bits in the natural binary representation of \|src\|, that
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Returns <b>0</b> if <b>src</b> is <b>0</b>.          Returns the number of bits in the natural binary representation of <b>src</b>. |
+| uint32_t | Returns <b>0</b> if <b>src</b> is <b>0</b>. Returns the number of bits in the natural binary representation of <b>src</b>. |
 
 ### TEE_BigIntSetBit()
 
@@ -459,8 +430,6 @@ TEE_Result TEE_BigIntSetBit(TEE_BigInt *op, uint32_t bitIndex, bool value)
 **Description**
 
 Sets the first bit of <b>bitIndex</b> in the natural binary representation of <b>op</b> to <b>1</b> or <b>0</b>.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -476,7 +445,7 @@ Sets the first bit of <b>bitIndex</b> in the natural binary representation of <b
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_OVERFLOW bitIndexth</b> if the <b>bitIndexth</b> bit is larger than the allocated bit  length of <b>op</b>. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OVERFLOW bitIndexth</b> if the <b>bitIndexth</b> bit is larger than the allocated bit length of <b>op</b>. |
 
 ### TEE_BigIntAssign()
 
@@ -488,8 +457,6 @@ TEE_Result TEE_BigIntAssign(TEE_BigInt *dest, const TEE_BigInt *src)
 
 Assigns the value of <b>src</b> to <b>dest</b>.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -503,7 +470,7 @@ Assigns the value of <b>src</b> to <b>dest</b>.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_OVERFLOW</b> if the <b>dest</b> operand cannot hold the value of <b>src</b>. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OVERFLOW</b> if the <b>dest</b> operand cannot hold the value of <b>src</b>. |
 
 ### TEE_BigIntAbs()
 
@@ -515,8 +482,6 @@ TEE_Result TEE_BigIntAbs(TEE_BigInt *dest, const TEE_BigInt *src)
 
 Assigns the value of <b>src</b> to <b>dest</b>.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -530,7 +495,7 @@ Assigns the value of <b>src</b> to <b>dest</b>.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_OVERFLOW</b> if the <b>dest</b> operand cannot hold the value of <b>src</b>. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OVERFLOW</b> if the <b>dest</b> operand cannot hold the value of <b>src</b>. |
 
 ### TEE_BigIntAdd()
 
@@ -541,8 +506,6 @@ void TEE_BigIntAdd(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op
 **Description**
 
 Computes dest = op1 + op2.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -564,8 +527,6 @@ void TEE_BigIntSub(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op
 
 Computes dest = op1 – op2.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -586,8 +547,6 @@ void TEE_BigIntNeg(TEE_BigInt *dest, const TEE_BigInt *op)
 
 Negates an operand: dest = –op.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -606,8 +565,6 @@ void TEE_BigIntMul(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op
 **Description**
 
 Computes dest = op1 * op2.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -629,8 +586,6 @@ void TEE_BigIntSquare(TEE_BigInt *dest, const TEE_BigInt *op)
 
 Computes dest = op * op.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -649,8 +604,6 @@ void TEE_BigIntDiv(TEE_BigInt *dest_q, TEE_BigInt *dest_r, const TEE_BigInt *op1
 **Description**
 
 Computes <b>dest_r</b> and <b>dest_q</b> to make op1 = dest_q* op2 + dest_r.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -673,8 +626,6 @@ void TEE_BigIntMod(TEE_BigInt *dest, const TEE_BigInt *op, const TEE_BigInt *n)
 
 Computes dest = op (mod n) to make 0 <= dest < n.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -694,8 +645,6 @@ void TEE_BigIntAddMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt 
 **Description**
 
 Computes dest = (op1 + op2) (mod n).
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -718,8 +667,6 @@ void TEE_BigIntSubMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt 
 
 Computes dest = (op1 – op2) (mod n).
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -740,8 +687,6 @@ void TEE_BigIntMulMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt 
 **Description**
 
 Computes dest = (op1* op2)(mod n).
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -764,8 +709,6 @@ void TEE_BigIntSquareMod(TEE_BigInt *dest, const TEE_BigInt *op, const TEE_BigIn
 
 Computes dest = (op * op) (mod n).
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -785,8 +728,6 @@ void TEE_BigIntInvMod(TEE_BigInt *dest, const TEE_BigInt *op, const TEE_BigInt *
 **Description**
 
 Computes <b>dest</b> to make dest* op = 1 (mod n).
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -808,8 +749,6 @@ bool TEE_BigIntRelativePrime(const TEE_BigInt *op1, const TEE_BigInt *op2)
 
 Checks whether gcd(op1, op2) == 1.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -823,7 +762,7 @@ Checks whether gcd(op1, op2) == 1.
 
 | Type | Description |
 | -- | -- |
-| bool | Returns <b>true</b> if gcd(op1, op2) == 1.          Returns <b>false</b> if gcd(op1, op2) != 1. |
+| bool | Returns <b>true</b> if gcd(op1, op2) == 1. Returns <b>false</b> if gcd(op1, op2) != 1. |
 
 ### TEE_BigIntComputeExtendedGcd()
 
@@ -834,8 +773,6 @@ void TEE_BigIntComputeExtendedGcd(TEE_BigInt *gcd, TEE_BigInt *u, TEE_BigInt *v,
 **Description**
 
 Computes the greatest common divisor of <b>op1</b> and <b>op2</b>.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -859,8 +796,6 @@ int32_t TEE_BigIntIsProbablePrime(const TEE_BigInt *op, uint32_t confidenceLevel
 
 Performs a probabilistic primality test on <b>op</b>.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -874,7 +809,7 @@ Performs a probabilistic primality test on <b>op</b>.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns <b>0</b> if <b>op</b> is a composite number.          Returns <b>1</b> if <b>op</b> is a prime number.          Returns <b>–1</b> if the test is non-conclusive but the probability that <b>op</b> is composite is  less than 2^(-confidenceLevel). |
+| int32_t | Returns <b>0</b> if <b>op</b> is a composite number. Returns <b>1</b> if <b>op</b> is a prime number. Returns <b>–1</b> if the test is non-conclusive but the probability that <b>op</b> is composite is less than 2^(-confidenceLevel). |
 
 ### TEE_BigIntConvertToFMM()
 
@@ -885,8 +820,6 @@ void TEE_BigIntConvertToFMM(TEE_BigIntFMM *dest, const TEE_BigInt *src, const TE
 **Description**
 
 Converts <b>src</b> into a representation suitable for doing fast modular multiplication.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -909,8 +842,6 @@ void TEE_BigIntConvertFromFMM(TEE_BigInt *dest, const TEE_BigIntFMM *src, const 
 
 Converts <b>src</b> in the fast modular multiplication representation back to a <b>TEE_BigInt</b> representation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -931,8 +862,6 @@ void TEE_BigIntComputeFMM(TEE_BigIntFMM *dest, const TEE_BigIntFMM *op1, const T
 **Description**
 
 Computes dest = op1* op2 in the fast modular multiplication representation.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -956,8 +885,6 @@ TEE_Result TEE_BigIntExpMod(TEE_BigInt *des, TEE_BigInt *op1, const TEE_BigInt *
 
 Computes dest = (op1 ^ op2)(mod n).
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -974,6 +901,6 @@ Computes dest = (op1 ^ op2)(mod n).
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_NOT_SUPPORTED</b> if the value of <b>n</b> is not supported. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_NOT_SUPPORTED</b> if the value of <b>n</b> is not supported. |
 
 

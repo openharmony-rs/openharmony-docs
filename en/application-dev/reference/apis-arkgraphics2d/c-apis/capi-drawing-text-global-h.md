@@ -6,9 +6,7 @@ Provides APIs for global text information, such as setting the text rendering hi
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
-**Since**: 8
+**Since**: 20
 
 **Related module**: [Drawing](capi-drawing.md)
 
@@ -40,8 +38,6 @@ enum OH_Drawing_TextHighContrast
 
 Defines an enum of the high contrast modes for text rendering.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 20
 
 | Enum item | Description |
@@ -59,8 +55,6 @@ enum OH_Drawing_TextUndefinedGlyphDisplay
 **Description**
 
 Defines an enum of the modes for displaying undefined glyphs.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -82,8 +76,6 @@ void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)
 
 Sets the high contrast mode for text rendering. <br>The setting of this API takes effect for the entire process, and all pages in the process share the same mode. <br>The text rendering high contrast mode can be set by calling this API, or enabled/disabled through the high contrast text configuration switch in the system settings screen. The text rendering high contrast mode set by this API takes precedence over the system settings. <br>This API does not take effect for the text drawing scenario.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 20
 
 **Parameters**:
@@ -101,8 +93,6 @@ void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDispla
 **Description**
 
 Sets the presentation mode of undefined glyphs. After this API is called, it affects all subsequently rendered text in the current process.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 

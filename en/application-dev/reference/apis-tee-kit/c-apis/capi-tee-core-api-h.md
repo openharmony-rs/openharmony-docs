@@ -6,8 +6,6 @@ Provides APIs for managing trusted application (TA) sessions.
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -33,7 +31,8 @@ Provides APIs for managing trusted application (TA) sessions.
 
 | Name | Description |
 | -- | -- |
-| uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20 |
+| uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| typedef uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
 
 ## Function description
 
@@ -46,8 +45,6 @@ void TEE_Panic(TEE_Result panicCode)
 **Description**
 
 Raises a panic in the TA instance.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -67,8 +64,6 @@ TEE_Result TEE_OpenTASession(const TEE_UUID *destination, uint32_t cancellationR
 
 Opens a new session with a TA.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -86,7 +81,7 @@ Opens a new session with a TA.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the session is opened.          Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the TA cannot be found in the Trusted Execution Environment (TEE).          Returns <b>TEE_ERROR_ACCESS_DENIED</b> if the access request to the TA is denied. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the session is opened. Returns <b>TEE_ERROR_ITEM_NOT_FOUND</b> if the TA cannot be found in the Trusted Execution Environment (TEE). Returns <b>TEE_ERROR_ACCESS_DENIED</b> if the access request to the TA is denied. |
 
 ### TEE_CloseTASession()
 
@@ -97,8 +92,6 @@ void TEE_CloseTASession(TEE_TASessionHandle session)
 **Description**
 
 Closes a client session.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -118,8 +111,6 @@ TEE_Result TEE_InvokeTACommand(TEE_TASessionHandle session, uint32_t cancellatio
 
 Invokes a command in a session opened between this client TA instance and a target TA instance.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -137,6 +128,6 @@ Invokes a command in a session opened between this client TA instance and a targ
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_ACCESS_DENIED</b> if the command fails to be invoked. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_ACCESS_DENIED</b> if the command fails to be invoked. |
 
 

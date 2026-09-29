@@ -1,7 +1,7 @@
 # HiAppEvent_AppEventGroup
 
 ```c
-typedef struct HiAppEvent_AppEventGroup {...} HiAppEvent_AppEventGroup
+struct HiAppEvent_AppEventGroup {...}
 ```
 
 ## 概述
@@ -23,7 +23,7 @@ typedef struct HiAppEvent_AppEventGroup {...} HiAppEvent_AppEventGroup
 | 名称 | 描述 |
 | -- | -- |
 | const char* name | 事件数组中相同的事件名称。 |
-| const struct HiAppEvent_AppEventInfo* appEventInfos | 具有相同事件名称的事件数组。 |
+| [const struct HiAppEvent_AppEventInfo*](capi-hiappevent-hiappevent-appeventinfo.md) appEventInfos | 具有相同事件名称的事件数组。 |
 | uint32_t infoLen | 具有相同事件名称的事件数组的长度。 |
 
 

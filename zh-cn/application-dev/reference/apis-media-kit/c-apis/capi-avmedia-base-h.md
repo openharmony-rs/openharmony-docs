@@ -8,8 +8,6 @@
 
 **库：** libavmedia_base.so
 
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
 **起始版本：** 23
 
 **相关模块：** [AVMediaBase](capi-avmediabase.md)
@@ -33,8 +31,6 @@ enum OH_AVMedia_SeekMode
 **描述：**
 
 指定时间点和帧对应关系的枚举类型。
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 

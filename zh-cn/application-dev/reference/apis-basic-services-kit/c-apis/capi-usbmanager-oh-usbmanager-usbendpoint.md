@@ -1,12 +1,12 @@
 # OH_UsbManager_UsbEndpoint
 
 ```c
-typedef struct OH_UsbManager_UsbEndpoint {...} OH_UsbManager_UsbEndpoint
+struct OH_UsbManager_UsbEndpoint {...}
 ```
 
 ## 概述
 
-定义用于发送或接收数据的USB端点。端点从{@link OH_UsbManager_UsbInterface}获取。
+定义用于发送或接收数据的USB端点。端点从[OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)获取。
 
 **系统能力：** SystemCapability.USB.USBManager
 

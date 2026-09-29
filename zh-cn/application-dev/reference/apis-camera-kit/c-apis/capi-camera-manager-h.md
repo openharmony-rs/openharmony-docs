@@ -6,8 +6,6 @@
 
 **库：** libohcamera.so
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)
@@ -16,9 +14,9 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) | CameraManager_Callbacks | 相机设备状态的回调。 |
+| 名称 | 描述 |
+| -- | -- |
+| [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) | 相机设备状态的回调。 |
 
 ### 函数
 
@@ -69,9 +67,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_CameraManager_StatusCallback)(Camera_Manager* cameraManager, Camera_StatusInfo* status) | 在[CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md)中被调用的相机管理器状态回调。<br>**起始版本：** 11 |
-| void (*OH_CameraManager_TorchStatusCallback)(Camera_Manager* cameraManager, Camera_TorchStatusInfo* status) | 手电筒状态变化回调。<br>**起始版本：** 12 |
-| void (*OH_CameraManager_OnFoldStatusInfoChange)(Camera_Manager* cameraManager, Camera_FoldStatusInfo* foldStatusInfo) | 相机管理器折叠状态信息回调。<br>**起始版本：** 13 |
+| void (*OH_CameraManager_StatusCallback)(Camera_Manager* cameraManager, Camera_StatusInfo* status) | 在[CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md)中被调用的相机管理器状态回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
+| void (*OH_CameraManager_TorchStatusCallback)(Camera_Manager* cameraManager, Camera_TorchStatusInfo* status) | 手电筒状态变化回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
+| void (*OH_CameraManager_OnFoldStatusInfoChange)(Camera_Manager* cameraManager, Camera_FoldStatusInfo* foldStatusInfo) | 相机管理器折叠状态信息回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
 
 ## 函数说明
 
@@ -85,16 +83,14 @@ typedef void (*OH_CameraManager_StatusCallback)(Camera_Manager* cameraManager, C
 
 在[CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md)中被调用的相机管理器状态回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager\* cameraManager | 传递回调的Camera_Manager。 |
-| Camera_StatusInfo\* status | 每个相机设备的状态信息。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 传递回调的Camera_Manager。 |
+| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md)* status | 每个相机设备的状态信息。 |
 
 ### OH_CameraManager_TorchStatusCallback()
 
@@ -106,16 +102,14 @@ typedef void (*OH_CameraManager_TorchStatusCallback)(Camera_Manager* cameraManag
 
 手电筒状态变化回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager\* cameraManager | 传递回调的Camera_Manager。 |
-| Camera_TorchStatusInfo\* status | 手电筒的状态信息。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 传递回调的Camera_Manager。 |
+| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md)* status | 手电筒的状态信息。 |
 
 ### OH_CameraManager_OnFoldStatusInfoChange()
 
@@ -127,16 +121,14 @@ typedef void (*OH_CameraManager_OnFoldStatusInfoChange)(Camera_Manager* cameraMa
 
 相机管理器折叠状态信息回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager\* cameraManager | 传递回调的Camera_Manager。 |
-| Camera_FoldStatusInfo\* foldStatusInfo | 设备的折叠状态信息。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 传递回调的Camera_Manager。 |
+| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md)* foldStatusInfo | 设备的折叠状态信息。 |
 
 ### OH_CameraManager_RegisterCallback()
 
@@ -148,22 +140,20 @@ Camera_ErrorCode OH_CameraManager_RegisterCallback(Camera_Manager* cameraManager
 
 注册相机状态更改事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md)* callback | 要注册的相机设备状态回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_UnregisterCallback()
 
@@ -175,22 +165,20 @@ Camera_ErrorCode OH_CameraManager_UnregisterCallback(Camera_Manager* cameraManag
 
 注销相机状态更改事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md)* callback | 要注销的相机设备状态回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_RegisterTorchStatusCallback()
 
@@ -202,22 +190,20 @@ Camera_ErrorCode OH_CameraManager_RegisterTorchStatusCallback(Camera_Manager* ca
 
 注册手电筒状态变更事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | [OH_CameraManager_TorchStatusCallback](capi-camera-manager-h.md#oh_cameramanager_torchstatuscallback) torchStatusCallback | 要注册的手电筒状态变化回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_UnregisterTorchStatusCallback()
 
@@ -229,22 +215,20 @@ Camera_ErrorCode OH_CameraManager_UnregisterTorchStatusCallback(Camera_Manager* 
 
 注销手电筒状态变更事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | [OH_CameraManager_TorchStatusCallback](capi-camera-manager-h.md#oh_cameramanager_torchstatuscallback) torchStatusCallback | 要注销的手电筒状态变化回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_RegisterFoldStatusInfoCallback()
 
@@ -256,22 +240,20 @@ Camera_ErrorCode OH_CameraManager_RegisterFoldStatusInfoCallback(Camera_Manager*
 
 注册折叠状态信息变更事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | [OH_CameraManager_OnFoldStatusInfoChange](capi-camera-manager-h.md#oh_cameramanager_onfoldstatusinfochange) foldStatusInfoCallback | 要注册的折叠状态信息变更事件回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_UnregisterFoldStatusInfoCallback()
 
@@ -283,22 +265,20 @@ Camera_ErrorCode OH_CameraManager_UnregisterFoldStatusInfoCallback(Camera_Manage
 
 注销折叠状态信息变更事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | [OH_CameraManager_OnFoldStatusInfoChange](capi-camera-manager-h.md#oh_cameramanager_onfoldstatusinfochange) foldStatusInfoCallback | 要注销的折叠状态信息变更事件回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_GetSupportedCameras()
 
@@ -310,23 +290,21 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameras(Camera_Manager* cameraMana
 
 获取支持指定的相机设备实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_Device** cameras | 如果方法调用成功，将记录支持的Camera_Device列表。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)** cameras | 如果方法调用成功，将记录支持的Camera_Device列表。 |
 | uint32_t* size | 如果方法调用成功，将记录支持的Camera_Device列表的大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_DeleteSupportedCameras()
 
@@ -338,23 +316,21 @@ Camera_ErrorCode OH_CameraManager_DeleteSupportedCameras(Camera_Manager* cameraM
 
 删除支持的相机。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_Device* cameras | 要删除的Camera_Device列表。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* cameras | 要删除的Camera_Device列表。 |
 | uint32_t size | 要删除的相机设备数量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_GetSupportedCameraOutputCapability()
 
@@ -366,23 +342,21 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapability(Camera_Mana
 
 查询指定相机支持的输出能力。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | cameras | the [Camera_Device](capi-oh-camera-camera-device.md) to be queried. |
-| Camera_OutputCapability** cameraOutputCapability | 如果方法调用成功，将记录支持的Camera_OutputCapability。 |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)** cameraOutputCapability | 如果方法调用成功，将记录支持的Camera_OutputCapability。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()
 
@@ -394,24 +368,22 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMod
 
 查询指定相机在指定模式下支持的输出能力。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_Device* camera | 要查询的Camera_Device。 |
-| Camera_SceneMode sceneMode | 指定相机模式。 |
-| Camera_OutputCapability** cameraOutputCapability | 如果方法调用成功，将记录支持的Camera_OutputCapability列表。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。 |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 指定相机模式。 |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)** cameraOutputCapability | 如果方法调用成功，将记录支持的Camera_OutputCapability列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()
 
@@ -423,24 +395,22 @@ Camera_ErrorCode OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithScen
 
 查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。使用YUV，HEIF或HDR等能力前，需要先显式调用此方法确保获取完整输出能力。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_Device* camera | 要查询的Camera_Device。 |
-| Camera_SceneMode sceneMode | 指定相机模式。 |
-| Camera_OutputCapability** cameraOutputCapability | 如果方法调用成功，将记录支持的Camera_OutputCapability列表。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。 |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 指定相机模式。 |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)** cameraOutputCapability | 如果方法调用成功，将记录支持的Camera_OutputCapability列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_DeleteSupportedCameraOutputCapability()
 
@@ -452,22 +422,20 @@ Camera_ErrorCode OH_CameraManager_DeleteSupportedCameraOutputCapability(Camera_M
 
 删除支持的输出能力。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_OutputCapability* cameraOutputCapability | 要删除的Camera_OutputCapability。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)* cameraOutputCapability | 要删除的Camera_OutputCapability。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_IsCameraMuted()
 
@@ -479,22 +447,20 @@ Camera_ErrorCode OH_CameraManager_IsCameraMuted(Camera_Manager* cameraManager, b
 
 确定相机是否静音。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | bool* isCameraMuted | 如果方法调用成功，将返回相机是否静音的结果。返回true表示相机已静音，返回false表示未静音。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_CreateCaptureSession()
 
@@ -506,22 +472,20 @@ Camera_ErrorCode OH_CameraManager_CreateCaptureSession(Camera_Manager* cameraMan
 
 创建捕获会话实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_CaptureSession** captureSession | 如果方法调用成功，将创建Camera_CaptureSession。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)** captureSession | 如果方法调用成功，将创建Camera_CaptureSession。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreateCameraInput()
 
@@ -533,8 +497,6 @@ Camera_ErrorCode OH_CameraManager_CreateCameraInput(Camera_Manager* cameraManage
 
 创建相机输入实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **需要权限：** ohos.permission.CAMERA
 
 **起始版本：** 11
@@ -543,15 +505,15 @@ Camera_ErrorCode OH_CameraManager_CreateCameraInput(Camera_Manager* cameraManage
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_Device* camera | 用于创建Camera_Input实例的Camera_Device。 |
-| Camera_Input** cameraInput | 如果方法调用成功，将创建Camera_Input实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于创建Camera_Input实例的Camera_Device。 |
+| [Camera_Input](capi-oh-camera-camera-input.md)** cameraInput | 如果方法调用成功，将创建Camera_Input实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreateCameraInput_WithPositionAndType()
 
@@ -563,8 +525,6 @@ Camera_ErrorCode OH_CameraManager_CreateCameraInput_WithPositionAndType(Camera_M
 
 创建具有位置和类型的相机输入实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **需要权限：** ohos.permission.CAMERA
 
 **起始版本：** 11
@@ -573,16 +533,16 @@ Camera_ErrorCode OH_CameraManager_CreateCameraInput_WithPositionAndType(Camera_M
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_Position position | 用于创建Camera_Input实例的相机位置。 |
-| Camera_Type type | 用于创建Camera_Input实例的相机类型。 |
-| Camera_Input** cameraInput | 如果方法调用成功，将创建Camera_Input实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_Position](capi-camera-h.md#camera_position) position | 用于创建Camera_Input实例的相机位置。 |
+| [Camera_Type](capi-camera-h.md#camera_type) type | 用于创建Camera_Input实例的相机类型。 |
+| [Camera_Input](capi-oh-camera-camera-input.md)** cameraInput | 如果方法调用成功，将创建Camera_Input实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreatePreviewOutput()
 
@@ -594,24 +554,22 @@ Camera_ErrorCode OH_CameraManager_CreatePreviewOutput(Camera_Manager* cameraMana
 
 创建预览输出实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_Profile* profile | 用于创建Camera_PreviewOutput实例的相机流配置文件。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PreviewOutput实例的相机流配置文件。 |
 | const char* surfaceId | 用于创建Camera_PreviewOutput实例的surfaceId。 |
-| Camera_PreviewOutput** previewOutput | 如果方法调用成功，将创建Camera_PreviewOutput实例。 |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | 如果方法调用成功，将创建Camera_PreviewOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreatePreviewOutputUsedInPreconfig()
 
@@ -623,23 +581,21 @@ Camera_ErrorCode OH_CameraManager_CreatePreviewOutputUsedInPreconfig(Camera_Mana
 
 创建在预配置流中使用的预览输出实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | const char* surfaceId | 用于创建Camera_PreviewOutput实例的surfaceId。 |
-| Camera_PreviewOutput** previewOutput | 如果方法调用成功，将创建Camera_PreviewOutput实例。 |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | 如果方法调用成功，将创建Camera_PreviewOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreateDeferredPreviewOutput()
 
@@ -651,23 +607,21 @@ Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manag
 
 创建延迟预览输出实例。使用结束后，必须调用[OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release)释放预览输出实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_Profile* profile | 用于创建Camera_PreviewOutput实例的相机流配置文件。 |
-| Camera_PreviewOutput** previewOutput | 如果方法调用成功，将创建Camera_PreviewOutput实例。 |
+| [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PreviewOutput实例的相机流配置文件。 |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | 如果方法调用成功，将创建Camera_PreviewOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreatePhotoOutput()
 
@@ -679,24 +633,22 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutput(Camera_Manager* cameraManage
 
 创建一个拍照输出实例。该接口只支持创建JPEG格式的拍照输出对象。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_Profile* profile | 用于创建Camera_PhotoOutput实例的相机流配置文件。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PhotoOutput实例的相机流配置文件。 |
 | const char* surfaceId | 用于创建Camera_PhotoOutput实例的surfaceId。 |
-| Camera_PhotoOutput** photoOutput | 如果方法调用成功，将创建Camera_PhotoOutput实例。 |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)** photoOutput | 如果方法调用成功，将创建Camera_PhotoOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreatePhotoOutputUsedInPreconfig()
 
@@ -708,23 +660,21 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutputUsedInPreconfig(Camera_Manage
 
 创建在预配置流中使用的照片输出实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | const char* surfaceId | 用于创建Camera_PhotoOutput实例的surfaceId。 |
-| Camera_PhotoOutput** photoOutput | 如果方法调用成功，将创建Camera_PhotoOutput实例。 |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)** photoOutput | 如果方法调用成功，将创建Camera_PhotoOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreatePhotoOutputWithoutSurface()
 
@@ -736,23 +686,21 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutputWithoutSurface(Camera_Manager
 
 创建照片输出实例，调用此函数不需要surfaceId。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager *cameraManager | 相机管理器实例。 |
-| const Camera_Profile *profile | 用于创建Camera_PhotoOutput实例的相机流配置文件。 |
-| Camera_PhotoOutput **photoOutput | 如果方法调用成功，将创建Camera_PhotoOutput实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md) *cameraManager | 相机管理器实例。 |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md) *profile | 用于创建Camera_PhotoOutput实例的相机流配置文件。 |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) **photoOutput | 如果方法调用成功，将创建Camera_PhotoOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreateVideoOutput()
 
@@ -764,24 +712,22 @@ Camera_ErrorCode OH_CameraManager_CreateVideoOutput(Camera_Manager* cameraManage
 
 创建一个录像输出实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_VideoProfile* profile | 用于创建Camera_VideoOutput实例的录像配置文件。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)* profile | 用于创建Camera_VideoOutput实例的录像配置文件。 |
 | const char* surfaceId | 用于创建Camera_VideoOutput实例的surfaceId。 |
-| Camera_VideoOutput** videoOutput | 如果方法调用成功，将创建Camera_VideoOutput实例。 |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)** videoOutput | 如果方法调用成功，将创建Camera_VideoOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreateVideoOutputUsedInPreconfig()
 
@@ -793,23 +739,21 @@ Camera_ErrorCode OH_CameraManager_CreateVideoOutputUsedInPreconfig(Camera_Manage
 
 创建在预配置流中使用的视频输出实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | const char* surfaceId | 用于创建Camera_VideoOutput实例的surfaceId。 |
-| Camera_VideoOutput** videoOutput | 如果方法调用成功，将创建Camera_VideoOutput实例。 |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)** videoOutput | 如果方法调用成功，将创建Camera_VideoOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreateMetadataOutput()
 
@@ -821,23 +765,21 @@ Camera_ErrorCode OH_CameraManager_CreateMetadataOutput(Camera_Manager* cameraMan
 
 创建元数据输出实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_MetadataObjectType* profile | 用于创建Camera_MetadataOutput实例的元数据对象类型。 |
-| Camera_MetadataOutput** metadataOutput | 如果方法调用成功，将创建Camera_MetadataOutput实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* profile | 用于创建Camera_MetadataOutput实例的元数据对象类型。 |
+| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)** metadataOutput | 如果方法调用成功，将创建Camera_MetadataOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_CreateMetadataOutputWithObjectTypes()
 
@@ -849,24 +791,22 @@ Camera_ErrorCode OH_CameraManager_CreateMetadataOutputWithObjectTypes(Camera_Man
 
 使用元数据对象类型数组创建元数据输出实例。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_MetadataObjectType* metadataObjectTypes | 用于创建Camera_MetadataOutput实例的元数据对象类型数组。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* metadataObjectTypes | 用于创建Camera_MetadataOutput实例的元数据对象类型数组。 |
 | uint32_t size | 元数据对象类型数组长度。 |
-| Camera_MetadataOutput** metadataOutput | 如果方法调用成功，将创建Camera_MetadataOutput实例。 |
+| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)** metadataOutput | 如果方法调用成功，将创建Camera_MetadataOutput实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_GetSupportedSceneModes()
 
@@ -878,23 +818,21 @@ Camera_ErrorCode OH_CameraManager_GetSupportedSceneModes(Camera_Device* camera, 
 
 获取特定相机支持的场景模式。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Device* camera | 要查询的Camera_Device。 |
-| Camera_SceneMode** sceneModes | 如果方法调用成功，将记录支持的场景模式列表。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。 |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode)** sceneModes | 如果方法调用成功，将记录支持的场景模式列表。 |
 | uint32_t* size | 如果方法调用成功，将记录支持的场景模式列表大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_DeleteSceneModes()
 
@@ -906,22 +844,20 @@ Camera_ErrorCode OH_CameraManager_DeleteSceneModes(Camera_Manager* cameraManager
 
 删除场景模式。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_SceneMode* sceneModes | 要删除的场景模式列表。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode)* sceneModes | 要删除的场景模式列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_IsTorchSupported()
 
@@ -933,22 +869,20 @@ Camera_ErrorCode OH_CameraManager_IsTorchSupported(Camera_Manager* cameraManager
 
 检查设备是否支持手电筒。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | bool* isTorchSupported | 设备是否支持手电筒。返回true表示设备支持手电筒，返回false表示不支持。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_IsTorchSupportedByTorchMode()
 
@@ -960,23 +894,21 @@ Camera_ErrorCode OH_CameraManager_IsTorchSupportedByTorchMode(Camera_Manager* ca
 
 检查设备是否支持指定的手电筒模式。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_TorchMode torchMode | 要检查的相机手电筒模式。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_TorchMode](capi-camera-h.md#camera_torchmode) torchMode | 要检查的相机手电筒模式。 |
 | bool* isTorchSupported | 设备是否支持指定的手电筒模式。返回true表示设备支持该模式，返回false表示不支持。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_SetTorchMode()
 
@@ -988,22 +920,20 @@ Camera_ErrorCode OH_CameraManager_SetTorchMode(Camera_Manager* cameraManager, Ca
 
 设置相机手电筒模式。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_TorchMode torchMode | 要设置的相机手电筒模式。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_TorchMode](capi-camera-h.md#camera_torchmode) torchMode | 要设置的相机手电筒模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_IsTorchLevelControlSupported()
 
@@ -1015,22 +945,20 @@ Camera_ErrorCode OH_CameraManager_IsTorchLevelControlSupported(const Camera_Mana
 
 检查设备是否支持手电筒亮度控制。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Manager* cameraManager | 相机管理器实例。 |
+| [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | bool* isTorchLevelControlSupported | 设备是否支持手电筒亮度控制。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_SetTorchModeOnWithLevel()
 
@@ -1042,22 +970,20 @@ Camera_ErrorCode OH_CameraManager_SetTorchModeOnWithLevel(Camera_Manager* camera
 
 将手电筒模式设置为打开，并设置亮度值。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | double torchLevel | 目标亮度水平。取值范围为[0.0, 1.0]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_GetCameraDevice()
 
@@ -1069,24 +995,22 @@ Camera_ErrorCode OH_CameraManager_GetCameraDevice(Camera_Manager* cameraManager,
 
 根据相机位置和相机类型查询指定的相机。 <br>获取指定[Camera_Position](capi-camera-h.md#camera_position)和[Camera_Type](capi-camera-h.md#camera_type)的相机镜头，如果该接口返回值为CAMERA_SERVICE_FATAL_ERROR，表示当前设备未查询到该镜头。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 18
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_Position position | 要查询的相机位置。 |
-| Camera_Type type | 要查询的相机类型。 |
-| Camera_Device* camera | 要查询的Camera_Device。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_Position](capi-camera-h.md#camera_position) position | 要查询的相机位置。 |
+| [Camera_Type](capi-camera-h.md#camera_type) type | 要查询的相机类型。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_GetCameraDevices()
 
@@ -1098,24 +1022,22 @@ Camera_ErrorCode OH_CameraManager_GetCameraDevices(Camera_Manager* cameraManager
 
 根据相机位置、相机类型数组和连接类型查询符合条件的相机列表。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_DeviceQueryInfo* deviceQueryInfo | 相机设备的查询信息实例。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md)* deviceQueryInfo | 相机设备的查询信息实例。 |
 | uint32_t* cameraSize | 查询的所支持的Camera_Device列表大小。 |
-| Camera_Device** cameras | 查询的所支持的Camera_Device列表。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)** cameras | 查询的所支持的Camera_Device列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraManager_DeleteCameraDevices()
 
@@ -1127,22 +1049,20 @@ Camera_ErrorCode OH_CameraManager_DeleteCameraDevices(Camera_Manager* cameraMana
 
 删除指定相机设备。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| Camera_Device* cameras | 待删除的Camera_Device列表。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* cameras | 待删除的Camera_Device列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraManager_GetCameraConcurrentInfos()
 
@@ -1154,24 +1074,22 @@ Camera_ErrorCode OH_CameraManager_GetCameraConcurrentInfos(Camera_Manager* camer
 
 获取指定相机的并发信息。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 18
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Manager* cameraManager | 相机管理器实例。 |
-| const Camera_Device* camera | 用于查询的Camera_Device相机设备列表，推荐设置为包含[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取的前置与后置两个相机设备的相机设备列表。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于查询的Camera_Device相机设备列表，推荐设置为包含[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取的前置与后置两个相机设备的相机设备列表。 |
 | uint32_t deviceSize | 用于查询的相机设备列表长度, 必须设置为2（表示前置与后置两个用于并发的相机设备）。 |
-| Camera_ConcurrentInfo** cameraConcurrentInfo | 查询到的相机并发能力数组Camera_ConcurrentInfo，作为入参应当默认设置为空。 <br>如果相机支持并发，cameraConcurrentInfo会被赋值为查询到的相机并发能力数组Camera_ConcurrentInfo。 <br>如果相机不支持并发，不会对cameraConcurrentInfo进行更改，并且返回错误码[Camera_ErrorCode](capi-camera-h.md#camera_errorcode).CAMERA_SERVICE_FATAL_ERROR。 |
+| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md)** cameraConcurrentInfo | 查询到的相机并发能力数组Camera_ConcurrentInfo，作为入参应当默认设置为空。 <br>如果相机支持并发，cameraConcurrentInfo会被赋值为查询到的相机并发能力数组Camera_ConcurrentInfo。 <br>如果相机不支持并发，不会对cameraConcurrentInfo进行更改，并且返回错误码[Camera_ErrorCode](capi-camera-h.md#camera_errorcode).CAMERA_SERVICE_FATAL_ERROR。 |
 | uint32_t* infoSize | 查询到的相机并发能力数组长度，作为入参应当默认设置为0。 <br>如果相机支持并发，infoSize会被赋值为查询到的相机并发能力数组长度。 <br>如果相机不支持并发，不会对infoSize进行更改，并且返回错误码[Camera_ErrorCode](capi-camera-h.md#camera_errorcode).CAMERA_SERVICE_FATAL_ERROR。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常，或者相机不支持并发。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常，或者相机不支持并发。 |
 
 

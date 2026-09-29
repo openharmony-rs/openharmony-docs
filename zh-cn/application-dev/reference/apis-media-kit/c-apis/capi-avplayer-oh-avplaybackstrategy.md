@@ -8,6 +8,8 @@ typedef struct OH_AVPlaybackStrategy OH_AVPlaybackStrategy
 
 音视频播放策略的结构体类型，用于配置播放器在播放音视频内容时的策略参数，适用于需要精细控制播放行为的场景。若未设置该策略参数，播放器将采用默认播放策略。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 23
 
 **相关模块：** [AVPlayer](capi-avplayer.md)

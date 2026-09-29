@@ -1,7 +1,7 @@
 # HiDebug_ThreadCpuUsage
 
 ```c
-typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
+struct HiDebug_ThreadCpuUsage {...}
 ```
 
 ## Overview
@@ -24,6 +24,6 @@ Defines the struct for the CPU usage of all threads of an application.
 | -- | -- |
 | uint32_t threadId | Thread ID. |
 | double cpuUsage | Thread CPU usage, in percentage. |
-| struct [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) *next | Pointer to the CPU usage of the next thread. |
+| struct HiDebug_ThreadCpuUsage *next | Pointer to the CPU usage of the next thread. |
 
 

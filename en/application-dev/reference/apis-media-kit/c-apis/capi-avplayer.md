@@ -4,6 +4,8 @@
 
 Provides APIs of Playback capability for Media Source.
 
+**System capability**: Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **Since**: 11
 
 ## Files

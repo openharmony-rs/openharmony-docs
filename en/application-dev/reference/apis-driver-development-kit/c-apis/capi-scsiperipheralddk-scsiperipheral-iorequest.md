@@ -1,7 +1,7 @@
 # ScsiPeripheral_IORequest
 
 ```c
-typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
+struct ScsiPeripheral_IORequest {...}
 ```
 
 ## Overview
@@ -27,7 +27,7 @@ Defines the read/write operation request.
 | uint8_t control | Control** field used to specify control information. |
 | uint8_t byte1 | First byte of the CDB. |
 | uint8_t byte6 | Sixth byte of the CDB. |
-| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) *data | Buffer for data transmission. |
+| ScsiPeripheral_DeviceMemMap *data | Buffer for data transmission. |
 | uint32_t timeout | Timeout duration, in ms. |
 
 

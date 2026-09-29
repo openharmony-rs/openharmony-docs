@@ -6,8 +6,6 @@
 
 **库：** libnative_drawing.so
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -39,8 +37,6 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateBlendMode(uint32_t color, OH
 
 创建具有混合模式的颜色滤波器，适用于需要按指定混合模式将源色与目标色合成的场景。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **参数：**
@@ -48,13 +44,13 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateBlendMode(uint32_t color, OH
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t color | 表示颜色，是一个32位（ARGB）变量。 |
-| OH_Drawing_BlendMode blendMode | 表示混合模式。支持的混合模式详见[OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode)枚举。 |
+| [OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode) blendMode | 表示混合模式。支持的混合模式详见[OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode)枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ColorFilter* | 返回创建的颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | 返回创建的颜色滤波器对象的指针。 |
 
 ### OH_Drawing_ColorFilterCreateCompose()
 
@@ -66,22 +62,20 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilt
 
 将两个颜色滤波器合成一个新的颜色滤波器。合成时先应用innerColorFilter进行滤波，再应用outerColorFilter进行滤波。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>outerColorFilter、innerColorFilter任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 请检查并确保传入的outerColorFilter和innerColorFilter为有效的颜色滤波器对象指针。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_ColorFilter* outerColorFilter | 指向颜色滤波器中外部颜色滤波器对象的指针。 |
-| OH_Drawing_ColorFilter* innerColorFilter | 指向颜色滤波器中内部颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* outerColorFilter | 指向颜色滤波器中外部颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* innerColorFilter | 指向颜色滤波器中内部颜色滤波器对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ColorFilter* | 返回创建的颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | 返回创建的颜色滤波器对象的指针。 |
 
 ### OH_Drawing_ColorFilterCreateMatrix()
 
@@ -92,8 +86,6 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20
 **描述：**
 
 创建具有4x5颜色矩阵的颜色滤波器，适用于需要自定义颜色变换的场景。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。请检查并确保传入的matrix为有效的浮点数组指针。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -107,7 +99,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ColorFilter* | 返回创建的颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | 返回创建的颜色滤波器对象的指针。 |
 
 ### OH_Drawing_ColorFilterCreateLinearToSrgbGamma()
 
@@ -119,15 +111,13 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLinearToSrgbGamma(void)
 
 创建一个从线性颜色空间转换到SRGB颜色空间的颜色滤波器。 该接口与OH_Drawing_ColorFilterCreateSrgbGammaToLinear互为逆操作。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ColorFilter* | 返回创建的颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | 返回创建的颜色滤波器对象的指针。 |
 
 ### OH_Drawing_ColorFilterCreateSrgbGammaToLinear()
 
@@ -139,15 +129,13 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)
 
 创建一个从SRGB颜色空间转换到线性颜色空间的颜色滤波器。 该接口与OH_Drawing_ColorFilterCreateLinearToSrgbGamma互为逆操作。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ColorFilter* | 返回创建的颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | 返回创建的颜色滤波器对象的指针。 |
 
 ### OH_Drawing_ColorFilterCreateLuma()
 
@@ -159,15 +147,13 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)
 
 创建一个颜色滤波器，将其输入的亮度值乘以透明度通道的值，并将红色、绿色和蓝色通道设置为零。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ColorFilter* | 返回创建的颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | 返回创建的颜色滤波器对象的指针。 |
 
 ### OH_Drawing_ColorFilterCreateLighting()
 
@@ -178,8 +164,6 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, 
 **描述：**
 
 创建一个光照颜色滤波器，此滤波器会将RGB通道的颜色值乘以一种颜色值并加上另一种颜色值，计算结果会被限制在0到255范围内。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
 
@@ -194,7 +178,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ColorFilter* | 返回创建的颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | 返回创建的颜色滤波器对象的指针。 |
 
 ### OH_Drawing_ColorFilterDestroy()
 
@@ -206,14 +190,12 @@ void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)
 
 销毁颜色滤波器对象，并回收该对象占用的内存。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_ColorFilter* colorFilter | 表示指向颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* colorFilter | 表示指向颜色滤波器对象的指针。 |
 
 

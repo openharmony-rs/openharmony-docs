@@ -6,7 +6,7 @@ Provides **Context** APIs for configuring runtime information.
 
 **Library**: libmindspore_lite_ndk.so
 
-**Since**: 13
+**Since**: 9
 
 **Related module**: [MindSpore](capi-mindspore.md)
 
@@ -58,7 +58,6 @@ Provides **Context** APIs for configuring runtime information.
 | [OH_AI_API OH_AI_PerformanceMode OH_AI_DeviceInfoGetPerformanceMode(const OH_AI_DeviceInfoHandle device_info)](#oh_ai_deviceinfogetperformancemode) | Obtain the NNRT performance mode, Only valid for NNRT. |
 | [OH_AI_API void OH_AI_DeviceInfoSetPriority(OH_AI_DeviceInfoHandle device_info, OH_AI_Priority priority)](#oh_ai_deviceinfosetpriority) | Set the NNRT priority, Only valid for NNRT. |
 | [OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandle device_info)](#oh_ai_deviceinfogetpriority) | Obtain the NNRT priority, Only valid for NNRT. |
-| [OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle device_info, const char *name, const char *value, size_t value_size)](#oh_ai_deviceinfoaddextension) | Add extension of key/value format to device info, Only valid for NNRT. |
 
 ## Function description
 
@@ -844,32 +843,5 @@ Obtain the NNRT priority, Only valid for NNRT.
 | Type | Description |
 | -- | -- |
 | OH_AI_API OH_AI_Priority | NNRT priority. |
-
-### OH_AI_DeviceInfoAddExtension()
-
-```c
-OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle device_info, const char *name, const char *value, size_t value_size)
-```
-
-**Description**
-
-Add extension of key/value format to device info, Only valid for NNRT.
-
-**Since**: 10
-
-**Parameters**:
-
-| Parameter | Description |
-| -- | -- |
-| OH_AI_DeviceInfoHandle device_info | Device info object handle. |
-| const char *name | The content of key as a C string. |
-| const char *value | The pointer to the value, which is a byte array. |
-| size_t value_size | The size of the value, which is a byte array. |
-
-**Returns**:
-
-| Type | Description |
-| -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_STATUS_SUCCESS if success, or detail error code if failed. |
 
 
