@@ -861,17 +861,12 @@ struct DocSampleArray {
             this.arrayOfPerson.shift();
           }
         })
-      Button('#5 arrayOfPerson length change')
-        .onClick(() => {
-          // arrayOfPersonMonitor回调触发
-          this.arrayOfPerson.length = this.arrayOfPerson.length + 1;
-        })
-      Button('#6 arrayOfPerson = new Array')
+      Button('#5 arrayOfPerson = new Array')
         .onClick(() => {
           // arrayOfPersonMonitor回调触发
           this.arrayOfPerson = [new Person('Adrian'), new Person('Andrew')]
         })
-      Button('#7 arrayOfPerson [1] last name')
+      Button('#6 arrayOfPerson [1] last name')
         .onClick(() => {
           if (this.arrayOfPerson.length > 1 && this.arrayOfPerson[1] instanceof Person) {
             // arrayOfPersonMonitor回调不触发
@@ -1335,7 +1330,8 @@ struct Page {
   onChange(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
       hilog.info(0xFF00, 'testTag', '%{public}s',
-        `onChange: User property ${path} change from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+        `onChange: User property ${path} change from ${mon.value<number | undefined>(path)?.before} to ` +
+          `${mon.value<number | undefined>(path)?.now}`);
     });
   }
 
