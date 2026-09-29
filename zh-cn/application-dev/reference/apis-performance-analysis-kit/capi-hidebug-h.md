@@ -1059,7 +1059,7 @@ HiDebug_ErrorCode OH_HiDebug_SetStackTraceMode(OH_HiDebug_ProfilerOptions *opts,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)* opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
 | [OH_HiDebug_ProfilerStackTraceMode](capi-hidebug-type-h.md#oh_hidebug_profilerstacktracemode) mode | 调用栈追踪模式。 |
 
 **返回：**
