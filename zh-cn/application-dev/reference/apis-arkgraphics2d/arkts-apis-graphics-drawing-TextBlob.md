@@ -199,7 +199,7 @@ ArkTS-Sta: uniqueID(): long
 ArkTS-Dyn:
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let text : string = 'TextBlobUniqueId';
 let font : drawing.Font = new drawing.Font();
@@ -211,7 +211,7 @@ console.info('uniqueID---------------' + id);
 
 ArkTS-Sta示例：
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let text: string = 'TextBlobUniqueId';
 let font: drawing.Font = new drawing.Font();
