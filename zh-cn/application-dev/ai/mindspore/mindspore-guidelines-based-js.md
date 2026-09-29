@@ -51,7 +51,6 @@
    {
      "devices": {
        "general": [
-         // 需跟module.json5中deviceTypes保持一致。
          "default"
        ]
      },
