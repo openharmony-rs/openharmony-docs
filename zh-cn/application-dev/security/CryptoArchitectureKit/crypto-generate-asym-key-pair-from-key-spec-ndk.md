@@ -11,6 +11,11 @@
 
 该对象可用于后续的加解密等操作。获取的密钥参数属性可用于存储或传输。
 
+## 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
+
 ## 指定密钥参数生成RSA密钥对
 
 对应的算法规格请查看[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)。
