@@ -55,7 +55,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
    
    export default class EntryAbility extends UIAbility {
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // 添加检测规则，规则意义见检测模式API参考
+       // 添加检测规则，规则意义见检测模式API参考
        hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
        let filePath: string = this.context.filesDir + '/test.JPG';
        const imageSourceObj: image.ImageSource = image.createImageSource(filePath);
