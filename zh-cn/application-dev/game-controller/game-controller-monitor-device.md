@@ -147,6 +147,7 @@ GameController_ErrorCode DeviceApi::DoQueryAllDeviceInfos() {
 }
 
 std::string DeviceApi::GetDeviceInfoStringForPrint(GameDevice_DeviceInfo *deviceInfo) {
+    // 获取设备信息
     std::string log;
     char *deviceId = NULL;
     OH_GameDevice_DeviceInfo_GetDeviceId(deviceInfo, &deviceId);
@@ -156,6 +157,9 @@ std::string DeviceApi::GetDeviceInfoStringForPrint(GameDevice_DeviceInfo *device
     OH_GameDevice_DeviceInfo_GetName(deviceInfo, &name);
     log.append(",name:").append(name);
     free(name);
+    int vendor;
+    OH_GameDevice_DeviceInfo_GetVendor(deviceInfo, &vendor);
+    log.append(",vendor:").append(std::to_string(vendor));
     int product;
     OH_GameDevice_DeviceInfo_GetProduct(deviceInfo, &product);
     log.append(",product:").append(std::to_string(product));
