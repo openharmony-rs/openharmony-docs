@@ -463,6 +463,7 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
            break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
            // 此分支表示系统已将应用所有播放音频流音量恢复正常。
+           break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
            // 此分支表示其他应用开始播放非混音音频，系统可自行决定是否静音。
            break;
@@ -619,6 +620,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
         break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
         // 此分支表示系统已将应用所有播放音频流音量恢复正常。
+        break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
         // 此分支表示其他应用开始播放非混音音频，系统可自行决定是否静音。
         break;
