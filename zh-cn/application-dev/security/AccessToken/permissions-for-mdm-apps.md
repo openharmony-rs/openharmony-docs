@@ -921,3 +921,20 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.1
+
+## ohos.permission.ENTERPRISE_EXTERNAL_READ
+
+允许设备管理应用在OOBE阶段拷贝U盘大文件。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1

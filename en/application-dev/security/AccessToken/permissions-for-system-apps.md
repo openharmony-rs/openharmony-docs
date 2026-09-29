@@ -9461,6 +9461,20 @@ Allows an application to get information related to instrument cluster personali
 
 **Valid since**: 26.0.1
 
+## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
+
+Allows an application to install other applications of the debug type.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
 ## ohos.permission.SET_DSL_MODE
 
 Allows an application to modify the device security level (DSL) configuration.

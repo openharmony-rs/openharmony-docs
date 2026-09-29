@@ -50,7 +50,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | -----------------|
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -114,7 +114,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | -----------------|
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -168,7 +168,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 4400001  | Incorrect descriptor for the target device.                |
 | 4400002  | Screen hop failed.   |
@@ -239,7 +239,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 4400001  | Incorrect descriptor for the target device.          |
 | 4400002  | Screen hop failed.              |
@@ -295,7 +295,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message          |
 | -------- | ----------------- |
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -353,7 +353,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID | Error Message |
 | -------- | -------- |
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 
 **Example**
 
@@ -405,7 +405,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -471,7 +471,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -526,7 +526,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -587,7 +587,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202      | SystemAPI permit error.<br/>Supported version: 12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Supported version: 12+  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
