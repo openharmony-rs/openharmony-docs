@@ -34,14 +34,14 @@ ohos-window restore-window --windowId <id> --help
 ### 约束限制
 
 - 需要配置[ohos.permission.CONTROL_DEVICE](../security/AccessToken/restricted-permissions.md#ohospermissioncontrol_device)权限。
-- 支持设备：PC/2in1且处于[自由多窗模式](window-terminology.md#free-windows自由多窗模式)。
+- 支持设备：PC/2in1且处于[电脑模式](window-terminology.md#pc-mode电脑模式)。
 
 ### 参数说明
 
 | 参数名 | 说明 |
 |------|------|
-| `--windowId` | 可选，待恢复到前台的主窗口的windowId。必须是非负整数。 |
-| `--help` | 可选，查看帮助信息。 |
+| `--windowId` | 可选，待恢复到前台的主窗口的windowId。必须是非负整数。<br>不可与--help同时使用。 |
+| `--help` | 可选，查看帮助信息。<br>不可与--windowId同时使用。 |
 
 ### 错误码
 
@@ -59,6 +59,6 @@ ohos-window restore-window --windowId <id> --help
 # 恢复指定主窗口到前台
 ohos-window restore-window --windowId 100
 
-# 查看 restore-window 命令帮助
+# 查看restore-window命令帮助
 ohos-window restore-window --help
 ```
