@@ -32,7 +32,7 @@ import { ToolBarV2 } from '@kit.ArkUI';
 
 ## ToolBarV2
 
-ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
+ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier?: DividerModifier, toolBarModifier?: ToolBarV2Modifier})
 
 工具栏。
 

@@ -363,7 +363,7 @@ let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.
 };
 try {
     wallpaper.on('wallpaperChange', listener);
-} catch (error: BusinessError) {
+} catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
 }

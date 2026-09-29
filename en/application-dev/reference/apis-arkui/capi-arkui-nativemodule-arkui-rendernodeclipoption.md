@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b331f4c66f7fe18bcdec89ee3dd8812fe998d77b translatedAt=2026-09-22T09:05:01.813Z pushedAt=2026-09-22T10:31:51.187Z -->
 
 ```c
 typedef struct ArkUI_RenderNodeClipOption ArkUI_RenderNodeClipOption
@@ -12,7 +13,7 @@ typedef struct ArkUI_RenderNodeClipOption ArkUI_RenderNodeClipOption
 
 ## Overview
 
-Defines a render node clipping option.
+Defines a clipping option for a render node. It is used to describe the clipping area of a render node through a rectangle, rounded rectangle, circle, ellipse, or custom path, and serves as the input parameter of [OH_ArkUI_RenderNodeUtils_SetClip](capi-native-render-h.md#oh_arkui_rendernodeutils_setclip) to apply clipping to the render node.
 
 **Since**: 20
 

@@ -11,23 +11,13 @@
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[系统时间、时区](js-apis-date-time.md)。
 
 ## 导入模块
 
 ```ts
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
-
-## TimeType<sup>10+</sup>
-
-定义获取时间的枚举类型。
-
-**系统能力：** SystemCapability.MiscServices.Time
-
-| 名称    | 值   | 说明                                             |
-| ------- | ---- | ------------------------------------------------ |
-| STARTUP | 0    | 自系统启动以来经过的时间，包括深度睡眠时间。   |
-| ACTIVE  | 1    | 自系统启动以来经过的时间，不包括深度睡眠时间。 |
 
 ## systemDateTime.setTime
 
@@ -56,8 +46,8 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
-| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
-| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint. 2.The required privilege for the operation has not been granted. [since 26.0.0] |
+| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -112,8 +102,8 @@ setTime(time : number) : Promise&lt;void&gt;
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
-| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
-| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint. 2.The required privilege for the operation has not been granted. [since 26.0.0] |
+| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -165,7 +155,7 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                                                           |
 | 202       | Permission verification failed. A non-system application calls a system API.                                                                 |
-| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -222,7 +212,7 @@ setDate(date: Date): Promise&lt;void&gt;
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                                                           |
 | 202       | Permission verification failed. A non-system application calls a system API.                                                                 |
-| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -269,8 +259,8 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
-| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
-| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint. 2.The required privilege for the operation has not been granted. [since 26.0.0] |
+| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -323,8 +313,8 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
-| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
-| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint. 2.The required privilege for the operation has not been granted. [since 26.0.0] |
+| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -462,8 +452,8 @@ setAutoTimeStatus(status: boolean): Promise&lt;void&gt;
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
-| 204       | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint; 2. The required privilege for the operation has not been granted. |
-| 13000001  | Network connection error or OS error. Possible causes: 1. System memory is insufficient; 2. Calls the underlying system interface failed.|
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint. 2.The required privilege for the operation has not been granted. [since 26.0.0] |
+| 13000001  | Network connection error or OS error. Possible causes: 1.System memory is insufficient. 2.Calls the underlying system interface failed.|
 
 
 **示例：**

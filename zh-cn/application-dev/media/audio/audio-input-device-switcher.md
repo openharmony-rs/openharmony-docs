@@ -51,7 +51,7 @@ let audioSessionManager = audioManager.getSessionManager();
 >
 > 通话场景下，输入设备跟随当前输出设备，此时其他与通话并发的录音流也会跟随通话输入设备。
 
-<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->  
+<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -384,7 +384,7 @@ C/C++示例：
   }
   
   // ...
-  // 为指定音频播放流设置首选输入设备。
+  // 为指定音频录制流设置首选输入设备。
   napi_value SelectInputDeviceForAudioCapturer(napi_env env, napi_callback_info info)
   {
       int32_t deviceId = 0;

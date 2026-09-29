@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fd4899920072ab190bbe2089f1efe02176565c30 translatedAt=2026-09-22T09:12:38.245Z pushedAt=2026-09-22T11:29:55.067Z -->
 
 ```c
 typedef struct {...} ARKUI_TextPickerCascadeRangeContent
@@ -12,13 +13,13 @@ typedef struct {...} ARKUI_TextPickerCascadeRangeContent
 
 ## Overview
 
-Defines a struct for the multi-column cascade picker.
+Defines a multi-column text cascade picker, which describes the hierarchical data structure of the multi-column text cascade picker. This struct forms a tree structure through children members to support multi-level cascade selection. It is suitable for scenarios that require displaying hierarchical data such as province/city/district and year/month/day, and can simplify the development of the multi-level text cascade picker.
 
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [picker.h](capi-picker-h.md)
 
 ## Summary
 
@@ -26,6 +27,7 @@ Defines a struct for the multi-column cascade picker.
 
 | Name                                              | How to Emulate|
 |--------------------------------------------------| -- |
-| const char* text                                 | Text information.|
-| const [ARKUI_TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontent.md)* children | Cascade data.|
-| int32_t size                                     | Size of the cascade data array.|
+| const char* text | Pointer to the text content to be displayed in the multi-column text cascade picker, used to represent the display text of this option. The default value is **NULL**. This parameter can be set to an empty string to indicate no text. For the value principles, see the API description.<br>**Note:** When no text is set, it is recommended to set this parameter to **NULL**. |
+| const [ARKUI_TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontent.md)* children | Pointer to the child-level cascade data array, which points to the cascade data array of the next level. When this option is selected at the current level, the content of the array corresponding to **children** is displayed as the options of the next level. Set this parameter to **NULL** when there is no child-level data. The array pointer passed in must remain valid during the use of the picker, and the caller is responsible for managing the array memory. |
+| int32_t size | Number of elements in the children array, that is, the number of options at the current level. The value must be greater than or equal to 0 and must be consistent with the actual number of elements in the children array passed. When **children** is **NULL**, set this parameter to **0**. A parameter error exception is thrown when a negative number or an inconsistent value is passed in. |
+

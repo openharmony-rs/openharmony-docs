@@ -20,10 +20,10 @@ The result is returned after the SysCap configuration file is checked.
 
 | Name| Description| 
 | -------- | -------- |
-| [syscap_ndk.h](syscap__ndk_8h.md) | Provides the API for querying whether a SysCap is supported.<br>**File to include**: <syscap_ndk.h><br>**Library**: libdeviceinfo_ndk.z.so| 
+| [syscap_ndk.h](syscap-ndk-8h.md) | Provides the API for querying whether a SysCap is supported.<br>**File to include**: <syscap_ndk.h><br>**Library**: libdeviceinfo_ndk.z.so| 
 
 ### Functions
 
 | Name| Description|
 | -------- | -------- |
-| [canIUse](syscap__ndk_8h.md#caniuse) (const char \*cap) | Queries whether the specified system capability is supported. A SysCap refers to each relatively independent feature in the operating system. Different devices correspond to different system capability sets, and each system capability corresponds to one or more APIs. Developers can determine whether an API can be used based on the system capability. |
+| [canIUse](syscap-ndk-8h.md#caniuse) (const char \*cap) | Queries whether the specified system capability is supported. A SysCap refers to each relatively independent feature in the operating system. Different devices correspond to different system capability sets, and each system capability corresponds to one or more APIs. Developers can determine whether an API can be used based on the system capability. |

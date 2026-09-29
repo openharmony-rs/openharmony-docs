@@ -26,3 +26,63 @@
 | --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | distortionMode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 否 | 是 | 设置系统材质下弹窗的扭曲动画模式。<br/>**默认值：** DistortionMode.DISTORTION_AUTO <br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | edgeLightMode | [EdgeLightMode](./ts-appendix-enums-sys.md#edgelightmode) | 否 | 是 | 设置系统材质下弹窗的边缘光动画模式。<br/>**默认值：** EdgeLightMode.EDGELIGHT_AUTO <br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## 示例
+
+### 示例1（警告弹窗设置沉浸式材质、非线性形变与流光）
+
+该示例通过[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)设置[AlertDialogParam](#alertdialogparam)中的系统材质systemMaterial，以及非线性形变[distortionMode](#alertdialogparam)和流光[edgeLightMode](#alertdialogparam)，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+
+从API版本26.0.0开始，[AlertDialogParam](#alertdialogparam)新增distortionMode和edgeLightMode属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      Column() {
+        Button("AlertDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showAlertDialog({
+              title: 'AlertDialog Title',
+              message: 'AlertDialog Text',
+              primaryButton: {
+                value: '确定',
+                action: () => {
+                  console.info('primaryButton');
+                }
+              },
+              secondaryButton: {
+                value: '取消',
+                action: () => {
+                  console.info('secondaryButton');
+                }
+              },
+              // 设置沉浸式材质
+              systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK }),
+              // 非线性形变自适应
+              distortionMode: DistortionMode.DISTORTION_AUTO,
+              // 流光自适应
+              edgeLightMode: EdgeLightMode.EDGELIGHT_AUTO,
+            });
+          })
+      }
+      .height('100%')
+      .width('100%')
+      .backgroundColor(Color.Gray)
+    }
+  }
+}
+```
+
+该示例配图为设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+![AlertDialogExample](figures/AlertDialog_material.gif)
+
+该示例配图为未设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+![AlertDialogExample](figures/AlertDialog_nomaterial.gif)
