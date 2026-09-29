@@ -18,24 +18,10 @@ Defines the condition variable structure used to store internal data of the cond
 
 ## Summary
 
-### Member functions
+### Member variables
 
 | Name | Description |
 | -- | -- |
-| [uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]](#sizeof) | Internal storage backing the condition variable. Do not access directly; use the `ffrt_cond_*` APIs. |
-
-## Member function description
-
-### sizeof()
-
-```c
-uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]
-```
-
-**Description**
-
-Internal storage backing the condition variable. Do not access directly; use the `ffrt_cond_*` APIs.
-
-**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+| uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage backing the condition variable. Do not access directly; use the `ffrt_cond_*` APIs. |
 
 

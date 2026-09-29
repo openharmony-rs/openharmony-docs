@@ -1,7 +1,7 @@
 # UsbSerial_Params
 
 ```c
-typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Params
+struct UsbSerial_Params {...}
 ```
 
 ## Overview

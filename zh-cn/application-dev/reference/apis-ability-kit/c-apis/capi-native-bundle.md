@@ -6,7 +6,7 @@ Describe the functions of AbilityResourceInfo.
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 9
 
 ## 文件汇总
 

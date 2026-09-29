@@ -6,8 +6,6 @@ The file declares the APIs related to the application-level context.
 
 **Library**: libability_runtime.so
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 13
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -32,12 +30,14 @@ The file declares the APIs related to the application-level context.
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *want)](#oh_abilityruntime_startselfuiability) | Starts the UIAbility of the current application. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(AbilityBase_Want *want, AbilityRuntime_StartOptions *options)](#oh_abilityruntime_startselfuiabilitywithstartoptions) | Starts the UIAbility of the current application using **StartOptions**. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetVersionCode(int64_t* versionCode)](#oh_abilityruntime_applicationcontextgetversioncode) | Obtains the application version code. |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlaunchparameter) | Obtains **WantParams** passed for the initial launch of the UIAbility of the current application. For details about **WantParams**, see {@link parameters in Want}. |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlatestparameter) | Obtains **WantParams** passed for the mose recent launch of the UIAbility of the current application. For details about **WantParams**, see {@link parameters in Want}. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlaunchparameter) | Obtains **WantParams** passed for the initial launch of the UIAbility of the current application. For details about **WantParams**, see parameters in Want. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlatestparameter) | Obtains **WantParams** passed for the mose recent launch of the UIAbility of the current application. For details about **WantParams**, see parameters in Want. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(AbilityBase_Want *want, AbilityRuntime_StartOptions *options, int32_t *targetPid)](#oh_abilityruntime_startselfuiabilitywithpidresult) | Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlogfiledir) | Obtains the application-level log file directory of the application. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(const char* targetPageName, int32_t targetPageNameLength, int32_t windowId)](#oh_abilityruntime_applicationcontextnotifypagechanged) | This API can be called only from third-party frameworks. Each time a third-party framework switches pages, it notifies the system of the target page information (including the target page path, the length of the target page path, and the window ID corresponding to the target page). The system can adjust or recover the page according to product policies. |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)](#oh_abilityruntime_acquireuiabilitychildprocessinfos) | Acquires UIAbility child process infos of the current application.<br> Includes child processes created via startAbility with ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)
+
+} // extern "C"](#oh_abilityruntime_acquireuiabilitychildprocessinfos) | Acquires UIAbility child process infos of the current application.<br> Includes child processes created via startAbility with ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT. |
 
 ## Function description
 
@@ -50,8 +50,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCacheDir(char* b
 **Description**
 
 Obtains the application-level cache directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13
 
@@ -67,7 +65,7 @@ Obtains the application-level cache directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID:       The passed-in value of buffer or writeLength is null, or the       buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetAreaMode()
 
@@ -79,21 +77,19 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(Ability
 
 Obtains the application-level file data encryption level of the application.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| AbilityRuntime_AreaMode* areaMode | Pointer to the encryption level of the received data. |
+| [AbilityRuntime_AreaMode](capi-context-constant-h.md#abilityruntime_areamode)* areaMode | Pointer to the encryption level of the received data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetBundleName()
 
@@ -104,8 +100,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleName(char*
 **Description**
 
 Obtains the bundle name of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13
 
@@ -121,7 +115,7 @@ Obtains the bundle name of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetTempDir()
 
@@ -132,8 +126,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* bu
 **Description**
 
 Obtains the application-level temporary file directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -149,7 +141,7 @@ Obtains the application-level temporary file directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetFilesDir()
 
@@ -160,8 +152,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* b
 **Description**
 
 Obtains the application-level common file directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -177,7 +167,7 @@ Obtains the application-level common file directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetDatabaseDir()
 
@@ -188,8 +178,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char
 **Description**
 
 Obtains the application-level database file directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -205,7 +193,7 @@ Obtains the application-level database file directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetPreferencesDir()
 
@@ -216,8 +204,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(c
 **Description**
 
 Obtains the application-level preferences file directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -233,7 +219,7 @@ Obtains the application-level preferences file directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetBundleCodeDir()
 
@@ -244,8 +230,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(ch
 **Description**
 
 Obtains the application-level installation file directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -261,7 +245,7 @@ Obtains the application-level installation file directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetDistributedFilesDir()
 
@@ -272,8 +256,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFiles
 **Description**
 
 Obtains the application-level distributed file directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -289,7 +271,7 @@ Obtains the application-level distributed file directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetCloudFileDir()
 
@@ -300,8 +282,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(cha
 **Description**
 
 Obtains the application-level cloud file directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -317,7 +297,7 @@ Obtains the application-level cloud file directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetResourceDir()
 
@@ -328,8 +308,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(cons
 **Description**
 
 Obtains the application-level resource directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 20
 
@@ -346,7 +324,7 @@ Obtains the application-level resource directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_StartSelfUIAbility()
 
@@ -357,8 +335,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *
 **Description**
 
 Starts the UIAbility of the current application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -374,7 +350,7 @@ Starts the UIAbility of the current application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED: Permission verification for the caller fails.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: Parameter verification for the caller fails.       ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED: The device type is not supported.       ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY: The specified ability name does not exist.       ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE: The ability type is incorrect.       ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED: The crowdtesting application expires.       ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE: The ability is started or stopped in Wukong mode.       ABILITY_RUNTIME_ERROR_CODE_CONTROLLED: The application is under control.       ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED: The application is under control by EDM.       ABILITY_RUNTIME_ERROR_CODE_CROSS_APP: Redirecting to third-party applications       is not allowed in API versions later than 11.       ABILITY_RUNTIME_ERROR_CODE_INTERNAL: An internal error occurs.       ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY: The application is not a top one.       ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED (available since API version 17):       The number of instances has reached the upper limit.       ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED (available since API version 17): Setting        APP_INSTANCE_KEY is not supported.       For details, see AbilityRuntime_ErrorCode. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED**: Permission verification for the caller fails. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: Parameter verification for the caller fails. **ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED**: The device type is not supported. **ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY**: The specified ability name does not exist. **ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE**: The ability type is incorrect. **ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED**: The crowdtesting application expires. **ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE**: The ability is started or stopped in Wukong mode. **ABILITY_RUNTIME_ERROR_CODE_CONTROLLED**: The application is under control. **ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED**: The application is under control by EDM. **ABILITY_RUNTIME_ERROR_CODE_CROSS_APP**: Redirecting to third-party applications is not allowed in API versions later than 11. **ABILITY_RUNTIME_ERROR_CODE_INTERNAL**: An internal error occurs. **ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY**: The application is not a top one. **ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED** (available since API version 17): The number of instances has reached the upper limit. **ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED** (available since API version 17): Setting ** APP_INSTANCE_KEY** is not supported. For details, see **AbilityRuntime_ErrorCode**. |
 
 ### OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions()
 
@@ -386,8 +362,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(Ab
 
 Starts the UIAbility of the current application using **StartOptions**.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
 **Since**: 17
@@ -397,13 +371,13 @@ Starts the UIAbility of the current application using **StartOptions**.
 | Parameter | Description |
 | -- | -- |
 | AbilityBase_Want *want | Pointer to the Want information required for starting the UIAbility. |
-| AbilityRuntime_StartOptions *options | Pointer to **StartOptions** required for starting the UIAbility. If the value of {@link startVisibility} is not null, ensure that the current application has been added to the status bar. Otherwise, the [ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) error code is returned. |
+| AbilityRuntime_StartOptions *options | Pointer to **StartOptions** required for starting the UIAbility. If the value of startVisibility is not null, ensure that the current application has been added to the status bar. Otherwise, the [ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) error code is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul><li>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED: Permission verification for the caller fails.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: Parameter verification for the caller fails.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED: The device type is not supported.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY: The specified ability name does not exist.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE: The ability type is incorrect.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED: The crowdtesting application expires.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE: The ability is started or stopped in Wukong mode.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_CONTROLLED: The application is under control.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED: The application is under control by EDM.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_CROSS_APP: Redirecting to third-party applications       is not allowed in API versions later than 11.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_INTERNAL: An internal error occurs.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY: The application is not a top one.</li>       <li>ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED:       Setting the window visibility during startup is not allowed.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED:       The application does not support clone or multi-instance mode.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY: The multi-instance key is invalid.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED:       The number of instances has reached the upper limit.</li>       <li>ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED:       The application does not support multi-instance mode.</li>       <li>ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED:       Setting APP_INSTANCE_KEY is not supported.       For details, see AbilityRuntime_ErrorCode.</li></ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul><li>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED**: Permission verification for the caller fails.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: Parameter verification for the caller fails.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED**: The device type is not supported.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY**: The specified ability name does not exist.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE**: The ability type is incorrect.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED**: The crowdtesting application expires.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE**: The ability is started or stopped in Wukong mode.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_CONTROLLED**: The application is under control.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED**: The application is under control by EDM.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_CROSS_APP**: Redirecting to third-party applications is not allowed in API versions later than 11.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_INTERNAL**: An internal error occurs.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY**: The application is not a top one.</li> <li>**ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED**: Setting the window visibility during startup is not allowed.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED**: The application does not support clone or multi-instance mode.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY**: The multi-instance key is invalid.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED**: The number of instances has reached the upper limit.</li> <li>**ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED**: The application does not support multi-instance mode.</li> <li>**ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED**: Setting **APP_INSTANCE_KEY** is not supported. For details, see **AbilityRuntime_ErrorCode**.</li></ul> |
 
 ### OH_AbilityRuntime_ApplicationContextGetVersionCode()
 
@@ -414,8 +388,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetVersionCode(int6
 **Description**
 
 Obtains the application version code.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 21
 
@@ -429,7 +401,7 @@ Obtains the application version code.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: versionCode is null.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application.       ABILITY_RUNTIME_ERROR_CODE_GET_APPLICATION_INFO_FAILED: Failed to obtain the application information. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: **versionCode** is null. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. **ABILITY_RUNTIME_ERROR_CODE_GET_APPLICATION_INFO_FAILED**: Failed to obtain the application information. |
 
 ### OH_AbilityRuntime_ApplicationContextGetLaunchParameter()
 
@@ -439,9 +411,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
 
 **Description**
 
-Obtains **WantParams** passed for the initial launch of the UIAbility of the current application. For details about **WantParams**, see {@link parameters in Want}.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+Obtains **WantParams** passed for the initial launch of the UIAbility of the current application. For details about **WantParams**, see parameters in Want.
 
 **Since**: 21
 
@@ -457,7 +427,7 @@ Obtains **WantParams** passed for the initial launch of the UIAbility of the cur
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetLatestParameter()
 
@@ -467,9 +437,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
 
 **Description**
 
-Obtains **WantParams** passed for the mose recent launch of the UIAbility of the current application. For details about **WantParams**, see {@link parameters in Want}.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+Obtains **WantParams** passed for the mose recent launch of the UIAbility of the current application. For details about **WantParams**, see parameters in Want.
 
 **Since**: 21
 
@@ -485,7 +453,7 @@ Obtains **WantParams** passed for the mose recent launch of the UIAbility of the
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_StartSelfUIAbilityWithPidResult()
 
@@ -497,8 +465,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 
 Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
 **Since**: 21
@@ -508,14 +474,14 @@ Starts the UIAbility of the current application using **StartOptions** and obtai
 | Parameter | Description |
 | -- | -- |
 | AbilityBase_Want *want | Pointer to the Want information required for starting the UIAbility. |
-| AbilityRuntime_StartOptions *options | Pointer to **StartOptions** required for starting the UIAbility. If the value of {@link startVisibility} is not null, ensure that the current application has been added to the status bar. Otherwise, the [ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) error code is returned. |
+| AbilityRuntime_StartOptions *options | Pointer to **StartOptions** required for starting the UIAbility. If the value of startVisibility is not null, ensure that the current application has been added to the status bar. Otherwise, the [ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) error code is returned. |
 | int32_t *targetPid | Pointer to the process ID of the target UIAbility. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED: Permission verification for the caller fails.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: Parameter verification for the caller fails.       ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED: The device type is not supported.       ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY: The specified ability name does not exist.       ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE: The ability type is incorrect.       ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED: The crowdtesting application expires.       ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE: The ability is started or stopped in Wukong mode.       ABILITY_RUNTIME_ERROR_CODE_CONTROLLED: The application is under control.       ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED: The application is under control by EDM.       ABILITY_RUNTIME_ERROR_CODE_CROSS_APP: Redirecting to third-party applications       is not allowed in API versions later than 11.       ABILITY_RUNTIME_ERROR_CODE_INTERNAL: An internal error occurs.       ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY: The application is not a top one.       ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED:       Setting the window visibility during startup is not allowed.       ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED:       The application does not support clone or multi-instance mode.       ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY: The multi-instance key is invalid.       ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED: The number of instances has reached the upper limit.       ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED: The application does not support multi-instance mode.       ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED: Setting APP_INSTANCE_KEY is not supported.       ABILITY_RUNTIME_ERROR_CODE_START_TIMEOUT: Starting the UIAbility times out.       ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED:       The function cannot be called on the main thread of the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED**: Permission verification for the caller fails. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: Parameter verification for the caller fails. **ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED**: The device type is not supported. **ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY**: The specified ability name does not exist. **ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE**: The ability type is incorrect. **ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED**: The crowdtesting application expires. **ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE**: The ability is started or stopped in Wukong mode. **ABILITY_RUNTIME_ERROR_CODE_CONTROLLED**: The application is under control. **ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED**: The application is under control by EDM. **ABILITY_RUNTIME_ERROR_CODE_CROSS_APP**: Redirecting to third-party applications is not allowed in API versions later than 11. **ABILITY_RUNTIME_ERROR_CODE_INTERNAL**: An internal error occurs. **ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY**: The application is not a top one. **ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED**: Setting the window visibility during startup is not allowed. **ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED**: The application does not support clone or multi-instance mode. **ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY**: The multi-instance key is invalid. **ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED**: The number of instances has reached the upper limit. **ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED**: The application does not support multi-instance mode. **ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED**: Setting **APP_INSTANCE_KEY** is not supported. **ABILITY_RUNTIME_ERROR_CODE_START_TIMEOUT**: Starting the UIAbility times out. **ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED**: The function cannot be called on the main thread of the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetLogFileDir()
 
@@ -526,8 +492,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char*
 **Description**
 
 Obtains the application-level log file directory of the application.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 22
 
@@ -543,7 +507,7 @@ Obtains the application-level log file directory of the application.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The passed-in value of buffer or writeLength is null,       or the buffer size is less than the size of the string to be written.       ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST: The application context does not exist. For example, the       application-level context does not exist in the {@link child process} created by the application. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful. **ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written. **ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the child process created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextNotifyPageChanged()
 
@@ -555,8 +519,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(c
 
 This API can be called only from third-party frameworks. Each time a third-party framework switches pages, it notifies the system of the target page information (including the target page path, the length of the target page path, and the window ID corresponding to the target page). The system can adjust or recover the page according to product policies.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -565,39 +527,41 @@ This API can be called only from third-party frameworks. Each time a third-party
 | -- | -- |
 | const char* targetPageName | Target page path. |
 | int32_t targetPageNameLength | Length of the target page path. |
-| int32_t windowId | {@link Window ID} corresponding to the target page. |
+| int32_t windowId | Window ID corresponding to the target page. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | One of the following execution results:       ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.       ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID:       The input parameter targetPageName is empty orthe windowId is invalid.       ABILITY_RUNTIME_ERROR_CODE_INTERNAL: An internal error occurs. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results: ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful. ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The input parameter **targetPageName** is empty orthe windowId is invalid. **ABILITY_RUNTIME_ERROR_CODE_INTERNAL**: An internal error occurs. |
 
 ### OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos()
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)
+
+} // extern "C"
 ```
 
 **Description**
 
 Acquires UIAbility child process infos of the current application.<br> Includes child processes created via startAbility with ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 26.0.1
+
+**Resource release**: OH_AbilityRuntime_ReleaseChildProcessInfos {infos}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | OH_AbilityRuntime_ChildProcessInfosHandle* infos | [out] Pointer to child process info collection. It must not be NULL. When no child processes exist, the dereferenced value of the pointer **infos** is set to nullptr. |
-| uint32_t* count | [out] Pointer to the number of child processes. It must not be NULL. |
+| count | [out] Pointer to the number of child processes. It must not be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the call is successful.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if an internal error occurs,       such as connect system service failed.</li>       </ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul> <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the call is successful.</li> <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li> <li>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if an internal error occurs, such as connect system service failed.</li> </ul> |
 
 

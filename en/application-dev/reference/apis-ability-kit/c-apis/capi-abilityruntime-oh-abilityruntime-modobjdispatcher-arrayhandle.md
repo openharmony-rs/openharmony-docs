@@ -1,0 +1,18 @@
+# OH_AbilityRuntime_ModObjDispatcher_ArrayHandle
+
+```c
+typedef struct OH_AbilityRuntime_ModObjDispatcher_ArrayHandle OH_AbilityRuntime_ModObjDispatcher_ArrayHandle
+```
+
+## Overview
+
+Defines a pointer to OH_AbilityRuntime_ModularObjectDispatcher_Array.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Since**: 26.0.0
+
+**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+
+**Header file**: [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
+

@@ -6,8 +6,6 @@
 
 **库：** libohcamera.so
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)
@@ -48,8 +46,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetMetadataObjectType(const OH_Camera_Meta
 
 获取元数据对象类型。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -57,13 +53,13 @@ Camera_ErrorCode OH_MetadataObjectExt_GetMetadataObjectType(const OH_Camera_Meta
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
-| Camera_MetadataObjectType* type | 元数据对象类型的指针，是一个Camera_MetadataObjectType实例。 |
+| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* type | 元数据对象类型的指针，是一个Camera_MetadataObjectType实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataObjectExt_GetTimestamp()
 
@@ -74,8 +70,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetTimestamp(const OH_Camera_MetadataObjec
 **描述：**
 
 获取元数据对象的时间戳。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 
@@ -90,7 +84,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetTimestamp(const OH_Camera_MetadataObjec
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataObjectExt_GetBoundingBox()
 
@@ -102,8 +96,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetBoundingBox(const OH_Camera_MetadataObj
 
 获取元数据对象的边界框。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -111,13 +103,13 @@ Camera_ErrorCode OH_MetadataObjectExt_GetBoundingBox(const OH_Camera_MetadataObj
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
-| OH_Camera_Rect_Ext* boundingBox | 元数据对象边界框的指针，是一个OH_Camera_Rect_Ext实例。 |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | 元数据对象边界框的指针，是一个OH_Camera_Rect_Ext实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataObjectExt_GetPitchAngle()
 
@@ -128,8 +120,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetPitchAngle(const OH_Camera_MetadataObje
 **描述：**
 
 获取元数据对象（如人脸）的俯仰角度。取值范围为[-90, 90]，以向下为正方向。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 
@@ -144,7 +134,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetPitchAngle(const OH_Camera_MetadataObje
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetYawAngle()
 
@@ -155,8 +145,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetYawAngle(const OH_Camera_MetadataObject
 **描述：**
 
 获取元数据对象（如人脸）的左右旋转角度。取值范围为[-90, 90]，以向右为正方向。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 
@@ -171,7 +159,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetYawAngle(const OH_Camera_MetadataObject
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetRollAngle()
 
@@ -182,8 +170,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRollAngle(const OH_Camera_MetadataObjec
 **描述：**
 
 获取元数据对象（如人脸）的平面内旋转角度。取值范围为[-180, 180]，以顺时针方向为正方向。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 
@@ -198,7 +184,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRollAngle(const OH_Camera_MetadataObjec
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetLeftEyeBoundingBox()
 
@@ -210,8 +196,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetLeftEyeBoundingBox(const OH_Camera_Meta
 
 获取元数据对象（如人脸）的左眼边界框。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -219,13 +203,13 @@ Camera_ErrorCode OH_MetadataObjectExt_GetLeftEyeBoundingBox(const OH_Camera_Meta
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
-| OH_Camera_Rect_Ext* boundingBox | 元数据对象边界框的指针，是一个OH_Camera_Rect_Ext实例。 |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | 元数据对象边界框的指针，是一个OH_Camera_Rect_Ext实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetRightEyeBoundingBox()
 
@@ -237,8 +221,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_Met
 
 获取元数据对象（如人脸）的右眼边界框。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -246,13 +228,13 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_Met
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
-| OH_Camera_Rect_Ext* boundingBox | 元数据对象边界框的指针，是一个OH_Camera_Rect_Ext实例。 |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | 元数据对象边界框的指针，是一个OH_Camera_Rect_Ext实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetEmotion()
 
@@ -264,8 +246,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectE
 
 获取元数据对象（如人脸）的情绪类型。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -273,13 +253,13 @@ Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectE
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
-| OH_Camera_MetadataObjectEmotion* emotion | 存储情绪类型的指针。 |
+| [OH_Camera_MetadataObjectEmotion](capi-camera-h.md#oh_camera_metadataobjectemotion)* emotion | 存储情绪类型的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_Destroy()
 
@@ -290,8 +270,6 @@ void OH_MetadataObjectExt_Destroy(OH_Camera_MetadataObjectExt** metadataObjectEx
 **描述：**
 
 销毁OH_Camera_MetadataObjectExt实例数组。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 
@@ -311,8 +289,6 @@ bool OH_MetadataObjectExt_IsLockFocusTracked(const OH_Camera_MetadataObjectExt* 
 **描述：**
 
 查询焦点是否已锁定跟踪。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 

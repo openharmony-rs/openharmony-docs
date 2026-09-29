@@ -6,8 +6,6 @@
 
 **库：** libohresmgr.so
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **相关模块：** [resourcemanager](capi-resourcemanager.md)
@@ -48,12 +46,12 @@
 | [ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId, char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarray) | 获取指定资源ID对应的字符串数组。 |
 | [ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr, const char *resName, char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarraybyname) | 获取指定资源名称对应的字符串数组。 |
 | [ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue, uint32_t len)](#oh_resourcemanager_releasestringarray) | 释放字符串数组内存。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstring) | 获取指定资源ID对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。(API16废弃) |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstringbyname) | 获取指定资源名称对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。(API16废弃) |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstring) | 通过指定资源ID、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstringbyname) | 通过指定资源名称、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstring) | 通过指定资源ID、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。 |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr, const char *resName, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstringbyname) | 通过指定资源名称、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstring) | 获取指定资源ID对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。(API16废弃) |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstringbyname) | 获取指定资源名称对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。(API16废弃) |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstring) | 通过指定资源ID、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstringbyname) | 通过指定资源名称、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstring) | 通过指定资源ID、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。 |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr, const char *resName, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstringbyname) | 通过指定资源名称、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。 |
 | [ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)](#oh_resourcemanager_getcolor) | 获取指定资源ID对应的颜色资源值。 |
 | [ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)](#oh_resourcemanager_getcolorbyname) | 获取指定资源名称对应的颜色资源值。 |
 | [ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId, int *resultValue)](#oh_resourcemanager_getint) | 获取指定资源ID对应的整数资源值。 |
@@ -77,25 +75,23 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResource
 
 通过指定资源ID和屏幕密度，获取对应的media资源的Base64编码字符串。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | char **resultValue | 输出参数。返回Base64编码字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回Base64字符串长度，单位为Byte。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
+| uint32_t density = 0 | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetMediaBase64Data()
 
@@ -107,15 +103,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 
 通过指定资源ID和屏幕密度，获取对应的media资源的Base64编码字符串。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | char **resultValue | 输出参数。返回Base64编码字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回Base64字符串长度，单位为Byte。 |
@@ -125,7 +119,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetMediaBase64ByName()
 
@@ -137,25 +131,23 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeRe
 
 通过指定资源名称和屏幕密度，获取对应的media资源的Base64编码字符串。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | char **resultValue | 输出参数。返回Base64编码字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回Base64字符串长度，单位为Byte。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
+| uint32_t density = 0 | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetMediaBase64DataByName()
 
@@ -167,15 +159,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 
 通过指定资源名称和屏幕密度，获取对应的media资源的Base64编码字符串。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | char **resultValue | 输出参数。返回Base64编码字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回Base64字符串长度，单位为Byte。 |
@@ -185,7 +175,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetMedia()
 
@@ -197,25 +187,23 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManage
 
 通过指定资源ID和屏幕密度，获取对应的media资源的二进制数据。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | uint8_t **resultValue | 输出参数。返回媒体数据指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回数据长度，单位为Byte。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
+| uint32_t density = 0 | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetMediaData()
 
@@ -227,15 +215,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 
 通过指定资源ID和屏幕密度，获取对应的media资源的二进制数据。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | uint8_t **resultValue | 输出参数。返回媒体数据指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回数据长度，单位为Byte。 |
@@ -245,7 +231,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetMediaByName()
 
@@ -257,25 +243,23 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResource
 
 通过指定资源名称和屏幕密度，获取对应的media资源的二进制数据。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | uint8_t **resultValue | 输出参数。返回媒体数据指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回数据长度，单位为Byte。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
+| uint32_t density = 0 | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetMediaDataByName()
 
@@ -287,15 +271,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 
 通过指定资源名称和屏幕密度，获取对应的media资源的二进制数据。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | uint8_t **resultValue | 输出参数。返回媒体数据指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回数据长度，单位为Byte。 |
@@ -305,7 +287,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetDrawableDescriptor()
 
@@ -317,25 +299,23 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 
 通过指定资源ID、屏幕密度、图标类型，获取图标资源对应的DrawableDescriptor对象。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
-| ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
-| type | 输入参数，可选。图标类型，默认值为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 |
+| [ArkUI_DrawableDescriptor](../../apis-arkui/c-apis/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
+| uint32_t type = 0 | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
+| uint32_t type = 0 | 输入参数，可选。图标类型，默认值为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。 |
 
 ### OH_ResourceManager_GetDrawableDescriptorData()
 
@@ -347,17 +327,15 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 
 通过指定资源ID、屏幕密度、图标类型，获取图标资源对应的DrawableDescriptor对象。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
-| ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
+| [ArkUI_DrawableDescriptor](../../apis-arkui/c-apis/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
 | uint32_t density | 输入参数。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 | uint32_t type | 输入参数。图标类型，若不需要特定图标类型，请将该参数设置为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 |
 
@@ -365,7 +343,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。 |
 
 ### OH_ResourceManager_GetDrawableDescriptorByName()
 
@@ -377,25 +355,23 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 
 通过指定资源名称、屏幕密度、图标类型，获取图标资源对应的DrawableDescriptor对象。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
-| ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
-| type | 输入参数，可选。图标类型，默认值为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 <br>2：表示应用动态图标。 |
+| [ArkUI_DrawableDescriptor](../../apis-arkui/c-apis/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
+| uint32_t type = 0 | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
+| uint32_t type = 0 | 输入参数，可选。图标类型，默认值为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 <br>2：表示应用动态图标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。 |
 
 ### OH_ResourceManager_GetDrawableDescriptorDataByName()
 
@@ -407,17 +383,15 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 
 通过指定资源名称和屏幕密度，获取对应的图标资源的DrawableDescriptor对象。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
-| ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
+| [ArkUI_DrawableDescriptor](../../apis-arkui/c-apis/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
 | uint32_t density | 输入参数，屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 | uint32_t type | 输入参数。图标类型，若不需要特定图标类型，请将该参数设置为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 <br>2：表示应用动态图标。 |
 
@@ -425,7 +399,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。 |
 
 ### OH_ResourceManager_GetSymbol()
 
@@ -437,15 +411,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManag
 
 获取指定资源ID对应的Symbol图标的Unicode编码。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | uint32_t *resultValue | 输出参数。返回Symbol图标的Unicode编码。 |
 
@@ -453,7 +425,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManag
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_GetSymbolByName()
 
@@ -465,15 +437,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 
 获取指定资源名称对应的Symbol图标的Unicode编码。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | uint32_t *resultValue | 输出参数。返回Symbol图标的Unicode编码。 |
 
@@ -481,7 +451,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_GetLocales()
 
@@ -493,24 +463,22 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceMana
 
 获取应用支持的语言列表。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | char ***resultValue | 输出参数。返回指向语言列表数组的指针，由此函数分配内存，使用完后须通过[OH_ResourceManager_ReleaseStringArray](capi-ohresmgr-h.md#oh_resourcemanager_releasestringarray)释放。 |
 | uint32_t *resultLen | 输出参数。返回语言列表长度。 |
-| includeSystem | 输入参数，可选。表示是否包含系统资源，true表示包含系统资源，false表示不包含系统资源。默认值为false。 <br>当使用系统资源管理对象获取语言列表时，始终返回系统资源语言列表。 |
+| bool includeSystem = false | 输入参数，可选。表示是否包含系统资源，true表示包含系统资源，false表示不包含系统资源。默认值为false。 <br>当使用系统资源管理对象获取语言列表时，始终返回系统资源语言列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetLocalesData()
 
@@ -522,15 +490,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 
 获取应用支持的语言列表。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | char ***resultValue | 输出参数。返回指向语言列表数组的指针，由此函数分配内存，使用完后须通过[OH_ResourceManager_ReleaseStringArray](capi-ohresmgr-h.md#oh_resourcemanager_releasestringarray)释放。 |
 | uint32_t *resultLen | 输出参数。返回语言列表长度。 |
 | bool includeSystem | 输入参数。表示是否包含系统资源，true表示包含系统资源，false表示不包含系统资源。 <br>当使用系统资源管理对象获取语言列表时，始终返回系统资源语言列表。 |
@@ -539,7 +505,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetConfiguration()
 
@@ -551,8 +517,6 @@ ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResour
 
 获取设备的屏幕方向、语言区域、设备类型、屏幕密度、颜色模式等配置信息。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **废弃版本：** 20
@@ -563,14 +527,14 @@ ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResour
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
-| ResourceManager_Configuration *configuration | 输出参数。返回设备配置信息，其中screenDensity为设备屏幕密度（dpi）除以160取整后的值。 <br>configuration中的locale字符串由此函数分配内存，使用完后需通过[OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration)释放locale。 若configuration指针由malloc()分配内存，使用完后须通过free()释放。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | 输出参数。返回设备配置信息，其中screenDensity为设备屏幕密度（dpi）除以160取整后的值。 <br>configuration中的locale字符串由此函数分配内存，使用完后需通过[OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration)释放locale。 若configuration指针由malloc()分配内存，使用完后须通过free()释放。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED，表示访问系统资源失败。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED，表示访问系统资源失败。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetResourceConfiguration()
 
@@ -582,22 +546,20 @@ ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const Nati
 
 获取设备的屏幕方向、语言区域、设备类型、屏幕密度、颜色模式等配置信息。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
-| ResourceManager_Configuration *configuration | 输出参数。返回设备配置信息，其中screenDensity的值为设备屏幕密度（dpi）。 <br>configuration中的locale字符串由此函数分配内存，使用完后需通过[OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration)释放locale。 若configuration指针由malloc()分配内存，使用完后须通过free()释放。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | 输出参数。返回设备配置信息，其中screenDensity的值为设备屏幕密度（dpi）。 <br>configuration中的locale字符串由此函数分配内存，使用完后需通过[OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration)释放locale。 若configuration指针由malloc()分配内存，使用完后须通过free()释放。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED，表示访问系统资源失败。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED，表示访问系统资源失败。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_ReleaseConfiguration()
 
@@ -609,21 +571,19 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManage
 
 释放[OH_ResourceManager_GetConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getconfiguration)或[OH_ResourceManager_GetResourceConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getresourceconfiguration)函数申请的内存。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ResourceManager_Configuration *configuration | 输入参数。指向需要释放内存的[ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md)对象的指针。 |
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | 输入参数。指向需要释放内存的[ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。 |
 
 ### OH_ResourceManager_GetString()
 
@@ -635,15 +595,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManag
 
 获取指定资源ID对应的普通字符串或格式化字符串。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | char **resultValue | 输出参数。返回字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | [](capi-ohresmgr-h.md#).[](capi-ohresmgr-h.md#).[](capi-ohresmgr-h.md#).[](capi-ohresmgr-h.md#) | 输入参数，可选。表示可变参数列表，用于格式化字符串，支持const char*、int、float三种类型。 <br>获取普通字符串时，无需填写；获取格式化字符串时，必填，须按字符串中的占位符顺序依次传入对应类型的可变参数，参数数量、类型与字符串的 占位符保持一致，如字符串包含%d、%s、%f三个占位符，调用方式为 OH_ResourceManager_GetString(mgr, resId, resultValue, 10, "format", 10.10)。 |
@@ -652,7 +610,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManag
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetStringByName()
 
@@ -664,15 +622,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourc
 
 获取指定资源名称对应的普通字符串或格式化字符串。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | char **resultValue | 输出参数。返回字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | [](capi-ohresmgr-h.md#).[](capi-ohresmgr-h.md#).[](capi-ohresmgr-h.md#).[](capi-ohresmgr-h.md#) | 输入参数，可选。表示可变参数列表，用于格式化字符串，支持const char*、int、float三种类型。 <br>获取普通字符串时，无需填写；获取格式化字符串时，必填，须按字符串中的占位符顺序依次传入对应类型的可变参数，参数数量、类型与字符串的 占位符保持一致，如字符串包含%d、%s、%f三个占位符，调用方式为 OH_ResourceManager_GetStringByName(mgr, resName, resultValue, 10, "format", 10.10)。 |
@@ -681,7 +637,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourc
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetStringArray()
 
@@ -693,15 +649,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResource
 
 获取指定资源ID对应的字符串数组。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | char ***resultValue | 输出参数。返回字符串数组指针。由此函数分配内存，使用完后须通过[OH_ResourceManager_ReleaseStringArray](capi-ohresmgr-h.md#oh_resourcemanager_releasestringarray)释放。 |
 | uint32_t *resultLen | 输出参数。返回字符串数组长度。 |
@@ -710,7 +664,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResource
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetStringArrayByName()
 
@@ -722,15 +676,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeRe
 
 获取指定资源名称对应的字符串数组。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | char ***resultValue | 输出参数。返回字符串数组指针。由此函数分配内存，使用完后须通过[OH_ResourceManager_ReleaseStringArray](capi-ohresmgr-h.md#oh_resourcemanager_releasestringarray)释放。 |
 | uint32_t *resultLen | 输出参数。返回字符串数组长度。 |
@@ -739,7 +691,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeRe
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_ReleaseStringArray()
 
@@ -750,8 +702,6 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue
 **描述：**
 
 释放字符串数组内存。
-
-**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -766,7 +716,7 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。 |
 
 ### OH_ResourceManager_GetPluralString()
 
@@ -776,9 +726,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 
 **描述：**
 
-获取指定资源ID对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
-
-**系统能力：** SystemCapability.Global.ResourceManager
+获取指定资源ID对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
 
 **起始版本：** 12
 
@@ -790,7 +738,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | uint32_t num | 输入参数。数量值，用于根据当前语言的复数规则获取对应的复数字符串。 |
 | char **resultValue | 输出参数。返回字符串指针。由malloc()分配内存，使用完后须通过free()释放。 |
@@ -799,7 +747,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetPluralStringByName()
 
@@ -809,9 +757,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 
 **描述：**
 
-获取指定资源名称对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
-
-**系统能力：** SystemCapability.Global.ResourceManager
+获取指定资源名称对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
 
 **起始版本：** 12
 
@@ -823,7 +769,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | uint32_t num | 输入参数。数量值，用于根据当前语言的复数规则获取对应的复数字符串。 |
 | char **resultValue | 输出参数。返回字符串指针。由malloc()分配内存，使用完后须通过free()释放。 |
@@ -832,7 +778,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetIntPluralString()
 
@@ -842,9 +788,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 
 **描述：**
 
-通过指定资源ID、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
-
-**系统能力：** SystemCapability.Global.ResourceManager
+通过指定资源ID、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
 
 **起始版本：** 18
 
@@ -852,7 +796,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | uint32_t num | 输入参数。数量值（整数），用于根据当前语言的复数规则获取对应的复数字符串。 |
 | char **resultValue | 输出参数。返回字符串指针。由malloc()分配内存，使用完后须通过free()释放。 |
@@ -862,7 +806,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetIntPluralStringByName()
 
@@ -872,9 +816,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 
 **描述：**
 
-通过指定资源名称、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
-
-**系统能力：** SystemCapability.Global.ResourceManager
+通过指定资源名称、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
 
 **起始版本：** 18
 
@@ -882,7 +824,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | uint32_t num | 输入参数。数量值（整数），用于根据当前语言的复数规则获取对应的复数字符串。 |
 | char **resultValue | 输出参数。返回字符串指针。由malloc()分配内存，使用完后须通过free()释放。 |
@@ -892,7 +834,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetDoublePluralString()
 
@@ -902,9 +844,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeR
 
 **描述：**
 
-通过指定资源ID、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
-
-**系统能力：** SystemCapability.Global.ResourceManager
+通过指定资源ID、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
 
 **起始版本：** 18
 
@@ -912,7 +852,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeR
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | double num | 输入参数。数量值（浮点数），用于根据当前语言的复数规则获取对应的复数字符串。 |
 | char **resultValue | 输出参数。返回字符串指针。由malloc()分配内存，使用完后须通过free()释放。 |
@@ -922,7 +862,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeR
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetDoublePluralStringByName()
 
@@ -932,9 +872,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 
 **描述：**
 
-通过指定资源名称、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
-
-**系统能力：** SystemCapability.Global.ResourceManager
+通过指定资源名称、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考语言单复数规则。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
 
 **起始版本：** 18
 
@@ -942,7 +880,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | double num | 输入参数。数量值（浮点数），用于根据当前语言的复数规则获取对应的复数字符串。 |
 | char **resultValue | 输出参数。返回字符串指针。由malloc()分配内存，使用完后须通过free()释放。 |
@@ -952,7 +890,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。<br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_GetColor()
 
@@ -964,15 +902,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManage
 
 获取指定资源ID对应的颜色资源值。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | uint32_t *resultValue | 输出参数。返回颜色资源值。 |
 
@@ -980,7 +916,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManage
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_GetColorByName()
 
@@ -992,15 +928,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResource
 
 获取指定资源名称对应的颜色资源值。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | uint32_t *resultValue | 输出参数。返回颜色资源值。 |
 
@@ -1008,7 +942,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResource
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_GetInt()
 
@@ -1020,15 +954,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager 
 
 获取指定资源ID对应的整数资源值。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | int *resultValue | 输出参数。返回整数资源值。 |
 
@@ -1036,7 +968,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager 
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_GetIntByName()
 
@@ -1048,15 +980,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceMa
 
 获取指定资源名称对应的整数资源值。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | int *resultValue | 输出参数。返回整数资源值。 |
 
@@ -1064,7 +994,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceMa
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_GetFloat()
 
@@ -1076,15 +1006,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManage
 
 获取指定资源ID对应的浮点数资源值。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | float *resultValue | 输出参数。返回浮点数资源值。 |
 
@@ -1092,7 +1020,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManage
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_GetFloatByName()
 
@@ -1104,15 +1032,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResource
 
 获取指定资源名称对应的浮点数资源值。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | float *resultValue | 输出参数。返回浮点数资源值。 |
 
@@ -1120,7 +1046,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResource
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_GetBool()
 
@@ -1132,15 +1058,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager
 
 获取指定资源ID对应的布尔资源值。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | bool *resultValue | 输出参数。返回布尔资源值。 |
 
@@ -1148,7 +1072,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_ID_NOT_FOUND，表示无效的资源ID。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_ID，表示根据资源ID未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_GetBoolByName()
 
@@ -1160,15 +1084,13 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceM
 
 获取指定资源名称对应的布尔资源值。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | bool *resultValue | 输出参数。返回布尔资源值。 |
 
@@ -1176,7 +1098,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceM
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。      <br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。      <br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_RES_NAME_NOT_FOUND，表示无效的资源名称。<br>返回ERROR_CODE_RES_NOT_FOUND_BY_NAME，表示根据资源名称未找到匹配的资源。<br>返回ERROR_CODE_RES_REF_TOO_MUCH，表示资源存在循环引用。 |
 
 ### OH_ResourceManager_AddResource()
 
@@ -1188,22 +1110,20 @@ ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceMan
 
 在应用程序运行时，动态加载overlay资源，实现主题切换或资源覆盖。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *path | 输入参数。待加载的HSP或HAP资源包的绝对路径。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_OVERLAY_RES_PATH_INVALID，表示无效的overlay路径。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_OVERLAY_RES_PATH_INVALID，表示无效的overlay路径。 |
 
 ### OH_ResourceManager_RemoveResource()
 
@@ -1215,21 +1135,19 @@ ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResource
 
 在应用程序运行时，移除指定的overlay资源，还原被覆盖前的资源。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *path | 输入参数。待移除的HSP或HAP资源包的绝对路径。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。      <br>返回ERROR_CODE_OVERLAY_RES_PATH_INVALID，表示无效的overlay路径。 |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | 返回错误码。<br>返回SUCCESS，表示成功。<br>返回ERROR_CODE_INVALID_INPUT_PARAMETER，表示输入参数无效。可能的原因：1.参数类型不正确；2.参数验证失败。<br>返回ERROR_CODE_OVERLAY_RES_PATH_INVALID，表示无效的overlay路径。 |
 
 

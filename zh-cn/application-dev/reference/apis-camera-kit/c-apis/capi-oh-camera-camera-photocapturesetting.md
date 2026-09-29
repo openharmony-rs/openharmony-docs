@@ -1,7 +1,7 @@
 # Camera_PhotoCaptureSetting
 
 ```c
-typedef struct Camera_PhotoCaptureSetting {...} Camera_PhotoCaptureSetting
+struct Camera_PhotoCaptureSetting {...}
 ```
 
 ## 概述

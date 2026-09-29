@@ -1,7 +1,7 @@
 # Camera_ConcurrentInfo
 
 ```c
-typedef struct Camera_ConcurrentInfo {...} Camera_ConcurrentInfo
+struct Camera_ConcurrentInfo {...}
 ```
 
 ## Overview

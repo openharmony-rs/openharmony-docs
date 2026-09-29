@@ -1,7 +1,7 @@
 # ScsiPeripheral_InquiryInfo
 
 ```c
-typedef struct ScsiPeripheral_InquiryInfo {...} ScsiPeripheral_InquiryInfo
+struct ScsiPeripheral_InquiryInfo {...}
 ```
 
 ## 概述

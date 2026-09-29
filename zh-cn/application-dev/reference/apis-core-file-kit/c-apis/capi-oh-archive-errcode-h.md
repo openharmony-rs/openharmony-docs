@@ -8,8 +8,6 @@
 
 **库：** liboharchive.so
 
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
 **起始版本：** 26.0.0
 
 **相关模块：** [Archive](capi-archive.md)
@@ -39,8 +37,6 @@ enum OH_Archive_ErrCode
 **描述：**
 
 压缩解压模块错误码。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 

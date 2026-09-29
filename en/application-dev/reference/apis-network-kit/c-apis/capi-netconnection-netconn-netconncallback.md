@@ -1,7 +1,7 @@
 # NetConn_NetConnCallback
 
 ```c
-typedef struct NetConn_NetConnCallback {...} NetConn_NetConnCallback
+struct NetConn_NetConnCallback {...}
 ```
 
 ## Overview

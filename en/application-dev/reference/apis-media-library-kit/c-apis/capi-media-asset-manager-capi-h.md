@@ -6,8 +6,6 @@ The file declares the APIs of the media asset manager. You can use the functions
 
 **Library**: libmedia_asset_manager.so
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 12
 
 **Related module**: [MediaAssetManager](capi-mediaassetmanager.md)
@@ -39,15 +37,13 @@ OH_MediaAssetManager* OH_MediaAssetManager_Create(void)
 
 Creates an **OH_MediaAssetManager** instance.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_MediaAssetManager* | Returns a pointer to an OH_MediaAssetManager instance. |
+| [OH_MediaAssetManager*](capi-mediaassetmanager-oh-mediaassetmanager.md) | Returns a pointer to an OH_MediaAssetManager instance. |
 
 ### OH_MediaAssetManager_RequestImageForPath()
 
@@ -59,8 +55,6 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestImageForPath(OH_MediaAssetMan
 
 Requests an image in the specified directory.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 12
@@ -69,17 +63,17 @@ Requests an image in the specified directory.
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetManager* manager | Pointer to an **OH_MediaAssetManager** instance. |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an **OH_MediaAssetManager** instance. |
 | const char* uri | Pointer to the URI of the requested image. |
-| MediaLibrary_RequestOptions requestOptions | Options related to the media asset quality and delivery mode. |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Options related to the media asset quality and delivery mode. |
 | const char* destPath | Pointer to the destination directory of the requested image. |
-| OH_MediaLibrary_OnDataPrepared callback | Callback to be invoked when the requested image is ready. |
+| [OH_MediaLibrary_OnDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_ondataprepared) callback | Callback to be invoked when the requested image is ready. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_RequestId | Return Request id. |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | Return Request id. |
 
 ### OH_MediaAssetManager_RequestVideoForPath()
 
@@ -91,8 +85,6 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestVideoForPath(OH_MediaAssetMan
 
 Requests a video in the specified directory.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 12
@@ -101,17 +93,17 @@ Requests a video in the specified directory.
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetManager* manager | Pointer to an **OH_MediaAssetManager** instance. |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an **OH_MediaAssetManager** instance. |
 | const char* uri | Pointer to the URI of the requested video. |
-| MediaLibrary_RequestOptions requestOptions | Options related to the media asset quality and delivery mode. |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Options related to the media asset quality and delivery mode. |
 | const char* destPath | Pointer to the destination directory of the requested video. |
-| OH_MediaLibrary_OnDataPrepared callback | Callback to be invoked when the requested video is ready. |
+| [OH_MediaLibrary_OnDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_ondataprepared) callback | Callback to be invoked when the requested video is ready. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_RequestId | Return Request id. |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | Return Request id. |
 
 ### OH_MediaAssetManager_CancelRequest()
 
@@ -123,8 +115,6 @@ bool OH_MediaAssetManager_CancelRequest(OH_MediaAssetManager* manager, const Med
 
 Cancels a request based on the request ID.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 12
@@ -133,8 +123,8 @@ Cancels a request based on the request ID.
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetManager* manager | Pointer to an **OH_MediaAssetManager** instance. |
-| const MediaLibrary_RequestId requestId | ID of the request to cancel. |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an **OH_MediaAssetManager** instance. |
+| [const MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | ID of the request to cancel. |
 
 **Returns**:
 
@@ -152,8 +142,6 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestMovingPhoto(OH_MediaAssetMana
 
 Requests a moving photo based on different policies.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 13
@@ -162,17 +150,17 @@ Requests a moving photo based on different policies.
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetManager* manager | Pointer to an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance. |
-| OH_MediaAsset* mediaAsset | Pointer to the [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance to be requested. |
-| MediaLibrary_RequestOptions requestOptions | Options related to the media asset quality and delivery mode. The options are specified by [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md). |
-| MediaLibrary_RequestId* requestId | Pointer to the request ID, which is specified by [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md). |
-| OH_MediaLibrary_OnMovingPhotoDataPrepared callback | Callback to be invoked when the requested moving photo is ready. The callback is specified by [OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared). |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance. |
+| [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to the [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance to be requested. |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Options related to the media asset quality and delivery mode. The options are specified by [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md). |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | Pointer to the request ID, which is specified by [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md). |
+| [OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared) callback | Callback to be invoked when the requested moving photo is ready. The callback is specified by [OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported.      <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
 
 ### OH_MediaAssetManager_RequestImage()
 
@@ -184,8 +172,6 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestImage(OH_MediaAssetManager* m
 
 Requests an image based on different policies.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 12
@@ -194,17 +180,17 @@ Requests an image based on different policies.
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetManager* manager | Pointer to an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance. |
-| OH_MediaAsset* mediaAsset | Pointer to the [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance to be requested. |
-| MediaLibrary_RequestOptions requestOptions | Options related to the media asset quality and delivery mode. The options are specified by [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md). |
-| MediaLibrary_RequestId* requestId | Pointer to the request ID, which is specified by [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md). |
-| OH_MediaLibrary_OnImageDataPrepared callback | Callback to be invoked when the requested image is ready. The callback is specified by [OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared). |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance. |
+| [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to the [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance to be requested. |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Options related to the media asset quality and delivery mode. The options are specified by [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md). |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | Pointer to the request ID, which is specified by [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md). |
+| [OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared) callback | Callback to be invoked when the requested image is ready. The callback is specified by [OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported.      <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
 
 ### OH_MediaAssetManager_Release()
 
@@ -216,21 +202,19 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_Release(OH_MediaAssetManager* manage
 
 Releases an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetManager* manager | Pointer to an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance. |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 ### OH_MediaAssetManager_QuickRequestImage()
 
@@ -242,8 +226,6 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_QuickRequestImage(OH_MediaAssetManag
 
 Requests an image based on different policies.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 23
@@ -252,16 +234,16 @@ Requests an image based on different policies.
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetManager* manager | Pointer to an **OH_MediaAssetManager** instance. |
-| OH_MediaAsset* mediaAsset | Pointer to the **OH_MediaAsset** instance to be requested. |
-| MediaLibrary_RequestOptions requestOptions | **MediaLibrary_RequestOptions** used for the image request policy mode. |
-| MediaLibrary_RequestId* requestId | Pointer to the **MediaLibrary_RequestId** instance of the request. This parameter is an output parameter. |
-| OH_MediaLibrary_OnQuickImageDataPrepared callback | The **OH_MediaLibrary_OnQuickImageDataPrepared** method called when the requested source data is ready. |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an **OH_MediaAssetManager** instance. |
+| [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to the **OH_MediaAsset** instance to be requested. |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | **MediaLibrary_RequestOptions** used for the image request policy mode. |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | Pointer to the **MediaLibrary_RequestId** instance of the request. This parameter is an output parameter. |
+| [OH_MediaLibrary_OnQuickImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onquickimagedataprepared) callback | The **OH_MediaLibrary_OnQuickImageDataPrepared** method called when the requested source data is ready. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported.      <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
 
 

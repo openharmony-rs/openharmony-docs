@@ -1,7 +1,7 @@
 # CloudDisk_SyncFolder
 
 ```c
-typedef struct CloudDisk_SyncFolder {...} CloudDisk_SyncFolder
+struct CloudDisk_SyncFolder {...}
 ```
 
 ## 概述

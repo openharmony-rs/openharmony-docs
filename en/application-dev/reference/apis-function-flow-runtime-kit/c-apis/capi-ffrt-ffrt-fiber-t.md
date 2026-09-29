@@ -22,6 +22,6 @@ Defines the fiber structure used to store fiber execution context.
 
 | Name | Description |
 | -- | -- |
-| uintptr_t storage[ffrt_fiber_storage_size] | Internal storage backing the fiber execution context. Do not access directly; use {@link ffrt_fiber_init} to initialize and {@link ffrt_fiber_switch} to switch. |
+| uintptr_t storage[ffrt_fiber_storage_size] | Internal storage backing the fiber execution context. Do not access directly; use ffrt_fiber_init to initialize and ffrt_fiber_switch to switch. |
 
 

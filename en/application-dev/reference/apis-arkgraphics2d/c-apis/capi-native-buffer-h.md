@@ -6,8 +6,6 @@ Defines the functions for obtaining and using a native buffer.
 
 **Library**: libnative_buffer.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **Since**: 9
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)
@@ -66,8 +64,6 @@ enum OH_NativeBuffer_Usage
 
 Indicates the usage of a native buffer.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **Since**: 10
 
 | Enum item | Description |
@@ -90,8 +86,6 @@ enum OH_NativeBuffer_ColorGamut
 **Description**
 
 Indicates the color gamut of a native buffer.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
 
@@ -122,8 +116,6 @@ OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)
 
 Alloc a <b>OH_NativeBuffer</b> that matches the passed BufferRequestConfig. A new <b>OH_NativeBuffer</b> instance is created each time this function is called. This interface needs to be used in conjunction with <b>OH_NativeBuffer_Unreference</b>, otherwise memory leaks will occur. This interface is a non-thread-safe type interface.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **Since**: 9
 
 **Parameters**:
@@ -136,7 +128,7 @@ Alloc a <b>OH_NativeBuffer</b> that matches the passed BufferRequestConfig. A ne
 
 | Type | Description |
 | -- | -- |
-| OH_NativeBuffer* | Returns the pointer to the <b>OH_NativeBuffer</b> instance created if the operation is successful, \n  returns <b>NULL</b> otherwise. |
+| OH_NativeBuffer* | Returns the pointer to the <b>OH_NativeBuffer</b> instance created if the operation is successful, \n returns <b>NULL</b> otherwise. |
 
 ### OH_NativeBuffer_Reference()
 
@@ -147,8 +139,6 @@ int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)
 **Description**
 
 Adds the reference count of a OH_NativeBuffer. This interface needs to be used in conjunction with <b>OH_NativeBuffer_Unreference</b>, otherwise memory leaks will occur. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 9
 
@@ -174,8 +164,6 @@ int32_t OH_NativeBuffer_Unreference(OH_NativeBuffer *buffer)
 
 Decreases the reference count of a OH_NativeBuffer and, when the reference count reaches 0, destroys this OH_NativeBuffer. This interface is a non-thread-safe type interface.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **Since**: 9
 
 **Parameters**:
@@ -200,8 +188,6 @@ void OH_NativeBuffer_GetConfig(OH_NativeBuffer *buffer, OH_NativeBuffer_Config* 
 
 Return a config of the OH_NativeBuffer in the passed OHNativeBufferConfig struct. This interface is a non-thread-safe type interface.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **Since**: 9
 
 **Parameters**:
@@ -220,8 +206,6 @@ int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)
 **Description**
 
 Provide direct cpu access to the OH_NativeBuffer in the process's address space. This interface needs to be used in conjunction with <b>OH_NativeBuffer_Unmap</b>. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 9
 
@@ -248,8 +232,6 @@ int32_t OH_NativeBuffer_Unmap(OH_NativeBuffer *buffer)
 
 Remove direct cpu access ability of the OH_NativeBuffer in the process's address space. This interface is a non-thread-safe type interface.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **Since**: 9
 
 **Parameters**:
@@ -274,8 +256,6 @@ uint32_t OH_NativeBuffer_GetSeqNum(OH_NativeBuffer *buffer)
 
 Get the system wide unique sequence number of the OH_NativeBuffer. This interface is a non-thread-safe type interface.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **Since**: 9
 
 **Parameters**:
@@ -299,8 +279,6 @@ int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_Na
 **Description**
 
 Provide direct cpu access to the potentially multi-planar OH_NativeBuffer in the process's address space. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
 
@@ -328,8 +306,6 @@ int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindo
 
 Converts an <b>OHNativeWindowBuffer</b> instance to an <b>OH_NativeBuffer</b>. This interface is a non-thread-safe type interface.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **Since**: 12
 
 **Parameters**:
@@ -354,8 +330,6 @@ int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_C
 **Description**
 
 Set the color space of the OH_NativeBuffer. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 11
 
@@ -382,8 +356,6 @@ int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_C
 
 Get the color space of the OH_NativeBuffer. This interface is a non-thread-safe type interface.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **Since**: 12
 
 **Parameters**:
@@ -397,7 +369,7 @@ Get the color space of the OH_NativeBuffer. This interface is a non-thread-safe 
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - buffer is NULL.<br>    {@link NATIVE_ERROR_BUFFER_STATE_INVALID} 41207000 - Incorrect colorSpace state. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - buffer is NULL. [NATIVE_ERROR_BUFFER_STATE_INVALID](capi-graphic-error-code-h.md#ohnativeerrorcode) 41207000 - Incorrect colorSpace state. |
 
 ### OH_NativeBuffer_SetMetadataValue()
 
@@ -408,8 +380,6 @@ int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffe
 **Description**
 
 Set the metadata type of the OH_NativeBuffer. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
 
@@ -426,7 +396,7 @@ Set the metadata type of the OH_NativeBuffer. This interface is a non-thread-saf
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - buffer or metadata is NULL.<br>    {@link NATIVE_ERROR_BUFFER_STATE_INVALID} 41207000 - Incorrect metadata state.<br>    {@link NATIVE_ERROR_UNSUPPORTED} 50102000 - Unsupported metadata key. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - buffer or metadata is NULL. [NATIVE_ERROR_BUFFER_STATE_INVALID](capi-graphic-error-code-h.md#ohnativeerrorcode) 41207000 - Incorrect metadata state. [NATIVE_ERROR_UNSUPPORTED](capi-graphic-error-code-h.md#ohnativeerrorcode) 50102000 - Unsupported metadata key. |
 
 ### OH_NativeBuffer_GetMetadataValue()
 
@@ -437,8 +407,6 @@ int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffe
 **Description**
 
 Set the metadata type of the OH_NativeBuffer. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
 
@@ -455,7 +423,7 @@ Set the metadata type of the OH_NativeBuffer. This interface is a non-thread-saf
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - buffer, metadata, or size is NULL.<br>    {@link NATIVE_ERROR_BUFFER_STATE_INVALID} 41207000 - Incorrect metadata state.<br>    {@link NATIVE_ERROR_UNSUPPORTED} 50102000 - Unsupported metadata key. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - buffer, metadata, or size is NULL. [NATIVE_ERROR_BUFFER_STATE_INVALID](capi-graphic-error-code-h.md#ohnativeerrorcode) 41207000 - Incorrect metadata state. [NATIVE_ERROR_UNSUPPORTED](capi-graphic-error-code-h.md#ohnativeerrorcode) 50102000 - Unsupported metadata key. |
 
 ### OH_NativeBuffer_MapWaitFence()
 
@@ -466,8 +434,6 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 **Description**
 
 Provide direct cpu access to the OH_NativeBuffer in the process's address space and wait fence. If the interface returns OK, fenceFd does not need to be closed by the developer, Otherwise, the developer needs to close the fenceFd. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 23
 
@@ -483,7 +449,7 @@ Provide direct cpu access to the OH_NativeBuffer in the process's address space 
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>{@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - buffer or virAddr is NULL or invalid fenceFd.<br>{@link NATIVE_ERROR_UNKNOWN} 50002000 - map failed. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - buffer or virAddr is NULL or invalid fenceFd. [NATIVE_ERROR_UNKNOWN](capi-graphic-error-code-h.md#ohnativeerrorcode) 50002000 - map failed. |
 
 ### OH_NativeBuffer_WriteToParcel()
 
@@ -494,8 +460,6 @@ int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parc
 **Description**
 
 Serialize <b>OH_NativeBuffer</b> object to the serialized <b>OHIPCParcel</b> object. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 23
 
@@ -510,7 +474,7 @@ Serialize <b>OH_NativeBuffer</b> object to the serialized <b>OHIPCParcel</b> obj
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>{@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - buffer or parcel is NULL.<br>{@link SURFACE_ERROR_BINDER_ERROR} 50401000 - ipc send failed. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - buffer or parcel is NULL. SURFACE_ERROR_BINDER_ERROR 50401000 - ipc send failed. |
 
 ### OH_NativeBuffer_ReadFromParcel()
 
@@ -521,8 +485,6 @@ int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** bu
 **Description**
 
 Deserialize data from the serialized <b>OHIPCParcel</b> object and rebuild <b>OH_NativeBuffer</b> object. This interface will cause an increase in the reference count of the <b>OH_NativeBuffer</b> instance. This interface needs to be used in conjunction with <b>OH_NativeBuffer_Unreference</b>, otherwise memory leaks will occur. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 23
 
@@ -537,7 +499,7 @@ Deserialize data from the serialized <b>OHIPCParcel</b> object and rebuild <b>OH
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>{@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - parcel or buffer is NULL.<br>{@link NATIVE_ERROR_UNKNOWN} 50002000 - deserialize failed. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - parcel or buffer is NULL. [NATIVE_ERROR_UNKNOWN](capi-graphic-error-code-h.md#ohnativeerrorcode) 50002000 - deserialize failed. |
 
 ### OH_NativeBuffer_IsSupported()
 
@@ -548,8 +510,6 @@ int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSuppo
 **Description**
 
 Check whether the system supports the <b>NativeBufferConfig</b>. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 23
 
@@ -564,7 +524,7 @@ Check whether the system supports the <b>NativeBufferConfig</b>. This interface 
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>{@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - isSupported is NULL. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - isSupported is NULL. |
 
 ### OH_NativeBuffer_MapAndGetConfig()
 
@@ -575,8 +535,6 @@ int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr,
 **Description**
 
 Provide direct cpu access to the <b>OH_NativeBuffer</b> in the process's address space, and return a <b>NativeBufferConfig<b> of the <b>OH_NativeBuffer</b>. This interface is a non-thread-safe type interface.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 23
 
@@ -592,7 +550,7 @@ Provide direct cpu access to the <b>OH_NativeBuffer</b> in the process's address
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>{@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - buffer or virAddr or config is NULL or invalid fenceFd.<br>{@link NATIVE_ERROR_UNKNOWN} 50002000 - map failed. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - buffer or virAddr or config is NULL or invalid fenceFd. [NATIVE_ERROR_UNKNOWN](capi-graphic-error-code-h.md#ohnativeerrorcode) 50002000 - map failed. |
 
 ### OH_NativeBuffer_SetDmaBufferName()
 
@@ -603,8 +561,6 @@ int32_t OH_NativeBuffer_SetDmaBufferName(OH_NativeBuffer *buffer, const char *na
 **Description**
 
 Set the dma buffer name of the OH_NativeBuffer.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 26.0.1
 
@@ -619,6 +575,6 @@ Set the dma buffer name of the OH_NativeBuffer.
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - buffer is NULL or name invalid. |
+| int32_t | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - buffer is NULL or name invalid. |
 
 

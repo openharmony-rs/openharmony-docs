@@ -1,7 +1,7 @@
 # OH_AudioCapturer_Callbacks_Struct
 
 ```c
-typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks
+struct OH_AudioCapturer_Callbacks_Struct {...}
 ```
 
 ## Overview

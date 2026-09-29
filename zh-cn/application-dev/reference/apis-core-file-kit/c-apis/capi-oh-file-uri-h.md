@@ -6,8 +6,6 @@
 
 **库：** libohfileuri.so
 
-**系统能力：** SystemCapability.FileManagement.AppFileService
-
 **起始版本：** 12
 
 **相关模块：** [fileUri](capi-fileuri.md)
@@ -36,8 +34,6 @@ FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int 
 
 通过传入的路径生成应用自己的URI； 将路径转URI时，路径中的中文及非数字字母的特殊字符将会被百分号编码，拼接在URI中。
 
-**系统能力：** SystemCapability.FileManagement.AppFileService
-
 **起始版本：** 12
 
 **参数：**
@@ -52,7 +48,7 @@ FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int 
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。\n<br>        {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：\n<br>                 1. 参数path为空指针；\n<br>                 2. 参数result为空指针；\n<br>                 3. 输入的path长度与length不一致。\n<br>        {@link ERR_UNKNOWN} 13900042 - 未知错误。转换后的URI长度为0会返回此错误。\n<br>        {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n<br>        {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  401 - 输入参数无效。可能的原因：\n 1. 参数path为空指针；\n 2. 参数result为空指针；\n 3. 输入的path长度与length不一致。\n [ERR_UNKNOWN](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900042 - 未知错误。转换后的URI长度为0会返回此错误。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
 
 ### OH_FileUri_GetPathFromUri()
 
@@ -63,8 +59,6 @@ FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int l
 **描述：**
 
 将URI转换成对应的沙箱路径。 1、URI转路径过程中会将URI中存在的百分号编码字符进行解码后拼接在原处，非系统接口生成的URI中可能存在不符合编码规范的字符，导致字符串无法正常拼接。 2、转换处理为系统约定的字符串替换规则（规则随系统演进可能会发生变化），转换过程中不进行路径校验操作，无法保证转换结果一定可以访问。
-
-**系统能力：** SystemCapability.FileManagement.AppFileService
 
 **起始版本：** 12
 
@@ -80,7 +74,7 @@ FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int l
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。\n<br>        {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：\n<br>                 1. 参数uri为空指针；\n<br>                 2. 参数result为空指针；\n<br>                 3. 输入的uri长度与length不一致。\n<br>        {@link ERR_UNKNOWN} 13900042 - 未知错误。转换后的路径path长度为0会返回此错误。\n<br>        {@link ERR_ENOMEM}  13900011 - 分配或者拷贝内存失败。<br>        {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  401 - 输入参数无效。可能的原因：\n 1. 参数uri为空指针；\n 2. 参数result为空指针；\n 3. 输入的uri长度与length不一致。\n [ERR_UNKNOWN](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900042 - 未知错误。转换后的路径path长度为0会返回此错误。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  13900011 - 分配或者拷贝内存失败。[ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
 
 ### OH_FileUri_GetFullDirectoryUri()
 
@@ -91,8 +85,6 @@ FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned 
 **描述：**
 
 获取所在路径URI。URI指向文件则返回所在路径的URI，URI指向目录则不处理直接返回原串； 如果URI指向的文件不存在，或无法获取文件属性，则返回空串。
-
-**系统能力：** SystemCapability.FileManagement.AppFileService
 
 **起始版本：** 12
 
@@ -108,7 +100,7 @@ FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned 
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。\n<br>        {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：\n<br>                 1. 参数uri为空指针；\n<br>                 2. 参数result为空指针；\n<br>                 3. 输入的uri长度与length不一致。\n<br>        {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n<br>        {@link ERR_ENOENT} 13900002 - 没有该文件或目录。\n<br>        {@link ERR_UNKNOWN} 13900042 - 未知错误。获取到的目录URI长度为0会返回此错误。\n<br>        {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  401 - 输入参数无效。可能的原因：\n 1. 参数uri为空指针；\n 2. 参数result为空指针；\n 3. 输入的uri长度与length不一致。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_ENOENT](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900002 - 没有该文件或目录。\n [ERR_UNKNOWN](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900042 - 未知错误。获取到的目录URI长度为0会返回此错误。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
 
 ### OH_FileUri_IsValidUri()
 
@@ -119,8 +111,6 @@ bool OH_FileUri_IsValidUri(const char *uri, unsigned int length)
 **描述：**
 
 判断传入的URI格式是否正确。 仅校验URI是否满足系统定义的格式规范，不校验URI的有效性。
-
-**系统能力：** SystemCapability.FileManagement.AppFileService
 
 **起始版本：** 12
 
@@ -147,8 +137,6 @@ FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int leng
 
 通过传入的URI获取文件名称。 如果文件名中存在百分号编码字符，将会被解码处理后拼接在原处。
 
-**系统能力：** SystemCapability.FileManagement.AppFileService
-
 **起始版本：** 13
 
 **参数：**
@@ -163,6 +151,6 @@ FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int leng
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。\n<br>        {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：\n<br>                 1. 参数uri为空指针；\n<br>                 2. 参数result为空指针；\n<br>                 3. 输入的uri长度与length不一致；\n<br>                 4. uri格式不正确。\n<br>        {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n<br>        {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  401 - 输入参数无效。可能的原因：\n 1. 参数uri为空指针；\n 2. 参数result为空指针；\n 3. 输入的uri长度与length不一致；\n 4. uri格式不正确。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
 
 

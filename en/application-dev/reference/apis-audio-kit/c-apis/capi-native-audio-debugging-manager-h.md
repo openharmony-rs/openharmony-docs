@@ -6,9 +6,7 @@ Declare audio debugging manager related interfaces.<br> This file interfaces are
 
 **Library**: libohaudio.so
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
-**Since**: 10
+**Since**: 26.0.0
 
 **Related module**: [OHAudio](capi-ohaudio.md)
 
@@ -42,8 +40,6 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioDebuggingManager(OH_AudioDebugging
 
 Gets the audio debugging manager handle, which is a singleton.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -56,7 +52,7 @@ Gets the audio debugging manager handle, which is a singleton.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) The param of manager is nullptr. |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds. [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) The param of manager is nullptr. |
 
 ### OH_AudioDebuggingManager_PrintAppInfo()
 
@@ -68,8 +64,6 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintAppInfo(OH_AudioDebuggingMan
 
 Prints full audio runtime snapshot for current app process. The snapshot will contain all audio renderers, capturers, audio session information. Note that the information details and format may vary from different version, it can only be used for manual debugging, user should not rely on the information for actual function realization or file content extraction.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -83,7 +77,7 @@ Prints full audio runtime snapshot for current app process. The snapshot will co
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) The param of manager is nullptr. |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds. [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) The param of manager is nullptr. |
 
 ### OH_AudioDebuggingManager_PrintRendererInfo()
 
@@ -95,8 +89,6 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintRendererInfo(OH_AudioDebuggi
 
 Prints full audio runtime snapshot for target audio renderer instance. The snapshot will contain the stream, pipe, volume and device information. Note that the information details and format may vary from different version, it can only be used for manual debugging, user should not rely on the information for actual function realization or file content extraction.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -104,14 +96,14 @@ Prints full audio runtime snapshot for target audio renderer instance. The snaps
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) handle provided by [OH_AudioManager_GetAudioDebuggingManager](capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager). |
-| OH_AudioRenderer *renderer | Pointer to the target audio renderer instance to print snapshot. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md) *renderer | Pointer to the target audio renderer instance to print snapshot. |
 | int32_t fd | is a file descriptor, indicates the location that the snapshot information will be written to. If the fd is less than 0 or no writable, the snapshot information will be printed into the running log, otherwise the snapshot will be written into the file. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.The param of manager is nullptr;                                                     2.The param of renderer is nullptr; |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds. [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.The param of manager is nullptr; 2.The param of renderer is nullptr; |
 
 ### OH_AudioDebuggingManager_PrintCapturerInfo()
 
@@ -123,8 +115,6 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintCapturerInfo(OH_AudioDebuggi
 
 Prints full audio runtime snapshot for target audio capturer instance. The snapshot will contain the stream, pipe, volume and device information. Note that the information details and format may vary from different version, it can only be used for manual debugging, user should not rely on the information for actual function realization or file content extraction.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -132,14 +122,14 @@ Prints full audio runtime snapshot for target audio capturer instance. The snaps
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) handle provided by [OH_AudioManager_GetAudioDebuggingManager](capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager). |
-| OH_AudioCapturer *capturer | Pointer to the target audio capturer instance to print snapshot. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md) *capturer | Pointer to the target audio capturer instance to print snapshot. |
 | int32_t fd | is a file descriptor, indicates the location that the snapshot information will be written to. If the fd is less than 0 or no writable, the snapshot information will be printed into the running log, otherwise the snapshot will be written into the file. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.The param of manager is nullptr;                                                     2.The param of capturer is nullptr; |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds. [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.The param of manager is nullptr; 2.The param of capturer is nullptr; |
 
 ### OH_AudioDebuggingManager_PrintSessionInfo()
 
@@ -151,8 +141,6 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintSessionInfo(OH_AudioDebuggin
 
 Prints full audio runtime snapshot for target audio session manager instance. The snapshot will contain the session status, scene, strategy and device information. Note that the information details and format may vary from different version, it can only be used for manual debugging, user should not rely on the information for actual function realization or file content extraction.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -160,13 +148,13 @@ Prints full audio runtime snapshot for target audio session manager instance. Th
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) handle provided by [OH_AudioManager_GetAudioDebuggingManager](capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager). |
-| OH_AudioSessionManager *session | Pointer to the target audio session manager instance to print snapshot. |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *session | Pointer to the target audio session manager instance to print snapshot. |
 | int32_t fd | is a file descriptor, indicates the location that the snapshot information will be written to. If the fd is less than 0 or no writable, the snapshot information will be printed into the running log, otherwise the snapshot will be written into the file. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.The param of manager is nullptr;                                                     2.The param of session is nullptr; |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds. [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.The param of manager is nullptr; 2.The param of session is nullptr; |
 
 

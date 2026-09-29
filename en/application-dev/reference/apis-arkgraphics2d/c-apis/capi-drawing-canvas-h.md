@@ -6,8 +6,6 @@ This file declares the functions related to the canvas in the drawing module. By
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -111,8 +109,6 @@ enum OH_Drawing_SrcRectConstraint
 
 Enumerates the constraint types of the source rectangle.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 | Enum item | Description |
@@ -129,8 +125,6 @@ enum OH_Drawing_PointMode
 **Description**
 
 Enumerates the modes of drawing multiple points. The modes include discrete points, line segments, and open polygons.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -150,8 +144,6 @@ enum OH_Drawing_CanvasClipOp
 
 Enumerates the canvas clipping modes.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 | Enum item | Description |
@@ -168,8 +160,6 @@ enum OH_Drawing_CanvasShadowFlags
 **Description**
 
 Enumerates the shadow flags.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -189,8 +179,6 @@ enum OH_Drawing_VertexMode
 **Description**
 
 Enumerates the modes of interpreting the geometry of a given vertex.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -213,15 +201,13 @@ OH_Drawing_Canvas* OH_Drawing_CanvasCreate(void)
 
 Creates an **OH_Drawing_Canvas** object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Canvas* | Returns the pointer to the OH_Drawing_Canvas object created. |
+| [OH_Drawing_Canvas*](capi-drawing-oh-drawing-canvas.md) | Returns the pointer to the **OH_Drawing_Canvas** object created. |
 
 ### OH_Drawing_CanvasCreateWithPixelMap()
 
@@ -233,21 +219,19 @@ OH_Drawing_Canvas* OH_Drawing_CanvasCreateWithPixelMap(OH_Drawing_PixelMap* pixe
 
 Binds a pixel map to a canvas so that the content drawn on the canvas is output to the pixel map. (This process is called CPU rendering.) A canvas bound to a pixel map is a non-recording canvas. You should unbind the pixel map object by calling [OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve) after the canvas object is destroyed.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_PixelMap* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Canvas* | Pointer to the created canvas object [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md). If the returned object is NULL, the creation  fails due to insufficient memory or an empty pixel map object. |
+| [OH_Drawing_Canvas*](capi-drawing-oh-drawing-canvas.md) | Pointer to the created canvas object [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md). If the returned object is NULL, the creation fails due to insufficient memory or an empty pixel map object. |
 
 ### OH_Drawing_CanvasDestroy()
 
@@ -259,15 +243,13 @@ void OH_Drawing_CanvasDestroy(OH_Drawing_Canvas* canvas)
 
 Destroys an **OH_Drawing_Canvas** object and reclaims the memory occupied by the object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 
 ### OH_Drawing_CanvasBind()
 
@@ -279,16 +261,14 @@ void OH_Drawing_CanvasBind(OH_Drawing_Canvas* canvas, OH_Drawing_Bitmap* bitmap)
 
 Binds a bitmap to a canvas so that the content drawn on the canvas is output to the bitmap. (This process is called CPU rendering.) A canvas bound to a bitmap is a non-recording canvas. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **bitmap** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| OH_Drawing_Bitmap* bitmap | Pointer to an **OH_Drawing_Bitmap** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md)* bitmap | Pointer to an **OH_Drawing_Bitmap** object. |
 
 ### OH_Drawing_CanvasAttachPen()
 
@@ -300,16 +280,14 @@ void OH_Drawing_CanvasAttachPen(OH_Drawing_Canvas* canvas, const OH_Drawing_Pen*
 
 Attaches a pen to a canvas so that the canvas can use the style and color of the pen to outline a shape. If the pen effect changes after this function is called, you must call the function again to use the new effect in the subsequent drawing. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Pen* pen | Pointer to an **OH_Drawing_Pen** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an **OH_Drawing_Pen** object. |
 
 ### OH_Drawing_CanvasDetachPen()
 
@@ -321,15 +299,13 @@ void OH_Drawing_CanvasDetachPen(OH_Drawing_Canvas* canvas)
 
 Detaches the pen from a canvas so that the canvas can no longer use the style and color of the pen to outline a shape. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 
 ### OH_Drawing_CanvasAttachBrush()
 
@@ -341,16 +317,14 @@ void OH_Drawing_CanvasAttachBrush(OH_Drawing_Canvas* canvas, const OH_Drawing_Br
 
 Attaches a brush to a canvas so that the canvas can use the style and color of the brush to fill in a shape. If the brush effect changes after this function is called, you must call the function again to use the new effect in the subsequent drawing. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Brush* brush | Pointer to an **OH_Drawing_Brush** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an **OH_Drawing_Brush** object. |
 
 ### OH_Drawing_CanvasDetachBrush()
 
@@ -362,15 +336,13 @@ void OH_Drawing_CanvasDetachBrush(OH_Drawing_Canvas* canvas)
 
 Detaches the brush from a canvas so that the canvas can no longer use the previously set brush to fill in a shape. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 
 ### OH_Drawing_CanvasSave()
 
@@ -382,15 +354,13 @@ void OH_Drawing_CanvasSave(OH_Drawing_Canvas* canvas)
 
 Saves the current canvas status (canvas matrix) to the top of the stack. This function works with [OH_Drawing_CanvasRestore](capi-drawing-canvas-h.md#oh_drawing_canvasrestore). This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 
 ### OH_Drawing_CanvasSaveLayer()
 
@@ -402,17 +372,15 @@ void OH_Drawing_CanvasSaveLayer(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect
 
 Saves the matrix and cropping region, and allocates a bitmap for subsequent drawing. If you call [OH_Drawing_CanvasRestore](capi-drawing-canvas-h.md#oh_drawing_canvasrestore), changes made to the matrix and clipping region are discarded, and the bitmap is drawn. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| const OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object, which is used to limit the layer size. A null pointer means no limit. |
-| const OH_Drawing_Brush* brush | Pointer to an [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object. The alpha value, filter effect, and blend mode of the brush are applied when the bitmap is drawn. If NULL is passed in, no effect is applied. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object, which is used to limit the layer size. A null pointer means no limit. |
+| [const OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object. The alpha value, filter effect, and blend mode of the brush are applied when the bitmap is drawn. If NULL is passed in, no effect is applied. |
 
 ### OH_Drawing_CanvasRestore()
 
@@ -424,15 +392,13 @@ void OH_Drawing_CanvasRestore(OH_Drawing_Canvas* canvas)
 
 Restores the canvas status (canvas matrix) saved on the top of the stack. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 
 ### OH_Drawing_CanvasGetSaveCount()
 
@@ -444,21 +410,19 @@ uint32_t OH_Drawing_CanvasGetSaveCount(OH_Drawing_Canvas* canvas)
 
 Obtains the number of canvas statuses (canvas matrices) saved in the stack. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Returns a 32-bit value that describes the number of canvas statuses (canvas matrices). The initial number is  1. |
+| uint32_t | Returns a 32-bit value that describes the number of canvas statuses (canvas matrices). The initial number is **1**. |
 
 ### OH_Drawing_CanvasRestoreToCount()
 
@@ -470,15 +434,13 @@ void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas* canvas, uint32_t saveCou
 
 Restores to a given number of canvas statuses (canvas matrices). This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 | uint32_t saveCount | Number of canvas statuses (canvas matrices). If the value is less than or equal to 1, the canvas is restored to the initial state. If the value is greater than the number of canvas statuses that have been saved, no operation is performed. |
 
 ### OH_Drawing_CanvasDrawLine()
@@ -491,15 +453,13 @@ void OH_Drawing_CanvasDrawLine(OH_Drawing_Canvas* canvas, float x1, float y1, fl
 
 Draws a line segment. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 | float x1 | X coordinate of the start point of the line segment. |
 | float y1 | Y coordinate of the start point of the line segment. |
 | float x2 | X coordinate of the end point of the line segment. |
@@ -515,16 +475,14 @@ void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path*
 
 Draws a path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Path* path | Pointer to an **OH_Drawing_Path** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | Pointer to an **OH_Drawing_Path** object. |
 
 ### OH_Drawing_CanvasDrawPixelMapMesh()
 
@@ -536,16 +494,14 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapMesh(OH_Drawing_Canvas* cCanva
 
 Draws a PixelMap based on a mesh, where mesh vertices are evenly distributed across the PixelMap. (This API works with brushes but not pens.)
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* cCanvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_PixelMap* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* cCanvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
 | uint32_t meshWidth | Number of columns in the mesh. The value is an integer greater than 0. |
 | uint32_t meshHeight | Number of rows in the mesh. The value is an integer greater than 0. |
 | const float* vertices | Pointer to the mesh vertex array. |
@@ -559,7 +515,7 @@ Draws a PixelMap based on a mesh, where mesh vertices are evenly distributed acr
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INCORRECT_PARAMETER if any of the parameters, such as cCanvas, pixelMap, and vertices  , is empty or the input parameter does not meet the value rule. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INCORRECT_PARAMETER** if any of the parameters, such as **cCanvas**, **pixelMap**, and **vertices* *, is empty or the input parameter does not meet the value rule. |
 
 ### OH_Drawing_CanvasDrawPixelMapNine()
 
@@ -571,25 +527,23 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapNine(OH_Drawing_Canvas* canvas
 
 Splits a pixel map into nine sections using two horizontal and two vertical lines: four edge sections, four corner sections, and a central section. If the four corner sections are smaller than the target rectangle, they will be drawn in the target rectangle without scaling. Otherwise, they will be scaled to fit the target rectangle. Any remaining space will be filled by stretching or compressing the other five sections to cover the entire target rectangle.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_PixelMap* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
-| const OH_Drawing_Rect* center | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object, which indicates the central rectangle splitting the pixel map. It divides the image into nine sections by extending its four edges. |
-| const OH_Drawing_Rect* dst | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object, which indicates the target region on the canvas. |
-| OH_Drawing_FilterMode mode | Enumeration of filter modes. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* center | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object, which indicates the central rectangle splitting the pixel map. It divides the image into nine sections by extending its four edges. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* dst | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object, which indicates the target region on the canvas. |
+| [OH_Drawing_FilterMode](capi-drawing-sampling-options-h.md#oh_drawing_filtermode) mode | Enumeration of filter modes. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if canvas, pixelMap, or dst is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if **canvas**, **pixelMap**, or **dst** is NULL. |
 
 ### OH_Drawing_CanvasDrawPixelMapRect()
 
@@ -601,19 +555,17 @@ void OH_Drawing_CanvasDrawPixelMapRect(OH_Drawing_Canvas* canvas, OH_Drawing_Pix
 
 Draws a portion of a pixel map onto a specified area of the canvas. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If one of **canvas**, **pixelMap**, or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_PixelMap* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
-| const OH_Drawing_Rect* src | Pointer to a rectangle on the pixel map. If NULL is passed in, it refers to the entire pixel map. |
-| const OH_Drawing_Rect* dst | Pointer to a rectangle on the canvas. |
-| const OH_Drawing_SamplingOptions* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* src | Pointer to a rectangle on the pixel map. If NULL is passed in, it refers to the entire pixel map. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* dst | Pointer to a rectangle on the canvas. |
+| [const OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
 
 ### OH_Drawing_CanvasDrawPixelMapRectConstraint()
 
@@ -625,26 +577,24 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapRectConstraint(OH_Drawing_Canv
 
 Draws a portion of a pixel map onto a specified area of the canvas.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_PixelMap* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
-| const OH_Drawing_Rect* src | Pointer to a rectangle on the pixel map. If NULL is passed in, it refers to the entire pixel map. |
-| const OH_Drawing_Rect* dst | Pointer to a rectangle on the canvas. |
-| const OH_Drawing_SamplingOptions* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* src | Pointer to a rectangle on the pixel map. If NULL is passed in, it refers to the entire pixel map. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* dst | Pointer to a rectangle on the canvas. |
+| [const OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
 | [OH_Drawing_SrcRectConstraint](capi-drawing-canvas-h.md#oh_drawing_srcrectconstraint) constraint | Constraint type. For details about the available options, see [OH_Drawing_SrcRectConstraint](capi-drawing-canvas-h.md#oh_drawing_srcrectconstraint). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if canvas, pixelMap, or dst is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if **canvas**, **pixelMap**, or **dst** is NULL. |
 
 ### OH_Drawing_CanvasDrawBackground()
 
@@ -656,16 +606,14 @@ void OH_Drawing_CanvasDrawBackground(OH_Drawing_Canvas* canvas, const OH_Drawing
 
 Draws a background filled with a brush. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Brush* brush | Pointer to an **OH_Drawing_Brush** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an **OH_Drawing_Brush** object. |
 
 ### OH_Drawing_CanvasDrawRegion()
 
@@ -677,16 +625,14 @@ void OH_Drawing_CanvasDrawRegion(OH_Drawing_Canvas* canvas, const OH_Drawing_Reg
 
 Draws a region. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **region** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Region* region | Pointer to an **OH_Drawing_Region** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to an **OH_Drawing_Region** object. |
 
 ### OH_Drawing_CanvasDrawPoint()
 
@@ -698,22 +644,20 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas* canvas, const
 
 Draws a point.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| const OH_Drawing_Point2D* point | Pointer to the [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [const OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point | Pointer to the [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if either canvas or point is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **canvas** or **point** is NULL. |
 
 ### OH_Drawing_CanvasDrawPoints()
 
@@ -725,18 +669,16 @@ void OH_Drawing_CanvasDrawPoints(OH_Drawing_Canvas* canvas, OH_Drawing_PointMode
 
 Draws multiple points. You can draw a single point, a line segment, or an open polygon. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **point2D** is NULL, or **count** is **0**, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **mode** is not within the enumerated range, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 | [OH_Drawing_PointMode](capi-drawing-canvas-h.md#oh_drawing_pointmode) mode | Mode for drawing multiple points. For details, see [OH_Drawing_PointMode](capi-drawing-canvas-h.md#oh_drawing_pointmode). |
 | uint32_t count | Number of vertices, that is, the number of vertices in the vertex array. |
-| const OH_Drawing_Point2D* point2D | Pointer to an array holding the vertices. |
+| [const OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point2D | Pointer to an array holding the vertices. |
 
 ### OH_Drawing_CanvasDrawBitmap()
 
@@ -748,16 +690,14 @@ void OH_Drawing_CanvasDrawBitmap(OH_Drawing_Canvas* canvas, const OH_Drawing_Bit
 
 Draws a bitmap. A bitmap, also referred to as a dot matrix image, a pixel map image, or a grid image, includes single points called pixels (image elements). This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **bitmap** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Bitmap* bitmap | Pointer to an **OH_Drawing_Bitmap** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md)* bitmap | Pointer to an **OH_Drawing_Bitmap** object. |
 | float left | X coordinate of the upper left corner of the bitmap. |
 | float top | Y coordinate of the upper left corner of the bitmap. |
 
@@ -771,19 +711,17 @@ void OH_Drawing_CanvasDrawBitmapRect(OH_Drawing_Canvas* canvas, const OH_Drawing
 
 Draws a portion of a bitmap onto a specified area of the canvas. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If one of **canvas**, **bitmap**, or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| const OH_Drawing_Bitmap* bitmap | Pointer to the [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md) object. |
-| const OH_Drawing_Rect* src | Pointer to a rectangle on the bitmap. If NULL is passed in, it refers to the entire bitmap. |
-| const OH_Drawing_Rect* dst | Pointer to a rectangle on the canvas. |
-| const OH_Drawing_SamplingOptions* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [const OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md)* bitmap | Pointer to the [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* src | Pointer to a rectangle on the bitmap. If NULL is passed in, it refers to the entire bitmap. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* dst | Pointer to a rectangle on the canvas. |
+| [const OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
 
 ### OH_Drawing_CanvasDrawRect()
 
@@ -795,16 +733,14 @@ void OH_Drawing_CanvasDrawRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 
 Draws a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **OH_Drawing_Rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Rect* rect | Pointer to an **OH_Drawing_Rect** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to an **OH_Drawing_Rect** object. |
 
 ### OH_Drawing_CanvasDrawCircle()
 
@@ -816,16 +752,14 @@ void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas* canvas, const OH_Drawing_Poi
 
 Draws a circle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **point** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **radius** is less than or equal to 0, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Point* point | Pointer to an **OH_Drawing_Point** object, which indicates the center of the circle. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to an **OH_Drawing_Point** object, which indicates the center of the circle. |
 | float radius | Radius of the circle. The value is invalid if it is less than or equal to 0. |
 
 ### OH_Drawing_CanvasDrawColor()
@@ -838,23 +772,21 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawColor(OH_Drawing_Canvas* canvas, uint3
 
 Fills the entire canvas with the specified color and blend mode.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
 | uint32_t color | Color, represented by a 32-bit (ARGB) variable. |
-| OH_Drawing_BlendMode blendMode | Blend mode. |
+| [OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode) blendMode | Blend mode. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if canvas is NULL.  OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE if blendMode is not set to one of the enumerated values. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if **canvas** is NULL. **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** if **blendMode** is not set to one of the enumerated values. |
 
 ### OH_Drawing_CanvasDrawOval()
 
@@ -866,16 +798,14 @@ void OH_Drawing_CanvasDrawOval(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 
 Draws an oval. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Rect* rect | Pointer to an **OH_Drawing_Rect** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to an **OH_Drawing_Rect** object. |
 
 ### OH_Drawing_CanvasDrawArc()
 
@@ -887,16 +817,14 @@ void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* 
 
 Draws an arc. If the absolute value of the sweep angle exceeds 360 degrees, an ellipse is drawn. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Rect* rect | Pointer to an **OH_Drawing_Rect** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to an **OH_Drawing_Rect** object. |
 | float startAngle | Start angle. When the degree is 0, the start point is located at the right end of the oval. A positive number indicates that the start point is placed clockwise, and a negative number indicates that the start point is placed counterclockwise. |
 | float sweepAngle | Angle to sweep, in degrees. A positive number indicates a clockwise sweep, and a negative value indicates a counterclockwise swipe. The valid range is from -360 degrees to 360 degrees. If the absolute value of the sweep angle exceeds 360 degrees, an ellipse is drawn. |
 
@@ -910,16 +838,14 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawArcWithCenter(OH_Drawing_Canvas* canva
 
 Draws an arc. It enables you to define the start angle, sweep angle, and whether the arc's endpoints should connect to its center.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| const OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
 | float startAngle | Start angle, in degrees. The value is a floating point number. When the degree is 0, the start point is located at the right end of the oval. A positive number indicates that the start point is placed clockwise, and a negative number indicates that the start point is placed counterclockwise. |
 | float sweepAngle | Angle to sweep, in degrees. The value is a floating point number. A positive number indicates a clockwise sweep, and a negative value indicates a counterclockwise swipe. The swipe angle can exceed 360 degrees, and a complete ellipse is drawn. |
 | bool useCenter | Whether the start point and end point of the arc are connected to its center. The value **true**<br>means that they are connected to the center; the value **false** means the opposite. |
@@ -928,7 +854,7 @@ Draws an arc. It enables you to define the start angle, sweep angle, and whether
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if either canvas or rect is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **canvas** or **rect** is NULL. |
 
 ### OH_Drawing_CanvasDrawRoundRect()
 
@@ -940,16 +866,14 @@ void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_
 
 Draws a rounded rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_RoundRect* roundRect | Pointer to an **OH_Drawing_RoundRect** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | Pointer to an **OH_Drawing_RoundRect** object. |
 
 ### OH_Drawing_CanvasDrawNestedRoundRect()
 
@@ -961,23 +885,21 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawNestedRoundRect(OH_Drawing_Canvas* can
 
 Draws two nested rounded rectangles. The outer rectangle boundary must contain the inner rectangle boundary. Otherwise, there is no drawing effect.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| const OH_Drawing_RoundRect* outer | Pointer to the [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md) object, indicating the outer rounded rectangle. |
-| const OH_Drawing_RoundRect* inner | Pointer to the [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md) object, indicating the inner rounded rectangle. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [const OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* outer | Pointer to the [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md) object, indicating the outer rounded rectangle. |
+| [const OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* inner | Pointer to the [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md) object, indicating the inner rounded rectangle. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if canvas, outer, or inner is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if **canvas**, **outer**, or **inner** is NULL. |
 
 ### OH_Drawing_CanvasDrawSingleCharacter()
 
@@ -989,17 +911,15 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacter(OH_Drawing_Canvas* can
 
 Draws a single character. If the typeface of the current font does not support the character to draw, the system typeface is used to draw the character.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
 | const char* str | Pointer to the single character to draw. A string can be passed in, but only the first character in the string is parsed and drawn in UTF-8 encoding. |
-| const OH_Drawing_Font* font | Pointer to the [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) object. |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) object. |
 | float x | X coordinate of the left point of the character baseline. |
 | float y | Y coordinate of the left point of the character baseline. |
 
@@ -1007,7 +927,7 @@ Draws a single character. If the typeface of the current font does not support t
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if at least one of the parameters canvas, str, or font is NULL,  or the length of str is 0. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if at least one of the parameters **canvas**, **str**, or **font** is NULL, or the length of **str** is **0**. |
 
 ### OH_Drawing_CanvasDrawSingleCharacterWithFeatures()
 
@@ -1019,26 +939,24 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacterWithFeatures(OH_Drawing
 
 Draws a single character with font features. If the typeface of the current font does not support the character to draw, the system typeface is used to draw the character.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
 | const char* str | Pointer to the single character to draw. A string can be passed in, but only the first character in the string is parsed and drawn in UTF-8 encoding. |
-| const OH_Drawing_Font* font | Pointer to the [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) object. |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) object. |
 | float x | X coordinate of the left point of the character baseline. |
 | float y | Y coordinate of the left point of the character baseline. |
-| OH_Drawing_FontFeatures* fontFeatures | Pointer to the [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md) object. If no font feature is set, the preset font feature in the TrueType fonts (TTF) file is used. |
+| [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md)* fontFeatures | Pointer to the [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md) object. If no font feature is set, the preset font feature in the TrueType fonts (TTF) file is used. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Execution result.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if at least one of the parameters canvas, str, font, or   fontFeatures is NULL, or the length of str is 0. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if at least one of the parameters **canvas**, **str**, **font**, or ** fontFeatures** is NULL, or the length of **str** is **0**. |
 
 ### OH_Drawing_CanvasDrawTextBlob()
 
@@ -1050,16 +968,14 @@ void OH_Drawing_CanvasDrawTextBlob(OH_Drawing_Canvas* canvas, const OH_Drawing_T
 
 Draws a text blob. If the typeface used to construct **OH_Drawing_TextBlob** does not support a character, that character will not be drawn. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **textBlob** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_TextBlob* textBlob | Pointer to an **OH_Drawing_TextBlob** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | Pointer to an **OH_Drawing_TextBlob** object. |
 | float x | X coordinate of the left point of the text baseline. |
 | float y | Y coordinate of the left point of the text baseline. |
 
@@ -1073,29 +989,27 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas
 
 Draws the array of glyphs with specified font. Nothing is drawn if glyphCount is smaller than or equals to 0.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Canvas* canvas | Indicates the pointer to an <b>OH_Drawing_Canvas</b> object. |
+| [const OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Indicates the pointer to an <b>OH_Drawing_Canvas</b> object. |
 | const int* glyphIds | Indicates an array of glyph IDs. |
 | int glyphIdCount | Indicates the size of glyphId array. |
 | int glyphIdOffset | Indicates the number of elements to skip before drawing in glyphIds array. |
-| const OH_Drawing_Point2D* positions | Indicates an array of positions. |
+| [const OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* positions | Indicates an array of positions. |
 | int positionCount | Indicates the size of position array. |
 | int positionOffset | Indicates the number of elements to skip before drawing in positions array. |
 | int glyphCount | Indicates the number of glyphs to be drawn. |
-| const OH_Drawing_Font* font | Indicates the font used for drawing. |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Indicates the font used for drawing. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns the error code.  Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful.  Returns [OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if any of canvas, glyphIds, positions and font is nullptr.  Returns [OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE](capi-drawing-error-code-h.md#oh_drawing_errorcode) if glyphIdOffset or positionOffset is less than 0, or if  glyphIdCount is less than (glyphIdOffset + glyphCount) or positionCount is less than (positionOffset + glyphCount). |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the error code. Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful. Returns [OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if any of canvas, glyphIds, positions and font is nullptr. Returns [OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE](capi-drawing-error-code-h.md#oh_drawing_errorcode) if glyphIdOffset or positionOffset is less than 0, or if glyphIdCount is less than (glyphIdOffset + glyphCount) or positionCount is less than (positionOffset + glyphCount). |
 
 ### OH_Drawing_CanvasClipRect()
 
@@ -1107,16 +1021,14 @@ void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 
 Clips a rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **clipOp** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Rect* rect | Pointer to an **OH_Drawing_Rect** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to an **OH_Drawing_Rect** object. |
 | [OH_Drawing_CanvasClipOp](capi-drawing-canvas-h.md#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see [OH_Drawing_CanvasClipOp](capi-drawing-canvas-h.md#oh_drawing_canvasclipop). |
 | bool doAntiAlias | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false**<br>means the opposite. |
 
@@ -1130,16 +1042,14 @@ void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_
 
 Clips a rounded rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **clipOp** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_RoundRect* roundRect | Pointer to an **OH_Drawing_RoundRect** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | Pointer to an **OH_Drawing_RoundRect** object. |
 | [OH_Drawing_CanvasClipOp](capi-drawing-canvas-h.md#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see [OH_Drawing_CanvasClipOp](capi-drawing-canvas-h.md#oh_drawing_canvasclipop). |
 | bool doAntiAlias | Whether to perform anti-aliasing. The value **true** means to perform anti-aliasing, and **false**<br>means the opposite. |
 
@@ -1153,16 +1063,14 @@ void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path*
 
 Clips a path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **clipOp** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
-| const OH_Drawing_Path* path | Pointer to an **OH_Drawing_Path** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [const OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | Pointer to an **OH_Drawing_Path** object. |
 | [OH_Drawing_CanvasClipOp](capi-drawing-canvas-h.md#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see [OH_Drawing_CanvasClipOp](capi-drawing-canvas-h.md#oh_drawing_canvasclipop). |
 | bool doAntiAlias | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false**<br>means the opposite. |
 
@@ -1176,23 +1084,21 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas* canvas, cons
 
 Clips a rectangle.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| const OH_Drawing_Region* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
 | [OH_Drawing_CanvasClipOp](capi-drawing-canvas-h.md#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see [OH_Drawing_CanvasClipOp](capi-drawing-canvas-h.md#oh_drawing_canvasclipop). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if either canvas or region is NULL.  OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE if clipOp is not set to one of the enumerated values. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **canvas** or **region** is NULL. **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** if **clipOp** is not set to one of the enumerated values. |
 
 ### OH_Drawing_CanvasRotate()
 
@@ -1204,15 +1110,13 @@ void OH_Drawing_CanvasRotate(OH_Drawing_Canvas* canvas, float degrees, float px,
 
 Rotates a canvas by a given angle. A positive value indicates a clockwise rotation, and a negative value indicates a counterclockwise rotation. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 | float degrees | Rotation angle. |
 | float px | X coordinate of the rotation point. |
 | float py | Y coordinate of the rotation point. |
@@ -1227,15 +1131,13 @@ void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas* canvas, float dx, float dy)
 
 Translates a canvas by a given distance. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 | float dx | Distance to translate on the X axis. |
 | float dy | Distance to translate on the Y axis. |
 
@@ -1249,15 +1151,13 @@ void OH_Drawing_CanvasScale(OH_Drawing_Canvas* canvas, float sx, float sy)
 
 Scales a canvas. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 | float sx | Scale ratio on the X axis. |
 | float sy | Scale ratio on the Y axis. |
 
@@ -1274,15 +1174,13 @@ Skews a canvas. This function premultiplies the current canvas matrix by a skew 
 \|sy 1 0\|
 \|0 0 1\| This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 | float sx | Amount of tilt on the X axis. A positive number tilts the drawing rightwards along the positive direction of the Y axis, and a negative number tilts the drawing leftwards along the positive direction of the Y axis. |
 | float sy | Amount of tilt on the Y axis. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis. |
 
@@ -1296,15 +1194,13 @@ int32_t OH_Drawing_CanvasGetWidth(OH_Drawing_Canvas* canvas)
 
 Obtains the canvas width. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
 
 **Returns**:
 
@@ -1322,15 +1218,13 @@ int32_t OH_Drawing_CanvasGetHeight(OH_Drawing_Canvas* canvas)
 
 Obtains the canvas height. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
 
 **Returns**:
 
@@ -1348,16 +1242,14 @@ void OH_Drawing_CanvasGetLocalClipBounds(OH_Drawing_Canvas* canvas, OH_Drawing_R
 
 Obtains the bounds of the cropping region of the canvas. This function cannot be used for a canvas of the recording type. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. You can call [OH_Drawing_RectCreate](capi-drawing-rect-h.md#oh_drawing_rectcreate) to create a rectangle object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. You can call [OH_Drawing_RectCreate](capi-drawing-rect-h.md#oh_drawing_rectcreate) to create a rectangle object. |
 
 ### OH_Drawing_CanvasGetTotalMatrix()
 
@@ -1369,16 +1261,14 @@ void OH_Drawing_CanvasGetTotalMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matri
 
 Obtains the 3x3 matrix of a canvas. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_Matrix* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object. You can call [OH_Drawing_MatrixCreate](capi-drawing-matrix-h.md#oh_drawing_matrixcreate) to create a matrix object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object. You can call [OH_Drawing_MatrixCreate](capi-drawing-matrix-h.md#oh_drawing_matrixcreate) to create a matrix object. |
 
 ### OH_Drawing_CanvasConcatMatrix()
 
@@ -1390,16 +1280,14 @@ void OH_Drawing_CanvasConcatMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix*
 
 Preconcats the existing matrix of the canvas with the passed-in matrix. The drawing operation triggered before this API is called is not affected. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_Matrix* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object. |
 
 ### OH_Drawing_CanvasDrawShadow()
 
@@ -1411,18 +1299,16 @@ void OH_Drawing_CanvasDrawShadow(OH_Drawing_Canvas* canvas, OH_Drawing_Path* pat
 
 Draws a spot shadow and uses a given path to outline the ambient shadow. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **flag** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_Path* path | Pointer to the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object, which is used to generate shadows. |
-| OH_Drawing_Point3D planeParams | Z-axis offset of an occluder relative to the canvas, based on its x and y coordinates. |
-| OH_Drawing_Point3D devLightPos | Position of the light relative to the canvas. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | Pointer to the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object, which is used to generate shadows. |
+| [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) planeParams | Z-axis offset of an occluder relative to the canvas, based on its x and y coordinates. |
+| [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) devLightPos | Position of the light relative to the canvas. |
 | float lightRadius | Radius of the light source. The value must be greater than or equal to 0. |
 | uint32_t ambientColor | Ambient shadow color, which is represented by a 32-bit (ARGB) variable. |
 | uint32_t spotColor | Point shadow color, which is represented by a 32-bit (ARGB) variable. |
@@ -1438,15 +1324,13 @@ void OH_Drawing_CanvasClear(OH_Drawing_Canvas* canvas, uint32_t color)
 
 Clears a canvas by using a given color. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 | uint32_t color | Color, which is a 32-bit (ARGB) variable. |
 
 ### OH_Drawing_CanvasSetMatrix()
@@ -1459,16 +1343,14 @@ void OH_Drawing_CanvasSetMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix* ma
 
 Sets the matrix status for a canvas. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_Matrix* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object. You can call [OH_Drawing_MatrixCreate](capi-drawing-matrix-h.md#oh_drawing_matrixcreate) to create a matrix object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object. You can call [OH_Drawing_MatrixCreate](capi-drawing-matrix-h.md#oh_drawing_matrixcreate) to create a matrix object. |
 
 ### OH_Drawing_CanvasResetMatrix()
 
@@ -1480,15 +1362,13 @@ void OH_Drawing_CanvasResetMatrix(OH_Drawing_Canvas* canvas)
 
 Resets the matrix of this canvas to an identity matrix. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
 
 ### OH_Drawing_CanvasResetClip()
 
@@ -1500,21 +1380,19 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasResetClip(OH_Drawing_Canvas* canvas)
 
 Reset the clip status.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Indicates the pointer to an <b>OH_Drawing_Canvas</b> object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Indicates the pointer to an <b>OH_Drawing_Canvas</b> object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns the error code.          Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful.          Returns [OH_DRAWING_ERROR_INVALID_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if canvas is nullptr. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the error code. Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful. Returns [OH_DRAWING_ERROR_INVALID_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if canvas is nullptr. |
 
 ### OH_Drawing_CanvasDrawImageRectWithSrc()
 
@@ -1526,19 +1404,17 @@ void OH_Drawing_CanvasDrawImageRectWithSrc(OH_Drawing_Canvas* canvas, const OH_D
 
 Draws a portion of an image onto a specified area of the canvas. The area selected by the source rectangle is scaled and translated to the destination rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If one of **canvas**, **image**, **src**, or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| const OH_Drawing_Image* image | Pointer to the [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) object. |
-| const OH_Drawing_Rect* src | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
-| const OH_Drawing_Rect* dst | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
-| const OH_Drawing_SamplingOptions* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [const OH_Drawing_Image](capi-drawing-oh-drawing-image.md)* image | Pointer to the [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* src | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* dst | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
+| [const OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
 | [OH_Drawing_SrcRectConstraint](capi-drawing-canvas-h.md#oh_drawing_srcrectconstraint) srcRectConstraint | Constraint type. For details about the available options, see [OH_Drawing_SrcRectConstraint](capi-drawing-canvas-h.md#oh_drawing_srcrectconstraint). |
 
 ### OH_Drawing_CanvasDrawImageRect()
@@ -1551,18 +1427,16 @@ void OH_Drawing_CanvasDrawImageRect(OH_Drawing_Canvas* canvas, OH_Drawing_Image*
 
 Draws an image onto a specified area of the canvas. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If one of **canvas**, **image**, or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_Image* image | Pointer to the [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) object. |
-| OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
-| OH_Drawing_SamplingOptions* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Image](capi-drawing-oh-drawing-image.md)* image | Pointer to the [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) object. |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
+| [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. A null pointer means that the default sampling options are used. |
 
 ### OH_Drawing_CanvasDrawVertices()
 
@@ -1574,23 +1448,21 @@ void OH_Drawing_CanvasDrawVertices(OH_Drawing_Canvas* canvas, OH_Drawing_VertexM
 
 Draws a triangular grid described by a vertex array. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **positions** is NULL, **vertexCount** is less than 3, or **indexCount** is less than 3 but not 0, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If either **vertexMmode** or **mode** is not set to one of the enumerated values, **<br>OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to an **OH_Drawing_Canvas** object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object. |
 | [OH_Drawing_VertexMode](capi-drawing-canvas-h.md#oh_drawing_vertexmode) vertexMmode | Mode for drawing vertices. For details about the available options, see [OH_Drawing_VertexMode](capi-drawing-canvas-h.md#oh_drawing_vertexmode). |
 | int32_t vertexCount | Number of elements in the vertex array. The value must be greater than or equal to 3. |
-| const OH_Drawing_Point2D* positions | Pointer to the array that holds the position of every vertex. The array cannot be null and its length must be equal to the value of **vertexCount**. |
-| const OH_Drawing_Point2D* texs | Pointer to the array that holds the texture space coordinate corresponding to each vertex. The array can be null. If the array is not null, its length must be equal to the value of **vertexCount**. |
+| [const OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* positions | Pointer to the array that holds the position of every vertex. The array cannot be null and its length must be equal to the value of **vertexCount**. |
+| [const OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* texs | Pointer to the array that holds the texture space coordinate corresponding to each vertex. The array can be null. If the array is not null, its length must be equal to the value of **vertexCount**. |
 | const uint32_t* colors | Pointer to the array that holds the color corresponding to each vertex. It is used for interpolation in a triangle. The array can be null. If the array is not null, its length must be equal to the value of **<br>vertexCount**. |
 | int32_t indexCount | Number of indices. The value can be 0 or a value greater than or equal to 3. |
 | const uint16_t* indices | Pointer to the array that holds the index of each vertex. The array can be null. If the array is not null, its length must be equal to the value of **indexCount**. |
-| OH_Drawing_BlendMode mode | Enumeration of blend modes. For details about the available options, see [OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode). |
+| [OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode) mode | Enumeration of blend modes. For details about the available options, see [OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode). |
 
 ### OH_Drawing_CanvasReadPixels()
 
@@ -1602,16 +1474,14 @@ bool OH_Drawing_CanvasReadPixels(OH_Drawing_Canvas* canvas, OH_Drawing_Image_Inf
 
 Copies pixel data from a canvas to a specified address. This function cannot be used for a canvas of the recording type. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If one of **canvas**, **imageInfo**, or **dstPixels** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_Image_Info* imageInfo | Pointer to the [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md)* imageInfo | Pointer to the [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) object. |
 | void* dstPixels | Pointer to the start address for storing the pixel data. |
 | uint32_t dstRowBytes | Number of bytes in each row of pixels. The value is invalid if it is less than or equal to 0. |
 | int32_t srcX | X offset of the pixels on the canvas, in px. |
@@ -1621,7 +1491,7 @@ Copies pixel data from a canvas to a specified address. This function cannot be 
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the pixel data is copied to the start address of the storage; returns false  otherwise. |
+| bool | Returns **true** if the pixel data is copied to the start address of the storage; returns **false** otherwise. |
 
 ### OH_Drawing_CanvasReadPixelsToBitmap()
 
@@ -1633,16 +1503,14 @@ bool OH_Drawing_CanvasReadPixelsToBitmap(OH_Drawing_Canvas* canvas, OH_Drawing_B
 
 Copies pixel data from a canvas to an image. This function cannot be used for a canvas of the recording type. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **canvas** or **bitmap** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_Bitmap* bitmap | Pointer to the [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md)* bitmap | Pointer to the [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md) object. |
 | int32_t srcX | X offset of the pixels on the canvas, in px. |
 | int32_t srcY | Y offset of the pixels on the canvas, in px. |
 
@@ -1650,7 +1518,7 @@ Copies pixel data from a canvas to an image. This function cannot be used for a 
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the pixel data is copied to the image; returns false otherwise. |
+| bool | Returns **true** if the pixel data is copied to the image; returns **false** otherwise. |
 
 ### OH_Drawing_CanvasIsClipEmpty()
 
@@ -1662,22 +1530,20 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasIsClipEmpty(OH_Drawing_Canvas* canvas, boo
 
 Checks whether the region that can be drawn is empty after clipping.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
 | bool* isClipEmpty | Pointer to the variable that specifies whether the region is empty. The value **true** means that the region is empty, and **false** means the opposite. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if either canvas or isClipEmpty is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **canvas** or **isClipEmpty** is NULL. |
 
 ### OH_Drawing_CanvasGetImageInfo()
 
@@ -1689,22 +1555,20 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasGetImageInfo(OH_Drawing_Canvas* canvas, OH
 
 Obtains the image information of a canvas.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| OH_Drawing_Image_Info* imageInfo | Pointer to the [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md)* imageInfo | Pointer to the [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if either canvas or imageInfo is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **canvas** or **imageInfo** is NULL. |
 
 ### OH_Drawing_CanvasDrawRecordCmd()
 
@@ -1716,22 +1580,20 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmd(OH_Drawing_Canvas* canvas, O
 
 Draws an **OH_Drawing_RecordCmd** object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. Only the canvas of the recording type is supported. |
-| OH_Drawing_RecordCmd* recordCmd | Pointer to the [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. Only the canvas of the recording type is supported. |
+| [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md)* recordCmd | Pointer to the [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if either canvas or recordCmd is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **canvas** or **recordCmd** is NULL. |
 
 ### OH_Drawing_CanvasDrawRecordCmdNesting()
 
@@ -1743,22 +1605,20 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmdNesting(OH_Drawing_Canvas* ca
 
 Draws an **OH_Drawing_RecordCmd** object. This API supports nesting.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 19
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. Only the canvas of the recording type is supported. |
-| OH_Drawing_RecordCmd* recordCmd | Pointer to the [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. Only the canvas of the recording type is supported. |
+| [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md)* recordCmd | Pointer to the [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Operation code.  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if either canvas or recordCmd is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Operation code. **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **canvas** or **recordCmd** is NULL. |
 
 ### OH_Drawing_CanvasQuickRejectPath()
 
@@ -1770,23 +1630,21 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectPath(OH_Drawing_Canvas* canvas,
 
 Checks whether the path is not intersecting with the canvas area. The canvas area includes its boundaries.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| const OH_Drawing_Path* path | Pointer to the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [const OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | Pointer to the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object. |
 | bool* quickReject | Pointer to the check result. The value **true** means that the path is not intersecting with the canvas area, and **false** means the opposite. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if canvas, path, or quickReject is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if **canvas**, **path**, or **quickReject** is NULL. |
 
 ### OH_Drawing_CanvasQuickRejectRect()
 
@@ -1798,23 +1656,21 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectRect(OH_Drawing_Canvas* canvas,
 
 Checks whether the rectangle is not intersecting with the canvas area. The canvas area includes its boundaries.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Canvas* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
-| const OH_Drawing_Rect* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. |
 | bool* quickReject | Pointer to the check result. The value **true** means that the rectangle is not intersecting with the canvas area, and **false** means the opposite. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if canvas, rect, or quickReject is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if **canvas**, **rect**, or **quickReject** is NULL. |
 
 ### OH_Drawing_CanvasIsOpaque()
 
@@ -1826,21 +1682,19 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasIsOpaque(const OH_Drawing_Canvas* canvas, 
 
 Checks if the current layer that drawn into the device is opaque.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Canvas* canvas | Indicates the pointer to an <b>OH_Drawing_Canvas</b> object. |
+| [const OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Indicates the pointer to an <b>OH_Drawing_Canvas</b> object. |
 | bool* isOpaque | Indicates if the canvas is opaque. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns the error code.          Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful.          Returns [OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if canvas or isOpaque is nullptr. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the error code. Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful. Returns [OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if canvas or isOpaque is nullptr. |
 
 

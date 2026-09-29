@@ -6,8 +6,6 @@ Define the type of stored key value pairs.
 
 **Library**: libnative_rdb_ndk.z.so
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 10
 
 **Related module**: [RDB](capi-rdb.md)
@@ -41,8 +39,6 @@ int OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Data_Asset *value
 
 Put the [Data_Asset](capi-rdb-data-asset.md) * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -51,13 +47,13 @@ Put the [Data_Asset](capi-rdb-data-asset.md) * value to this [OH_VBucket](capi-r
 | -- | -- |
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an [OH_VBucket](capi-rdb-oh-vbucket.md) instance. |
 | const char *field | Indicates the name of the column. |
-| Data_Asset *value | Indicates the const [Data_Asset](capi-rdb-data-asset.md) * value. |
+| [Data_Asset](capi-rdb-data-asset.md) *value | Indicates the const [Data_Asset](capi-rdb-data-asset.md) * value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.      [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success.      [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. |
+| int | Returns the status code of the execution. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. |
 
 **Reference**:
 
@@ -74,8 +70,6 @@ int OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Data_Asset **val
 
 Put the [Data_Asset](capi-rdb-data-asset.md) * value of given count to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -84,14 +78,14 @@ Put the [Data_Asset](capi-rdb-data-asset.md) * value of given count to this [OH_
 | -- | -- |
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an [OH_VBucket](capi-rdb-oh-vbucket.md) instance. |
 | const char *field | Indicates the name of the column. |
-| Data_Asset **value | Indicates the [Data_Asset](capi-rdb-data-asset.md) value of given count. |
+| [Data_Asset](capi-rdb-data-asset.md) **value | Indicates the [Data_Asset](capi-rdb-data-asset.md) value of given count. |
 | uint32_t count | Indicates the count of value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.      [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success.      [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. |
+| int | Returns the status code of the execution. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. |
 
 **Reference**:
 
@@ -108,8 +102,6 @@ int OH_VBucket_PutFloatVector(OH_VBucket *bucket, const char *field, const float
 
 Put the float vector to the OH_VBucket object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -125,7 +117,7 @@ Put the float vector to the OH_VBucket object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.      [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success.      [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. |
+| int | Returns the status code of the execution. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. |
 
 **Reference**:
 
@@ -141,8 +133,6 @@ int OH_VBucket_PutUnlimitedInt(OH_VBucket *bucket, const char *field, int sign, 
 **Description**
 
 Put the an integer of any length to the OH_VBucket object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -160,7 +150,7 @@ Put the an integer of any length to the OH_VBucket object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.      [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success.      [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. |
+| int | Returns the status code of the execution. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) - success. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. |
 
 **Reference**:
 

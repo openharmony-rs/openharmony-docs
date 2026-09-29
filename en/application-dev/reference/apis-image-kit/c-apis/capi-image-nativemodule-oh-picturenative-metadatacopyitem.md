@@ -1,7 +1,7 @@
 # OH_PictureNative_MetadataCopyItem
 
 ```c
-typedef struct OH_PictureNative_MetadataCopyItem {...} OH_PictureNative_MetadataCopyItem
+struct OH_PictureNative_MetadataCopyItem {...}
 ```
 
 ## Overview
@@ -22,7 +22,7 @@ This structure is used to specify a metadata copy rule when creating a deep copy
 
 | Name | Description |
 | -- | -- |
-| Image_MetadataType srcType | Source metadata type. It specifies the type of metadata to be copied from the source picture.<br>**Since**: 26.0.0 |
-| Image_MetadataType dstType | Destination metadata type. It specifies the type under which the copied metadata will be stored in the destination picture.<br>**Since**: 26.0.0 |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) srcType | Source metadata type. It specifies the type of metadata to be copied from the source picture.<br>**Since**: 26.0.0 |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) dstType | Destination metadata type. It specifies the type under which the copied metadata will be stored in the destination picture.<br>**Since**: 26.0.0 |
 
 

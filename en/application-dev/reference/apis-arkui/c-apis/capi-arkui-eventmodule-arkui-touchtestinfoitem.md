@@ -6,7 +6,7 @@ typedef struct ArkUI_TouchTestInfoItem ArkUI_TouchTestInfoItem
 
 ## Overview
 
-Defines touch test information items. The touch test information items contain information about subcomponents involved in a touch test. You can obtain the subcomponent information via the {@link OH_ArkUI_TouchTestInfoItem_GetXXX} APIs.
+Defines touch test information items. The touch test information items contain information about subcomponents involved in a touch test. You can obtain the subcomponent information via the OH_ArkUI_TouchTestInfoItem_GetXXX APIs.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

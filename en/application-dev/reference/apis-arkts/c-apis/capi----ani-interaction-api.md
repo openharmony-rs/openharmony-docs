@@ -2,6 +2,8 @@
 
 ## Overview
 
+**System capability**: SystemCapability.ArkCompiler.ANI
+
 ## Summary
 
 ### Member functions
@@ -438,7 +440,7 @@ Retrieves the version information.<br> This function retrieves the version infor
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### GetVM()
 
@@ -463,7 +465,7 @@ Retrieves the Virtual Machine (VM) instance.<br> This function retrieves the VM 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_New()
 
@@ -491,7 +493,7 @@ Creates a new object of a specified class using a constructor method.<br> This f
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_New_A()
 
@@ -519,7 +521,7 @@ Creates a new object of a specified class using a constructor method (array-base
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_New_V()
 
@@ -547,7 +549,7 @@ Creates a new object of a specified class using a constructor method (variadic a
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetType()
 
@@ -573,7 +575,7 @@ Retrieves the type of a given object.<br> This function retrieves the type of th
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_InstanceOf()
 
@@ -600,7 +602,7 @@ Checks if an object is an instance of a specified type.<br> This function checks
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Type_GetSuperClass()
 
@@ -626,7 +628,7 @@ Retrieves the superclass of a specified type.<br> This function retrieves the su
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Type_IsAssignableFrom()
 
@@ -653,7 +655,7 @@ Determines if one type is assignable from another.<br> This function checks if a
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### FindModule()
 
@@ -679,7 +681,7 @@ Finds a module by its descriptor.<br> This function locates a module based on it
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### FindNamespace()
 
@@ -705,7 +707,7 @@ Finds a namespace by its descriptor.<br> This function locates a namespace based
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### FindClass()
 
@@ -731,7 +733,7 @@ Finds a class by its descriptor.<br> This function locates a class based on its 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### FindEnum()
 
@@ -757,7 +759,7 @@ Finds an enum by its descriptor.<br> This function locates an enum based on its 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Module_FindFunction()
 
@@ -785,7 +787,7 @@ Finds a function within a module by its name and signature.<br> This function lo
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Module_FindVariable()
 
@@ -812,7 +814,7 @@ Finds a variable within a module by its name.<br> This function locates a variab
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Namespace_FindFunction()
 
@@ -840,7 +842,7 @@ Finds a function within a namespace by its name and signature.<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Namespace_FindVariable()
 
@@ -867,7 +869,7 @@ Finds a variable within a namespace by its name.<br> This function locates a var
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Module_BindNativeFunctions()
 
@@ -894,7 +896,7 @@ Binds native functions to a module.<br> This function binds an array of native f
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Namespace_BindNativeFunctions()
 
@@ -921,7 +923,7 @@ Binds native functions to a namespace.<br> This function binds an array of nativ
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_BindNativeMethods()
 
@@ -948,7 +950,7 @@ Binds native methods to a class.<br> This function binds an array of native inst
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Reference_Delete()
 
@@ -973,7 +975,7 @@ Deletes a local reference.<br> This function deletes a specified local reference
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### EnsureEnoughReferences()
 
@@ -998,7 +1000,7 @@ Ensures enough local references are available.<br> This function checks and ensu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### CreateLocalScope()
 
@@ -1023,7 +1025,7 @@ Creates a new local scope for references.<br> This function creates a local scop
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### DestroyLocalScope()
 
@@ -1047,7 +1049,7 @@ Destroys the current local scope.<br> This function destroys the current local s
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### CreateEscapeLocalScope()
 
@@ -1072,7 +1074,7 @@ Creates a new escape local scope.<br> This function creates a local scope for re
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### DestroyEscapeLocalScope()
 
@@ -1098,7 +1100,7 @@ Destroys the current escape local scope.<br> This function destroys the current 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ThrowError()
 
@@ -1123,7 +1125,7 @@ Throws an error.<br> This function throws the specified error in the current env
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ExistUnhandledError()
 
@@ -1148,7 +1150,7 @@ Checks if there are unhandled errors.<br> This function determines if there are 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### GetUnhandledError()
 
@@ -1173,7 +1175,7 @@ Retrieves the current unhandled error.<br> This function fetches the unhandled e
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ResetError()
 
@@ -1197,7 +1199,7 @@ Resets the current error state.<br> This function clears the error state in the 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### DescribeError()
 
@@ -1221,7 +1223,7 @@ Provides a description of the current error.<br> This function prints the stack 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Abort()
 
@@ -1246,7 +1248,7 @@ Aborts execution with a message.<br> This function terminates execution with the
 
 | Type | Description |
 | -- | -- |
-| ani_status | Does not return; the process terminates. |
+| [ani_status](capi-ani-h.md#ani_status) | Does not return; the process terminates. |
 
 ### GetNull()
 
@@ -1271,7 +1273,7 @@ Retrieves a null reference.<br> This function provides a null reference in the s
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### GetUndefined()
 
@@ -1296,7 +1298,7 @@ Retrieves an undefined reference.<br> This function provides an undefined refere
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Reference_IsNull()
 
@@ -1322,7 +1324,7 @@ Checks if a reference is null.<br> This function determines if the specified ref
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Reference_IsUndefined()
 
@@ -1348,7 +1350,7 @@ Checks if a reference is undefined.<br> This function determines if the specifie
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Reference_IsNullishValue()
 
@@ -1374,7 +1376,7 @@ Checks if a reference is nullish value (null or undefined).<br> This function de
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Reference_Equals()
 
@@ -1401,7 +1403,7 @@ Compares two references for equality.<br> This function checks if two references
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Reference_StrictEquals()
 
@@ -1428,7 +1430,7 @@ Compares two references for strict equality.<br> This function checks if two ref
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### String_NewUTF16()
 
@@ -1455,7 +1457,7 @@ Creates a new UTF-16 string.<br> This function creates a new string from the pro
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### String_GetUTF16Size()
 
@@ -1481,7 +1483,7 @@ Retrieves the size of a UTF-16 string.<br> This function retrieves the size (in 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### String_GetUTF16()
 
@@ -1509,7 +1511,7 @@ Retrieves the UTF-16 encoded data of a string.<br> This function copies the UTF-
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### String_GetUTF16SubString()
 
@@ -1539,7 +1541,7 @@ Retrieves a substring of a UTF-16 string.<br> This function copies a portion of 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### String_NewUTF8()
 
@@ -1566,7 +1568,7 @@ Creates a new UTF-8 string.<br> This function creates a new string from the prov
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### String_GetUTF8Size()
 
@@ -1592,7 +1594,7 @@ Retrieves the size of a UTF-8 string.<br> This function retrieves the size (in b
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### String_GetUTF8()
 
@@ -1620,7 +1622,7 @@ Retrieves the UTF-8 encoded data of a string.<br> This function copies the UTF-8
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### String_GetUTF8SubString()
 
@@ -1650,7 +1652,7 @@ Retrieves a substring of a UTF-8 string.<br> This function copies a portion of t
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Array_GetLength()
 
@@ -1676,7 +1678,7 @@ Retrieves the length of an Array.<br> This function retrieves the length of the 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Array_New()
 
@@ -1702,7 +1704,7 @@ This function creates a new Array of the specified length.
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Array_Set()
 
@@ -1729,7 +1731,7 @@ Sets a value to an Array.<br> This function sets a value at a given index in Arr
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Array_Get()
 
@@ -1756,7 +1758,7 @@ Retrieves a value from an Array.<br> This function retrieves a value at a given 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Array_Push()
 
@@ -1782,7 +1784,7 @@ Push a value to the end of Array.<br> This function pushes a value to the end of
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Array_Pop()
 
@@ -1808,7 +1810,7 @@ Retrieves the last element and erases it from array.<br> This function retrieves
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### FixedArray_GetLength()
 
@@ -1834,7 +1836,7 @@ Retrieves the length of a FixedArray.<br> This function retrieves the length of 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_New_Boolean()
 
@@ -1860,7 +1862,7 @@ Creates a new ValueArray of booleans.<br> This function creates a new ValueArray
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_New_Char()
 
@@ -1886,7 +1888,7 @@ Creates a new ValueArray of characters.<br> This function creates a new ValueArr
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_New_Byte()
 
@@ -1912,7 +1914,7 @@ Creates a new ValueArray of bytes.<br> This function creates a new ValueArray of
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_New_Short()
 
@@ -1938,7 +1940,7 @@ Creates a new ValueArray of shorts.<br> This function creates a new ValueArray o
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_New_Int()
 
@@ -1964,7 +1966,7 @@ Creates a new ValueArray of integers.<br> This function creates a new ValueArray
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_New_Long()
 
@@ -1990,7 +1992,7 @@ Creates a new ValueArray of long integers.<br> This function creates a new Value
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_New_Float()
 
@@ -2016,7 +2018,7 @@ Creates a new ValueArray of floats.<br> This function creates a new ValueArray o
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_New_Double()
 
@@ -2042,7 +2044,7 @@ Creates a new ValueArray of doubles.<br> This function creates a new ValueArray 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_GetRegion_Boolean()
 
@@ -2070,7 +2072,7 @@ Retrieves a region of boolean values from a ValueArray.<br> This function retrie
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_GetRegion_Char()
 
@@ -2098,7 +2100,7 @@ Retrieves a region of character values from a ValueArray.<br> This function retr
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_GetRegion_Byte()
 
@@ -2126,7 +2128,7 @@ Retrieves a region of byte values from a ValueArray.<br> This function retrieves
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_GetRegion_Short()
 
@@ -2154,7 +2156,7 @@ Retrieves a region of short values from a ValueArray.<br> This function retrieve
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_GetRegion_Int()
 
@@ -2182,7 +2184,7 @@ Retrieves a region of integer values from a ValueArray.<br> This function retrie
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_GetRegion_Long()
 
@@ -2210,7 +2212,7 @@ Retrieves a region of long integer values from a ValueArray.<br> This function r
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_GetRegion_Float()
 
@@ -2238,7 +2240,7 @@ Retrieves a region of float values from a ValueArray.<br> This function retrieve
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_GetRegion_Double()
 
@@ -2266,7 +2268,7 @@ Retrieves a region of double values from a ValueArray.<br> This function retriev
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_SetRegion_Boolean()
 
@@ -2294,7 +2296,7 @@ Sets a region of boolean values in a ValueArray.<br> This function sets a portio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_SetRegion_Char()
 
@@ -2322,7 +2324,7 @@ Sets a region of character values in a ValueArray.<br> This function sets a port
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_SetRegion_Byte()
 
@@ -2350,7 +2352,7 @@ Sets a region of byte values in a ValueArray.<br> This function sets a portion o
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_SetRegion_Short()
 
@@ -2378,7 +2380,7 @@ Sets a region of short values in a ValueArray.<br> This function sets a portion 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_SetRegion_Int()
 
@@ -2406,7 +2408,7 @@ Sets a region of integer values in a ValueArray.<br> This function sets a portio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_SetRegion_Long()
 
@@ -2434,7 +2436,7 @@ Sets a region of long integer values in a ValueArray.<br> This function sets a p
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_SetRegion_Float()
 
@@ -2462,7 +2464,7 @@ Sets a region of float values in a ValueArray.<br> This function sets a portion 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_SetRegion_Double()
 
@@ -2490,7 +2492,7 @@ Sets a region of double values in a ValueArray.<br> This function sets a portion
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### FixedArray_New()
 
@@ -2518,7 +2520,7 @@ Creates a new FixedArray of references.<br> This function creates a new FixedArr
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### FixedArray_Set()
 
@@ -2545,7 +2547,7 @@ Sets a reference at a specific index in a FixedArray.<br> This function sets the
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### FixedArray_Get()
 
@@ -2572,7 +2574,7 @@ Retrieves a reference from a specific index in a FixedArray.<br> This function r
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Enum_GetEnumItemByName()
 
@@ -2599,7 +2601,7 @@ Retrieves an enum item by its name.<br> This function retrieves an enum item ass
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Enum_GetEnumItemByIndex()
 
@@ -2626,7 +2628,7 @@ Retrieves an enum item by its index.<br> This function retrieves an enum item lo
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### EnumItem_GetEnum()
 
@@ -2652,7 +2654,7 @@ Retrieves the enum associated with an enum item.<br> This function retrieves the
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### EnumItem_GetValue_Int()
 
@@ -2678,7 +2680,7 @@ Retrieves the integer value of an enum item.<br> This function retrieves the int
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### EnumItem_GetValue_String()
 
@@ -2704,7 +2706,7 @@ Retrieves the string value of an enum item.<br> This function retrieves the stri
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### EnumItem_GetName()
 
@@ -2730,7 +2732,7 @@ Retrieves the name of an enum item.<br> This function retrieves the name associa
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### EnumItem_GetIndex()
 
@@ -2756,7 +2758,7 @@ Retrieves the index of an enum item.<br> This function retrieves the index of th
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### FunctionalObject_Call()
 
@@ -2784,7 +2786,7 @@ Invokes an object of function type.<br> This function invokes an object of funct
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_SetValue_Boolean()
 
@@ -2810,7 +2812,7 @@ Sets a boolean value to a variable.<br> This function assigns a boolean value to
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_SetValue_Char()
 
@@ -2836,7 +2838,7 @@ Sets a character value to a variable.<br> This function assigns a character valu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_SetValue_Byte()
 
@@ -2862,7 +2864,7 @@ Sets a byte value to a variable.<br> This function assigns a byte value to the s
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_SetValue_Short()
 
@@ -2888,7 +2890,7 @@ Sets a short value to a variable.<br> This function assigns a short integer valu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_SetValue_Int()
 
@@ -2914,7 +2916,7 @@ Sets an integer value to a variable.<br> This function assigns an integer value 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_SetValue_Long()
 
@@ -2940,7 +2942,7 @@ Sets a long value to a variable.<br> This function assigns a long integer value 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_SetValue_Float()
 
@@ -2966,7 +2968,7 @@ Sets a float value to a variable.<br> This function assigns a float value to the
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_SetValue_Double()
 
@@ -2992,7 +2994,7 @@ Sets a double value to a variable.<br> This function assigns a double value to t
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_SetValue_Ref()
 
@@ -3018,7 +3020,7 @@ Sets a reference value to a variable.<br> This function assigns a reference valu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_GetValue_Boolean()
 
@@ -3044,7 +3046,7 @@ Retrieves a boolean value from a variable.<br> This function fetches a boolean v
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_GetValue_Char()
 
@@ -3070,7 +3072,7 @@ Retrieves a character value from a variable.<br> This function fetches a charact
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_GetValue_Byte()
 
@@ -3096,7 +3098,7 @@ Retrieves a byte value from a variable.<br> This function fetches a byte value f
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_GetValue_Short()
 
@@ -3122,7 +3124,7 @@ Retrieves a short value from a variable.<br> This function fetches a short integ
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_GetValue_Int()
 
@@ -3148,7 +3150,7 @@ Retrieves an integer value from a variable.<br> This function fetches an integer
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_GetValue_Long()
 
@@ -3174,7 +3176,7 @@ Retrieves a long value from a variable.<br> This function fetches a long integer
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_GetValue_Float()
 
@@ -3200,7 +3202,7 @@ Retrieves a float value from a variable.<br> This function fetches a float value
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_GetValue_Double()
 
@@ -3226,7 +3228,7 @@ Retrieves a double value from a variable.<br> This function fetches a double val
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Variable_GetValue_Ref()
 
@@ -3252,7 +3254,7 @@ Retrieves a reference value from a variable.<br> This function fetches a referen
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Boolean()
 
@@ -3279,7 +3281,7 @@ Calls a function and retrieves a boolean result.<br> This function calls the spe
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Boolean_A()
 
@@ -3306,7 +3308,7 @@ Calls a function and retrieves a boolean result (array-based).<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Boolean_V()
 
@@ -3333,7 +3335,7 @@ Calls a function and retrieves a boolean result (variadic arguments).<br> This f
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Char()
 
@@ -3360,7 +3362,7 @@ Calls a function and retrieves a character result.<br> This function calls the s
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Char_A()
 
@@ -3387,7 +3389,7 @@ Calls a function and retrieves a character result (array-based).<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Char_V()
 
@@ -3414,7 +3416,7 @@ Calls a function and retrieves a character result (variadic arguments).<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Byte()
 
@@ -3441,7 +3443,7 @@ Calls a function and retrieves a byte result.<br> This function calls the specif
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Byte_A()
 
@@ -3468,7 +3470,7 @@ Calls a function and retrieves a byte result (array-based).<br> This function ca
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Byte_V()
 
@@ -3495,7 +3497,7 @@ Calls a function and retrieves a byte result (variadic arguments).<br> This func
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Short()
 
@@ -3522,7 +3524,7 @@ Calls a function and retrieves a short result.<br> This function calls the speci
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Short_A()
 
@@ -3549,7 +3551,7 @@ Calls a function and retrieves a short result (array-based).<br> This function c
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Short_V()
 
@@ -3576,7 +3578,7 @@ Calls a function and retrieves a short result (variadic arguments).<br> This fun
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Int()
 
@@ -3603,7 +3605,7 @@ Calls a function and retrieves an integer result.<br> This function calls the sp
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Int_A()
 
@@ -3630,7 +3632,7 @@ Calls a function and retrieves an integer result (array-based).<br> This functio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Int_V()
 
@@ -3657,7 +3659,7 @@ Calls a function and retrieves an integer result (variadic arguments).<br> This 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Long()
 
@@ -3684,7 +3686,7 @@ Calls a function and retrieves a long result.<br> This function calls the specif
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Long_A()
 
@@ -3711,7 +3713,7 @@ Calls a function and retrieves a long result (array-based).<br> This function ca
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Long_V()
 
@@ -3738,7 +3740,7 @@ Calls a function and retrieves a long result (variadic arguments).<br> This func
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Float()
 
@@ -3765,7 +3767,7 @@ Calls a function and retrieves a float result.<br> This function calls the speci
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Float_A()
 
@@ -3792,7 +3794,7 @@ Calls a function and retrieves a float result (array-based).<br> This function c
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Float_V()
 
@@ -3819,7 +3821,7 @@ Calls a function and retrieves a float result (variadic arguments).<br> This fun
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Double()
 
@@ -3846,7 +3848,7 @@ Calls a function and retrieves a double result.<br> This function calls the spec
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Double_A()
 
@@ -3873,7 +3875,7 @@ Calls a function and retrieves a double result (array-based).<br> This function 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Double_V()
 
@@ -3900,7 +3902,7 @@ Calls a function and retrieves a double result (variadic arguments).<br> This fu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Ref()
 
@@ -3927,7 +3929,7 @@ Calls a function and retrieves a reference result.<br> This function calls the s
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Ref_A()
 
@@ -3954,7 +3956,7 @@ Calls a function and retrieves a reference result (array-based).<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Ref_V()
 
@@ -3981,7 +3983,7 @@ Calls a function and retrieves a reference result (variadic arguments).<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Void()
 
@@ -4007,7 +4009,7 @@ Calls a function without returning a result.<br> This function calls the specifi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Void_A()
 
@@ -4033,7 +4035,7 @@ Calls a function without returning a result (array-based).<br> This function cal
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Function_Call_Void_V()
 
@@ -4059,7 +4061,7 @@ Calls a function without returning a result (variadic arguments).<br> This funct
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_FindField()
 
@@ -4086,7 +4088,7 @@ Finds a field from by its name.<br> This function locates a field based on its n
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_FindStaticField()
 
@@ -4113,7 +4115,7 @@ Finds a static field by its name.<br> This function locates a static field based
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_FindMethod()
 
@@ -4141,7 +4143,7 @@ Finds a method from by its name and signature.<br> This function locates a metho
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_FindStaticMethod()
 
@@ -4169,7 +4171,7 @@ Finds a static method from by its name and signature.<br> This function locates 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_FindSetter()
 
@@ -4196,7 +4198,7 @@ Finds a setter method from by its name.<br> This function locates a setter metho
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_FindGetter()
 
@@ -4223,7 +4225,7 @@ Finds a getter method from by its name.<br> This function locates a getter metho
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_FindIndexableGetter()
 
@@ -4250,7 +4252,7 @@ Finds an indexable getter method from by its signature.<br> This function locate
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_FindIndexableSetter()
 
@@ -4277,7 +4279,7 @@ Finds an indexable setter method from by its signature.<br> This function locate
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_FindIterator()
 
@@ -4303,7 +4305,7 @@ Finds an iterator method.<br> This function locates an iterator method
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticField_Boolean()
 
@@ -4330,7 +4332,7 @@ Retrieves a boolean value from a static field of a class.<br> This function retr
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticField_Char()
 
@@ -4357,7 +4359,7 @@ Retrieves a character value from a static field of a class.<br> This function re
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticField_Byte()
 
@@ -4384,7 +4386,7 @@ Retrieves a byte value from a static field of a class.<br> This function retriev
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticField_Short()
 
@@ -4411,7 +4413,7 @@ Retrieves a short value from a static field of a class.<br> This function retrie
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticField_Int()
 
@@ -4438,7 +4440,7 @@ Retrieves an integer value from a static field of a class.<br> This function ret
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticField_Long()
 
@@ -4465,7 +4467,7 @@ Retrieves a long value from a static field of a class.<br> This function retriev
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticField_Float()
 
@@ -4492,7 +4494,7 @@ Retrieves a float value from a static field of a class.<br> This function retrie
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticField_Double()
 
@@ -4519,7 +4521,7 @@ Retrieves a double value from a static field of a class.<br> This function retri
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticField_Ref()
 
@@ -4546,7 +4548,7 @@ Retrieves a reference value from a static field of a class.<br> This function re
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticField_Boolean()
 
@@ -4573,7 +4575,7 @@ Sets a boolean value to a static field of a class.<br> This function assigns a b
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticField_Char()
 
@@ -4600,7 +4602,7 @@ Sets a character value to a static field of a class.<br> This function assigns a
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticField_Byte()
 
@@ -4627,7 +4629,7 @@ Sets a byte value to a static field of a class.<br> This function assigns a byte
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticField_Short()
 
@@ -4654,7 +4656,7 @@ Sets a short value to a static field of a class.<br> This function assigns a sho
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticField_Int()
 
@@ -4681,7 +4683,7 @@ Sets an integer value to a static field of a class.<br> This function assigns an
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticField_Long()
 
@@ -4708,7 +4710,7 @@ Sets a long value to a static field of a class.<br> This function assigns a long
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticField_Float()
 
@@ -4735,7 +4737,7 @@ Sets a float value to a static field of a class.<br> This function assigns a flo
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticField_Double()
 
@@ -4762,7 +4764,7 @@ Sets a double value to a static field of a class.<br> This function assigns a do
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticField_Ref()
 
@@ -4789,7 +4791,7 @@ Sets a reference value to a static field of a class.<br> This function assigns a
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticFieldByName_Boolean()
 
@@ -4816,7 +4818,7 @@ Retrieves a boolean value from a static field of a class by its name.<br> This f
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticFieldByName_Char()
 
@@ -4843,7 +4845,7 @@ Retrieves a character value from a static field of a class by its name.<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticFieldByName_Byte()
 
@@ -4870,7 +4872,7 @@ Retrieves a byte value from a static field of a class by its name.<br> This func
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticFieldByName_Short()
 
@@ -4897,7 +4899,7 @@ Retrieves a short value from a static field of a class by its name.<br> This fun
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticFieldByName_Int()
 
@@ -4924,7 +4926,7 @@ Retrieves an integer value from a static field of a class by its name.<br> This 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticFieldByName_Long()
 
@@ -4951,7 +4953,7 @@ Retrieves a long value from a static field of a class by its name.<br> This func
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticFieldByName_Float()
 
@@ -4978,7 +4980,7 @@ Retrieves a float value from a static field of a class by its name.<br> This fun
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticFieldByName_Double()
 
@@ -5005,7 +5007,7 @@ Retrieves a double value from a static field of a class by its name.<br> This fu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_GetStaticFieldByName_Ref()
 
@@ -5032,7 +5034,7 @@ Retrieves a reference value from a static field of a class by its name.<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticFieldByName_Boolean()
 
@@ -5059,7 +5061,7 @@ Sets a boolean value to a static field of a class by its name.<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticFieldByName_Char()
 
@@ -5086,7 +5088,7 @@ Sets a character value to a static field of a class by its name.<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticFieldByName_Byte()
 
@@ -5113,7 +5115,7 @@ Sets a byte value to a static field of a class by its name.<br> This function as
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticFieldByName_Short()
 
@@ -5140,7 +5142,7 @@ Sets a short value to a static field of a class by its name.<br> This function a
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticFieldByName_Int()
 
@@ -5167,7 +5169,7 @@ Sets an integer value to a static field of a class by its name.<br> This functio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticFieldByName_Long()
 
@@ -5194,7 +5196,7 @@ Sets a long value to a static field of a class by its name.<br> This function as
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticFieldByName_Float()
 
@@ -5221,7 +5223,7 @@ Sets a float value to a static field of a class by its name.<br> This function a
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticFieldByName_Double()
 
@@ -5248,7 +5250,7 @@ Sets a double value to a static field of a class by its name.<br> This function 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_SetStaticFieldByName_Ref()
 
@@ -5275,7 +5277,7 @@ Sets a reference value to a static field of a class by its name.<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Boolean()
 
@@ -5303,7 +5305,7 @@ Calls a static method with a boolean return type.<br> This function calls the sp
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Boolean_A()
 
@@ -5331,7 +5333,7 @@ Calls a static method with a boolean return type (array-based).<br> This functio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Boolean_V()
 
@@ -5359,7 +5361,7 @@ Calls a static method with a boolean return type (variadic arguments).<br> This 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Char()
 
@@ -5387,7 +5389,7 @@ Calls a static method with a character return type.<br> This function calls the 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Char_A()
 
@@ -5415,7 +5417,7 @@ Calls a static method with a character return type (array-based).<br> This funct
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Char_V()
 
@@ -5443,7 +5445,7 @@ Calls a static method with a character return type (variadic arguments).<br> Thi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Byte()
 
@@ -5471,7 +5473,7 @@ Calls a static method with a byte return type.<br> This function calls the speci
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Byte_A()
 
@@ -5499,7 +5501,7 @@ Calls a static method with a byte return type (array-based).<br> This function c
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Byte_V()
 
@@ -5527,7 +5529,7 @@ Calls a static method with a byte return type (variadic arguments).<br> This fun
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Short()
 
@@ -5555,7 +5557,7 @@ Calls a static method with a short return type.<br> This function calls the spec
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Short_A()
 
@@ -5583,7 +5585,7 @@ Calls a static method with a short return type (array-based).<br> This function 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Short_V()
 
@@ -5611,7 +5613,7 @@ Calls a static method with a short return type (variadic arguments).<br> This fu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Int()
 
@@ -5639,7 +5641,7 @@ Calls a static method with an integer return type.<br> This function calls the s
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Int_A()
 
@@ -5667,7 +5669,7 @@ Calls a static method with an integer return type (array-based).<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Int_V()
 
@@ -5695,7 +5697,7 @@ Calls a static method with an integer return type (variadic arguments).<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Long()
 
@@ -5723,7 +5725,7 @@ Calls a static method with a long return type.<br> This function calls the speci
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Long_A()
 
@@ -5751,7 +5753,7 @@ Calls a static method with a long return type (array-based).<br> This function c
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Long_V()
 
@@ -5779,7 +5781,7 @@ Calls a static method with a long return type (variadic arguments).<br> This fun
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Float()
 
@@ -5807,7 +5809,7 @@ Calls a static method with a float return type.<br> This function calls the spec
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Float_A()
 
@@ -5835,7 +5837,7 @@ Calls a static method with a float return type (array-based).<br> This function 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Float_V()
 
@@ -5863,7 +5865,7 @@ Calls a static method with a float return type (variadic arguments).<br> This fu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Double()
 
@@ -5891,7 +5893,7 @@ Calls a static method with a double return type.<br> This function calls the spe
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Double_A()
 
@@ -5919,7 +5921,7 @@ Calls a static method with a double return type (array-based).<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Double_V()
 
@@ -5947,7 +5949,7 @@ Calls a static method with a double return type (variadic arguments).<br> This f
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Ref()
 
@@ -5975,7 +5977,7 @@ Calls a static method with a reference return type.<br> This function calls the 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Ref_A()
 
@@ -6003,7 +6005,7 @@ Calls a static method with a reference return type (array-based).<br> This funct
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Ref_V()
 
@@ -6031,7 +6033,7 @@ Calls a static method with a reference return type (variadic arguments).<br> Thi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Void()
 
@@ -6058,7 +6060,7 @@ Calls a static method with no return value.<br> This function calls the specifie
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Void_A()
 
@@ -6085,7 +6087,7 @@ Calls a static method with no return value (array-based).<br> This function call
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethod_Void_V()
 
@@ -6112,7 +6114,7 @@ Calls a static method with no return value (variadic arguments).<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Boolean()
 
@@ -6141,7 +6143,7 @@ Calls a static method by name with a boolean return type.<br> This function call
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Boolean_A()
 
@@ -6170,7 +6172,7 @@ Calls a static method by name with a boolean return type (array-based).<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Boolean_V()
 
@@ -6199,7 +6201,7 @@ Calls a static method by name with a boolean return type (variadic arguments).<b
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Char()
 
@@ -6228,7 +6230,7 @@ Calls a static method by name with a char return type.<br> This function calls t
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Char_A()
 
@@ -6257,7 +6259,7 @@ Calls a static method by name with a char return type (array-based).<br> This fu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Char_V()
 
@@ -6286,7 +6288,7 @@ Calls a static method by name with a char return type (variadic arguments).<br> 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Byte()
 
@@ -6315,7 +6317,7 @@ Calls a static method by name with a byte return type.<br> This function calls t
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Byte_A()
 
@@ -6344,7 +6346,7 @@ Calls a static method by name with a byte return type (array-based).<br> This fu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Byte_V()
 
@@ -6373,7 +6375,7 @@ Calls a static method by name with a byte return type (variadic arguments).<br> 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Short()
 
@@ -6402,7 +6404,7 @@ Calls a static method by name with a short return type.<br> This function calls 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Short_A()
 
@@ -6431,7 +6433,7 @@ Calls a static method by name with a short return type (array-based).<br> This f
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Short_V()
 
@@ -6460,7 +6462,7 @@ Calls a static method by name with a short return type (variadic arguments).<br>
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Int()
 
@@ -6489,7 +6491,7 @@ Calls a static method by name with a integer return type.<br> This function call
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Int_A()
 
@@ -6518,7 +6520,7 @@ Calls a static method by name with a integer return type (array-based).<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Int_V()
 
@@ -6547,7 +6549,7 @@ Calls a static method by name with a integer return type (variadic arguments).<b
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Long()
 
@@ -6576,7 +6578,7 @@ Calls a static method by name with a long return type.<br> This function calls t
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Long_A()
 
@@ -6605,7 +6607,7 @@ Calls a static method by name with a long return type (array-based).<br> This fu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Long_V()
 
@@ -6634,7 +6636,7 @@ Calls a static method by name with a long return type (variadic arguments).<br> 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Float()
 
@@ -6663,7 +6665,7 @@ Calls a static method by name with a float return type.<br> This function calls 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Float_A()
 
@@ -6692,7 +6694,7 @@ Calls a static method by name with a float return type (array-based).<br> This f
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Float_V()
 
@@ -6721,7 +6723,7 @@ Calls a static method by name with a float return type (variadic arguments).<br>
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Double()
 
@@ -6750,7 +6752,7 @@ Calls a static method by name with a double return type.<br> This function calls
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Double_A()
 
@@ -6779,7 +6781,7 @@ Calls a static method by name with a double return type (array-based).<br> This 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Double_V()
 
@@ -6808,7 +6810,7 @@ Calls a static method by name with a double return type (variadic arguments).<br
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Ref()
 
@@ -6837,7 +6839,7 @@ Calls a static method by name with a reference return type.<br> This function ca
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Ref_A()
 
@@ -6866,7 +6868,7 @@ Calls a static method by name with a reference return type (array-based).<br> Th
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Ref_V()
 
@@ -6895,7 +6897,7 @@ Calls a static method by name with a reference return type (variadic arguments).
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Void()
 
@@ -6923,7 +6925,7 @@ Calls a static method by name with no return value.<br> This function calls the 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Void_A()
 
@@ -6951,7 +6953,7 @@ Calls a static method by name with no return value (array-based).<br> This funct
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Class_CallStaticMethodByName_Void_V()
 
@@ -6979,7 +6981,7 @@ Calls a static method by name with no return value (variadic arguments).<br> Thi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetField_Boolean()
 
@@ -7006,7 +7008,7 @@ Retrieves a boolean value from a field of an object.<br> This function retrieves
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetField_Char()
 
@@ -7033,7 +7035,7 @@ Retrieves a char value from a field of an object.<br> This function retrieves th
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetField_Byte()
 
@@ -7060,7 +7062,7 @@ Retrieves a byte value from a field of an object.<br> This function retrieves th
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetField_Short()
 
@@ -7087,7 +7089,7 @@ Retrieves a short value from a field of an object.<br> This function retrieves t
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetField_Int()
 
@@ -7114,7 +7116,7 @@ Retrieves a integer value from a field of an object.<br> This function retrieves
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetField_Long()
 
@@ -7141,7 +7143,7 @@ Retrieves a long value from a field of an object.<br> This function retrieves th
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetField_Float()
 
@@ -7168,7 +7170,7 @@ Retrieves a float value from a field of an object.<br> This function retrieves t
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetField_Double()
 
@@ -7195,7 +7197,7 @@ Retrieves a double value from a field of an object.<br> This function retrieves 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetField_Ref()
 
@@ -7222,7 +7224,7 @@ Retrieves a reference value from a field of an object.<br> This function retriev
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetField_Boolean()
 
@@ -7249,7 +7251,7 @@ Sets a boolean value to a field of an object.<br> This function assigns a boolea
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetField_Char()
 
@@ -7276,7 +7278,7 @@ Sets a char value to a field of an object.<br> This function assigns a char valu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetField_Byte()
 
@@ -7303,7 +7305,7 @@ Sets a byte value to a field of an object.<br> This function assigns a byte valu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetField_Short()
 
@@ -7330,7 +7332,7 @@ Sets a short value to a field of an object.<br> This function assigns a short va
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetField_Int()
 
@@ -7357,7 +7359,7 @@ Sets a integer value to a field of an object.<br> This function assigns a intege
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetField_Long()
 
@@ -7384,7 +7386,7 @@ Sets a long value to a field of an object.<br> This function assigns a long valu
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetField_Float()
 
@@ -7411,7 +7413,7 @@ Sets a float value to a field of an object.<br> This function assigns a float va
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetField_Double()
 
@@ -7438,7 +7440,7 @@ Sets a double value to a field of an object.<br> This function assigns a double 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetField_Ref()
 
@@ -7465,7 +7467,7 @@ Sets a reference value to a field of an object.<br> This function assigns a refe
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetFieldByName_Boolean()
 
@@ -7492,7 +7494,7 @@ Retrieves a boolean value from a field of an object by its name.<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetFieldByName_Char()
 
@@ -7519,7 +7521,7 @@ Retrieves a char value from a field of an object by its name.<br> This function 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetFieldByName_Byte()
 
@@ -7546,7 +7548,7 @@ Retrieves a byte value from a field of an object by its name.<br> This function 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetFieldByName_Short()
 
@@ -7573,7 +7575,7 @@ Retrieves a short value from a field of an object by its name.<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetFieldByName_Int()
 
@@ -7600,7 +7602,7 @@ Retrieves a integer value from a field of an object by its name.<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetFieldByName_Long()
 
@@ -7627,7 +7629,7 @@ Retrieves a long value from a field of an object by its name.<br> This function 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetFieldByName_Float()
 
@@ -7654,7 +7656,7 @@ Retrieves a float value from a field of an object by its name.<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetFieldByName_Double()
 
@@ -7681,7 +7683,7 @@ Retrieves a double value from a field of an object by its name.<br> This functio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetFieldByName_Ref()
 
@@ -7708,7 +7710,7 @@ Retrieves a reference value from a field of an object by its name.<br> This func
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetFieldByName_Boolean()
 
@@ -7735,7 +7737,7 @@ Sets a boolean value to a field of an object by its name.<br> This function assi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetFieldByName_Char()
 
@@ -7762,7 +7764,7 @@ Sets a char value to a field of an object by its name.<br> This function assigns
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetFieldByName_Byte()
 
@@ -7789,7 +7791,7 @@ Sets a byte value to a field of an object by its name.<br> This function assigns
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetFieldByName_Short()
 
@@ -7816,7 +7818,7 @@ Sets a short value to a field of an object by its name.<br> This function assign
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetFieldByName_Int()
 
@@ -7843,7 +7845,7 @@ Sets a integer value to a field of an object by its name.<br> This function assi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetFieldByName_Long()
 
@@ -7870,7 +7872,7 @@ Sets a long value to a field of an object by its name.<br> This function assigns
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetFieldByName_Float()
 
@@ -7897,7 +7899,7 @@ Sets a float value to a field of an object by its name.<br> This function assign
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetFieldByName_Double()
 
@@ -7924,7 +7926,7 @@ Sets a double value to a field of an object by its name.<br> This function assig
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetFieldByName_Ref()
 
@@ -7951,7 +7953,7 @@ Sets a reference value to a field of an object by its name.<br> This function as
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetPropertyByName_Boolean()
 
@@ -7978,7 +7980,7 @@ Retrieves a boolean value from a property of an object by its name.<br> This fun
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetPropertyByName_Char()
 
@@ -8005,7 +8007,7 @@ Retrieves a char value from a property of an object by its name.<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetPropertyByName_Byte()
 
@@ -8032,7 +8034,7 @@ Retrieves a byte value from a property of an object by its name.<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetPropertyByName_Short()
 
@@ -8059,7 +8061,7 @@ Retrieves a short value from a property of an object by its name.<br> This funct
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetPropertyByName_Int()
 
@@ -8086,7 +8088,7 @@ Retrieves a integer value from a property of an object by its name.<br> This fun
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetPropertyByName_Long()
 
@@ -8113,7 +8115,7 @@ Retrieves a long value from a property of an object by its name.<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetPropertyByName_Float()
 
@@ -8140,7 +8142,7 @@ Retrieves a float value from a property of an object by its name.<br> This funct
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetPropertyByName_Double()
 
@@ -8167,7 +8169,7 @@ Retrieves a double value from a property of an object by its name.<br> This func
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_GetPropertyByName_Ref()
 
@@ -8194,7 +8196,7 @@ Retrieves a reference value from a property of an object by its name.<br> This f
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetPropertyByName_Boolean()
 
@@ -8221,7 +8223,7 @@ Sets a boolean value to a property of an object by its name.<br> This function a
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetPropertyByName_Char()
 
@@ -8248,7 +8250,7 @@ Sets a char value to a property of an object by its name.<br> This function assi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetPropertyByName_Byte()
 
@@ -8275,7 +8277,7 @@ Sets a byte value to a property of an object by its name.<br> This function assi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetPropertyByName_Short()
 
@@ -8302,7 +8304,7 @@ Sets a short value to a property of an object by its name.<br> This function ass
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetPropertyByName_Int()
 
@@ -8329,7 +8331,7 @@ Sets a integer value to a property of an object by its name.<br> This function a
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetPropertyByName_Long()
 
@@ -8356,7 +8358,7 @@ Sets a long value to a property of an object by its name.<br> This function assi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetPropertyByName_Float()
 
@@ -8383,7 +8385,7 @@ Sets a float value to a property of an object by its name.<br> This function ass
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetPropertyByName_Double()
 
@@ -8410,7 +8412,7 @@ Sets a double value to a property of an object by its name.<br> This function as
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_SetPropertyByName_Ref()
 
@@ -8437,7 +8439,7 @@ Sets a reference value to a property of an object by its name.<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Boolean()
 
@@ -8465,7 +8467,7 @@ Calls a method on an object and retrieves a boolean return value.<br> This funct
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Boolean_A()
 
@@ -8493,7 +8495,7 @@ Calls a method on an object and retrieves a boolean return value (array-based).<
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Boolean_V()
 
@@ -8521,7 +8523,7 @@ Calls a method on an object and retrieves a boolean return value (variadic argum
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Char()
 
@@ -8549,7 +8551,7 @@ Calls a method on an object and retrieves a char return value.<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Char_A()
 
@@ -8577,7 +8579,7 @@ Calls a method on an object and retrieves a char return value (array-based).<br>
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Char_V()
 
@@ -8605,7 +8607,7 @@ Calls a method on an object and retrieves a char return value (variadic argument
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Byte()
 
@@ -8633,7 +8635,7 @@ Calls a method on an object and retrieves a byte return value.<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Byte_A()
 
@@ -8661,7 +8663,7 @@ Calls a method on an object and retrieves a byte return value (array-based).<br>
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Byte_V()
 
@@ -8689,7 +8691,7 @@ Calls a method on an object and retrieves a byte return value (variadic argument
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Short()
 
@@ -8717,7 +8719,7 @@ Calls a method on an object and retrieves a short return value.<br> This functio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Short_A()
 
@@ -8745,7 +8747,7 @@ Calls a method on an object and retrieves a short return value (array-based).<br
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Short_V()
 
@@ -8773,7 +8775,7 @@ Calls a method on an object and retrieves a short return value (variadic argumen
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Int()
 
@@ -8801,7 +8803,7 @@ Calls a method on an object and retrieves a integer return value.<br> This funct
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Int_A()
 
@@ -8829,7 +8831,7 @@ Calls a method on an object and retrieves a integer return value (array-based).<
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Int_V()
 
@@ -8857,7 +8859,7 @@ Calls a method on an object and retrieves a integer return value (variadic argum
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Long()
 
@@ -8885,7 +8887,7 @@ Calls a method on an object and retrieves a long return value.<br> This function
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Long_A()
 
@@ -8913,7 +8915,7 @@ Calls a method on an object and retrieves a long return value (array-based).<br>
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Long_V()
 
@@ -8941,7 +8943,7 @@ Calls a method on an object and retrieves a long return value (variadic argument
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Float()
 
@@ -8969,7 +8971,7 @@ Calls a method on an object and retrieves a float return value.<br> This functio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Float_A()
 
@@ -8997,7 +8999,7 @@ Calls a method on an object and retrieves a float return value (array-based).<br
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Float_V()
 
@@ -9025,7 +9027,7 @@ Calls a method on an object and retrieves a float return value (variadic argumen
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Double()
 
@@ -9053,7 +9055,7 @@ Calls a method on an object and retrieves a double return value.<br> This functi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Double_A()
 
@@ -9081,7 +9083,7 @@ Calls a method on an object and retrieves a double return value (array-based).<b
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Double_V()
 
@@ -9109,7 +9111,7 @@ Calls a method on an object and retrieves a double return value (variadic argume
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Ref()
 
@@ -9137,7 +9139,7 @@ Calls a method on an object and retrieves a reference return value.<br> This fun
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Ref_A()
 
@@ -9165,7 +9167,7 @@ Calls a method on an object and retrieves a reference return value (array-based)
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Ref_V()
 
@@ -9193,7 +9195,7 @@ Calls a method on an object and retrieves a reference return value (variadic arg
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Void()
 
@@ -9220,7 +9222,7 @@ Calls a method on an object with no return value.<br> This function calls the sp
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Void_A()
 
@@ -9247,7 +9249,7 @@ Calls a method on an object with no return value (array-based).<br> This functio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethod_Void_V()
 
@@ -9274,7 +9276,7 @@ Calls a method on an object with no return value (variadic arguments).<br> This 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Boolean()
 
@@ -9303,7 +9305,7 @@ Calls a method by name on an object and retrieves a boolean return value.<br> Th
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Boolean_A()
 
@@ -9332,7 +9334,7 @@ Calls a method by name on an object and retrieves a boolean return value (array-
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Boolean_V()
 
@@ -9361,7 +9363,7 @@ Calls a method by name on an object and retrieves a boolean return value (variad
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Char()
 
@@ -9390,7 +9392,7 @@ Calls a method by name on an object and retrieves a char return value.<br> This 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Char_A()
 
@@ -9419,7 +9421,7 @@ Calls a method by name on an object and retrieves a char return value (array-bas
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Char_V()
 
@@ -9448,7 +9450,7 @@ Calls a method by name on an object and retrieves a char return value (variadic 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Byte()
 
@@ -9477,7 +9479,7 @@ Calls a method by name on an object and retrieves a byte return value.<br> This 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Byte_A()
 
@@ -9506,7 +9508,7 @@ Calls a method by name on an object and retrieves a byte return value (array-bas
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Byte_V()
 
@@ -9535,7 +9537,7 @@ Calls a method by name on an object and retrieves a byte return value (variadic 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Short()
 
@@ -9564,7 +9566,7 @@ Calls a method by name on an object and retrieves a short return value.<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Short_A()
 
@@ -9593,7 +9595,7 @@ Calls a method by name on an object and retrieves a short return value (array-ba
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Short_V()
 
@@ -9622,7 +9624,7 @@ Calls a method by name on an object and retrieves a short return value (variadic
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Int()
 
@@ -9651,7 +9653,7 @@ Calls a method by name on an object and retrieves a integer return value.<br> Th
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Int_A()
 
@@ -9680,7 +9682,7 @@ Calls a method by name on an object and retrieves a integer return value (array-
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Int_V()
 
@@ -9709,7 +9711,7 @@ Calls a method by name on an object and retrieves a integer return value (variad
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Long()
 
@@ -9738,7 +9740,7 @@ Calls a method by name on an object and retrieves a long return value.<br> This 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Long_A()
 
@@ -9767,7 +9769,7 @@ Calls a method by name on an object and retrieves a long return value (array-bas
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Long_V()
 
@@ -9796,7 +9798,7 @@ Calls a method by name on an object and retrieves a long return value (variadic 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Float()
 
@@ -9825,7 +9827,7 @@ Calls a method by name on an object and retrieves a float return value.<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Float_A()
 
@@ -9854,7 +9856,7 @@ Calls a method by name on an object and retrieves a float return value (array-ba
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Float_V()
 
@@ -9883,7 +9885,7 @@ Calls a method by name on an object and retrieves a float return value (variadic
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Double()
 
@@ -9912,7 +9914,7 @@ Calls a method by name on an object and retrieves a double return value.<br> Thi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Double_A()
 
@@ -9941,7 +9943,7 @@ Calls a method by name on an object and retrieves a double return value (array-b
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Double_V()
 
@@ -9970,7 +9972,7 @@ Calls a method by name on an object and retrieves a double return value (variadi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Ref()
 
@@ -9999,7 +10001,7 @@ Calls a method by name on an object and retrieves a reference return value.<br> 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Ref_A()
 
@@ -10028,7 +10030,7 @@ Calls a method by name on an object and retrieves a reference return value (arra
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Ref_V()
 
@@ -10057,7 +10059,7 @@ Calls a method by name on an object and retrieves a reference return value (vari
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Void()
 
@@ -10085,7 +10087,7 @@ Calls a method by name on an object with no return value.<br> This function call
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Void_A()
 
@@ -10113,7 +10115,7 @@ Calls a method by name on an object with no return value (array-based).<br> This
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Object_CallMethodByName_Void_V()
 
@@ -10141,7 +10143,7 @@ Calls a method by name on an object with no return value (variadic arguments).<b
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetNumberOfItems()
 
@@ -10167,7 +10169,7 @@ Retrieves the number of items in a tuple value.<br> This function retrieves the 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetItem_Boolean()
 
@@ -10194,7 +10196,7 @@ Retrieves a boolean item from a tuple value.<br> This function retrieves the boo
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetItem_Char()
 
@@ -10221,7 +10223,7 @@ Retrieves a char item from a tuple value.<br> This function retrieves the char v
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetItem_Byte()
 
@@ -10248,7 +10250,7 @@ Retrieves a byte item from a tuple value.<br> This function retrieves the byte v
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetItem_Short()
 
@@ -10275,7 +10277,7 @@ Retrieves a short item from a tuple value.<br> This function retrieves the short
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetItem_Int()
 
@@ -10302,7 +10304,7 @@ Retrieves a integer item from a tuple value.<br> This function retrieves the int
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetItem_Long()
 
@@ -10329,7 +10331,7 @@ Retrieves a long item from a tuple value.<br> This function retrieves the long v
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetItem_Float()
 
@@ -10356,7 +10358,7 @@ Retrieves a float item from a tuple value.<br> This function retrieves the float
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetItem_Double()
 
@@ -10383,7 +10385,7 @@ Retrieves a double item from a tuple value.<br> This function retrieves the doub
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_GetItem_Ref()
 
@@ -10410,7 +10412,7 @@ Retrieves a reference item from a tuple value.<br> This function retrieves the r
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_SetItem_Boolean()
 
@@ -10437,7 +10439,7 @@ Sets a boolean value to an item in a tuple value.<br> This function assigns a bo
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_SetItem_Char()
 
@@ -10464,7 +10466,7 @@ Sets a char value to an item in a tuple value.<br> This function assigns a char 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_SetItem_Byte()
 
@@ -10491,7 +10493,7 @@ Sets a byte value to an item in a tuple value.<br> This function assigns a byte 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_SetItem_Short()
 
@@ -10518,7 +10520,7 @@ Sets a short value to an item in a tuple value.<br> This function assigns a shor
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_SetItem_Int()
 
@@ -10545,7 +10547,7 @@ Sets a integer value to an item in a tuple value.<br> This function assigns a in
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_SetItem_Long()
 
@@ -10572,7 +10574,7 @@ Sets a long value to an item in a tuple value.<br> This function assigns a long 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_SetItem_Float()
 
@@ -10599,7 +10601,7 @@ Sets a float value to an item in a tuple value.<br> This function assigns a floa
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_SetItem_Double()
 
@@ -10626,7 +10628,7 @@ Sets a double value to an item in a tuple value.<br> This function assigns a dou
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### TupleValue_SetItem_Ref()
 
@@ -10653,7 +10655,7 @@ Sets a reference value to an item in a tuple value.<br> This function assigns a 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### GlobalReference_Create()
 
@@ -10679,7 +10681,7 @@ Creates a global reference.<br> This function creates a global reference from a 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### GlobalReference_Delete()
 
@@ -10704,7 +10706,7 @@ Deletes a global reference.<br> This function deletes the specified global refer
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### WeakReference_Create()
 
@@ -10730,7 +10732,7 @@ Creates a weak reference.<br> This function creates a weak reference from a loca
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### WeakReference_Delete()
 
@@ -10755,7 +10757,7 @@ Deletes a weak reference.<br> This function deletes the specified weak reference
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### WeakReference_GetReference()
 
@@ -10782,7 +10784,7 @@ Retrieves the local reference associated with a weak reference.<br> This functio
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### CreateArrayBuffer()
 
@@ -10809,7 +10811,7 @@ Creates a new array buffer.<br> This function creates a new array buffer with th
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ArrayBuffer_GetInfo()
 
@@ -10836,7 +10838,7 @@ Retrieves information about an array buffer.<br> This function retrieves the dat
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Promise_New()
 
@@ -10862,7 +10864,7 @@ Creates a new Promise.<br> This function creates a new promise and a resolver to
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### PromiseResolver_Resolve()
 
@@ -10888,7 +10890,7 @@ Resolves a promise.<br> This function resolves a promise by way of the resolver 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure.      The `resolver` is freed upon successful completion. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. The `resolver` is freed upon successful completion. |
 
 ### PromiseResolver_Reject()
 
@@ -10915,7 +10917,7 @@ Rejects a promise.<br> This function rejects a promise by way of the resolver wi
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure.      The `resolver` is freed upon successful completion. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. The `resolver` is freed upon successful completion. |
 
 ### Class_BindStaticNativeMethods()
 
@@ -10942,7 +10944,7 @@ Binds static native methods to a class.<br> This function binds an array of stat
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Box_Boolean()
 
@@ -10968,7 +10970,7 @@ Box a boolean value into an object.<br> This function boxes a boolean value into
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Unbox_Boolean()
 
@@ -10994,7 +10996,7 @@ Unbox a boolean object into a boolean value.<br> This function unboxes a boolean
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Box_Byte()
 
@@ -11020,7 +11022,7 @@ Box a byte value into an object.<br> This function boxes a byte value into an ob
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Unbox_Byte()
 
@@ -11046,7 +11048,7 @@ Unbox a byte object into a byte value.<br> This function unboxes a byte object i
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Box_Char()
 
@@ -11072,7 +11074,7 @@ Box a char value into an object.<br> This function boxes a char value into an ob
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Unbox_Char()
 
@@ -11098,7 +11100,7 @@ Unbox a char object into a char value.<br> This function unboxes a char object i
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Box_Short()
 
@@ -11124,7 +11126,7 @@ Box a short value into an object.<br> This function boxes a short value into an 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Unbox_Short()
 
@@ -11150,7 +11152,7 @@ Unbox a short object into a short value.<br> This function unboxes a short objec
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Box_Int()
 
@@ -11176,7 +11178,7 @@ Box a int value into an object.<br> This function boxes a int value into an obje
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Unbox_Int()
 
@@ -11202,7 +11204,7 @@ Unbox a int object into a int value.<br> This function unboxes a int object into
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Box_Long()
 
@@ -11228,7 +11230,7 @@ Box a long value into an object.<br> This function boxes a long value into an ob
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Unbox_Long()
 
@@ -11254,7 +11256,7 @@ Unbox a long object into a long value.<br> This function unboxes a long object i
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Box_Float()
 
@@ -11280,7 +11282,7 @@ Box a float value into an object.<br> This function boxes a float value into an 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Unbox_Float()
 
@@ -11306,7 +11308,7 @@ Unbox a float object into a float value.<br> This function unboxes a float objec
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Box_Double()
 
@@ -11332,7 +11334,7 @@ Box a double value into an object.<br> This function boxes a double value into a
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### Primitive_Unbox_Double()
 
@@ -11358,7 +11360,7 @@ Unbox a double object into a double value.<br> This function unboxes a double ob
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 ### ValueArray_GetLength()
 
@@ -11384,6 +11386,6 @@ Retrieves the length of a ValueArray.<br> This function retrieves the length of 
 
 | Type | Description |
 | -- | -- |
-| ani_status | Returns a status code of type `ani_status` indicating success or failure. |
+| [ani_status](capi-ani-h.md#ani_status) | Returns a status code of type `ani_status` indicating success or failure. |
 
 

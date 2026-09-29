@@ -6,8 +6,6 @@ Provides ArkUI event definitions on the native side.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)
@@ -21,7 +19,7 @@ Provides ArkUI event definitions on the native side.
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) | ArkUI_UIInputEvent | Defines a UI input event. |
 | [ArkUI_CoastingAxisEvent](capi-arkui-eventmodule-arkui-coastingaxisevent.md) | ArkUI_CoastingAxisEvent | Defines the coasting axis event. |
 | [ArkUI_TouchTestInfo](capi-arkui-eventmodule-arkui-touchtestinfo.md) | ArkUI_TouchTestInfo | Defines touch test information. |
-| [ArkUI_TouchTestInfoItem](capi-arkui-eventmodule-arkui-touchtestinfoitem.md) | ArkUI_TouchTestInfoItem | Defines touch test information items. The touch test information items contain information about subcomponents involved in a touch test. You can obtain the subcomponent information via the {@link OH_ArkUI_TouchTestInfoItem_GetXXX} APIs. |
+| [ArkUI_TouchTestInfoItem](capi-arkui-eventmodule-arkui-touchtestinfoitem.md) | ArkUI_TouchTestInfoItem | Defines touch test information items. The touch test information items contain information about subcomponents involved in a touch test. You can obtain the subcomponent information via the OH_ArkUI_TouchTestInfoItem_GetXXX APIs. |
 | [ArkUI_TouchTestInfoItem*](capi-arkui-eventmodule-arkui-touchtestinfoitem8h.md) | ArkUI_TouchTestInfoItemHandle | Defines the touch test info item handle. |
 
 ### Enum
@@ -32,6 +30,7 @@ Provides ArkUI event definitions on the native side.
 | [anonymous0](#anonymous0) | - | Defines the action types of the input event. |
 | [anonymous1](#anonymous1) | - | Defines the tool type of the touch event. |
 | [anonymous2](#anonymous2) | - | Defines the source type of the touch event. |
+| [HitTestMode](#hittestmode) | HitTestMode | Enumerates the hit test modes. |
 | [anonymous3](#anonymous3) | - | Define the action types of the mouse event. |
 | [anonymous4](#anonymous4) | - | Define the button type for mouse events. |
 | [ArkUI_ModifierKeyName](#arkui_modifierkeyname) | ArkUI_ModifierKeyName | Enumerates the modifier keys. |
@@ -60,10 +59,10 @@ Provides ArkUI event definitions on the native side.
 | [float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getxbyindex) | Obtains the x-coordinate of a specific contact point relative to the upper left corner of the current component from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0. |
 | [float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gety) | Obtains the y-coordinate relative to the upper left corner of the current component from a pointer event ( such as a touch, mouse, or axis event). |
 | [float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getybyindex) | Obtains the y-coordinate of a specific contact point relative to the upper left corner of the current component from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0. |
-| [float OH_ArkUI_PointerEvent_GetCurrentLocalX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getcurrentlocalx) | Obtains the X coordinate relative to the upper left corner of the current component from a {@link pointer event}(such as a touch event, mouse event, or axis event) based on the real-time location. |
-| [float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getcurrentlocalxbyindex) | Obtains the X coordinate of a specific contact point relative to the upper left corner of the current component from a {@link pointer event}(such as a touch event, mouse event, or axis event) based on the real-time location. |
-| [float OH_ArkUI_PointerEvent_GetCurrentLocalY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getcurrentlocaly) | Obtains the Y coordinate relative to the upper left corner of the current component from a {@link pointer event}(such as a touch event, mouse event, or axis event) based on the real-time location. |
-| [float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getcurrentlocalybyindex) | Obtains the Y coordinate of a specific contact point relative to the upper left corner of the current component from a {@link pointer event}(such as a touch event, mouse event, or axis event) based on the real-time location. |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getcurrentlocalx) | Obtains the X coordinate relative to the upper left corner of the current component from a pointer event(such as a touch event, mouse event, or axis event) based on the real-time location. |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getcurrentlocalxbyindex) | Obtains the X coordinate of a specific contact point relative to the upper left corner of the current component from a pointer event(such as a touch event, mouse event, or axis event) based on the real-time location. |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getcurrentlocaly) | Obtains the Y coordinate relative to the upper left corner of the current component from a pointer event(such as a touch event, mouse event, or axis event) based on the real-time location. |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getcurrentlocalybyindex) | Obtains the Y coordinate of a specific contact point relative to the upper left corner of the current component from a pointer event(such as a touch event, mouse event, or axis event) based on the real-time location. |
 | [float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getwindowx) | Obtains the x-coordinate relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event). |
 | [float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getwindowxbyindex) | Obtains the x-coordinate of a specific contact point relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0. |
 | [float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getwindowy) | Obtains the y-coordinate relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event). |
@@ -84,7 +83,7 @@ Provides ArkUI event definitions on the native side.
 | [float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettouchareaheight) | Obtains the height of the touch area for a pointer event. This API is applicable only to finger-based touch events, and the return value typically represents the radius of a circular touch area. |
 | [int32_t OH_ArkUI_PointerEvent_GetInteractionHand(const ArkUI_UIInputEvent *event, ArkUI_InteractionHand *hand)](#oh_arkui_pointerevent_getinteractionhand) | Checks whether an event is triggered by a left-hand or right-hand tap. This API is only effective on some touch devices. |
 | [int32_t OH_ArkUI_PointerEvent_GetInteractionHandByIndex(const ArkUI_UIInputEvent *event, int32_t pointerIndex, ArkUI_InteractionHand *hand)](#oh_arkui_pointerevent_getinteractionhandbyindex) | Checks whether an event is triggered by a left-hand or right-hand tap. This API is only effective on some touch devices. |
-| [uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gethistorysize) | Obtains the number of historical events from a {@link pointer event}. Pointer events supported by this API contain only touch and mouse events. A historical event is the raw event that occurs between the current event and the previous event. This API is applicable only to the move phase (touch or mouse movement) of a pointer event. If this API is called in other states, the default value **0** is returned. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0. |
+| [uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gethistorysize) | Obtains the number of historical events from a pointer event. Pointer events supported by this API contain only touch and mouse events. A historical event is the raw event that occurs between the current event and the previous event. This API is applicable only to the move phase (touch or mouse movement) of a pointer event. If this API is called in other states, the default value **0** is returned. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0. |
 | [int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryeventtime) | Obtains the occurrence time of a historical event from a pointer event. Pointer events supported by this API contain only touch and mouse events. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0. |
 | [uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointercount) | Obtains the number of contact points in a specific historical event from a pointer event. Pointer events supported by this API contain only touch events. |
 | [int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointerid) | Obtains the unique ID of a contact point in a specific historical event from a pointer event. Pointer events supported by this API contain only touch events. The ID distinguishes between multiple touch points from the same input device. The return value itself does not have any other meaning beyond identifying the touch point. |
@@ -177,8 +176,8 @@ Provides ArkUI event definitions on the native side.
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetWindowPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setwindowpositionbyindex) | Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned event relative to the upper left corner of the current window. This API applies to touch events. This API can be used only for the **<br>ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedScreenPosition(const ArkUI_UIInputEvent* event, float x, float y)](#oh_arkui_clonedevent_setchangedscreenposition) | Sets the X-coordinate and Y-coordinate of a cloned event relative to the upper left corner of the current screen. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent**<br>objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetScreenPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setscreenpositionbyindex) | Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned event relative to the upper left corner of the current screen. This API applies to touch events. This API can be used only for the **<br>ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
-| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition(const ArkUI_UIInputEvent* event, float x, float y)](#oh_arkui_clonedevent_setchangedglobaldisplayposition) | Sets the coordinates of a cloned event in the {@link global coordinate system}. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
-| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setglobaldisplaypositionbyindex) | Sets the coordinates of a cloned event in the {@link global coordinate system}. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition(const ArkUI_UIInputEvent* event, float x, float y)](#oh_arkui_clonedevent_setchangedglobaldisplayposition) | Sets the coordinates of a cloned event in the global coordinate system. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setglobaldisplaypositionbyindex) | Sets the coordinates of a cloned event in the global coordinate system. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetHandleId(const ArkUI_UIInputEvent* event, int32_t eventHandleId)](#oh_arkui_clonedevent_sethandleid) | Sets the unique handle of an event processing session. This handle must be used for any further operations on the event. For a given finger, only one event with this handle is in the active state at a time. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTiltAngle(const ArkUI_UIInputEvent* event, float tiltX, float tiltY)](#oh_arkui_clonedevent_settiltangle) | Sets the tilt angle of a cloned event relative to the XZ and YZ planes. The value range is [-90, 90]. A positive value indicates a tilt to the right. This API applies to touch events. This API can be used only for the **<br>ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRollAngle(const ArkUI_UIInputEvent* event, float rollAngle)](#oh_arkui_clonedevent_setrollangle) | Sets the rotation angle of the stylus around the Z-axis in a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
@@ -202,8 +201,8 @@ Provides ArkUI event definitions on the native side.
 
 | Name | Description |
 | -- | -- |
-| ArkUI_TouchTestInfoItem* ArkUI_TouchTestInfoItemHandle | Defines the touch test info item handle.<br>**Since**: 22 |
-| ArkUI_TouchTestInfoItemHandle* ArkUI_TouchTestInfoItemArray | Defines the gesture recognizer handle array.<br>**Since**: 22 |
+| ArkUI_TouchTestInfoItem* ArkUI_TouchTestInfoItemHandle | Defines the touch test info item handle.<br>**Since**: 22<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| ArkUI_TouchTestInfoItemHandle* ArkUI_TouchTestInfoItemArray | Defines the gesture recognizer handle array.<br>**Since**: 22<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
 ## Enum type description
 
@@ -216,8 +215,6 @@ enum ArkUI_UIInputEvent_Type
 **Description**
 
 Enumerates the UI input event types.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -237,8 +234,6 @@ enum anonymous0
 
 Defines the action types of the input event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -257,8 +252,6 @@ enum anonymous1
 **Description**
 
 Defines the tool type of the touch event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -281,8 +274,6 @@ enum anonymous2
 
 Defines the source type of the touch event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -293,6 +284,27 @@ Defines the source type of the touch event.
 | UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | The key type.<br>**Since**: 22 |
 | UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | The joystick type.<br>**Since**: 22 |
 
+### HitTestMode
+
+```c
+enum HitTestMode
+```
+
+**Description**
+
+Enumerates the hit test modes.
+
+**Since**: 12
+
+| Enum item | Description |
+| -- | -- |
+| HTM_DEFAULT = 0 | Default hit test mode. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes. |
+| HTM_BLOCK | The node itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes. |
+| HTM_TRANSPARENT | The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test. |
+| HTM_NONE | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes. |
+| HTM_BLOCK_HIERARCHY |  |
+| HTM_BLOCK_DESCENDANTS |  |
+
 ### anonymous3
 
 ```c
@@ -302,8 +314,6 @@ enum anonymous3
 **Description**
 
 Define the action types of the mouse event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -324,8 +334,6 @@ enum anonymous4
 **Description**
 
 Define the button type for mouse events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -348,8 +356,6 @@ enum ArkUI_ModifierKeyName
 
 Enumerates the modifier keys.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -368,8 +374,6 @@ enum anonymous5
 **Description**
 
 Defines an enum for the axis types for focus axis events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -405,8 +409,6 @@ enum anonymous6
 
 Enumerates the axis types for axis events.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 | Enum item | Description |
@@ -424,8 +426,6 @@ enum ArkUI_CrownEvent_Action
 **Description**
 
 Defines the phases of a crown event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -445,8 +445,6 @@ enum ArkUI_InteractionHand
 
 Defines whether the touch event is from the left or right hand.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 | Enum item | Description |
@@ -464,8 +462,6 @@ enum anonymous7
 **Description**
 
 Enumerates the action types for axis events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -487,8 +483,6 @@ enum ArkUI_CoastingAxisEventPhase
 
 Enumerates the phases of coasting axis events.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 | Enum item | Description |
@@ -508,8 +502,6 @@ enum ArkUI_TouchTestStrategy
 
 Defines the touch test policy.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 | Enum item | Description |
@@ -527,8 +519,6 @@ enum ArkUI_CompetitionStrategy
 **Description**
 
 Strategy that determines whether the gesture identification result between the event injector and the injected end is in a competition scenario. This strategy determines how the event injector interacts with the gesture processing logic of the injected end. In non-competition scenarios, the gestures of the two parties are triggered simultaneously. In competition scenarios, only the gesture of one party is triggered.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -550,8 +540,6 @@ int32_t OH_ArkUI_UIInputEvent_GetType(const ArkUI_UIInputEvent* event)
 
 Obtains the type of a UI input event. Before accessing an **ArkUI_UIInputEvent** pointer, use this API to determine the type of the input event. This API returns a value from the [ArkUI_UIInputEvent_Type](capi-ui-input-event-h.md#arkui_uiinputevent_type) enum. It helps ensure compatibility with subsequent accessors. For example, if the event is a touch event, which is directional, you can use OH_ArkUI_UIInputEvent_GetXXX or OH_ArkUI_PointerEvent_GetXXX for access. Using OH_ArkUI_KeyEvent_GetXXX to access the event may produce undefined behavior. For unsupported event types, this API returns the default value **0**.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -564,7 +552,7 @@ Obtains the type of a UI input event. Before accessing an **ArkUI_UIInputEvent**
 
 | Type | Description |
 | -- | -- |
-| int32_t | Type of the UI input event. Returns 0 if any parameter error occurs. |
+| int32_t | Type of the UI input event. Returns **0** if any parameter error occurs. |
 
 ### OH_ArkUI_UIInputEvent_GetAction()
 
@@ -580,8 +568,6 @@ Obtains the action type of an input event. The action type defines the phase of 
 >
 > 1. For axis events, use [OH_ArkUI_AxisEvent_GetAxisAction](capi-ui-input-event-h.md#oh_arkui_axisevent_getaxisaction) to obtain the action type, which returns UI_AXIS_EVENT_ACTION_XXX. 2. For key events, use [OH_ArkUI_KeyEvent_GetType](capi-native-key-event-h.md#oh_arkui_keyevent_gettype) instead.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -594,7 +580,7 @@ Obtains the action type of an input event. The action type defines the phase of 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Action type of the UI input event. Returns -1 if any parameter error occurs. |
+| int32_t | Action type of the UI input event. Returns **-1** if any parameter error occurs. |
 
 ### OH_ArkUI_UIInputEvent_GetSourceType()
 
@@ -609,8 +595,6 @@ Obtains the source type of a UI input event. The source represents the physical 
 > **Note**:
 >
 > For key events, obtaining the source type is not supported, and in such cases, the API will return an <b>unknown</b> value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -640,8 +624,6 @@ Obtains the tool type of a UI input event. The input tool is the device used to 
 >
 > For key events, obtaining the tool type is not supported, and in such cases, the API will return an <b>unknown</b> value.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -666,8 +648,6 @@ int64_t OH_ArkUI_UIInputEvent_GetEventTime(const ArkUI_UIInputEvent* event)
 
 Obtains the time when a specified UI input event occurs. The unit is ns.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -680,7 +660,7 @@ Obtains the time when a specified UI input event occurs. The unit is ns.
 
 | Type | Description |
 | -- | -- |
-| int64_t | Time when the UI input event occurs. Returns 0 if any parameter error occurs. |
+| int64_t | Time when the UI input event occurs. Returns **0** if any parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetPointerCount()
 
@@ -691,8 +671,6 @@ uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)
 **Description**
 
 Obtains the number of contact points from a pointer event (such as a touch, mouse, or axis event). Pointer events are typically events that carry position information, such as touch events, where the location of the event can be determined. Non-pointer events, such as key events, do not have position information and do not involve points, so this API always returns **0**. For touch events, this API returns the number of active touch points, for example, fingers on the screen. For mouse and axis events, this API always returns **1**, as they are single-pointer interactions.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -717,8 +695,6 @@ int32_t OH_ArkUI_PointerEvent_GetPointerId(const ArkUI_UIInputEvent* event, uint
 **Description**
 
 Obtains the unique ID of a contact point from a pointer event (such as a touch, mouse, or axis event). The ID distinguishes between multiple touch points from the same input device. The return value itself does not have any other meaning beyond identifying the touch point.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -745,8 +721,6 @@ int32_t OH_ArkUI_PointerEvent_GetChangedPointerId(const ArkUI_UIInputEvent* even
 
 Obtains the ID of the touch pointer that triggers the current touch event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -760,7 +734,7 @@ Obtains the ID of the touch pointer that triggers the current touch event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetX()
 
@@ -772,8 +746,6 @@ float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 
 Obtains the x-coordinate relative to the upper left corner of the current component from a pointer event ( such as a touch, mouse, or axis event).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -786,7 +758,7 @@ Obtains the x-coordinate relative to the upper left corner of the current compon
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate relative to the upper left corner of the current component, in px. Returns 0.0f if a      parameter error occurs. |
+| float | X-coordinate relative to the upper left corner of the current component, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetXByIndex()
 
@@ -798,8 +770,6 @@ float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 Obtains the x-coordinate of a specific contact point relative to the upper left corner of the current component from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -813,7 +783,7 @@ Obtains the x-coordinate of a specific contact point relative to the upper left 
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate of the specific contact point relative to the upper left corner of the current component, in px.       Returns 0.0f if a parameter error occurs. |
+| float | X-coordinate of the specific contact point relative to the upper left corner of the current component, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetY()
 
@@ -825,8 +795,6 @@ float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 
 Obtains the y-coordinate relative to the upper left corner of the current component from a pointer event ( such as a touch, mouse, or axis event).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -839,7 +807,7 @@ Obtains the y-coordinate relative to the upper left corner of the current compon
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate relative to the upper left corner of the current component, in px. Returns 0.0f if a      parameter error occurs. |
+| float | Y-coordinate relative to the upper left corner of the current component, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetYByIndex()
 
@@ -851,8 +819,6 @@ float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 Obtains the y-coordinate of a specific contact point relative to the upper left corner of the current component from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -866,7 +832,7 @@ Obtains the y-coordinate of a specific contact point relative to the upper left 
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate of the specific contact point relative to the upper left corner of the current component, in px.       Returns 0.0f if a parameter error occurs. |
+| float | Y-coordinate of the specific contact point relative to the upper left corner of the current component, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalX()
 
@@ -876,9 +842,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalX(const ArkUI_UIInputEvent* event)
 
 **Description**
 
-Obtains the X coordinate relative to the upper left corner of the current component from a {@link pointer event}(such as a touch event, mouse event, or axis event) based on the real-time location.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the X coordinate relative to the upper left corner of the current component from a pointer event(such as a touch event, mouse event, or axis event) based on the real-time location.
 
 **Since**: 26.0.0
 
@@ -892,7 +856,7 @@ Obtains the X coordinate relative to the upper left corner of the current compon
 
 | Type | Description |
 | -- | -- |
-| float | X coordinate of the current pointer event relative to the upper left corner of the current component. The      default unit is px, which can vary according to the setting of [setLengthMetricUnit](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error      occurs, 0.0f is returned. |
+| float | X coordinate of the current pointer event relative to the upper left corner of the current component. The default unit is px, which can vary according to the setting of [setLengthMetricUnit](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex()
 
@@ -902,9 +866,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex(const ArkUI_UIInputEvent* ev
 
 **Description**
 
-Obtains the X coordinate of a specific contact point relative to the upper left corner of the current component from a {@link pointer event}(such as a touch event, mouse event, or axis event) based on the real-time location.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the X coordinate of a specific contact point relative to the upper left corner of the current component from a pointer event(such as a touch event, mouse event, or axis event) based on the real-time location.
 
 **Since**: 26.0.0
 
@@ -919,7 +881,7 @@ Obtains the X coordinate of a specific contact point relative to the upper left 
 
 | Type | Description |
 | -- | -- |
-| float | X coordinate of the specific contact point relative to the upper left corner of the current component. The      default unit is px, which can vary according to the setting of [setLengthMetricUnit](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error      occurs, 0.0f is returned. |
+| float | X coordinate of the specific contact point relative to the upper left corner of the current component. The default unit is px, which can vary according to the setting of [setLengthMetricUnit](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalY()
 
@@ -929,9 +891,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalY(const ArkUI_UIInputEvent* event)
 
 **Description**
 
-Obtains the Y coordinate relative to the upper left corner of the current component from a {@link pointer event}(such as a touch event, mouse event, or axis event) based on the real-time location.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the Y coordinate relative to the upper left corner of the current component from a pointer event(such as a touch event, mouse event, or axis event) based on the real-time location.
 
 **Since**: 26.0.0
 
@@ -945,7 +905,7 @@ Obtains the Y coordinate relative to the upper left corner of the current compon
 
 | Type | Description |
 | -- | -- |
-| float | Y coordinate of the current pointer event relative to the upper left corner of the current component. The      default unit is px, which can vary according to the setting of [setLengthMetricUnit](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error      occurs, 0.0f is returned. |
+| float | Y coordinate of the current pointer event relative to the upper left corner of the current component. The default unit is px, which can vary according to the setting of [setLengthMetricUnit](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex()
 
@@ -955,9 +915,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex(const ArkUI_UIInputEvent* ev
 
 **Description**
 
-Obtains the Y coordinate of a specific contact point relative to the upper left corner of the current component from a {@link pointer event}(such as a touch event, mouse event, or axis event) based on the real-time location.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the Y coordinate of a specific contact point relative to the upper left corner of the current component from a pointer event(such as a touch event, mouse event, or axis event) based on the real-time location.
 
 **Since**: 26.0.0
 
@@ -972,7 +930,7 @@ Obtains the Y coordinate of a specific contact point relative to the upper left 
 
 | Type | Description |
 | -- | -- |
-| float | Y coordinate of the specific contact point relative to the upper left corner of the current component. The      default unit is px, which can vary according to the setting of [setLengthMetricUnit](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error      occurs, 0.0f is returned. |
+| float | Y coordinate of the specific contact point relative to the upper left corner of the current component. The default unit is px, which can vary according to the setting of [setLengthMetricUnit](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_PointerEvent_GetWindowX()
 
@@ -984,8 +942,6 @@ float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 
 Obtains the x-coordinate relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -998,7 +954,7 @@ Obtains the x-coordinate relative to the upper left corner of the current applic
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate relative to the upper left corner of the current application window, in px. Returns 0.0f if      a parameter error occurs. |
+| float | X-coordinate relative to the upper left corner of the current application window, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetWindowXByIndex()
 
@@ -1010,8 +966,6 @@ float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, u
 
 Obtains the x-coordinate of a specific contact point relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1025,7 +979,7 @@ Obtains the x-coordinate of a specific contact point relative to the upper left 
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate of the specific contact point relative to the upper left corner of the current application      window, in px. Returns 0.0f if a parameter error occurs. |
+| float | X-coordinate of the specific contact point relative to the upper left corner of the current application window, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetWindowY()
 
@@ -1037,8 +991,6 @@ float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 
 Obtains the y-coordinate relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1051,7 +1003,7 @@ Obtains the y-coordinate relative to the upper left corner of the current applic
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate relative to the upper left corner of the current application window, in px. Returns 0.0f if      a parameter error occurs. |
+| float | Y-coordinate relative to the upper left corner of the current application window, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetWindowYByIndex()
 
@@ -1063,8 +1015,6 @@ float OH_ArkUI_PointerEvent_GetWindowYByIndex(const ArkUI_UIInputEvent* event, u
 
 Obtains the y-coordinate of a specific contact point relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1078,7 +1028,7 @@ Obtains the y-coordinate of a specific contact point relative to the upper left 
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate of the specific contact point relative to the upper left corner of the current application      window, in px. Returns 0.0f if a parameter error occurs. |
+| float | Y-coordinate of the specific contact point relative to the upper left corner of the current application window, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetDisplayX()
 
@@ -1090,8 +1040,6 @@ float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)
 
 Obtains the x-coordinate relative to the upper left corner of the current screen from a pointer event (such as a touch, mouse, or axis event).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1104,7 +1052,7 @@ Obtains the x-coordinate relative to the upper left corner of the current screen
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate relative to the upper left corner of the current screen, in px. Returns 0.0f if a parameter      error occurs. |
+| float | X-coordinate relative to the upper left corner of the current screen, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetDisplayXByIndex()
 
@@ -1116,8 +1064,6 @@ float OH_ArkUI_PointerEvent_GetDisplayXByIndex(const ArkUI_UIInputEvent* event, 
 
 Obtains the x-coordinate of a specific contact point relative to the upper left corner of the current screen from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1131,7 +1077,7 @@ Obtains the x-coordinate of a specific contact point relative to the upper left 
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate of the specific contact point relative to the upper left corner of the current screen, in px.      Returns 0.0f if a parameter error occurs. |
+| float | X-coordinate of the specific contact point relative to the upper left corner of the current screen, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetDisplayY()
 
@@ -1143,8 +1089,6 @@ float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)
 
 Obtains the y-coordinate relative to the upper left corner of the current screen from a pointer event (such as a touch, mouse, or axis event).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1157,7 +1101,7 @@ Obtains the y-coordinate relative to the upper left corner of the current screen
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate relative to the upper left corner of the current screen, in px. Returns 0.0f if a parameter      error occurs. |
+| float | Y-coordinate relative to the upper left corner of the current screen, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetDisplayYByIndex()
 
@@ -1169,8 +1113,6 @@ float OH_ArkUI_PointerEvent_GetDisplayYByIndex(const ArkUI_UIInputEvent* event, 
 
 Obtains the y-coordinate of a specific contact point relative to the upper left corner of the current screen from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1184,7 +1126,7 @@ Obtains the y-coordinate of a specific contact point relative to the upper left 
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate of the specific contact point relative to the upper left corner of the current screen, in px.      Returns 0.0f if a parameter error occurs. |
+| float | Y-coordinate of the specific contact point relative to the upper left corner of the current screen, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayX()
 
@@ -1196,8 +1138,6 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 
 Obtains the x-coordinate relative to the global display from a pointer event (such as a touch, mouse, or axis event). The position information can be obtained only from a [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
@@ -1210,7 +1150,7 @@ Obtains the x-coordinate relative to the global display from a pointer event (su
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate relative to the global display, in px. 0.0f is returned if any parameter error occurs (for      example, if the event does not contain position information). |
+| float | X-coordinate relative to the global display, in px. **0.0f** is returned if any parameter error occurs (for example, if the event does not contain position information). |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex()
 
@@ -1222,8 +1162,6 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* e
 
 Obtains the x-coordinate relative to the global display from a pointer event (such as a touch, mouse, or axis event). Position information can only be obtained from pointer events. For mouse and axis events, if the provided **<br>pointerIndex** is greater than 0, this API always returns the default value **0.0f**.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
@@ -1237,7 +1175,7 @@ Obtains the x-coordinate relative to the global display from a pointer event (su
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate of the specific contact point relative to the global display, in px. Returns 0.0f if any      parameter error occurs. |
+| float | X-coordinate of the specific contact point relative to the global display, in px. Returns **0.0f** if any parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayY()
 
@@ -1249,8 +1187,6 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 
 Obtains the y-coordinate relative to the global display from a pointer event (such as a touch, mouse, or axis event). The position information can be obtained only from a [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
@@ -1263,7 +1199,7 @@ Obtains the y-coordinate relative to the global display from a pointer event (su
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate relative to the global display, in px. 0.0f is returned if any parameter error occurs (for      example, if the event does not contain position information). |
+| float | Y-coordinate relative to the global display, in px. **0.0f** is returned if any parameter error occurs (for example, if the event does not contain position information). |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex()
 
@@ -1274,8 +1210,6 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* e
 **Description**
 
 Obtains the y-coordinate relative to the global display from a pointer event (such as a touch, mouse, or axis event). Position information can only be obtained from pointer events. For mouse and axis events, if the provided **<br>pointerIndex** is greater than 0, this API always returns the default value **0.0f**.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -1290,7 +1224,7 @@ Obtains the y-coordinate relative to the global display from a pointer event (su
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate relative to the global display, in px. Returns 0.0f if any parameter error occurs. |
+| float | Y-coordinate relative to the global display, in px. Returns **0.0f** if any parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetPressure()
 
@@ -1301,8 +1235,6 @@ float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_
 **Description**
 
 Obtains the pressure applied to the touchscreen from a pointer event (such as a touch event).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1317,7 +1249,7 @@ Obtains the pressure applied to the touchscreen from a pointer event (such as a 
 
 | Type | Description |
 | -- | -- |
-| float | Touch pressure generated by the current pointer event. The value range is [0, 1]. The pressure is positively      correlated with the value. If the parameter is abnormal, the default value 0.0f is returned. On some devices,       the return value may be greater than 1 due to different hardware parameter configurations. |
+| float | Touch pressure generated by the current pointer event. The value range is [0, 1]. The pressure is positively correlated with the value. If the parameter is abnormal, the default value **0.0f** is returned. On some devices, the return value may be greater than 1 due to different hardware parameter configurations. |
 
 ### OH_ArkUI_PointerEvent_GetTiltX()
 
@@ -1328,8 +1260,6 @@ float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t p
 **Description**
 
 Obtains the angle relative to the YZ plane from a pointer event (for example, a touch event). The value range is [-90, 90], in deg. A positive value indicates a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1356,8 +1286,6 @@ float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t p
 
 Obtains the angle relative to the XZ plane from a pointer event (for example, a touch event). The value range is [-90, 90], in deg. A positive value indicates a downward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1383,8 +1311,6 @@ int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, doub
 
 Obtains the rotation angle of the stylus around the z-axis from a UI input event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 17
 
 **Parameters**:
@@ -1398,7 +1324,7 @@ Obtains the rotation angle of the stylus around the z-axis from a UI input event
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetTouchAreaWidth()
 
@@ -1409,8 +1335,6 @@ float OH_ArkUI_PointerEvent_GetTouchAreaWidth(const ArkUI_UIInputEvent* event, u
 **Description**
 
 Obtains the width of the touch area for a pointer event. This API is applicable only to finger-based touch events, and the return value typically represents the radius of a circular touch area.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1436,8 +1360,6 @@ float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, 
 **Description**
 
 Obtains the height of the touch area for a pointer event. This API is applicable only to finger-based touch events, and the return value typically represents the radius of a circular touch area.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1468,8 +1390,6 @@ Checks whether an event is triggered by a left-hand or right-hand tap. This API 
 >
 > The value is not available immediately upon press. Until the system infers the result, this API will return <b>NONE</b>. Do not rely on the return value for critical functionality.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -1483,7 +1403,7 @@ Checks whether an event is triggered by a left-hand or right-hand tap. This API 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetInteractionHandByIndex()
 
@@ -1499,8 +1419,6 @@ Checks whether an event is triggered by a left-hand or right-hand tap. This API 
 >
 > The value is not available immediately upon press. Until the system infers the result, this API will return <b>NONE</b>. Do not rely on the return value for critical functionality.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -1515,7 +1433,7 @@ Checks whether an event is triggered by a left-hand or right-hand tap. This API 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistorySize()
 
@@ -1525,9 +1443,7 @@ uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)
 
 **Description**
 
-Obtains the number of historical events from a {@link pointer event}. Pointer events supported by this API contain only touch and mouse events. A historical event is the raw event that occurs between the current event and the previous event. This API is applicable only to the move phase (touch or mouse movement) of a pointer event. If this API is called in other states, the default value **0** is returned. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Obtains the number of historical events from a pointer event. Pointer events supported by this API contain only touch and mouse events. A historical event is the raw event that occurs between the current event and the previous event. This API is applicable only to the move phase (touch or mouse movement) of a pointer event. If this API is called in other states, the default value **0** is returned. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0.
 
 **Since**: 12
 
@@ -1553,8 +1469,6 @@ int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* even
 
 Obtains the occurrence time of a historical event from a pointer event. Pointer events supported by this API contain only touch and mouse events. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1568,7 +1482,7 @@ Obtains the occurrence time of a historical event from a pointer event. Pointer 
 
 | Type | Description |
 | -- | -- |
-| int64_t | Time when the UI input event occurs, in ns. Returns 0 if a parameter error occurs. |
+| int64_t | Time when the UI input event occurs, in ns. Returns **0** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryPointerCount()
 
@@ -1579,8 +1493,6 @@ uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* 
 **Description**
 
 Obtains the number of contact points in a specific historical event from a pointer event. Pointer events supported by this API contain only touch events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1606,8 +1518,6 @@ int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* even
 **Description**
 
 Obtains the unique ID of a contact point in a specific historical event from a pointer event. Pointer events supported by this API contain only touch events. The ID distinguishes between multiple touch points from the same input device. The return value itself does not have any other meaning beyond identifying the touch point.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1635,8 +1545,6 @@ float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_
 
 Obtains the X-coordinate of a specific contact point in a specific historical event relative to the upper left corner of the current component from a pointer event. Pointer events supported by this API contain only touch and mouse events. For mouse events, this API returns the default value **0.0f** if the given value of **pointerIndex*<br> is greater than **0**. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1651,7 +1559,7 @@ Obtains the X-coordinate of a specific contact point in a specific historical ev
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate of the specific contact point in the specific historical event relative to the upper left      corner of the current component, in px. Returns 0.0f if a parameter error occurs. |
+| float | X-coordinate of the specific contact point in the specific historical event relative to the upper left corner of the current component, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryY()
 
@@ -1663,8 +1571,6 @@ float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_
 
 Obtains the Y-coordinate of a specific contact point in a specific historical event relative to the upper left corner of the current component from a pointer event. Pointer events supported by this API contain only touch and mouse events. For mouse events, this API returns the default value **0.0f** if the given value of **pointerIndex*<br> is greater than **0**. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1679,7 +1585,7 @@ Obtains the Y-coordinate of a specific contact point in a specific historical ev
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate of the specific contact point in the specific historical event relative to the upper left      corner of the current component, in px. Returns 0.0f if a parameter error occurs. |
+| float | Y-coordinate of the specific contact point in the specific historical event relative to the upper left corner of the current component, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryWindowX()
 
@@ -1691,8 +1597,6 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, u
 
 Obtains the X-coordinate of a specific contact point in a specific historical event relative to the upper left corner of the current application window from a pointer event. Pointer events supported by this API contain only touch and mouse events. For mouse events, this API returns the default value **0.0f** if the given value of **<br>pointerIndex** is greater than **0**. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1707,7 +1611,7 @@ Obtains the X-coordinate of a specific contact point in a specific historical ev
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate of the specific contact point in the specific historical event relative to the upper left      corner of the current application window, in px. Returns 0.0f if a parameter error occurs. |
+| float | X-coordinate of the specific contact point in the specific historical event relative to the upper left corner of the current application window, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryWindowY()
 
@@ -1719,8 +1623,6 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, u
 
 Obtains the Y-coordinate of a specific contact point in a specific historical event relative to the upper left corner of the current application window from a pointer event. Pointer events supported by this API contain only touch and mouse events. For mouse events, this API returns the default value **0.0f** if the given value of **<br>pointerIndex** is greater than **0**. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1735,7 +1637,7 @@ Obtains the Y-coordinate of a specific contact point in a specific historical ev
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate of the specific contact point in the specific historical event relative to the upper left      corner of the current application window, in px. Returns 0.0f if a parameter error occurs. |
+| float | Y-coordinate of the specific contact point in the specific historical event relative to the upper left corner of the current application window, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryDisplayX()
 
@@ -1747,8 +1649,6 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, 
 
 Obtains the X-coordinate of a specific contact point in a specific historical event relative to the upper left corner of the current screen from a pointer event. Pointer events supported by this API contain only touch and mouse events. For mouse events, this API returns the default value **0.0f** if the given value of **pointerIndex**<br>is greater than **0**. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1763,7 +1663,7 @@ Obtains the X-coordinate of a specific contact point in a specific historical ev
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate of the specific contact point in the specific historical event relative to the upper left      corner of the current screen, in px. Returns 0.0f if a parameter error occurs. |
+| float | X-coordinate of the specific contact point in the specific historical event relative to the upper left corner of the current screen, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryDisplayY()
 
@@ -1775,8 +1675,6 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, 
 
 Obtains the Y-coordinate of a specific contact point in a specific historical event relative to the upper left corner of the current screen from a pointer event. Pointer events supported by this API contain only touch and mouse events. For mouse events, this API returns the default value **0.0f** if the given value of **pointerIndex**<br>is greater than **0**. Touch events are supported since API version 12, and mouse events are supported since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1791,7 +1689,7 @@ Obtains the Y-coordinate of a specific contact point in a specific historical ev
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate of the specific contact point in the specific historical event relative to the upper left      corner of the current screen, in px. Returns 0.0f if a parameter error occurs. |
+| float | Y-coordinate of the specific contact point in the specific historical event relative to the upper left corner of the current screen, in px. Returns **0.0f** if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX()
 
@@ -1803,8 +1701,6 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* e
 
 Obtains the X-coordinate relative to the global display for a specific touch point in a historical event from a pointer event at the given pointer index and history index. Pointer events supported by this API contain only touch and mouse events. Position information can only be obtained from pointer events. For mouse events, this API returns the default value **0.0f** if the given value of **pointerIndex** is greater than **0**. Touch events are supported since API version 20, and mouse events are supported since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
@@ -1819,7 +1715,7 @@ Obtains the X-coordinate relative to the global display for a specific touch poi
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate of the specific contact point in the specific historical event relative to the global display,      in px. Returns 0.0f if any parameter error occurs. |
+| float | X-coordinate of the specific contact point in the specific historical event relative to the global display, in px. Returns **0.0f** if any parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY()
 
@@ -1831,8 +1727,6 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* e
 
 Obtains the Y-coordinate relative to the global display for a specific touch point in a historical event from a pointer event at the given pointer index and history index. Pointer events supported by this API contain only touch and mouse events. Position information can only be obtained from pointer events. For mouse events, this API returns the default value **0.0f** if the given value of **pointerIndex** is greater than **0**. Touch events are supported since API version 20, and mouse events are supported since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Parameters**:
@@ -1847,7 +1741,7 @@ Obtains the Y-coordinate relative to the global display for a specific touch poi
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate of the specific contact point in the specific historical event relative to the global display,      in px. Returns 0.0f if any parameter error occurs. |
+| float | Y-coordinate of the specific contact point in the specific historical event relative to the global display, in px. Returns **0.0f** if any parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryPressure()
 
@@ -1858,8 +1752,6 @@ float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, 
 **Description**
 
 Obtains the pressure applied to the touchscreen in a specific historical event from a pointer event (such as a touch event).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1875,7 +1767,7 @@ Obtains the pressure applied to the touchscreen in a specific historical event f
 
 | Type | Description |
 | -- | -- |
-| float | Touch pressure generated by the current pointer event. The value range is [0, 1]. The pressure is positively      correlated with the value. If the parameter is abnormal, the default value 0.0f is returned. On some devices,       the return value may be greater than 1 due to different hardware parameter configurations. |
+| float | Touch pressure generated by the current pointer event. The value range is [0, 1]. The pressure is positively correlated with the value. If the parameter is abnormal, the default value **0.0f** is returned. On some devices, the return value may be greater than 1 due to different hardware parameter configurations. |
 
 ### OH_ArkUI_PointerEvent_GetHistoryTiltX()
 
@@ -1886,8 +1778,6 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uin
 **Description**
 
 Obtains the angle relative to the YZ plane in a specific historical event from a pointer event (such as a touch event). The value range is [-90, 90], in deg. A positive value indicates a rightward tilt.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1915,8 +1805,6 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uin
 
 Obtains the angle relative to the XZ plane in a specific historical event from a pointer event (such as a touch event). The value range is [-90, 90], in deg. A positive value indicates a downward tilt.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1942,8 +1830,6 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* e
 **Description**
 
 Obtains the width of the touch area in a specific historical event from a pointer event (such as a touch event).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1971,8 +1857,6 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* 
 
 Obtains the height of the touch area in a specific historical event from a pointer event (such as a touch event).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1999,8 +1883,6 @@ double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)
 
 Obtains the value of the vertical scroll axis for this axis event. This value is typically generated by mouse wheel scrolling or two-finger vertical swiping on a touchpad. If the value is generated by mouse wheel scrolling: 1. The reported value is in degrees and represents the angular increment of a single scroll, not the total accumulation. 2. The reported value includes the user's scroll step configuration (see [OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)). 3. The sign of the value indicates the direction: positive for backward scrolling and negative for forward scrolling. If the value is generated by two-finger vertical swiping on a touchpad: 1. The reported value is in px and represents the scroll increment, not the total accumulation. 2. The reported value does not include the user's scroll step configuration [OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep). 3. The sign of the value indicates the direction: positive for swiping up and negative for swiping down. 4. The direction is affected by the system settings for natural scrolling. Under normal circumstances, vertical scroll axis events only drive vertical swipe gestures. However, if the mouse pointer is over a scrollable area where the scrollable directions are consistent, the vertical scroll axis event can drive the swipe gestures in this scrollable area, even if they are defined as horizontal.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2013,7 +1895,7 @@ Obtains the value of the vertical scroll axis for this axis event. This value is
 
 | Type | Description |
 | -- | -- |
-| double | Value of the vertical scroll axis of the current axis event. Returns 0.0 if any parameter error occurs. |
+| double | Value of the vertical scroll axis of the current axis event. Returns **0.0** if any parameter error occurs. |
 
 ### OH_ArkUI_AxisEvent_GetHorizontalAxisValue()
 
@@ -2029,8 +1911,6 @@ Obtains the value of the horizontal scroll axis for this axis event. This value 
 >
 > 1. The reported value is in px and represents the incremental scroll amount, not the total scroll amount. 2. The reported value does not include the user's scroll step configuration. 3. The sign of the value indicates the direction: positive for swiping right and negative for swiping left. 4. The direction is affected by the system settings for natural scrolling.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2043,7 +1923,7 @@ Obtains the value of the horizontal scroll axis for this axis event. This value 
 
 | Type | Description |
 | -- | -- |
-| double | Value of the horizontal scroll axis of the current axis event. Returns 0.0 if any parameter error occurs. |
+| double | Value of the horizontal scroll axis of the current axis event. Returns **0.0** if any parameter error occurs. |
 
 ### OH_ArkUI_AxisEvent_GetPinchAxisScaleValue()
 
@@ -2053,8 +1933,6 @@ double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event
 
 **Description**
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2067,7 +1945,7 @@ double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event
 
 | Type | Description |
 | -- | -- |
-| double | Scale value of the pinch axis of the current axis event. Returns 0.0 if any parameter error occurs. |
+| double | Scale value of the pinch axis of the current axis event. Returns **0.0** if any parameter error occurs. |
 
 ### OH_ArkUI_AxisEvent_GetAxisAction()
 
@@ -2078,8 +1956,6 @@ int32_t OH_ArkUI_AxisEvent_GetAxisAction(const ArkUI_UIInputEvent* event)
 **Description**
 
 Obtains the action type of this axis event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2093,7 +1969,7 @@ Obtains the action type of this axis event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Action type of the current axis event. For details, see [anonymous7](capi-ui-input-event-h.md#anonymous7). If a non-axis event is input,       0 is returned by default. |
+| int32_t | Action type of the current axis event. For details, see [anonymous7](capi-ui-input-event-h.md#anonymous7). If a non-axis event is input, ** 0** is returned by default. |
 
 ### OH_ArkUI_AxisEvent_HasAxis()
 
@@ -2104,8 +1980,6 @@ int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis
 **Description**
 
 Checks whether this axis event contains the specified axis type.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2120,7 +1994,7 @@ Checks whether this axis event contains the specified axis type.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Whether the current axis event contains the specified axis type. Returns true if the axis event contains      the specified axis type, and false otherwise. |
+| int32_t | Whether the current axis event contains the specified axis type. Returns **true** if the axis event contains the specified axis type, and **false** otherwise. |
 
 ### OH_ArkUI_PointerEvent_SetInterceptHitTestMode()
 
@@ -2132,8 +2006,6 @@ int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* 
 
 Sets the touch test mode. This API only applies to scenarios raw input events are received, such as when **<br>NODE_ON_TOUCH** is used for touch event handling. It cannot be used with **ArkUI_UIInputEvent** objects obtained from gesture events through [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2141,7 +2013,7 @@ Sets the touch test mode. This API only applies to scenarios raw input events ar
 | Parameter | Description |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the UI input event. |
-| HitTestMode mode | Touch test mode. The parameter type is {@link HitTestMode}. |
+| [HitTestMode](capi-ui-input-event-h.md#hittestmode) mode | Touch test mode. The parameter type is [HitTestMode](capi-ui-input-event-h.md#hittestmode). |
 
 **Returns**:
 
@@ -2159,8 +2031,6 @@ int32_t OH_ArkUI_MouseEvent_GetMouseButton(const ArkUI_UIInputEvent* event)
 
 Obtains the button type of a mouse event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2173,7 +2043,7 @@ Obtains the button type of a mouse event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Mouse button type. The value is defined by the [anonymous5](capi-ui-input-event-h.md#anonymous5) enumeration. If the API is called in a non-      mouse event, the return value is -1. |
+| int32_t | Mouse button type. The value is defined by the [anonymous5](capi-ui-input-event-h.md#anonymous5) enumeration. If the API is called in a non- mouse event, the return value is **-1**. |
 
 ### OH_ArkUI_MouseEvent_GetMouseAction()
 
@@ -2185,8 +2055,6 @@ int32_t OH_ArkUI_MouseEvent_GetMouseAction(const ArkUI_UIInputEvent* event)
 
 Obtains the action type of a mouse event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -2199,7 +2067,7 @@ Obtains the action type of a mouse event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Mouse action type. The value is defined by the [anonymous4](capi-ui-input-event-h.md#anonymous4) enumeration. If the API is called in a non-      mouse event, the return value is -1. |
+| int32_t | Mouse action type. The value is defined by the [anonymous4](capi-ui-input-event-h.md#anonymous4) enumeration. If the API is called in a non- mouse event, the return value is **-1**. |
 
 ### OH_ArkUI_PointerEvent_SetStopPropagation()
 
@@ -2210,8 +2078,6 @@ int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event
 **Description**
 
 Sets whether to stop event propagation. This API only applies to scenarios raw input events are received, such as when **NODE_ON_TOUCH** is used for touch event handling, and does not apply to axis events. It cannot be used with **ArkUI_UIInputEvent** objects obtained from gesture events through [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -2226,7 +2092,7 @@ Sets whether to stop event propagation. This API only applies to scenarios raw i
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. Returns 0 if the operation is successful; returns 401 if the operation fails, possibly      because a parameter error, for example, null pointer for the event parameter, occurs. |
+| int32_t | Result code. Returns **0** if the operation is successful; returns **401** if the operation fails, possibly because a parameter error, for example, null pointer for the **event** parameter, occurs. |
 
 ### OH_ArkUI_UIInputEvent_GetDeviceId()
 
@@ -2237,8 +2103,6 @@ int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)
 **Description**
 
 Obtains the device ID of the current UI input event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -2264,8 +2128,6 @@ int32_t OH_ArkUI_UIInputEvent_GetPressedKeys(const ArkUI_UIInputEvent* event, in
 
 Obtains all pressed keys. Currently, only key events are supported.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 14
 
 **Parameters**:
@@ -2280,7 +2142,7 @@ Obtains all pressed keys. Currently, only key events are supported.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the memory is insufficient.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH if the memory is insufficient. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_FocusAxisEvent_GetAxisValue()
 
@@ -2291,8 +2153,6 @@ double OH_ArkUI_FocusAxisEvent_GetAxisValue(const ArkUI_UIInputEvent* event, int
 **Description**
 
 Obtains the axis value of a focus axis event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2307,7 +2167,7 @@ Obtains the axis value of a focus axis event.
 
 | Type | Description |
 | -- | -- |
-| double | Axis value of the focus axis event. Returns 0.0 if any parameter error occurs. |
+| double | Axis value of the focus axis event. Returns **0.0** if any parameter error occurs. |
 
 ### OH_ArkUI_FocusAxisEvent_SetStopPropagation()
 
@@ -2318,8 +2178,6 @@ int32_t OH_ArkUI_FocusAxisEvent_SetStopPropagation(const ArkUI_UIInputEvent* eve
 **Description**
 
 Sets whether to prevent a focus axis event from bubbling up.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2334,7 +2192,7 @@ Sets whether to prevent a focus axis event from bubbling up.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetWidth()
 
@@ -2346,8 +2204,6 @@ float OH_ArkUI_UIInputEvent_GetEventTargetWidth(const ArkUI_UIInputEvent* event)
 
 Obtains the width of the component hit by an event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 17
 
 **Parameters**:
@@ -2360,7 +2216,7 @@ Obtains the width of the component hit by an event.
 
 | Type | Description |
 | -- | -- |
-| float | Width of the component hit by an event, in pixels. If any parameter error occurs, 0.0f is returned. |
+| float | Width of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetHeight()
 
@@ -2372,8 +2228,6 @@ float OH_ArkUI_UIInputEvent_GetEventTargetHeight(const ArkUI_UIInputEvent* event
 
 Obtains the height of the component hit by an event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 17
 
 **Parameters**:
@@ -2386,7 +2240,7 @@ Obtains the height of the component hit by an event.
 
 | Type | Description |
 | -- | -- |
-| float | Height of the component hit by an event, in pixels. If any parameter error occurs, 0.0f is returned. |
+| float | Height of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetPositionX()
 
@@ -2398,8 +2252,6 @@ float OH_ArkUI_UIInputEvent_GetEventTargetPositionX(const ArkUI_UIInputEvent* ev
 
 Obtains the x-coordinate of the component hit by an event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 17
 
 **Parameters**:
@@ -2412,7 +2264,7 @@ Obtains the x-coordinate of the component hit by an event.
 
 | Type | Description |
 | -- | -- |
-| float | X-coordinate of the component hit by an event, in pixels. If any parameter error occurs, 0.0f is returned. |
+| float | X-coordinate of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetPositionY()
 
@@ -2424,8 +2276,6 @@ float OH_ArkUI_UIInputEvent_GetEventTargetPositionY(const ArkUI_UIInputEvent* ev
 
 Obtains the y-coordinate of the component hit by an event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 17
 
 **Parameters**:
@@ -2438,7 +2288,7 @@ Obtains the y-coordinate of the component hit by an event.
 
 | Type | Description |
 | -- | -- |
-| float | Y-coordinate of the component hit by an event, in pixels. If any parameter error occurs, 0.0f is returned. |
+| float | Y-coordinate of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX()
 
@@ -2450,8 +2300,6 @@ float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX(const ArkUI_UIInputEve
 
 Obtains the global x-coordinate of the component hit by an event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 17
 
 **Parameters**:
@@ -2464,7 +2312,7 @@ Obtains the global x-coordinate of the component hit by an event.
 
 | Type | Description |
 | -- | -- |
-| float | Global x-coordinate of the component hit by an event, in pixels. If any parameter error occurs, 0.0f is     returned. |
+| float | Global x-coordinate of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY()
 
@@ -2476,8 +2324,6 @@ float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY(const ArkUI_UIInputEve
 
 Obtains the global y-coordinate of the component hit by an event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 17
 
 **Parameters**:
@@ -2490,7 +2336,7 @@ Obtains the global y-coordinate of the component hit by an event.
 
 | Type | Description |
 | -- | -- |
-| float | Global y-coordinate of the component hit by an event, in pixels. If any parameter error occurs, 0.0f is     returned. |
+| float | Global y-coordinate of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned. |
 
 ### OH_ArkUI_HoverEvent_IsHovered()
 
@@ -2501,8 +2347,6 @@ bool OH_ArkUI_HoverEvent_IsHovered(const ArkUI_UIInputEvent* event)
 **Description**
 
 Checks whether the cursor is hovering over this component.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -2516,7 +2360,7 @@ Checks whether the cursor is hovering over this component.
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the cursor is hovering over the current component.     <br>Returns false if the cursor is not hovering over the current component. |
+| bool | Returns **true** if the cursor is hovering over the current component. <br>Returns **false** if the cursor is not hovering over the current component. |
 
 ### OH_ArkUI_UIInputEvent_GetModifierKeyStates()
 
@@ -2527,8 +2371,6 @@ int32_t OH_ArkUI_UIInputEvent_GetModifierKeyStates(const ArkUI_UIInputEvent* eve
 **Description**
 
 Obtains the modifier key states for a UI input event. This API outputs the state of all modifier keys at the time of the event through the **keys** parameter. You can determine which keys are pressed by performing bitwise operations with the modifier key types defined in [ArkUI_ModifierKeyName](capi-ui-input-event-h.md#arkui_modifierkeyname).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -2543,7 +2385,7 @@ Obtains the modifier key states for a UI input event. This API outputs the state
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_GetPressedTimeByIndex()
 
@@ -2554,8 +2396,6 @@ int64_t OH_ArkUI_PointerEvent_GetPressedTimeByIndex(const ArkUI_UIInputEvent* ev
 **Description**
 
 Obtains the press time of a specific touch point. This API is effective only for touch events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2570,7 +2410,7 @@ Obtains the press time of a specific touch point. This API is effective only for
 
 | Type | Description |
 | -- | -- |
-| int64_t | Press time of the specific touch point, in ns. Returns 0 if any parameter error occurs. |
+| int64_t | Press time of the specific touch point, in ns. Returns **0** if any parameter error occurs. |
 
 ### OH_ArkUI_MouseEvent_GetRawDeltaX()
 
@@ -2582,8 +2422,6 @@ float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)
 
 Obtains the movement delta of the mouse along the X axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -2596,7 +2434,7 @@ Obtains the movement delta of the mouse along the X axis in a two-dimensional pl
 
 | Type | Description |
 | -- | -- |
-| float | Movement delta of the mouse device along the X axis in the two-dimensional plane, which is expressed in the      unit of the mouse movement distance in the physical world. If any parameter error occurs, 0.0f is returned.      <br>Note: In versions earlier than API version 26.0.0, the return value is not the original movement data of the      mouse hardware. Instead, the original data is scaled down by a factor of X, where X is the system display      size rate. Since API version 26.0.0, the return value is the original movement data of the mouse hardware. |
+| float | Movement delta of the mouse device along the X axis in the two-dimensional plane, which is expressed in the unit of the mouse movement distance in the physical world. If any parameter error occurs, **0.0f** is returned. <br>Note: In versions earlier than API version 26.0.0, the return value is not the original movement data of the mouse hardware. Instead, the original data is scaled down by a factor of *X*, where *X* is the system display size rate. Since API version 26.0.0, the return value is the original movement data of the mouse hardware. |
 
 ### OH_ArkUI_MouseEvent_GetRawDeltaY()
 
@@ -2608,8 +2446,6 @@ float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)
 
 Obtains the movement delta of the mouse along the Y axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 15
 
 **Parameters**:
@@ -2622,7 +2458,7 @@ Obtains the movement delta of the mouse along the Y axis in a two-dimensional pl
 
 | Type | Description |
 | -- | -- |
-| float | Movement delta of the mouse device along the Y axis in the two-dimensional plane, which is expressed in the      unit of the mouse movement distance in the physical world. If any parameter error occurs, 0.0f is returned.      <br>Note: In versions earlier than API version 26.0.0, the return value is not the original movement data of the      mouse hardware. Instead, the original data is scaled down by a factor of X, where X is the system display      size rate. Since API version 26.0.0, the return value is the original movement data of the mouse hardware. |
+| float | Movement delta of the mouse device along the Y axis in the two-dimensional plane, which is expressed in the unit of the mouse movement distance in the physical world. If any parameter error occurs, **0.0f** is returned. <br>Note: In versions earlier than API version 26.0.0, the return value is not the original movement data of the mouse hardware. Instead, the original data is scaled down by a factor of *X*, where *X* is the system display size rate. Since API version 26.0.0, the return value is the original movement data of the mouse hardware. |
 
 ### OH_ArkUI_MouseEvent_GetPressedButtons()
 
@@ -2633,8 +2469,6 @@ int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, i
 **Description**
 
 Obtains the pressed buttons from a mouse event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2650,7 +2484,7 @@ Obtains the pressed buttons from a mouse event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input buffer size is invalid. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the input buffer size is invalid. |
 
 ### OH_ArkUI_UIInputEvent_GetTargetDisplayId()
 
@@ -2661,8 +2495,6 @@ int32_t OH_ArkUI_UIInputEvent_GetTargetDisplayId(const ArkUI_UIInputEvent* event
 **Description**
 
 Obtains the ID of the screen where the UI input event occurs.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2676,7 +2508,7 @@ Obtains the ID of the screen where the UI input event occurs.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Screen ID. Returns 0 if any parameter error occurs. |
+| int32_t | Screen ID. Returns **0** if any parameter error occurs. |
 
 ### OH_ArkUI_AxisEvent_SetPropagation()
 
@@ -2687,8 +2519,6 @@ int32_t OH_ArkUI_AxisEvent_SetPropagation(const ArkUI_UIInputEvent* event, bool 
 **Description**
 
 Sets whether to enable axis event propagation (bubbling). By default, axis events do not bubble and are only sent to the first component that can respond to axis events. You can enable axis event bubbling when an axis event is received to allow the event to be passed to the next ancestor component in the response chain that can handle axis events. This API cannot be used on axis events obtained from gesture events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -2703,7 +2533,7 @@ Sets whether to enable axis event propagation (bubbling). By default, axis event
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_AxisEvent_GetScrollStep()
 
@@ -2714,8 +2544,6 @@ int32_t OH_ArkUI_AxisEvent_GetScrollStep(const ArkUI_UIInputEvent* event)
 **Description**
 
 Obtains the scroll step coefficient for a wheel-based axis event. This API returns the user-configured scroll scale factor.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -2729,7 +2557,7 @@ Obtains the scroll step coefficient for a wheel-based axis event. This API retur
 
 | Type | Description |
 | -- | -- |
-| int32_t | Scroll step configuration of the mouse wheel axis event. For non-mouse events, the default value 0 is      returned. |
+| int32_t | Scroll step configuration of the mouse wheel axis event. For non-mouse events, the default value **0** is returned. |
 
 ### OH_ArkUI_PointerEvent_CreateClonedEvent()
 
@@ -2740,8 +2568,6 @@ int32_t OH_ArkUI_PointerEvent_CreateClonedEvent(const ArkUI_UIInputEvent* event,
 **Description**
 
 Creates a cloned event pointer based on an event pointer. This API is effective only for touch events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2756,7 +2582,7 @@ Creates a cloned event pointer based on an event pointer. This API is effective 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_DestroyClonedEvent()
 
@@ -2767,8 +2593,6 @@ int32_t OH_ArkUI_PointerEvent_DestroyClonedEvent(const ArkUI_UIInputEvent* event
 **Description**
 
 Destroys a cloned event pointer.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2782,7 +2606,7 @@ Destroys a cloned event pointer.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_PointerEvent_SetClonedEventLocalPosition()
 
@@ -2793,8 +2617,6 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPosition(const ArkUI_UIInputEve
 **Description**
 
 Sets the x-coordinate and y-coordinate of a cloned event relative to the upper left corner of the current component.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2810,7 +2632,7 @@ Sets the x-coordinate and y-coordinate of a cloned event relative to the upper l
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex()
 
@@ -2821,8 +2643,6 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex(const ArkUI_UII
 **Description**
 
 Sets the x-coordinate and y-coordinate of a specific contact point of a cloned event relative to the upper left corner of the current component.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2839,7 +2659,7 @@ Sets the x-coordinate and y-coordinate of a specific contact point of a cloned e
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_PointerEvent_SetClonedEventActionType()
 
@@ -2850,8 +2670,6 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventActionType(const ArkUI_UIInputEvent*
 **Description**
 
 Sets the action type of a cloned event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2866,7 +2684,7 @@ Sets the action type of a cloned event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId()
 
@@ -2877,8 +2695,6 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId(const ArkUI_UIInputE
 **Description**
 
 Sets the touch point ID of a cloned pointer event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2893,7 +2709,7 @@ Sets the touch point ID of a cloned pointer event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex()
 
@@ -2904,8 +2720,6 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputE
 **Description**
 
 Sets the touch point ID of a specific contact point of a cloned event.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2921,7 +2735,7 @@ Sets the touch point ID of a specific contact point of a cloned event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_PointerEvent_PostClonedEvent()
 
@@ -2932,8 +2746,6 @@ int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI
 **Description**
 
 Posts a cloned event to a specific node.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -2948,7 +2760,7 @@ Posts a cloned event to a specific node.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the component status is abnormal.      <br>Returns [ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if no component is hit      to respond to the event. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL if the component status is abnormal. <br>Returns ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT if no component is hit to respond to the event. |
 
 ### OH_ArkUI_UIInputEvent_GetLatestStatus()
 
@@ -2960,15 +2772,13 @@ ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()
 
 Obtains the result code of the most recent API call related to an **ArkUI_UIInputEvent** object. This API is typically unnecessary for normal operations, but can be used to verify ambiguous return values
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 20
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code of the most recent API call related to the ArkUI_UIInputEvent object. |
+| ArkUI_ErrorCode | Result code of the most recent API call related to the **ArkUI_UIInputEvent** object. |
 
 ### OH_ArkUI_UIInputEvent_GetCoastingAxisEvent()
 
@@ -2979,8 +2789,6 @@ ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInpu
 **Description**
 
 Obtains the coasting axis event from the specified component event. A valid event is available only when the user slides two fingers a certain distance on the touchpad and quickly releases them, and a component registered with the [NODE_ON_COASTING_AXIS_EVENT](capi-native-node-h.md#arkui_nodeeventtype) event exists at the pointer position. This API must be called after the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object is obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2994,7 +2802,7 @@ Obtains the coasting axis event from the specified component event. A valid even
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CoastingAxisEvent*](capi-arkui-eventmodule-arkui-coastingaxisevent.md) | Pointer to the coasting axis event. Returns a null pointer if no coasting axis event occurs or if parameters      are invalid. |
+| [ArkUI_CoastingAxisEvent*](capi-arkui-eventmodule-arkui-coastingaxisevent.md) | Pointer to the coasting axis event. Returns a null pointer if no coasting axis event occurs or if parameters are invalid. |
 
 ### OH_ArkUI_CoastingAxisEvent_GetEventTime()
 
@@ -3006,8 +2814,6 @@ int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent* event)
 
 Obtains the time when a coasting axis event occurs.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3020,7 +2826,7 @@ Obtains the time when a coasting axis event occurs.
 
 | Type | Description |
 | -- | -- |
-| int64_t | Time when the UI input event occurs, in ns. If any parameter error occurs, 0 is returned. |
+| int64_t | Time when the UI input event occurs, in ns. If any parameter error occurs, **0** is returned. |
 
 ### OH_ArkUI_CoastingAxisEvent_GetPhase()
 
@@ -3032,8 +2838,6 @@ ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingA
 
 Obtains the scroll phase of the specified coasting axis event.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3046,7 +2850,7 @@ Obtains the scroll phase of the specified coasting axis event.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CoastingAxisEventPhase](capi-ui-input-event-h.md#arkui_coastingaxiseventphase) | Event phase. For details, see [ArkUI_CoastingAxisEventPhase](capi-ui-input-event-h.md#arkui_coastingaxiseventphase).      <br>Returns ARKUI_COASTING_AXIS_EVENT_PHASE_NONE if any parameter error occurs. |
+| [ArkUI_CoastingAxisEventPhase](capi-ui-input-event-h.md#arkui_coastingaxiseventphase) | Event phase. For details, see [ArkUI_CoastingAxisEventPhase](capi-ui-input-event-h.md#arkui_coastingaxiseventphase). <br>Returns **ARKUI_COASTING_AXIS_EVENT_PHASE_NONE** if any parameter error occurs. |
 
 ### OH_ArkUI_CoastingAxisEvent_GetDeltaX()
 
@@ -3058,8 +2862,6 @@ float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent* event)
 
 Obtains the horizontal delta value of the specified coasting axis event. Unit: px, representing the single scroll increment (not the total scroll amount). Positive values indicate a rightward direction (fingers swiping from right to left), and negative values indicate a leftward direction (fingers swiping from left to right).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3072,7 +2874,7 @@ Obtains the horizontal delta value of the specified coasting axis event. Unit: p
 
 | Type | Description |
 | -- | -- |
-| float | X-axis delta value, in px. Returns 0.0f if any parameter error occurs. |
+| float | X-axis delta value, in px. Returns **0.0f** if any parameter error occurs. |
 
 ### OH_ArkUI_CoastingAxisEvent_GetDeltaY()
 
@@ -3084,8 +2886,6 @@ float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent* event)
 
 Obtains the vertical delta value of the specified coasting axis event. Unit: px, representing the single scroll increment (not the total scroll amount). Negative values indicate a downward direction (fingers swiping from top to bottom), and positive values indicate an upward direction (fingers swiping from bottom to top).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3098,7 +2898,7 @@ Obtains the vertical delta value of the specified coasting axis event. Unit: px,
 
 | Type | Description |
 | -- | -- |
-| float | Y-axis delta value, in px. Returns 0.0f if any parameter error occurs. |
+| float | Y-axis delta value, in px. Returns **0.0f** if any parameter error occurs. |
 
 ### OH_ArkUI_CoastingAxisEvent_SetPropagation()
 
@@ -3109,8 +2909,6 @@ int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent* event
 **Description**
 
 Sets whether to enable event propagation for the specified coasting axis event. By default, event propagation is disabled.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -3125,7 +2923,7 @@ Sets whether to enable event propagation for the specified coasting axis event. 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TouchTestInfo_GetTouchTestInfoList()
 
@@ -3136,8 +2934,6 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo*
 **Description**
 
 Obtains the array of touch test information items.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -3153,7 +2949,7 @@ Obtains the array of touch test information items.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TouchTestInfoItem_GetX()
 
@@ -3165,8 +2961,6 @@ float OH_ArkUI_TouchTestInfoItem_GetX(const ArkUI_TouchTestInfoItem* info)
 
 Obtains the X coordinate relative to the upper left corner of the child component from the touch test information item, in px.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3179,7 +2973,7 @@ Obtains the X coordinate relative to the upper left corner of the child componen
 
 | Type | Description |
 | -- | -- |
-| float | X coordinate relative to the upper left corner of the child component, in px. If the parameter value is      incorrect, 0.0f is returned. |
+| float | X coordinate relative to the upper left corner of the child component, in px. If the parameter value is incorrect, **0.0f** is returned. |
 
 ### OH_ArkUI_TouchTestInfoItem_GetY()
 
@@ -3191,8 +2985,6 @@ float OH_ArkUI_TouchTestInfoItem_GetY(const ArkUI_TouchTestInfoItem* info)
 
 Obtains the Y coordinate relative to the upper left corner of the child component from the touch test information item, in px.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3205,7 +2997,7 @@ Obtains the Y coordinate relative to the upper left corner of the child componen
 
 | Type | Description |
 | -- | -- |
-| float | Y coordinate relative to the upper left corner of the child component, in px. If the parameter value is      incorrect, 0.0f is returned. |
+| float | Y coordinate relative to the upper left corner of the child component, in px. If the parameter value is incorrect, **0.0f** is returned. |
 
 ### OH_ArkUI_TouchTestInfoItem_GetWindowX()
 
@@ -3217,8 +3009,6 @@ float OH_ArkUI_TouchTestInfoItem_GetWindowX(const ArkUI_TouchTestInfoItem* info)
 
 Obtains the X coordinate relative to the upper left corner of the current application window from the touch test information item, in px.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3231,7 +3021,7 @@ Obtains the X coordinate relative to the upper left corner of the current applic
 
 | Type | Description |
 | -- | -- |
-| float | X coordinate relative to the upper left corner of the current application window, in px. If the parameter      value is incorrect, 0.0f is returned. |
+| float | X coordinate relative to the upper left corner of the current application window, in px. If the parameter value is incorrect, **0.0f** is returned. |
 
 ### OH_ArkUI_TouchTestInfoItem_GetWindowY()
 
@@ -3243,8 +3033,6 @@ float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info)
 
 Obtains the Y coordinate relative to the upper left corner of the current application window from the touch test information item, in px.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3257,7 +3045,7 @@ Obtains the Y coordinate relative to the upper left corner of the current applic
 
 | Type | Description |
 | -- | -- |
-| float | Y coordinate relative to the upper left corner of the current application window, in px. If the parameter      value is incorrect, 0.0f is returned. |
+| float | Y coordinate relative to the upper left corner of the current application window, in px. If the parameter value is incorrect, **0.0f** is returned. |
 
 ### OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent()
 
@@ -3269,8 +3057,6 @@ float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoI
 
 Obtains the X coordinate relative to the upper left corner of the parent component from the touch test information item, in px.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3283,7 +3069,7 @@ Obtains the X coordinate relative to the upper left corner of the parent compone
 
 | Type | Description |
 | -- | -- |
-| float | X coordinate relative to the upper left corner of the parent component, in px. If the parameter value is      incorrect, 0.0f is returned. |
+| float | X coordinate relative to the upper left corner of the parent component, in px. If the parameter value is incorrect, **0.0f** is returned. |
 
 ### OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent()
 
@@ -3295,8 +3081,6 @@ float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoI
 
 Obtains the Y coordinate relative to the upper left corner of the parent component from the touch test information item, in px.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -3309,7 +3093,7 @@ Obtains the Y coordinate relative to the upper left corner of the parent compone
 
 | Type | Description |
 | -- | -- |
-| float | Y coordinate relative to the upper left corner of the parent component, in px. If the parameter value is      incorrect, 0.0f is returned. |
+| float | Y coordinate relative to the upper left corner of the parent component, in px. If the parameter value is incorrect, **0.0f** is returned. |
 
 ### OH_ArkUI_TouchTestInfoItem_GetChildRect()
 
@@ -3320,8 +3104,6 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInf
 **Description**
 
 Obtains the boundary rectangle information of the child component from the touch test information item.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -3336,7 +3118,7 @@ Obtains the boundary rectangle information of the child component from the touch
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TouchTestInfoItem_GetChildId()
 
@@ -3347,8 +3129,6 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoI
 **Description**
 
 Obtains the ID of the child component from the touch test information item.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -3364,7 +3144,7 @@ Obtains the ID of the child component from the touch test information item.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the buffer space is insufficient. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH if the buffer space is insufficient. |
 
 ### OH_ArkUI_TouchTestInfo_SetTouchResultStrategy()
 
@@ -3375,8 +3155,6 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInf
 **Description**
 
 Sets the touch test policy, that is, the behavior of a component and its child components in a hit test.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -3391,7 +3169,7 @@ Sets the touch test policy, that is, the behavior of a component and its child c
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TouchTestInfo_SetTouchResultId()
 
@@ -3402,8 +3180,6 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* inf
 **Description**
 
 Sets the ID of a child component involved in a hit test.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -3418,7 +3194,7 @@ Sets the ID of a child component involved in a hit test.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_DigitalCrownEvent_GetEventTime()
 
@@ -3430,8 +3206,6 @@ int64_t OH_ArkUI_DigitalCrownEvent_GetEventTime(const ArkUI_UIInputEvent* event)
 
 Obtains the time when a crown event occurs. The unit is ns.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -3444,7 +3218,7 @@ Obtains the time when a crown event occurs. The unit is ns.
 
 | Type | Description |
 | -- | -- |
-| int64_t | Time when the UI input event occurs. If a parameter error occurs, 0 is returned. |
+| int64_t | Time when the UI input event occurs. If a parameter error occurs, **0** is returned. |
 
 ### OH_ArkUI_DigitalCrownEvent_GetAngularVelocity()
 
@@ -3456,8 +3230,6 @@ double OH_ArkUI_DigitalCrownEvent_GetAngularVelocity(const ArkUI_UIInputEvent* e
 
 Obtains the angular velocity at which a crown event occurs. The unit is °/s.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -3470,7 +3242,7 @@ Obtains the angular velocity at which a crown event occurs. The unit is °/s.
 
 | Type | Description |
 | -- | -- |
-| double | Angular velocity at which the UI input event occurs. If a parameter error occurs, 0.0 is returned. |
+| double | Angular velocity at which the UI input event occurs. If a parameter error occurs, **0.0** is returned. |
 
 ### OH_ArkUI_DigitalCrownEvent_GetDegree()
 
@@ -3482,8 +3254,6 @@ double OH_ArkUI_DigitalCrownEvent_GetDegree(const ArkUI_UIInputEvent* event)
 
 Obtains the rotation angle at which a crown event occurs. The unit is °.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -3496,7 +3266,7 @@ Obtains the rotation angle at which a crown event occurs. The unit is °.
 
 | Type | Description |
 | -- | -- |
-| double | Rotation angle at which the UI input event occurs. If a parameter error occurs, 0.0 is returned. |
+| double | Rotation angle at which the UI input event occurs. If a parameter error occurs, **0.0** is returned. |
 
 ### OH_ArkUI_DigitalCrownEvent_GetAction()
 
@@ -3508,8 +3278,6 @@ ArkUI_CrownEvent_Action OH_ArkUI_DigitalCrownEvent_GetAction(const ArkUI_UIInput
 
 Obtains the phase at which a crown event occurs.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -3522,7 +3290,7 @@ Obtains the phase at which a crown event occurs.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CrownEvent_Action](capi-ui-input-event-h.md#arkui_crownevent_action) | Action of rotating the crown when the UI input event occurs. If a parameter error occurs,      [ARKUI_CROWNEVENT_ACTION_UNKNOWN](capi-ui-input-event-h.md#arkui_crownevent_action) is returned. |
+| [ArkUI_CrownEvent_Action](capi-ui-input-event-h.md#arkui_crownevent_action) | Action of rotating the crown when the UI input event occurs. If a parameter error occurs, [ARKUI_CROWNEVENT_ACTION_UNKNOWN](capi-ui-input-event-h.md#arkui_crownevent_action) is returned. |
 
 ### OH_ArkUI_DigitalCrownEvent_SetStopPropagation()
 
@@ -3533,8 +3301,6 @@ ArkUI_ErrorCode OH_ArkUI_DigitalCrownEvent_SetStopPropagation(const ArkUI_UIInpu
 **Description**
 
 Sets whether to stop event propagation. This API applies only when the input parameter **UIInputEvent**<br>contains a crown event object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3549,7 +3315,7 @@ Sets whether to stop event propagation. This API applies only when the input par
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_CreateClonedPointerEvent()
 
@@ -3560,8 +3326,6 @@ ArkUI_ErrorCode OH_ArkUI_PointerEvent_CreateClonedPointerEvent(const ArkUI_UIInp
 **Description**
 
 Creates a clone event for a specified event. This API applies to touch, mouse, and axis events.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3576,7 +3340,7 @@ Creates a clone event for a specified event. This API applies to touch, mouse, a
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_CreatePointerEvent()
 
@@ -3588,8 +3352,6 @@ ArkUI_ErrorCode OH_ArkUI_PointerEvent_CreatePointerEvent(ArkUI_UIInputEvent** ev
 
 Creates a new event (not clone the existing event). This API applies to touch, mouse, and axis events.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -3597,13 +3359,13 @@ Creates a new event (not clone the existing event). This API applies to touch, m
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** event | Double pointer to the new **ArkUI_UIInputEvent** object. |
-| [ArkUI_UIInputEvent_Type](capi-ui-input-event-h.md#arkui_uiinputevent_type) type | Event type of **ArkUI_UIInputEvent**. The value can be {@link ARKUI_UIINPUTEVENT_TYPE_TOUCH},<br>    {@link ARKUI_UIINPUTEVENT_TYPE_AXIS}, or [ARKUI_UIINPUTEVENT_TYPE_MOUSE](capi-ui-input-event-h.md#arkui_uiinputevent_type). |
+| [ArkUI_UIInputEvent_Type](capi-ui-input-event-h.md#arkui_uiinputevent_type) type | Event type of **ArkUI_UIInputEvent**. The value can be ARKUI_UIINPUTEVENT_TYPE_TOUCH, ARKUI_UIINPUTEVENT_TYPE_AXIS, or [ARKUI_UIINPUTEVENT_TYPE_MOUSE](capi-ui-input-event-h.md#arkui_uiinputevent_type). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PointerEvent_DestroyClonedPointerEvent()
 
@@ -3614,8 +3376,6 @@ ArkUI_ErrorCode OH_ArkUI_PointerEvent_DestroyClonedPointerEvent(const ArkUI_UIIn
 **Description**
 
 Destroys a cloned event pointer. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3629,7 +3389,7 @@ Destroys a cloned event pointer. This API applies to touch, mouse, and axis even
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetActionType()
 
@@ -3640,8 +3400,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetActionType(const ArkUI_UIInputEvent* eve
 **Description**
 
 Sets an action type for a cloned event. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3656,7 +3414,7 @@ Sets an action type for a cloned event. This API applies to touch, mouse, and ax
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetSourceType()
 
@@ -3667,8 +3425,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetSourceType(const ArkUI_UIInputEvent* eve
 **Description**
 
 Sets a source type for a cloned event. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3683,7 +3439,7 @@ Sets a source type for a cloned event. This API applies to touch, mouse, and axi
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetToolType()
 
@@ -3694,8 +3450,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetToolType(const ArkUI_UIInputEvent* event
 **Description**
 
 Sets a tool type for a cloned event. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3710,7 +3464,7 @@ Sets a tool type for a cloned event. This API applies to touch, mouse, and axis 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetPressure()
 
@@ -3721,8 +3475,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressure(const ArkUI_UIInputEvent* event
 **Description**
 
 Sets the pressure applied to a touchscreen for a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3737,7 +3489,7 @@ Sets the pressure applied to a touchscreen for a cloned event. This API applies 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetPressureByIndex()
 
@@ -3748,8 +3500,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressureByIndex(const ArkUI_UIInputEvent
 **Description**
 
 Sets the pressure applied to a touchscreen for a specific touch point in a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3765,7 +3515,7 @@ Sets the pressure applied to a touchscreen for a specific touch point in a clone
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetEventTime()
 
@@ -3776,8 +3526,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetEventTime(const ArkUI_UIInputEvent* even
 **Description**
 
 Sets the time when a cloned UI input event occurs. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3792,7 +3540,7 @@ Sets the time when a cloned UI input event occurs. This API applies to touch, mo
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetDeviceId()
 
@@ -3803,8 +3551,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetDeviceId(const ArkUI_UIInputEvent* event
 **Description**
 
 Sets the ID of the device that triggers a cloned UI input event. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3819,7 +3565,7 @@ Sets the ID of the device that triggers a cloned UI input event. This API applie
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetTargetDisplayId()
 
@@ -3830,8 +3576,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTargetDisplayId(const ArkUI_UIInputEvent
 **Description**
 
 Sets the ID of the display where a cloned UI input event occurs. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3846,7 +3590,7 @@ Sets the ID of the display where a cloned UI input event occurs. This API applie
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetChangedFingerId()
 
@@ -3857,8 +3601,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedFingerId(const ArkUI_UIInputEvent
 **Description**
 
 Sets the touch point ID for a cloned pointer event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3873,7 +3615,7 @@ Sets the touch point ID for a cloned pointer event. This API applies to touch ev
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetFingerIdByIndex()
 
@@ -3884,8 +3626,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetFingerIdByIndex(const ArkUI_UIInputEvent
 **Description**
 
 Sets the touch point ID of a specific contact point in a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3901,7 +3641,7 @@ Sets the touch point ID of a specific contact point in a cloned event. This API 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetChangedWindowPosition()
 
@@ -3913,8 +3653,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedWindowPosition(const ArkUI_UIInpu
 
 Sets the X-coordinate and Y-coordinate of a cloned event relative to the upper left corner of the current window. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent**<br>objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -3929,7 +3667,7 @@ Sets the X-coordinate and Y-coordinate of a cloned event relative to the upper l
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetWindowPositionByIndex()
 
@@ -3941,8 +3679,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetWindowPositionByIndex(const ArkUI_UIInpu
 
 Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned event relative to the upper left corner of the current window. This API applies to touch events. This API can be used only for the **<br>ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -3958,7 +3694,7 @@ Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned e
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetChangedScreenPosition()
 
@@ -3970,8 +3706,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedScreenPosition(const ArkUI_UIInpu
 
 Sets the X-coordinate and Y-coordinate of a cloned event relative to the upper left corner of the current screen. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent**<br>objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -3986,7 +3720,7 @@ Sets the X-coordinate and Y-coordinate of a cloned event relative to the upper l
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetScreenPositionByIndex()
 
@@ -3998,8 +3732,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetScreenPositionByIndex(const ArkUI_UIInpu
 
 Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned event relative to the upper left corner of the current screen. This API applies to touch events. This API can be used only for the **<br>ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -4015,7 +3747,7 @@ Sets the X-coordinate and Y-coordinate of a specific contact point of a cloned e
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition()
 
@@ -4025,9 +3757,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition(const ArkUI
 
 **Description**
 
-Sets the coordinates of a cloned event in the {@link global coordinate system}. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the coordinates of a cloned event in the global coordinate system. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
 
 **Since**: 24
 
@@ -4043,7 +3773,7 @@ Sets the coordinates of a cloned event in the {@link global coordinate system}. 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex()
 
@@ -4053,9 +3783,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex(const ArkUI
 
 **Description**
 
-Sets the coordinates of a cloned event in the {@link global coordinate system}. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the coordinates of a cloned event in the global coordinate system. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
 
 **Since**: 24
 
@@ -4072,7 +3800,7 @@ Sets the coordinates of a cloned event in the {@link global coordinate system}. 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetHandleId()
 
@@ -4083,8 +3811,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetHandleId(const ArkUI_UIInputEvent* event
 **Description**
 
 Sets the unique handle of an event processing session. This handle must be used for any further operations on the event. For a given finger, only one event with this handle is in the active state at a time. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4099,7 +3825,7 @@ Sets the unique handle of an event processing session. This handle must be used 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetTiltAngle()
 
@@ -4110,8 +3836,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTiltAngle(const ArkUI_UIInputEvent* even
 **Description**
 
 Sets the tilt angle of a cloned event relative to the XZ and YZ planes. The value range is [-90, 90]. A positive value indicates a tilt to the right. This API applies to touch events. This API can be used only for the **<br>ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4127,7 +3851,7 @@ Sets the tilt angle of a cloned event relative to the XZ and YZ planes. The valu
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetRollAngle()
 
@@ -4138,8 +3862,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRollAngle(const ArkUI_UIInputEvent* even
 **Description**
 
 Sets the rotation angle of the stylus around the Z-axis in a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4154,7 +3876,7 @@ Sets the rotation angle of the stylus around the Z-axis in a cloned event. This 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetPressedKeys()
 
@@ -4165,8 +3887,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedKeys(const ArkUI_UIInputEvent* ev
 **Description**
 
 Sets all pressed keys in a cloned event. This API applies to touch, mouse, and axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4182,7 +3902,7 @@ Sets all pressed keys in a cloned event. This API applies to touch, mouse, and a
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. |
 
 ### OH_ArkUI_ClonedEvent_SetChangedTouchArea()
 
@@ -4194,8 +3914,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedTouchArea(const ArkUI_UIInputEven
 
 Sets the width and height of the finger contact area for a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -4210,7 +3928,7 @@ Sets the width and height of the finger contact area for a cloned event. This AP
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetTouchAreaByIndex()
 
@@ -4222,8 +3940,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTouchAreaByIndex(const ArkUI_UIInputEven
 
 Sets the width and height of the finger contact area for a specific contact point of a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -4239,7 +3955,7 @@ Sets the width and height of the finger contact area for a specific contact poin
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetChangedInteractionHand()
 
@@ -4250,8 +3966,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedInteractionHand(const ArkUI_UIInp
 **Description**
 
 Sets whether a cloned event is triggered by the left or right hand. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4266,7 +3980,7 @@ Sets whether a cloned event is triggered by the left or right hand. This API app
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetInteractionHandByIndex()
 
@@ -4277,8 +3991,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetInteractionHandByIndex(const ArkUI_UIInp
 **Description**
 
 Sets whether a specific contact point of a cloned event is triggered by the left or right hand. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4294,7 +4006,7 @@ Sets whether a specific contact point of a cloned event is triggered by the left
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetPressedTimeByIndex()
 
@@ -4305,8 +4017,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedTimeByIndex(const ArkUI_UIInputEv
 **Description**
 
 Sets the time when a specific touch point is pressed in a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4322,7 +4032,7 @@ Sets the time when a specific touch point is pressed in a cloned event. This API
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetPinchAxisScaleValue()
 
@@ -4331,8 +4041,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPinchAxisScaleValue(const ArkUI_UIInputE
 ```
 
 **Description**
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4347,7 +4055,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPinchAxisScaleValue(const ArkUI_UIInputE
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetHorizontalAxisScaleValue()
 
@@ -4356,8 +4064,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetHorizontalAxisScaleValue(const ArkUI_UII
 ```
 
 **Description**
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4372,7 +4078,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetHorizontalAxisScaleValue(const ArkUI_UII
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetVerticalAxisScaleValue()
 
@@ -4381,8 +4087,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetVerticalAxisScaleValue(const ArkUI_UIInp
 ```
 
 **Description**
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4397,7 +4101,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetVerticalAxisScaleValue(const ArkUI_UIInp
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetScrollStep()
 
@@ -4409,8 +4113,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetScrollStep(const ArkUI_UIInputEvent* eve
 
 Sets the scrolling step coefficient for a cloned event. This API applies to axis events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
@@ -4418,13 +4120,13 @@ Sets the scrolling step coefficient for a cloned event. This API applies to axis
 | Parameter | Description |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
-| int32_t scrollStep | Scrolling step coefficient of the cloned event. The value is an integer within the range of [0, 65535]. |
+| int32_t scrollStep | Scrolling step coefficient of the cloned event. The value is an integer within the range of [0,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;65535]. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetMouseButton()
 
@@ -4435,8 +4137,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetMouseButton(const ArkUI_UIInputEvent* ev
 **Description**
 
 Sets a button type for a cloned event. This API applies to mouse events. This API can be used only for the **<br>ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4451,7 +4151,7 @@ Sets a button type for a cloned event. This API applies to mouse events. This AP
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetRawDeltaX()
 
@@ -4462,8 +4162,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRawDeltaX(const ArkUI_UIInputEvent* even
 **Description**
 
 Sets the movement delta of the mouse along the x-axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. This API applies to mouse events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4478,7 +4176,7 @@ Sets the movement delta of the mouse along the x-axis in a two-dimensional plane
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetRawDeltaY()
 
@@ -4489,8 +4187,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRawDeltaY(const ArkUI_UIInputEvent* even
 **Description**
 
 Sets the movement delta of the mouse along the y-axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. This API applies to mouse events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4505,7 +4201,7 @@ Sets the movement delta of the mouse along the y-axis in a two-dimensional plane
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_ClonedEvent_SetPressedButtons()
 
@@ -4516,8 +4212,6 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedButtons(const ArkUI_UIInputEvent*
 **Description**
 
 Sets the pressed keys in a cloned event. This API applies to mouse events. This API can be used only for the *<br>*ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4533,7 +4227,7 @@ Sets the pressed keys in a cloned event. This API applies to mouse events. This 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the event type is not supported. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED if the event type is not supported. |
 
 ### OH_ArkUI_PointerEvent_PostClonedEventWithStrategy()
 
@@ -4544,8 +4238,6 @@ ArkUI_ErrorCode OH_ArkUI_PointerEvent_PostClonedEventWithStrategy(ArkUI_NodeHand
 **Description**
 
 Posts a cloned event to a specific node using a specified competition strategy. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent).
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4561,6 +4253,6 @@ Posts a cloned event to a specific node using a specified competition strategy. 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the input event pointer is not a cloned event      pointer.      <br>Returns [ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the component status is abnormal.      <br>Returns [ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if no component is hit      to respond to the event. |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT if the input event pointer is not a cloned event pointer. <br>Returns ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL if the component status is abnormal. <br>Returns ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT if no component is hit to respond to the event. |
 
 

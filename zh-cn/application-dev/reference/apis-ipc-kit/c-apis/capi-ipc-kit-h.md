@@ -8,8 +8,6 @@ IPC（Inter-Process Communication，进程间通信）头文件，提供IPC Kit�
 
 **库：** libipc_capi.so
 
-**系统能力：** SystemCapability.Communication.IPC.Core
-
 **起始版本：** 12
 
 **相关模块：** [IPCKit](capi-ipckit.md)

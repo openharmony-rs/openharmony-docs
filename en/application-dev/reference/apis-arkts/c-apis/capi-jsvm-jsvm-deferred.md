@@ -1,0 +1,18 @@
+# JSVM_Deferred
+
+```c
+typedef struct JSVM_Deferred JSVM_Deferred
+```
+
+## Overview
+
+To represent a JavaScript VM value deferred.
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 11
+
+**Related module**: [JSVM](capi-jsvm.md)
+
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
+

@@ -1,12 +1,12 @@
-# NativeWindowBuffer (NativeWindow)
+# NativeWindowBuffer
 
 ```c
-typedef struct NativeWindowBuffer OHNativeWindowBuffer
+struct NativeWindowBuffer
 ```
 
 ## 概述
 
-定义结构体NativeWindowBuffer的新类型名OHNativeWindowBuffer。
+提供对OHNativeWindowBuffer的访问功能。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 

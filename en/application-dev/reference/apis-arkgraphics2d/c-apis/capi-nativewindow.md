@@ -6,7 +6,7 @@ Provides the error codes for native window.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
-**Since**: 12
+**Since**: 8
 
 ## Files
 

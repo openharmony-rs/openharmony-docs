@@ -6,8 +6,6 @@ Defines **Image** node types for **NativeNode** APIs.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -20,7 +18,7 @@ Defines **Image** node types for **NativeNode** APIs.
 | -- | -- | -- |
 | [ArkUI_ImageRepeat](#arkui_imagerepeat) | ArkUI_ImageRepeat | Enumerates the image repeat patterns. |
 | [ArkUI_ImageSize](#arkui_imagesize) | ArkUI_ImageSize | Enumerates the image sizes. |
-| [ArkUI_ObjectFit](#arkui_objectfit) | ArkUI_ObjectFit | Enumerates the image filling effects of the {@link Image} component. |
+| [ArkUI_ObjectFit](#arkui_objectfit) | ArkUI_ObjectFit | Enumerates the image filling effects of the Image component. |
 | [ArkUI_ImageInterpolation](#arkui_imageinterpolation) | ArkUI_ImageInterpolation | Enumerates the image interpolation effects. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images. |
 | [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode) | ArkUI_DynamicRangeMode | Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut. |
 | [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation) | ArkUI_ImageRotateOrientation | Enumerates image rotation directions. |
@@ -37,8 +35,6 @@ enum ArkUI_ImageRepeat
 **Description**
 
 Enumerates the image repeat patterns.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -59,8 +55,6 @@ enum ArkUI_ImageSize
 
 Enumerates the image sizes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -77,9 +71,7 @@ enum ArkUI_ObjectFit
 
 **Description**
 
-Enumerates the image filling effects of the {@link Image} component.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates the image filling effects of the Image component.
 
 **Since**: 12
 
@@ -112,8 +104,6 @@ enum ArkUI_ImageInterpolation
 
 Enumerates the image interpolation effects. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -133,8 +123,6 @@ enum ArkUI_DynamicRangeMode
 
 Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 | Enum item | Description |
@@ -152,8 +140,6 @@ enum ArkUI_ImageRotateOrientation
 **Description**
 
 Enumerates image rotation directions.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -178,8 +164,6 @@ enum ArkUI_ImageRenderMode
 **Description**
 
 Enumerates the image rendering modes.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

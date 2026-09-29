@@ -1,7 +1,7 @@
 # OH_AVScreenCaptureCallback
 
 ```c
-typedef struct OH_AVScreenCaptureCallback {...} OH_AVScreenCaptureCallback
+struct OH_AVScreenCaptureCallback {...}
 ```
 
 ## Overview

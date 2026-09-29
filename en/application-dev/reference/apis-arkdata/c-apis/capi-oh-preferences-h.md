@@ -6,8 +6,6 @@ Provides APIs and structs for accessing the **Preferences** object.
 
 **Library**: libohpreferences.so
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Related module**: [Preferences](capi-preferences.md)
@@ -52,7 +50,7 @@ Provides APIs and structs for accessing the **Preferences** object.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_PreferencesDataObserver)(void *context, const OH_PreferencesPair *pairs, uint32_t count) | Defines a struct for the callback for data changes.<br>**Since**: 13 |
+| void (*OH_PreferencesDataObserver)(void *context, const OH_PreferencesPair *pairs, uint32_t count) | Defines a struct for the callback for data changes.<br>**Since**: 13<br>**System capability**: SystemCapability.DistributedDataManager.Preferences.Core * |
 
 ## Function description
 
@@ -66,16 +64,14 @@ typedef void (*OH_PreferencesDataObserver)(void *context, const OH_PreferencesPa
 
 Defines a struct for the callback for data changes.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| void \*context | Pointer to the application context. |
-| const OH_PreferencesPair \*pairs | Pointer to the changed KV data. |
+| void *context | Pointer to the application context. |
+| [const OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | Pointer to the changed KV data. |
 | uint32_t count | Number of KV pairs changed. |
 
 **Reference**:
@@ -93,22 +89,20 @@ OH_Preferences *OH_Preferences_Open(OH_PreferencesOption *option, int *errCode)
 
 Opens a **Preferences** instance and creates a pointer to it. If this pointer is no longer required, use [OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close) to close the instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_PreferencesOption *option | Pointer to the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. |
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | Pointer to the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. |
 | int *errCode | Pointer to the error code returned. For details, see [OH_Preferences_ErrCode](capi-oh-preferences-err-code-h.md#oh_preferences_errcode). **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_NOT_SUPPORTED** indicates the system capability is not supported. **PREFERENCES_ERROR_DELETE_FILE** indicates the file fails to be deleted. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_Preferences *](capi-preferences-oh-preferences.md) | Returns a pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance opened if the operation is successful; returns a  null pointer otherwise. |
+| [OH_Preferences *](capi-preferences-oh-preferences.md) | Returns a pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance opened if the operation is successful; returns a null pointer otherwise. |
 
 **Reference**:
 
@@ -125,8 +119,6 @@ int OH_Preferences_Close(OH_Preferences *preference)
 
 Closes a **Preferences** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -139,7 +131,7 @@ Closes a **Preferences** instance.
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code. For details, see [OH_Preferences_ErrCode](capi-oh-preferences-err-code-h.md#oh_preferences_errcode).  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation. |
+| int | Returns an error code. For details, see [OH_Preferences_ErrCode](capi-oh-preferences-err-code-h.md#oh_preferences_errcode). **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. |
 
 **Reference**:
 
@@ -156,21 +148,19 @@ int OH_Preferences_DeletePreferences(OH_PreferencesOption *option)
 
 Deletes the specified **Preferences** object.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_PreferencesOption *option | Pointer to the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. |
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | Pointer to the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_NOT_SUPPORTED indicates the system capability is not supported.  PREFERENCES_ERROR_DELETE_FILE indicates the file fails to be deleted. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_NOT_SUPPORTED** indicates the system capability is not supported. **PREFERENCES_ERROR_DELETE_FILE** indicates the file fails to be deleted. |
 
 **Reference**:
 
@@ -187,8 +177,6 @@ int OH_Preferences_GetInt(OH_Preferences *preference, const char *key, int *valu
 
 Obtains an integer corresponding to the specified key in a **Preferences** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -203,7 +191,7 @@ Obtains an integer corresponding to the specified key in a **Preferences** insta
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation.  PREFERENCES_ERROR_KEY_NOT_FOUND indicates the specified key does not exist. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. **PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist. |
 
 **Reference**:
 
@@ -220,8 +208,6 @@ int OH_Preferences_GetBool(OH_Preferences *preference, const char *key, bool *va
 
 Obtains a Boolean value corresponding to the specified key in a **Preferences** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -236,7 +222,7 @@ Obtains a Boolean value corresponding to the specified key in a **Preferences** 
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation.  PREFERENCES_ERROR_KEY_NOT_FOUND indicates the specified key does not exist. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. **PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist. |
 
 **Reference**:
 
@@ -253,8 +239,6 @@ int OH_Preferences_GetString(OH_Preferences *preference, const char *key, char *
 
 Obtains a string corresponding to the specified key in a **Preferences** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -270,7 +254,7 @@ Obtains a string corresponding to the specified key in a **Preferences** instanc
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation.  PREFERENCES_ERROR_KEY_NOT_FOUND indicates the specified key does not exist. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. **PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist. |
 
 **Reference**:
 
@@ -286,8 +270,6 @@ void OH_Preferences_FreeString(char *string)
 **Description**
 
 Releases a string obtained from a **Preferences** instance.
-
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -312,8 +294,6 @@ int OH_Preferences_SetInt(OH_Preferences *preference, const char *key, int value
 
 Sets an integer based on the specified key in a **Preferences** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -328,7 +308,7 @@ Sets an integer based on the specified key in a **Preferences** instance.
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. |
 
 **Reference**:
 
@@ -345,8 +325,6 @@ int OH_Preferences_SetBool(OH_Preferences *preference, const char *key, bool val
 
 Sets a Boolean value based on the specified key in a **Preferences** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -361,7 +339,7 @@ Sets a Boolean value based on the specified key in a **Preferences** instance.
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. |
 
 **Reference**:
 
@@ -378,8 +356,6 @@ int OH_Preferences_SetString(OH_Preferences *preference, const char *key, const 
 
 Sets a string based on the specified key in a **Preferences** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -394,7 +370,7 @@ Sets a string based on the specified key in a **Preferences** instance.
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. |
 
 **Reference**:
 
@@ -411,8 +387,6 @@ int OH_Preferences_Delete(OH_Preferences *preference, const char *key)
 
 Deletes the KV data corresponding to the specified key from a **Preferences** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -426,7 +400,7 @@ Deletes the KV data corresponding to the specified key from a **Preferences** in
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. |
 
 **Reference**:
 
@@ -442,8 +416,6 @@ int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *contex
 **Description**
 
 Subscribes to data changes of the specified keys. If the value of the specified key changes, a callback will be invoked after **OH_Preferences_Close()** is called.
-
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -461,7 +433,7 @@ Subscribes to data changes of the specified keys. If the value of the specified 
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation.  PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT indicates a failure in obtaining the data change subscription service. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. **PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT** indicates a failure in obtaining the data change subscription service. |
 
 **Reference**:
 
@@ -477,8 +449,6 @@ int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *cont
 **Description**
 
 Unsubscribes from data changes of the specified keys.
-
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -496,7 +466,7 @@ Unsubscribes from data changes of the specified keys.
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates the storage is abnormal.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. |
 
 **Reference**:
 
@@ -513,22 +483,20 @@ int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *is
 
 Check if a type is supported or not.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Preferences_StorageType type | the storage type of [Preferences_StorageType](capi-oh-preferences-option-h.md#preferences_storagetype). |
+| [Preferences_StorageType](capi-oh-preferences-option-h.md#preferences_storagetype) type | the storage type of [Preferences_StorageType](capi-oh-preferences-option-h.md#preferences_storagetype). |
 | bool *isSupported | Pointer to the Boolean value obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          [PREFERENCES_OK](capi-oh-preferences-err-code-h.md#oh_preferences_errcode) indicates the operation is successful.          [PREFERENCES_ERROR_INVALID_PARAM](capi-oh-preferences-err-code-h.md#oh_preferences_errcode) indicates invalid args are passed in. |
+| int | Returns the status code of the execution. [PREFERENCES_OK](capi-oh-preferences-err-code-h.md#oh_preferences_errcode) indicates the operation is successful. [PREFERENCES_ERROR_INVALID_PARAM](capi-oh-preferences-err-code-h.md#oh_preferences_errcode) indicates invalid args are passed in. |
 
 ### OH_Preferences_SetValue()
 
@@ -540,8 +508,6 @@ int OH_Preferences_SetValue(OH_Preferences *preference, const char *key, OH_Pref
 
 Sets [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) in the **Preferences** object.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -550,13 +516,13 @@ Sets [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) in the **Pre
 | -- | -- |
 | [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance. |
 | const char *key | Pointer to the key of the value to set. |
-| OH_PreferencesValue *value | Pointer to the [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) value to set. |
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *value | Pointer to the [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) value to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates a storage exception.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates a storage exception. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. |
 
 **Reference**:
 
@@ -573,8 +539,6 @@ int OH_Preferences_GetValue(OH_Preferences *preference, const char *key, OH_Pref
 
 Obtains the value from the **Preferences** object based on the given key.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -583,13 +547,13 @@ Obtains the value from the **Preferences** object based on the given key.
 | -- | -- |
 | [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance. |
 | const char *key | Pointer to the key of the value to obtain. |
-| OH_PreferencesValue **value | Double pointer to [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md). |
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) **value | Double pointer to [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates a storage exception.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation.  PREFERENCES_ERROR_KEY_NOT_FOUND indicates the specified key does not exist. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates a storage exception. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. **PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist. |
 
 **Reference**:
 
@@ -606,8 +570,6 @@ int OH_Preferences_GetAll(OH_Preferences *preference, OH_PreferencesPair **pairs
 
 Obtains all the values from the **Preferences** object.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -615,14 +577,14 @@ Obtains all the values from the **Preferences** object.
 | Parameter | Description |
 | -- | -- |
 | [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance. |
-| OH_PreferencesPair **pairs | Pointer to the KV data to obtain. When the KV data is no longer needed, call [OH_Preferences_FreeString](capi-oh-preferences-h.md#oh_preferences_freestring) to free the memory. |
+| [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) **pairs | Pointer to the KV data to obtain. When the KV data is no longer needed, call [OH_Preferences_FreeString](capi-oh-preferences-h.md#oh_preferences_freestring) to free the memory. |
 | uint32_t *count | Pointer to the count of all obtained values. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates a storage exception.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation.  PREFERENCES_ERROR_KEY_NOT_FOUND indicates the specified key does not exist. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates a storage exception. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. **PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist. |
 
 **Reference**:
 
@@ -639,8 +601,6 @@ bool OH_Preferences_HasKey(OH_Preferences *preference, const char *key)
 
 Checks whether the **Preferences** object contains KV data matching the specified key. Returns **true** if present, and **false** otherwise.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -654,7 +614,7 @@ Checks whether the **Preferences** object contains KV data matching the specifie
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the Preferences object contains KV data that matches the specified key; returns   false otherwise. |
+| bool | Returns **true** if the **Preferences** object contains KV data that matches the specified key; returns ** false** otherwise. |
 
 **Reference**:
 
@@ -671,8 +631,6 @@ int OH_Preferences_Flush(OH_Preferences *preference)
 
 Saves the cache of the [OH_Preferences](capi-preferences-oh-preferences.md) object to an XML file.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -685,7 +643,7 @@ Saves the cache of the [OH_Preferences](capi-preferences-oh-preferences.md) obje
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_NOT_SUPPORTED indicates the system capability is not supported. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_NOT_SUPPORTED** indicates the system capability is not supported. |
 
 **Reference**:
 
@@ -702,8 +660,6 @@ int OH_Preferences_ClearCache(OH_Preferences *preference)
 
 Clears all values in the cache of the [OH_Preferences](capi-preferences-oh-preferences.md) object.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -716,7 +672,7 @@ Clears all values in the cache of the [OH_Preferences](capi-preferences-oh-prefe
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_NOT_SUPPORTED indicates the system capability is not supported. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_NOT_SUPPORTED** indicates the system capability is not supported. |
 
 **Reference**:
 
@@ -733,8 +689,6 @@ int OH_Preferences_RegisterMultiProcessDataObserver(OH_Preferences *preference, 
 
 Registers a multi-process data observer for the **Preferences** object.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -749,7 +703,7 @@ Registers a multi-process data observer for the **Preferences** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates a storage exception.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation.  PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT indicates a failure in obtaining the data change subscription service. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates a storage exception. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. **PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT** indicates a failure in obtaining the data change subscription service. |
 
 **Reference**:
 
@@ -766,8 +720,6 @@ int OH_Preferences_UnregisterMultiProcessDataObserver(OH_Preferences *preference
 
 Unregisters the multi-process data observer of the **Preferences** object.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -782,7 +734,7 @@ Unregisters the multi-process data observer of the **Preferences** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns an error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified.  PREFERENCES_ERROR_STORAGE indicates a storage exception.  PREFERENCES_ERROR_MALLOC indicates a failure in memory allocation. |
+| int | Returns an error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. **PREFERENCES_ERROR_STORAGE** indicates a storage exception. **PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation. |
 
 **Reference**:
 

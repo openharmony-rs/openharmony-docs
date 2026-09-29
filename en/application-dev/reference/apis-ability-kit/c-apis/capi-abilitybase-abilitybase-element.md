@@ -1,12 +1,12 @@
 # AbilityBase_Element
 
 ```c
-typedef struct AbilityBase_Element {...} AbilityBase_Element
+struct AbilityBase_Element {...}
 ```
 
 ## Overview
 
-The struct describes the Element in {@link Want}.
+The struct describes the Element in Want.
 
 **System capability**: SystemCapability.Ability.AbilityBase
 

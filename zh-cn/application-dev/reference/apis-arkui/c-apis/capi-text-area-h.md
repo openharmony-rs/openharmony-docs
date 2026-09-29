@@ -6,8 +6,6 @@
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -31,8 +29,6 @@ enum ArkUI_TextAreaType
 **描述：**
 
 定义多行文本输入类型枚举值。不同的枚举值用于指定TextArea组件的输入类型，会影响输入内容的验证规则。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 

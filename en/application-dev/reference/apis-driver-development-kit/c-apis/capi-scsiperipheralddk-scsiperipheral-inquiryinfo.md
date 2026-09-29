@@ -1,7 +1,7 @@
 # ScsiPeripheral_InquiryInfo
 
 ```c
-typedef struct ScsiPeripheral_InquiryInfo {...} ScsiPeripheral_InquiryInfo
+struct ScsiPeripheral_InquiryInfo {...}
 ```
 
 ## Overview
@@ -26,6 +26,6 @@ Defines the SCSI inquiry data.
 | char idVendor[SCSIPERIPHERAL_VENDOR_ID_LEN + 1] | Vendor ID. |
 | char idProduct[SCSIPERIPHERAL_PRODUCT_ID_LEN + 1] | Product ID. |
 | char revProduct[SCSIPERIPHERAL_PRODUCT_REV_LEN + 1] | Product version. |
-| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) *data | Inquiry data. |
+| ScsiPeripheral_DeviceMemMap *data | Inquiry data. |
 
 

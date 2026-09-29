@@ -6,9 +6,7 @@ Provides type define related to the data value.
 
 **Library**: libnative_rdb_ndk.z.so
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since**: 10
+**Since**: 18
 
 **Related module**: [RDB](capi-rdb.md)
 
@@ -49,8 +47,6 @@ enum Rdb_ConflictResolution
 
 Describe the security area of the database.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 | Enum item | Description |
@@ -75,15 +71,13 @@ OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)
 
 Creates an OH_RDB_ReturningContext instance object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 23
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_RDB_ReturningContext *](capi-rdb-oh-rdb-returningcontext.md) | Returns a pointer to OH_RDB_ReturningContext instance when the execution is successful.      Otherwise, nullptr is returned. The memory must be released through the OH_RDB_DestroyReturningContext      interface after the use is complete. |
+| [OH_RDB_ReturningContext *](capi-rdb-oh-rdb-returningcontext.md) | Returns a pointer to OH_RDB_ReturningContext instance when the execution is successful. Otherwise, nullptr is returned. The memory must be released through the OH_RDB_DestroyReturningContext interface after the use is complete. |
 
 **Reference**:
 
@@ -99,8 +93,6 @@ void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)
 **Description**
 
 Destroys an OH_RDB_ReturningContext instance object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 23
 
@@ -120,8 +112,6 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 
 Set the returning fields.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -136,7 +126,7 @@ Set the returning fields.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_RDB_SetMaxReturningCount()
 
@@ -147,8 +137,6 @@ int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 **Description**
 
 Set the maximum returning value.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 23
 
@@ -163,7 +151,7 @@ Set the maximum returning value.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_RDB_GetReturningValues()
 
@@ -174,8 +162,6 @@ OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)
 **Description**
 
 Get the cursor of data changes, includes 1024 by default.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 23
 
@@ -189,7 +175,7 @@ Get the cursor of data changes, includes 1024 by default.
 
 | Type | Description |
 | -- | -- |
-| OH_Cursor * | a pointer to the instance of the [OH_Cursor](capi-rdb-oh-cursor.md) structure is returned.      If Get Cursor failed, nullptr is returned. |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | a pointer to the instance of the [OH_Cursor](capi-rdb-oh-cursor.md) structure is returned. If Get Cursor failed, nullptr is returned. |
 
 ### OH_RDB_GetChangedCount()
 
@@ -200,8 +186,6 @@ int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)
 **Description**
 
 Get the number of rows affected by this operation.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 23
 

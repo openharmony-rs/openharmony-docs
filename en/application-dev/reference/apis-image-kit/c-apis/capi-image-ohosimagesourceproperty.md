@@ -6,7 +6,7 @@ struct OhosImageSourceProperty {...}
 
 ## Overview
 
-Defines the property string (in key-value format) of the image source. It is used in {@link OH_ImageSource_GetImageProperty} and {@link OH_ImageSource_ModifyImageProperty}.
+Defines the property string (in key-value format) of the image source. It is used in [OH_ImageSource_GetImageProperty](capi-image-source-mdk-h.md#oh_imagesource_getimageproperty) and [OH_ImageSource_ModifyImageProperty](capi-image-source-mdk-h.md#oh_imagesource_modifyimageproperty).
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -23,10 +23,8 @@ Defines the property string (in key-value format) of the image source. It is use
 | Name | Description |
 | -- | -- |
 | char* value = nullptr |  |
-| size_t size = 0;
-#else |  |
+| size_t size = 0 |  |
 | char* value |  |
-| size_t size;
-#endif |  |
+| size_t size |  |
 
 

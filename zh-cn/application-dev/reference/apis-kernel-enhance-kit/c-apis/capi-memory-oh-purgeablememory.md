@@ -1,0 +1,18 @@
+# OH_PurgeableMemory
+
+```c
+typedef struct OH_PurgeableMemory OH_PurgeableMemory
+```
+
+## 概述
+
+可清除的内存结构。
+
+**系统能力：** SystemCapability.Kernel.Memory
+
+**起始版本：** 10
+
+**相关模块：** [memory](capi-memory.md)
+
+**所在头文件：** [purgeable_memory.h](capi-purgeable-memory-h.md)
+

@@ -6,8 +6,6 @@ Provides shared list item-related type and function definitions for <b>NativeNod
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -25,9 +23,9 @@ Provides shared list item-related type and function definitions for <b>NativeNod
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate) | ArkUI_ListItemSwipeActionState | Enumerates the swipe action states of a {@link ListItem}. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED**. |
-| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect) | ArkUI_ListItemSwipeEdgeEffect | Enumerates the edge effects of the swipe action for the {@link ListItem} component. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING**. |
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Enumerates the directions to expand the swipe action of a {@link ListItem}. |
+| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate) | ArkUI_ListItemSwipeActionState | Enumerates the swipe action states of a ListItem. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED**. |
+| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect) | ArkUI_ListItemSwipeEdgeEffect | Enumerates the edge effects of the swipe action for the ListItem component. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING**. |
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Enumerates the directions to expand the swipe action of a ListItem. |
 
 ### Function
 
@@ -40,12 +38,12 @@ Provides shared list item-related type and function definitions for <b>NativeNod
 | [float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionitem_getactionareadistance) | Obtains the threshold for the long-distance sliding deletion distance of the component. |
 | [void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonenteractionarea) | Sets the event to be called when a sliding entry enters the deletion area. |
 | [void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_ListItemSwipeActionItem* item, void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonenteractionareawithuserdata) | Sets the event triggered when a sliding entry enters the deletion area, with user data. |
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonaction) | Sets the event to be called when a component enters the long-range deletion area and deletes a {@link ListItem}. |
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwipeActionItem* item, void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonactionwithuserdata) | Sets the event triggered when a component enters the long-range deletion area and deletes a {@link ListItem}, with user data. |
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonaction) | Sets the event to be called when a component enters the long-range deletion area and deletes a ListItem. |
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwipeActionItem* item, void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonactionwithuserdata) | Sets the event triggered when a component enters the long-range deletion area and deletes a ListItem, with user data. |
 | [void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonexitactionarea) | Sets the event to be called when a sliding entry exits the deletion area. |
 | [void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_ListItemSwipeActionItem* item, void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonexitactionareawithuserdata) | Sets the event triggered when a sliding entry exits the deletion area, with user data. |
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeActionItem* item, void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState))](#oh_arkui_listitemswipeactionitem_setonstatechange) | Sets the event triggered when the sliding state of a {@link ListItem} changes. |
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListItemSwipeActionItem* item, void* userData, void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState, void* userData))](#oh_arkui_listitemswipeactionitem_setonstatechangewithuserdata) | Sets the event triggered when the sliding state of a {@link ListItem} changes, with user data. |
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeActionItem* item, void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState))](#oh_arkui_listitemswipeactionitem_setonstatechange) | Sets the event triggered when the sliding state of a ListItem changes. |
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListItemSwipeActionItem* item, void* userData, void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState, void* userData))](#oh_arkui_listitemswipeactionitem_setonstatechangewithuserdata) | Sets the event triggered when the sliding state of a ListItem changes, with user data. |
 | [ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()](#oh_arkui_listitemswipeactionoption_create) | Creates a **ListItemSwipeActionOption** instance. |
 | [void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption* option)](#oh_arkui_listitemswipeactionoption_dispose) | Disposes of a **ListItemSwipeActionOption** instance. |
 | [void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionoption_setstart) | Sets the layout content on the left (vertical layout) or top (horizontal layout) of the **ListItemSwipeActionItem**. |
@@ -67,9 +65,7 @@ enum ArkUI_ListItemSwipeActionState
 
 **Description**
 
-Enumerates the swipe action states of a {@link ListItem}. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED**.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates the swipe action states of a ListItem. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED**.
 
 **Since**: 12
 
@@ -87,9 +83,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 
 **Description**
 
-Enumerates the edge effects of the swipe action for the {@link ListItem} component. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING**.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates the edge effects of the swipe action for the ListItem component. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING**.
 
 **Since**: 12
 
@@ -106,9 +100,7 @@ enum ArkUI_ListItemSwipeActionDirection
 
 **Description**
 
-Enumerates the directions to expand the swipe action of a {@link ListItem}.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates the directions to expand the swipe action of a ListItem.
 
 **Since**: 21
 
@@ -130,15 +122,13 @@ ArkUI_ListItemSwipeActionItem* OH_ArkUI_ListItemSwipeActionItem_Create()
 
 Creates a **ListItemSwipeActionItem** instance.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem*](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | Pointer to the created ListItemSwipeActionItem instance. If a null pointer is returned, it indicates a  creation failure. The possible cause is that the address space is full. |
+| [ArkUI_ListItemSwipeActionItem*](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | Pointer to the created **ListItemSwipeActionItem** instance. If a null pointer is returned, it indicates a creation failure. The possible cause is that the address space is full. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_Dispose()
 
@@ -149,8 +139,6 @@ void OH_ArkUI_ListItemSwipeActionItem_Dispose(ArkUI_ListItemSwipeActionItem* ite
 **Description**
 
 Disposes of a **ListItemSwipeActionItem** instance.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -170,8 +158,6 @@ void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* 
 
 Sets the layout content of the **ListItemSwipeActionItem**.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -179,7 +165,7 @@ Sets the layout content of the **ListItemSwipeActionItem**.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| ArkUI_NodeHandle node | Layout information. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Layout information. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance()
 
@@ -190,8 +176,6 @@ void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeA
 **Description**
 
 Sets the threshold for the long-distance sliding deletion distance of the component.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -212,8 +196,6 @@ float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipe
 
 Obtains the threshold for the long-distance sliding deletion distance of the component.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -226,7 +208,7 @@ Obtains the threshold for the long-distance sliding deletion distance of the com
 
 | Type | Description |
 | -- | -- |
-| float | Threshold for the long-distance sliding deletion distance of the component. If -1.0f is returned, the  operation fails. The possible cause is that the item parameter is abnormal, such as a null pointer. |
+| float | Threshold for the long-distance sliding deletion distance of the component. If **-1.0f** is returned, the operation fails. The possible cause is that the **item** parameter is abnormal, such as a null pointer. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea()
 
@@ -238,16 +220,14 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeAc
 
 Sets the event to be called when a sliding entry enters the deletion area.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionItem\* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| void (\*callback)() | Callback event. |
+| rkUI_ListItemSwipeActionItem* item | Pointer to the **ListItemSwipeActionItem** instance. |
+| void (*callback)() | Callback event. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData()
 
@@ -259,17 +239,15 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_Lis
 
 Sets the event triggered when a sliding entry enters the deletion area, with user data.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionItem\* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| void\* userData | User-defined data. |
-| void (\*callback)(void\* userData) | Callback event. |
+| rkUI_ListItemSwipeActionItem* item | Pointer to the **ListItemSwipeActionItem** instance. |
+| void* userData | User-defined data. |
+| void (*callback)(void* userData) | Callback event. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnAction()
 
@@ -279,9 +257,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem*
 
 **Description**
 
-Sets the event to be called when a component enters the long-range deletion area and deletes a {@link ListItem}.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the event to be called when a component enters the long-range deletion area and deletes a ListItem.
 
 **Since**: 12
 
@@ -289,8 +265,8 @@ Sets the event to be called when a component enters the long-range deletion area
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionItem\* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| void (\*callback)() | Callback event. |
+| rkUI_ListItemSwipeActionItem* item | Pointer to the **ListItemSwipeActionItem** instance. |
+| void (*callback)() | Callback event. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData()
 
@@ -300,9 +276,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwip
 
 **Description**
 
-Sets the event triggered when a component enters the long-range deletion area and deletes a {@link ListItem}, with user data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the event triggered when a component enters the long-range deletion area and deletes a ListItem, with user data.
 
 **Since**: 12
 
@@ -310,9 +284,9 @@ Sets the event triggered when a component enters the long-range deletion area an
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionItem\* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| void\* userData | User-defined data. |
-| void (\*callback)(void\* userData) | Callback event. |
+| rkUI_ListItemSwipeActionItem* item | Pointer to the **ListItemSwipeActionItem** instance. |
+| void* userData | User-defined data. |
+| void (*callback)(void* userData) | Callback event. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea()
 
@@ -324,16 +298,14 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeAct
 
 Sets the event to be called when a sliding entry exits the deletion area.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionItem\* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| void (\*callback)() | Callback event. |
+| rkUI_ListItemSwipeActionItem* item | Pointer to the **ListItemSwipeActionItem** instance. |
+| void (*callback)() | Callback event. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData()
 
@@ -345,17 +317,15 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_List
 
 Sets the event triggered when a sliding entry exits the deletion area, with user data.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionItem\* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| void\* userData | User-defined data. |
-| void (\*callback)(void\* userData) | Callback event. |
+| rkUI_ListItemSwipeActionItem* item | Pointer to the **ListItemSwipeActionItem** instance. |
+| void* userData | User-defined data. |
+| void (*callback)(void* userData) | Callback event. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange()
 
@@ -365,9 +335,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeAction
 
 **Description**
 
-Sets the event triggered when the sliding state of a {@link ListItem} changes.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the event triggered when the sliding state of a ListItem changes.
 
 **Since**: 12
 
@@ -375,8 +343,8 @@ Sets the event triggered when the sliding state of a {@link ListItem} changes.
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionItem\* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState) | Callback event. **swipeActionState** The changed state. |
+| rkUI_ListItemSwipeActionItem* item | Pointer to the **ListItemSwipeActionItem** instance. |
+| void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState) | Callback event. **swipeActionState** The changed state. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData()
 
@@ -386,9 +354,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListIte
 
 **Description**
 
-Sets the event triggered when the sliding state of a {@link ListItem} changes, with user data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Sets the event triggered when the sliding state of a ListItem changes, with user data.
 
 **Since**: 12
 
@@ -396,9 +362,9 @@ Sets the event triggered when the sliding state of a {@link ListItem} changes, w
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionItem\* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| void\* userData | User-defined data. |
-| void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState | Callback event. **swipeActionState** The changed state. |
+| rkUI_ListItemSwipeActionItem* item | Pointer to the **ListItemSwipeActionItem** instance. |
+| void* userData | User-defined data. |
+| void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState | Callback event. **swipeActionState** The changed state. |
 
 ### OH_ArkUI_ListItemSwipeActionOption_Create()
 
@@ -410,15 +376,13 @@ ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()
 
 Creates a **ListItemSwipeActionOption** instance.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption*](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | Pointer to the created ListItemSwipeActionOption instance. If a null pointer is returned, it indicates a  creation failure. The possible cause is that the address space is full. |
+| [ArkUI_ListItemSwipeActionOption*](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | Pointer to the created **ListItemSwipeActionOption** instance. If a null pointer is returned, it indicates a creation failure. The possible cause is that the address space is full. |
 
 ### OH_ArkUI_ListItemSwipeActionOption_Dispose()
 
@@ -429,8 +393,6 @@ void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption*
 **Description**
 
 Disposes of a **ListItemSwipeActionOption** instance.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -449,8 +411,6 @@ void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption
 **Description**
 
 Sets the layout content on the left (vertical layout) or top (horizontal layout) of the **ListItemSwipeActionItem**.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -471,8 +431,6 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* 
 
 Sets the layout content on the right (vertical layout) or bottom (horizontal layout) of the **ListItemSwipeActionItem**.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -491,8 +449,6 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionO
 **Description**
 
 Sets the sliding effect.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -513,8 +469,6 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 
 Obtains the sliding effect.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -527,7 +481,7 @@ Obtains the sliding effect.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Sliding effect. The default return value is 0. If -1 is returned, the operation fails. The possible  cause is that the option parameter is abnormal, such as a null pointer. |
+| int32_t | Sliding effect. The default return value is **0**. If **-1** is returned, the operation fails. The possible cause is that the **option** parameter is abnormal, such as a null pointer. |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange()
 
@@ -539,16 +493,14 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeAct
 
 Sets the event called when the sliding operation offset changes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionOption\* option | Pointer to the **ListItemSwipeActionOption** instance. |
-| void (\*callback)(float offset) | Callback event. **offset** Slide offset. |
+| rkUI_ListItemSwipeActionOption* option | Pointer to the **ListItemSwipeActionOption** instance. |
+| void (*callback)(float offset) | Callback event. **offset** Slide offset. |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
 
@@ -560,17 +512,15 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_List
 
 Sets the event triggered when the sliding operation offset changes, with user data.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_ListItemSwipeActionOption\* option | Pointer to the **ListItemSwipeActionOption** instance. |
-| void\* userData | User-defined data. |
-| void (\*callback)(float offset | Callback event. **offset** Slide offset. |
+| rkUI_ListItemSwipeActionOption* option | Pointer to the **ListItemSwipeActionOption** instance. |
+| void* userData | User-defined data. |
+| void (*callback)(float offset | Callback event. **offset** Slide offset. |
 
 ### OH_ArkUI_ListItemSwipeAction_Expand()
 
@@ -582,22 +532,20 @@ int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListIte
 
 Expands the swipe action.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | List item node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | List item node. |
 | [ArkUI_ListItemSwipeActionDirection](capi-list-item-h.md#arkui_listitemswipeactiondirection) direction | Direction to expand the swipe action. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li><br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.</li><br>    <li><br>Returns {@link ARKUI_ERROR_CODE_PARAM_ERROR} if the component type of the node is incorrect.</li><br>    <li><br>Returns {@link ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE} if the node is not mounted to the component      tree.</li>      </ul> |
+| int32_t | Result code. <ul> <li><br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li><br>Returns ARKUI_ERROR_CODE_PARAM_ERROR if the component type of the node is incorrect.</li> <li><br>Returns ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE if the node is not mounted to the component tree.</li> </ul> |
 
 ### OH_ArkUI_ListItemSwipeAction_Collapse()
 
@@ -609,20 +557,18 @@ int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)
 
 Collapses the swipe action.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | List item node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | List item node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li><br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.</li><br>    <li><br>Returns {@link ARKUI_ERROR_CODE_PARAM_ERROR} if the component type of the node is incorrect.</li><br>    <li><br>Returns {@link ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE} if the node is not mounted to the component      tree.</li>      </ul> |
+| int32_t | Result code. <ul> <li><br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li><br>Returns ARKUI_ERROR_CODE_PARAM_ERROR if the component type of the node is incorrect.</li> <li><br>Returns ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE if the node is not mounted to the component tree.</li> </ul> |
 
 

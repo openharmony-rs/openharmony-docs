@@ -1,7 +1,7 @@
 # ImageReceiverNative_
 
 ```c
-typedef struct ImageReceiverNative_ ImageReceiverNative
+struct ImageReceiverNative_
 ```
 
 ## 概述

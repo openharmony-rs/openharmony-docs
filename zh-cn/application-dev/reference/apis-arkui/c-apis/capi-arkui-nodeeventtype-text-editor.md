@@ -118,4 +118,40 @@ NODE_TEXT_EDITOR_ON_DID_CHANGE
 
 **起始版本：** 24
 
+### NODE_TEXT_EDITOR_ON_CONTENT_SCROLL
+
+```c
+NODE_TEXT_EDITOR_ON_CONTENT_SCROLL = 22009
+```
+
+**描述：**
+
+定义TextEditor组件在文本内容滚动时触发的事件。 <br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含两个参数： <br><b>ArkUI_NodeComponentEvent.data[0].f32</b>：文本在内容区域内的水平偏移量。 <br><b>ArkUI_NodeComponentEvent.data[1].f32</b>：文本在内容区域内的垂直偏移量。
+
+**起始版本：** 26.2.0
+
+### NODE_TEXT_EDITOR_ON_CONTENT_SIZE_CHANGE
+
+```c
+NODE_TEXT_EDITOR_ON_CONTENT_SIZE_CHANGE = 22010
+```
+
+**描述：**
+
+定义TextEditor组件在内容尺寸变化时触发的事件。 <br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含两个参数： <br><b>ArkUI_NodeComponentEvent.data[0].f32</b>：文本内容的宽度。 <br><b>ArkUI_NodeComponentEvent.data[1].f32</b>：文本内容的高度。
+
+**起始版本：** 26.2.0
+
+### NODE_TEXT_EDITOR_ON_INPUT_FILTER_ERROR
+
+```c
+NODE_TEXT_EDITOR_ON_INPUT_FILTER_ERROR = 22011
+```
+
+**描述：**
+
+定义TextEditor组件的输入字符被inputFilter正则过滤时触发的事件。 <br>该事件仅在spanString模式下生效。 <br>仅在已注册onInputFilterError回调且输入字符被inputFilter正则拒绝时触发。 <br>当事件回调发生时，可以通过[OH_ArkUI_NodeEvent_GetStringAsyncEvent](capi-native-node-h.md#oh_arkui_nodeevent_getstringasyncevent)从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获取被过滤的字符。 <br><b>ArkUI_StringAsyncEvent.pStr</b>字段包含被拒字符的UTF-8字符串。
+
+**起始版本：** 26.2.0
+
 

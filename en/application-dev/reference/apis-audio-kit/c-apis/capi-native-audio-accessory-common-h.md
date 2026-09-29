@@ -6,9 +6,7 @@ Declare common types for external audio accessory device interfaces.
 
 **Library**: libohaudio.so
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
-**Since**: 10
+**Since**: 26.0.0
 
 **Related module**: [OHAudio](capi-ohaudio.md)
 
@@ -42,8 +40,6 @@ enum OH_AudioAccessoryType
 **Description**
 
 Enumerates audio accessory connection types.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 

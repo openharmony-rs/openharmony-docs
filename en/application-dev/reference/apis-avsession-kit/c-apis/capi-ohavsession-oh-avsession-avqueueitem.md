@@ -1,7 +1,7 @@
 # OH_AVSession_AVQueueItem
 
 ```c
-typedef struct OH_AVSession_AVQueueItem {...} OH_AVSession_AVQueueItem
+struct OH_AVSession_AVQueueItem {...}
 ```
 
 ## Overview
@@ -23,6 +23,6 @@ Declaring the avqueue item. The instance of AVQueueItem.
 | Name | Description |
 | -- | -- |
 | uint32_t itemId | itemId. |
-| [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md) *description | media item info. |
+| OH_AVSession_AVMediaDescription *description | media item info. |
 
 

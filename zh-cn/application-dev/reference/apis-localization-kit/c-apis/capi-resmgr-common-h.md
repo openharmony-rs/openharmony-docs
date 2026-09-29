@@ -6,8 +6,6 @@
 
 **库：** libohresmgr.so
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 **相关模块：** [resourcemanager](capi-resourcemanager.md)
@@ -16,9 +14,9 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) | ResourceManager_Configuration | 设备状态的结构体。 |
+| 名称 | 描述 |
+| -- | -- |
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) | 设备状态的结构体。 |
 
 ### 枚举
 
@@ -48,8 +46,6 @@ enum ResourceManager_ErrorCode
 
 资源管理错误码。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -78,8 +74,6 @@ enum ResourceManager_Direction
 
 屏幕方向的枚举。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -97,8 +91,6 @@ enum ResourceManager_ColorMode
 
 颜色模式的枚举。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -115,8 +107,6 @@ enum ResourceManager_DeviceType
 **描述：**
 
 设备类型的枚举。
-
-**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -139,8 +129,6 @@ enum ScreenDensity
 **描述：**
 
 屏幕密度类型的枚举。
-
-**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 

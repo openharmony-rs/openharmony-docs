@@ -6,7 +6,7 @@ typedef struct ArkUI_NativeGestureAPI_2 {...} ArkUI_NativeGestureAPI_2
 
 ## 概述
 
-定义手势模块接口集合，在{@link ArkUI_NativeGestureAPI_1}的基础上扩展提供设置手势打断事件回调函数的能力，用于在手势识别过程中根据回调结果继续或打断手势。开发者可以通过<br>{@link gestureApi1}访问基础手势接口，配合{@link setGestureInterrupterToNode}处理手势打断。
+定义手势模块接口集合，在[ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)的基础上扩展提供设置手势打断事件回调函数的能力，用于在手势识别过程中根据回调结果继续或打断手势。开发者可以通过 [gestureApi1](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)访问基础手势接口，配合[setGestureInterrupterToNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setgestureinterruptertonode)处理手势打断。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +55,6 @@ Sets the callback for gesture interruption events.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Error code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 

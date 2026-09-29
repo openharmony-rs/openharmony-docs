@@ -1,7 +1,7 @@
 # Camera_Profile
 
 ```c
-typedef struct Camera_Profile {...} Camera_Profile
+struct Camera_Profile {...}
 ```
 
 ## Overview

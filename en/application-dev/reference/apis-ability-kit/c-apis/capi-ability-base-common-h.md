@@ -6,8 +6,6 @@ The file declares the error codes defined by AbilityBase.
 
 **Library**: libability_base_want.so
 
-**System capability**: SystemCapability.Ability.AbilityBase
-
 **Since**: 15
 
 **Related module**: [AbilityBase](capi-abilitybase.md)
@@ -31,8 +29,6 @@ enum AbilityBase_ErrorCode
 **Description**
 
 Enumerates the error codes of AbilityBase.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 15
 

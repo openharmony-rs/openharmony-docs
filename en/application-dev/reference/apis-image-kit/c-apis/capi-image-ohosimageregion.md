@@ -6,7 +6,7 @@ struct OhosImageRegion {...}
 
 ## Overview
 
-Defines the region of the image source to decode. It is used in {@link OhosImageDecodingOps}, {@link OH_ImageSource_CreatePixelMap}, and<br>{@link OH_ImageSource_CreatePixelMapList}.
+Defines the region of the image source to decode. It is used in [OhosImageDecodingOps](capi-image-ohosimagedecodingops.md), [OH_ImageSource_CreatePixelMap](capi-image-source-mdk-h.md#oh_imagesource_createpixelmap), and [OH_ImageSource_CreatePixelMapList](capi-image-source-mdk-h.md#oh_imagesource_createpixelmaplist).
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 

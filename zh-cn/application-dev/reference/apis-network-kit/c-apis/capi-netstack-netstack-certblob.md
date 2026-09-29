@@ -22,7 +22,7 @@ Defines the certificate data structure.
 
 | 名称 | 描述 |
 | -- | -- |
-| enum [NetStack_CertType](capi-net-ssl-c-type-h.md#netstack_certtype) type | Certificate type. |
+| enum NetStack_CertType type | Certificate type. |
 | uint32_t size | Certificate content length. |
 | uint8_t *data | Certificate data. |
 

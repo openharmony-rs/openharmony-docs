@@ -1,12 +1,12 @@
 # OH_AVRecorder_EncoderInfo
 
 ```c
-typedef struct OH_AVRecorder_EncoderInfo {...} OH_AVRecorder_EncoderInfo
+struct OH_AVRecorder_EncoderInfo {...}
 ```
 
 ## 概述
 
-提供AVRecorder编码器能力信息，包括编码器的MIME类型、比特率范围、帧率范围等参数，适用于在录制前查询和选择合适的音频或视频编码器配置的场景，帮助开发者根据编码器能力参数选择最优编码配置。 开发者可通过{@link OH_AVRecorder_GetAvailableEncoder}接口获取该结构体对象。
+提供AVRecorder编码器能力信息，包括编码器的MIME类型、比特率范围、帧率范围等参数，适用于在录制前查询和选择合适的音频或视频编码器配置的场景，帮助开发者根据编码器能力参数选择最优编码配置。 开发者可通过[OH_AVRecorder_GetAvailableEncoder](capi-avrecorder-h.md#oh_avrecorder_getavailableencoder)接口获取该结构体对象。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 

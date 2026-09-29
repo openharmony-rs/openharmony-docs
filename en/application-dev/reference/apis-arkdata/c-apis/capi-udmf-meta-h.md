@@ -6,8 +6,6 @@ Declares the uniform data type information.
 
 **Library**: libudmf.so
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Related module**: [UDMF](capi-udmf.md)

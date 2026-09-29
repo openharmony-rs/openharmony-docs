@@ -6,7 +6,7 @@ typedef struct Sensor_Info Sensor_Info
 
 ## Overview
 
-Defines a struct for the sensor information.
+Defines a struct for the sensor information, which is used to store the basic attributes and data of a sensor, including key fields such as the sensor type, version, and ID. You can use this struct to obtain the complete description of a sensor, which is used for sensor initialization and data query.
 
 **System capability**: SystemCapability.Sensors.Sensor
 

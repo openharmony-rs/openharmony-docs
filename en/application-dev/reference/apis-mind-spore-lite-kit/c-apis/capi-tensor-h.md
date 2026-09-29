@@ -68,7 +68,7 @@ Create a tensor object.
 | Parameter | Description |
 | -- | -- |
 | const char *name | The name of the tensor. |
-| OH_AI_DataType type | The data type of the tensor. |
+| [OH_AI_DataType](capi-data-type-h.md#oh_ai_datatype) type | The data type of the tensor. |
 | const int64_t *shape | The shape of the tensor. |
 | size_t shape_num | The num of the shape. |
 | const void *data | The data pointer that points to allocated memory. |
@@ -182,7 +182,7 @@ Set the data type for the tensor.
 | Parameter | Description |
 | -- | -- |
 | OH_AI_TensorHandle tensor | Tensor object handle. |
-| OH_AI_DataType type | The data type of the tensor. |
+| [OH_AI_DataType](capi-data-type-h.md#oh_ai_datatype) type | The data type of the tensor. |
 
 ### OH_AI_TensorGetDataType()
 
@@ -270,7 +270,7 @@ Set the format for the tensor.
 | Parameter | Description |
 | -- | -- |
 | OH_AI_TensorHandle tensor | Tensor object handle. |
-| OH_AI_Format format | The format of the tensor. |
+| [OH_AI_Format](capi-format-h.md#oh_ai_format) format | The format of the tensor. |
 
 ### OH_AI_TensorGetFormat()
 

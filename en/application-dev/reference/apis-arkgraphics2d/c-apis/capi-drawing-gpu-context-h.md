@@ -6,9 +6,7 @@ This file declares the functions related to the GPU context in the drawing modul
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
-**Since**: 8
+**Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
 
@@ -40,8 +38,6 @@ OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOp
 
 Creates an **OH_Drawing_GpuContext** object that uses OpenGL as the backend interface.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Deprecated**: 18
@@ -58,7 +54,7 @@ Creates an **OH_Drawing_GpuContext** object that uses OpenGL as the backend inte
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_GpuContext* | Returns the pointer to the [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) object created. |
+| [OH_Drawing_GpuContext*](capi-drawing-oh-drawing-gpucontext.md) | Returns the pointer to the [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) object created. |
 
 ### OH_Drawing_GpuContextCreate()
 
@@ -70,15 +66,13 @@ OH_Drawing_GpuContext* OH_Drawing_GpuContextCreate(void)
 
 Creates an **OH_Drawing_GpuContext** object, for which the backend type depends on the device.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 16
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_GpuContext* | Returns the pointer to the [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) object created. |
+| [OH_Drawing_GpuContext*](capi-drawing-oh-drawing-gpucontext.md) | Returns the pointer to the [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) object created. |
 
 ### OH_Drawing_GpuContextDestroy()
 
@@ -90,14 +84,12 @@ void OH_Drawing_GpuContextDestroy(OH_Drawing_GpuContext* gpuContext)
 
 Destroys an **OH_Drawing_GpuContext** object and reclaims the memory occupied by the object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_GpuContext* gpuContext | Pointer to an [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) object. |
+| [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md)* gpuContext | Pointer to an [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) object. |
 
 

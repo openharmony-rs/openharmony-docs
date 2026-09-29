@@ -2,3 +2,5 @@
 
 ## Overview
 
+**System capability**: SystemCapability.ArkCompiler.ANI
+

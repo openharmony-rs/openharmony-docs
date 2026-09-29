@@ -6,8 +6,6 @@ Defines the functions for obtaining and using a native vsync.
 
 **Library**: libnative_vsync.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
-
 **Since**: 9
 
 **Related module**: [NativeVsync](capi-nativevsync.md)
@@ -45,8 +43,6 @@ OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 
 Creates a <b>NativeVsync</b> instance. A new <b>NativeVsync</b> instance is created each time this function is called.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
-
 **Since**: 9
 
 **Parameters**:
@@ -72,8 +68,6 @@ void OH_NativeVSync_Destroy(OH_NativeVSync* nativeVsync)
 
 Destroys an <b>OH_NativeVSync</b> instance. Once the <b>OH_NativeVSync</b> pointer is destroyed, it must not be used to prevent dangling pointer problems. Pay special attention to the management of the <b>OH_NativeVSync</b> pointer in concurrent multithreaded scenarios.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
-
 **Since**: 9
 
 **Parameters**:
@@ -91,8 +85,6 @@ OH_NativeVSync* OH_NativeVSync_Create_ForAssociatedWindow(uint64_t windowID, con
 **Description**
 
 Creates a <b>NativeVsync</b> instance. A new <b>NativeVsync</b> instance is created each time this function is called.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 14
 
@@ -120,8 +112,6 @@ int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_Fram
 
 Request next vsync with callback. If you call this interface multiple times in one frame, it will only call the last callback.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
-
 **Since**: 9
 
 **Parameters**:
@@ -136,7 +126,7 @@ Request next vsync with callback. If you call this interface multiple times in o
 
 | Type | Description |
 | -- | -- |
-| int | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - the parameter nativeVsync is NULL or callback is NULL.<br>    {@link NATIVE_ERROR_BINDER_ERROR} 50401000 - ipc send failed. |
+| int | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - the parameter nativeVsync is NULL or callback is NULL. [NATIVE_ERROR_BINDER_ERROR](capi-graphic-error-code-h.md#ohnativeerrorcode) 50401000 - ipc send failed. |
 
 ### OH_NativeVSync_RequestFrameWithMultiCallback()
 
@@ -147,8 +137,6 @@ int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH
 **Description**
 
 Request next vsync with callback. If this function is called multiple times in one vsync period, all these callbacks and dataset will be called.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 12
 
@@ -164,7 +152,7 @@ Request next vsync with callback. If this function is called multiple times in o
 
 | Type | Description |
 | -- | -- |
-| int | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - the parameter nativeVsync is NULL or callback is NULL.<br>    {@link NATIVE_ERROR_BINDER_ERROR} 50401000 - ipc send failed. |
+| int | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - the parameter nativeVsync is NULL or callback is NULL. [NATIVE_ERROR_BINDER_ERROR](capi-graphic-error-code-h.md#ohnativeerrorcode) 50401000 - ipc send failed. |
 
 ### OH_NativeVSync_GetPeriod()
 
@@ -175,8 +163,6 @@ int OH_NativeVSync_GetPeriod(OH_NativeVSync* nativeVsync, long long* period)
 **Description**
 
 Obtains the VSync period. The VSync period is refreshed only when the <b>OH_NativeVSync_FrameCallback</b> callback is received following a request for a VSync signal via <b>OH_NativeVSync_RequestFrame</b>. To obtain the VSync period for the first time using this function, you need to call <b>OH_NativeVSync_RequestFrame</b> to request a VSync signal. Once the <b>OH_NativeVSync_FrameCallback</b> callback is received, the vsync period can be obtained.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 10
 
@@ -203,8 +189,6 @@ int OH_NativeVSync_DVSyncSwitch(OH_NativeVSync* nativeVsync, bool enable)
 
 Enables DVSync to improve the smoothness of self-drawing animations. DVSync, short for Decoupled VSync, is a frame timing management policy that is decoupled from the hardware's VSync. DVSync drives the early rendering of upcoming animation frames by sending VSync signals with future timestamps. These frames are stored in a frame buffer queue. This helps DVSync reduce potential frame drop and therefore enhances the smoothness of animations. DVSync requires free self-drawing frame buffers to store these pre-rendered animation frames. Therefore, you must ensure that at least one free frame buffer is available. Otherwise, do not enable DVSync. After DVSync is enabled, you must correctly respond to the early VSync signals and request the subsequent VSync after the animation frame associated with the previous VSync is complete. In addition, the self-drawing frames must carry timestamps that align with VSync. After the animation ends, disable DVSync. Only phones and tablets support DVSync. On a platform that does not support DVSync or if another application has enabled DVSync, the attempt to enable it will not take effect, and the application still receives normal VSync signals.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
-
 **Since**: 14
 
 **Parameters**:
@@ -218,7 +202,7 @@ Enables DVSync to improve the smoothness of self-drawing animations. DVSync, sho
 
 | Type | Description |
 | -- | -- |
-| int | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - the parameter nativeVsync is NULL.<br>    {@link NATIVE_ERROR_BINDER_ERROR} 50401000 - ipc send failed. |
+| int | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - the parameter nativeVsync is NULL. [NATIVE_ERROR_BINDER_ERROR](capi-graphic-error-code-h.md#ohnativeerrorcode) 50401000 - ipc send failed. |
 
 ### OH_NativeVSync_SetExpectedFrameRateRange()
 
@@ -229,8 +213,6 @@ int OH_NativeVSync_SetExpectedFrameRateRange(OH_NativeVSync* nativeVsync, OH_Nat
 **Description**
 
 Set vsync expected frame rate range.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 20
 
@@ -245,6 +227,6 @@ Set vsync expected frame rate range.
 
 | Type | Description |
 | -- | -- |
-| int | {@link NATIVE_ERROR_OK} 0 - Success.<br>    {@link NATIVE_ERROR_INVALID_ARGUMENTS} 40001000 - the parameter nativeVsync is NULL or range is NULL or Invalid. |
+| int | [NATIVE_ERROR_OK](capi-graphic-error-code-h.md#ohnativeerrorcode) 0 - Success. [NATIVE_ERROR_INVALID_ARGUMENTS](capi-graphic-error-code-h.md#ohnativeerrorcode) 40001000 - the parameter nativeVsync is NULL or range is NULL or Invalid. |
 
 

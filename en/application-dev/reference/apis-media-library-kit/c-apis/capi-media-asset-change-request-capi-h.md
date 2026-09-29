@@ -6,8 +6,6 @@ The file declares the APIs related to media asset change requests. You can use t
 
 **Library**: libmedia_asset_manager.so
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 12
 
 **Related module**: [MediaAssetManager](capi-mediaassetmanager.md)
@@ -38,21 +36,19 @@ OH_MediaAssetChangeRequest* OH_MediaAssetChangeRequest_Create(OH_MediaAsset* med
 
 Creates an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
+| [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_MediaAssetChangeRequest* | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
+| [OH_MediaAssetChangeRequest*](capi-mediaassetmanager-oh-mediaassetchangerequest.md) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
 
 ### OH_MediaAssetChangeRequest_AddResourceWithUri()
 
@@ -64,23 +60,21 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithUri(OH_MediaAss
 
 Adds a resource of the given URI.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetChangeRequest* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
-| MediaLibrary_ResourceType resourceType | Type of the resource to add, which is specified by [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype). |
+| [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
+| [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype) resourceType | Type of the resource to add, which is specified by [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype). |
 | char* fileUri | Pointer to the URI of the file. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_NO_SUCH_FILE if file does not exist.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error.      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_NO_SUCH_FILE if file does not exist. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
 
 ### OH_MediaAssetChangeRequest_AddResourceWithBuffer()
 
@@ -92,16 +86,14 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithBuffer(OH_Media
 
 Adds a resource using ArrayBuffer data.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetChangeRequest* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
-| MediaLibrary_ResourceType resourceType | Type of the resource to add. |
+| [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
+| [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype) resourceType | Type of the resource to add. |
 | uint8_t* buffer | Pointer to the data buffer. |
 | uint32_t length | Length of the data buffer. |
 
@@ -109,7 +101,7 @@ Adds a resource using ArrayBuffer data.
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error.      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
 
 ### OH_MediaAssetChangeRequest_GetWriteCacheHandler()
 
@@ -121,8 +113,6 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_GetWriteCacheHandler(OH_MediaA
 
 Obtains the handler used for writing a file to cache.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Required permission**: ohos.permission.WRITE_IMAGEVIDEO
 
 **Since**: 13
@@ -131,14 +121,14 @@ Obtains the handler used for writing a file to cache.
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetChangeRequest* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
+| [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
 | int32_t* fd | Pointer to the file descriptor (FD) obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error.      <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied.      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. <br>MEDIA_LIBRARY_PERMISSION_DENIED if permission is denied. <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
 
 ### OH_MediaAssetChangeRequest_SaveCameraPhoto()
 
@@ -150,22 +140,20 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetC
 
 Saves the photo taken by the camera.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetChangeRequest* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
-| MediaLibrary_ImageFileType imageFileType | Type of the image file of the photo. |
+| [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
+| [MediaLibrary_ImageFileType](capi-media-asset-base-capi-h.md#medialibrary_imagefiletype) imageFileType | Type of the image file of the photo. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error.      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
 
 ### OH_MediaAssetChangeRequest_DiscardCameraPhoto()
 
@@ -177,21 +165,19 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_DiscardCameraPhoto(OH_MediaAss
 
 Discards the photo taken by the camera.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetChangeRequest* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
+| [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed.      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error.      <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. <br>MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED if operation is not supported. |
 
 ### OH_MediaAssetChangeRequest_Release()
 
@@ -203,20 +189,18 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_Release(OH_MediaAssetChangeReq
 
 Releases an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAssetChangeRequest* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
+| [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| MediaLibrary_ErrorCode | MEDIA_LIBRARY_OK if the method call succeeds.      <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes:      <br>1. Mandatory parameters are left unspecified.      <br>2. Incorrect parameter types.      <br>3. Parameter verification failed. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 

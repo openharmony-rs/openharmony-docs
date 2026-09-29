@@ -1,0 +1,18 @@
+# ArkUI_NodeBorderRadiusOption
+
+```c
+typedef struct ArkUI_NodeBorderRadiusOption ArkUI_NodeBorderRadiusOption
+```
+
+## 概述
+
+定义边框圆角配置项。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 20
+
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
+
+**所在头文件：** [native_render.h](capi-native-render-h.md)
+

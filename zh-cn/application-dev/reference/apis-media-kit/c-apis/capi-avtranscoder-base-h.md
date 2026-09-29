@@ -8,8 +8,6 @@
 
 **库：** libavtranscoder.so
 
-**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
-
 **起始版本：** 20
 
 **相关模块：** [AVTranscoder](capi-avtranscoder.md)
@@ -47,9 +45,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state, void *userData) | 转码过程的状态回调函数。<br>**起始版本：** 20 |
-| void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg, void *userData) | 转码过程中错误事件的回调函数。<br>**起始版本：** 20 |
-| void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, int32_t progress, void *userData) | 转码进度更新时的回调函数。<br>**起始版本：** 20 |
+| void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state, void *userData) | 转码过程的状态回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder |
+| void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg, void *userData) | 转码过程中错误事件的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder |
+| void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, int32_t progress, void *userData) | 转码进度更新时的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder |
 
 ## 枚举类型说明
 
@@ -62,8 +60,6 @@ enum OH_AVTranscoder_State
 **描述：**
 
 转码状态。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **起始版本：** 20
 
@@ -88,17 +84,15 @@ typedef void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AV
 
 转码过程的状态回调函数。
 
-**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | OH_AVTranscoder实例的指针。 |
 | [OH_AVTranscoder_State](capi-avtranscoder-base-h.md#oh_avtranscoder_state) state | 转码状态，详细说明请参见[OH_AVTranscoder_State](capi-avtranscoder-base-h.md#oh_avtranscoder_state). |
-| void \*userData | 用户特定数据的指针。 |
+| void *userData | 用户特定数据的指针。 |
 
 ### OH_AVTranscoder_OnError()
 
@@ -110,18 +104,16 @@ typedef void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t err
 
 转码过程中错误事件的回调函数。
 
-**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | OH_AVTranscoder实例的指针。 |
 | int32_t errorCode | 错误码。<br> AV_ERR_NO_MEMORY 无内存，取值为1。<br> AV_ERR_OPERATE_NOT_PERMIT 操作不允许，取值为2。<br> AV_ERR_INVALID_VAL 参数检查失败，取值为3。<br> AV_ERR_IO IO错误，取值为4。<br> AV_ERR_INVALID_STATE 当前状态不支持此操作，取值为8。<br> AV_ERR_UNSUPPORT 不支持的接口，取值为9。 |
-| const char \*errorMsg | 错误消息。 |
-| void \*userData | 用户特定数据的指针。 |
+| const char *errorMsg | 错误消息。 |
+| void *userData | 用户特定数据的指针。 |
 
 ### OH_AVTranscoder_OnProgressUpdate()
 
@@ -133,16 +125,14 @@ typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, in
 
 转码进度更新时的回调函数。
 
-**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | OH_AVTranscoder实例的指针。 |
 | int32_t progress | 转码百分比进度。 |
-| void \*userData | 用户特定数据的指针。 |
+| void *userData | 用户特定数据的指针。 |
 
 

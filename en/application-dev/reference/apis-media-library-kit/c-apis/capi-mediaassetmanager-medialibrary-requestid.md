@@ -1,7 +1,7 @@
 # MediaLibrary_RequestId
 
 ```c
-typedef struct MediaLibrary_RequestId {...} MediaLibrary_RequestId
+struct MediaLibrary_RequestId {...}
 ```
 
 ## Overview

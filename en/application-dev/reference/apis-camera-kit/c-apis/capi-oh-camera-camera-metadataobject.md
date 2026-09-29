@@ -1,7 +1,7 @@
 # Camera_MetadataObject
 
 ```c
-typedef struct Camera_MetadataObject {...} Camera_MetadataObject
+struct Camera_MetadataObject {...}
 ```
 
 ## Overview

@@ -1,7 +1,7 @@
 # OH_AVRecorder_Profile
 
 ```c
-typedef struct OH_AVRecorder_Profile {...} OH_AVRecorder_Profile
+struct OH_AVRecorder_Profile {...}
 ```
 
 ## Overview

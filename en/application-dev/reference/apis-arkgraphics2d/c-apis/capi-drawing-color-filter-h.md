@@ -6,9 +6,7 @@ This file declares the functions related to the color filter in the drawing modu
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
-**Since**: 8
+**Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
 
@@ -39,8 +37,6 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateBlendMode(uint32_t color, OH
 
 Creates an **OH_Drawing_ColorFilter** object with a given blend mode.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
@@ -48,13 +44,13 @@ Creates an **OH_Drawing_ColorFilter** object with a given blend mode.
 | Parameter | Description |
 | -- | -- |
 | uint32_t color | Color, which is a 32-bit (ARGB) variable. |
-| OH_Drawing_BlendMode blendMode | Blend mode. For details about the available options, see [OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode). |
+| [OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode) blendMode | Blend mode. For details about the available options, see [OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ColorFilter* | Returns the pointer to the OH_Drawing_ColorFilter object created. |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | Returns the pointer to the **OH_Drawing_ColorFilter** object created. |
 
 ### OH_Drawing_ColorFilterCreateCompose()
 
@@ -66,22 +62,20 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilt
 
 Creates an **OH_Drawing_ColorFilter** object by combining another two color filters. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **outerColorFilter** or **innerColorFilter** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_ColorFilter* outerColorFilter | Pointer to the first color filter. |
-| OH_Drawing_ColorFilter* innerColorFilter | Pointer to the second color filter. |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* outerColorFilter | Pointer to the first color filter. |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* innerColorFilter | Pointer to the second color filter. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ColorFilter* | Returns the pointer to the OH_Drawing_ColorFilter object created. |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | Returns the pointer to the **OH_Drawing_ColorFilter** object created. |
 
 ### OH_Drawing_ColorFilterCreateMatrix()
 
@@ -92,8 +86,6 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20
 **Description**
 
 Creates an **OH_Drawing_ColorFilter** object with a given 5x4 color matrix. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -107,7 +99,7 @@ Creates an **OH_Drawing_ColorFilter** object with a given 5x4 color matrix. This
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ColorFilter* | Returns the pointer to the OH_Drawing_ColorFilter object created. |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | Returns the pointer to the **OH_Drawing_ColorFilter** object created. |
 
 ### OH_Drawing_ColorFilterCreateLinearToSrgbGamma()
 
@@ -119,15 +111,13 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLinearToSrgbGamma(void)
 
 Creates an **OH_Drawing_ColorFilter** object that applies the sRGB gamma curve to the RGB channels.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ColorFilter* | Returns the pointer to the OH_Drawing_ColorFilter object created. |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | Returns the pointer to the **OH_Drawing_ColorFilter** object created. |
 
 ### OH_Drawing_ColorFilterCreateSrgbGammaToLinear()
 
@@ -139,15 +129,13 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)
 
 Creates an **OH_Drawing_ColorFilter** object that applies the RGB channels to the sRGB gamma curve.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ColorFilter* | Returns the pointer to the OH_Drawing_ColorFilter object created. |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | Returns the pointer to the **OH_Drawing_ColorFilter** object created. |
 
 ### OH_Drawing_ColorFilterCreateLuma()
 
@@ -159,15 +147,13 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)
 
 Creates a **ColorFilter** object that multiplies the luma into the alpha channel and sets the RGB channels to zero.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ColorFilter* | Returns the pointer to the OH_Drawing_ColorFilter object created. |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | Returns the pointer to the **OH_Drawing_ColorFilter** object created. |
 
 ### OH_Drawing_ColorFilterCreateLighting()
 
@@ -178,8 +164,6 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, 
 **Description**
 
 Creates a lighting color filter. It multiplies the RGB channel values by one color and then adds another color value. The final output stays between 0 and 255.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -194,7 +178,7 @@ Creates a lighting color filter. It multiplies the RGB channel values by one col
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ColorFilter* | Returns the pointer to the OH_Drawing_ColorFilter object created. |
+| [OH_Drawing_ColorFilter*](capi-drawing-oh-drawing-colorfilter.md) | Returns the pointer to the **OH_Drawing_ColorFilter** object created. |
 
 ### OH_Drawing_ColorFilterDestroy()
 
@@ -206,14 +190,12 @@ void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)
 
 Destroys an **OH_Drawing_ColorFilter** object and reclaims the memory occupied by the object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_ColorFilter* colorFilter | Pointer to an **OH_Drawing_ColorFilter** object. |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* colorFilter | Pointer to an **OH_Drawing_ColorFilter** object. |
 
 

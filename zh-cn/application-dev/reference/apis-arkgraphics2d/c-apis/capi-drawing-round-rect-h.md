@@ -6,8 +6,6 @@
 
 **库：** libnative_drawing.so
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -43,8 +41,6 @@ enum OH_Drawing_CornerPos
 
 用于描述圆角位置的枚举。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -67,15 +63,13 @@ OH_Drawing_RoundRect* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect* rect, fl
 
 用于创建一个圆角矩形对象。本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_Rect* rect | 指向矩形对象的指针。 |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象的指针。 |
 | float xRad | X轴上的圆角半径，小于或等于0时无效。单位为物理像素px。 |
 | float yRad | Y轴上的圆角半径，小于或等于0时无效。单位为物理像素px。 |
 
@@ -83,7 +77,7 @@ OH_Drawing_RoundRect* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect* rect, fl
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_RoundRect* | 函数会返回一个指针，指针指向创建的圆角矩形对象。 |
+| [OH_Drawing_RoundRect*](capi-drawing-oh-drawing-roundrect.md) | 函数会返回一个指针，指针指向创建的圆角矩形对象。 |
 
 ### OH_Drawing_RoundRectCopy()
 
@@ -95,21 +89,19 @@ OH_Drawing_RoundRect* OH_Drawing_RoundRectCopy(const OH_Drawing_RoundRect* round
 
 用于创建圆角矩形的拷贝。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_RoundRect* roundRect | 指向圆角矩形对象OH_Drawing_RoundRect的指针 |
+| [const OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | 指向圆角矩形对象OH_Drawing_RoundRect的指针 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_RoundRect* | 函数会返回一个指针，指针指向创建的新圆角矩形对象。 |
+| [OH_Drawing_RoundRect*](capi-drawing-oh-drawing-roundrect.md) | 函数会返回一个指针，指针指向创建的新圆角矩形对象。 |
 
 ### OH_Drawing_RoundRectSetCorner()
 
@@ -121,15 +113,13 @@ void OH_Drawing_RoundRectSetCorner(OH_Drawing_RoundRect* roundRect, OH_Drawing_C
 
 用于设置圆角矩形中指定圆角位置的圆角半径。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>roundRect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_RoundRect* roundRect | 指向圆角矩形对象的指针 |
+| [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | 指向圆角矩形对象的指针 |
 | [OH_Drawing_CornerPos](capi-drawing-round-rect-h.md#oh_drawing_cornerpos) pos | 圆角位置的枚举，支持类型可见[OH_Drawing_CornerPos](capi-drawing-round-rect-h.md#oh_drawing_cornerpos)。 |
 | OH_Drawing_Corner_Radii radii | 圆角半径结构体OH_Drawing_Corner_Radii，其中包含x轴方向和y轴方向上的半径，单位为物理像素px， 半径小于等于0时无效。 |
 
@@ -143,15 +133,13 @@ OH_Drawing_Corner_Radii OH_Drawing_RoundRectGetCorner(OH_Drawing_RoundRect* roun
 
 用于获取圆角矩形中指定圆角位置的圆角半径。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>roundRect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_RoundRect* roundRect | 指向圆角矩形对象的指针 |
+| [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | 指向圆角矩形对象的指针 |
 | [OH_Drawing_CornerPos](capi-drawing-round-rect-h.md#oh_drawing_cornerpos) pos | 圆角位置的枚举，支持类型可见[OH_Drawing_CornerPos](capi-drawing-round-rect-h.md#oh_drawing_cornerpos)。 |
 
 **返回值：**
@@ -170,15 +158,13 @@ void OH_Drawing_RoundRectDestroy(OH_Drawing_RoundRect* roundRect)
 
 用于销毁圆角矩形对象并回收该对象占用的内存。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_RoundRect* roundRect | 指向圆角矩形对象的指针。 |
+| [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | 指向圆角矩形对象的指针。 |
 
 ### OH_Drawing_RoundRectOffset()
 
@@ -190,15 +176,13 @@ OH_Drawing_ErrorCode OH_Drawing_RoundRectOffset(OH_Drawing_RoundRect* roundRect,
 
 用于将圆角矩形沿x轴方向和y轴方向平移指定距离。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_RoundRect* roundRect | 指向圆角矩形对象的指针。 |
+| [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | 指向圆角矩形对象的指针。 |
 | float dx | x轴方向偏移量，单位为物理像素px。正值表示向x轴正方向偏移，负值表示向x轴负方向偏移，0表示不偏移。 |
 | float dy | y轴方向偏移量，单位为物理像素px。正值表示向y轴正方向偏移，负值表示向y轴负方向偏移，0表示不偏移。 |
 
@@ -206,6 +190,6 @@ OH_Drawing_ErrorCode OH_Drawing_RoundRectOffset(OH_Drawing_RoundRect* roundRect,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ErrorCode | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数roundRect为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数roundRect为NULL。 |
 
 

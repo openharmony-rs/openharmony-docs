@@ -6,8 +6,6 @@ Declares the error codes used in the UDMF.
 
 **Library**: libudmf.so
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Related module**: [UDMF](capi-udmf.md)
@@ -33,8 +31,6 @@ enum Udmf_ErrCode
 
 Enumerates the error codes.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -52,8 +48,6 @@ enum Udmf_ListenerStatus
 **Description**
 
 Enumerates the status codes returned when data is obtained asynchronously.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
 

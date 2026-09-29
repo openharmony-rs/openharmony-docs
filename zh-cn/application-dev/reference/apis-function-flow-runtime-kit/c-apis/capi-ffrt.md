@@ -19,6 +19,6 @@
 | [task.h](capi-task-h.md) | 声明FFRT任务的C接口，提供任务属性的初始化与销毁、任务QoS设置与获取、 任务延迟时间管理、并发队列任务优先级管理、任务栈大小管理、任务提交调度执行、 任务句柄引用计数管理以及任务等待等功能。 |
 | [mutex.h](capi-mutex-h.md) | 声明互斥锁（mutex）的C接口，用于在并发任务间提供互斥访问，保护共享资源免受竞争条件影响。 |
 | [timer.h](capi-timer-h.md) | 声明定时器的C接口。<br> 提供基于QoS等级的定时器能力，支持在指定超时时间后执行回调函数，可用于延时任务调度等场景。 |
-| [sleep.h](capi-sleep-h.md) | 声明{@link ffrt_usleep}和{@link ffrt_yield}的C接口。 |
+| [sleep.h](capi-sleep-h.md) | 声明[ffrt_usleep](capi-sleep-h.md#ffrt_usleep)和[ffrt_yield](capi-sleep-h.md#ffrt_yield)的C接口。 |
 | [shared_mutex.h](capi-shared-mutex-h.md) | 声明读写锁（rwlock）的C接口。 |
 | [fiber.h](capi-fiber-h.md) | 声明纤程的C接口。<br> 纤程是一种轻量级的用户态线程，用于在用户空间内实现高效的任务调度和上下文切换。 |

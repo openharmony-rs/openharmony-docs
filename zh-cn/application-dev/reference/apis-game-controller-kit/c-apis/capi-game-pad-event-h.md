@@ -6,8 +6,6 @@
 
 **库：** libohgame_controller.z.so
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **相关模块：** [GameController](capi-gamecontroller.md)
@@ -61,8 +59,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void(* GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEvent* buttonEvent) | 定义在按键事件注册监听接口中使用的回调函数。当玩家按下按键时，该回调函数将被调用。<br>**起始版本：** 21 |
-| void(* GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent* axisEvent) | 定义在轴事件注册监听接口中使用的回调函数。当玩家操作摇杆时，该回调函数将被调用。<br>**起始版本：** 21 |
+| void(* GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEvent* buttonEvent) | 定义在按键事件注册监听接口中使用的回调函数。当玩家按下按键时，该回调函数将被调用。<br>**起始版本：** 21<br>**系统能力：** SystemCapability.Game.GameController |
+| void(* GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent* axisEvent) | 定义在轴事件注册监听接口中使用的回调函数。当玩家操作摇杆时，该回调函数将被调用。<br>**起始版本：** 21<br>**系统能力：** SystemCapability.Game.GameController |
 
 ## 枚举类型说明
 
@@ -75,8 +73,6 @@ enum GamePad_AxisSourceType
 **描述：**
 
 此枚举定义手柄轴事件来源类型。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -98,8 +94,6 @@ enum GamePad_Button_ActionType
 
 此枚举定义手柄按键动作类型。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 | 枚举项 | 描述 |
@@ -120,15 +114,13 @@ typedef void(* GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEv
 
 定义在按键事件注册监听接口中使用的回调函数。当玩家按下按键时，该回调函数将被调用。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const struct GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md)\* buttonEvent | 输入参数，手柄按键事件[GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md)。 |
+| [const struct GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md)* buttonEvent | 输入参数，手柄按键事件[GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md)。 |
 
 ### GamePad_AxisInputMonitorCallback()
 
@@ -140,15 +132,13 @@ typedef void(* GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent*
 
 定义在轴事件注册监听接口中使用的回调函数。当玩家操作摇杆时，该回调函数将被调用。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)\* axisEvent | 输入参数，手柄轴事件[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)。 |
+| [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | 输入参数，手柄轴事件[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)。 |
 
 ### OH_GamePad_ButtonEvent_GetDeviceId()
 
@@ -159,8 +149,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetDeviceId(const struct GamePad
 **描述：**
 
 从按键事件中获取设备ID。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -175,7 +163,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetDeviceId(const struct GamePad
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent或deviceId为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent或deviceId为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_ButtonEvent_GetButtonAction()
 
@@ -186,8 +174,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonAction(const struct Gam
 **描述：**
 
 从按键事件中获取按键动作类型。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -202,7 +188,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonAction(const struct Gam
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_ButtonEvent_GetButtonCode()
 
@@ -213,8 +199,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCode(const struct GameP
 **描述：**
 
 从按键事件中获取按键编码。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -229,7 +213,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCode(const struct GameP
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_ButtonEvent_GetButtonCodeName()
 
@@ -240,8 +224,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCodeName(const struct G
 **描述：**
 
 从按键事件中获取按键名称。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -256,7 +238,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCodeName(const struct G
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent或codeName为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent或codeName为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_PressedButtons_GetCount()
 
@@ -267,8 +249,6 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetCount(const struct GamePad
 **描述：**
 
 从按键事件中获取按下的按键数量。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -283,7 +263,7 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetCount(const struct GamePad
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_PressedButtons_GetButtonInfo()
 
@@ -294,8 +274,6 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetButtonInfo(const struct Ga
 **描述：**
 
 从按键事件中获取指定索引的按键信息。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -311,7 +289,7 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetButtonInfo(const struct Ga
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，或index小于0或大于等于按键总数，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，或index小于0或大于等于按键总数，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 **参考：**
 
@@ -328,8 +306,6 @@ GameController_ErrorCode OH_GamePad_DestroyPressedButton(GamePad_PressedButton**
 
 销毁按下的按键实例。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
@@ -342,7 +318,7 @@ GameController_ErrorCode OH_GamePad_DestroyPressedButton(GamePad_PressedButton**
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数pressedButton为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数pressedButton为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_PressedButton_GetButtonCode()
 
@@ -353,8 +329,6 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCode(const struct Gam
 **描述：**
 
 从按下的按键中获取按键编码。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -369,7 +343,7 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCode(const struct Gam
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数pressedButton为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数pressedButton为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_PressedButton_GetButtonCodeName()
 
@@ -380,8 +354,6 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCodeName(const struct
 **描述：**
 
 从按下的按键中获取按键名称。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -396,7 +368,7 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCodeName(const struct
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数pressedButton或codeName为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数pressedButton或codeName为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_ButtonEvent_GetActionTime()
 
@@ -407,8 +379,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetActionTime(const struct GameP
 **描述：**
 
 从按键事件中获取动作时间。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -423,7 +393,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetActionTime(const struct GameP
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetDeviceId()
 
@@ -434,8 +404,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetDeviceId(const struct GamePad_A
 **描述：**
 
 从轴事件中获取设备ID。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -450,7 +418,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetDeviceId(const struct GamePad_A
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent或deviceId为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent或deviceId为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetAxisSourceType()
 
@@ -461,8 +429,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetAxisSourceType(const struct Gam
 **描述：**
 
 从轴事件中获取轴事件来源类型。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -477,7 +443,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetAxisSourceType(const struct Gam
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetXAxisValue()
 
@@ -489,8 +455,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetXAxisValue(const struct GamePad
 
 从轴事件中获取X轴的值。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
@@ -504,7 +468,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetXAxisValue(const struct GamePad
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetYAxisValue()
 
@@ -516,8 +480,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetYAxisValue(const struct GamePad
 
 从轴事件中获取Y轴的值。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
@@ -531,7 +493,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetYAxisValue(const struct GamePad
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetZAxisValue()
 
@@ -543,8 +505,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetZAxisValue(const struct GamePad
 
 从轴事件中获取Z轴的值。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
@@ -558,7 +518,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetZAxisValue(const struct GamePad
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetRZAxisValue()
 
@@ -570,8 +530,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetRZAxisValue(const struct GamePa
 
 从轴事件中获取RZ轴的值。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
@@ -585,7 +543,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetRZAxisValue(const struct GamePa
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetHatXAxisValue()
 
@@ -597,8 +555,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatXAxisValue(const struct Game
 
 从轴事件中获取HatX轴的值。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
@@ -612,7 +568,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatXAxisValue(const struct Game
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetHatYAxisValue()
 
@@ -624,8 +580,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatYAxisValue(const struct Game
 
 从轴事件中获取HatY轴的值。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
@@ -639,7 +593,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatYAxisValue(const struct Game
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetBrakeAxisValue()
 
@@ -651,8 +605,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetBrakeAxisValue(const struct Gam
 
 从轴事件中获取Brake轴的值。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
@@ -666,7 +618,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetBrakeAxisValue(const struct Gam
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetGasAxisValue()
 
@@ -678,8 +630,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetGasAxisValue(const struct GameP
 
 从轴事件中获取Gas轴的值。
 
-**系统能力：** SystemCapability.Game.GameController
-
 **起始版本：** 21
 
 **参数：**
@@ -693,7 +643,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetGasAxisValue(const struct GameP
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetActionTime()
 
@@ -704,8 +654,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetActionTime(const struct GamePad
 **描述：**
 
 从轴事件中获取动作时间。
-
-**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -720,6 +668,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetActionTime(const struct GamePad
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数axisEvent为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 

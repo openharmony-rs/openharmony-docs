@@ -6,8 +6,6 @@
 
 **库：** librawfile.z.so
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 8
 
 **相关模块：** [rawfile](capi-rawfile.md)
@@ -18,7 +16,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) | RawDir | RawDir表示一个已打开的rawfile目录对象，可用于遍历目录和目录下文件。通过{@link OH_ResourceManager_OpenRawDir}函数获取，使用完后须调用<br>{@link OH_ResourceManager_CloseRawDir}关闭并释放。 |
+| [RawDir](capi-rawfile-rawdir.md) | RawDir | RawDir表示一个已打开的rawfile目录对象，可用于遍历目录和目录下文件。通过OH_ResourceManager_OpenRawDir函数获取，使用完后须调用 [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)关闭并释放。 |
 
 ### 宏定义
 
@@ -46,26 +44,24 @@ const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 
 通过索引获取rawfile目录中的文件名称。当需要遍历rawfile目录时，可以与[OH_ResourceManager_GetRawFileCount](capi-raw-dir-h.md#oh_resourcemanager_getrawfilecount)搭配使用，通过循环遍历目录。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 8
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) *rawDir | 输入参数。指向RawDir对象的指针，通过{@link OH_ResourceManager_OpenRawDir}获取。 |
+| [RawDir](capi-rawfile-rawdir.md) *rawDir | 输入参数。指向RawDir对象的指针，通过OH_ResourceManager_OpenRawDir获取。 |
 | int index | 输入参数。文件在rawfile目录中的索引，取值范围为[0, 文件总数量-1]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | 返回文件名称字符串指针，可作为{@link OH_ResourceManager_OpenRawFile}的输入参数。      <br>失败时返回NULL，可能原因是rawDir为NULL、index超出有效范围或目录为空。      <br>调用[OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)后，该指针同时会被释放，若需保存文件名，开发者需及时复制字符串内容。 |
+| const char * | 返回文件名称字符串指针，可作为OH_ResourceManager_OpenRawFile的输入参数。<br>失败时返回NULL，可能原因是rawDir为NULL、index超出有效范围或目录为空。<br>调用[OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)后，该指针同时会被释放，若需保存文件名，开发者需及时复制字符串内容。 |
 
 **参考：**
 
-{@link OH_ResourceManager_OpenRawFile}
+OH_ResourceManager_OpenRawFile
 
 
 ### OH_ResourceManager_GetRawFileCount()
@@ -78,15 +74,13 @@ int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)
 
 获取rawfile下子目录和文件数量。当需要遍历rawfile目录时，可以与[OH_ResourceManager_GetRawFileName](capi-raw-dir-h.md#oh_resourcemanager_getrawfilename)搭配使用，通过循环遍历目录。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 8
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) *rawDir | 输入参数。指向RawDir对象的指针，通过{@link OH_ResourceManager_OpenRawDir}获取。 |
+| [RawDir](capi-rawfile-rawdir.md) *rawDir | 输入参数。指向RawDir对象的指针，通过OH_ResourceManager_OpenRawDir获取。 |
 
 **返回值：**
 
@@ -109,19 +103,17 @@ void OH_ResourceManager_CloseRawDir(RawDir *rawDir)
 
 关闭已打开的RawDir对象并释放所有相关资源。遍历rawfile目录后，须调用此函数关闭目录和释放资源。
 
-**系统能力：** SystemCapability.Global.ResourceManager
-
 **起始版本：** 8
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) *rawDir | 输入参数。指向RawDir对象的指针，通过{@link OH_ResourceManager_OpenRawDir}获取。关闭后，该指针失效，不可再用于其他操作。 |
+| [RawDir](capi-rawfile-rawdir.md) *rawDir | 输入参数。指向RawDir对象的指针，通过OH_ResourceManager_OpenRawDir获取。关闭后，该指针失效，不可再用于其他操作。 |
 
 **参考：**
 
-{@link OH_ResourceManager_OpenRawDir}
+OH_ResourceManager_OpenRawDir
 
 
 

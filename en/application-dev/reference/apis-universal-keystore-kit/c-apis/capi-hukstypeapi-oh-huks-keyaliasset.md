@@ -1,7 +1,7 @@
 # OH_Huks_KeyAliasSet
 
 ```c
-typedef struct OH_Huks_KeyAliasSet {...} OH_Huks_KeyAliasSet
+struct OH_Huks_KeyAliasSet {...}
 ```
 
 ## Overview
@@ -23,6 +23,6 @@ Defines the struct of a key alias set.
 | Name | Description |
 | -- | -- |
 | uint32_t aliasesCnt | Number of key aliases. |
-| struct [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *aliases | Pointer to the key alias set. |
+| struct OH_Huks_Blob *aliases | Pointer to the key alias set. |
 
 

@@ -6,8 +6,6 @@ Declare tee driver client API.
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -34,8 +32,6 @@ int64_t tee_drv_open(const char *drv_name, const void *param, uint32_t param_len
 
 Open the specified driver in the TEE.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -50,7 +46,7 @@ Open the specified driver in the TEE.
 
 | Type | Description |
 | -- | -- |
-| int64_t | Returns greater than 0, which means the fd of the corresponding driver.          Returns less than or equal to 0, which means falied to open the driver. |
+| int64_t | Returns greater than 0, which means the fd of the corresponding driver. Returns less than or equal to 0, which means falied to open the driver. |
 
 ### tee_drv_ioctl()
 
@@ -61,8 +57,6 @@ int64_t tee_drv_ioctl(int64_t fd, uint32_t cmd_id, const void *param, uint32_t p
 **Description**
 
 Cancels an operation.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -79,7 +73,7 @@ Cancels an operation.
 
 | Type | Description |
 | -- | -- |
-| int64_t | Returns <b>0</b> if the operation is successful.          Returns <b>-1</b> if the operation is failed. |
+| int64_t | Returns <b>0</b> if the operation is successful. Returns <b>-1</b> if the operation is failed. |
 
 ### tee_drv_close()
 
@@ -90,8 +84,6 @@ int64_t tee_drv_close(int64_t fd)
 **Description**
 
 Open the specified driver in the TEE.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -105,6 +97,6 @@ Open the specified driver in the TEE.
 
 | Type | Description |
 | -- | -- |
-| int64_t | Returns <b>0</b> if the operation is successful.          Returns <b>-1</b> if the operation is failed. |
+| int64_t | Returns <b>0</b> if the operation is successful. Returns <b>-1</b> if the operation is failed. |
 
 

@@ -1,7 +1,7 @@
 # UsbDdkConfigDescriptor
 
 ```c
-typedef struct UsbDdkConfigDescriptor {...} UsbDdkConfigDescriptor
+struct UsbDdkConfigDescriptor {...}
 ```
 
 ## Overview
@@ -22,8 +22,8 @@ Defines configuration descriptors.
 
 | Name | Description |
 | -- | -- |
-| struct [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) configDescriptor | Standard configuration descriptor. |
-| struct [UsbDdkInterface](capi-usbddk-usbddkinterface.md) *interface | Interfaces contained in the configuration. |
+| [struct UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) configDescriptor | Standard configuration descriptor. |
+| struct UsbDdkInterface *interface | Interfaces contained in the configuration. |
 | const uint8_t *extra | Unresolved descriptor, including class- or vendor-specific descriptors. |
 | uint32_t extraLength | Length of the unresolved descriptor. |
 

@@ -1,7 +1,7 @@
 # OH_Drawing_FontDescriptor
 
 ```c
-typedef struct OH_Drawing_FontDescriptor {...} OH_Drawing_FontDescriptor
+struct OH_Drawing_FontDescriptor {...}
 ```
 
 ## Overview

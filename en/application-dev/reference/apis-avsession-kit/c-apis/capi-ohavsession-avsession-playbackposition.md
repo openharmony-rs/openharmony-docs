@@ -1,7 +1,7 @@
 # AVSession_PlaybackPosition
 
 ```c
-typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
+struct AVSession_PlaybackPosition {...}
 ```
 
 ## Overview

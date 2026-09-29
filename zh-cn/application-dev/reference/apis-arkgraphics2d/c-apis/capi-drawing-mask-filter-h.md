@@ -6,8 +6,6 @@
 
 **库：** libnative_drawing.so
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -39,8 +37,6 @@ enum OH_Drawing_BlurType
 
 蒙版滤波器模糊操作类型的枚举。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -63,8 +59,6 @@ OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurT
 
 创建具有模糊效果的蒙版滤波器。常用于为图形、文本等绘制内容添加模糊视觉效果。创建的蒙版滤波器对象使用完毕后， 必须调用[OH_Drawing_MaskFilterDestroy](capi-drawing-mask-filter-h.md#oh_drawing_maskfilterdestroy)销毁并释放内存。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **参数：**
@@ -79,7 +73,7 @@ OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurT
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_MaskFilter* | 返回创建的蒙版滤波器对象的指针。 |
+| [OH_Drawing_MaskFilter*](capi-drawing-oh-drawing-maskfilter.md) | 返回创建的蒙版滤波器对象的指针。 |
 
 ### OH_Drawing_MaskFilterDestroy()
 
@@ -91,14 +85,12 @@ void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)
 
 销毁蒙版滤波器对象，并收回该对象占用的内存。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_MaskFilter* maskFilter | 表示指向蒙版滤波器对象的指针。 |
+| [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md)* maskFilter | 表示指向蒙版滤波器对象的指针。 |
 
 

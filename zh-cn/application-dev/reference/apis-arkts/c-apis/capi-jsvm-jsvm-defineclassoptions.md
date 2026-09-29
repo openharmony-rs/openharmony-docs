@@ -1,7 +1,7 @@
 # JSVM_DefineClassOptions
 
 ```c
-typedef struct JSVM_DefineClassOptions {...} JSVM_DefineClassOptions
+typedef union JSVM_DefineClassOptions {...} JSVM_DefineClassOptions
 ```
 
 ## 概述
@@ -22,8 +22,6 @@ typedef struct JSVM_DefineClassOptions {...} JSVM_DefineClassOptions
 
 | 名称 | 描述 |
 | -- | -- |
-| [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | 定义Class的选项ID。 |
-| union | 选项内容。 |
 | void* ptr | void*类型。 |
 | int num | int类型。 |
 | bool boolean;

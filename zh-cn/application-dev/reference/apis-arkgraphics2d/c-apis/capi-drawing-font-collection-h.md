@@ -6,8 +6,6 @@
 
 **库：** libnative_drawing.so
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 8
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -38,9 +36,9 @@ OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 
 创建字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 8
+
+**资源释放：** OH_Drawing_DestroyFontCollection {return}
 
 **废弃版本：** 26.0.1
 
@@ -50,7 +48,7 @@ OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_FontCollection* | 指向创建的字体集对象的指针。该函数创建的字体集指针对象OH_Drawing_FontCollection只能被一个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象使用，      不支持多个OH_Drawing_TypographyCreate对象共享使用。如需在多个OH_Drawing_TypographyCreate对象间共享同一个OH_Drawing_FontCollection，请使用      [OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection)函数创建OH_Drawing_FontCollection对象。 |
+| [OH_Drawing_FontCollection*](capi-drawing-oh-drawing-fontcollection.md) | 指向创建的字体集对象的指针。该函数创建的字体集指针对象OH_Drawing_FontCollection只能被一个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象使用，不支持多个OH_Drawing_TypographyCreate对象共享使用。如需在多个OH_Drawing_TypographyCreate对象间共享同一个OH_Drawing_FontCollection，请使用[OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection)函数创建OH_Drawing_FontCollection对象。 |
 
 ### OH_Drawing_DestroyFontCollection()
 
@@ -62,15 +60,13 @@ void OH_Drawing_DestroyFontCollection(OH_Drawing_FontCollection* fontCollection)
 
 释放被字体集对象占据的内存。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 8
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | 指向字体集对象的指针。 |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | 指向字体集对象的指针。 |
 
 ### OH_Drawing_DisableFontCollectionFallback()
 
@@ -82,8 +78,6 @@ void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCol
 
 禁用系统字体。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 12
 
 **废弃版本：** 18
@@ -94,7 +88,7 @@ void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCol
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | 指向字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)的指针。 |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | 指向字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)的指针。 |
 
 ### OH_Drawing_DisableFontCollectionSystemFont()
 
@@ -106,15 +100,13 @@ void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection* fontC
 
 禁用系统字体。禁用后，该字体集对象仅能使用已注册的自定义字体进行文本渲染。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | 指向需禁用系统字体的字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)的指针。 |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | 指向需禁用系统字体的字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)的指针。 |
 
 ### OH_Drawing_CreateSharedFontCollection()
 
@@ -126,15 +118,15 @@ OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)
 
 创建可共享的字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 12
+
+**资源释放：** OH_Drawing_DestroyFontCollection {return}
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_FontCollection* | 指向创建的字体集对象的指针，可以被多个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象使用。 |
+| [OH_Drawing_FontCollection*](capi-drawing-oh-drawing-fontcollection.md) | 指向创建的字体集对象的指针，可以被多个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象使用。 |
 
 ### OH_Drawing_ClearFontCaches()
 
@@ -146,15 +138,13 @@ void OH_Drawing_ClearFontCaches(OH_Drawing_FontCollection* fontCollection)
 
 清理字体排版缓存（字体排版缓存本身设有内存上限和清理机制，所占内存有限，如无内存要求，不建议清理）。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | 指向字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)的指针。 |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | 指向字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)的指针。 |
 
 ### OH_Drawing_GetFontCollectionGlobalInstance()
 
@@ -166,14 +156,12 @@ OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)
 
 获取全局字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)，可获取主题字信息，禁止释放该对象。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **起始版本：** 14
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_FontCollection* | 指向全局字体集对象的指针，可以被多个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象使用，禁止释放。 |
+| [OH_Drawing_FontCollection*](capi-drawing-oh-drawing-fontcollection.md) | 指向全局字体集对象的指针，可以被多个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象使用，禁止释放。 |
 
 

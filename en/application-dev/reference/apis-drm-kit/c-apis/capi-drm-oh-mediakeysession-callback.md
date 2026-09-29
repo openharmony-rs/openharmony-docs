@@ -1,7 +1,7 @@
 # OH_MediaKeySession_Callback
 
 ```c
-typedef struct OH_MediaKeySession_Callback {...} OH_MediaKeySession_Callback
+struct OH_MediaKeySession_Callback {...}
 ```
 
 ## Overview

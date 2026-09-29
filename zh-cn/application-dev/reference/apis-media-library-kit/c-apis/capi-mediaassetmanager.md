@@ -6,7 +6,7 @@
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 13
+**起始版本：** 12
 
 ## 文件汇总
 

@@ -6,8 +6,6 @@ Provides C APIs for managing the token IDs, credentials, process IDs (PIDs), use
 
 **Library**: libipc_capi.so
 
-**System capability**: SystemCapability.Communication.IPC.Core
-
 **Since**: 12
 
 **Related module**: [OHIPCSkeleton](capi-ohipcskeleton.md)
@@ -43,8 +41,6 @@ void OH_IPCSkeleton_JoinWorkThread(void)
 
 Joins this thread to the IPC worker thread pool.
 
-**System capability**: SystemCapability.Communication.IPC.Core
-
 **Since**: 12
 
 ### OH_IPCSkeleton_StopWorkThread()
@@ -57,8 +53,6 @@ void OH_IPCSkeleton_StopWorkThread(void)
 
 Stops this thread.
 
-**System capability**: SystemCapability.Communication.IPC.Core
-
 **Since**: 12
 
 ### OH_IPCSkeleton_GetCallingTokenId()
@@ -70,8 +64,6 @@ uint64_t OH_IPCSkeleton_GetCallingTokenId(void)
 **Description**
 
 Obtains the token ID of the caller. This function must be called in the IPC context. Otherwise, the local token ID is returned.
-
-**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -91,8 +83,6 @@ uint64_t OH_IPCSkeleton_GetFirstTokenId(void)
 
 Obtains the token ID of the first caller.
 
-**System capability**: SystemCapability.Communication.IPC.Core
-
 **Since**: 12
 
 **Returns**:
@@ -110,8 +100,6 @@ uint64_t OH_IPCSkeleton_GetSelfTokenId(void)
 **Description**
 
 Obtains the local token ID.
-
-**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -131,8 +119,6 @@ uint64_t OH_IPCSkeleton_GetCallingPid(void)
 
 Obtains the PID of the caller. This function must be called in the IPC context. Otherwise, the local PID is returned.
 
-**System capability**: SystemCapability.Communication.IPC.Core
-
 **Since**: 12
 
 **Returns**:
@@ -150,8 +136,6 @@ uint64_t OH_IPCSkeleton_GetCallingUid(void)
 **Description**
 
 Obtains the UID of the caller. This function must be called in the IPC context. Otherwise, the local UID is returned.
-
-**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -171,15 +155,13 @@ int OH_IPCSkeleton_IsLocalCalling(void)
 
 Checks whether a local calling is being made.
 
-**System capability**: SystemCapability.Communication.IPC.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns 1 if a local calling is in progress; returns 0 otherwise. |
+| int | Returns **1** if a local calling is in progress; returns **0** otherwise. |
 
 ### OH_IPCSkeleton_SetMaxWorkThreadNum()
 
@@ -190,8 +172,6 @@ int OH_IPCSkeleton_SetMaxWorkThreadNum(const int maxThreadNum)
 **Description**
 
 Sets the maximum number of worker threads.
-
-**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -205,7 +185,7 @@ Sets the maximum number of worker threads.
 
 | Type | Description |
 | -- | -- |
-| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the parameters are incorrect.      Returns [OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) in other cases. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful. Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the parameters are incorrect. Returns [OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) in other cases. |
 
 ### OH_IPCSkeleton_ResetCallingIdentity()
 
@@ -217,8 +197,6 @@ int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_Me
 
 Resets the caller identity credential (including the token ID, UID, and PID) to that of this process and returns the caller credential information. The credential information is used in **OH_IPCSkeleton_SetCallingIdentity**.
 
-**System capability**: SystemCapability.Communication.IPC.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -227,13 +205,13 @@ Resets the caller identity credential (including the token ID, UID, and PID) to 
 | -- | -- |
 | char **identity | Double pointer to the address of the memory for holding the caller identity information. The memory is allocated by the allocator provided by the user and needs to be released. This pointer cannot be NULL. |
 | int32_t *len | Pointer to the length of the data written to the identity. It cannot be NULL. |
-| OH_IPC_MemAllocator allocator | Memory allocator specified by the user for allocating memory for **identity**. It cannot be NULL. |
+| [OH_IPC_MemAllocator](capi-ipc-cparcel-h.md#oh_ipc_memallocator) allocator | Memory allocator specified by the user for allocating memory for **identity**. It cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the parameters are incorrect.      Returns [OH_IPC_MEM_ALLOCATOR_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the memory allocation fails.      Returns [OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) in other cases. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful. Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the parameters are incorrect. Returns [OH_IPC_MEM_ALLOCATOR_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the memory allocation fails. Returns [OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) in other cases. |
 
 ### OH_IPCSkeleton_SetCallingIdentity()
 
@@ -244,8 +222,6 @@ int OH_IPCSkeleton_SetCallingIdentity(const char *identity)
 **Description**
 
 Sets the caller credential information to the IPC context.
-
-**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -259,7 +235,7 @@ Sets the caller credential information to the IPC context.
 
 | Type | Description |
 | -- | -- |
-| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the parameters are incorrect.      Returns [OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) in other cases. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful. Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the parameters are incorrect. Returns [OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) in other cases. |
 
 ### OH_IPCSkeleton_IsHandlingTransaction()
 
@@ -271,14 +247,12 @@ int OH_IPCSkeleton_IsHandlingTransaction(void)
 
 Checks whether an IPC request is being handled.
 
-**System capability**: SystemCapability.Communication.IPC.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns 1 if an IPC request is being handled; returns 0 otherwise. |
+| int | Returns **1** if an IPC request is being handled; returns **0** otherwise. |
 
 

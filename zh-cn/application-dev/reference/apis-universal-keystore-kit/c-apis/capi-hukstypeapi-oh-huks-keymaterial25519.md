@@ -1,7 +1,7 @@
 # OH_Huks_KeyMaterial25519
 
 ```c
-typedef struct OH_Huks_KeyMaterial25519 {...} OH_Huks_KeyMaterial25519
+struct OH_Huks_KeyMaterial25519 {...}
 ```
 
 ## 概述
@@ -22,7 +22,7 @@ typedef struct OH_Huks_KeyMaterial25519 {...} OH_Huks_KeyMaterial25519
 
 | 名称 | 描述 |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。 |
+| enum OH_Huks_KeyAlg keyAlg | 密钥的算法类型。 |
 | uint32_t keySize | 25519类型密钥的长度，单位：Bit。 |
 | uint32_t pubKeySize | 公钥的长度，单位：Byte。 |
 | uint32_t priKeySize | 私钥的长度，单位：Byte。 |

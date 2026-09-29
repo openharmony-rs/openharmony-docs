@@ -6,8 +6,6 @@
 
 **库：** libability_runtime.so
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
@@ -18,8 +16,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ModularObjectExtensionInfo*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) | OH_AbilityRuntime_ModObjExtensionInfoHandle | 表示单个ModularObjectExtensionAbility的信息句柄。该句柄指向一个ModularObjectExtensionAbility的完整信息，包含启动模式、进程模式、线程模式、组件名称（ {@link AbilityBase_Element}）以及禁用状态等属性。 |
-| [OH_AbilityRuntime_AllModularObjectExtensionInfos*](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) | OH_AbilityRuntime_AllModObjExtensionInfosHandle | 表示当前应用内所有ModularObjectExtensionAbility信息的集合句柄。该句柄指向一个包含多个{@link OH_AbilityRuntime_ModObjExtensionInfoHandle}<br>的集合，可通过{@link OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos} 获取集合中元素的数量，并通过<br>{@link OH_AbilityRuntime_GetModObjExtensionInfoByIndex} 按索引遍历获取单个ModularObjectExtensionAbility信息。使用完毕后需通过<br>{@link OH_AbilityRuntime_ReleaseAllExtensionInfos} 释放该集合。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) | OH_AbilityRuntime_ModObjExtensionInfoHandle | 表示单个ModularObjectExtensionAbility的信息句柄。该句柄指向一个ModularObjectExtensionAbility的完整信息，包含启动模式、进程模式、线程模式、组件名称（ [AbilityBase_Element](capi-abilitybase-abilitybase-element.md)）以及禁用状态等属性。 |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) | OH_AbilityRuntime_AllModObjExtensionInfosHandle | 表示当前应用内所有ModularObjectExtensionAbility信息的集合句柄。该句柄指向一个包含多个[OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) 的集合，可通过[OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos) 获取集合中元素的数量，并通过 [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex) 按索引遍历获取单个ModularObjectExtensionAbility信息。使用完毕后需通过 [OH_AbilityRuntime_ReleaseAllExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_releaseallextensioninfos) 释放该集合。 |
 
 ### 枚举
 
@@ -36,7 +34,7 @@
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoLaunchMode(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, OH_AbilityRuntime_LaunchMode *launchMode)](#oh_abilityruntime_getmodularobjectextensioninfolaunchmode) | 从指定的ModularObjectExtensionAbility信息中获取启动模式。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoProcessMode(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, OH_AbilityRuntime_ProcessMode *processMode)](#oh_abilityruntime_getmodularobjectextensioninfoprocessmode) | 从指定的ModularObjectExtensionAbility信息中获取进程模式。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMode(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, OH_AbilityRuntime_ThreadMode *threadMode)](#oh_abilityruntime_getmodularobjectextensioninfothreadmode) | 从指定的ModularObjectExtensionAbility信息中获取线程模式。 |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementName(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, AbilityBase_Element *element)](#oh_abilityruntime_getmodularobjectextensioninfoelementname) | 从指定的ModularObjectExtensionAbility信息中获取组件名称（{@link AbilityBase_Element}）。 |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementName(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, AbilityBase_Element *element)](#oh_abilityruntime_getmodularobjectextensioninfoelementname) | 从指定的ModularObjectExtensionAbility信息中获取组件名称（[AbilityBase_Element](capi-abilitybase-abilitybase-element.md)）。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoDisableState(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, bool *isDisabled)](#oh_abilityruntime_getmodularobjectextensioninfodisablestate) | 从指定的ModularObjectExtensionAbility信息中获取禁用状态。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle *outOwnedAllExtensionInfos)](#oh_abilityruntime_acquireselfmodularobjectextensioninfos) | 获取当前应用所有已注册的ModularObjectExtensionAbility信息。该接口返回一个包含当前应用所有已注册的ModularObjectExtensionAbility信息集合句柄。开发者可通过 [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos)和 [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex)遍历集合中的各个ModularObjectExtensionAbility信息， 进而获取每个ModularObjectExtensionAbility的启动模式、进程模式、线程模式等属性。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle *allExtensionInfos)](#oh_abilityruntime_releaseallextensioninfos) | 释放由[OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_acquireselfmodularobjectextensioninfos)获取的ModularObjectExtensionAbility信息集合。 当不再需要使用ModularObjectExtensionAbility信息集合时，必须调用此接口释放相关资源，避免内存泄漏。 |
@@ -57,8 +55,6 @@ enum OH_AbilityRuntime_LaunchMode
 
 定义ModularObjectExtensionAbility的启动模式。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -75,8 +71,6 @@ enum OH_AbilityRuntime_ProcessMode
 **描述：**
 
 定义ModularObjectExtensionAbility的进程模式。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -95,8 +89,6 @@ enum OH_AbilityRuntime_ThreadMode
 **描述：**
 
 定义ModularObjectExtensionAbility的线程模式。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -119,22 +111,20 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoLaunchMo
 
 从指定的ModularObjectExtensionAbility信息中获取启动模式。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
 | [OH_AbilityRuntime_LaunchMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode) *launchMode | 指向[OH_AbilityRuntime_LaunchMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode)的指针，用于接收启动模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或launchMode为空。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或launchMode为空。 |
 
 ### OH_AbilityRuntime_GetModularObjectExtensionInfoProcessMode()
 
@@ -146,22 +136,20 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoProcessM
 
 从指定的ModularObjectExtensionAbility信息中获取进程模式。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
 | [OH_AbilityRuntime_ProcessMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_processmode) *processMode | 指向[OH_AbilityRuntime_ProcessMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_processmode)的指针，用于接收进程模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或processMode为空。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或processMode为空。 |
 
 ### OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMode()
 
@@ -173,22 +161,20 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMo
 
 从指定的ModularObjectExtensionAbility信息中获取线程模式。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
 | [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode) *threadMode | 指向[OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode)的指针，用于接收线程模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或threadMode为空。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或threadMode为空。 |
 
 ### OH_AbilityRuntime_GetModularObjectExtensionInfoElementName()
 
@@ -198,9 +184,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementN
 
 **描述：**
 
-从指定的ModularObjectExtensionAbility信息中获取组件名称（{@link AbilityBase_Element}）。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+从指定的ModularObjectExtensionAbility信息中获取组件名称（[AbilityBase_Element](capi-abilitybase-abilitybase-element.md)）。
 
 **起始版本：** 26.0.0
 
@@ -208,14 +192,14 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementN
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
-| AbilityBase_Element *element | 指向{@link AbilityBase_Element}的指针，用于接收组件名称。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) *element | 指向[AbilityBase_Element](capi-abilitybase-abilitybase-element.md)的指针，用于接收组件名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或element为空。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或element为空。 |
 
 ### OH_AbilityRuntime_GetModularObjectExtensionInfoDisableState()
 
@@ -227,22 +211,20 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoDisableS
 
 从指定的ModularObjectExtensionAbility信息中获取禁用状态。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
 | bool *isDisabled | 指向布尔值的指针，用于接收禁用状态。true表示已禁用，不允许其他应用连接；false表示未禁用，允许其他应用连接。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或isDisabled为空。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) extensionInfo或isDisabled为空。 |
 
 ### OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos()
 
@@ -254,21 +236,21 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfo
 
 获取当前应用所有已注册的ModularObjectExtensionAbility信息。该接口返回一个包含当前应用所有已注册的ModularObjectExtensionAbility信息集合句柄。开发者可通过 [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos)和 [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex)遍历集合中的各个ModularObjectExtensionAbility信息， 进而获取每个ModularObjectExtensionAbility的启动模式、进程模式、线程模式等属性。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
+
+**资源释放：** OH_AbilityRuntime_ReleaseAllExtensionInfos {outOwnedAllExtensionInfos}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) *outOwnedAllExtensionInfos | 指向[OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md)的指针， 用于接收ModularObjectExtensionAbility信息集合。 |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) *outOwnedAllExtensionInfos | 指向[OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md)的指针， 用于接收ModularObjectExtensionAbility信息集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) outOwnedAllExtensionInfos为空。      <br>[ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 设备不支持该操作。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) outOwnedAllExtensionInfos为空。<br>[ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 设备不支持该操作。 |
 
 ### OH_AbilityRuntime_ReleaseAllExtensionInfos()
 
@@ -280,21 +262,19 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRu
 
 释放由[OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_acquireselfmodularobjectextensioninfos)获取的ModularObjectExtensionAbility信息集合。 当不再需要使用ModularObjectExtensionAbility信息集合时，必须调用此接口释放相关资源，避免内存泄漏。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) *allExtensionInfos | 指向需要释放的ModularObjectExtensionAbility信息集合句柄的指针。释放后该指针将被置空。 |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) *allExtensionInfos | 指向需要释放的ModularObjectExtensionAbility信息集合句柄的指针。释放后该指针将被置空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) allExtensionInfos为空。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) allExtensionInfos为空。 |
 
 **参考：**
 
@@ -311,22 +291,20 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos(O
 
 获取ModularObjectExtensionAbility信息集合中包含的ModularObjectExtensionAbility信息数量。返回的数量可用于确定遍历集合时的索引上限，配合 [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex)逐个访问集合中的ModularObjectExtensionAbility信息。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) allExtensionInfos | ModularObjectExtensionAbility信息集合句柄。 |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) allExtensionInfos | ModularObjectExtensionAbility信息集合句柄。 |
 | size_t *count | 指向size_t的指针，用于接收ModularObjectExtensionAbility信息的数量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) allExtensionInfos或count为空。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) allExtensionInfos或count为空。 |
 
 ### OH_AbilityRuntime_GetModObjExtensionInfoByIndex()
 
@@ -338,23 +316,21 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_Abil
 
 根据索引从ModularObjectExtensionAbility信息集合中获取指定的ModularObjectExtensionAbility信息。索引的有效范围为[0, count)，其中count可通过 [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos)获取。 获取到的ModularObjectExtensionAbility信息句柄可用于查询该ModularObjectExtensionAbility的启动模式、进程模式、线程模式等属性。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) allExtensionInfos | ModularObjectExtensionAbility信息集合句柄。 |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) allExtensionInfos | ModularObjectExtensionAbility信息集合句柄。 |
 | size_t index | 目标ModularObjectExtensionAbility信息在集合中的索引，必须小于集合包含的ModularObjectExtensionAbility信息数量。 |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) *extensionInfo | 指向[OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md)的指针， 用于接收指定索引处的ModularObjectExtensionAbility信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) *extensionInfo | 指向[OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md)的指针， 用于接收指定索引处的ModularObjectExtensionAbility信息句柄。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) allExtensionInfos或extensionInfo为空，      <br>或index大于等于集合中ModularObjectExtensionAbility信息数量。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) allExtensionInfos或extensionInfo为空，<br>或index大于等于集合中ModularObjectExtensionAbility信息数量。 |
 
 ### OH_AbilityRuntime_ConnectModularObjectExtensionAbility()
 
@@ -366,23 +342,21 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectModularObjectExtensionAbility(
 
 连接ModularObjectExtensionAbility。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| AbilityBase_Want *want | 连接ModularObjectExtensionAbility需要的Want信息。详细内容参考{@link AbilityBase_Want}。 |
-| OH_AbilityRuntime_ConnectOptions *connectOptions | 连接选项。详细内容参考[OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)。 |
+| [AbilityBase_Want](capi-abilitybase-abilitybase-want.md) *want | 连接ModularObjectExtensionAbility需要的Want信息。详细内容参考[AbilityBase_Want](capi-abilitybase-abilitybase-want.md)。 |
+| [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) *connectOptions | 连接选项。详细内容参考[OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)。 |
 | int64_t *connectionId | 指向int64_t的指针，用于接收连接ID。可以在后续调用[OH_AbilityRuntime_DisconnectModularObjectExtensionAbility](capi-modular-object-extension-manager-h.md#oh_abilityruntime_disconnectmodularobjectextensionability) 时使用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 传入参数无效。      <br>[ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 设备不支持连接ModularObjectExtensionAbility。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 目标Ability不存在。      <br>[ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) Ability类型不正确。      <br>[ABILITY_RUNTIME_ERROR_CODE_VISIBILITY_VERIFICATION_FAILED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 无法启动不可见组件。      <br>[ABILITY_RUNTIME_ERROR_CODE_STATIC_CFG_PERMISSION](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 指定进程无相应权限。      <br>[ABILITY_RUNTIME_ERROR_CODE_CROSS_USER_OPERATION](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 不允许跨用户操作。      <br>[ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 众测应用已过期。      <br>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 内部错误。      <br>[ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 调用方进程不在前台。      <br>[ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 同名Ability的实例数超过20个。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_RUNNING_ABILITIES_WITH_UI](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 目标应用无正在运行的UIAbility或UIExtensionAbility。      <br>[ABILITY_RUNTIME_ERROR_CODE_UPPER_RATE_LIMIT](capi-ability-runtime-common-h.md#abilityruntime_errorcode) API调用频率过高，超过每秒20次。      <br>[ABILITY_RUNTIME_ERROR_CODE_UPPER_CONNECTION_NUMBER_LIMIT](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 同一进程最多连接5个同名的Ability。      <br>[ABILITY_RUNTIME_ERROR_CODE_CROSS_APP_IN_PROCESS](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 在[OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode)      模式下，调用方与目标Ability不在同一应用。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 传入参数无效。<br>[ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 设备不支持连接ModularObjectExtensionAbility。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 目标Ability不存在。<br>[ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) Ability类型不正确。<br>[ABILITY_RUNTIME_ERROR_CODE_VISIBILITY_VERIFICATION_FAILED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 无法启动不可见组件。<br>[ABILITY_RUNTIME_ERROR_CODE_STATIC_CFG_PERMISSION](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 指定进程无相应权限。<br>[ABILITY_RUNTIME_ERROR_CODE_CROSS_USER_OPERATION](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 不允许跨用户操作。<br>[ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 众测应用已过期。<br>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 内部错误。<br>[ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 调用方进程不在前台。<br>[ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 同名Ability的实例数超过20个。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_RUNNING_ABILITIES_WITH_UI](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 目标应用无正在运行的UIAbility或UIExtensionAbility。<br>[ABILITY_RUNTIME_ERROR_CODE_UPPER_RATE_LIMIT](capi-ability-runtime-common-h.md#abilityruntime_errorcode) API调用频率过高，超过每秒20次。<br>[ABILITY_RUNTIME_ERROR_CODE_UPPER_CONNECTION_NUMBER_LIMIT](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 同一进程最多连接5个同名的Ability。<br>[ABILITY_RUNTIME_ERROR_CODE_CROSS_APP_IN_PROCESS](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 在[OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode)模式下，调用方与目标Ability不在同一应用。 |
 
 ### OH_AbilityRuntime_DisconnectModularObjectExtensionAbility()
 
@@ -393,8 +367,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DisconnectModularObjectExtensionAbili
 **描述：**
 
 断开与ModularObjectExtensionAbility的连接。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -408,6 +380,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DisconnectModularObjectExtensionAbili
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 传入参数无效。      <br>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 内部错误。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。<br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。<br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 传入参数无效。<br>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 内部错误。 |
 
 

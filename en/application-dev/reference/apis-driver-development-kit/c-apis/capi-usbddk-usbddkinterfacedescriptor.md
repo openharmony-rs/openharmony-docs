@@ -1,7 +1,7 @@
 # UsbDdkInterfaceDescriptor
 
 ```c
-typedef struct UsbDdkInterfaceDescriptor {...} UsbDdkInterfaceDescriptor
+struct UsbDdkInterfaceDescriptor {...}
 ```
 
 ## Overview
@@ -22,8 +22,8 @@ Defines USB interface descriptors.
 
 | Name | Description |
 | -- | -- |
-| struct [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) interfaceDescriptor | Standard USB interface descriptor. |
-| struct [UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) *endPoint | Endpoint descriptor contained in the interface. |
+| [struct UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) interfaceDescriptor | Standard USB interface descriptor. |
+| struct UsbDdkEndpointDescriptor *endPoint | Endpoint descriptor contained in the interface. |
 | const uint8_t *extra | Unresolved descriptor, including class- or vendor-specific descriptors. |
 | uint32_t extraLength | Length of the unresolved descriptor. |
 

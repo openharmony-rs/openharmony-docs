@@ -1,0 +1,18 @@
+# ArkWeb_ErrorInfo
+
+```c
+typedef struct ArkWeb_ErrorInfo ArkWeb_ErrorInfo
+```
+
+## 概述
+
+OH_ArkWebResourceHandler_DidFailWithErrorInfo的错误信息；
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
+
+**相关模块：** [Web](capi-web.md)
+
+**所在头文件：** [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
+

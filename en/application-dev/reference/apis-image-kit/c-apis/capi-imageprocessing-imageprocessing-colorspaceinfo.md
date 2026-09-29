@@ -1,7 +1,7 @@
 # ImageProcessing_ColorSpaceInfo
 
 ```c
-typedef struct ImageProcessing_ColorSpaceInfo {...} ImageProcessing_ColorSpaceInfo
+struct ImageProcessing_ColorSpaceInfo {...}
 ```
 
 ## Overview
@@ -22,8 +22,8 @@ The color space information is used for color space conversion capability query.
 
 | Name | Description |
 | -- | -- |
-| int32_t metadataType | define metadata type, {@link enum OH_Pixelmap_HdrMetadataKey} |
-| int32_t colorSpace | define color space, {@link enum ColorSpaceName} |
-| int32_t pixelFormat | define pixel format, {@link enum PIXEL_FORMAT} |
+| int32_t metadataType | define metadata type, enum OH_Pixelmap_HdrMetadataKey |
+| int32_t colorSpace | define color space, enum ColorSpaceName |
+| int32_t pixelFormat | define pixel format, enum PIXEL_FORMAT |
 
 

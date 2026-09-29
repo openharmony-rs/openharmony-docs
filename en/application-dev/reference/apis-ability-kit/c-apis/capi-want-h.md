@@ -6,8 +6,6 @@ Want is a carrier for information transfer between objects (application componen
 
 **Library**: libability_base_want.so
 
-**System capability**: SystemCapability.Ability.AbilityBase
-
 **Since**: 15
 
 **Related module**: [AbilityBase](capi-abilitybase.md)
@@ -18,7 +16,7 @@ Want is a carrier for information transfer between objects (application componen
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) | AbilityBase_Element | The struct describes the Element in {@link Want}. |
+| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) | - | The struct describes the Element in Want. |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md) | - | Want data structure. |
 
 ### Function
@@ -29,18 +27,20 @@ Want is a carrier for information transfer between objects (application componen
 | [AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)](#oh_abilitybase_destroywant) | Destroys Want. Want cannot be used after being destroyed. Otherwise, undefined behavior may occur. |
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, AbilityBase_Element element)](#oh_abilitybase_setwantelement) | Sets the Element struct, which consists of **bundleName**, **moduleName**, and **abilityName** in Want. |
 | [AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, AbilityBase_Element* element)](#oh_abilitybase_getwantelement) | Obtains the Element struct, which consists of **bundleName**, **moduleName**, and **abilityName** in Want. |
-| [AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, const char* key, const char* value)](#oh_abilitybase_setwantcharparam) | Sets **Param** in Want. For details about **Param**, see {@link parameters in Want}. |
+| [AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, const char* key, const char* value)](#oh_abilitybase_setwantcharparam) | Sets **Param** in Want. For details about **Param**, see parameters in Want. |
 | [AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, const char* key, char* value, size_t valueSize)](#oh_abilitybase_getwantcharparam) | Obtains **Param** set by [OH_AbilityBase_SetWantCharParam](capi-want-h.md#oh_abilitybase_setwantcharparam) in Want. |
-| [AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const char* key, int32_t fd)](#oh_abilitybase_addwantfd) | Adds a Want file descriptor. The file descriptor can be obtained through {@link fs.open}. |
+| [AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const char* key, int32_t fd)](#oh_abilitybase_addwantfd) | Adds a Want file descriptor. The file descriptor can be obtained through fs.open. |
 | [AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const char* key, int32_t* fd)](#oh_abilitybase_getwantfd) | Obtains a Want file descriptor. |
-| [AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const char* uri)](#oh_abilitybase_setwanturi) | Sets **uri** in Want. For details about the URI, see {@link uri in Want}. |
-| [AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* uri, size_t uriSize)](#oh_abilitybase_getwanturi) | Obtains **uri** set in Want. For details about the URI, see {@link uri in Want}. |
+| [AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const char* uri)](#oh_abilitybase_setwanturi) | Sets **uri** in Want. For details about the URI, see uri in Want. |
+| [AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* uri, size_t uriSize)](#oh_abilitybase_getwanturi) | Obtains **uri** set in Want. For details about the URI, see uri in Want. |
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t value)](#oh_abilitybase_setwantint32param) | Sets a value of the int32_t type in Want. |
 | [AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t* value)](#oh_abilitybase_getwantint32param) | Obtains a value of the int32_t type set in Want. |
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, const char* key, bool value)](#oh_abilitybase_setwantboolparam) | Sets a value of the bool type in Want. |
 | [AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, const char* key, bool* value)](#oh_abilitybase_getwantboolparam) | Obtains a value of the bool type set in Want. |
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, const char* key, double value)](#oh_abilitybase_setwantdoubleparam) | Sets a value of the double type in Want. |
-| [AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, const char* key, double* value)](#oh_abilitybase_getwantdoubleparam) | Obtains a value of the double type set in Want. |
+| [AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, const char* key, double* value)
+
+} // extern "C"](#oh_abilitybase_getwantdoubleparam) | Obtains a value of the double type set in Want. |
 
 ## Function description
 
@@ -53,8 +53,6 @@ AbilityBase_Want* OH_AbilityBase_CreateWant(AbilityBase_Element element)
 **Description**
 
 Creates Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 15
 
@@ -80,8 +78,6 @@ AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)
 
 Destroys Want. Want cannot be used after being destroyed. Otherwise, undefined behavior may occur.
 
-**System capability**: SystemCapability.Ability.AbilityBase
-
 **Since**: 15
 
 **Parameters**:
@@ -94,7 +90,7 @@ Destroys Want. Want cannot be used after being destroyed. Otherwise, undefined b
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: Want is destroyed.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: element is invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: Want is destroyed. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **element** is invalid. |
 
 ### OH_AbilityBase_SetWantElement()
 
@@ -105,8 +101,6 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, Abil
 **Description**
 
 Sets the Element struct, which consists of **bundleName**, **moduleName**, and **abilityName** in Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 15
 
@@ -121,7 +115,7 @@ Sets the Element struct, which consists of **bundleName**, **moduleName**, and *
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The setting is successful.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or element is invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The setting is successful. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or **element** is invalid. |
 
 ### OH_AbilityBase_GetWantElement()
 
@@ -132,8 +126,6 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, Abil
 **Description**
 
 Obtains the Element struct, which consists of **bundleName**, **moduleName**, and **abilityName** in Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 15
 
@@ -148,7 +140,7 @@ Obtains the Element struct, which consists of **bundleName**, **moduleName**, an
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The element struct is obtained.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or element is invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The element struct is obtained. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or **element** is invalid. |
 
 ### OH_AbilityBase_SetWantCharParam()
 
@@ -158,9 +150,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, co
 
 **Description**
 
-Sets **Param** in Want. For details about **Param**, see {@link parameters in Want}.
-
-**System capability**: SystemCapability.Ability.AbilityBase
+Sets **Param** in Want. For details about **Param**, see parameters in Want.
 
 **Since**: 15
 
@@ -176,7 +166,7 @@ Sets **Param** in Want. For details about **Param**, see {@link parameters in Wa
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The setting is successful.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The setting is successful. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_GetWantCharParam()
 
@@ -187,8 +177,6 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, co
 **Description**
 
 Obtains **Param** set by [OH_AbilityBase_SetWantCharParam](capi-want-h.md#oh_abilitybase_setwantcharparam) in Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 15
 
@@ -205,7 +193,7 @@ Obtains **Param** set by [OH_AbilityBase_SetWantCharParam](capi-want-h.md#oh_abi
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The param struct is obtained.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The param struct is obtained. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_AddWantFd()
 
@@ -215,9 +203,7 @@ AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const cha
 
 **Description**
 
-Adds a Want file descriptor. The file descriptor can be obtained through {@link fs.open}.
-
-**System capability**: SystemCapability.Ability.AbilityBase
+Adds a Want file descriptor. The file descriptor can be obtained through fs.open.
 
 **Since**: 15
 
@@ -227,13 +213,13 @@ Adds a Want file descriptor. The file descriptor can be obtained through {@link 
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Pointer to Want. |
 | const char* key | Pointer to a key in Want. |
-| int32_t fd | File descriptor, which is obtained by calling {@link fs.open}. |
+| int32_t fd | File descriptor, which is obtained by calling fs.open. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The Want file descriptor is added.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The Want file descriptor is added. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_GetWantFd()
 
@@ -244,8 +230,6 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const cha
 **Description**
 
 Obtains a Want file descriptor.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 15
 
@@ -261,7 +245,7 @@ Obtains a Want file descriptor.
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The Want file descriptor is obtained.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The Want file descriptor is obtained. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_SetWantUri()
 
@@ -271,9 +255,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const ch
 
 **Description**
 
-Sets **uri** in Want. For details about the URI, see {@link uri in Want}.
-
-**System capability**: SystemCapability.Ability.AbilityBase
+Sets **uri** in Want. For details about the URI, see uri in Want.
 
 **Since**: 17
 
@@ -282,13 +264,13 @@ Sets **uri** in Want. For details about the URI, see {@link uri in Want}.
 | Parameter | Description |
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Pointer to Want. |
-| const char* uri | Pointer to a URI. If a URI is specified in Want, Want will match the specified URI information. For details about the URI, see {@link uri in Want}. |
+| const char* uri | Pointer to a URI. If a URI is specified in Want, Want will match the specified URI information. For details about the URI, see uri in Want. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The setting is successful.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The setting is successful. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_GetWantUri()
 
@@ -298,9 +280,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 
 **Description**
 
-Obtains **uri** set in Want. For details about the URI, see {@link uri in Want}.
-
-**System capability**: SystemCapability.Ability.AbilityBase
+Obtains **uri** set in Want. For details about the URI, see uri in Want.
 
 **Since**: 17
 
@@ -309,14 +289,14 @@ Obtains **uri** set in Want. For details about the URI, see {@link uri in Want}.
 | Parameter | Description |
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Pointer to Want. |
-| char* uri | Pointer to a URI. If a URI is specified in Want, Want will match the specified URI information. For details about the URI, see {@link uri in Want}. |
+| char* uri | Pointer to a URI. If a URI is specified in Want, Want will match the specified URI information. For details about the URI, see uri in Want. |
 | size_t uriSize | Length of the URI string. If **uriSize** is less than the actual URI length, the [ABILITY_BASE_ERROR_CODE_PARAM_INVALID](capi-ability-base-common-h.md#abilitybase_errorcode) error is reported. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The URI string in Want is obtained.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The URI string in Want is obtained. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_SetWantInt32Param()
 
@@ -327,8 +307,6 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, c
 **Description**
 
 Sets a value of the int32_t type in Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 17
 
@@ -344,7 +322,7 @@ Sets a value of the int32_t type in Want.
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The setting is successful.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The setting is successful. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_GetWantInt32Param()
 
@@ -355,8 +333,6 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, c
 **Description**
 
 Obtains a value of the int32_t type set in Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 17
 
@@ -372,7 +348,7 @@ Obtains a value of the int32_t type set in Want.
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The value of the int32_t type is obtained.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The value of the int32_t type is obtained. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_SetWantBoolParam()
 
@@ -383,8 +359,6 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, co
 **Description**
 
 Sets a value of the bool type in Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 17
 
@@ -400,7 +374,7 @@ Sets a value of the bool type in Want.
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The setting is successful.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The setting is successful. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_GetWantBoolParam()
 
@@ -411,8 +385,6 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, co
 **Description**
 
 Obtains a value of the bool type set in Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 17
 
@@ -428,7 +400,7 @@ Obtains a value of the bool type set in Want.
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The value of the bool type is obtained.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The value of the bool type is obtained. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_SetWantDoubleParam()
 
@@ -439,8 +411,6 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, 
 **Description**
 
 Sets a value of the double type in Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 17
 
@@ -456,19 +426,19 @@ Sets a value of the double type in Want.
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The setting is successful.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The setting is successful. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 ### OH_AbilityBase_GetWantDoubleParam()
 
 ```c
 AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, const char* key, double* value)
+
+} // extern "C"
 ```
 
 **Description**
 
 Obtains a value of the double type set in Want.
-
-**System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 17
 
@@ -478,12 +448,12 @@ Obtains a value of the double type set in Want.
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Pointer to Want. |
 | const char* key | Pointer to a key in Want. |
-| double* value | Pointer to the value of the double type of the key. |
+| value | Pointer to the value of the double type of the key. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AbilityBase_ErrorCode | One of the following execution results:       ABILITY_BASE_ERROR_CODE_NO_ERROR: The value of the double type is obtained.       ABILITY_BASE_ERROR_CODE_PARAM_INVALID: want is null or invalid. |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results: **ABILITY_BASE_ERROR_CODE_NO_ERROR**: The value of the double type is obtained. **ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **want** is null or invalid. |
 
 

@@ -6,8 +6,6 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -19,14 +17,16 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [TEE_DH_OtherInfo](capi-teetrusted-tee-dh-otherinfo.md) | TEE_DH_OtherInfo | Defines a struct for TEE_DH_OtherInfo. |
-| [\_\_TEE_OperationInfo](capi-teetrusted---tee-operationinfo.md) | TEE_OperationInfo | Defines the operation information. |
+| [\_\_TEE_OperationInfo](capi-teetrusted---tee-operationinfo.md) | - | Defines the operation information. |
 | [TEE_OperationInfoKey](capi-teetrusted-tee-operationinfokey.md) | TEE_OperationInfoKey | Defines the key information stored in the <b>OperationInfo</b>. |
 | [TEE_OperationInfoMultiple](capi-teetrusted-tee-operationinfomultiple.md) | TEE_OperationInfoMultiple | Defines information about an operation. |
-| [\_\_TEE_OperationHandle](capi-teetrusted---tee-operationhandle.md) | TEE_OperationHandleVar | Defines the cryptographic operation handle. |
+| [\_\_TEE_OperationHandle](capi-teetrusted---tee-operationhandle.md) | - | Defines the cryptographic operation handle. |
 | [crypto_uint2uint](capi-teetrusted-crypto-uint2uint.md) | crypto_uint2uint | Defines the data used for conversion of integers. |
 | [peration_src_dest](capi-teetrusted-peration-src-dest.md) | - | Defines a structure to hold the input and output data. |
 | [peration_ae_init](capi-teetrusted-peration-ae-init.md) | - | Defines the AE initialization data. |
-| [\_\_TEE_ObjectHandle](capi-teetrusted---tee-objecthandle.md) | TEE_ObjectHandleVar | Defines the <b>\_\_TEE_ObjectHandle</b> struct. |
+| [TEE_OperationInfo](capi-teetrusted-tee-operationinfo.md) | TEE_OperationInfo | Defines a struct for \_\_TEE_OperationInfo. |
+| [TEE_OperationHandleVar](capi-teetrusted-tee-operationhandlevar.md) | TEE_OperationHandleVar | Defines the <b>\_\_TEE_OperationHandle</b> struct. |
+| [TEE_ObjectHandleVar](capi-teetrusted-tee-objecthandlevar.md) | TEE_ObjectHandleVar | Defines the <b>\_\_TEE_ObjectHandle</b> struct. |
 
 ### Enum
 
@@ -93,7 +93,8 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 
 | Name | Description |
 | -- | -- |
-| uint32_t TEE_OperationMode | Defines the mode for cryptographic operations.<br>**Since**: 20 |
+| uint32_t TEE_OperationMode | Defines the mode for cryptographic operations.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| typedef uint32_t TEE_OperationMode | Defines the mode for cryptographic operations.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
 
 ## Enum type description
 
@@ -106,8 +107,6 @@ enum __TEE_Operation_Constants
 **Description**
 
 Enumerates the cryptographic operation handles.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -131,8 +130,6 @@ enum __tee_crypto_algorithm_id
 **Description**
 
 Enumerates the cryptographic algorithms.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -250,8 +247,6 @@ enum TEE_ECC_CURVE
 
 Enumerates the Elliptic-Curve Cryptography (ECC) curves supported.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -274,8 +269,6 @@ enum TEE_DH_HASH_Mode
 
 Enumerates the Mask Generation Function (MGF1) modes.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -297,8 +290,6 @@ enum TEE_DH_OpMode_t
 
 Enumerates the Diffie-Hellman operation modes.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -316,8 +307,6 @@ enum TEE_DH_DerivFuncMode
 **Description**
 
 Defines an enum for TEE_DH_DerivFuncMode.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -341,8 +330,6 @@ enum __TEE_DK_ObjectAttribute
 
 Enumerates the object attributes for cryptographic operations.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -361,8 +348,6 @@ enum __TEE_OperationMode
 **Description**
 
 Enumerates the cryptographic operation modes.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -386,8 +371,6 @@ enum tee_operation_state
 
 Enumerates the cryptographic operation states.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -408,8 +391,6 @@ TEE_Result TEE_AllocateOperation(TEE_OperationHandle *operation, uint32_t algori
 
 Allocates an operation handle.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -425,7 +406,7 @@ Allocates an operation handle.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation handle is allocated.          Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if there is no enough memory for this operation.          Returns <b>TEE_ERROR_NOT_SUPPORTED</b> if the specified algorithm is not supported.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation handle is allocated. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if there is no enough memory for this operation. Returns <b>TEE_ERROR_NOT_SUPPORTED</b> if the specified algorithm is not supported. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_FreeOperation()
 
@@ -436,8 +417,6 @@ void TEE_FreeOperation(TEE_OperationHandle operation)
 **Description**
 
 Releases an operation handle.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -457,8 +436,6 @@ void TEE_GetOperationInfo(const TEE_OperationHandle operation, TEE_OperationInfo
 
 Obtains operation information.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -466,7 +443,7 @@ Obtains operation information.
 | Parameter | Description |
 | -- | -- |
 | const TEE_OperationHandle operation | Indicates the operation handle. |
-| [TEE_OperationInfo](capi-teetrusted---tee-operationinfo.md) *operationInfo | Indicates the pointer to the operation information. |
+| [TEE_OperationInfo](capi-teetrusted-tee-operationinfo.md) *operationInfo | Indicates the pointer to the operation information. |
 
 ### TEE_ResetOperation()
 
@@ -477,8 +454,6 @@ void TEE_ResetOperation(TEE_OperationHandle operation)
 **Description**
 
 Resets an operation handle.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -498,8 +473,6 @@ TEE_Result TEE_SetOperationKey(TEE_OperationHandle operation, const TEE_ObjectHa
 
 Sets the key for an operation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -513,7 +486,7 @@ Sets the key for an operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters.          Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if there is no enough memory for this operation. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if there is no enough memory for this operation. |
 
 ### TEE_SetOperationKey2()
 
@@ -524,8 +497,6 @@ TEE_Result TEE_SetOperationKey2(TEE_OperationHandle operation, const TEE_ObjectH
 **Description**
 
 Sets two keys for an operation.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -541,7 +512,7 @@ Sets two keys for an operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. |
 
 ### TEE_CopyOperation()
 
@@ -552,8 +523,6 @@ void TEE_CopyOperation(TEE_OperationHandle dstOperation, const TEE_OperationHand
 **Description**
 
 Copies an operation handle.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -573,8 +542,6 @@ void TEE_CipherInit(TEE_OperationHandle operation, const void *IV, size_t IVLen)
 **Description**
 
 Initializes the context to start a cipher operation.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -596,8 +563,6 @@ TEE_Result TEE_CipherUpdate(TEE_OperationHandle operation, const void *srcData, 
 
 Updates the data for a cipher operation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -614,7 +579,7 @@ Updates the data for a cipher operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_CipherDoFinal()
 
@@ -626,8 +591,6 @@ TEE_Result TEE_CipherDoFinal(TEE_OperationHandle operation, const void *srcData,
 
 Finalizes a cipher operation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -644,7 +607,7 @@ Finalizes a cipher operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_DigestUpdate()
 
@@ -655,8 +618,6 @@ void TEE_DigestUpdate(TEE_OperationHandle operation, const void *chunk, size_t c
 **Description**
 
 Updates the digest.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -678,8 +639,6 @@ TEE_Result TEE_DigestDoFinal(TEE_OperationHandle operation, const void *chunk, s
 
 Finalizes the message digest operation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -696,7 +655,7 @@ Finalizes the message digest operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_SHORT_BUFFER</b> if the operationInfo buffer is not large enough to  hold the information obtained. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_SHORT_BUFFER</b> if the operationInfo buffer is not large enough to hold the information obtained. |
 
 ### TEE_MACInit()
 
@@ -707,8 +666,6 @@ void TEE_MACInit(TEE_OperationHandle operation, void *IV, size_t IVLen)
 **Description**
 
 Initializes a MAC operation.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -730,8 +687,6 @@ void TEE_MACUpdate(TEE_OperationHandle operation, const void *chunk, size_t chun
 
 Updates the MAC.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -752,8 +707,6 @@ TEE_Result TEE_MACComputeFinal(TEE_OperationHandle operation, const void *messag
 
 MAC Finalizes the MAC operation with a last chunk of message and computes the MAC.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -770,7 +723,7 @@ MAC Finalizes the MAC operation with a last chunk of message and computes the MA
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_MACCompareFinal()
 
@@ -781,8 +734,6 @@ TEE_Result TEE_MACCompareFinal(TEE_OperationHandle operation, const void *messag
 **Description**
 
 Finalizes the MAC operation and compares the MAC with the one passed in.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -800,7 +751,7 @@ Finalizes the MAC operation and compares the MAC with the one passed in.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors.          Returns <b>TEE_ERROR_MAC_INVALID</b> if the computed MAC is not the same as that passed in. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. Returns <b>TEE_ERROR_MAC_INVALID</b> if the computed MAC is not the same as that passed in. |
 
 ### TEE_DeriveKey()
 
@@ -812,8 +763,6 @@ void TEE_DeriveKey(TEE_OperationHandle operation, const TEE_Attribute *params, u
 
 Derives a key.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -821,7 +770,7 @@ Derives a key.
 | Parameter | Description |
 | -- | -- |
 | TEE_OperationHandle operation | Indicates the operation handle. |
-| const TEE_Attribute *params | Indicates the pointer to the parameters for this operation. |
+| [const TEE_Attribute](capi-teetrusted-tee-attribute.md) *params | Indicates the pointer to the parameters for this operation. |
 | uint32_t paramCount | Indicates the number of parameters. |
 | TEE_ObjectHandle derivedKey | Indicates the derived key. |
 
@@ -834,8 +783,6 @@ void TEE_GenerateRandom(void *randomBuffer, size_t randomBufferLen)
 **Description**
 
 Generates random data.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -856,8 +803,6 @@ TEE_Result TEE_AEInit(TEE_OperationHandle operation, void *nonce, size_t nonceLe
 
 Initializes an AE operation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -875,7 +820,7 @@ Initializes an AE operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_AEUpdateAAD()
 
@@ -886,8 +831,6 @@ void TEE_AEUpdateAAD(TEE_OperationHandle operation, const void *AADdata, size_t 
 **Description**
 
 Updates the AAD in an AE operation.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -909,8 +852,6 @@ TEE_Result TEE_AEUpdate(TEE_OperationHandle operation, void *srcData, size_t src
 
 Updates data for an AE operation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -927,7 +868,7 @@ Updates data for an AE operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_AEEncryptFinal()
 
@@ -938,8 +879,6 @@ TEE_Result TEE_AEEncryptFinal(TEE_OperationHandle operation, void *srcData, size
 **Description**
 
 Finalizes the AE encryption operation.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -959,7 +898,7 @@ Finalizes the AE encryption operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_AEDecryptFinal()
 
@@ -970,8 +909,6 @@ TEE_Result TEE_AEDecryptFinal(TEE_OperationHandle operation, void *srcData, size
 **Description**
 
 Finalizes an AE decryption operation.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -991,7 +928,7 @@ Finalizes an AE decryption operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_MAC_INVALID</b> if the computed tag does not match the provided tag. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_MAC_INVALID</b> if the computed tag does not match the provided tag. |
 
 ### TEE_AsymmetricEncrypt()
 
@@ -1003,8 +940,6 @@ TEE_Result TEE_AsymmetricEncrypt(TEE_OperationHandle operation, const TEE_Attrib
 
 Performs asymmetric encryption.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -1012,7 +947,7 @@ Performs asymmetric encryption.
 | Parameter | Description |
 | -- | -- |
 | TEE_OperationHandle operation | Indicates the operation handle. |
-| const TEE_Attribute *params | Indicates the pointer to the parameters for this operation. |
+| [const TEE_Attribute](capi-teetrusted-tee-attribute.md) *params | Indicates the pointer to the parameters for this operation. |
 | uint32_t paramCount | Indicates the number of parameters. |
 | void *srcData | Indicates the pointer to the source data. |
 | size_t srcLen | Indicates the length of the source data. |
@@ -1023,7 +958,7 @@ Performs asymmetric encryption.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_AsymmetricDecrypt()
 
@@ -1035,8 +970,6 @@ TEE_Result TEE_AsymmetricDecrypt(TEE_OperationHandle operation, const TEE_Attrib
 
 Performs asymmetric decryption.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -1044,7 +977,7 @@ Performs asymmetric decryption.
 | Parameter | Description |
 | -- | -- |
 | TEE_OperationHandle operation | Indicates the operation handle. |
-| const TEE_Attribute *params | Indicates the pointer to the parameters for this operation. |
+| [const TEE_Attribute](capi-teetrusted-tee-attribute.md) *params | Indicates the pointer to the parameters for this operation. |
 | uint32_t paramCount | Indicates the number of parameters. |
 | void *srcData | Indicates the pointer to the source data. |
 | size_t srcLen | Indicates the length of the source data. |
@@ -1055,7 +988,7 @@ Performs asymmetric decryption.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_AsymmetricSignDigest()
 
@@ -1067,8 +1000,6 @@ TEE_Result TEE_AsymmetricSignDigest(TEE_OperationHandle operation, const TEE_Att
 
 Signs a message digest in an asymmetric operation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -1076,7 +1007,7 @@ Signs a message digest in an asymmetric operation.
 | Parameter | Description |
 | -- | -- |
 | TEE_OperationHandle operation | Indicates the operation handle. |
-| const TEE_Attribute *params | Indicates the pointer to the parameters for this operation. |
+| [const TEE_Attribute](capi-teetrusted-tee-attribute.md) *params | Indicates the pointer to the parameters for this operation. |
 | uint32_t paramCount | Indicates the number of parameters. |
 | void *digest | Indicates the pointer to the message digest. |
 | size_t digestLen | Indicates the digest length. |
@@ -1087,7 +1018,7 @@ Signs a message digest in an asymmetric operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_AsymmetricVerifyDigest()
 
@@ -1099,8 +1030,6 @@ TEE_Result TEE_AsymmetricVerifyDigest(TEE_OperationHandle operation, const TEE_A
 
 Verifies a message digest signature in an asymmetric operation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -1108,7 +1037,7 @@ Verifies a message digest signature in an asymmetric operation.
 | Parameter | Description |
 | -- | -- |
 | TEE_OperationHandle operation | Indicates the operation handle. |
-| const TEE_Attribute *params | Indicates the pointer to the parameters for this operation. |
+| [const TEE_Attribute](capi-teetrusted-tee-attribute.md) *params | Indicates the pointer to the parameters for this operation. |
 | uint32_t paramCount | Indicates the number of parameters. |
 | void *digest | Indicates the pointer to the message digest. |
 | size_t digestLen | Indicates the digest length. |
@@ -1119,7 +1048,7 @@ Verifies a message digest signature in an asymmetric operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters.          Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. Returns <b>TEE_ERROR_GENERIC</b> if the operation fails due to other errors. |
 
 ### TEE_GetOperationInfoMultiple()
 
@@ -1130,8 +1059,6 @@ TEE_Result TEE_GetOperationInfoMultiple(TEE_OperationHandle operation, TEE_Opera
 **Description**
 
 Obtains information about the operation involving multiple keys.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -1147,7 +1074,7 @@ Obtains information about the operation involving multiple keys.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters.          Returns <b>TEE_ERROR_SHORT_BUFFER</b> if the operationInfo buffer is not large enough to  hold the information obtained. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if the operation fails due to invalid parameters. Returns <b>TEE_ERROR_SHORT_BUFFER</b> if the operationInfo buffer is not large enough to hold the information obtained. |
 
 ### TEE_IsAlgorithmSupported()
 
@@ -1158,8 +1085,6 @@ TEE_Result TEE_IsAlgorithmSupported(uint32_t algId, uint32_t element)
 **Description**
 
 Checks whether the algorithm is supported.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -1174,6 +1099,6 @@ Checks whether the algorithm is supported.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the algorithm is supported.          Returns <b>TEE_ERROR_NOT_SUPPORTED</b> otherwise. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the algorithm is supported. Returns <b>TEE_ERROR_NOT_SUPPORTED</b> otherwise. |
 
 

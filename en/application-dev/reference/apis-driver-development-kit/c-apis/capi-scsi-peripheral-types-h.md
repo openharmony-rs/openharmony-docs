@@ -6,8 +6,6 @@ Provides the enum variables, structures, and macros used in the SCSI Peripheral 
 
 **Library**: libscsi.z.so
 
-**System capability**: SystemCapability.Driver.SCSI.Extension
-
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
@@ -18,18 +16,18 @@ Provides the enum variables, structures, and macros used in the SCSI Peripheral 
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) | ScsiPeripheral_DeviceMemMap | Represents the device memory mapping created by calling {@link OH_ScsiPeripheral_CreateDeviceMemMap}. The buffer that uses the device memory mapping can provide better performance. |
-| [ScsiPeripheral_IORequest](capi-scsiperipheralddk-scsiperipheral-iorequest.md) | ScsiPeripheral_IORequest | Defines the read/write operation request. |
-| [ScsiPeripheral_Request](capi-scsiperipheralddk-scsiperipheral-request.md) | ScsiPeripheral_Request | Defines the request structure. |
-| [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md) | ScsiPeripheral_Response | Defines the response structure. |
-| [ScsiPeripheral_TestUnitReadyRequest](capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md) | ScsiPeripheral_TestUnitReadyRequest | Defines the request structure of the **test unit ready** command. |
-| [ScsiPeripheral_InquiryRequest](capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md) | ScsiPeripheral_InquiryRequest | Defines the request structure of the **inquiry** command. |
-| [ScsiPeripheral_InquiryInfo](capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md) | ScsiPeripheral_InquiryInfo | Defines the SCSI inquiry data. |
-| [ScsiPeripheral_ReadCapacityRequest](capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md) | ScsiPeripheral_ReadCapacityRequest | Request structure of the **read capacity** command. |
-| [ScsiPeripheral_CapacityInfo](capi-scsiperipheralddk-scsiperipheral-capacityinfo.md) | ScsiPeripheral_CapacityInfo | Defines the SCSI read capacity. |
-| [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md) | ScsiPeripheral_RequestSenseRequest | Defines the request structure of the **Request Sense** command. |
-| [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md) | ScsiPeripheral_BasicSenseInfo | Defines the basic information about the sense data. |
-| [ScsiPeripheral_VerifyRequest](capi-scsiperipheralddk-scsiperipheral-verifyrequest.md) | ScsiPeripheral_VerifyRequest | Defines the request structure of the **verify** command. |
+| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) | - | Represents the device memory mapping created by calling OH_ScsiPeripheral_CreateDeviceMemMap. The buffer that uses the device memory mapping can provide better performance. |
+| [ScsiPeripheral_IORequest](capi-scsiperipheralddk-scsiperipheral-iorequest.md) | - | Defines the read/write operation request. |
+| [ScsiPeripheral_Request](capi-scsiperipheralddk-scsiperipheral-request.md) | - | Defines the request structure. |
+| [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md) | - | Defines the response structure. |
+| [ScsiPeripheral_TestUnitReadyRequest](capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md) | - | Defines the request structure of the **test unit ready** command. |
+| [ScsiPeripheral_InquiryRequest](capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md) | - | Defines the request structure of the **inquiry** command. |
+| [ScsiPeripheral_InquiryInfo](capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md) | - | Defines the SCSI inquiry data. |
+| [ScsiPeripheral_ReadCapacityRequest](capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md) | - | Request structure of the **read capacity** command. |
+| [ScsiPeripheral_CapacityInfo](capi-scsiperipheralddk-scsiperipheral-capacityinfo.md) | - | Defines the SCSI read capacity. |
+| [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md) | - | Defines the request structure of the **Request Sense** command. |
+| [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md) | - | Defines the basic information about the sense data. |
+| [ScsiPeripheral_VerifyRequest](capi-scsiperipheralddk-scsiperipheral-verifyrequest.md) | - | Defines the request structure of the **verify** command. |
 | [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md) | ScsiPeripheral_Device | Opaque SCSI device structure. |
 
 ### Enum
@@ -63,8 +61,6 @@ enum ScsiPeripheral_DdkErrCode
 
 SCSI Peripheral DDK error codes.
 
-**System capability**: SystemCapability.Driver.SCSI.Extension
-
 **Since**: 18
 
 | Enum item | Description |
@@ -89,8 +85,6 @@ enum ScsiPeripheral_Status
 **Description**
 
 Enumerates the SCSI status codes used for the response.
-
-**System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 

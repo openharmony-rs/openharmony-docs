@@ -1,7 +1,7 @@
 # CloudDisk_FailedList
 
 ```c
-typedef struct CloudDisk_FailedList {...} CloudDisk_FailedList
+struct CloudDisk_FailedList {...}
 ```
 
 ## Overview

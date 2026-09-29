@@ -1,7 +1,7 @@
 # Camera_Location
 
 ```c
-typedef struct Camera_Location {...} Camera_Location
+struct Camera_Location {...}
 ```
 
 ## 概述

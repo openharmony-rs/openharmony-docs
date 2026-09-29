@@ -1,7 +1,7 @@
 # UsbEndpointDescriptor
 
 ```c
-typedef struct UsbEndpointDescriptor {...} __attribute__((packed)) UsbEndpointDescriptor
+struct UsbEndpointDescriptor {...}
 ```
 
 ## 概述

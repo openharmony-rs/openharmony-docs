@@ -23,7 +23,7 @@ ArkWeb_ProxyObjectWithResult是带返回值的JavaScript代理对象结构体，
 | 名称 | 描述 |
 | -- | -- |
 | const char* objName | 注入的对象名，命名应遵循JavaScript标识符规则，不支持特殊字符。 |
-| const [ArkWeb_ProxyMethodWithResult*](capi-web-arkweb-proxymethodwithresult.md) methodList | 注入的对象携带的方法结构体数组，数组长度由 size 参数指定。数组中的每个方法会被注册到Web页面中，JavaScript可通过“对象名.方法名”的方式进行调用。 |
+| [const ArkWeb_ProxyMethodWithResult*](capi-web-arkweb-proxymethodwithresult.md) methodList | 注入的对象携带的方法结构体数组，数组长度由 size 参数指定。数组中的每个方法会被注册到Web页面中，JavaScript可通过“对象名.方法名”的方式进行调用。 |
 | size_t size | 方法结构体数组的长度，必须与methodList数组的实际元素个数一致。 |
 
 

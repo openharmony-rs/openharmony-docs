@@ -6,8 +6,6 @@
 
 **库：** libohcamera.so
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)
@@ -46,22 +44,20 @@ Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uin
 
 获取相机设备的传感器方向属性。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Device* camera | 用于获取属性的Camera_Device。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device。 |
 | uint32_t* orientation | 返回相机sensor角度属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功，返回传感器方向属性。      <br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功，返回传感器方向属性。<br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetHostDeviceName()
 
@@ -73,22 +69,20 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char**
 
 获取远程设备名称。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 15
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Device* camera | 用于获取属性的Camera_Device。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device。 |
 | char** hostDeviceName | 返回远程设备名称属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功，将返回远程设备名称属性。      <br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功，将返回远程设备名称属性。<br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetHostDeviceType()
 
@@ -100,22 +94,20 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera
 
 获取远程设备类型。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 15
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| Camera_Device* camera | 用于获取属性的Camera_Device。 |
-| Camera_HostDeviceType* hostDeviceType | 远程设备类型属性。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device。 |
+| [Camera_HostDeviceType](capi-camera-h.md#camera_hostdevicetype)* hostDeviceType | 远程设备类型属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功，将返回远程设备名称属性。      <br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功，将返回远程设备名称属性。<br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetLensEquivalentFocalLengths()
 
@@ -127,15 +119,13 @@ Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Devi
 
 获取相机设备的等效焦距。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | uint32_t** equivalentFocalLengths | 输出参数，返回等效焦距数组。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
@@ -143,7 +133,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Devi
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_IsLogicalCamera()
 
@@ -155,22 +145,20 @@ Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bo
 
 检查相机设备是否为逻辑摄像头（由一个或多个物理摄像头组成）。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | bool* isLogicalCamera | 输出参数，返回表示是否为逻辑摄像头的布尔值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetLogicalCameraConstituentCameraDevices()
 
@@ -182,23 +170,21 @@ Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const 
 
 获取组成逻辑摄像头的所有物理摄像头。调用[OH_CameraDevice_DeleteConstituentCameraDevices](capi-camera-device-h.md#oh_cameradevice_deleteconstituentcameradevices)释放组成逻辑摄像头的所有物理摄像头。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* logicalCamera | 逻辑摄像头的Camera_Device指针。 |
-| Camera_Device** constituentCameras | 输出参数，返回组成逻辑摄像头的物理摄像头集合指针数组。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* logicalCamera | 逻辑摄像头的Camera_Device指针。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)** constituentCameras | 输出参数，返回组成逻辑摄像头的物理摄像头集合指针数组。 |
 | uint32_t* size | 输出物理摄像头数量数组的大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_DeleteConstituentCameraDevices()
 
@@ -210,23 +196,21 @@ Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Dev
 
 删除组成逻辑摄像头的所有物理摄像头。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* logicalCamera | 逻辑摄像头的Camera_Device指针。 |
-| Camera_Device* constituentCameras | 期望被释放的组成逻辑摄像头的物理摄像头集合。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* logicalCamera | 逻辑摄像头的Camera_Device指针。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* constituentCameras | 期望被释放的组成逻辑摄像头的物理摄像头集合。 |
 | uint32_t size | 物理摄像头数量数组的大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
 
 ### OH_CameraDevice_GetLensFocalLength()
 
@@ -238,22 +222,20 @@ Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera,
 
 获取相机镜头的焦距。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float* lensFocalLength | 输出参数，返回镜头焦距值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetMinimumFocusDistance()
 
@@ -265,22 +247,20 @@ Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* ca
 
 获取相机设备的最小对焦距离。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float* minimumFocusDistance | 输出参数，返回最小对焦距离。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetLensDistortion()
 
@@ -292,15 +272,13 @@ Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, 
 
 获取相机设备的镜头畸变参数。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float** lens | 输出参数，返回镜头畸变参数数组。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
@@ -308,7 +286,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, 
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetIntrinsicCalibration()
 
@@ -320,15 +298,13 @@ Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* ca
 
 获取相机设备的内参标定参数。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float** intrinsicCalibration | 输出参数，返回内参标定参数数组。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
@@ -336,7 +312,7 @@ Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* ca
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetSensorPhysicalSize()
 
@@ -348,15 +324,13 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* came
 
 获取相机传感器的物理尺寸。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float* width | 输出参数，返回传感器宽度（单位：毫米）。 |
 | float* height | 输出参数，返回传感器高度（单位：毫米）。 |
 
@@ -364,7 +338,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* came
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetSensorPixelArraySize()
 
@@ -376,15 +350,13 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* ca
 
 获取相机传感器的像素阵列大小。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | uint32_t* width | 输出参数，返回像素阵列宽度（单位：像素）。 |
 | uint32_t* height | 输出参数，返回像素阵列高度（单位：像素）。 |
 
@@ -392,7 +364,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* ca
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetSensorColorFilterArrangement()
 
@@ -404,22 +376,20 @@ Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_De
 
 获取相机传感器的滤色阵列排列方式。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
-| OH_Camera_SensorColorFilterArrangement* sensorCFA | 输出参数，返回传感器滤色阵列排列枚举值。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| [OH_Camera_SensorColorFilterArrangement](capi-camera-h.md#oh_camera_sensorcolorfilterarrangement)* sensorCFA | 输出参数，返回传感器滤色阵列排列枚举值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetAutomotiveCameraPosition()
 
@@ -431,21 +401,19 @@ Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device
 
 获取Car设备相机摄像头的位置。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Device* camera | 指向用于检索属性的Camera_Device的指针。 |
-| OH_Camera_AutomotiveCameraPosition* automotiveCameraPosition | 输出参数，返回Car设备摄像头位置枚举值。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 指向用于检索属性的Camera_Device的指针。 |
+| [OH_Camera_AutomotiveCameraPosition](capi-camera-h.md#oh_camera_automotivecameraposition)* automotiveCameraPosition | 输出参数，返回Car设备摄像头位置枚举值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 

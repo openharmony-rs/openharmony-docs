@@ -6,8 +6,6 @@ This file declares the functions related to the color in the drawing module.
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -31,8 +29,6 @@ uint32_t OH_Drawing_ColorSetArgb(uint32_t alpha, uint32_t red, uint32_t green, u
 **Description**
 
 Converts four variables (alpha, red, green, and blue) into a 32-bit (ARGB) variable that describes a color.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 

@@ -6,8 +6,6 @@ Declares the APIs for Transient task management.
 
 **Library**: libtransient_task.so
 
-**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
-
 **Since**: 13
 
 **Related module**: [TransientTask](capi-transienttask.md)
@@ -35,8 +33,6 @@ int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char* reason, Transie
 
 Requests a transient task.
 
-**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
-
 **Since**: 13
 
 **Parameters**:
@@ -44,14 +40,14 @@ Requests a transient task.
 | Parameter | Description |
 | -- | -- |
 | const char* reason | Reason for requesting the transient task. |
-| TransientTask_Callback callback | Callback used to notify the application that the transient task is about to time out. Generally, the callback is invoked 6 seconds before the timeout. |
-| TransientTask_DelaySuspendInfo *info | Indicates the info of delay request. |
+| [TransientTask_Callback](capi-transient-task-type-h.md#transienttask_callback) callback | Callback used to notify the application that the transient task is about to time out. Generally, the callback is invoked 6 seconds before the timeout. |
+| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) *info | Indicates the info of delay request. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li>      <li>[ERR_TRANSIENT_TASK_INVALID_PARAM](capi-transient-task-type-h.md#transienttask_errorcode) 401 - Invalid parameter.</li>      <li>[ERR_TRANSIENT_TASK_PARCEL_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800002 - Parcelable failed.</li>      <li>[ERR_TRANSIENT_TASK_TRANSACTION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800003 - Transact failed.</li>      <li>[ERR_TRANSIENT_TASK_SYS_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9800004 - System service not ready.</li>      <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li>      <li>[ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900002 - Transient task verification failed.</li>      </ul> |
+| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li> <li>[ERR_TRANSIENT_TASK_INVALID_PARAM](capi-transient-task-type-h.md#transienttask_errorcode) 401 - Invalid parameter.</li> <li>[ERR_TRANSIENT_TASK_PARCEL_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800002 - Parcelable failed.</li> <li>[ERR_TRANSIENT_TASK_TRANSACTION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800003 - Transact failed.</li> <li>[ERR_TRANSIENT_TASK_SYS_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9800004 - System service not ready.</li> <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li> <li>[ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900002 - Transient task verification failed.</li> </ul> |
 
 ### OH_BackgroundTaskManager_GetRemainingDelayTime()
 
@@ -62,8 +58,6 @@ int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_
 **Description**
 
 Obtains the remaining time of a transient task.
-
-**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Since**: 13
 
@@ -78,7 +72,7 @@ Obtains the remaining time of a transient task.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li>      <li>[ERR_TRANSIENT_TASK_INVALID_PARAM](capi-transient-task-type-h.md#transienttask_errorcode) 401 - Invalid parameter.</li>      <li>[ERR_TRANSIENT_TASK_PARCEL_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800002 - Parcelable failed.</li>      <li>[ERR_TRANSIENT_TASK_TRANSACTION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800003 - Transact failed.</li>      <li>[ERR_TRANSIENT_TASK_SYS_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9800004 - System service not ready.</li>      <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li>      <li>[ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900002 - Transient task verification failed.</li>      </ul> |
+| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li> <li>[ERR_TRANSIENT_TASK_INVALID_PARAM](capi-transient-task-type-h.md#transienttask_errorcode) 401 - Invalid parameter.</li> <li>[ERR_TRANSIENT_TASK_PARCEL_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800002 - Parcelable failed.</li> <li>[ERR_TRANSIENT_TASK_TRANSACTION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800003 - Transact failed.</li> <li>[ERR_TRANSIENT_TASK_SYS_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9800004 - System service not ready.</li> <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li> <li>[ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900002 - Transient task verification failed.</li> </ul> |
 
 ### OH_BackgroundTaskManager_CancelSuspendDelay()
 
@@ -89,8 +83,6 @@ int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId)
 **Description**
 
 Cancels a transient task.
-
-**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Since**: 13
 
@@ -104,7 +96,7 @@ Cancels a transient task.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li>      <li>[ERR_TRANSIENT_TASK_INVALID_PARAM](capi-transient-task-type-h.md#transienttask_errorcode) 401 - Invalid parameter.</li>      <li>[ERR_TRANSIENT_TASK_PARCEL_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800002 - Parcelable failed.</li>      <li>[ERR_TRANSIENT_TASK_TRANSACTION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800003 - Transact failed.</li>      <li>[ERR_TRANSIENT_TASK_SYS_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9800004 - System service not ready.</li>      <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li>      <li>[ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900002 - Transient task verification failed.</li>      </ul> |
+| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li> <li>[ERR_TRANSIENT_TASK_INVALID_PARAM](capi-transient-task-type-h.md#transienttask_errorcode) 401 - Invalid parameter.</li> <li>[ERR_TRANSIENT_TASK_PARCEL_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800002 - Parcelable failed.</li> <li>[ERR_TRANSIENT_TASK_TRANSACTION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800003 - Transact failed.</li> <li>[ERR_TRANSIENT_TASK_SYS_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9800004 - System service not ready.</li> <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li> <li>[ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900002 - Transient task verification failed.</li> </ul> |
 
 ### OH_BackgroundTaskManager_GetTransientTaskInfo()
 
@@ -116,20 +108,18 @@ int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTas
 
 Obtains all information about a transient task, including the remaining quota of the current day.
 
-**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| TransientTask_TransientTaskInfo *transientTaskInfo | All information about a transient task. For details, see [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md). |
+| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) *transientTaskInfo | All information about a transient task. For details, see [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li>      <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li>      <li>[ERR_TRANSIENT_TASK_PARCELABLE_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900003 - Failed to write data into parcel.</li>      <li>[ERR_TRANSIENT_TASK_SERVICE_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9900004 - System service operation failed.</li>      </ul> |
+| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li> <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li> <li>[ERR_TRANSIENT_TASK_PARCELABLE_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900003 - Failed to write data into parcel.</li> <li>[ERR_TRANSIENT_TASK_SERVICE_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9900004 - System service operation failed.</li> </ul> |
 
 

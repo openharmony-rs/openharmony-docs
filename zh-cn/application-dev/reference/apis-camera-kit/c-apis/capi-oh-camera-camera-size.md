@@ -1,7 +1,7 @@
 # Camera_Size
 
 ```c
-typedef struct Camera_Size {...} Camera_Size
+struct Camera_Size {...}
 ```
 
 ## 概述

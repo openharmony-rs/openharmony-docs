@@ -1,7 +1,7 @@
 # FileShare_PolicyInfo
 
 ```c
-typedef struct FileShare_PolicyInfo {...} FileShare_PolicyInfo
+struct FileShare_PolicyInfo {...}
 ```
 
 ## 概述

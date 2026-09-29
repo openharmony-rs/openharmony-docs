@@ -16,7 +16,7 @@ The file declares the constants used by the AVMetadataExtractor.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AVMetadataExtractor_FrameInfo](capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md) | OH_AVMetadataExtractor_FrameInfo | Defines the information about a frame extracted from a video. |
+| [OH_AVMetadataExtractor_FrameInfo](capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md) | - | Defines the information about a frame extracted from a video. |
 | [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md) | OH_AVMetadataExtractor_OutputParam | Defines a struct for the output parameters of a frame extracted by **AVMetadataExtractor**. |
 
 ### Enum

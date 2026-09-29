@@ -6,8 +6,6 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -39,8 +37,6 @@ enum CRYPTO_ENGINE
 
 Enumerates the types of the crypto engine.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -64,8 +60,6 @@ TEE_Result TEE_SetCryptoFlag(TEE_OperationHandle operation, uint32_t crypto)
 
 Sets the encryption and decryption engines to an operation.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -79,7 +73,7 @@ Sets the encryption and decryption engines to an operation.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if <b>operation</b> is null or <b>crypto</b> is invalid. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if <b>operation</b> is null or <b>crypto</b> is invalid. |
 
 ### TEE_SetObjectFlag()
 
@@ -90,8 +84,6 @@ TEE_Result TEE_SetObjectFlag(TEE_ObjectHandle object, uint32_t crypto)
 **Description**
 
 Sets the encryption and decryption engines to an object.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -106,6 +98,6 @@ Sets the encryption and decryption engines to an object.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful.          Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if <b>object</b> is null or <b>crypto</b> is invalid. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_BAD_PARAMETERS</b> if <b>object</b> is null or <b>crypto</b> is invalid. |
 
 

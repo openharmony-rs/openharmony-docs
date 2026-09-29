@@ -6,9 +6,7 @@
 
 **Library**: libohinput.so
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
-
-**Since**: 12
+**Since**: 22
 
 **Related module**: [input](capi-input.md)
 
@@ -37,8 +35,6 @@ enum Input_PointerStyle
 **Description**
 
 Enumerates the pointer styles.
-
-**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
@@ -96,6 +92,6 @@ Enumerates the pointer styles.
 | LASER_CURSOR = 49 | Floating This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br> In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.<br>**Since**: 22 |
 | LASER_CURSOR_DOT = 50 | Click This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.<br>**Since**: 22 |
 | LASER_CURSOR_DOT_RED = 51 | Laser pointer This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set. <br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.<br>**Since**: 22 |
-| DEVELOPER_DEFINED_ICON = -100 | Custom pointer. You can use the {@link OH_Input_SetCustomCursor} to set a custom pointer, but not the<br>{@link OH_Input_SetPointerStyle}.<br>**Since**: 22 |
+| DEVELOPER_DEFINED_ICON = -100 | Custom pointer. You can use the OH_Input_SetCustomCursor to set a custom pointer, but not the OH_Input_SetPointerStyle.<br>**Since**: 22 |
 
 

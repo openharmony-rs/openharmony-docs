@@ -6,8 +6,6 @@
 
 **库：** libtransient_task.so
 
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
-
 **起始版本：** 11
 
 **相关模块：** [TransientTask](capi-transienttask.md)
@@ -16,10 +14,10 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) | TransientTask_DelaySuspendInfo | 定义短时任务返回信息结构体。用于返回当前短时任务的任务ID和剩余时间。 |
-| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | TransientTask_TransientTaskInfo | 定义所有短时任务信息结构体。用于返回当日剩余总配额和已申请的所有短时任务信息。 |
+| 名称 | 描述 |
+| -- | -- |
+| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) | 定义短时任务返回信息结构体。用于返回当前短时任务的任务ID和剩余时间。 |
+| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | 定义所有短时任务信息结构体。用于返回当日剩余总配额和已申请的所有短时任务信息。 |
 
 ### 枚举
 
@@ -43,7 +41,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*TransientTask_Callback)(void) | 定义短时任务超时回调类型。若申请的短时任务即将超时，系统会调用此回调函数通知应用。<br>**起始版本：** 13 |
+| void (*TransientTask_Callback)(void) | 定义短时任务超时回调类型。若申请的短时任务即将超时，系统会调用此回调函数通知应用。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask |
 
 ## 枚举类型说明
 
@@ -56,8 +54,6 @@ enum TransientTask_ErrorCode
 **描述：**
 
 定义短时任务错误码。
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **起始版本：** 13
 
@@ -85,8 +81,6 @@ typedef void (*TransientTask_Callback)(void)
 **描述：**
 
 定义短时任务超时回调类型。若申请的短时任务即将超时，系统会调用此回调函数通知应用。
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **起始版本：** 13
 

@@ -1,7 +1,7 @@
 # PhotoOutput_Callbacks
 
 ```c
-typedef struct PhotoOutput_Callbacks {...} PhotoOutput_Callbacks
+struct PhotoOutput_Callbacks {...}
 ```
 
 ## 概述

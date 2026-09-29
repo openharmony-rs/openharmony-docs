@@ -1,7 +1,7 @@
 # NativeChildProcess_Options
 
 ```c
-typedef struct NativeChildProcess_Options {...} NativeChildProcess_Options
+struct NativeChildProcess_Options {...}
 ```
 
 ## 概述

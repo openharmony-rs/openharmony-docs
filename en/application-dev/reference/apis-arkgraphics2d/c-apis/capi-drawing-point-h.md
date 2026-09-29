@@ -6,9 +6,7 @@ This file declares the functions related to the coordinate point in the drawing 
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
-**Since**: 8
+**Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
 
@@ -38,8 +36,6 @@ OH_Drawing_Point* OH_Drawing_PointCreate(float x, float y)
 
 Creates an **OH_Drawing_Point** object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
@@ -53,7 +49,7 @@ Creates an **OH_Drawing_Point** object.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Point* | Returns the pointer to the OH_Drawing_Point object created. |
+| [OH_Drawing_Point*](capi-drawing-oh-drawing-point.md) | Returns the pointer to the **OH_Drawing_Point** object created. |
 
 ### OH_Drawing_PointGetX()
 
@@ -65,22 +61,20 @@ OH_Drawing_ErrorCode OH_Drawing_PointGetX(const OH_Drawing_Point* point, float* 
 
 Obtains the X coordinate of a point.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Point* point | Pointer to an [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object. |
+| [const OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to an [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object. |
 | float* x | Pointer to the X coordinate. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if either point or x is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **point** or **x** is NULL. |
 
 ### OH_Drawing_PointGetY()
 
@@ -92,22 +86,20 @@ OH_Drawing_ErrorCode OH_Drawing_PointGetY(const OH_Drawing_Point* point, float* 
 
 Obtains the Y coordinate of a point.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Point* point | Pointer to an [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object. |
+| [const OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to an [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object. |
 | float* y | Pointer to the Y coordinate. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if either point or y is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **point** or **y** is NULL. |
 
 ### OH_Drawing_PointSet()
 
@@ -119,15 +111,13 @@ OH_Drawing_ErrorCode OH_Drawing_PointSet(OH_Drawing_Point* point, float x, float
 
 Sets the X and Y coordinates of a point.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Point* point | Pointer to an [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object. |
+| [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to an [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object. |
 | float x | Pointer to the X coordinate. |
 | float y | Pointer to the Y coordinate. |
 
@@ -135,7 +125,7 @@ Sets the X and Y coordinates of a point.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns one of the following result codes:  OH_DRAWING_SUCCESS if the operation is successful.  OH_DRAWING_ERROR_INVALID_PARAMETER if point is NULL. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes: **OH_DRAWING_SUCCESS** if the operation is successful. **OH_DRAWING_ERROR_INVALID_PARAMETER** if **point** is NULL. |
 
 ### OH_Drawing_PointNegate()
 
@@ -147,21 +137,19 @@ OH_Drawing_ErrorCode OH_Drawing_PointNegate(OH_Drawing_Point* point)
 
 Negates the point's coordinates.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Point* point | Indicates the pointer to an <b>OH_Drawing_Point</b> object. |
+| [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Indicates the pointer to an <b>OH_Drawing_Point</b> object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns the error code.          Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful.          Returns [OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if point is nullptr. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the error code. Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful. Returns [OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if point is nullptr. |
 
 ### OH_Drawing_PointOffset()
 
@@ -173,15 +161,13 @@ OH_Drawing_ErrorCode OH_Drawing_PointOffset(OH_Drawing_Point* point, float dx, f
 
 Offsets the point's coordinates by dx, dy.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Point* point | Indicates the pointer to an <b>OH_Drawing_Point</b> object. |
+| [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Indicates the pointer to an <b>OH_Drawing_Point</b> object. |
 | float dx | Indicates the distance to offset on the x-axis in pixels. |
 | float dy | Indicates the distance to offset on the y-axis in pixels. |
 
@@ -189,7 +175,7 @@ Offsets the point's coordinates by dx, dy.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | Returns the error code.          Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful.          Returns [OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if point is nullptr. |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the error code. Returns [OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful. Returns [OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if point is nullptr. |
 
 ### OH_Drawing_PointDestroy()
 
@@ -201,14 +187,12 @@ void OH_Drawing_PointDestroy(OH_Drawing_Point* point)
 
 Destroys an **OH_Drawing_Point** object and reclaims the memory occupied by the object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Point* point | Pointer to an **OH_Drawing_Point** object. |
+| [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to an **OH_Drawing_Point** object. |
 
 

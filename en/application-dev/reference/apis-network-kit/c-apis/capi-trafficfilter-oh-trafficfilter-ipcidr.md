@@ -1,7 +1,7 @@
 # OH_TrafficFilter_IPCidr
 
 ```c
-typedef struct OH_TrafficFilter_IPCidr {...} OH_TrafficFilter_IPCidr
+struct OH_TrafficFilter_IPCidr {...}
 ```
 
 ## Overview

@@ -4,6 +4,8 @@
 
 Defines network status information.
 
+**System capability**: SystemCapability.Telephony.CoreService
+
 **Since**: 13
 
 ## Summary

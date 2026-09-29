@@ -6,8 +6,6 @@ Declares the APIs for implementing application access control.
 
 **库：** ability_access_control.so
 
-**系统能力：** SystemCapability.Security.AccessToken
-
 **起始版本：** 12
 
 **相关模块：** [AbilityAccessControl](capi-abilityaccesscontrol.md)
@@ -31,8 +29,6 @@ bool OH_AT_CheckSelfPermission(const char *permission)
 **描述：**
 
 校验应用是否被授予指定的权限。
-
-**系统能力：** SystemCapability.Security.AccessToken
 
 **起始版本：** 12
 

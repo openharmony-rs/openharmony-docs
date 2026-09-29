@@ -1,7 +1,7 @@
 # OH_NativeXComponent_Callback
 
 ```c
-typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
+struct OH_NativeXComponent_Callback {...}
 ```
 
 ## Overview

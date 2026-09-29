@@ -6,8 +6,6 @@ The file declares the camera input concepts.
 
 **Library**: libohcamera.so
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)
@@ -18,7 +16,7 @@ The file declares the camera input concepts.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) | CameraInput_Callbacks | The struct describes the callbacks used to listen for camera input errors. |
+| [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) | - | The struct describes the callbacks used to listen for camera input errors. |
 | [Camera_Input](capi-oh-camera-camera-input.md) | Camera_Input | The struct describes the camera input object. |
 
 ### Function
@@ -44,8 +42,8 @@ The file declares the camera input concepts.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_ErrorCode errorCode) | Defines the callback defined in the [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) struct and used to report camera input errors.<br>**Since**: 11 |
-| void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult) | Defines a callback used to return the check result for whether a camera lens is blocked or dirty.<br>**Since**: 23 |
+| void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_ErrorCode errorCode) | Defines the callback defined in the [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) struct and used to report camera input errors.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
+| void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult) | Defines a callback used to return the check result for whether a camera lens is blocked or dirty.<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
 
 ## Function description
 
@@ -59,16 +57,14 @@ typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_E
 
 Defines the callback defined in the [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) struct and used to report camera input errors.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const Camera_Input](capi-oh-camera-camera-input.md)\* cameraInput | Pointer to the target Camera_Input instance. |
-| Camera_ErrorCode errorCode | Error code reported during camera input and defined in the Camera_ErrorCode struct. |
+| [const Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Pointer to the target Camera_Input instance. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | Error code reported during camera input and defined in the Camera_ErrorCode struct. |
 
 **Reference**:
 
@@ -88,8 +84,6 @@ Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, Came
 
 Registers a callback to listen for camera input events.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -103,7 +97,7 @@ Registers a callback to listen for camera input events.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraInput_UnregisterCallback()
 
@@ -115,8 +109,6 @@ Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, Ca
 
 Unregisters the callback used to listen for camera input events.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -130,7 +122,7 @@ Unregisters the callback used to listen for camera input events.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraInput_Open()
 
@@ -141,8 +133,6 @@ Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 **Description**
 
 Opens a camera.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -156,7 +146,7 @@ Opens a camera.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_CONFLICT_CAMERA: The camera cannot be used due to a conflict.      <br>CAMERA_DEVICE_DISABLED: The camera is disabled due to security reasons.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict. <br>**CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraInput_OpenSecureCamera()
 
@@ -167,8 +157,6 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 **Description**
 
 Opens a camera in secure mode.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -183,7 +171,7 @@ Opens a camera in secure mode.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_CONFLICT_CAMERA: The camera cannot be used due to a conflict.      <br>CAMERA_DEVICE_DISABLED: The camera is disabled due to security reasons.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict. <br>**CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraInput_Close()
 
@@ -195,8 +183,6 @@ Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 
 Closes a camera.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -209,7 +195,7 @@ Closes a camera.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraInput_Release()
 
@@ -221,8 +207,6 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 
 Releases a Camera_Input instance. Either this function or [OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close) needs to be called.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -235,7 +219,7 @@ Releases a Camera_Input instance. Either this function or [OH_CameraInput_Close]
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraInput_IsPhysicalCameraOrientationVariable()
 
@@ -246,8 +230,6 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 **Description**
 
 Checks whether the physical camera orientation is adjustable in different fold states of the device.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 22
 
@@ -262,7 +244,7 @@ Checks whether the physical camera orientation is adjustable in different fold s
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraInput_GetPhysicalCameraOrientation()
 
@@ -273,8 +255,6 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 **Description**
 
 Obtains the physical camera orientation in the current fold state of the device.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 22
 
@@ -289,7 +269,7 @@ Obtains the physical camera orientation in the current fold state of the device.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraInput_UsePhysicalCameraOrientation()
 
@@ -300,8 +280,6 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 **Description**
 
 Enables or disables the use of the physical camera orientation.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 22
 
@@ -316,7 +294,7 @@ Enables or disables the use of the physical camera orientation.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_OPERATION_NOT_ALLOWED: The operation is not allowed.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraInput_OnOcclusionDetectionCallback()
 
@@ -328,16 +306,14 @@ typedef void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* 
 
 Defines a callback used to return the check result for whether a camera lens is blocked or dirty.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const Camera_Input](capi-oh-camera-camera-input.md)\* cameraInput | Pointer to the target Camera_Input instance. |
-| Camera_OcclusionDetectionResult occlusionDetectionResult | Check result for whether a camera lens is blocked or dirty. |
+| [const Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Pointer to the target Camera_Input instance. |
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) occlusionDetectionResult | Check result for whether a camera lens is blocked or dirty. |
 
 ### OH_CameraInput_RegisterOcclusionDetectionCallback()
 
@@ -349,8 +325,6 @@ Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input*
 
 Registers a callback used to check whether a camera lens is blocked or dirty.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -364,7 +338,7 @@ Registers a callback used to check whether a camera lens is blocked or dirty.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraInput_UnregisterOcclusionDetectionCallback()
 
@@ -376,8 +350,6 @@ Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Inpu
 
 Unregisters the callback used to check whether a camera lens is blocked or dirty.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -391,7 +363,7 @@ Unregisters the callback used to check whether a camera lens is blocked or dirty
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraInput_OpenConcurrentCameras()
 
@@ -403,8 +375,6 @@ Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput,
 
 Opens the camera based on the specified concurrency type.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -412,12 +382,12 @@ Opens the camera based on the specified concurrency type.
 | Parameter | Description |
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Pointer to the target Camera_Input instance. |
-| Camera_ConcurrentType type | Concurrency type. |
+| [Camera_ConcurrentType](capi-camera-h.md#camera_concurrenttype) type | Concurrency type. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_CONFLICT_CAMERA: The camera cannot be used due to a conflict.      <br>CAMERA_DEVICE_DISABLED: The camera is disabled due to security reasons.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict. <br>**CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 

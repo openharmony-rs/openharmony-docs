@@ -8,8 +8,6 @@ Declares the C APIs for USB device management.
 
 **库：** libohusb_manager.so
 
-**系统能力：** SystemCapability.USB.USBManager
-
 **起始版本：** 26.0.1
 
 **相关模块：** [UsbManager](capi-usbmanager.md)
@@ -18,13 +16,13 @@ Declares the C APIs for USB device management.
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) | OH_UsbManager_UsbEndpoint | 定义用于发送或接收数据的USB端点。端点从{@link OH_UsbManager_UsbInterface}获取。 |
-| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) | OH_UsbManager_UsbInterface | 定义USB接口。一个{@link OH_UsbManager_UsbConfig}可以包含多个 <br>OH_UsbManager_UsbInterface实例，每个实例提供特定功能。 |
-| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) | OH_UsbManager_UsbConfig | 定义USB配置。一个{@link OH_UsbManager_UsbDevice}可以包含多个 <br>OH_UsbManager_UsbConfig实例。 |
-| [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) | OH_UsbManager_UsbDevice | 定义USB设备的扁平化表示。 |
-| [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md) | OH_UsbManager_UsbPipe | 定义用于与已打开设备通信的USB设备管道。 |
+| 名称 | 描述 |
+| -- | -- |
+| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) | 定义用于发送或接收数据的USB端点。端点从[OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)获取。 |
+| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) | 定义USB接口。一个[OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md)可以包含多个 <br>OH_UsbManager_UsbInterface实例，每个实例提供特定功能。 |
+| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) | 定义USB配置。一个[OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)可以包含多个 <br>OH_UsbManager_UsbConfig实例。 |
+| [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) | 定义USB设备的扁平化表示。 |
+| [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md) | 定义用于与已打开设备通信的USB设备管道。 |
 
 ### 枚举
 
@@ -50,7 +48,7 @@ Declares the C APIs for USB device management.
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext) | 定义用于返回[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)结果的 <br>回调类型。<br>**起始版本：** 26.0.1 |
+| void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext) | 定义用于返回[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)结果的 <br>回调类型。<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.USB.USBManager |
 
 ## 枚举类型说明
 
@@ -63,8 +61,6 @@ enum OH_UsbManager_ErrorCode
 **描述：**
 
 枚举USB管理器的错误码。
-
-**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
@@ -88,8 +84,6 @@ enum OH_UsbManager_RequestDirection
 
 枚举USB请求方向。
 
-**系统能力：** SystemCapability.USB.USBManager
-
 **起始版本：** 26.0.1
 
 | 枚举项 | 描述 |
@@ -110,9 +104,9 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice *
 
 获取所有已连接USB设备的列表。调用者必须调用[OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist) <br>释放返回的数组。
 
-**系统能力：** SystemCapability.USB.USBManager
-
 **起始版本：** 26.0.1
+
+**资源释放：** OH_UsbManager_FreeUsbDeviceList {devices}
 
 **参数：**
 
@@ -125,7 +119,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice *
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示操作成功。      <br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示USB服务不可用。可能原因：USB服务故障，例如服务未运行或意外停止。      <br>[OH_USBMANAGER_ERROR_NO_MEMORY](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示设备数组或字符串的内存分配失败。可能原因：系统内存不足或连接的设备过多。处理建议：释放未使用的内存后重试。      <br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示devices或deviceCount为NULL。可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
+| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示操作成功。<br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示USB服务不可用。可能原因：USB服务故障，例如服务未运行或意外停止。<br>[OH_USBMANAGER_ERROR_NO_MEMORY](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示设备数组或字符串的内存分配失败。可能原因：系统内存不足或连接的设备过多。处理建议：释放未使用的内存后重试。<br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示devices或deviceCount为NULL。可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
 
 ### OH_UsbManager_FreeUsbDeviceList()
 
@@ -136,8 +130,6 @@ void OH_UsbManager_FreeUsbDeviceList(OH_UsbManager_UsbDevice *devices, uint32_t 
 **描述：**
 
 释放之前由[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist)返回的设备数组。<br> <br>调用后该指针失效，不得再使用。传入null或数量为0是安全的空操作。
-
-**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
@@ -158,8 +150,6 @@ OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevic
 
 连接USB设备并打开用于通信的管道。返回的管道必须通过调用 <br>[OH_UsbManager_ClosePipe](capi-ohusb-manager-h.md#oh_usbmanager_closepipe)关闭，以避免资源泄漏。<br> <br>仅需要设备结构体中的busNum和devAddress字段；其他字段将被忽略。
 
-**系统能力：** SystemCapability.USB.USBManager
-
 **起始版本：** 26.0.1
 
 **参数：**
@@ -173,7 +163,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevic
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示连接成功。      <br>[OH_USBMANAGER_ERROR_PERMISSION_DENIED](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示应用缺少设备访问权限。      <br>可能原因：尚未请求访问权限、权限已被撤销，或用户拒绝了请求。      <br>处理建议：调用[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)请求访问权限。      <br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示USB服务打开设备失败。      <br>可能原因：USB服务故障（例如服务未运行或意外停止），或传入的device无效。      <br>处理建议：如果device无效，请先通过[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist)      <br>获取有效的设备数据后重试。      <br>[OH_USBMANAGER_ERROR_IO_ERROR](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示无法打开设备（如已断开连接或发生I/O失败）。      <br>可能原因：设备已断开连接或USB总线发生I/O错误。      <br>处理建议：检查物理连接和设备状态后重试。      <br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示device或pipe为NULL。      <br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
+| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示连接成功。<br>[OH_USBMANAGER_ERROR_PERMISSION_DENIED](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示应用缺少设备访问权限。<br>可能原因：尚未请求访问权限、权限已被撤销，或用户拒绝了请求。<br>处理建议：调用[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)请求访问权限。<br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示USB服务打开设备失败。<br>可能原因：USB服务故障（例如服务未运行或意外停止），或传入的device无效。<br>处理建议：如果device无效，请先通过[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist) <br>获取有效的设备数据后重试。<br>[OH_USBMANAGER_ERROR_IO_ERROR](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示无法打开设备（如已断开连接或发生I/O失败）。<br>可能原因：设备已断开连接或USB总线发生I/O错误。<br>处理建议：检查物理连接和设备状态后重试。<br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示device或pipe为NULL。<br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
 
 ### OH_UsbManager_HasPermission()
 
@@ -184,8 +174,6 @@ OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool
 **描述：**
 
 检查应用是否有权限访问指定设备。
-
-**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
@@ -200,7 +188,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示操作成功。      <br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示USB服务不可用。      <br>可能原因：USB服务故障（例如服务未运行或意外停止），或传入的deviceName无效。      <br>处理建议：如果deviceName无效，请先通过[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist)      <br>获取有效的设备名称后重试。      <br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示deviceName或result为NULL。      <br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
+| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示操作成功。<br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示USB服务不可用。<br>可能原因：USB服务故障（例如服务未运行或意外停止），或传入的deviceName无效。<br>处理建议：如果deviceName无效，请先通过[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist) <br>获取有效的设备名称后重试。<br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示deviceName或result为NULL。<br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
 
 ### OH_UsbManager_PermissionCallback()
 
@@ -212,8 +200,6 @@ typedef void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCo
 
 定义用于返回[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)结果的 <br>回调类型。
 
-**系统能力：** SystemCapability.USB.USBManager
-
 **起始版本：** 26.0.1
 
 **参数：**
@@ -222,7 +208,7 @@ typedef void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCo
 | -- | -- |
 | [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) errorCode | [出参] 请求的错误码。[OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode)表示请求 <br>正常完成；其他值表示服务异常。 |
 | bool result | [出参] 如果权限被授予则为true；如果用户拒绝请求则为false。 <br>该参数仅在errorCode为[OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode)时有意义。 |
-| void \*userContext | [出参] 从[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)透传的用户上下文。 |
+| void *userContext | [出参] 从[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)透传的用户上下文。 |
 
 ### OH_UsbManager_RequestPermission()
 
@@ -233,8 +219,6 @@ OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, 
 **描述：**
 
 异步请求访问指定USB设备的权限。这可能触发系统弹窗询问用户是否授权。 <br>函数立即返回，结果通过回调传递。
-
-**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
@@ -250,7 +234,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示请求成功发起。      <br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示服务启动请求失败。      <br>可能原因：USB服务故障（例如服务未运行或意外停止），或传入的deviceName无效。      <br>处理建议：如果deviceName无效，请先通过[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist)      <br>获取有效的设备名称后重试。      <br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示deviceName或callback为NULL。      <br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
+| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示请求成功发起。<br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示服务启动请求失败。<br>可能原因：USB服务故障（例如服务未运行或意外停止），或传入的deviceName无效。<br>处理建议：如果deviceName无效，请先通过[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist) <br>获取有效的设备名称后重试。<br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示deviceName或callback为NULL。<br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
 
 ### OH_UsbManager_GetFileDescriptor()
 
@@ -261,8 +245,6 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbP
 **描述：**
 
 获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的 <br>低层USB传输。
-
-**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
@@ -277,7 +259,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbP
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示操作成功。      <br>[OH_USBMANAGER_ERROR_PERMISSION_DENIED](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示应用缺少设备访问权限。      <br>可能原因：尚未请求访问权限、权限已被撤销，或用户拒绝了请求。      <br>处理建议：调用[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)请求访问权限。      <br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示管道无效或服务失败。      <br>可能原因：USB服务故障，或管道并非通过[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice)获取、      <br>或管道已被关闭。处理建议：如果管道无效或已关闭，请通过      <br>[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice)获取有效的打开管道后重试。      <br>[OH_USBMANAGER_ERROR_NO_DEVICE](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示设备不存在或已断开连接。      <br>可能原因：设备已被拔出。处理建议：使用[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist)      <br>重新枚举设备并重新连接。      <br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示pipe或fd为NULL。      <br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
+| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示操作成功。<br>[OH_USBMANAGER_ERROR_PERMISSION_DENIED](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示应用缺少设备访问权限。<br>可能原因：尚未请求访问权限、权限已被撤销，或用户拒绝了请求。<br>处理建议：调用[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)请求访问权限。<br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示管道无效或服务失败。<br>可能原因：USB服务故障，或管道并非通过[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice)获取、<br>或管道已被关闭。处理建议：如果管道无效或已关闭，请通过<br>[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice)获取有效的打开管道后重试。<br>[OH_USBMANAGER_ERROR_NO_DEVICE](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示设备不存在或已断开连接。<br>可能原因：设备已被拔出。处理建议：使用[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist) <br>重新枚举设备并重新连接。<br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示pipe或fd为NULL。<br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
 
 ### OH_UsbManager_ClosePipe()
 
@@ -288,8 +270,6 @@ OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pip
 **描述：**
 
 关闭USB设备管道并释放底层资源。该管道必须从[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice) <br>获取。
-
-**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
@@ -303,6 +283,6 @@ OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pip
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示管道关闭成功。      <br>[OH_USBMANAGER_ERROR_PERMISSION_DENIED](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示应用缺少设备访问权限。      <br>可能原因：尚未请求访问权限、权限已被撤销，或用户拒绝了请求。      <br>处理建议：调用[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)请求访问权限。      <br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示关闭操作失败。      <br>可能原因：USB服务故障，或管道无效或已被关闭。处理建议：如果管道无效或已关闭，      <br>请通过[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice)获取有效的打开管道后重试。      <br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示pipe为NULL。      <br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
+| [OH_UsbManager_ErrorCode](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) | [OH_USBMANAGER_SUCCESS](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示管道关闭成功。<br>[OH_USBMANAGER_ERROR_PERMISSION_DENIED](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示应用缺少设备访问权限。<br>可能原因：尚未请求访问权限、权限已被撤销，或用户拒绝了请求。<br>处理建议：调用[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)请求访问权限。<br>[OH_USBMANAGER_ERROR_SERVICE_EXCEPTION](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示关闭操作失败。<br>可能原因：USB服务故障，或管道无效或已被关闭。处理建议：如果管道无效或已关闭，<br>请通过[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice)获取有效的打开管道后重试。<br>[OH_USBMANAGER_ERROR_INVALID_PARAMETER](capi-ohusb-manager-h.md#oh_usbmanager_errorcode) 表示pipe为NULL。<br>可能原因：未提供必需的参数。处理建议：传入有效的非空指针。 |
 
 

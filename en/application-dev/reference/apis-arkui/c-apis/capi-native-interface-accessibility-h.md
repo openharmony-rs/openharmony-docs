@@ -6,8 +6,6 @@ Declares the APIs used to access the native Accessibility.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 **Related module**: [ArkUI_Accessibility](capi-arkui-accessibility.md)
@@ -23,8 +21,8 @@ Declares the APIs used to access the native Accessibility.
 | [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md) | ArkUI_AccessibleRangeInfo | Define a struct for the accessible range information. |
 | [ArkUI_AccessibleGridInfo](capi-arkui-accessibility-arkui-accessiblegridinfo.md) | ArkUI_AccessibleGridInfo | Defines a struct for the accessible grid information. |
 | [ArkUI_AccessibleGridItemInfo](capi-arkui-accessibility-arkui-accessiblegriditeminfo.md) | ArkUI_AccessibleGridItemInfo | Defines a struct for the accessible grid item information. |
-| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) | ArkUI_AccessibilityProviderCallbacks | Registers callbacks for the accessibility provider. |
-| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | ArkUI_AccessibilityProviderCallbacksWithInstance | Registers callbacks with instance for the accessibility provider. |
+| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) | - | Registers callbacks for the accessibility provider. |
+| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | - | Registers callbacks with instance for the accessibility provider. |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) | ArkUI_AccessibilityElementInfo | Defines a struct for accessibility element information. |
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | ArkUI_AccessibilityEventInfo | Defines a struct for accessibility event information. |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | ArkUI_AccessibilityProvider | Defines a struct for the local provider of accessibility. |
@@ -122,8 +120,6 @@ enum ArkUI_Accessibility_ActionType
 
 Defines an enum for accessibility action types.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 | Enum item | Description |
@@ -138,7 +134,7 @@ Defines an enum for accessibility action types.
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_COPY = 0x00000400 | Copy action for text content. |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PASTE = 0x00000800 | Paste action for text content. |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CUT = 0x00001000 | Cut action for text content. |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT = 0x00002000 | Text selection action, requiring the setting of <b>selectTextBegin</b>, <b>TextEnd</b>, and <b>TextInForward</b> |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT = 0x00002000 | Text selection action, requiring the setting of <b>selectTextBegin</b>, <b>TextEnd</b>, and <b>TextInForward</b> parameters to select a text segment in the text box. |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_TEXT = 0x00004000 | Text content setting action. |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_CURSOR_POSITION = 0x00100000 | Cursor position setting action. |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_NEXT_HTML_ITEM = 0x02000000 | Support action for find next item in focus move operation @since 15 |
@@ -153,8 +149,6 @@ enum ArkUI_AccessibilityEventType
 **Description**
 
 Defines an enum for accessibility event types.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -186,16 +180,14 @@ enum ArkUI_AcessbilityErrorCode
 
 Enumerates the accessibility error codes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL = 0 | Success. |
-| ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED = -1 | Failure. |
-| ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER = -2 | Invalid parameter. |
-| ARKUI_ACCESSIBILITY_NATIVE_RESULT_OUT_OF_MEMORY = -3 | Out of memory. |
+| ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL = 0 | &nbsp;Success. |
+| ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED = -1 | &nbsp;Failure. |
+| ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER = -2 | &nbsp;Invalid parameter. |
+| ARKUI_ACCESSIBILITY_NATIVE_RESULT_OUT_OF_MEMORY = -3 | &nbsp;Out of memory. |
 
 ### ArkUI_AccessibilitySearchMode
 
@@ -206,8 +198,6 @@ enum ArkUI_AccessibilitySearchMode
 **Description**
 
 Defines an enum for the accessibility search modes.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -229,8 +219,6 @@ enum ArkUI_AccessibilityFocusType
 
 Defines an enum for the accessibility focus types.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 | Enum item | Description |
@@ -248,8 +236,6 @@ enum ArkUI_AccessibilityFocusMoveDirection
 **Description**
 
 Enumerates the directions for moving the accessibility focus.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -276,8 +262,6 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvid
 
 Registers a callback for this <b>ArkUI_AccessibilityProvider</b> instance.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 **Parameters**:
@@ -291,7 +275,7 @@ Registers a callback for this <b>ArkUI_AccessibilityProvider</b> instance.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.          Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance()
 
@@ -302,8 +286,6 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* i
 **Description**
 
 Registers a callback with instance for this <b>ArkUI_AccessibilityProvider</b> instance.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -319,7 +301,7 @@ Registers a callback with instance for this <b>ArkUI_AccessibilityProvider</b> i
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.          Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_SendAccessibilityAsyncEvent()
 
@@ -331,17 +313,15 @@ void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider,
 
 Sends accessibility event information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_AccessibilityProvider\* provider | Indicates the pointer to the <b>ArkUI_AccessibilityProvider</b> instance. |
-| [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)\* eventInfo | Indicates the pointer to the accessibility event information. |
-| void (\*callback)(int32_t errorCode) | Indicates the pointer to the callback that is called after the event is sent. |
+| rkUI_AccessibilityProvider* provider | Indicates the pointer to the <b>ArkUI_AccessibilityProvider</b> instance. |
+| [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)* eventInfo | Indicates the pointer to the accessibility event information. |
+| void (*callback)(int32_t errorCode) | Indicates the pointer to the callback that is called after the event is sent. |
 
 ### OH_ArkUI_AddAndGetAccessibilityElementInfo()
 
@@ -352,8 +332,6 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI
 **Description**
 
 Adds and obtains the pointer to an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -379,8 +357,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElement
 
 Sets the element ID for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 **Parameters**:
@@ -394,7 +370,7 @@ Sets the element ID for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetParentId()
 
@@ -405,8 +381,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementI
 **Description**
 
 Sets the parent ID for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -421,7 +395,7 @@ Sets the parent ID for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetComponentType()
 
@@ -432,8 +406,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityEle
 **Description**
 
 Sets the component type for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -448,7 +420,7 @@ Sets the component type for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetContents()
 
@@ -459,8 +431,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementI
 **Description**
 
 Sets the component content for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -475,7 +445,7 @@ Sets the component content for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetHintText()
 
@@ -486,8 +456,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementI
 **Description**
 
 Sets the hint text for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -502,7 +470,7 @@ Sets the hint text for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityText()
 
@@ -513,8 +481,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_Accessibilit
 **Description**
 
 Sets the accessibility text for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -529,7 +495,7 @@ Sets the accessibility text for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription()
 
@@ -540,8 +506,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_Acces
 **Description**
 
 Sets the accessibility description for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -556,7 +520,7 @@ Sets the accessibility description for an <b>ArkUI_AccessibilityElementInfo</b> 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetChildNodeIds()
 
@@ -567,8 +531,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElem
 **Description**
 
 Set the number of child nodes and child node IDs for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -584,7 +546,7 @@ Set the number of child nodes and child node IDs for an <b>ArkUI_AccessibilityEl
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetOperationActions()
 
@@ -595,8 +557,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_Accessibility
 **Description**
 
 Sets the operation actions for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -612,7 +572,7 @@ Sets the operation actions for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetScreenRect()
 
@@ -623,8 +583,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElemen
 **Description**
 
 Sets the screen area for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -639,7 +597,7 @@ Sets the screen area for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetCheckable()
 
@@ -650,8 +608,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElement
 **Description**
 
 Sets whether the element is checkable for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -666,7 +622,7 @@ Sets whether the element is checkable for an <b>ArkUI_AccessibilityElementInfo</
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetChecked()
 
@@ -677,8 +633,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 **Description**
 
 Sets whether the element is checked for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -693,7 +647,7 @@ Sets whether the element is checked for an <b>ArkUI_AccessibilityElementInfo</b>
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetFocusable()
 
@@ -704,8 +658,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElement
 **Description**
 
 Sets whether the element is focusable for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -720,7 +672,7 @@ Sets whether the element is focusable for an <b>ArkUI_AccessibilityElementInfo</
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetFocused()
 
@@ -731,8 +683,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementIn
 **Description**
 
 Sets whether the element is focused for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -747,7 +697,7 @@ Sets whether the element is focused for an <b>ArkUI_AccessibilityElementInfo</b>
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetVisible()
 
@@ -758,8 +708,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementIn
 **Description**
 
 Sets whether the element is visible for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -774,7 +722,7 @@ Sets whether the element is visible for an <b>ArkUI_AccessibilityElementInfo</b>
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused()
 
@@ -785,8 +733,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_Accessibi
 **Description**
 
 Sets the accessibility focus state for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -801,7 +747,7 @@ Sets the accessibility focus state for an <b>ArkUI_AccessibilityElementInfo</b> 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetSelected()
 
@@ -812,8 +758,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementI
 **Description**
 
 Sets whether the element is selected for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -828,7 +772,7 @@ Sets whether the element is selected for an <b>ArkUI_AccessibilityElementInfo</b
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetClickable()
 
@@ -839,8 +783,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElement
 **Description**
 
 Sets whether the element is clickable for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -855,7 +797,7 @@ Sets whether the element is clickable for an <b>ArkUI_AccessibilityElementInfo</
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetLongClickable()
 
@@ -866,8 +808,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityEle
 **Description**
 
 Sets whether the element is long clickable for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -882,7 +822,7 @@ Sets whether the element is long clickable for an <b>ArkUI_AccessibilityElementI
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetEnabled()
 
@@ -893,8 +833,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementIn
 **Description**
 
 Sets whether the element is enabled for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -909,7 +847,7 @@ Sets whether the element is enabled for an <b>ArkUI_AccessibilityElementInfo</b>
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetIsPassword()
 
@@ -920,8 +858,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElemen
 **Description**
 
 Sets whether the element is a password for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -936,7 +872,7 @@ Sets whether the element is a password for an <b>ArkUI_AccessibilityElementInfo<
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetScrollable()
 
@@ -947,8 +883,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElemen
 **Description**
 
 Sets whether the element is scrollable for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -963,7 +897,7 @@ Sets whether the element is scrollable for an <b>ArkUI_AccessibilityElementInfo<
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetEditable()
 
@@ -974,8 +908,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementI
 **Description**
 
 Sets whether the element is editable for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -990,7 +922,7 @@ Sets whether the element is editable for an <b>ArkUI_AccessibilityElementInfo</b
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetIsHint()
 
@@ -1001,8 +933,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInf
 **Description**
 
 Sets whether the element is a hint for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1017,7 +947,7 @@ Sets whether the element is a hint for an <b>ArkUI_AccessibilityElementInfo</b> 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetRangeInfo()
 
@@ -1028,8 +958,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 **Description**
 
 Sets the range information for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1044,7 +972,7 @@ Sets the range information for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetGridInfo()
 
@@ -1055,8 +983,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementI
 **Description**
 
 Sets the grid information for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1071,7 +997,7 @@ Sets the grid information for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetGridItemInfo()
 
@@ -1082,8 +1008,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElem
 **Description**
 
 Sets the grid item for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1098,7 +1022,7 @@ Sets the grid item for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart()
 
@@ -1109,8 +1033,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_Accessibilit
 **Description**
 
 Sets the starting index of the selected text for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1125,7 +1047,7 @@ Sets the starting index of the selected text for an <b>ArkUI_AccessibilityElemen
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd()
 
@@ -1136,8 +1058,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityE
 **Description**
 
 Sets the end index of the selected text for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1152,7 +1072,7 @@ Sets the end index of the selected text for an <b>ArkUI_AccessibilityElementInfo
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex()
 
@@ -1163,8 +1083,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 **Description**
 
 Sets the index of the currently selected item for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1179,7 +1097,7 @@ Sets the index of the currently selected item for an <b>ArkUI_AccessibilityEleme
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetStartItemIndex()
 
@@ -1190,8 +1108,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityEl
 **Description**
 
 Sets the index of the first item for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1206,7 +1122,7 @@ Sets the index of the first item for an <b>ArkUI_AccessibilityElementInfo</b> ob
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetEndItemIndex()
 
@@ -1217,8 +1133,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 **Description**
 
 Sets the index of the last item for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1233,7 +1147,7 @@ Sets the index of the last item for an <b>ArkUI_AccessibilityElementInfo</b> obj
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetItemCount()
 
@@ -1244,8 +1158,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 **Description**
 
 Sets the number of items for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1260,7 +1172,7 @@ Sets the number of items for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset()
 
@@ -1271,8 +1183,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 **Description**
 
 Sets the offset for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1287,7 +1197,7 @@ Sets the offset for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup()
 
@@ -1298,8 +1208,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_Accessibili
 **Description**
 
 Sets the accessibility group for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1314,7 +1222,7 @@ Sets the accessibility group for an <b>ArkUI_AccessibilityElementInfo</b> object
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel()
 
@@ -1325,8 +1233,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_Accessibili
 **Description**
 
 Sets the accessibility level for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1341,7 +1247,7 @@ Sets the accessibility level for an <b>ArkUI_AccessibilityElementInfo</b> object
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetZIndex()
 
@@ -1352,8 +1258,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 **Description**
 
 Sets the z-index for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1368,7 +1272,7 @@ Sets the z-index for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity()
 
@@ -1379,8 +1283,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 **Description**
 
 Sets the opacity for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1395,7 +1297,7 @@ Sets the opacity for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetBackgroundColor()
 
@@ -1406,8 +1308,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 **Description**
 
 Sets the background color for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1422,7 +1322,7 @@ Sets the background color for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetBackgroundImage()
 
@@ -1433,8 +1333,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 **Description**
 
 Sets the background image for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1449,7 +1347,7 @@ Sets the background image for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetBlur()
 
@@ -1460,8 +1358,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo*
 **Description**
 
 Sets the blur effect for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1476,7 +1372,7 @@ Sets the blur effect for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior()
 
@@ -1487,8 +1383,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 **Description**
 
 Sets the hit test behavior for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1503,7 +1397,7 @@ Sets the hit test behavior for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_CreateAccessibilityElementInfo()
 
@@ -1515,15 +1409,13 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)
 
 Creates an <b>ArkUI_AccessibilityElementInfo</b> object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_AccessibilityElementInfo*](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) | Returns the <b>ArkUI_AccessibilityElementInfo</b> object, or NULL if it fails to create.          The possible reason for failure is that the memory error occurred during object creation. |
+| [ArkUI_AccessibilityElementInfo*](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) | Returns the <b>ArkUI_AccessibilityElementInfo</b> object, or NULL if it fails to create. The possible reason for failure is that the memory error occurred during object creation. |
 
 ### OH_ArkUI_DestoryAccessibilityElementInfo()
 
@@ -1534,8 +1426,6 @@ void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* el
 **Description**
 
 Destroys an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1555,15 +1445,13 @@ ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)
 
 Creates an <b>ArkUI_AccessibilityEventInfo</b> object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_AccessibilityEventInfo*](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | Returns the <b>ArkUI_AccessibilityEventInfo</b> object, or NULL if it fails to create.          The possible reason for failure is that the memory error occurred during object creation. |
+| [ArkUI_AccessibilityEventInfo*](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | Returns the <b>ArkUI_AccessibilityEventInfo</b> object, or NULL if it fails to create. The possible reason for failure is that the memory error occurred during object creation. |
 
 ### OH_ArkUI_DestoryAccessibilityEventInfo()
 
@@ -1574,8 +1462,6 @@ void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventI
 **Description**
 
 Destroys an <b>ArkUI_AccessibilityEventInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1595,8 +1481,6 @@ int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* ev
 
 Sets the event type for an <b>ArkUI_AccessibilityEventInfo</b> object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 13
 
 **Parameters**:
@@ -1610,7 +1494,7 @@ Sets the event type for an <b>ArkUI_AccessibilityEventInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility()
 
@@ -1621,8 +1505,6 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 **Description**
 
 Sets the text announced for accessibility for an <b>ArkUI_AccessibilityEventInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1637,7 +1519,7 @@ Sets the text announced for accessibility for an <b>ArkUI_AccessibilityEventInfo
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityEventSetRequestFocusId()
 
@@ -1648,8 +1530,6 @@ int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInf
 **Description**
 
 Sets the request focus ID for an <b>ArkUI_AccessibilityEventInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1664,7 +1544,7 @@ Sets the request focus ID for an <b>ArkUI_AccessibilityEventInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_AccessibilityEventSetElementInfo()
 
@@ -1675,8 +1555,6 @@ int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* 
 **Description**
 
 Sets the element information for an <b>ArkUI_AccessibilityEventInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1691,7 +1569,7 @@ Sets the element information for an <b>ArkUI_AccessibilityEventInfo</b> object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_FindAccessibilityActionArgumentByKey()
 
@@ -1702,8 +1580,6 @@ int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionA
 **Description**
 
 Obtains the value of a key from an <b>ArkUI_AccessibilityActionArguments</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1719,7 +1595,7 @@ Obtains the value of a key from an <b>ArkUI_AccessibilityActionArguments</b> obj
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.         Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 ### OH_ArkUI_NativeModule_GetNativeAccessibilityProvider()
 
@@ -1731,22 +1607,20 @@ int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* n
 
 Obtains the pointer to the <b> ArkUI_AccessibilityProvider</b> instance of this <b>ArkUI_NodeHandle</b> instance.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle* node | Indicates the pointer to the <b>ArkUI_NodeHandle</b> instance. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | Indicates the pointer to the <b>ArkUI_NodeHandle</b> instance. |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)** provider | Indicates the pointer to the <b>ArkUI_AccessibilityProvider</b> instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code. |
+| int32_t | Returns the result code. Returns <b>ARKUI_ERROR_CODE_NO_ERROR<b> if the operation is successful. Returns <b>ARKUI_ERROR_CODE_PARAM_INVALID<b> if a parameter error occurs:1. node or provider is nullptr. 2. the type of node is not ARKUI_NODE_CUSTOM. |
 
 ### OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier()
 
@@ -1757,8 +1631,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_Accessibil
 **Description**
 
 Sets the component identifier for an <b>ArkUI_AccessibilityElementInfo</b> object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1773,6 +1645,6 @@ Sets the component identifier for an <b>ArkUI_AccessibilityElementInfo</b> objec
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.          Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
 
 

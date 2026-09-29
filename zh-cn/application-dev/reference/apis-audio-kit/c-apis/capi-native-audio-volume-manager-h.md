@@ -6,8 +6,6 @@
 
 **库：** libohaudio.so
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
@@ -41,8 +39,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)( void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi ) | 音量变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback)。<br>**起始版本：** 20 |
-| void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)( void *userData, OH_AudioRingerMode ringerMode ) | 铃声模式变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterRingerModeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerringermodechangecallback)。<br>**起始版本：** 20 |
+| void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)( void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi ) | 音量变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback)。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)( void *userData, OH_AudioRingerMode ringerMode ) | 铃声模式变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterRingerModeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerringermodechangecallback)。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ## 函数说明
 
@@ -56,16 +54,14 @@ typedef void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)(void *userDat
 
 音量变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback)。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*userData | 用户自定义数据指针。 |
-| OH_AudioStream_Usage usage | 对应音量被调整的流的用途类型。 |
+| void *userData | 用户自定义数据指针。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 对应音量被调整的流的用途类型。 |
 | int32_t volumeLevel | 修改后的音量。 |
 | bool updateUi | 是否在UI界面显示音量变化。true表示显示，false表示不显示。 |
 
@@ -79,16 +75,14 @@ typedef void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)(void *userData,
 
 铃声模式变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterRingerModeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerringermodechangecallback)。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*userData | 用户自定义数据指针。 |
-| OH_AudioRingerMode ringerMode | 切换后的铃声模式。 |
+| void *userData | 用户自定义数据指针。 |
+| [OH_AudioRingerMode](capi-native-audio-common-h.md#oh_audioringermode) ringerMode | 切换后的铃声模式。 |
 
 ### OH_AudioManager_GetAudioVolumeManager()
 
@@ -99,8 +93,6 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioVolumeManager(OH_AudioVolumeManage
 **描述：**
 
 使用音量管理器相关功能，首先需要获取音量管理器实例。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -114,7 +106,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioVolumeManager(OH_AudioVolumeManage
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr |
 
 ### OH_AudioVolumeManager_GetMaxVolumeByUsage()
 
@@ -126,8 +118,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeMa
 
 获取指定用途类型音频流的最大音量等级。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -135,14 +125,14 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeMa
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | 指向OH_AudioVolumeManager用于接收创建的音量管理器实例。 |
-| OH_AudioStream_Usage usage | 用于映射特定音量类型的音频流用途类型。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 用于映射特定音量类型的音频流用途类型。 |
 | int32_t *maxVolumeLevel | 用于接收返回的最大音量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_GetMinVolumeByUsage()
 
@@ -154,8 +144,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeMa
 
 获取指定用途类型音频流的最小音量等级。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -163,14 +151,14 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeMa
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | 指向OH_AudioVolumeManager用于接收创建的音量管理器实例。 |
-| OH_AudioStream_Usage usage | 用于映射特定音量类型的音频流用途类型。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 用于映射特定音量类型的音频流用途类型。 |
 | int32_t *minVolumeLevel | 用于接收返回的最小音量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_GetVolumeByUsage()
 
@@ -182,8 +170,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManag
 
 获取指定用途类型音频流的系统音量等级。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -191,14 +177,14 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManag
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | 指向OH_AudioVolumeManager用于接收创建的音量管理器实例。 |
-| OH_AudioStream_Usage usage | 用于映射特定音量类型的音频流用途类型。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 用于映射特定音量类型的音频流用途类型。 |
 | int32_t *volumeLevel | 用于接收返回的系统音量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_IsMuteByUsage()
 
@@ -210,8 +196,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager 
 
 检查指定用途类型的音频流是否处于静音状态。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -219,14 +203,14 @@ OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | 指向OH_AudioVolumeManager用于接收创建的音量管理器实例。 |
-| OH_AudioStream_Usage usage | 用于映射特定音量类型的音频流用途类型。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 用于映射特定音量类型的音频流用途类型。 |
 | bool *muted | 用于接收返回的音频流是否静音。true表示静音，false表示未静音。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback()
 
@@ -238,8 +222,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(O
 
 注册音频流音量修改回调函数。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -247,7 +229,7 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(O
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | 指向OH_AudioVolumeManager用于接收创建的音量管理器实例。 |
-| OH_AudioStream_Usage usage | 监听用于映射特定音量类型的音频流用途类型。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 监听用于映射特定音量类型的音频流用途类型。 |
 | [OH_AudioVolumeManager_OnStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_onstreamvolumechangecallback) callback | 监听的音频流音量发生时，将调用此回调函数[OH_AudioVolumeManager_OnStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_onstreamvolumechangecallback)。 |
 | void *userData | 用户自定义数据指针。 |
 
@@ -255,7 +237,7 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(O
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数volumeManager、usage或callback为nullptr，或usage是无效值。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数volumeManager、usage或callback为nullptr，或usage是无效值。<br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
 
 ### OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback()
 
@@ -266,8 +248,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback
 **描述：**
 
 取消注册音频流音量修改回调函数。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -282,7 +262,7 @@ OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_GetRingerMode()
 
@@ -294,8 +274,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager 
 
 获取当前铃声模式。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -303,13 +281,13 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | 指向OH_AudioVolumeManager用于接收创建的音量管理器实例。 |
-| OH_AudioRingerMode *ringerMode | 用于接收返回的铃声模式。 |
+| [OH_AudioRingerMode](capi-native-audio-common-h.md#oh_audioringermode) *ringerMode | 用于接收返回的铃声模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_RegisterRingerModeChangeCallback()
 
@@ -320,8 +298,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_
 **描述：**
 
 注册铃声模式切换回调函数。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -337,7 +313,7 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_UnregisterRingerModeChangeCallback()
 
@@ -348,8 +324,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(O
 **描述：**
 
 取消注册铃声模式切换回调函数。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -364,6 +338,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(O
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 

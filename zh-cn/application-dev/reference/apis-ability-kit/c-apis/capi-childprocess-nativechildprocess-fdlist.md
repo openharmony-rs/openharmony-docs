@@ -1,7 +1,7 @@
 # NativeChildProcess_FdList
 
 ```c
-typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
+struct NativeChildProcess_FdList {...}
 ```
 
 ## 概述
@@ -22,6 +22,6 @@ typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
 
 | 名称 | 描述 |
 | -- | -- |
-| struct [NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head | 子进程文件描述符记录链表中的第一个记录。 |
+| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head | 子进程文件描述符记录链表中的第一个记录。 |
 
 

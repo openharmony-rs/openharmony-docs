@@ -1,7 +1,7 @@
 # Ethernet_NetAddrInfo
 
 ```c
-typedef struct Ethernet_NetAddrInfo {...} Ethernet_NetAddrInfo
+struct Ethernet_NetAddrInfo {...}
 ```
 
 ## 概述

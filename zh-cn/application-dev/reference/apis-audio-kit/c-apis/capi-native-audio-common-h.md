@@ -6,8 +6,6 @@
 
 **库：** libohaudio.so
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
@@ -35,8 +33,6 @@ enum OH_AudioCommon_Result
 
 音频错误码。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 | 枚举项 | 描述 |
 | -- | -- |
 | AUDIOCOMMON_RESULT_SUCCESS = 0 | 操作成功。<br>**起始版本：** 12 |
@@ -60,8 +56,6 @@ enum OH_AudioScene
 
 定义音频场景。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -81,8 +75,6 @@ enum OH_AudioRingerMode
 
 定义铃声模式。<br> <b>设备行为差异：<\b> 当该接口在无振动器件设备中被设置为振动模式时，将不会产生振动效果。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -100,8 +92,6 @@ enum OH_AudioNoiseReductionMode
 **描述：**
 
 定义录音降噪模式。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 

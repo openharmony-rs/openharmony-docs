@@ -6,8 +6,6 @@
 
 **库：** libnative_window_manager.so
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **相关模块：** [WindowManager](capi-windowmanager.md)
@@ -79,11 +77,11 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void* PictureInPicture_PipConfig | Picture in picture config.<br>**起始版本：** 20 |
-| void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId) | 定义画中画窗口创建完成的回调函数。<br>**起始版本：** 20 |
-| void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode) | 定义画中画窗口的生命周期回调函数。<br>**起始版本：** 20 |
-| void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status) | 定义画中画窗口的控件点击事件回调函数。<br>**起始版本：** 20 |
-| void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint32_t height, double scale) | 定义画中画窗口的尺寸变化回调函数。<br>**起始版本：** 20 |
+| void* PictureInPicture_PipConfig | Picture in picture config.<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
+| void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId) | 定义画中画窗口创建完成的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
+| void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode) | 定义画中画窗口的生命周期回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
+| void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status) | 定义画中画窗口的控件点击事件回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
+| void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint32_t height, double scale) | 定义画中画窗口的尺寸变化回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
 
 ## 枚举类型说明
 
@@ -96,8 +94,6 @@ enum PictureInPicture_PipTemplateType
 **描述：**
 
 画中画模板类型。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -117,8 +113,6 @@ enum PictureInPicture_PipControlGroup
 **描述：**
 
 画中画控制面板的控件组类型。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -147,8 +141,6 @@ enum PictureInPicture_PipControlType
 
 控制面板控件类型枚举。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -173,8 +165,6 @@ enum PictureInPicture_PipControlStatus
 
 控制面板控件状态枚举。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -193,8 +183,6 @@ enum PictureInPicture_PipState
 **描述：**
 
 画中画生命周期状态枚举。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -220,8 +208,6 @@ typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId,
 
 定义画中画窗口创建完成的回调函数。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -241,8 +227,6 @@ typedef void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_
 **描述：**
 
 定义画中画窗口的生命周期回调函数。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -264,8 +248,6 @@ typedef void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPictu
 
 定义画中画窗口的控件点击事件回调函数。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -285,8 +267,6 @@ typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint
 **描述：**
 
 定义画中画窗口的尺寸变化回调函数。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -309,21 +289,19 @@ int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfi
 
 创建画中画参数配置器。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| PictureInPicture_PipConfig* pipConfig | 用于接受创建的画中画参数配置器。 |
+| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md)* pipConfig | 用于接受创建的画中画参数配置器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
 
 ### OH_PictureInPicture_DestroyPipConfig()
 
@@ -335,21 +313,19 @@ int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConf
 
 销毁画中画参数配置器。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| PictureInPicture_PipConfig* pipConfig | 画中画参数配置器。 |
+| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md)* pipConfig | 画中画参数配置器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
 
 ### OH_PictureInPicture_SetPipMainWindowId()
 
@@ -361,22 +337,20 @@ int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipCon
 
 Sets the 拉起画中画的主窗口Id。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| PictureInPicture_PipConfig pipConfig | 画中画参数配置器。 |
+| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md) pipConfig | 画中画参数配置器。 |
 | uint32_t mainWindowId | 拉起画中画的主窗口Id。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
 
 ### OH_PictureInPicture_SetPipTemplateType()
 
@@ -388,22 +362,20 @@ int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipCon
 
 设置画中画模板类型，默认为视频播放。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| PictureInPicture_PipConfig pipConfig | 画中画参数配置器。 |
+| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md) pipConfig | 画中画参数配置器。 |
 | [PictureInPicture_PipTemplateType](capi-oh-window-pip-h.md#pictureinpicture_piptemplatetype) pipTemplateType | 画中画模板类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
 
 ### OH_PictureInPicture_SetPipRect()
 
@@ -415,15 +387,13 @@ int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uin
 
 设置画中画窗口大小，用于计算尺寸比例。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| PictureInPicture_PipConfig pipConfig | 画中画参数配置器。 |
+| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md) pipConfig | 画中画参数配置器。 |
 | uint32_t width | 原始内容宽度，单位为px，该参数应为正整数。用于确定画中画窗口比例。 |
 | uint32_t height | 原始内容高度，单位为px，该参数应为正整数。用于确定画中画窗口比例。 |
 
@@ -431,7 +401,7 @@ int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
 
 ### OH_PictureInPicture_SetPipControlGroup()
 
@@ -443,15 +413,13 @@ int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipCon
 
 设置画中画控件组，需保证控件组与模板类型匹配。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| PictureInPicture_PipConfig pipConfig | 画中画参数配置器。 |
+| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md) pipConfig | 画中画参数配置器。 |
 | [PictureInPicture_PipControlGroup](capi-oh-window-pip-h.md#pictureinpicture_pipcontrolgroup)* controlGroup | 画中画控制面板的可选控件组列表，应用可以对此进行配置以决定是否显示。应用未配置时，面板显示基础控件（如视频播放控件组的播放/暂停控件）；应用选择配置时，则最多可以选择三个控件。 |
 | uint8_t controlGroupLength | 画中画控件组数量，取值范围为0 ~ 3。 |
 
@@ -459,7 +427,7 @@ int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipCon
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
 
 ### OH_PictureInPicture_SetPipNapiEnv()
 
@@ -471,22 +439,20 @@ int32_t OH_PictureInPicture_SetPipNapiEnv(PictureInPicture_PipConfig pipConfig, 
 
 设置拉起画中画的运行时环境。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| PictureInPicture_PipConfig pipConfig | 画中画参数配置器。 |
+| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md) pipConfig | 画中画参数配置器。 |
 | void* env | napi的环境指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。 |
 
 ### OH_PictureInPicture_CreatePip()
 
@@ -498,22 +464,20 @@ int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint
 
 创建画中画控制器。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| PictureInPicture_PipConfig pipConfig | 画中画参数配置器。 |
+| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md) pipConfig | 画中画参数配置器。 |
 | uint32_t* controllerId | 用于接收创建画中画控制器的id。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_DeletePip()
 
@@ -525,8 +489,6 @@ int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)
 
 删除画中画控制器。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -539,7 +501,7 @@ int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
 
 ### OH_PictureInPicture_StartPip()
 
@@ -551,8 +513,6 @@ int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)
 
 开启画中画。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -565,7 +525,7 @@ int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL，表示画中画窗口状态异常。  返回WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED，表示画中画窗口创建失败。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。  返回WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION，表示画中画窗口重复操作。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL，表示画中画窗口状态异常。返回WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED，表示画中画窗口创建失败。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。返回WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION，表示画中画窗口重复操作。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
 
 ### OH_PictureInPicture_StopPip()
 
@@ -577,8 +537,6 @@ int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)
 
 关闭画中画。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -591,7 +549,7 @@ int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED，表示画中画窗口销毁失败。  返回WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL，表示画中画窗口状态异常。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。  返回WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION，表示画中画窗口重复操作。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED，表示画中画窗口销毁失败。返回WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL，表示画中画窗口状态异常。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。返回WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION，表示画中画窗口重复操作。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。 |
 
 ### OH_PictureInPicture_UpdatePipContentSize()
 
@@ -602,8 +560,6 @@ int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t
 **描述：**
 
 当媒体源切换时，向画中画控制器更新媒体源尺寸信息。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -619,7 +575,7 @@ int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UpdatePipControlStatus()
 
@@ -630,8 +586,6 @@ int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, Pictur
 **描述：**
 
 更新画中画控制面板控件功能状态。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -647,7 +601,7 @@ int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, Pictur
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_SetPipControlEnabled()
 
@@ -658,8 +612,6 @@ int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureI
 **描述：**
 
 设置控制面板控件使能状态。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -675,7 +627,7 @@ int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureI
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_SetParentWindowId()
 
@@ -686,8 +638,6 @@ int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t wi
 **描述：**
 
 设置画中画主窗口ID。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 22
 
@@ -702,7 +652,7 @@ int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t wi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_SetPipInitialSurfaceRect()
 
@@ -713,8 +663,6 @@ int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int3
 **描述：**
 
 设置画中画拉起动效开始时的位置和大小，可用于实现一镜到底效果。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -732,7 +680,7 @@ int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UnsetPipInitialSurfaceRect()
 
@@ -744,8 +692,6 @@ int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)
 
 取消已设置的画中画拉起动效的起始位置和大小。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -758,7 +704,7 @@ int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_RegisterStartPipCallback()
 
@@ -770,8 +716,6 @@ int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebP
 
 开启画中画窗口创建完成的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -785,7 +729,7 @@ int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebP
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UnregisterStartPipCallback()
 
@@ -797,8 +741,6 @@ int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, We
 
 关闭画中画窗口创建完成的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -812,7 +754,7 @@ int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, We
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UnregisterAllStartPipCallbacks()
 
@@ -824,8 +766,6 @@ int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId
 
 关闭所有画中画窗口创建完成的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -838,7 +778,7 @@ int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_RegisterLifecycleListener()
 
@@ -850,8 +790,6 @@ int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, Web
 
 开启画中画生命周期状态的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -865,7 +803,7 @@ int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, Web
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UnregisterLifecycleListener()
 
@@ -877,8 +815,6 @@ int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, W
 
 关闭画中画生命周期状态的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -892,7 +828,7 @@ int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, W
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UnregisterAllLifecycleListeners()
 
@@ -904,8 +840,6 @@ int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerI
 
 关闭所有画中画生命周期状态的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -918,7 +852,7 @@ int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerI
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_RegisterControlEventListener()
 
@@ -930,8 +864,6 @@ int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, 
 
 开启画中画控制面板控件动作事件的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -945,7 +877,7 @@ int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UnregisterControlEventListener()
 
@@ -957,8 +889,6 @@ int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId
 
 关闭画中画控制面板控件动作事件的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -972,7 +902,7 @@ int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UnregisterAllControlEventListeners()
 
@@ -984,8 +914,6 @@ int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controll
 
 关闭所有画中画控制面板控件动作事件的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -998,7 +926,7 @@ int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controll
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_RegisterResizeListener()
 
@@ -1010,8 +938,6 @@ int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPip
 
 开启画中画窗口尺寸变化事件的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -1025,7 +951,7 @@ int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPip
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UnregisterResizeListener()
 
@@ -1037,8 +963,6 @@ int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebP
 
 关闭画中画窗口尺寸变化事件的监听。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **起始版本：** 20
 
 **参数：**
@@ -1052,7 +976,7 @@ int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebP
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_UnregisterAllResizeListeners()
 
@@ -1063,8 +987,6 @@ int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)
 **描述：**
 
 关闭所有画中画窗口尺寸变化事件的监听。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 20
 
@@ -1078,7 +1000,7 @@ int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。  返回OK，表示函数调用成功。  返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。  返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。  返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+| int32_t | 返回结果代码。返回OK，表示函数调用成功。返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
 
 ### OH_PictureInPicture_SetAutoStartEnabled()
 
@@ -1089,8 +1011,6 @@ int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enab
 **描述：**
 
 设置是否在返回桌面时自动启动画中画，默认不自动拉起。
-
-**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 26.0.0
 
@@ -1105,6 +1025,6 @@ int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enab
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果码。 <ul>          <li>[OK](capi-oh-window-comm-h.md#windowmanager_errorcode)函数调用成功。</li>          <li>[WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode)参数错误。可能原因：              找不到controllerId ID对应的画中画控制器。</li>          <li>[WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR](capi-oh-window-comm-h.md#windowmanager_errorcode)pip内部错误。可能原因：              画中画控制器已被销毁。</li>          </ul> |
+| int32_t | 返回结果码。 <ul> <li>[OK](capi-oh-window-comm-h.md#windowmanager_errorcode)函数调用成功。</li> <li>[WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode)参数错误。可能原因：找不到controllerId ID对应的画中画控制器。</li> <li>[WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR](capi-oh-window-comm-h.md#windowmanager_errorcode)pip内部错误。可能原因：画中画控制器已被销毁。</li> </ul> |
 
 

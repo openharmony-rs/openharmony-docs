@@ -1,7 +1,7 @@
 # JSVM_CompileOptions
 
 ```c
-typedef struct JSVM_CompileOptions {...} JSVM_CompileOptions
+typedef union JSVM_CompileOptions {...} JSVM_CompileOptions
 ```
 
 ## Overview
@@ -22,8 +22,6 @@ Compile Options
 
 | Name | Description |
 | -- | -- |
-| [JSVM_CompileOptionId](capi-jsvm-types-h.md#jsvm_compileoptionid) id | compile option id. |
-| union | option content. |
 | void *ptr | ptr type. |
 | int num | int type. |
 | bool boolean;

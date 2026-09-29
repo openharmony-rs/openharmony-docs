@@ -6,8 +6,6 @@ Provides APIs for memory management.
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -59,8 +57,6 @@ enum MALLOC_HINT
 
 Defines the enumeration values for memory allocation hints.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 | Enum item | Description |
@@ -95,8 +91,6 @@ void TEE_MemFill(void *buffer, uint8_t x, size_t size)
 
 Fills <b>x</b> into the first <b>size</b> bytes of the buffer.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -116,8 +110,6 @@ void TEE_MemMove(void *dest, const void *src, size_t size)
 **Description**
 
 Copies bytes.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -139,8 +131,6 @@ void *TEE_Malloc(size_t size, uint32_t hint)
 
 Allocates space of the specified size for an object.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -154,7 +144,7 @@ Allocates space of the specified size for an object.
 
 | Type | Description |
 | -- | -- |
-| void * | Returns a pointer to the newly allocated space if the operation is successful. |
+| void * | Returns a pointer to the newly allocated space if the operation is successful. Returns a <b>NULL</b> pointer if the allocation fails. |
 
 ### TEE_Free()
 
@@ -165,8 +155,6 @@ void TEE_Free(void *buffer)
 **Description**
 
 Releases the memory allocated by <b>TEE_Malloc</b>.<br> If the buffer is a <b>NULL</b> pointer, <b>TEE_Free</b> does nothing. The buffer to be released must have been allocated by <b>TEE_Malloc</b> or <b>TEE_Realloc</b> and cannot be released repeatedly. Otherwise, unexpected result may be caused.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -186,8 +174,6 @@ void *TEE_Realloc(void *buffer, size_t new_size)
 
 Reallocates memory.<br> If <b>new_size</b> is greater than the old size, the content of the original memory does not change and the space in excess of the old size contains unspecified content. If the new size of the memory object requires movement of the object, the space for the previous instantiation of the object is deallocated. If the space cannot be allocated, the original object remains allocated and this function returns a <b>NULL</b> pointer. If the buffer is <b>NULL</b>, this function is equivalent to <b>TEE_Malloc</b>.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -201,7 +187,7 @@ Reallocates memory.<br> If <b>new_size</b> is greater than the old size, the con
 
 | Type | Description |
 | -- | -- |
-| void * | Returns a pointer to the allocated memory if the operation is successful. |
+| void * | Returns a pointer to the allocated memory if the operation is successful. Returns a <b>NULL</b> pointer if the operation fails. |
 
 ### TEE_MemCompare()
 
@@ -212,8 +198,6 @@ int32_t TEE_MemCompare(const void *buffer1, const void *buffer2, size_t size)
 **Description**
 
 Compares memory content from the beginning.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -229,7 +213,7 @@ Compares memory content from the beginning.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns <b>–1</b> if buffer1 < buffer2. |
+| int32_t | Returns <b>–1</b> if buffer1 < buffer2. Returns <b>0</b> if buffer1 == buffer2. Returns <b>1</b> if buffer1 > buffer2. |
 
 ### TEE_CheckMemoryAccessRights()
 
@@ -240,8 +224,6 @@ TEE_Result TEE_CheckMemoryAccessRights(uint32_t accessFlags, const void *buffer,
 **Description**
 
 Checks whether this TA has the requested permissions to access a buffer.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -257,7 +239,7 @@ Checks whether this TA has the requested permissions to access a buffer.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the TA has the requested permissions. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the TA has the requested permissions. Returns <b>TEE_ERROR_ACCESS_DENIED</b> otherwise. |
 
 ### TEE_SetInstanceData()
 
@@ -268,8 +250,6 @@ void TEE_SetInstanceData(void *instanceData)
 **Description**
 
 Sets the TA instance data pointer.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -289,14 +269,12 @@ void *TEE_GetInstanceData(void)
 
 Obtains the instance data pointer set by the TA using <b>TEE_SetInstanceData</b>.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| void * | Returns the pointer to the instance data set by <b>TEE_SetInstanceData</b> |
+| void * | Returns the pointer to the instance data set by <b>TEE_SetInstanceData</b> or <b>NULL</b> if no instance data pointer has been set. |
 
 

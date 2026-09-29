@@ -6,8 +6,6 @@ Defines APIs for gamepad events.
 
 **Library**: libohgame_controller.z.so
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Related module**: [GameController](capi-gamecontroller.md)
@@ -61,8 +59,8 @@ Defines APIs for gamepad events.
 
 | Name | Description |
 | -- | -- |
-| void(* GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEvent* buttonEvent) | Defines the callback function used by the button event listener registration API. The callback is triggered when a player presses a button.<br>**Since**: 21 |
-| void(* GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent* axisEvent) | Defines the callback function used by the axis event listener registration API. The callback is triggered when a player operates a joystick.<br>**Since**: 21 |
+| void(* GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEvent* buttonEvent) | Defines the callback function used by the button event listener registration API. The callback is triggered when a player presses a button.<br>**Since**: 21<br>**System capability**: SystemCapability.Game.GameController |
+| void(* GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent* axisEvent) | Defines the callback function used by the axis event listener registration API. The callback is triggered when a player operates a joystick.<br>**Since**: 21<br>**System capability**: SystemCapability.Game.GameController |
 
 ## Enum type description
 
@@ -75,8 +73,6 @@ enum GamePad_AxisSourceType
 **Description**
 
 Defines source types of gamepad axis events.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -98,8 +94,6 @@ enum GamePad_Button_ActionType
 
 Defines action types of gamepad button events.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 | Enum item | Description |
@@ -120,15 +114,13 @@ typedef void(* GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEv
 
 Defines the callback function used by the button event listener registration API. The callback is triggered when a player presses a button.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const struct GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md)\* buttonEvent | Output parameter. Gamepad button event [GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md). |
+| [const struct GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md)* buttonEvent | Output parameter. Gamepad button event [GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md). |
 
 ### GamePad_AxisInputMonitorCallback()
 
@@ -140,15 +132,13 @@ typedef void(* GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent*
 
 Defines the callback function used by the axis event listener registration API. The callback is triggered when a player operates a joystick.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)\* axisEvent | Output parameter. Gamepad axis event [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md). |
+| [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | Output parameter. Gamepad axis event [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md). |
 
 ### OH_GamePad_ButtonEvent_GetDeviceId()
 
@@ -159,8 +149,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetDeviceId(const struct GamePad
 **Description**
 
 Obtains the device ID from a button event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -175,7 +163,7 @@ Obtains the device ID from a button event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       buttonEvent or deviceId is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the      device has insufficient memory, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** buttonEvent** or **deviceId** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the device has insufficient memory, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_ButtonEvent_GetButtonAction()
 
@@ -186,8 +174,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonAction(const struct Gam
 **Description**
 
 Obtains the button action type from a button event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -202,7 +188,7 @@ Obtains the button action type from a button event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       buttonEvent is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** buttonEvent** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_ButtonEvent_GetButtonCode()
 
@@ -213,8 +199,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCode(const struct GameP
 **Description**
 
 Obtains the button code from a button event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -229,7 +213,7 @@ Obtains the button code from a button event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       buttonEvent is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** buttonEvent** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_ButtonEvent_GetButtonCodeName()
 
@@ -240,8 +224,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCodeName(const struct G
 **Description**
 
 Obtains the button name from a button event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -256,7 +238,7 @@ Obtains the button name from a button event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       buttonEvent or codeName is null. [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the      device has insufficient memory, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** buttonEvent** or **codeName** is null. [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the device has insufficient memory, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_PressedButtons_GetCount()
 
@@ -267,8 +249,6 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetCount(const struct GamePad
 **Description**
 
 Obtains the number of pressed buttons from a button event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -283,7 +263,7 @@ Obtains the number of pressed buttons from a button event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       buttonEvent is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** buttonEvent** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_PressedButtons_GetButtonInfo()
 
@@ -294,8 +274,6 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetButtonInfo(const struct Ga
 **Description**
 
 Obtains the button information at a specified index from a button event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -311,7 +289,7 @@ Obtains the button information at a specified index from a button event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       buttonEvent is null, or index is less than 0 or greater than or equal to the total number of keys,      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** buttonEvent** is null, or **index** is less than 0 or greater than or equal to the total number of keys, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 **Reference**:
 
@@ -328,8 +306,6 @@ GameController_ErrorCode OH_GamePad_DestroyPressedButton(GamePad_PressedButton**
 
 Destroys a pressed button instance.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
@@ -342,7 +318,7 @@ Destroys a pressed button instance.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       pressedButton is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** pressedButton** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_PressedButton_GetButtonCode()
 
@@ -353,8 +329,6 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCode(const struct Gam
 **Description**
 
 Obtains the button code from a pressed button.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -369,7 +343,7 @@ Obtains the button code from a pressed button.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       pressedButton is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** pressedButton** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_PressedButton_GetButtonCodeName()
 
@@ -380,8 +354,6 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCodeName(const struct
 **Description**
 
 Obtains the button name from a pressed button.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -396,7 +368,7 @@ Obtains the button name from a pressed button.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       pressedButton or codeName is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the      device has insufficient memory, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** pressedButton** or **codeName** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the device has insufficient memory, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_ButtonEvent_GetActionTime()
 
@@ -407,8 +379,6 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetActionTime(const struct GameP
 **Description**
 
 Obtains the action time from a button event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -423,7 +393,7 @@ Obtains the action time from a button event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the       buttonEvent parameter is null, returns [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode).</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the ** buttonEvent** parameter is null, returns [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode).</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetDeviceId()
 
@@ -434,8 +404,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetDeviceId(const struct GamePad_A
 **Description**
 
 Obtains the device ID from an axis event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -450,7 +418,7 @@ Obtains the device ID from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If       axisEvent or deviceId is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the device      has insufficient memory, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If ** axisEvent** or **deviceId** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the device has insufficient memory, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetAxisSourceType()
 
@@ -461,8 +429,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetAxisSourceType(const struct Gam
 **Description**
 
 Obtains the source type of an axis event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -477,7 +443,7 @@ Obtains the source type of an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetXAxisValue()
 
@@ -489,8 +455,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetXAxisValue(const struct GamePad
 
 Obtains the X-axis value from an axis event.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
@@ -504,7 +468,7 @@ Obtains the X-axis value from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetYAxisValue()
 
@@ -516,8 +480,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetYAxisValue(const struct GamePad
 
 Obtains the Y-axis value from an axis event.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
@@ -531,7 +493,7 @@ Obtains the Y-axis value from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetZAxisValue()
 
@@ -543,8 +505,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetZAxisValue(const struct GamePad
 
 Obtains the Z-axis value from an axis event.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
@@ -558,7 +518,7 @@ Obtains the Z-axis value from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetRZAxisValue()
 
@@ -570,8 +530,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetRZAxisValue(const struct GamePa
 
 Obtains the RZ-axis value from an axis event.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
@@ -585,7 +543,7 @@ Obtains the RZ-axis value from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetHatXAxisValue()
 
@@ -597,8 +555,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatXAxisValue(const struct Game
 
 Obtains the HatX-axis value from an axis event.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
@@ -612,7 +568,7 @@ Obtains the HatX-axis value from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetHatYAxisValue()
 
@@ -624,8 +580,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatYAxisValue(const struct Game
 
 Obtains the HatY-axis value from an axis event.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
@@ -639,7 +593,7 @@ Obtains the HatY-axis value from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetBrakeAxisValue()
 
@@ -651,8 +605,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetBrakeAxisValue(const struct Gam
 
 Obtains the Brake-axis value from an axis event.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
@@ -666,7 +618,7 @@ Obtains the Brake-axis value from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetGasAxisValue()
 
@@ -678,8 +630,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetGasAxisValue(const struct GameP
 
 Obtains the Gas-axis value from an axis event.
 
-**System capability**: SystemCapability.Game.GameController
-
 **Since**: 21
 
 **Parameters**:
@@ -693,7 +643,7 @@ Obtains the Gas-axis value from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode).</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GamePad_AxisEvent_GetActionTime()
 
@@ -704,8 +654,6 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetActionTime(const struct GamePad
 **Description**
 
 Obtains the action time from an axis event.
-
-**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -720,6 +668,6 @@ Obtains the action time from an axis event.
 
 | Type | Description |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the       axisEvent parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the ** axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 

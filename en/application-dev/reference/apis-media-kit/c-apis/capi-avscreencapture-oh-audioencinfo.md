@@ -1,7 +1,7 @@
 # OH_AudioEncInfo
 
 ```c
-typedef struct OH_AudioEncInfo {...} OH_AudioEncInfo
+struct OH_AudioEncInfo {...}
 ```
 
 ## Overview

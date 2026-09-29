@@ -1,7 +1,7 @@
 # OH_AVRecorder_Range
 
 ```c
-typedef struct OH_AVRecorder_Range {...} OH_AVRecorder_Range
+struct OH_AVRecorder_Range {...}
 ```
 
 ## Overview

@@ -1,7 +1,7 @@
 # Rdb_Statistic
 
 ```c
-typedef struct Rdb_Statistic {...} Rdb_Statistic
+struct Rdb_Statistic {...}
 ```
 
 ## Overview

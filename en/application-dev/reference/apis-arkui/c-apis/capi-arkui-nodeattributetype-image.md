@@ -150,7 +150,7 @@ NODE_IMAGE_RESIZABLE
 
 **Description**
 
-Defines how the image is resized when stretched using an array or a lattice object. The parameter types for setting and getting should be the same.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul><br><li>.value[0].f32: width of the left edge, in vp.</li><br><li>.value[1].f32: width of the top edge, in vp.</li><br><li>.value[2].f32: width of the right edge, in vp.</li><br><li>.value[3].f32: width of the bottom edge, in vp.</li><br><li>.object: The parameter type is {@link OH_Drawing_Lattice}, supported since API version 24.</li><br></ul><br>**Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul><br><li>.value[0].f32: width of the left edge, in vp.</li><br><li>.value[1].f32: width of the top edge, in vp.</li><br><li>.value[2].f32: width of the right edge, in vp.</li><br><li>.value[3].f32: width of the bottom edge, in vp.</li> <li>.object: The parameter type is {@link OH_Drawing_Lattice}, supported since API version 24.</li> </ul>
+Defines how the image is resized when stretched using an array or a lattice object. The parameter types for setting and getting should be the same.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: width of the left edge, in vp.</li> <li>.value[1].f32: width of the top edge, in vp.</li> <li>.value[2].f32: width of the right edge, in vp.</li> <li>.value[3].f32: width of the bottom edge, in vp.</li> <li>.object: The parameter type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md), supported since API version 24.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: width of the left edge, in vp.</li> <li>.value[1].f32: width of the top edge, in vp.</li> <li>.value[2].f32: width of the right edge, in vp.</li> <li>.value[3].f32: width of the bottom edge, in vp.</li> <li>.object: The parameter type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md), supported since API version 24.</li> </ul>
 
 **Since**: 12
 
@@ -258,7 +258,7 @@ NODE_IMAGE_ORIENTATION = 4020
 
 **Description**
 
-Defines the image display direction attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul><br><li>.value[0].i32: orientation {@link ArkUI_Orientation}. The default value is <b>ARKUI_ORIENTATION_UP</b>.</li><br></ul><br>**Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul><br><li>.value[0].i32: orientation {@link ArkUI_Orientation}.</li> </ul>
+Defines the image display direction attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: orientation ArkUI_Orientation. The default value is <b>ARKUI_ORIENTATION_UP</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: orientation ArkUI_Orientation.</li> </ul>
 
 **Since**: 21
 

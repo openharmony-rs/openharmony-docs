@@ -6,8 +6,6 @@ Provides APIs for managing the Trusted Execution Environment (TEE) time.<br> You
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -36,15 +34,13 @@ void TEE_GetSystemTime(TEE_Time *time)
 
 Obtains the current TEE system time.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| TEE_Time *time | Indicates the pointer to the current system time obtained. |
+| [TEE_Time](capi-teetrusted-tee-time.md) *time | Indicates the pointer to the current system time obtained. |
 
 ### TEE_Wait()
 
@@ -55,8 +51,6 @@ TEE_Result TEE_Wait(uint32_t timeout)
 **Description**
 
 Waits for the specified period of time, in milliseconds.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -70,7 +64,7 @@ Waits for the specified period of time, in milliseconds.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_CANCEL</b> if the wait is canceled. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation. |
 
 ### TEE_GetTAPersistentTime()
 
@@ -82,21 +76,19 @@ TEE_Result TEE_GetTAPersistentTime(TEE_Time *time)
 
 Obtains the persistent time of this trusted application (TA).
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| TEE_Time *time | Indicates the pointer to the persistent time of the TA. |
+| [TEE_Time](capi-teetrusted-tee-time.md) *time | Indicates the pointer to the persistent time of the TA. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_TIME_NOT_SET</b> if the persistent time has not been set. Returns <b>TEE_ERROR_TIME_NEEDS_RESET</b> if the persistent time is corrupted and the application is not longer trusted. Returns <b>TEE_ERROR_OVERFLOW</b> if the number of seconds in the TA persistent time exceeds the range of <b>uint32_t</b>. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation. |
 
 ### TEE_SetTAPersistentTime()
 
@@ -108,21 +100,19 @@ TEE_Result TEE_SetTAPersistentTime(TEE_Time *time)
 
 Sets the persistent time for this TA.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| TEE_Time *time | Indicates the pointer to the persistent time of the TA. |
+| [TEE_Time](capi-teetrusted-tee-time.md) *time | Indicates the pointer to the persistent time of the TA. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. |
+| TEE_Result | Returns <b>TEE_SUCCESS</b> if the operation is successful. Returns <b>TEE_ERROR_OUT_OF_MEMORY</b> if the memory is not sufficient to complete the operation. Returns <b>TEE_ERROR_STORAGE_NO_SPACE</b> if the storage space is not sufficient to complete the operation. |
 
 ### TEE_GetREETime()
 
@@ -134,14 +124,12 @@ void TEE_GetREETime(TEE_Time *time)
 
 Obtains the current Rich Execution Environment (REE) system time.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| TEE_Time *time | Indicates the pointer to the REE system time obtained. |
+| [TEE_Time](capi-teetrusted-tee-time.md) *time | Indicates the pointer to the REE system time obtained. |
 
 

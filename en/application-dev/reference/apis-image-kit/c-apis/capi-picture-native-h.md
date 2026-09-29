@@ -6,9 +6,7 @@ The file declares the APIs for obtaining picture data and information.
 
 **Library**: libpicture.so
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
-**Since**: 12
+**Since**: 13
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)
 
@@ -18,8 +16,8 @@ The file declares the APIs for obtaining picture data and information.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_PictureNative_AuxiliaryPictureCopyItem](capi-image-nativemodule-oh-picturenative-auxiliarypicturecopyitem.md) | OH_PictureNative_AuxiliaryPictureCopyItem | This structure is used to specify an auxiliary picture copy rule when creating a deep copy of a PictureNative object. It describes how to copy an auxiliary picture from one type to another. |
-| [OH_PictureNative_MetadataCopyItem](capi-image-nativemodule-oh-picturenative-metadatacopyitem.md) | OH_PictureNative_MetadataCopyItem | This structure is used to specify a metadata copy rule when creating a deep copy of a PictureNative object. It describes how to copy metadata from one type to another. |
+| [OH_PictureNative_AuxiliaryPictureCopyItem](capi-image-nativemodule-oh-picturenative-auxiliarypicturecopyitem.md) | - | This structure is used to specify an auxiliary picture copy rule when creating a deep copy of a PictureNative object. It describes how to copy an auxiliary picture from one type to another. |
+| [OH_PictureNative_MetadataCopyItem](capi-image-nativemodule-oh-picturenative-metadatacopyitem.md) | - | This structure is used to specify a metadata copy rule when creating a deep copy of a PictureNative object. It describes how to copy metadata from one type to another. |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) | - | The struct is used to perform operations related to the picture. |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | - | The struct describes the auxiliary picture, which is used to perform operations related to the auxiliary picture. |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | - | The struct describes the auxiliary picture information, which is used to perform operations related to the auxiliary picture information. |
@@ -56,7 +54,7 @@ The file declares the APIs for obtaining picture data and information.
 | [Image_ErrorCode OH_PictureNative_RemoveMetadata(OH_PictureNative *picture, Image_MetadataType type)](#oh_picturenative_removemetadata) | Removes metadata from a Picture object. |
 | [Image_ErrorCode OH_PictureNative_DeepCopyWithItems(OH_PictureNative *source, const OH_PictureNative_AuxiliaryPictureCopyItem *auxiliaryPictureCopyItems, uint32_t auxiliaryPictureCopyCount, const OH_PictureNative_MetadataCopyItem *metadataCopyItems, uint32_t metadataCopyCount, Image_AuxiliaryPictureType *sourceAuxPictureAsMainPixelMap, OH_PictureNative **picture)](#oh_picturenative_deepcopywithitems) | Creates a deep copy of a PictureNative object with specified auxiliary pictures and metadata copied to specified destination types. |
 | [Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)](#oh_picturenative_release) | Releases the pointer to an OH_PictureNative object. |
-| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports only continuous pixel data whose {@link pixel format} is BGRA_8888 and creates an auxiliary picture in RGBA_8888 format. |
+| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports only continuous pixel data whose pixel format is BGRA_8888 and creates an auxiliary picture in RGBA_8888 format. |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source, size_t bufferSize)](#oh_auxiliarypicturenative_writepixels) | Reads pixels in the buffer and writes the result to an auxiliary picture. |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination, size_t *bufferSize)](#oh_auxiliarypicturenative_readpixels) | Reads pixels of an auxiliary picture and writes the result to the buffer. |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_AuxiliaryPictureType *type)](#oh_auxiliarypicturenative_gettype) | Obtains the type of an auxiliary picture. |
@@ -89,8 +87,6 @@ enum Image_AuxiliaryPictureType
 
 Type of the auxiliary picture.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 | Enum item | Description |
@@ -100,6 +96,8 @@ Type of the auxiliary picture.
 | AUXILIARY_PICTURE_TYPE_UNREFOCUS_MAP = 3 | Unrefocus map |
 | AUXILIARY_PICTURE_TYPE_LINEAR_MAP = 4 | Linear map |
 | AUXILIARY_PICTURE_TYPE_FRAGMENT_MAP = 5 | Fragment map |
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_OXY_MAP = 11 |  |
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_MEL_MAP = 12 |  |
 
 
 ## Function description
@@ -114,8 +112,6 @@ Image_ErrorCode OH_ComposeOptions_Create(OH_ComposeOptions **options)
 
 Creates an **OH_ComposeOptions** instance.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -128,7 +124,7 @@ Creates an **OH_ComposeOptions** instance.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_ComposeOptions_SetDesiredPixelFormat()
 
@@ -140,8 +136,6 @@ Image_ErrorCode OH_ComposeOptions_SetDesiredPixelFormat(OH_ComposeOptions *optio
 
 Sets the pixel format in **OH_ComposeOptions**.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -149,13 +143,13 @@ Sets the pixel format in **OH_ComposeOptions**.
 | Parameter | Description |
 | -- | -- |
 | [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) *options | Pointer to **OH_ComposeOptions**. |
-| PIXEL_FORMAT desiredPixelFormat | Pixel format. The RGBA_1010102, YCBCR_P010, and YCRCB_P010 formats are supported. |
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) desiredPixelFormat | Pixel format. The RGBA_1010102, YCBCR_P010, and YCRCB_P010 formats are supported. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or desiredPixelFormat is not supported. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or desiredPixelFormat is not supported. |
 
 ### OH_ComposeOptions_GetDesiredPixelFormat()
 
@@ -167,8 +161,6 @@ Image_ErrorCode OH_ComposeOptions_GetDesiredPixelFormat(OH_ComposeOptions *optio
 
 Obtains the pixel format in **OH_ComposeOptions**.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -176,13 +168,13 @@ Obtains the pixel format in **OH_ComposeOptions**.
 | Parameter | Description |
 | -- | -- |
 | [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) *options | Pointer to **OH_ComposeOptions**. |
-| PIXEL_FORMAT *desiredPixelFormat | Pixel format in the composition options. |
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) *desiredPixelFormat | Pixel format in the composition options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr,or desiredPixelFormat is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr,or desiredPixelFormat is nullptr. |
 
 ### OH_ComposeOptions_Release()
 
@@ -194,8 +186,6 @@ Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)
 
 Releases the pointer to **OH_ComposeOptions**.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -208,7 +198,7 @@ Releases the pointer to **OH_ComposeOptions**.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_PictureNative_CreatePicture()
 
@@ -220,22 +210,20 @@ Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, 
 
 Creates the pointer to an OH_PictureNative object.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_PixelmapNative *mainPixelmap | Pointer to the OH_PixelmapNative object of the main picture. |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *mainPixelmap | Pointer to the OH_PixelmapNative object of the main picture. |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **picture | Double pointer to the OH_PictureNative object created. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) mainPixelmap is nullptr, or picture is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) mainPixelmap is nullptr, or picture is nullptr. |
 
 ### OH_PictureNative_GetMainPixelmap()
 
@@ -247,8 +235,6 @@ Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_P
 
 Obtains the pointer to the OH_PixelmapNative object of a main picture.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -256,13 +242,13 @@ Obtains the pointer to the OH_PixelmapNative object of a main picture.
 | Parameter | Description |
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object. |
-| OH_PixelmapNative **mainPixelmap | Double pointer to the OH_PixelmapNative object obtained. |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **mainPixelmap | Double pointer to the OH_PixelmapNative object obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or mainPixelmap is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or mainPixelmap is nullptr. |
 
 ### OH_PictureNative_GetHdrComposedPixelmap()
 
@@ -274,8 +260,6 @@ Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *pictur
 
 Obtains the pointer to the OH_PixelmapNative object of an HDR picture.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -283,13 +267,13 @@ Obtains the pointer to the OH_PixelmapNative object of an HDR picture.
 | Parameter | Description |
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object. |
-| OH_PixelmapNative **hdrPixelmap | Double pointer to the OH_PixelmapNative object of the HDR picture. |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **hdrPixelmap | Double pointer to the OH_PixelmapNative object of the HDR picture. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or hdrPixelmap is nullptr.      <br>[IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation, e.g. the picture does not has a gainmap. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or hdrPixelmap is nullptr. <br>[IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation, e.g. the picture does not has a gainmap. |
 
 ### OH_PictureNative_GetHdrComposedPixelmapWithOptions()
 
@@ -301,8 +285,6 @@ Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmapWithOptions(OH_PictureNat
 
 Obtains the pointer to **OH_PixelmapNative** of an HDR picture based on **OH_ComposeOptions**.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -311,13 +293,13 @@ Obtains the pointer to **OH_PixelmapNative** of an HDR picture based on **OH_Com
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object. |
 | [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) *options | Pointer to **OH_ComposeOptions**. |
-| OH_PixelmapNative **hdrPixelmap | Pointer to **OH_PixelmapNative** of the obtained HDR picture. |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **hdrPixelmap | Pointer to **OH_PixelmapNative** of the obtained HDR picture. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or hdrPixelmap is nullptr.      <br>[IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation, e.g. the picture does not has a gainmap. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or hdrPixelmap is nullptr. <br>[IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) Unsupported operation, e.g. the picture does not has a gainmap. |
 
 ### OH_PictureNative_GetGainmapPixelmap()
 
@@ -329,8 +311,6 @@ Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, O
 
 Obtains the pointer to the OH_PixelmapNative object of a gain map.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -338,13 +318,13 @@ Obtains the pointer to the OH_PixelmapNative object of a gain map.
 | Parameter | Description |
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object. |
-| OH_PixelmapNative **gainmapPixelmap | Double pointer to the OH_PixelmapNative object of the gain map. |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **gainmapPixelmap | Double pointer to the OH_PixelmapNative object of the gain map. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or gainmapPixelmap is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or gainmapPixelmap is nullptr. |
 
 ### OH_PictureNative_SetAuxiliaryPicture()
 
@@ -355,8 +335,6 @@ Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, 
 **Description**
 
 Sets an auxiliary picture.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -372,7 +350,7 @@ Sets an auxiliary picture.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or auxiliaryPicture is nullptr, or the type is invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or auxiliaryPicture is nullptr, or the type is invalid. |
 
 ### OH_PictureNative_GetAuxiliaryPicture()
 
@@ -383,8 +361,6 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, 
 **Description**
 
 Obtains an auxiliary picture by type.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -400,7 +376,7 @@ Obtains an auxiliary picture by type.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or auxiliaryPicture is nullptr, or the type is invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or auxiliaryPicture is nullptr, or the type is invalid. |
 
 ### OH_PictureNative_GetMetadata()
 
@@ -412,8 +388,6 @@ Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_Me
 
 Obtains the metadata of a main picture.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -421,14 +395,14 @@ Obtains the metadata of a main picture.
 | Parameter | Description |
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object. |
-| Image_MetadataType metadataType | Metadata type. |
-| OH_PictureMetadata **metadata | Double pointer to the metadata. |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) metadataType | Metadata type. |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | Double pointer to the metadata. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or metadata is nullptr.      <br>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or metadata is nullptr. <br>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type. |
 
 ### OH_PictureNative_SetMetadata()
 
@@ -440,8 +414,6 @@ Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_Me
 
 Sets the metadata for a main picture.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -449,14 +421,14 @@ Sets the metadata for a main picture.
 | Parameter | Description |
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object. |
-| Image_MetadataType metadataType | Metadata type. |
-| OH_PictureMetadata *metadata | Pointer to the metadata. |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) metadataType | Metadata type. |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to the metadata. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or metadata is nullptr.      <br>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or metadata is nullptr. <br>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type. |
 
 ### OH_PictureNative_GetAuxiliaryPictureCount()
 
@@ -467,8 +439,6 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureCount(OH_PictureNative *pict
 **Description**
 
 Obtains the number of auxiliary pictures in a Picture object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -483,7 +453,7 @@ Obtains the number of auxiliary pictures in a Picture object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture or count is nullptr, or fail to get the picture.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture or count is nullptr, or fail to get the picture.</li> </ul> |
 
 ### OH_PictureNative_GetAuxiliaryPictureTypes()
 
@@ -494,8 +464,6 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureTypes(OH_PictureNative *pict
 **Description**
 
 Obtains the types of auxiliary pictures in a Picture object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -511,7 +479,7 @@ Obtains the types of auxiliary pictures in a Picture object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture, auxiliaryPictureTypes, or count is nullptr,          or fail to get the picture, or count is smaller than required.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture, auxiliaryPictureTypes, or count is nullptr, or fail to get the picture, or count is smaller than required.</li> </ul> |
 
 ### OH_PictureNative_GetMetadataCount()
 
@@ -522,8 +490,6 @@ Image_ErrorCode OH_PictureNative_GetMetadataCount(OH_PictureNative *picture, uin
 **Description**
 
 Obtains the number of metadata entries in a Picture object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -538,7 +504,7 @@ Obtains the number of metadata entries in a Picture object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture or count is nullptr, or fail to get the picture.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture or count is nullptr, or fail to get the picture.</li> </ul> |
 
 ### OH_PictureNative_GetMetadataTypes()
 
@@ -550,8 +516,6 @@ Image_ErrorCode OH_PictureNative_GetMetadataTypes(OH_PictureNative *picture, Ima
 
 Obtains the types of metadata in a Picture object.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -559,14 +523,14 @@ Obtains the types of metadata in a Picture object.
 | Parameter | Description |
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object. |
-| Image_MetadataType *metadataTypes | Pointer to the array that receives the metadata types. |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) *metadataTypes | Pointer to the array that receives the metadata types. |
 | uint32_t *count | On input, the size of metadataTypes array. On output, the actual number of metadata entries. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture, metadataTypes, or count is nullptr,          or fail to get the picture, or count is smaller than required.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture, metadataTypes, or count is nullptr, or fail to get the picture, or count is smaller than required.</li> </ul> |
 
 ### OH_PictureNative_RemoveAuxiliaryPicture()
 
@@ -577,8 +541,6 @@ Image_ErrorCode OH_PictureNative_RemoveAuxiliaryPicture(OH_PictureNative *pictur
 **Description**
 
 Removes an auxiliary picture from a Picture object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -593,7 +555,7 @@ Removes an auxiliary picture from a Picture object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the auxiliary picture was successfully removed or did not exist.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or fail to get the picture,          or the type is invalid.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the auxiliary picture was successfully removed or did not exist.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or fail to get the picture, or the type is invalid.</li> </ul> |
 
 ### OH_PictureNative_RemoveMetadata()
 
@@ -605,8 +567,6 @@ Image_ErrorCode OH_PictureNative_RemoveMetadata(OH_PictureNative *picture, Image
 
 Removes metadata from a Picture object.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -614,13 +574,13 @@ Removes metadata from a Picture object.
 | Parameter | Description |
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object. |
-| Image_MetadataType type | Type of the metadata to remove. |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) type | Type of the metadata to remove. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the metadata was successfully removed or did not exist.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or fail to get the picture.</li>          <li>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the metadata was successfully removed or did not exist.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr, or fail to get the picture.</li> <li>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type.</li> </ul> |
 
 ### OH_PictureNative_DeepCopyWithItems()
 
@@ -632,9 +592,9 @@ Image_ErrorCode OH_PictureNative_DeepCopyWithItems(OH_PictureNative *source, con
 
 Creates a deep copy of a PictureNative object with specified auxiliary pictures and metadata copied to specified destination types.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 26.0.0
+
+**Resource release**: picture_native/OH_PictureNative_Release {picture}
 
 **Parameters**:
 
@@ -652,7 +612,7 @@ Creates a deep copy of a PictureNative object with specified auxiliary pictures 
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if source or picture is nullptr, or counts mismatch,          or fail to get the source picture, or Count is not zero but corresponding array is nullptr.</li>          <li>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) memory allocation failed.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if source or picture is nullptr, or counts mismatch, or fail to get the source picture, or Count is not zero but corresponding array is nullptr.</li> <li>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) memory allocation failed.</li> </ul> |
 
 ### OH_PictureNative_Release()
 
@@ -663,8 +623,6 @@ Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)
 **Description**
 
 Releases the pointer to an OH_PictureNative object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -678,7 +636,7 @@ Releases the pointer to an OH_PictureNative object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr. |
 
 ### OH_AuxiliaryPictureNative_Create()
 
@@ -688,9 +646,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLengt
 
 **Description**
 
-Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports only continuous pixel data whose {@link pixel format} is BGRA_8888 and creates an auxiliary picture in RGBA_8888 format.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
+Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports only continuous pixel data whose pixel format is BGRA_8888 and creates an auxiliary picture in RGBA_8888 format.
 
 **Since**: 13
 
@@ -700,7 +656,7 @@ Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports on
 | -- | -- |
 | uint8_t *data | Pointer to the image data. |
 | size_t dataLength | Length of the image data. |
-| Image_Size *size | Pointer to the size of the auxiliary picture. |
+| [Image_Size](capi-image-nativemodule-image-size.md) *size | Pointer to the size of the auxiliary picture. |
 | [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) type | Type of the auxiliary picture. |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) **auxiliaryPicture | Double pointer to the OH_AuxiliaryPictureNative object created. |
 
@@ -708,7 +664,7 @@ Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports on
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) data is nullptr, or dataLength is invalid, or size is nullptr, or the type          is invalid, or auxiliaryPicture is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) data is nullptr, or dataLength is invalid, or size is nullptr, or the type is invalid, or auxiliaryPicture is nullptr. |
 
 ### OH_AuxiliaryPictureNative_WritePixels()
 
@@ -719,8 +675,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative 
 **Description**
 
 Reads pixels in the buffer and writes the result to an auxiliary picture.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -736,7 +690,7 @@ Reads pixels in the buffer and writes the result to an auxiliary picture.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or source is nullptr, or the bufferSize is invalid.      <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) memory alloc failed.      <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) memory copy failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or source is nullptr, or the bufferSize is invalid. <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) memory alloc failed. <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) memory copy failed. |
 
 ### OH_AuxiliaryPictureNative_ReadPixels()
 
@@ -747,8 +701,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *
 **Description**
 
 Reads pixels of an auxiliary picture and writes the result to the buffer.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -764,7 +716,7 @@ Reads pixels of an auxiliary picture and writes the result to the buffer.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or destination is nullptr,          or the bufferSize is invalid.      <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) memory alloc failed.      <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) memory copy failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or destination is nullptr, or the bufferSize is invalid. <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) memory alloc failed. <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) memory copy failed. |
 
 ### OH_AuxiliaryPictureNative_GetType()
 
@@ -775,8 +727,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *aux
 **Description**
 
 Obtains the type of an auxiliary picture.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -791,7 +741,7 @@ Obtains the type of an auxiliary picture.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or type is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or type is nullptr. |
 
 ### OH_AuxiliaryPictureNative_GetInfo()
 
@@ -802,8 +752,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *aux
 **Description**
 
 Obtains the information of an auxiliary picture.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -818,7 +766,7 @@ Obtains the information of an auxiliary picture.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or info is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or info is nullptr. |
 
 ### OH_AuxiliaryPictureNative_SetInfo()
 
@@ -829,8 +777,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *aux
 **Description**
 
 Sets the information for an auxiliary picture.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -845,7 +791,7 @@ Sets the information for an auxiliary picture.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or info is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or info is nullptr. |
 
 ### OH_AuxiliaryPictureNative_GetMetadata()
 
@@ -857,8 +803,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative 
 
 Obtains the metadata of an auxiliary picture.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -866,14 +810,14 @@ Obtains the metadata of an auxiliary picture.
 | Parameter | Description |
 | -- | -- |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) *auxiliaryPicture | Pointer to an OH_AuxiliaryPictureNative object. |
-| Image_MetadataType metadataType | Metadata type. |
-| OH_PictureMetadata **metadata | Double pointer to the metadata. |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) metadataType | Metadata type. |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | Double pointer to the metadata. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or metadata is nullptr.      <br>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type, or the metadata type does not match the          auxiliary picture type. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or metadata is nullptr. <br>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type, or the metadata type does not match the auxiliary picture type. |
 
 ### OH_AuxiliaryPictureNative_SetMetadata()
 
@@ -885,8 +829,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative 
 
 Sets the metadata for an auxiliary picture.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -894,14 +836,14 @@ Sets the metadata for an auxiliary picture.
 | Parameter | Description |
 | -- | -- |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) *auxiliaryPicture | Pointer to an OH_AuxiliaryPictureNative object. |
-| Image_MetadataType metadataType | Metadata type. |
-| OH_PictureMetadata *metadata | Pointer to the metadata. |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) metadataType | Metadata type. |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to the metadata. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or metadata is nullptr.      <br>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type, or the metadata type does not match the          auxiliary picture type. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or metadata is nullptr. <br>[IMAGE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) unsupported metadata type, or the metadata type does not match the auxiliary picture type. |
 
 ### OH_AuxiliaryPictureNative_AcquirePixelmap()
 
@@ -913,22 +855,22 @@ Image_ErrorCode OH_AuxiliaryPictureNative_AcquirePixelmap(OH_AuxiliaryPictureNat
 
 Obtains the OH_PixelmapNative object of an auxiliary picture.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 26.0.0
+
+**Resource release**: pixelmap_native/OH_PixelmapNative_Destroy {pixelmap}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) *auxiliaryPicture | Pointer to an OH_AuxiliaryPictureNative object. |
-| OH_PixelmapNative **pixelmap | Double pointer to the OH_PixelmapNative object obtained. |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | Double pointer to the OH_PixelmapNative object obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or pixelmap is nullptr.</li>          <li>[IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) fail to get the auxiliary picture or its pixelmap content.</li>          <li>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) memory allocation failed.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) auxiliaryPicture is nullptr, or pixelmap is nullptr.</li> <li>[IMAGE_GET_IMAGE_DATA_FAILED](capi-image-common-h.md#image_errorcode) fail to get the auxiliary picture or its pixelmap content.</li> <li>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) memory allocation failed.</li> </ul> |
 
 ### OH_AuxiliaryPictureNative_Release()
 
@@ -939,8 +881,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *pic
 **Description**
 
 Releases the pointer to an OH_AuxiliaryPictureNative object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -954,7 +894,7 @@ Releases the pointer to an OH_AuxiliaryPictureNative object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) picture is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_Create()
 
@@ -965,8 +905,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)
 **Description**
 
 Creates an OH_AuxiliaryPictureInfo object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -980,7 +918,7 @@ Creates an OH_AuxiliaryPictureInfo object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_GetType()
 
@@ -991,8 +929,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, I
 **Description**
 
 Obtains the auxiliary picture type in **OH_AuxiliaryPictureInfo**.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -1007,7 +943,7 @@ Obtains the auxiliary picture type in **OH_AuxiliaryPictureInfo**.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or type is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or type is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_SetType()
 
@@ -1018,8 +954,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, I
 **Description**
 
 Sets the auxiliary picture type in **OH_AuxiliaryPictureInfo**.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -1034,7 +968,7 @@ Sets the auxiliary picture type in **OH_AuxiliaryPictureInfo**.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or type is invalid. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or type is invalid. |
 
 ### OH_AuxiliaryPictureInfo_GetSize()
 
@@ -1046,8 +980,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, I
 
 Obtains the image size in **OH_AuxiliaryPictureInfo**.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1055,13 +987,13 @@ Obtains the image size in **OH_AuxiliaryPictureInfo**.
 | Parameter | Description |
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object. |
-| Image_Size *size | Pointer to the size. |
+| [Image_Size](capi-image-nativemodule-image-size.md) *size | Pointer to the size. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or size is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or size is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_SetSize()
 
@@ -1073,8 +1005,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, I
 
 Sets the image size in **OH_AuxiliaryPictureInfo**.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1082,13 +1012,13 @@ Sets the image size in **OH_AuxiliaryPictureInfo**.
 | Parameter | Description |
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object. |
-| Image_Size *size | Pointer to the size. |
+| [Image_Size](capi-image-nativemodule-image-size.md) *size | Pointer to the size. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or size is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or size is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_GetRowStride()
 
@@ -1099,8 +1029,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *in
 **Description**
 
 Obtains the row stride in **OH_AuxiliaryPictureInfo**.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -1115,7 +1043,7 @@ Obtains the row stride in **OH_AuxiliaryPictureInfo**.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or rowStride is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or rowStride is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_SetRowStride()
 
@@ -1126,8 +1054,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *in
 **Description**
 
 Sets the row stride in **OH_AuxiliaryPictureInfo**.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -1142,7 +1068,7 @@ Sets the row stride in **OH_AuxiliaryPictureInfo**.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or rowStride is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or rowStride is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_GetPixelFormat()
 
@@ -1154,8 +1080,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *
 
 Obtains the pixel format in **OH_AuxiliaryPictureInfo**.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1163,13 +1087,13 @@ Obtains the pixel format in **OH_AuxiliaryPictureInfo**.
 | Parameter | Description |
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object. |
-| PIXEL_FORMAT *pixelFormat | Pointer to the pixel format obtained. |
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) *pixelFormat | Pointer to the pixel format obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or pixelFormat is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or pixelFormat is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_SetPixelFormat()
 
@@ -1181,8 +1105,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *
 
 Sets the pixel format in **OH_AuxiliaryPictureInfo**.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1190,13 +1112,13 @@ Sets the pixel format in **OH_AuxiliaryPictureInfo**.
 | Parameter | Description |
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object. |
-| PIXEL_FORMAT pixelFormat | Pixel format. |
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) pixelFormat | Pixel format. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_Release()
 
@@ -1208,8 +1130,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)
 
 Releases the pointer to an OH_AuxiliaryPictureInfo object.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1222,6 +1142,6 @@ Releases the pointer to an OH_AuxiliaryPictureInfo object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr. |
 
 

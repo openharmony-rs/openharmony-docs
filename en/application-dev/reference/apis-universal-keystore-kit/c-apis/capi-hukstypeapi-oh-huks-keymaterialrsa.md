@@ -1,7 +1,7 @@
 # OH_Huks_KeyMaterialRsa
 
 ```c
-typedef struct OH_Huks_KeyMaterialRsa {...} OH_Huks_KeyMaterialRsa
+struct OH_Huks_KeyMaterialRsa {...}
 ```
 
 ## Overview
@@ -22,7 +22,7 @@ Defines the struct for an RSA key.
 
 | Name | Description |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | Algorithm of the key. |
+| enum OH_Huks_KeyAlg keyAlg | Algorithm of the key. |
 | uint32_t keySize | Length of the key. |
 | uint32_t nSize | Length of **n**. |
 | uint32_t eSize | Length of **e**. |

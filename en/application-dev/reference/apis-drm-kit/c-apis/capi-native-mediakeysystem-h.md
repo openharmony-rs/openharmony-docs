@@ -6,8 +6,6 @@ The file declares the MediaKeySystem APIs for DRM operations. The APIs can be us
 
 **Library**: libnative_drm.so
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Related module**: [Drm](capi-drm.md)
@@ -46,8 +44,8 @@ The file declares the MediaKeySystem APIs for DRM operations. The APIs can be us
 
 | Name | Description |
 | -- | -- |
-| Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Call back will be invoked when event triggers.<br>**Since**: 11 |
-| Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Call back will be invoked when event triggers.<br>**Since**: 12 |
+| Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Call back will be invoked when event triggers.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
+| Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Call back will be invoked when event triggers.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
 
 ## Function description
 
@@ -61,24 +59,22 @@ typedef Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t 
 
 Call back will be invoked when event triggers.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| DRM_EventType eventType | Event type. |
-| uint8_t \*info | Event info gotten from media key system. |
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type. |
+| uint8_t *info | Event info gotten from media key system. |
 | int32_t infoLen | Event info len. |
-| char \*extra | Extra info gotten from media key system. |
+| char *extra | Extra info gotten from media key system. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_INVALID_VAL when the params checked failure, return DRM_ERR_OK when function called successfully. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_INVALID_VAL when the params checked failure, return DRM_ERR_OK when function called successfully. |
 
 ### OH_MediaKeySystem_Callback()
 
@@ -90,25 +86,23 @@ typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem
 
 Call back will be invoked when event triggers.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem \*mediaKeySystem | MediaKeySystem instance. |
-| DRM_EventType eventType | Event type. |
-| uint8_t \*info | Event info gotten from media key system. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem instance. |
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type. |
+| uint8_t *info | Event info gotten from media key system. |
 | int32_t infoLen | Event info len. |
-| char \*extra | Extra info gotten from media key system. |
+| char *extra | Extra info gotten from media key system. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_INVALID_VAL when the params checked failure, return DRM_ERR_OK when function called successfully. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_INVALID_VAL when the params checked failure, return DRM_ERR_OK when function called successfully. |
 
 ### OH_MediaKeySystem_SetCallback()
 
@@ -120,22 +114,20 @@ Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_Med
 
 Set media key system event callback.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | [OH_MediaKeySystem_Callback](capi-native-mediakeysystem-h.md#oh_mediakeysystem_callback) callback | Callback to be set to the media key system. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - If the mediaKeySystem instance is nullptr or invalid,          or the mediaKeySession is nullptr or invalid. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - If the mediaKeySystem instance is nullptr or invalid, or the mediaKeySession is nullptr or invalid. |
 
 ### OH_MediaKeySystem_GetMediaKeySystems()
 
@@ -147,22 +139,20 @@ Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *
 
 Acquire supported media key systems' name and uuid.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| DRM_MediaKeySystemDescription *descs | Array used to save media key systems' name and uuid. |
+| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) *descs | Array used to save media key systems' name and uuid. |
 | uint32_t *count | Used to indicate count of struct DRM_MediaKeySystemDescription. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - Probably caused by:          1.the description or the count is nullptr.          2. the size of the description array is smaller than the actual number obtained.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - Probably caused by: 1.the description or the count is nullptr. 2. the size of the description array is smaller than the actual number obtained. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_IsSupported()
 
@@ -174,8 +164,6 @@ bool OH_MediaKeySystem_IsSupported(const char *name)
 
 Checks whether the device supports the specified DRM solution.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -188,7 +176,7 @@ Checks whether the device supports the specified DRM solution.
 
 | Type | Description |
 | -- | -- |
-| bool | Check result for the support of the DRM solution. true if supported, false otherwise. |
+| bool | Check result for the support of the DRM solution. **true** if supported, **false** otherwise. |
 
 ### OH_MediaKeySystem_IsSupported2()
 
@@ -200,8 +188,6 @@ bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 
 Checks whether the device supports the combination of the DRM solution and MIME type.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -215,7 +201,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 | Type | Description |
 | -- | -- |
-| bool | Check result for the support of the combination. true if supported, false otherwise. |
+| bool | Check result for the support of the combination. **true** if supported, **false** otherwise. |
 
 ### OH_MediaKeySystem_IsSupported3()
 
@@ -227,8 +213,6 @@ bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_
 
 Checks whether the device supports the combination of the DRM solution, MIME type, and content protection level.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -237,13 +221,13 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 | -- | -- |
 | const char *name | Pointer to the DRM solution name. |
 | const char *mimeType | Pointer to the MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev. |
-| DRM_ContentProtectionLevel contentProtectionLevel | Content protection level. |
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) contentProtectionLevel | Content protection level. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Check result for the support of the combination. true if supported, false otherwise. |
+| bool | Check result for the support of the combination. **true** if supported, **false** otherwise. |
 
 ### OH_MediaKeySystem_Create()
 
@@ -255,8 +239,6 @@ Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKey
 
 Creates a media key system instance from the name.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -264,13 +246,13 @@ Creates a media key system instance from the name.
 | Parameter | Description |
 | -- | -- |
 | const char *name | Specifies which drm system will be created by name. |
-| MediaKeySystem **mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) **mediaKeySystem | Media key system instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - Probably caused by:          1. the name is nullptr or the length of name is zero.          2. the mediaKeySystem is nullptr.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs.          [DRM_ERR_SERVICE_DIED](capi-native-drm-err-h.md#drm_errcode) 24700507 - Service died.          [DRM_ERR_MAX_SYSTEM_NUM_REACHED](capi-native-drm-err-h.md#drm_errcode) 24700510 - The maximum number of media key systems is reached. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - Probably caused by: 1. the name is nullptr or the length of name is zero. 2. the mediaKeySystem is nullptr. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. [DRM_ERR_SERVICE_DIED](capi-native-drm-err-h.md#drm_errcode) 24700507 - Service died. [DRM_ERR_MAX_SYSTEM_NUM_REACHED](capi-native-drm-err-h.md#drm_errcode) 24700510 - The maximum number of media key systems is reached. |
 
 ### OH_MediaKeySystem_SetConfigurationString()
 
@@ -282,15 +264,13 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySys
 
 Set media key system configuration value by name.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | const char *configName | Configuration name string. |
 | const char *value | Configuration value string to be set. |
 
@@ -298,7 +278,7 @@ Set media key system configuration value by name.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_GetConfigurationString()
 
@@ -310,15 +290,13 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySys
 
 Get media key system configuration value by name.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | const char *configName | Configuration name string. |
 | char *value | Configuration value string to be get. |
 | int32_t valueLen | Configuration value string len for in buffer. |
@@ -327,7 +305,7 @@ Get media key system configuration value by name.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_SetConfigurationByteArray()
 
@@ -339,15 +317,13 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKey
 
 Set media key system configuration value by name.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | const char *configName | Configuration name string. |
 | uint8_t *value | Configuration value in byte array to be set. |
 | int32_t valueLen | Value array len. |
@@ -356,7 +332,7 @@ Set media key system configuration value by name.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_GetConfigurationByteArray()
 
@@ -368,15 +344,13 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKey
 
 Get media key system configuration value by name.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | const char *configName | Configuration name string. |
 | uint8_t *value | Configuration value in byte array to be get. |
 | int32_t *valueLen | Configuration value len for in buffer and out data. |
@@ -385,7 +359,7 @@ Get media key system configuration value by name.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_GetStatistics()
 
@@ -397,22 +371,20 @@ Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_
 
 Get media key system statistics info.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
-| DRM_Statistics *statistics | Statistic info gotten. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
+| [DRM_Statistics](capi-drm-drm-statistics.md) *statistics | Statistic info gotten. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_GetMaxContentProtectionLevel()
 
@@ -424,22 +396,20 @@ Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *media
 
 Get the max content protection level media key system supported.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
-| DRM_ContentProtectionLevel *contentProtectionLevel | Content protection level. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) *contentProtectionLevel | Content protection level. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_SetMediaKeySystemCallback()
 
@@ -451,22 +421,20 @@ Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKey
 
 Set media key system event callback.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | [MediaKeySystem_Callback](capi-native-mediakeysystem-h.md#mediakeysystem_callback) callback | Callback to be set to the media key system. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. |
 
 ### OH_MediaKeySystem_CreateMediaKeySession()
 
@@ -478,23 +446,21 @@ Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySyst
 
 Create a media key session instance.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance which will create the media key session. |
-| DRM_ContentProtectionLevel *level | Specifies the content protection level. |
-| MediaKeySession **mediaKeySession | Media key session instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance which will create the media key session. |
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) *level | Specifies the content protection level. |
+| [MediaKeySession](capi-drm-mediakeysession.md) **mediaKeySession | Media key session instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - Probably caused by:          1. The parameter passed in is a null pointer or invalid.          2. the level is beyond reasonable range.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs.          [DRM_ERR_SERVICE_DIED](capi-native-drm-err-h.md#drm_errcode) 24700507 - Service died.          [DRM_ERR_MAX_SESSION_NUM_REACHED](capi-native-drm-err-h.md#drm_errcode) 24700511 - The maximum number of media key sessions is reached. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - Probably caused by: 1. The parameter passed in is a null pointer or invalid. 2. the level is beyond reasonable range. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. [DRM_ERR_SERVICE_DIED](capi-native-drm-err-h.md#drm_errcode) 24700507 - Service died. [DRM_ERR_MAX_SESSION_NUM_REACHED](capi-native-drm-err-h.md#drm_errcode) 24700511 - The maximum number of media key sessions is reached. |
 
 ### OH_MediaKeySystem_GenerateKeySystemRequest()
 
@@ -506,15 +472,13 @@ Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeyS
 
 Generate a media key system provision request.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | uint8_t *request | Provision request data sent to provision server. |
 | int32_t *requestLen | Provision request data len for in buffer and out data. |
 | char *defaultUrl | Provision server URL. |
@@ -524,7 +488,7 @@ Generate a media key system provision request.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_ProcessKeySystemResponse()
 
@@ -536,15 +500,13 @@ Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeyS
 
 Process a media key system provision response.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | uint8_t *response | The provision response will be processed. |
 | int32_t responseLen | The response len. |
 
@@ -552,7 +514,7 @@ Process a media key system provision response.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyIds()
 
@@ -564,22 +526,20 @@ Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySyst
 
 Get offline media key ids .
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
-| DRM_OfflineMediakeyIdArray *offlineMediaKeyIds | Media key ids of all offline media keys. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
+| [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md) *offlineMediaKeyIds | Media key ids of all offline media keys. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyStatus()
 
@@ -591,24 +551,22 @@ Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeyS
 
 Get offline media key status.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | uint8_t *offlineMediaKeyId | Offline media key identifier. |
 | int32_t offlineMediaKeyIdLen | Offline media key identifier len. |
-| DRM_OfflineMediaKeyStatus *status | The media key status gotten. |
+| [DRM_OfflineMediaKeyStatus](capi-native-drm-common-h.md#drm_offlinemediakeystatus) *status | The media key status gotten. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_ClearOfflineMediaKeys()
 
@@ -620,15 +578,13 @@ Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySyst
 
 Clear an offline media key by id.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
 | uint8_t *offlineMediaKeyId | Offline media key identifier. |
 | int32_t offlineMediaKeyIdLen | Offline media key identifier len. |
 
@@ -636,7 +592,7 @@ Clear an offline media key by id.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_GetCertificateStatus()
 
@@ -648,22 +604,20 @@ Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySyste
 
 Get certificate status of media key system.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Media key system instance. |
-| DRM_CertificateStatus *certStatus | Status will be gotten. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Media key system instance. |
+| [DRM_CertificateStatus](capi-native-drm-common-h.md#drm_certificatestatus) *certStatus | Status will be gotten. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySystem_Destroy()
 
@@ -675,20 +629,18 @@ Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)
 
 Destroy a media key system instance.
 
-**System capability**: SystemCapability.Multimedia.Drm.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | Specifies which media key system instance will be destroyed. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Specifies which media key system instance will be destroyed. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success. [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 

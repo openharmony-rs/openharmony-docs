@@ -8,8 +8,6 @@
 
 **库：** libnative_media_codecbase.so
 
-**系统能力：** SystemCapability.Multimedia.Media.CodecBase
-
 **起始版本：** 26.0.0
 
 **相关模块：** [CodecBase](capi-codecbase.md)
@@ -34,13 +32,13 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_TOP | 用于描述单个ROI（感兴趣区域）矩形顶部坐标（y）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为[0, [OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM](capi-native-avcodec-videobase-h.md#变量))。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_LEFT | 用于描述单个ROI矩形左侧坐标 (x) 的键，值类型为 int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为[0, [OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT](capi-native-avcodec-videobase-h.md#变量))。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM | 用于描述单个ROI矩形底部坐标（y）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为([OH_MD_KEY_VIDEO_METADATA_ROI_TOP](capi-native-avcodec-videobase-h.md#变量), {@link OH_MD_KEY_VIDEO_HEIGHT}]。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT | 用于描述单个ROI矩形右侧坐标（x）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为([OH_MD_KEY_VIDEO_METADATA_ROI_LEFT](capi-native-avcodec-videobase-h.md#变量), {@link OH_MD_KEY_VIDEO_WIDTH}]。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_DELTA_QP | 用于描述单个ROI的量化参数（QP）偏移量的键，值类型为int32_t。<br> 该变量取值范围为[-51, 51]。 这是配置ROI参数时的可选键。 如果未设置此键，编码器将对此区域使用其默认的量化参数策略。<br>**起始版本：** 26.0.0 |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_SEM_LABEL | 用于描述单个ROI语义标签的键，值类型为int32_t。<br> 该变量值必须与[OH_VideoMetadataRoiSemanticLabel](capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)对应。 这是配置ROI参数时的可选键。 如果未设置此键，该区域将采用默认的语义处理策略。<br>**起始版本：** 26.0.0 |
-| const char *OH_MD_KEY_VIDEO_ENCODER_WITH_LOWPOWER_CAMERA | 定义采编联合低功耗优化的使能的KEY。<br> 该KEY是采编联合低功耗优化的配置开关。 使用[OH_AVFormat_SetIntValue](capi-native-avformat-h.md#oh_avformat_setintvalue)设置启用状态：<br>-1：开启采编联合低功耗优化。<br>-0：关闭此能力（默认）。<br>使用约束：<br>该key仅对视频编码器有效。<br>这是一个可选参数。可在编码器中配置<br>通过{@link OH_AVCodec_Configure}初始化，或<br>在运行时通过{@link OH_AVCodec_SetParameter}启用。 启用后，采集侧会根据编码信息调整采集配置策略，以降低整体功耗<br>**起始版本：** 26.0.1 |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_TOP | 用于描述单个ROI（感兴趣区域）矩形顶部坐标（y）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为[0, [OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM](capi-native-avcodec-videobase-h.md#变量))。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_LEFT | 用于描述单个ROI矩形左侧坐标 (x) 的键，值类型为 int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为[0, [OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT](capi-native-avcodec-videobase-h.md#变量))。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM | 用于描述单个ROI矩形底部坐标（y）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为([OH_MD_KEY_VIDEO_METADATA_ROI_TOP](capi-native-avcodec-videobase-h.md#变量), OH_MD_KEY_VIDEO_HEIGHT]。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT | 用于描述单个ROI矩形右侧坐标（x）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为([OH_MD_KEY_VIDEO_METADATA_ROI_LEFT](capi-native-avcodec-videobase-h.md#变量), OH_MD_KEY_VIDEO_WIDTH]。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_DELTA_QP | 用于描述单个ROI的量化参数（QP）偏移量的键，值类型为int32_t。<br> 该变量取值范围为[-51, 51]。 这是配置ROI参数时的可选键。 如果未设置此键，编码器将对此区域使用其默认的量化参数策略。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_SEM_LABEL | 用于描述单个ROI语义标签的键，值类型为int32_t。<br> 该变量值必须与[OH_VideoMetadataRoiSemanticLabel](capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)对应。 这是配置ROI参数时的可选键。 如果未设置此键，该区域将采用默认的语义处理策略。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_ENCODER_WITH_LOWPOWER_CAMERA | 定义采编联合低功耗优化的使能的KEY。<br> 该KEY是采编联合低功耗优化的配置开关。 使用[OH_AVFormat_SetIntValue](capi-native-avformat-h.md#oh_avformat_setintvalue)设置启用状态： -1：开启采编联合低功耗优化。 -0：关闭此能力（默认）。 使用约束： 该key仅对视频编码器有效。 这是一个可选参数。可在编码器中配置 通过OH_AVCodec_Configure初始化，或 在运行时通过OH_AVCodec_SetParameter启用。 启用后，采集侧会根据编码信息调整采集配置策略，以降低整体功耗<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 
 ## 枚举类型说明
 
@@ -53,8 +51,6 @@ enum OH_VideoMetadataRoiSemanticLabel
 **描述：**
 
 视频编码中感兴趣区域（ROI）的语义标签。
-
-**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 26.0.0
 
@@ -80,22 +76,22 @@ OH_AVErrCode OH_VideoMetadata_AppendRoiString(char **roiStrInOut, OH_AVFormat *f
 >
 > 调用者拥有为*roiStrInOut分配内存的所有权。 内存是通过标准C库分配器（malloc/realloc）分配的。 当不再需要该字符串时，调用者必须使用匹配的标准C库释放器（free）释放该字符串， 并将指针设置为NULL以防止重复释放。
 
-**系统能力：** SystemCapability.Multimedia.Media.CodecBase
-
 **起始版本：** 26.0.0
+
+**资源释放：** free {roiStrInOut}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | char **roiStrInOut | 指向目标字符串的双重指针。指针本身不能为NULL。如果*roiStrInOut为NULL，则分配一个新字符串。 |
-| OH_AVFormat *format | 包含要追加的ROI参数的OH_AVFormat句柄，不能为NULL。 |
+| [OH_AVFormat](capi-core-oh-avformat.md) *format | 包含要追加的ROI参数的OH_AVFormat句柄，不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | @return          AV_ERR_OK：表示字符串成功格式化并追加。          <br>AV_ERR_INVALID_VAL：表示roiStrInOut指针或format句柄为NULL，或者格式缺少必需的ROI键。          <br>AV_ERR_NO_MEMORY：表示内部内存分配或重新分配失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：表示字符串成功格式化并追加。<br>AV_ERR_INVALID_VAL：表示roiStrInOut指针或format句柄为NULL，或者格式缺少必需的ROI键。<br>AV_ERR_NO_MEMORY：表示内部内存分配或重新分配失败。 |
 
 ### OH_VideoMetadata_GetRoiCount()
 
@@ -106,8 +102,6 @@ OH_AVErrCode OH_VideoMetadata_GetRoiCount(const char *roiStr, uint32_t *outCount
 **描述：**
 
 预解析ROI字符串，以获取其中包含的有效ROI区域数量。<br> 此接口不受具体后端容量限制影响，并根据语法规则准确返回字符串中识别出的有效区域数。
-
-**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 26.0.0
 
@@ -122,7 +116,7 @@ OH_AVErrCode OH_VideoMetadata_GetRoiCount(const char *roiStr, uint32_t *outCount
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | @return          AV_ERR_OK：表示操作成功。          <br>AV_ERR_INVALID_VAL：表示roiStr或outCount指针为NULL。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：表示操作成功。<br>AV_ERR_INVALID_VAL：表示roiStr或outCount指针为NULL。 |
 
 ### OH_VideoMetadata_ParseRoiString()
 
@@ -138,16 +132,16 @@ OH_AVErrCode OH_VideoMetadata_ParseRoiString(const char *roiStr, OH_AVFormat **o
 >
 > 调用者拥有每个成功创建的OH_AVFormat句柄的所有权。返回时， 有效的句柄存储在outOwnedFormats数组的前*outCount个元素中。 - 完全或部分成功时（*outCount > 0），调用者必须使用[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)逐个销毁 有效句柄，以防止内存泄漏。 - 完全失败时（*outCount == 0），不会创建任何句柄，也无需销毁。
 
-**系统能力：** SystemCapability.Multimedia.Media.CodecBase
-
 **起始版本：** 26.0.0
+
+**资源释放：** media_foundation/OH_AVFormat_Destroy {outOwnedFormats}。
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | const char *roiStr | 输入的ROI配置字符串。 |
-| OH_AVFormat **outOwnedFormats | 由调用者分配的指针数组，用于接收解析后的OH_AVFormat句柄。调用者拥有此数组中每个非NULL句柄的所有权。 |
+| [OH_AVFormat](capi-core-oh-avformat.md) **outOwnedFormats | 由调用者分配的指针数组，用于接收解析后的OH_AVFormat句柄。调用者拥有此数组中每个非NULL句柄的所有权。 |
 | uint32_t maxCapacity | 指示outOwnedFormats数组的最大物理容量，以防止越界写入。 |
 | uint32_t *outCount | 返回成功解析并填充到数组中的实际ROI数量。 |
 
@@ -155,6 +149,6 @@ OH_AVErrCode OH_VideoMetadata_ParseRoiString(const char *roiStr, OH_AVFormat **o
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | @return         AV_ERR_OK：表示操作成功。         <br>AV_ERR_INVALID_VAL：表示roiStr、outOwnedFormats或outCount为NULL。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：表示操作成功。<br>AV_ERR_INVALID_VAL：表示roiStr、outOwnedFormats或outCount为NULL。 |
 
 

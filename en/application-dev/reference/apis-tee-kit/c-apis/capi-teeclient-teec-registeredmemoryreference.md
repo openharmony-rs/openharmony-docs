@@ -22,7 +22,7 @@ Defines a pointer to the shared memory that is registered or allocated.
 
 | Name | Description |
 | -- | -- |
-| [TEEC_SharedMemory](capi-teeclient-teec-sharedmemory.md) *parent | Pointer to the parent shared memory. |
+| TEEC_SharedMemory *parent | Pointer to the parent shared memory. |
 | uint32_t size | Size of the registered memory reference. |
 | uint32_t offset | Offset within the parent shared memory. |
 

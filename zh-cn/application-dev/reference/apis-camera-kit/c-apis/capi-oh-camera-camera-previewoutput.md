@@ -6,7 +6,7 @@ typedef struct Camera_PreviewOutput Camera_PreviewOutput
 
 ## 概述
 
-预览输出对象。<br> 可以使用{@link OH_CameraManager_CreatePreviewOutput}方法创建指针。
+预览输出对象。<br> 可以使用[OH_CameraManager_CreatePreviewOutput](capi-camera-manager-h.md#oh_cameramanager_createpreviewoutput)方法创建指针。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

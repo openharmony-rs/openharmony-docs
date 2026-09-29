@@ -6,8 +6,6 @@
 
 **库：** libohavsession.so
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)
@@ -18,7 +16,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md) | AVSession_PlaybackPosition | 媒体播放位置的相关属性。 |
+| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md) | - | 媒体播放位置的相关属性。 |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md) | OH_AVSession_AVPlaybackState | 播放状态对象。 |
 
 ### 函数
@@ -42,8 +40,6 @@ AVSession_ErrCode OH_AVSession_GetPlaybackState(OH_AVSession_AVPlaybackState* pl
 
 获取播放的状态。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -51,13 +47,13 @@ AVSession_ErrCode OH_AVSession_GetPlaybackState(OH_AVSession_AVPlaybackState* pl
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | 表示播放状态实例对象。 |
-| AVSession_PlaybackState* state | 指针变量将返回播放状态值。 |
+| [AVSession_PlaybackState](capi-native-avsession-base-h.md#avsession_playbackstate)* state | 指针变量将返回播放状态值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数state为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n 1. 参数playbackState为nullptr。\n 2. 参数state为nullptr。 |
 
 ### OH_AVSession_GetPlaybackPosition()
 
@@ -68,8 +64,6 @@ AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState*
 **描述：**
 
 获取播放状态的位置。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -84,7 +78,7 @@ AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState*
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数position为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n 1. 参数playbackState为nullptr。\n 2. 参数position为nullptr。 |
 
 ### OH_AVSession_GetPlaybackSpeed()
 
@@ -95,8 +89,6 @@ AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* pl
 **描述：**
 
 获取播放状态的倍速。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -111,7 +103,7 @@ AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* pl
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数speed为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n 1. 参数playbackState为nullptr。\n 2. 参数speed为nullptr。 |
 
 ### OH_AVSession_GetPlaybackVolume()
 
@@ -122,8 +114,6 @@ AVSession_ErrCode OH_AVSession_GetPlaybackVolume(OH_AVSession_AVPlaybackState* p
 **描述：**
 
 获取投播音量
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -138,6 +128,6 @@ AVSession_ErrCode OH_AVSession_GetPlaybackVolume(OH_AVSession_AVPlaybackState* p
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | 返回调用执行结果 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | 返回调用执行结果 |
 
 

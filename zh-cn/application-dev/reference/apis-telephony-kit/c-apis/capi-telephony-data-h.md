@@ -6,8 +6,6 @@
 
 **库：** libtelephony_data.so
 
-**系统能力：** SystemCapability.Telephony.CellularData
-
 **起始版本：** 13
 
 **相关模块：** [Telephony](capi-telephony.md)
@@ -31,8 +29,6 @@ int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)
 **描述：**
 
 获取默认移动数据的SIM卡接口。
-
-**系统能力：** SystemCapability.Telephony.CellularData
 
 **起始版本：** 13
 

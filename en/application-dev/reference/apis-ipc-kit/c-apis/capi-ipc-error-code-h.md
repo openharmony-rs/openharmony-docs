@@ -6,8 +6,6 @@ Defines the IPC error codes.
 
 **Library**: libipc_capi.so
 
-**System capability**: SystemCapability.Communication.IPC.Core
-
 **Since**: 12
 
 **Related module**: [OHIPCErrorCode](capi-ohipcerrorcode.md)
@@ -31,8 +29,6 @@ enum OH_IPC_ErrorCode
 **Description**
 
 Enumerates the IPC error codes.
-
-**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 

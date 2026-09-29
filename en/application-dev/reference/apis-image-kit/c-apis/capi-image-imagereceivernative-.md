@@ -1,12 +1,12 @@
 # ImageReceiverNative_
 
 ```c
-typedef struct ImageReceiverNative_ ImageReceiverNative
+struct ImageReceiverNative_
 ```
 
 ## Overview
 
-Defines the data type name of a native image receiver.
+Defines an <b>ImageReceiver</b> object at the native layer.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 

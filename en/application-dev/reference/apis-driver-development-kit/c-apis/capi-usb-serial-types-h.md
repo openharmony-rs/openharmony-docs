@@ -6,8 +6,6 @@ Provides the enum variables, structures, and macros used in USB Serial DDK APIs.
 
 **Library**: libusb_serial_ndk.z.so
 
-**System capability**: SystemCapability.Driver.UsbSerial.Extension
-
 **Since**: 18
 
 **Related module**: [USBSerialDDK](capi-usbserialddk.md)
@@ -18,7 +16,7 @@ Provides the enum variables, structures, and macros used in USB Serial DDK APIs.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [UsbSerial_Params](capi-usbserialddk-usbserial-params.md) | \_\_attribute\_\_((aligned(8))) UsbSerial_Params | Defines the USB serial port parameters for the USB Serial DDK. |
+| [UsbSerial_Params](capi-usbserialddk-usbserial-params.md) | - | Defines the USB serial port parameters for the USB Serial DDK. |
 | [UsbSerial_Device](capi-usbserialddk-usbserial-device.md) | UsbSerial_Device | Defines the data structures (opaque) for the USB serial port device. |
 
 ### Enum
@@ -40,8 +38,6 @@ enum UsbSerial_DdkRetCode
 **Description**
 
 Defines the return codes used by the USB Serial DDK.
-
-**System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Since**: 18
 
@@ -67,8 +63,6 @@ enum UsbSerial_FlowControl
 
 Defines the flow control mode for the USB Serial DDK.
 
-**System capability**: SystemCapability.Driver.UsbSerial.Extension
-
 **Since**: 18
 
 | Enum item | Description |
@@ -86,8 +80,6 @@ enum UsbSerial_Parity
 **Description**
 
 Defines the enums of the parity parameter used by the USB Serial DDK.
-
-**System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Since**: 18
 

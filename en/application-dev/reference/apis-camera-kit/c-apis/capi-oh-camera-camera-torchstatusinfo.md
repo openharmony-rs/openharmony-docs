@@ -1,7 +1,7 @@
 # Camera_TorchStatusInfo
 
 ```c
-typedef struct Camera_TorchStatusInfo {...} Camera_TorchStatusInfo
+struct Camera_TorchStatusInfo {...}
 ```
 
 ## Overview

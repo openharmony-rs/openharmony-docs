@@ -6,7 +6,7 @@ typedef struct ArkUI_SwiperArrowStyle ArkUI_SwiperArrowStyle
 
 ## Overview
 
-Defines the arrow style for the swiper.
+Defines the navigation arrow style of the **Swiper** component, which implements page-turning guidance by configuring attributes such as the arrow position, size, and color.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

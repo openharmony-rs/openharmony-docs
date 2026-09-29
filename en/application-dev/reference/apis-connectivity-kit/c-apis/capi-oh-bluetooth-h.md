@@ -6,8 +6,6 @@ Define interfaces for querying bluetooth switch status.
 
 **Library**: libbluetooth_ndk.so
 
-**System capability**: SystemCapability.Communication.Bluetooth.Core
-
 **Since**: 13
 
 **Related module**: [Bluetooth](capi-bluetooth.md)
@@ -39,8 +37,6 @@ enum Bluetooth_SwitchState
 
 Enumeration state of bluetooth switch.
 
-**System capability**: SystemCapability.Communication.Bluetooth.Core
-
 **Since**: 13
 
 | Enum item | Description |
@@ -63,14 +59,12 @@ enum Bluetooth_ResultCode
 
 Enumeration the bluetooth result codes.
 
-**System capability**: SystemCapability.Communication.Bluetooth.Core
-
 **Since**: 13
 
 | Enum item | Description |
 | -- | -- |
-| BLUETOOTH_SUCCESS = 0 | The operation is successful. |
-| BLUETOOTH_INVALID_PARAM = 401 | Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range. |
+| BLUETOOTH_SUCCESS = 0 | &nbsp;The operation is successful. |
+| BLUETOOTH_INVALID_PARAM = 401 | &nbsp;Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range. |
 
 
 ## Function description
@@ -85,8 +79,6 @@ Bluetooth_ResultCode OH_Bluetooth_GetBluetoothSwitchState(Bluetooth_SwitchState 
 
 Get the bluetooth switch state.
 
-**System capability**: SystemCapability.Communication.Bluetooth.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -99,6 +91,6 @@ Get the bluetooth switch state.
 
 | Type | Description |
 | -- | -- |
-| [Bluetooth_ResultCode](capi-oh-bluetooth-h.md#bluetooth_resultcode) | Bluetooth functions result code.      For a detailed definition, please refer to [Bluetooth_ResultCode](capi-oh-bluetooth-h.md#bluetooth_resultcode).      [BLUETOOTH_SUCCESS](capi-oh-bluetooth-h.md#bluetooth_resultcode) Successfully obtained the bluetooth switch status.      [BLUETOOTH_INVALID_PARAM](capi-oh-bluetooth-h.md#bluetooth_resultcode) The input parameter enabled is a null pointer. |
+| [Bluetooth_ResultCode](capi-oh-bluetooth-h.md#bluetooth_resultcode) | Bluetooth functions result code. For a detailed definition, please refer to [Bluetooth_ResultCode](capi-oh-bluetooth-h.md#bluetooth_resultcode). [BLUETOOTH_SUCCESS](capi-oh-bluetooth-h.md#bluetooth_resultcode) Successfully obtained the bluetooth switch status. [BLUETOOTH_INVALID_PARAM](capi-oh-bluetooth-h.md#bluetooth_resultcode) The input parameter enabled is a null pointer. |
 
 

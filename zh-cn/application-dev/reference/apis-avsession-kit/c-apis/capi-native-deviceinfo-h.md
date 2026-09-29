@@ -6,8 +6,6 @@
 
 **库：** libohavsession.so
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)
@@ -43,8 +41,6 @@ AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceIn
 
 获取目标设备的投播类别。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -52,13 +48,13 @@ AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceIn
 | 参数项 | 描述 |
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
-| AVSession_AVCastCategory *aVCastCategory | 返回aVCastCategory值的指针变量。 |
+| [AVSession_AVCastCategory](capi-native-avsession-base-h.md#avsession_avcastcategory) *aVCastCategory | 返回aVCastCategory值的指针变量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数aVCastCategory为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数deviceInfo为nullptr。\n 2. 参数aVCastCategory为nullptr。 |
 
 ### OH_DeviceInfo_GetDeviceId()
 
@@ -69,8 +65,6 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceId(AVSession_DeviceInfo *deviceInfo, ch
 **描述：**
 
 获取目标设备的设备ID。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -85,7 +79,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceId(AVSession_DeviceInfo *deviceInfo, ch
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceId为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数deviceInfo为nullptr。\n 2. 参数deviceId为nullptr。 |
 
 ### OH_DeviceInfo_GetDeviceName()
 
@@ -96,8 +90,6 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceName(AVSession_DeviceInfo *deviceInfo, 
 **描述：**
 
 获取目标设备的设备名称。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -112,7 +104,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceName(AVSession_DeviceInfo *deviceInfo, 
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceName为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数deviceInfo为nullptr。\n 2. 参数deviceName为nullptr。 |
 
 ### OH_DeviceInfo_GetDeviceType()
 
@@ -124,8 +116,6 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceType(AVSession_DeviceInfo *deviceInfo, 
 
 获取目标设备的设备类型。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -133,13 +123,13 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceType(AVSession_DeviceInfo *deviceInfo, 
 | 参数项 | 描述 |
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
-| AVSession_DeviceType *deviceType | 返回设备类型的指针变量。 |
+| [AVSession_DeviceType](capi-native-avsession-base-h.md#avsession_devicetype) *deviceType | 返回设备类型的指针变量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceType为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数deviceInfo为nullptr。\n 2. 参数deviceType为nullptr。 |
 
 ### OH_DeviceInfo_GetSupportedProtocols()
 
@@ -150,8 +140,6 @@ AVSession_ErrCode OH_DeviceInfo_GetSupportedProtocols(AVSession_DeviceInfo *devi
 **描述：**
 
 获取目标设备支持的协议。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -166,6 +154,6 @@ AVSession_ErrCode OH_DeviceInfo_GetSupportedProtocols(AVSession_DeviceInfo *devi
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceProtocolType为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数deviceInfo为nullptr。\n 2. 参数deviceProtocolType为nullptr。 |
 
 

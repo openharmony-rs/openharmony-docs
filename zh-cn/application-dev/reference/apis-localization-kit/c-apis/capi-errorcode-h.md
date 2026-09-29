@@ -6,8 +6,6 @@
 
 **库：** libohi18n.so
 
-**系统能力：** SystemCapability.Global.I18n
-
 **起始版本：** 22
 
 **相关模块：** [i18n](capi-i18n.md)
@@ -31,8 +29,6 @@ enum I18n_ErrorCode
 **描述：**
 
 i18n错误码
-
-**系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22
 

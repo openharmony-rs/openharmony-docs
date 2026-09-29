@@ -6,8 +6,6 @@ Provides the capability of obtaining time zone information.
 
 **Library**: libohi18n.so
 
-**System capability**: SystemCapability.Global.I18n
-
 **Since**: 22
 
 **Related module**: [i18n](capi-i18n.md)
@@ -16,14 +14,14 @@ Provides the capability of obtaining time zone information.
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [DateTimeRule](capi-i18n-datetimerule.md) | DateTimeRule | Defines the date and time rules to specify a date and time. |
-| [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md) | InitialTimeZoneRule | Defines the initial rule of a timezone which has no clear start time. |
-| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md) | TimeArrayTimeZoneRule | Defines time zone rule defined by the start timestamp array. |
-| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md) | AnnualTimeZoneRule | Defines the time zone rule that takes effect annually. |
-| [TimeZoneRules](capi-i18n-timezonerules.md) | TimeZoneRules | A complete time zone rule includes the start time zone rule, time zone rule defined by the start timestamp array, and time zone rule that takes effect every year. It can comprehensively describe both the historical and future rules of a time zone. |
-| [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md) | TimeZoneRuleQuery | Used to input the query information and receive the query result. |
+| Name | Description |
+| -- | -- |
+| [DateTimeRule](capi-i18n-datetimerule.md) | Defines the date and time rules to specify a date and time. |
+| [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md) | Defines the initial rule of a timezone which has no clear start time. |
+| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md) | Defines time zone rule defined by the start timestamp array. |
+| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md) | Defines the time zone rule that takes effect annually. |
+| [TimeZoneRules](capi-i18n-timezonerules.md) | A complete time zone rule includes the start time zone rule, time zone rule defined by the start timestamp array, and time zone rule that takes effect every year. It can comprehensively describe both the historical and future rules of a time zone. |
+| [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md) | Used to input the query information and receive the query result. |
 
 ### Enum
 
@@ -66,8 +64,6 @@ enum DateRuleType
 
 Enumerates the types of rules for defining dates.
 
-**System capability**: SystemCapability.Global.I18n
-
 **Since**: 22
 
 | Enum item | Description |
@@ -86,8 +82,6 @@ enum TimeRuleType
 **Description**
 
 Enumerates the types of rules for defining time.
-
-**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -110,8 +104,6 @@ I18n_ErrorCode OH_i18n_GetTimeZoneRules(const char* timeZoneID, TimeZoneRules* r
 
 Obtains the timezone rules by timezone ID.
 
-**System capability**: SystemCapability.Global.I18n
-
 **Since**: 22
 
 **Parameters**:
@@ -125,7 +117,7 @@ Obtains the timezone rules by timezone ID.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetFirstStartFromTimeArrayTimeZoneRule()
 
@@ -137,8 +129,6 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 Obtains the time when the TimeArrayTimeZoneRule first took effect.
 
-**System capability**: SystemCapability.Global.I18n
-
 **Since**: 22
 
 **Parameters**:
@@ -152,7 +142,7 @@ Obtains the time when the TimeArrayTimeZoneRule first took effect.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetFirstStartFromAnnualTimeZoneRule()
 
@@ -164,8 +154,6 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 Obtains the time when the AnnualTimeZoneRule first took effect.
 
-**System capability**: SystemCapability.Global.I18n
-
 **Since**: 22
 
 **Parameters**:
@@ -179,7 +167,7 @@ Obtains the time when the AnnualTimeZoneRule first took effect.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetFinalStartFromTimeArrayTimeZoneRule()
 
@@ -191,8 +179,6 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 Obtains the time when the TimeArrayTimeZoneRule final took effect.
 
-**System capability**: SystemCapability.Global.I18n
-
 **Since**: 22
 
 **Parameters**:
@@ -206,7 +192,7 @@ Obtains the time when the TimeArrayTimeZoneRule final took effect.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetFinalStartFromAnnualTimeZoneRule()
 
@@ -218,8 +204,6 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 Obtains the time when the AnnualTimeZoneRule final took effect.
 
-**System capability**: SystemCapability.Global.I18n
-
 **Since**: 22
 
 **Parameters**:
@@ -233,7 +217,7 @@ Obtains the time when the AnnualTimeZoneRule final took effect.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetNextStartFromTimeArrayTimeZoneRule()
 
@@ -245,8 +229,6 @@ I18n_ErrorCode OH_i18n_GetNextStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 Obtains the time when the TimeArrayTimeZoneRule next took effect.
 
-**System capability**: SystemCapability.Global.I18n
-
 **Since**: 22
 
 **Parameters**:
@@ -260,7 +242,7 @@ Obtains the time when the TimeArrayTimeZoneRule next took effect.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetNextStartFromAnnualTimeZoneRule()
 
@@ -272,8 +254,6 @@ I18n_ErrorCode OH_i18n_GetNextStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 
 Obtains the time when the AnnualTimeZoneRule next took effect.
 
-**System capability**: SystemCapability.Global.I18n
-
 **Since**: 22
 
 **Parameters**:
@@ -287,7 +267,7 @@ Obtains the time when the AnnualTimeZoneRule next took effect.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetPrevStartFromTimeArrayTimeZoneRule()
 
@@ -298,8 +278,6 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 **Description**
 
 Obtains the time when the TimeArrayTimeZoneRule previous took effect.
-
-**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -314,7 +292,7 @@ Obtains the time when the TimeArrayTimeZoneRule previous took effect.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetPrevStartFromAnnualTimeZoneRule()
 
@@ -325,8 +303,6 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 **Description**
 
 Obtains the time when the AnnualTimeZoneRule previous took effect.
-
-**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -341,7 +317,7 @@ Obtains the time when the AnnualTimeZoneRule previous took effect.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetStartTimeAt()
 
@@ -352,8 +328,6 @@ I18n_ErrorCode OH_i18n_GetStartTimeAt(TimeArrayTimeZoneRule* rule, int32_t index
 **Description**
 
 Obtain the effective start time of a specific rule in the TimeArrayTimeZoneRule.
-
-**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -369,7 +343,7 @@ Obtain the effective start time of a specific rule in the TimeArrayTimeZoneRule.
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 ### OH_i18n_GetStartInYear()
 
@@ -380,8 +354,6 @@ I18n_ErrorCode OH_i18n_GetStartInYear(AnnualTimeZoneRule* rule, int32_t year, Ti
 **Description**
 
 Obtain the effective start time of a specific rule for target year in the AnnualTimeZoneRule.
-
-**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -397,6 +369,6 @@ Obtain the effective start time of a specific rule for target year in the Annual
 
 | Type | Description |
 | -- | -- |
-| I18n_ErrorCode | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success.          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes:      Parameter verification failed.          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - Success. [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - Invalid parameter. Possible causes: Parameter verification failed. [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - Unexpected error, such as memory error. |
 
 

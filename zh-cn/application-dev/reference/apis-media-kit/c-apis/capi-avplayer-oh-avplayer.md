@@ -8,6 +8,8 @@ typedef struct OH_AVPlayer OH_AVPlayer
 
 声明OH_AVPlayer结构体类型。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 11
 
 **相关模块：** [AVPlayer](capi-avplayer.md)

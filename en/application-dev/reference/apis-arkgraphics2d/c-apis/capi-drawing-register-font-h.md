@@ -6,9 +6,7 @@ Defines functions related to the font manager in the drawing module, providing c
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
-**Since**: 8
+**Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
 
@@ -38,15 +36,13 @@ uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection* fontCollection, cons
 
 Registers a custom font with the font manager. The supported font file formats are .ttf and .otf.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | Indicates the pointer to an <b>OH_Drawing_FontCollection</b> object. |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | Indicates the pointer to an <b>OH_Drawing_FontCollection</b> object. |
 | const char* fontFamily | Name of the font to register. |
 | const char* familySrc | Path to the font file to register. |
 
@@ -54,7 +50,7 @@ Registers a custom font with the font manager. The supported font file formats a
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Result code.      <br>Returns 0 if the operation is successful.      <br>Returns 1 if the file does not exist.      <br>Returns 2 if opening the file fails.      <br>Returns 3 if reading the file fails.      <br>Returns 4 if seeking the file fails.      <br>Returns 5 if obtaining the file size fails.      <br>Returns 8 if fontCollection is NULL.      <br>Returns 9 if the file is corrupted. |
+| uint32_t | Result code. <br>Returns 0 if the operation is successful. <br>Returns 1 if the file does not exist. <br>Returns 2 if opening the file fails. <br>Returns 3 if reading the file fails. <br>Returns 4 if seeking the file fails. <br>Returns 5 if obtaining the file size fails. <br>Returns 8 if fontCollection is NULL. <br>Returns 9 if the file is corrupted. |
 
 ### OH_Drawing_RegisterFontBuffer()
 
@@ -66,15 +62,13 @@ uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection* fontCollection
 
 Registers a font buffer in the font manager, supporting data read from ttf and otf files.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | Indicates the pointer to an <b>OH_Drawing_FontCollection</b> object. |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | Indicates the pointer to an <b>OH_Drawing_FontCollection</b> object. |
 | const char* fontFamily | Font name of the font to register. |
 | uint8_t* fontBuffer | Buffer of the font file to register. |
 | size_t length | Length of the font file to register. Must match the actual length of fontBuffer. |
@@ -83,7 +77,7 @@ Registers a font buffer in the font manager, supporting data read from ttf and o
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Result code.      <br>Returns 0 if the operation is successful.      <br>Returns 6 if fontBuffer is NULL.      <br>Returns 7 if the buffer size is zero.      <br>Returns 8 if fontCollection is NULL. |
+| uint32_t | Result code. <br>Returns 0 if the operation is successful. <br>Returns 6 if fontBuffer is NULL. <br>Returns 7 if the buffer size is zero. <br>Returns 8 if fontCollection is NULL. |
 
 ### OH_Drawing_RegisterFontByIndex()
 
@@ -95,15 +89,13 @@ uint32_t OH_Drawing_RegisterFontByIndex(OH_Drawing_FontCollection* fontCollectio
 
 Registers a custom font using a ttc/otc file, with the index parameter specifying the font index to register.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object. |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object. |
 | const char* fontFamily | Family name of the font to register. |
 | const char* familySrc | Path of the font file to register. |
 | uint32_t index | Index of the font in the ttc/otc file. The value ranges from 0 to the total number of fonts minus 1. For non-ttc/otc files, set this parameter to 0. |
@@ -112,7 +104,7 @@ Registers a custom font using a ttc/otc file, with the index parameter specifyin
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Result code. 0 indicates function execution is successful, 1 indicates file does not exist, 2 indicates file      opening failure, 3 indicates file reading failure, 4 indicates file seeking failure, 5 indicates size obtaining      failure, 8 indicates fontCollection is NULL, and 9 indicates file corruption. |
+| uint32_t | Result code. 0 indicates function execution is successful, 1 indicates file does not exist, 2 indicates file opening failure, 3 indicates file reading failure, 4 indicates file seeking failure, 5 indicates size obtaining failure, 8 indicates fontCollection is NULL, and 9 indicates file corruption. |
 
 ### OH_Drawing_RegisterFontBufferByIndex()
 
@@ -124,15 +116,13 @@ uint32_t OH_Drawing_RegisterFontBufferByIndex(OH_Drawing_FontCollection* fontCol
 
 Registers a font using the font buffer of a TTC/OTC file.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object. |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object. |
 | const char* fontFamily | Family name of the font to register. |
 | uint8_t* fontBuffer | Font buffer of the font file to register. |
 | size_t length | Length of the byte stream data, which must match the actual length of fontBuffer. |
@@ -142,7 +132,7 @@ Registers a font using the font buffer of a TTC/OTC file.
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Result code.      <br>Returns 0 the function is executed successfully.      <br>Returns 6 if fontBuffer is NULL.      <br>Returns 7 if the buffer size is zero.      <br>Returns 8 if fontCollection is NULL.      <br>Returns 9 if the file is corrupted. |
+| uint32_t | Result code. <br>Returns 0 the function is executed successfully. <br>Returns 6 if fontBuffer is NULL. <br>Returns 7 if the buffer size is zero. <br>Returns 8 if fontCollection is NULL. <br>Returns 9 if the file is corrupted. |
 
 ### OH_Drawing_UnregisterFont()
 
@@ -154,22 +144,20 @@ uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, co
 
 Unregisters a custom font by font name. <br>Unregistering a font that is currently in use may lead to text rendering exceptions (such as garbled characters or missing glyphs). <br>All typesetting objects that use the unregistered font name should be destroyed and recreated.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_FontCollection* fontCollection | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object. |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object. |
 | const char* fontFamily | Font name to unregister. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Result code. Returns 0 if the function is executed successfully, 8 if the input parameter is invalid, and 1      if the unregistration fails. |
+| uint32_t | Result code. Returns 0 if the function is executed successfully, 8 if the input parameter is invalid, and 1 if the unregistration fails. |
 
 ### OH_Drawing_IsFontSupportedFromPath()
 
@@ -180,8 +168,6 @@ bool OH_Drawing_IsFontSupportedFromPath(const char* path)
 **Description**
 
 Checks whether the system supports the font format of the specified path.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -195,7 +181,7 @@ Checks whether the system supports the font format of the specified path.
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the font is supported; returns false otherwise. |
+| bool | Returns **true** if the font is supported; returns **false** otherwise. |
 
 ### OH_Drawing_IsFontSupportedFromBuffer()
 
@@ -206,8 +192,6 @@ bool OH_Drawing_IsFontSupportedFromBuffer(uint8_t* data, size_t dataLength)
 **Description**
 
 Checks whether the system supports the font format specified in the buffer.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -222,6 +206,6 @@ Checks whether the system supports the font format specified in the buffer.
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the font is supported; returns false otherwise. |
+| bool | Returns **true** if the font is supported; returns **false** otherwise. |
 
 

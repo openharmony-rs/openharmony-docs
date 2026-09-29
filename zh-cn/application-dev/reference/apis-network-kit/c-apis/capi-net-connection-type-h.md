@@ -6,8 +6,6 @@
 
 **库：** libnet_connection.so
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 11
 
 **相关模块：** [NetConnection](capi-netconnection.md)
@@ -30,6 +28,15 @@
 | [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) | 定义探测结果信息。 |
 | [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) | 定义网络跟踪路由选项。 |
 | [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) | 定义跟踪路由信息。 |
+
+### 枚举
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [NetConn_NetCap](#netconn_netcap) | NetConn_NetCap | 网络能力集。 |
+| [NetConn_NetBearerType](#netconn_netbearertype) | NetConn_NetBearerType | 网络载体类型。 |
+| [NetConn_ErrorCode](#netconn_errorcode) | NetConn_ErrorCode | 网络连接返回值错误码。 |
+| [NetConn_PacketsType](#netconn_packetstype) | NetConn_PacketsType | 枚举跟踪路由的数据包类型。 |
 
 ### 宏定义
 
@@ -62,15 +69,97 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res) | 指向自定义DNS解析器的指针。<br>**起始版本：** 11 |
-| void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy) | 应用的http代理信息变化回调。<br>**起始版本：** 12 |
-| void (*OH_NetConn_GlobalHttpProxyRefreshCallback)( int32_t result, const NetConn_HttpProxy *proxy, void *userContext) | 全局HTTP代理重新认证结果的回调。<br>**起始版本：** 26.0.0 |
-| void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle) | 网络可用回调。<br>**起始版本：** 12 |
-| void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities) | 网络能力集变更回调。<br>**起始版本：** 12 |
-| void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *connConnetionProperties) | 网络连接属性变更回调。<br>**起始版本：** 12 |
-| void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle) | 网络断开回调。<br>**起始版本：** 12 |
-| void (*OH_NetConn_NetUnavailable)(void) | 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。<br>**起始版本：** 12 |
-| void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked) | 网络阻塞状态变更回调。<br>**起始版本：** 12 |
+| int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res) | 指向自定义DNS解析器的指针。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
+| void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy) | 应用的http代理信息变化回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
+| void (*OH_NetConn_GlobalHttpProxyRefreshCallback)( int32_t result, const NetConn_HttpProxy *proxy, void *userContext) | 全局HTTP代理重新认证结果的回调。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
+| void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle) | 网络可用回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
+| void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities) | 网络能力集变更回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
+| void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *connConnetionProperties) | 网络连接属性变更回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
+| void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle) | 网络断开回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
+| void (*OH_NetConn_NetUnavailable)(void) | 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
+| void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked) | 网络阻塞状态变更回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
+
+## 枚举类型说明
+
+### NetConn_NetCap
+
+```c
+enum NetConn_NetCap
+```
+
+**描述：**
+
+网络能力集。
+
+**起始版本：** 11
+
+| 枚举项 | 描述 |
+| -- | -- |
+| NETCONN_NET_CAPABILITY_MMS = 0 | MMS. |
+| NETCONN_NET_CAPABILITY_NOT_METERED = 11 | 非计量网络 |
+| NETCONN_NET_CAPABILITY_INTERNET = 12 | Internet. |
+| NETCONN_NET_CAPABILITY_NOT_VPN = 15 | 非VPN |
+| NETCONN_NET_CAPABILITY_VALIDATED = 16 | 已验证 |
+| NETCONN_NET_CAPABILITY_PORTAL = 17 |  |
+| NETCONN_NET_CAPABILITY_CHECKING_CONNECTIVITY = 31 |  |
+
+### NetConn_NetBearerType
+
+```c
+enum NetConn_NetBearerType
+```
+
+**描述：**
+
+网络载体类型。
+
+**起始版本：** 11
+
+| 枚举项 | 描述 |
+| -- | -- |
+| NETCONN_BEARER_CELLULAR = 0 | 蜂窝网络 |
+| NETCONN_BEARER_WIFI = 1 | Wi-Fi. |
+| NETCONN_BEARER_BLUETOOTH = 2 |  |
+| NETCONN_BEARER_ETHERNET = 3 | Ethernet. |
+| NETCONN_BEARER_VPN = 4 |  |
+
+### NetConn_ErrorCode
+
+```c
+enum NetConn_ErrorCode
+```
+
+**描述：**
+
+网络连接返回值错误码。
+
+**起始版本：** 15
+
+| 枚举项 | 描述 |
+| -- | -- |
+| NETCONN_SUCCESS = 0 | 成功 |
+| NETCONN_PERMISSION_DENIED = 201 | 缺少权限 |
+| NETCONN_PARAMETER_ERROR = 401 | 参数错误 |
+| NETCONN_OPERATION_FAILED = 2100002 | 无法连接到服务 |
+| NETCONN_INTERNAL_ERROR = 2100003 | 内部错误。1. 内存异常，比如内存不足或内存拷贝失败。2. 空指针，比如访问已释放内存的指针。 |
+
+### NetConn_PacketsType
+
+```c
+enum NetConn_PacketsType
+```
+
+**描述：**
+
+枚举跟踪路由的数据包类型。
+
+**起始版本：** 20
+
+| 枚举项 | 描述 |
+| -- | -- |
+| NETCONN_PACKETS_ICMP = 0 | 互联网控制消息协议。 |
+| NETCONN_PACKETS_UDP = 1 | 用户数据报协议。 |
+
 
 ## 函数说明
 
@@ -84,18 +173,16 @@ typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, 
 
 指向自定义DNS解析器的指针。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char \*host | 要查询的主机名。 |
-| const char \*serv | 服务名称。 |
-| const struct addrinfo \*hint | 指向addrinfo结构的指针。 |
-| struct addrinfo \*\*res | 存储DNS查询结果并以链表形式返回。 |
+| const char *host | 要查询的主机名。 |
+| const char *serv | 服务名称。 |
+| const struct addrinfo *hint | 指向addrinfo结构的指针。 |
+| struct addrinfo **res | 存储DNS查询结果并以链表形式返回。 |
 
 ### OH_NetConn_AppHttpProxyChange()
 
@@ -107,15 +194,13 @@ typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)
 
 应用的http代理信息变化回调。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) \*proxy | 变化的代理配置信息，可能是空指针。 |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *proxy | 变化的代理配置信息，可能是空指针。 |
 
 ### OH_NetConn_GlobalHttpProxyRefreshCallback()
 
@@ -127,8 +212,6 @@ typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const 
 
 全局HTTP代理重新认证结果的回调。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -136,8 +219,8 @@ typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const 
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t result | 重新认证的结果。0表示成功，其他值表示失败。 |
-| [const NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) \*proxy | The refreshed global HTTP proxy information when result is 0. If re-authentication fails, proxy is NULL.<br> The proxy object is owned by the system and is valid only during this callback invocation. The caller must not free or modify it. If the caller needs to use the proxy information after the callback returns, the caller must make a deep copy. |
-| void \*userContext | The user-defined data passed to OH_NetConn_RefreshGlobalHttpProxyWithCallback. The system does not access, copy, or release it. |
+| [const NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *proxy | The refreshed global HTTP proxy information when result is 0. If re-authentication fails, proxy is NULL.<br> The proxy object is owned by the system and is valid only during this callback invocation. The caller must not free or modify it. If the caller needs to use the proxy information after the callback returns, the caller must make a deep copy. |
+| void *userContext | The user-defined data passed to OH_NetConn_RefreshGlobalHttpProxyWithCallback. The system does not access, copy, or release it. |
 
 ### OH_NetConn_NetworkAvailable()
 
@@ -149,15 +232,13 @@ typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)
 
 网络可用回调。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 网络句柄。 |
 
 ### OH_NetConn_NetCapabilitiesChange()
 
@@ -169,16 +250,14 @@ typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, N
 
 网络能力集变更回调。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
-| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) \*netCapabilities | 网络能力集。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 网络句柄。 |
+| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) *netCapabilities | 网络能力集。 |
 
 ### OH_NetConn_NetConnectionPropertiesChange()
 
@@ -190,16 +269,14 @@ typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netH
 
 网络连接属性变更回调。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
-| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) \*connConnetionProperties | 网络连接属性。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 网络句柄。 |
+| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) *connConnetionProperties | 网络连接属性。 |
 
 ### OH_NetConn_NetLost()
 
@@ -211,15 +288,13 @@ typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)
 
 网络断开回调。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 网络句柄。 |
 
 ### OH_NetConn_NetUnavailable()
 
@@ -230,8 +305,6 @@ typedef void (*OH_NetConn_NetUnavailable)(void)
 **描述：**
 
 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 12
 
@@ -245,15 +318,13 @@ typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bo
 
 网络阻塞状态变更回调。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 网络句柄。 |
 | bool blocked | 指示网络是否将被阻塞的标志。true表示网络被阻塞，false表示网络未被阻塞。 |
 
 

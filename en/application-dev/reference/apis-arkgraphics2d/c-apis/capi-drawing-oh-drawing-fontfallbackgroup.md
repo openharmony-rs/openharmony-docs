@@ -1,7 +1,7 @@
 # OH_Drawing_FontFallbackGroup
 
 ```c
-typedef struct OH_Drawing_FontFallbackGroup {...} OH_Drawing_FontFallbackGroup
+struct OH_Drawing_FontFallbackGroup {...}
 ```
 
 ## Overview

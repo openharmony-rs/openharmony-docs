@@ -1,7 +1,7 @@
 # Ethernet_NetAddrList
 
 ```c
-typedef struct Ethernet_NetAddrList {...} Ethernet_NetAddrList
+struct Ethernet_NetAddrList {...}
 ```
 
 ## 概述

@@ -186,7 +186,7 @@ NODE_ALIGN_RULES
 
 **Description**
 
-Sets the alignment rules in the relative container. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul><br><li>.object: Use the {@link ArkUI_AlignmentRuleOption} object as the component’s alignment rule.</li><br></ul><br>**Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Use the {@link ArkUI_AlignmentRuleOption} object as the component’s alignment rule.</li> </ul>
+Sets the alignment rules in the relative container. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Use the ArkUI_AlignmentRuleOption object as the component’s alignment rule.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Use the ArkUI_AlignmentRuleOption object as the component’s alignment rule.</li> </ul>
 
 **Since**: 12
 
@@ -330,7 +330,7 @@ NODE_RELATIVE_LAYOUT_CHAIN_MODE
 
 **Description**
 
-specifies the parameters of the chain formed by this component as the chain head, and supports attribute setting, attribute reset and attribute acquisition interfaces.<br> Only takes effect when the parent container is RelativeContainer<br> **Attribute setting method parameter [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) format:**<br><ul><br><li>.value[0].i32: The direction of the chain. Enum [ArkUI_Axis](capi-layout-h.md#arkui_axis).</li><br><li>.value[1].i32: Chain style. Enum {@link ArkUI_RelativeLayoutChainStyle}.</li><br><li>.value[0].i32: The direction of the chain. Enum [ArkUI_Axis](capi-layout-h.md#arkui_axis).</li><br><li>.value[1].i32: Chain style. Enum {@link ArkUI_RelativeLayoutChainStyle}.</li> </ul>
+specifies the parameters of the chain formed by this component as the chain head, and supports attribute setting, attribute reset and attribute acquisition interfaces.<br> Only takes effect when the parent container is RelativeContainer<br> **Attribute setting method parameter [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) format:**<br><ul> <li>.value[0].i32: The direction of the chain. Enum [ArkUI_Axis](capi-layout-h.md#arkui_axis).</li> <li>.value[1].i32: Chain style. Enum [ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle).</li> <li>.value[0].i32: The direction of the chain. Enum [ArkUI_Axis](capi-layout-h.md#arkui_axis).</li> <li>.value[1].i32: Chain style. Enum [ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle).</li> </ul>
 
 **Since**: 12
 

@@ -40,7 +40,7 @@ The struct describes the information about a display.
 | [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation) rotation | Clockwise rotation angle of the display. |
 | [NativeDisplayManager_DisplayState](capi-oh-display-info-h.md#nativedisplaymanager_displaystate) state | State of the display. |
 | [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation) orientation | Orientation of the display. |
-| [NativeDisplayManager_DisplayHdrFormat](capi-oh-displaymanager-nativedisplaymanager-displayhdrformat.md) *hdrFormat | All the HDR formats supported by the display. |
-| [NativeDisplayManager_DisplayColorSpace](capi-oh-displaymanager-nativedisplaymanager-displaycolorspace.md) *colorSpace | All the color spaces supported by the display. |
+| NativeDisplayManager_DisplayHdrFormat *hdrFormat | All the HDR formats supported by the display. |
+| NativeDisplayManager_DisplayColorSpace *colorSpace | All the color spaces supported by the display. |
 
 

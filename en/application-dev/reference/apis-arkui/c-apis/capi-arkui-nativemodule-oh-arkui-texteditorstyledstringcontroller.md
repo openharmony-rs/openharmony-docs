@@ -6,7 +6,7 @@ typedef struct OH_ArkUI_TextEditorStyledStringController OH_ArkUI_TextEditorStyl
 
 ## Overview
 
-Defines the attribute string controller of the text editor.
+Defines the styled string controller of a text editor, which supports operations such as setting and obtaining a styled string, setting an input style, and controlling the cursor. It can be used to adjust the cursor position, set the selection, obtain the preview text, and perform backward deletion.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

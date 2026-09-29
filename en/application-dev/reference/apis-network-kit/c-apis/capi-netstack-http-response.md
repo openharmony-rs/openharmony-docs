@@ -1,7 +1,7 @@
 # Http_Response
 
 ```c
-typedef struct Http_Response {...} Http_Response
+struct Http_Response {...}
 ```
 
 ## Overview
@@ -22,11 +22,11 @@ Defines the structure of HTTP responses.
 
 | Name | Description |
 | -- | -- |
-| [Http_Buffer](capi-netstack-http-buffer.md) body | HTTP response data. For details, see {@link Http_Buffer}. |
-| [Http_ResponseCode](capi-net-http-type-h.md#http_responsecode) responseCode | HTTP response code. For details, see {@link Http_ResponseCode}. |
-| [Http_Headers](capi-netstack-http-headers.md) *headers | Pointer to the HTTP response header. For details, see {@link Http_Headers}. |
+| [Http_Buffer](capi-netstack-http-buffer.md) body | HTTP response data. For details, see [Http_Buffer](capi-netstack-http-buffer.md). |
+| [Http_ResponseCode](capi-net-http-type-h.md#http_responsecode) responseCode | HTTP response code. For details, see [Http_ResponseCode](capi-net-http-type-h.md#http_responsecode). |
+| Http_Headers *headers | Pointer to the HTTP response header. For details, see [Http_Headers](capi-netstack-http-headers.md). |
 | char *cookies | Pointer to the HTTP response cookies. |
-| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) *performanceTiming | Pointer to the HTTP response timing. For details, see {@link Http_PerformanceTiming}. |
+| Http_PerformanceTiming *performanceTiming | Pointer to the HTTP response timing. For details, see [Http_PerformanceTiming](capi-netstack-http-performancetiming.md). |
 
 
 ### Member functions
@@ -53,6 +53,6 @@ Callback function for destroying an HTTP response.
 
 | Parameter | Description |
 | -- | -- |
-| struct [Http_Response](capi-netstack-http-response.md) **response | Pointer to the HTTP response to be destroyed. For details, see {@link Http_Response}. |
+| struct [Http_Response](capi-netstack-http-response.md) **response | Pointer to the HTTP response to be destroyed. For details, see [Http_Response](capi-netstack-http-response.md). |
 
 

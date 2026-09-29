@@ -6,7 +6,7 @@ typedef struct ArkWeb_WebMessageAPI {...} ArkWeb_WebMessageAPI
 
 ## 概述
 
-ArkWeb_WebMessageAPI是Web消息相关Native API结构体。该结构体提供了创建和销毁消息、设置和获取消息类型、管理消息数据缓冲区等函数。此API是postMessage桥接的一部分， 支持Native代码与HTML页面之间的双向通信。<br>Web消息相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过{@link ARKWEB_MEMBER_MISSING} 校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
+ArkWeb_WebMessageAPI是Web消息相关Native API结构体。该结构体提供了创建和销毁消息、设置和获取消息类型、管理消息数据缓冲区等函数。此API是postMessage桥接的一部分， 支持Native代码与HTML页面之间的双向通信。<br>Web消息相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义) 校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -52,7 +52,7 @@ ArkWeb_WebMessagePtr (*createWebMessage)()
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) | 创建的消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) | 创建的消息结构体指针。 |
 
 ### destroyWebMessage()
 
@@ -68,7 +68,7 @@ void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md)* webMessage | 要销毁的消息的指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md)* webMessage | 要销毁的消息的指针。 |
 
 ### setType()
 
@@ -84,7 +84,7 @@ void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | 消息结构体指针。 |
 | 消息的类型。 |  |
 
 ### getType()
@@ -101,7 +101,7 @@ ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | 消息结构体指针。 |
 
 **返回值：**
 
@@ -123,7 +123,7 @@ void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | 消息结构体指针。 |
 |  void* data | 数据指针。由调用方负责内存管理，函数内部不释放该内存，数据所有权不转移。 |
 |  size_t dataLength | 数据长度。 |
 
@@ -141,7 +141,7 @@ void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | 消息结构体指针。 |
 |  size_t* dataLength | 出参，数据长度。 |
 
 **返回值：**

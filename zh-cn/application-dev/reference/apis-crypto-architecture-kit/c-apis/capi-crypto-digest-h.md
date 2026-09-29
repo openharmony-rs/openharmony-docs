@@ -8,8 +8,6 @@
 
 **库：** libohcrypto.so
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **相关模块：** [CryptoDigestApi](capi-cryptodigestapi.md)
@@ -45,9 +43,9 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 根据给定的算法名称创建摘要上下文。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_digest/OH_DigestCrypto_Destroy {ctx}
 
 **参数：**
 
@@ -60,7 +58,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL、algoName为NULL、或algoName不是支持的摘要算法名称。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 摘要操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL、algoName为NULL、或algoName不是支持的摘要算法名称。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 摘要操作失败。</li> </ul> |
 
 **参考：**
 
@@ -77,8 +75,6 @@ OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *
 
 更新摘要数据。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **参数：**
@@ -86,13 +82,13 @@ OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | [in] 摘要上下文。不能为NULL。 |
-| Crypto_DataBlob *in | [in] 待计算摘要的数据。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] 待计算摘要的数据。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或in为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 摘要更新失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或in为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 摘要更新失败。</li> </ul> |
 
 **参考：**
 
@@ -109,22 +105,22 @@ OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *o
 
 完成摘要操作，输出摘要结果。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | [in] 摘要上下文。不能为NULL。 |
-| Crypto_DataBlob *out | [out] 指向用于存储摘要结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储摘要结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或out为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 摘要完成操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或out为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 摘要完成操作失败。</li> </ul> |
 
 ### OH_CryptoDigest_GetLength()
 
@@ -135,8 +131,6 @@ uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)
 **描述：**
 
 获取摘要结果的长度。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -162,8 +156,6 @@ const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)
 
 获取摘要上下文的算法名称。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **参数：**
@@ -187,8 +179,6 @@ void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)
 **描述：**
 
 销毁摘要上下文。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 

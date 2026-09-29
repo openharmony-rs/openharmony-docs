@@ -54,7 +54,7 @@ NODE_PICKER_SELECTION_INDICATOR = 1018003
 
 **描述：**
 
-设置选择指示器的类型和参数。支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.object：参数类型为[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)。默认值：<br>{<br>type: PickerIndicatorType.BACKGROUND,<br>borderRadius: {<br>value:12,<br>unit:LengthUnit.vp<br>},<br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}<br>未设置时使用默认值。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.object：当前设置的选择指示器样式对象，类型为[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)。</li> </ul>
+设置选择指示器的类型和参数。支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：参数类型为[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)。默认值： { type: PickerIndicatorType.BACKGROUND, borderRadius: { value:12, unit:LengthUnit.vp }, backgroundColor: 'sys.color.comp_background_tertiary' } 未设置时使用默认值。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：当前设置的选择指示器样式对象，类型为[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)。</li> </ul>
 
 **起始版本：** 23
 

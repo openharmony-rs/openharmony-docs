@@ -6,9 +6,7 @@ Declare the common types for the extension ability AbilityRuntime.
 
 **Library**: libability_runtime.so
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Since**: 13
+**Since**: 24
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
 
@@ -19,7 +17,7 @@ Declare the common types for the extension ability AbilityRuntime.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [AbilityRuntime_ExtensionInstance](capi-abilityruntime-abilityruntime-extensioninstance.md) | - | Define the AbilityRuntime_ExtensionInstance structure type. |
-| [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-abilityruntime-extensioninstance8h.md) | AbilityRuntime_ExtensionInstanceHandle | Defines the pointer to AbilityRuntime_ExtensionInstance. |
+| [AbilityRuntime_ExtensionInstanceHandle](capi-abilityruntime-abilityruntime-extensioninstancehandle.md) | AbilityRuntime_ExtensionInstanceHandle | Defines the pointer to AbilityRuntime_ExtensionInstance. |
 
 ### Function
 
@@ -31,8 +29,8 @@ Declare the common types for the extension ability AbilityRuntime.
 
 | Name | Description |
 | -- | -- |
-| [AbilityRuntime_Extension_CreateFunc](capi-extension-ability-h.md#abilityruntime_extension_createfunc) OH_AbilityRuntime_OnNativeExtensionCreate | The name of the function that native extension ability instance looks for when launching its native code.<br>**Since**: 24 |
-| void AbilityRuntime_Extension_CreateFunc( AbilityRuntime_ExtensionInstanceHandle handle, const char *abilityName) | Define the function that must be in the native code to instantiate the native extension ability.<br>**Since**: 24 |
+| [AbilityRuntime_Extension_CreateFunc](capi-extension-ability-h.md#abilityruntime_extension_createfunc) OH_AbilityRuntime_OnNativeExtensionCreate | The name of the function that native extension ability instance looks for when launching its native code.<br>**Since**: 24<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
+| void AbilityRuntime_Extension_CreateFunc( AbilityRuntime_ExtensionInstanceHandle handle, const char *abilityName) | Define the function that must be in the native code to instantiate the native extension ability.<br>**Since**: 24<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
 
 ## Function description
 
@@ -45,8 +43,6 @@ typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanc
 **Description**
 
 Define the function that must be in the native code to instantiate the native extension ability.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
 

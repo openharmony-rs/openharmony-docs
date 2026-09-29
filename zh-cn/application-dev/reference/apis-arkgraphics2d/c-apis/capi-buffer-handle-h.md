@@ -6,8 +6,6 @@
 
 **库：** libnative_window.so
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
-
 **起始版本：** 8
 
 **相关模块：** [NativeWindow](capi-nativewindow.md)

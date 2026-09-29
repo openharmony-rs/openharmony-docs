@@ -6,8 +6,6 @@ Defines the child process info type and accessor functions.
 
 **库：** libability_runtime.so
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.1
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
@@ -18,8 +16,8 @@ Defines the child process info type and accessor functions.
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ChildProcessInfos](capi-abilityruntime-oh-abilityruntime-childprocessinfos.md) | *OH_AbilityRuntime_ChildProcessInfosHandle | 定义OH_AbilityRuntime_ChildProcessInfos指针。 |
-| [OH_AbilityRuntime_ChildProcessInfo](capi-abilityruntime-oh-abilityruntime-childprocessinfo.md) | *OH_AbilityRuntime_ChildProcessInfoHandle | 定义OH_AbilityRuntime_ChildProcessInfo指针。 |
+| [*OH_AbilityRuntime_ChildProcessInfosHandle](capi-abilityruntime-8hoh-abilityruntime-childprocessinfoshandle.md) | *OH_AbilityRuntime_ChildProcessInfosHandle | 定义OH_AbilityRuntime_ChildProcessInfos指针。 |
+| [*OH_AbilityRuntime_ChildProcessInfoHandle](capi-abilityruntime-8hoh-abilityruntime-childprocessinfohandle.md) | *OH_AbilityRuntime_ChildProcessInfoHandle | 定义OH_AbilityRuntime_ChildProcessInfo指针。 |
 
 ### 函数
 
@@ -43,8 +41,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_Ability
 
 按其索引从集合中检索特定子进程信息句柄。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.1
 
 **参数：**
@@ -59,7 +55,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_Ability
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>[_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li>  <li>[_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果提供的参数无效。</li>  </ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul>如果操作成功，则返回<li>[_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li> <li>[_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果提供的参数无效。</li> </ul> |
 
 ### OH_AbilityRuntime_ChildProcessInfo_GetPid()
 
@@ -70,8 +66,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRun
 **描述：**
 
 获取子进程信息的PID。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.1
 
@@ -86,7 +80,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRun
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>[_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li>  <li>[_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果提供的参数无效。</li>  </ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul>如果操作成功，则返回<li>[_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li> <li>[_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果提供的参数无效。</li> </ul> |
 
 ### OH_AbilityRuntime_ChildProcessInfo_GetParentPid()
 
@@ -97,8 +91,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_Abil
 **描述：**
 
 获取子进程的父进程PID。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.1
 
@@ -113,7 +105,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_Abil
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>[_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li>  <li>[_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果提供的参数无效。</li>  </ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul>如果操作成功，则返回<li>[_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li> <li>[_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果提供的参数无效。</li> </ul> |
 
 ### OH_AbilityRuntime_ChildProcessInfo_GetProcessName()
 
@@ -124,8 +116,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 **描述：**
 
 获取子进程信息的进程名称。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.1
 
@@ -142,7 +132,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>[_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li>  <li>[_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果processName或requireSize为NULL，则  或者processNameSize为0。</li>  <li>如果缓冲区太小，则会出现<li>[_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li>  <li>如果字符串拷贝操作失败，则会出现<li>[_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li>  </ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul>如果操作成功，则返回<li>[_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li> <li>[_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果processName或requireSize为NULL，则或者processNameSize为0。</li> <li>如果缓冲区太小，则会出现<li>[_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li> <li>如果字符串拷贝操作失败，则会出现<li>[_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode)。</li> </ul> |
 
 ### OH_AbilityRuntime_ReleaseChildProcessInfos()
 
@@ -153,8 +143,6 @@ void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessIn
 **描述：**
 
 发布子进程信息收集。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.1
 

@@ -6,9 +6,7 @@ Declare audio volume manager related interfaces.<br> This file interfaces are us
 
 **Library**: libohaudio.so
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
-**Since**: 10
+**Since**: 20
 
 **Related module**: [OHAudio](capi-ohaudio.md)
 
@@ -41,8 +39,8 @@ Declare audio volume manager related interfaces.<br> This file interfaces are us
 
 | Name | Description |
 | -- | -- |
-| void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)( void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi ) | Prototype for the volume change function that is passed to [OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback).<br>**Since**: 20 |
-| void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)( void *userData, OH_AudioRingerMode ringerMode ) | Prototype for the volume change function that is passed to [OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback).<br>**Since**: 20 |
+| void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)( void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi ) | Prototype for the volume change function that is passed to [OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback).<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)( void *userData, OH_AudioRingerMode ringerMode ) | Prototype for the volume change function that is passed to [OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback).<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 
 ## Function description
 
@@ -56,16 +54,14 @@ typedef void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)(void *userDat
 
 Prototype for the volume change function that is passed to [OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback).
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| void \*userData | userdata which is passed by register. |
-| OH_AudioStream_Usage usage | the stream usage type for which volume changed. |
+| void *userData | userdata which is passed by register. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | the stream usage type for which volume changed. |
 | int32_t volumeLevel | the latest volume level. |
 | bool updateUi | whether to show the volume change in UI. |
 
@@ -79,16 +75,14 @@ typedef void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)(void *userData,
 
 Prototype for the volume change function that is passed to [OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback).
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| void \*userData | userdata which is passed by register. |
-| OH_AudioRingerMode ringerMode | the latest ringer mode. |
+| void *userData | userdata which is passed by register. |
+| [OH_AudioRingerMode](capi-native-audio-common-h.md#oh_audioringermode) ringerMode | the latest ringer mode. |
 
 ### OH_AudioManager_GetAudioVolumeManager()
 
@@ -99,8 +93,6 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioVolumeManager(OH_AudioVolumeManage
 **Description**
 
 Fetch the audio volume manager handle, which is a singleton.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -114,7 +106,7 @@ Fetch the audio volume manager handle, which is a singleton.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr |
 
 ### OH_AudioVolumeManager_GetMaxVolumeByUsage()
 
@@ -126,8 +118,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeMa
 
 Obtains the maximum volume level for a specific stream usage type.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -135,14 +125,14 @@ Obtains the maximum volume level for a specific stream usage type.
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) handle provided by [OH_AudioManager_GetAudioVolumeManager](capi-native-audio-volume-manager-h.md#oh_audiomanager_getaudiovolumemanager). |
-| OH_AudioStream_Usage usage | the stream usage type used to map a specific volume type. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | the stream usage type used to map a specific volume type. |
 | int32_t *maxVolumeLevel | output parameter to get maximum volume level. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_GetMinVolumeByUsage()
 
@@ -154,8 +144,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeMa
 
 Obtains the minimum volume level for a specific stream usage type.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -163,14 +151,14 @@ Obtains the minimum volume level for a specific stream usage type.
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) handle provided by [OH_AudioManager_GetAudioVolumeManager](capi-native-audio-volume-manager-h.md#oh_audiomanager_getaudiovolumemanager). |
-| OH_AudioStream_Usage usage | the stream usage type used to map a specific volume type. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | the stream usage type used to map a specific volume type. |
 | int32_t *minVolumeLevel | output parameter to get minimum volume level. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_GetVolumeByUsage()
 
@@ -182,8 +170,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManag
 
 Obtains the system volume level for a specific stream usage type.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -191,14 +177,14 @@ Obtains the system volume level for a specific stream usage type.
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) handle provided by [OH_AudioManager_GetAudioVolumeManager](capi-native-audio-volume-manager-h.md#oh_audiomanager_getaudiovolumemanager). |
-| OH_AudioStream_Usage usage | the stream usage type used to map a specific volume type. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | the stream usage type used to map a specific volume type. |
 | int32_t *volumeLevel | output parameter to get system volume level. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_IsMuteByUsage()
 
@@ -210,8 +196,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager 
 
 Checks whether a stream is muted for a specific stream usage type.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -219,14 +203,14 @@ Checks whether a stream is muted for a specific stream usage type.
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) handle provided by [OH_AudioManager_GetAudioVolumeManager](capi-native-audio-volume-manager-h.md#oh_audiomanager_getaudiovolumemanager). |
-| OH_AudioStream_Usage usage | the stream usage type used to map a specific volume type. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | the stream usage type used to map a specific volume type. |
 | bool *muted | output parameter to get whether the stream of this usage is muted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback()
 
@@ -238,8 +222,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(O
 
 Register callback to receive stream volume changed events.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -247,7 +229,7 @@ Register callback to receive stream volume changed events.
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) handle provided by [OH_AudioManager_GetAudioVolumeManager](capi-native-audio-volume-manager-h.md#oh_audiomanager_getaudiovolumemanager). |
-| OH_AudioStream_Usage usage | the stream usage type used to map a specific volume type which caller want to listen. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | the stream usage type used to map a specific volume type which caller want to listen. |
 | [OH_AudioVolumeManager_OnStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_onstreamvolumechangecallback) callback | callback function which will be called when stream volume changed. |
 | void *userData | pointer to a data structure that will be passed to the callback functions. |
 
@@ -255,7 +237,7 @@ Register callback to receive stream volume changed events.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback()
 
@@ -266,8 +248,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback
 **Description**
 
 Unregister stream volume change callback.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -282,7 +262,7 @@ Unregister stream volume change callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_GetRingerMode()
 
@@ -294,8 +274,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager 
 
 Get current ringer mode.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -303,13 +281,13 @@ Get current ringer mode.
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) handle provided by [OH_AudioManager_GetAudioVolumeManager](capi-native-audio-volume-manager-h.md#oh_audiomanager_getaudiovolumemanager). |
-| OH_AudioRingerMode *ringerMode | output parameter to get the ringer mode. |
+| [OH_AudioRingerMode](capi-native-audio-common-h.md#oh_audioringermode) *ringerMode | output parameter to get the ringer mode. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_RegisterRingerModeChangeCallback()
 
@@ -320,8 +298,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_
 **Description**
 
 Register callback to receive ringer mode changed events.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -337,7 +313,7 @@ Register callback to receive ringer mode changed events.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_UnregisterRingerModeChangeCallback()
 
@@ -348,8 +324,6 @@ OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(O
 **Description**
 
 Unregister ringer mode change callback.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -364,6 +338,6 @@ Unregister ringer mode change callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 

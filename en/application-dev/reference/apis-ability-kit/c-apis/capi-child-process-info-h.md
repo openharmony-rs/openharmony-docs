@@ -6,9 +6,7 @@ Defines the child process info type and accessor functions.
 
 **Library**: libability_runtime.so
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Since**: 13
+**Since**: 26.0.1
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
 
@@ -18,8 +16,8 @@ Defines the child process info type and accessor functions.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ChildProcessInfos](capi-abilityruntime-oh-abilityruntime-childprocessinfos.md) | *OH_AbilityRuntime_ChildProcessInfosHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfos. |
-| [OH_AbilityRuntime_ChildProcessInfo](capi-abilityruntime-oh-abilityruntime-childprocessinfo.md) | *OH_AbilityRuntime_ChildProcessInfoHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfo. |
+| [*OH_AbilityRuntime_ChildProcessInfosHandle](capi-abilityruntime-8hoh-abilityruntime-childprocessinfoshandle.md) | *OH_AbilityRuntime_ChildProcessInfosHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfos. |
+| [*OH_AbilityRuntime_ChildProcessInfoHandle](capi-abilityruntime-8hoh-abilityruntime-childprocessinfohandle.md) | *OH_AbilityRuntime_ChildProcessInfoHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfo. |
 
 ### Function
 
@@ -43,8 +41,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_Ability
 
 Retrieves a specific child process info handle from the collection by its index.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 26.0.1
 
 **Parameters**:
@@ -59,7 +55,7 @@ Retrieves a specific child process info handle from the collection by its index.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li>       </ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul> <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.</li> <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li> </ul> |
 
 ### OH_AbilityRuntime_ChildProcessInfo_GetPid()
 
@@ -70,8 +66,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRun
 **Description**
 
 Gets PID of child process info.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
 
@@ -86,7 +80,7 @@ Gets PID of child process info.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li>       </ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul> <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.</li> <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li> </ul> |
 
 ### OH_AbilityRuntime_ChildProcessInfo_GetParentPid()
 
@@ -97,8 +91,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_Abil
 **Description**
 
 Gets parent PID of child process info.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
 
@@ -113,7 +105,7 @@ Gets parent PID of child process info.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li>       </ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul> <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.</li> <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the arguments provided are invalid.</li> </ul> |
 
 ### OH_AbilityRuntime_ChildProcessInfo_GetProcessName()
 
@@ -124,8 +116,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 **Description**
 
 Gets process name of child process info.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
 
@@ -142,7 +132,7 @@ Gets process name of child process info.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>       <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if processName or requiredSize is NULL,       or processNameSize is 0.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the buffer is too small.</li>       <li>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if string copy operation failed.</li>       </ul> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul> <li>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.</li> <li>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if processName or requiredSize is NULL, or processNameSize is 0.</li> <li>[ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the buffer is too small.</li> <li>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if string copy operation failed.</li> </ul> |
 
 ### OH_AbilityRuntime_ReleaseChildProcessInfos()
 
@@ -153,8 +143,6 @@ void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessIn
 **Description**
 
 Releases child process info collection.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
 

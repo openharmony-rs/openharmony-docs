@@ -6,8 +6,6 @@ Provides APIs and structs for accessing the **PreferencesOption** object.
 
 **Library**: libohpreferences.so
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Related module**: [Preferences](capi-preferences.md)
@@ -49,13 +47,11 @@ enum Preferences_StorageType
 
 Enumerates the preferences storage types.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| PREFERENCES_STORAGE_XML = 0 | XML. In this type is used, data operations are performed in the memory and data is persisted after {@link OH_Preferences_Close} is called. This type does not multi-processes operations. |
+| PREFERENCES_STORAGE_XML = 0 | XML. In this type is used, data operations are performed in the memory and data is persisted after OH_Preferences_Close is called. This type does not multi-processes operations. |
 | PREFERENCES_STORAGE_GSKV | CLKV. If this type is used, data operations are flushed on a real-time basis. This type supports multi-process operations. |
 
 
@@ -71,15 +67,13 @@ OH_PreferencesOption *OH_PreferencesOption_Create(void)
 
 Creates a [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance and a pointer to it. If this pointer is no longer required, use [OH_PreferencesOption_Destroy](capi-oh-preferences-option-h.md#oh_preferencesoption_destroy) to destroy it. Otherwise, memory leaks may occur.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_PreferencesOption *](capi-preferences-oh-preferencesoption.md) | Returns a pointer to the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance created if the operation is successful;  returns a null pointer otherwise. |
+| [OH_PreferencesOption *](capi-preferences-oh-preferencesoption.md) | Returns a pointer to the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance created if the operation is successful; returns a null pointer otherwise. |
 
 **Reference**:
 
@@ -96,8 +90,6 @@ int OH_PreferencesOption_SetFileName(OH_PreferencesOption *option, const char *f
 
 Sets the file name for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -111,7 +103,7 @@ Sets the file name for an [OH_PreferencesOption](capi-preferences-oh-preferences
 
 | Type | Description |
 | -- | -- |
-| int | Error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified. |
+| int | Error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. |
 
 **Reference**:
 
@@ -128,8 +120,6 @@ int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char 
 
 Sets the bundle name for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -143,7 +133,7 @@ Sets the bundle name for an [OH_PreferencesOption](capi-preferences-oh-preferenc
 
 | Type | Description |
 | -- | -- |
-| int | Error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified. |
+| int | Error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. |
 
 **Reference**:
 
@@ -160,8 +150,6 @@ int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char
 
 Sets the application group ID for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. After the application group ID is set, the **Preferences** instance will be created in the sandbox directory of the application group ID. The application group ID must be obtained from AppGallery. This parameter is not supported currently. If the application group ID is an empty string, the **Preferences** instance will be created in the sandbox directory of the current application.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -175,7 +163,7 @@ Sets the application group ID for an [OH_PreferencesOption](capi-preferences-oh-
 
 | Type | Description |
 | -- | -- |
-| int | Error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified. |
+| int | Error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. |
 
 **Reference**:
 
@@ -192,8 +180,6 @@ int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preference
 
 Sets the storage type for a **Preferences** instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -207,7 +193,7 @@ Sets the storage type for a **Preferences** instance.
 
 | Type | Description |
 | -- | -- |
-| int | Error code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified. |
+| int | Error code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. |
 
 **Reference**:
 
@@ -224,8 +210,6 @@ int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)
 
 Destroys an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
 
-**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -238,7 +222,7 @@ Destroys an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) ins
 
 | Type | Description |
 | -- | -- |
-| int | Operation status code.  PREFERENCES_OK indicates the operation is successful.  PREFERENCES_ERROR_INVALID_PARAM indicates invalid parameters are specified. |
+| int | Operation status code. **PREFERENCES_OK** indicates the operation is successful. **PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. |
 
 **Reference**:
 

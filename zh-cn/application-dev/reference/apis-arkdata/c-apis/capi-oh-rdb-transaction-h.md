@@ -8,8 +8,6 @@
 
 **库：** libnative_rdb_ndk.z.so
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -67,8 +65,6 @@ enum OH_RDB_TransType
 
 表示关系型数据库事务类型。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -91,15 +87,13 @@ OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void)
 
 创建事务配置对象。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_RDB_TransOptions *](capi-rdb-oh-rdb-transoptions.md) | 执行成功时返回指向[OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md)实例的指针。否则返回nullptr。      <br>使用完成后，必须通过[OH_RdbTrans_DestroyOptions](capi-oh-rdb-transaction-h.md#oh_rdbtrans_destroyoptions)接口释放内存。 |
+| [OH_RDB_TransOptions *](capi-rdb-oh-rdb-transoptions.md) | 执行成功时返回指向[OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md)实例的指针。否则返回nullptr。<br>使用完成后，必须通过[OH_RdbTrans_DestroyOptions](capi-oh-rdb-transaction-h.md#oh_rdbtrans_destroyoptions)接口释放内存。 |
 
 **参考：**
 
@@ -116,8 +110,6 @@ int OH_RdbTrans_DestroyOptions(OH_RDB_TransOptions *options)
 
 销毁事务配置对象。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -130,7 +122,7 @@ int OH_RdbTrans_DestroyOptions(OH_RDB_TransOptions *options)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_RdbTransOption_SetType()
 
@@ -141,8 +133,6 @@ int OH_RdbTransOption_SetType(OH_RDB_TransOptions *options, OH_RDB_TransType typ
 **描述：**
 
 设置关系型数据库事务类型。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -157,7 +147,7 @@ int OH_RdbTransOption_SetType(OH_RDB_TransOptions *options, OH_RDB_TransType typ
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_RdbTrans_Commit()
 
@@ -169,8 +159,6 @@ int OH_RdbTrans_Commit(OH_Rdb_Transaction *trans)
 
 提交事务。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -183,7 +171,7 @@ int OH_RdbTrans_Commit(OH_Rdb_Transaction *trans)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。 |
 
 ### OH_RdbTrans_Rollback()
 
@@ -195,8 +183,6 @@ int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans)
 
 回滚事务。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -209,7 +195,7 @@ int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。 |
 
 ### OH_RdbTrans_Insert()
 
@@ -221,8 +207,6 @@ int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VB
 
 将一行数据插入到目标表中。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -231,14 +215,14 @@ int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VB
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| const OH_VBucket *row | 要插入到表中的数据行。 |
+| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | 要插入到表中的数据行。 |
 | int64_t *rowId | 输出参数，表示插入后返回的行号。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
 
 ### OH_RdbTrans_InsertWithConflictResolution()
 
@@ -250,8 +234,6 @@ int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const ch
 
 将一行数据插入到目标表中，支持冲突解决。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -260,7 +242,7 @@ int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const ch
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| const OH_VBucket *row | 表示要插入到表中的数据。 |
+| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | 表示要插入到表中的数据。 |
 | Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
 | int64_t *rowId | 输出参数，表示插入成功后返回的行号。 |
 
@@ -268,7 +250,7 @@ int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const ch
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：违反约束导致操作中止。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：违反约束导致操作中止。 |
 
 ### OH_RdbTrans_BatchInsert()
 
@@ -280,8 +262,6 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 
 将一组数据批量插入到目标表中。 <br>单次插入参数的最大数量限制为32766，超出上限会返回RDB_E_INVALID_ARGS错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。 <br>例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。 <br>请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -290,14 +270,14 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| const OH_Data_VBuckets *rows | 表示要插入到表中的一组数据。 |
+| [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | 表示要插入到表中的一组数据。 |
 | int64_t *changes | 输出参数，表示插入成功的次数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：SQLite约束。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：SQLite约束。 |
 
 ### OH_RdbTrans_Update()
 
@@ -309,8 +289,6 @@ int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const O
 
 根据指定的条件更新数据库中的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -318,15 +296,15 @@ int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const O
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| const OH_VBucket *row | 表示要更新到表中的数据行。 |
-| const OH_Predicates *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的更新条件。 |
+| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | 表示要更新到表中的数据行。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的更新条件。 |
 | int64_t *changes | 输出参数，表示更新成功的行数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
 
 ### OH_RdbTrans_UpdateWithConflictResolution()
 
@@ -338,8 +316,6 @@ int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH
 
 根据指定条件更新数据库中的数据，并支持冲突解决。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -347,8 +323,8 @@ int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| const OH_VBucket *row | 表示要更新到表中的数据。 |
-| const OH_Predicates *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的更新条件。 |
+| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | 表示要更新到表中的数据。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的更新条件。 |
 | Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
 | int64_t *changes | 输出参数，表示更新成功的行数。 |
 
@@ -356,7 +332,7 @@ int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：违反约束导致操作中止。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：违反约束导致操作中止。 |
 
 ### OH_RdbTrans_Delete()
 
@@ -368,8 +344,6 @@ int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicate
 
 根据指定条件从数据库中删除数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -377,14 +351,14 @@ int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicate
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| const OH_Predicates *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的删除条件。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的删除条件。 |
 | int64_t *changes | 输出参数，表示删除成功的次数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
 
 ### OH_RdbTrans_Query()
 
@@ -396,8 +370,6 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 
 根据指定的条件查询数据库中的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -405,7 +377,7 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| const OH_Predicates *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的查询条件。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的查询条件。 |
 | const char *columns[] | 表示要查询的列。如果值为空数组，则查询适用于所有列。 |
 | int len | 传入的columns数组的长度。若len大于columns数组的实际长度，则会访问越界。 |
 
@@ -413,7 +385,7 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回空。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回空。 |
 
 ### OH_RdbTrans_QueryWithoutRowCount()
 
@@ -425,8 +397,6 @@ OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_
 
 根据指定的条件查询数据库中的数据，不计算行数。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -434,7 +404,7 @@ OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| const OH_Predicates *predicates | [OH_Predicates](capi-rdb-oh-predicates.md)指定的查询条件。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | [OH_Predicates](capi-rdb-oh-predicates.md)指定的查询条件。 |
 | const char *const columns[] | 要查询的列，如果传入空值，则查询所有列。 |
 | int len | 传入的columns数组的长度。若len大于columns数组的实际长度，则会访问越界。 |
 
@@ -442,7 +412,7 @@ OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回nullptr。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回nullptr。 |
 
 ### OH_RdbTrans_QuerySql()
 
@@ -454,8 +424,6 @@ OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, cons
 
 根据SQL语句查询数据库中的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -464,13 +432,13 @@ OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, cons
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *sql | 表示要执行的SQL语句。 |
-| const OH_Data_Values *args | 指向[OH_Data_Values](capi-rdb-oh-data-values.md)的指针。 |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | 指向[OH_Data_Values](capi-rdb-oh-data-values.md)的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回空。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回空。 |
 
 ### OH_RdbTrans_QuerySqlWithoutRowCount()
 
@@ -482,8 +450,6 @@ OH_Cursor *OH_RdbTrans_QuerySqlWithoutRowCount(OH_Rdb_Transaction *trans, const 
 
 根据SQL语句查询数据库中的数据，不计算行数。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -492,13 +458,13 @@ OH_Cursor *OH_RdbTrans_QuerySqlWithoutRowCount(OH_Rdb_Transaction *trans, const 
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *sql | 要执行的SQL语句。 |
-| const OH_Data_Values *args | 指向[OH_Data_Values](capi-rdb-oh-data-values.md)的指针。 |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | 指向[OH_Data_Values](capi-rdb-oh-data-values.md)的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回nullptr。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回nullptr。 |
 
 ### OH_RdbTrans_Execute()
 
@@ -510,8 +476,6 @@ int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Dat
 
 执行包含指定参数的SQL语句。 <br>不支持开头包含注释的语句。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -520,14 +484,14 @@ int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Dat
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *sql | 表示要执行的SQL语句。 |
-| const OH_Data_Values *args | SQL语句中包含的参数。 |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | SQL语句中包含的参数。 |
 | OH_Data_Value **result | 执行成功时指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。使用完成后，必须通过[OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy)接口释放内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
 
 **参考：**
 
@@ -544,8 +508,6 @@ int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans)
 
 销毁事务对象。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -558,7 +520,7 @@ int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_RdbTrans_BatchInsert()
 
@@ -570,8 +532,6 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 
 将一组数据批量插入到目标表中。 <br>单次插入参数的最大数量限制为32766，超出上限会返回RDB_E_INVALID_ARGS错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。 <br>例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。 <br>请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -580,7 +540,7 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| const OH_Data_VBuckets *rows | 表示要插入到表中的一组数据。 |
+| [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | 表示要插入到表中的一组数据。 |
 | Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
 | int64_t *changes | 输出参数，表示插入成功的次数。 |
 
@@ -588,7 +548,7 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：SQLite约束。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：SQLite约束。 |
 
 ### OH_RdbTrans_BatchInsertWithReturning()
 
@@ -600,8 +560,6 @@ int OH_RdbTrans_BatchInsertWithReturning(OH_Rdb_Transaction *trans, const char *
 
 将批量数据插入目标表，并将变更信息输出到上下文中。 <br>一次最多可以插入32766个参数。如果参数数量超过上限，则返回错误代码RDB_E_INVALID_ARGS。 <br>参数数量计算方式为插入数据条数乘以插入数据时所有字段的并集大小。 <br>例如：插入数据的所有字段的并集大小为10则最多可以插入3276条数据（3276*10=32760）。 <br>请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -610,7 +568,7 @@ int OH_RdbTrans_BatchInsertWithReturning(OH_Rdb_Transaction *trans, const char *
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| const OH_Data_VBuckets *rows | 要插入到表中的行数据。 |
+| [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | 要插入到表中的行数据。 |
 | Rdb_ConflictResolution resolution | 发生冲突时的解决策略[Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution)，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常， <br>无法正常获取实际的变更数据。 |
 | OH_RDB_ReturningContext *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
@@ -618,7 +576,7 @@ int OH_RdbTrans_BatchInsertWithReturning(OH_Rdb_Transaction *trans, const char *
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示执行成功。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。      <br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。      <br>返回RDB_E_DATABASE_BUSY表示数据库忙。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：由于违反约束而中止。      <br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。      <br>具体错误码可参考[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。<br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。<br>返回RDB_E_DATABASE_BUSY表示数据库忙。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：由于违反约束而中止。<br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。<br>具体错误码可参考[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -635,8 +593,6 @@ int OH_RdbTrans_UpdateWithReturning(OH_Rdb_Transaction *trans, OH_VBucket *row, 
 
 根据指定条件更新数据库中的数据并输出更改信息到上下文。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -644,8 +600,8 @@ int OH_RdbTrans_UpdateWithReturning(OH_Rdb_Transaction *trans, OH_VBucket *row, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| OH_VBucket *row | 要更新到表中的行数据。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *row | 要更新到表中的行数据。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 | Rdb_ConflictResolution resolution | 发生冲突时的解决策略[Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution)，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常， <br>无法正常获取实际的变更数据。 |
 | OH_RDB_ReturningContext *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
@@ -653,7 +609,7 @@ int OH_RdbTrans_UpdateWithReturning(OH_Rdb_Transaction *trans, OH_VBucket *row, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示执行成功。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。      <br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。      <br>返回RDB_E_EMPTY_VALUES_BUCKET表示值桶为空。      <br>返回RDB_E_DATABASE_BUSY表示数据库忙。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：由于违反约束而中止。      <br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。      <br>具体错误码可参考[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。<br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。<br>返回RDB_E_EMPTY_VALUES_BUCKET表示值桶为空。<br>返回RDB_E_DATABASE_BUSY表示数据库忙。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：由于违反约束而中止。<br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。<br>具体错误码可参考[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -670,8 +626,6 @@ int OH_RdbTrans_DeleteWithReturning(OH_Rdb_Transaction *trans, OH_Predicates *pr
 
 根据指定条件从数据库中删除数据并输出更改信息到上下文。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -679,14 +633,14 @@ int OH_RdbTrans_DeleteWithReturning(OH_Rdb_Transaction *trans, OH_Predicates *pr
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 | OH_RDB_ReturningContext *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示执行成功。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。      <br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。      <br>返回RDB_E_DATABASE_BUSY表示数据库忙。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。      <br>具体错误码可参考[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。<br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。<br>返回RDB_E_DATABASE_BUSY表示数据库忙。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。<br>具体错误码可参考[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 

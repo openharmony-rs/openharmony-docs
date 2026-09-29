@@ -6,8 +6,6 @@
 
 **库：** libohmidi.so
 
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
-
 **起始版本：** 24
 
 **相关模块：** [OHMIDI](capi-ohmidi.md)
@@ -23,8 +21,8 @@
 | [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md) | OH_MIDIPortInformation | 端口信息结构体。用于枚举端口，包含可显示的端口名称。 |
 | [OH_MIDIPortDescriptor](capi-ohmidi-oh-midiportdescriptor.md) | OH_MIDIPortDescriptor | 端口描述符结构体，用于打开端口时指定端口索引和协议行为。 |
 | [OH_MIDICallbacks](capi-ohmidi-oh-midicallbacks.md) | OH_MIDICallbacks | 客户端回调结构体，包含设备变化和错误处理的回调函数指针。 |
-| [OH_MIDIClientStruct](capi-ohmidi-oh-midiclientstruct.md) | OH_MIDIClient | 声明MIDI客户端。 |
-| [OH_MIDIDeviceStruct](capi-ohmidi-oh-mididevicestruct.md) | OH_MIDIDevice | 声明MIDI设备。 |
+| [OH_MIDIClient](capi-ohmidi-oh-midiclient.md) | OH_MIDIClient | 声明MIDI客户端。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) | OH_MIDIDevice | 声明MIDI设备。 |
 
 ### 枚举
 
@@ -55,10 +53,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_MIDICallback_OnDeviceChange)( void *userData, OH_MIDIDeviceChangeAction action, OH_MIDIDeviceInformation deviceInfo) | 监控设备连接/断开连接的回调。<br>**起始版本：** 24 |
-| void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *events, size_t eventCount) | 接收MIDI数据的回调（批量处理）。<br>**起始版本：** 24 |
-| void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code) | 处理客户端级别错误的回调。当MIDI服务发生关键错误（如服务崩溃）时调用。应用可能需要重新创建客户端。<br>**起始版本：** 24 |
-| void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MIDIDevice *device, OH_MIDIDeviceInformation info) | 异步打开BLE设备的结果回调。<br>**起始版本：** 24 |
+| void (*OH_MIDICallback_OnDeviceChange)( void *userData, OH_MIDIDeviceChangeAction action, OH_MIDIDeviceInformation deviceInfo) | 监控设备连接/断开连接的回调。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Multimedia.Audio.MIDI |
+| void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *events, size_t eventCount) | 接收MIDI数据的回调（批量处理）。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Multimedia.Audio.MIDI |
+| void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code) | 处理客户端级别错误的回调。当MIDI服务发生关键错误（如服务崩溃）时调用。应用可能需要重新创建客户端。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Multimedia.Audio.MIDI |
+| void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MIDIDevice *device, OH_MIDIDeviceInformation info) | 异步打开BLE设备的结果回调。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Multimedia.Audio.MIDI |
 
 ## 枚举类型说明
 
@@ -71,8 +69,6 @@ enum OH_MIDIStatusCode
 **描述：**
 
 MIDI状态码枚举。定义MIDI操作的状态码，用于表示操作成功或失败的原因。
-
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
 
@@ -105,8 +101,6 @@ enum OH_MIDIPortDirection
 
 表示端口方向的枚举。定义MIDI端口的数据传输方向。
 
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
-
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -128,8 +122,6 @@ MIDI协议版本枚举，用于指定端口使用的MIDI协议行为。
 >
 > CRITICAL**: The SDK always uses UMP (Universal MIDI Packet) format for data transfer, regardless of the selected protocol. This enum defines the "Behavior" and "Semantics" of the connection, not the data structure.
 
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
-
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -147,8 +139,6 @@ enum OH_MIDIDeviceType
 
 MIDI设备类型枚举。定义MIDI设备的连接类型。
 
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
-
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -165,8 +155,6 @@ enum OH_MIDIDeviceChangeAction
 **描述：**
 
 设备连接状态变化操作枚举。用于标识设备的连接和断开事件。
-
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
 
@@ -188,15 +176,13 @@ typedef void (*OH_MIDICallback_OnDeviceChange)(void *userData, OH_MIDIDeviceChan
 
 监控设备连接/断开连接的回调。
 
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*userData | The user context pointer passed to {@link #OH_MIDIClient_Create}. |
+| void *userData | The user context pointer passed to OH_MIDIClient_Create. |
 | [OH_MIDIDeviceChangeAction](capi-native-midi-base-h.md#oh_mididevicechangeaction) action | 设备变化操作（已连接/已断开）。 |
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) deviceInfo | 变化设备的信息。 |
 
@@ -214,16 +200,14 @@ typedef void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *eve
 >
 > This callback is invoked on a high-priority system thread. Do **not** perform blocking operations, heavy computation, or I/O.
 
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*userData | The user context pointer passed to {@link #OH_MIDIDevice_OpenInputPort}. |
-| [const OH_MIDIEvent](capi-ohmidi-oh-midievent.md) \*events | Pointer to the array of MIDI events received. |
+| void *userData | The user context pointer passed to OH_MIDIDevice_OpenInputPort. |
+| [const OH_MIDIEvent](capi-ohmidi-oh-midievent.md) *events | Pointer to the array of MIDI events received. |
 | size_t eventCount | 数组中的事件数。 |
 
 ### OH_MIDICallback_OnError()
@@ -236,15 +220,13 @@ typedef void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)
 
 处理客户端级别错误的回调。当MIDI服务发生关键错误（如服务崩溃）时调用。应用可能需要重新创建客户端。
 
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*userData | The user context pointer passed to {@link #OH_MIDIClient_Create}. |
+| void *userData | The user context pointer passed to OH_MIDIClient_Create. |
 | [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) code | 错误状态码，指示错误原因。 |
 
 ### OH_MIDIClient_OnDeviceOpened()
@@ -257,17 +239,15 @@ typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MID
 
 异步打开BLE设备的结果回调。
 
-**系统能力：** SystemCapability.Multimedia.Audio.MIDI
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*userData | The user context pointer passed to {@link #OH_MIDIClient_OpenBLEDevice}. |
+| void *userData | The user context pointer passed to OH_MIDIClient_OpenBLEDevice. |
 | bool opened | 设备是否成功打开。 <br>true表示设备成功打开，设备句柄有效；false表示设备打开失败，设备句柄为NULL。 |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) \*device | The handle of the opened device. If opened is true, the application MUST close this handle using {@link #OH_MIDIClient_CloseDevice} when it is no longer needed. If opened is false, this parameter is NULL. |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | The handle of the opened device. If opened is true, the application MUST close this handle using OH_MIDIClient_CloseDevice when it is no longer needed. If opened is false, this parameter is NULL. |
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) info | 已打开设备的信息。 <br>**注意：** 此对象仅在此回调范围内有效。如需持久化特定属性（如ID或名称），请对该设备信息进行复制。 |
 
 

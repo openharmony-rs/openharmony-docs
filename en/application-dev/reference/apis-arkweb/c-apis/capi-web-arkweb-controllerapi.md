@@ -6,7 +6,7 @@ typedef struct ArkWeb_ControllerAPI {...} ArkWeb_ControllerAPI
 
 ## Overview
 
-ArkWeb_ControllerAPI is a native API struct related to the controller. This struct provides features such as JavaScript injection, synchronous and asynchronous JavaScript proxy registration, proxy deletion, page refresh, Web Message Port creation and management, and Frame URL query. It supports the coexistence of synchronous and asynchronous proxies and unified management and control of WebView behavior. It is suitable for scenarios where JavaScript needs to be injected and called from native code and bidirectional communication between native and pages is required. It resolves JSBridge intercommunication and secure injection issues, improving development efficiency and controllability. This is the primary interface for controlling WebView behavior from native code.<br>Controller- related APIs must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Before calling, you are advised to use {@link ARKWEB_MEMBER_MISSING} to check the availability of the function pointer to avoid crashes caused by mismatches between the SDK and the device ROM.
+ArkWeb_ControllerAPI is a native API struct related to the controller. This struct provides features such as JavaScript injection, synchronous and asynchronous JavaScript proxy registration, proxy deletion, page refresh, Web Message Port creation and management, and Frame URL query. It supports the coexistence of synchronous and asynchronous proxies and unified management and control of WebView behavior. It is suitable for scenarios where JavaScript needs to be injected and called from native code and bidirectional communication between native and pages is required. It resolves JSBridge intercommunication and secure injection issues, improving development efficiency and controllability. This is the primary interface for controlling WebView behavior from native code.<br>Controller- related APIs must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Before calling, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义) to check the availability of the function pointer to avoid crashes caused by mismatches between the SDK and the device ROM.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -124,7 +124,7 @@ Destroys a port. This method closes the port connection, releases related system
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md)** ports | Array of pointers to the Post Message port struct. |
+| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md)** ports | Array of pointers to the Post Message port struct. |
 |  size_t size | Number of ports. Must be equal to the number of ports in the ports array. |
 
 ### postWebMessage()
@@ -150,7 +150,7 @@ Sends ports to the HTML main page. This method passes Post Message ports to the 
 
 | Type | Description |
 | -- | -- |
-| ArkWeb_ErrorCode | Result code.          <br>{@link ARKWEB_SUCCESS}: success.<br>    <br>{@link ARKWEB_INVALID_PARAM}: invalid parameter.<br>    <br>{@link ARKWEB_INIT_ERROR}: initialization failed; no Web component bound to the webTag is found. |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | Result code. <br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): success. <br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode): invalid parameter. <br>[ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode): initialization failed; no Web component bound to the webTag is found. |
 
 ### getLastJavascriptProxyCallingFrameUrl()
 
@@ -168,7 +168,7 @@ Obtains the URL of the last frame that calls JavaScriptProxy. This method record
 
 | Type | Description |
 | -- | -- |
-| const char* | URL of the last frame that calls JavaScriptProxy. |
+| const char* | URL of the last frame that calls **JavaScriptProxy**. |
 
 ### registerJavaScriptProxyEx()
 

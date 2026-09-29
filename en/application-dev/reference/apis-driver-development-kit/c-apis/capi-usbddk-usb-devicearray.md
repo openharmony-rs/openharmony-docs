@@ -1,12 +1,12 @@
 # Usb_DeviceArray
 
 ```c
-typedef struct Usb_DeviceArray {...} Usb_DeviceArray
+struct Usb_DeviceArray {...}
 ```
 
 ## Overview
 
-Defines the device ID list, which is used to store the device IDs and device quantity obtained using {@link OH_Usb_GetDevices}.
+Defines the device ID list, which is used to store the device IDs and device quantity obtained using OH_Usb_GetDevices.
 
 **System capability**: SystemCapability.Driver.USB.Extension
 

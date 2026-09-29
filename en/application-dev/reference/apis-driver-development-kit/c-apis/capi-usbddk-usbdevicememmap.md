@@ -1,12 +1,12 @@
 # UsbDeviceMemMap
 
 ```c
-typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
+struct UsbDeviceMemMap {...}
 ```
 
 ## Overview
 
-Device memory map created by calling {@link OH_Usb_CreateDeviceMemMap}. A buffer using the device memory map can improve data transmission performance.
+Device memory map created by calling OH_Usb_CreateDeviceMemMap. A buffer using the device memory map can improve data transmission performance.
 
 **System capability**: SystemCapability.Driver.USB.Extension
 

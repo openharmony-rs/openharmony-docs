@@ -1,7 +1,7 @@
 # tee_uuid
 
 ```c
-typedef struct tee_uuid {...} TEE_UUID
+struct tee_uuid {...}
 ```
 
 ## Overview

@@ -6,8 +6,6 @@
 
 **库：** libohcamera.so
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)
@@ -40,8 +38,6 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 获取全质量图。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -49,13 +45,13 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | OH_PhotoNative实例。 |
-| OH_ImageNative** mainImage | 用于获取全质量图的OH_ImageNative。 |
+| [OH_ImageNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-imagenative.md)** mainImage | 用于获取全质量图的OH_ImageNative。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoNative_GetUncompressedImage()
 
@@ -67,8 +63,6 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_P
 
 获取非压缩图片。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -76,13 +70,13 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_P
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | OH_PhotoNative实例。 |
-| OH_PictureNative** picture | 用于获取非压缩图片的OH_PictureNative。 |
+| [OH_PictureNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-picturenative.md)** picture | 用于获取非压缩图片的OH_PictureNative。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoNative_Release()
 
@@ -93,8 +87,6 @@ Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 **描述：**
 
 释放全质量图实例。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
@@ -108,6 +100,6 @@ Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 

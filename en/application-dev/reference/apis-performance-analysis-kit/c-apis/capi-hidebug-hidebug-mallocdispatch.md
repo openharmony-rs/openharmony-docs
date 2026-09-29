@@ -1,7 +1,7 @@
 # HiDebug_MallocDispatch
 
 ```c
-typedef struct HiDebug_MallocDispatch {...} HiDebug_MallocDispatch
+struct HiDebug_MallocDispatch {...}
 ```
 
 ## Overview

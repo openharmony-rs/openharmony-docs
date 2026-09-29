@@ -6,8 +6,6 @@
 
 **库：** libnet_connection.so
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 11
 
 **相关模块：** [NetConnection](capi-netconnection.md)
@@ -58,8 +56,6 @@ int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 
 查询是否有默认激活的数据网络。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
 **起始版本：** 11
@@ -74,7 +70,7 @@ int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>401 - 参数错误。 2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetDefaultNet()
 
@@ -86,8 +82,6 @@ int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 
 获取激活的默认的数据网络。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
 **起始版本：** 11
@@ -96,13 +90,13 @@ int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| NetConn_NetHandle *netHandle | 存放网络ID。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 存放网络ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>401 - 参数错误。 2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_IsDefaultNetMetered()
 
@@ -113,8 +107,6 @@ int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 **描述：**
 
 查询默认数据网络是否计流量。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
@@ -130,7 +122,7 @@ int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>401 - 参数错误。 2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetConnectionProperties()
 
@@ -142,8 +134,6 @@ int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn
 
 查询某个数据网络的链路信息。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
 **起始版本：** 11
@@ -152,14 +142,14 @@ int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn
 
 | 参数项 | 描述 |
 | -- | -- |
-| NetConn_NetHandle *netHandle | 存放网络ID。 |
-| NetConn_ConnectionProperties *prop | 存放链路信息。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 存放网络ID。 |
+| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) *prop | 存放链路信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>401 - 参数错误。 2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetNetCapabilities()
 
@@ -171,8 +161,6 @@ int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetC
 
 查询某个网络的能力集。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
 **起始版本：** 11
@@ -181,14 +169,14 @@ int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetC
 
 | 参数项 | 描述 |
 | -- | -- |
-| NetConn_NetHandle *netHandle | 存放网络ID。 |
-| NetConn_NetCapabilities *netCapabilities | 存放能力集。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 存放网络ID。 |
+| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) *netCapabilities | 存放能力集。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误. 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>401 - 参数错误. 2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetDefaultHttpProxy()
 
@@ -200,21 +188,19 @@ int32_t OH_NetConn_GetDefaultHttpProxy(NetConn_HttpProxy *httpProxy)
 
 查询默认的网络代理。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NetConn_HttpProxy *httpProxy | 存放代理配置信息。 |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *httpProxy | 存放代理配置信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误. 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>401 - 参数错误. 2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetAddrInfo()
 
@@ -225,8 +211,6 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 **描述：**
 
 通过netId获取DNS结果。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -246,7 +230,7 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>401 - 参数错误。 2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_FreeDnsResult()
 
@@ -257,8 +241,6 @@ int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 **描述：**
 
 释放DNS结果。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -274,7 +256,7 @@ int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>401 - 参数错误。 2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetAllNets()
 
@@ -286,8 +268,6 @@ int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 
 查询所有激活的数据网络。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
 **起始版本：** 11
@@ -296,13 +276,13 @@ int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 
 | 参数项 | 描述 |
 | -- | -- |
-| NetConn_NetHandleList *netHandleList | 网络信息列表。 |
+| [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) *netHandleList | 网络信息列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>401 - 参数错误。 2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OHOS_NetConn_RegisterDnsResolver()
 
@@ -314,8 +294,6 @@ int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 注册自定义DNS解析器。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 11
 
 **废弃版本：** 13
@@ -326,13 +304,13 @@ int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NetConn_CustomDnsResolver resolver | 指向自定义DNS解析器的指针。 |
+| [OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver | 指向自定义DNS解析器的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 401 - 参数错误。      <br>2100002 - 无法连接到服务。  2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 401 - 参数错误。<br>2100002 - 无法连接到服务。  2100003 - 内部错误。 |
 
 ### OHOS_NetConn_UnregisterDnsResolver()
 
@@ -344,8 +322,6 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 
 取消注册自定义DNS解析器。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 11
 
 **废弃版本：** 13
@@ -356,7 +332,7 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。<br>2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_RegisterDnsResolver()
 
@@ -368,8 +344,6 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 注册自定义DNS解析器。不再使用时，应调用 [OH_NetConn_UnregisterDnsResolver](capi-net-connection-h.md#oh_netconn_unregisterdnsresolver)注销自定义DNS解析器。 <br>建议使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)接口注册。当使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)时，需要使用 [OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)接口取消注册。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 13
 
 **废弃版本：** 26.0.0
@@ -380,13 +354,13 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NetConn_CustomDnsResolver resolver | 指向自定义DNS解析器的指针。 |
+| [OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver | 指向自定义DNS解析器的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果码。      <br>NETMANAGER_EXT_SUCCESS 如果操作成功。      <br>NETMANAGER_ERR_PARAMETER_ERROR 参数错误。请输入正确的参数。 |
+| int32_t | 返回结果码。<br>NETMANAGER_EXT_SUCCESS 如果操作成功。<br>NETMANAGER_ERR_PARAMETER_ERROR 参数错误。请输入正确的参数。 |
 
 ### OH_NetConn_UnregisterDnsResolver()
 
@@ -398,8 +372,6 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 
 取消注册自定义DNS解析器。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 13
 
 **废弃版本：** 26.0.0
@@ -410,7 +382,7 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。<br>2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_RegisterCustomDnsResolver()
 
@@ -422,21 +394,19 @@ int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolv
 
 注册自定义DNS解析器。注册后，系统DNS解析请求将优先回调该解析器，由开发者按需返回自定义解析结果；若未返回自定义结果，则继续使用系统默认DNS解析规则。 <br>同一时间全局仅支持一个自定义DNS解析器生效。如需更换解析器，应先调用[OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销已注册的解析器，再重新注册。 <br>作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用 [OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析器。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NetConn_CustomDnsResolver resolver | 指向自定义DNS解析器的指针。 |
+| [OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver | 指向自定义DNS解析器的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>401 - 参数错误。      <br>2101008 - 解析器已存在。 |
+| int32_t | 0 - 成功。<br>401 - 参数错误。<br>2101008 - 解析器已存在。 |
 
 ### OH_NetConn_UnregisterCustomDnsResolver()
 
@@ -448,15 +418,13 @@ int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
 
 取消注册自定义DNS解析器。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 26.0.0
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_BindSocket()
 
@@ -468,8 +436,6 @@ int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 
 将套接字绑定到特定的网络。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -477,13 +443,13 @@ int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t socketFd | 由用户构造的套接字。 |
-| NetConn_NetHandle *netHandle | 指针类型，指向包含网络ID的网络句柄。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 指针类型，指向包含网络ID的网络句柄。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>401 - 参数错误。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。<br>401 - 参数错误。<br>2100002 - 无法连接到服务。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_SetAppHttpProxy()
 
@@ -495,21 +461,19 @@ int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)
 
 为当前应用设置http代理配置信息。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| NetConn_HttpProxy *httpProxy | 需要设置的http代理配置信息。 |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *httpProxy | 需要设置的http代理配置信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>401 - 参数错误。 |
+| int32_t | 0 - 成功。<br>401 - 参数错误。 |
 
 ### OH_NetConn_RegisterAppHttpProxyCallback()
 
@@ -521,22 +485,20 @@ int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange ap
 
 注册监听应用http代理变化的回调。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NetConn_AppHttpProxyChange appHttpProxyChange | 需要注册的监听回调。 |
+| [OH_NetConn_AppHttpProxyChange](capi-net-connection-type-h.md#oh_netconn_apphttpproxychange) appHttpProxyChange | 需要注册的监听回调。 |
 | uint32_t *callbackId | 回调注册后生成的id, 关联已注册的回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>401 - 参数错误。 |
+| int32_t | 0 - 成功。<br>401 - 参数错误。 |
 
 ### OH_NetConn_UnregisterAppHttpProxyCallback()
 
@@ -547,8 +509,6 @@ void OH_NetConn_UnregisterAppHttpProxyCallback(uint32_t callbackId)
 **描述：**
 
 注销监听应用http代理变化的回调。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 12
 
@@ -568,8 +528,6 @@ int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxy
 
 请求全局HTTP代理重新认证，并通过一次性回调报告结果。<br> 该函数提交异步重新认证请求。返回值为0表示请求已被接受，不表示重新认证成功。 最终结果通过回调报告。<br><br> 如果该函数返回0，回调最多会被调用一次。回调被调用后，将由系统自动释放。<br><br> 如果该函数返回非0值，回调不会被调用。<br><br> 回调可能在系统工作线程上调用。调用者必须确保回调实现是线程安全的并快速返回。<br><br> 调用者必须确保回调函数和userData在回调被调用之前保持有效。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 26.0.0
@@ -578,14 +536,14 @@ int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxy
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NetConn_GlobalHttpProxyRefreshCallback callback | 用于接收重新认证结果的一次性回调，不能为NULL。 |
+| [OH_NetConn_GlobalHttpProxyRefreshCallback](capi-net-connection-type-h.md#oh_netconn_globalhttpproxyrefreshcallback) callback | 用于接收重新认证结果的一次性回调，不能为NULL。 |
 | void *userContext | 传递给回调的用户定义数据，可以为NULL。系统不会访问、复制或释放它。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><li>0 - 成功。</li>      <li>201 - 权限被拒。</li>      <li>401 - 参数错误。</li></ul> |
+| int32_t | <ul><li>0 - 成功。</li> <li>201 - 权限被拒。</li> <li>401 - 参数错误。</li></ul> |
 
 ### OH_NetConn_RegisterNetConnCallback()
 
@@ -596,8 +554,6 @@ int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetC
 **描述：**
 
 注册监听网络状态变化的回调。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
@@ -616,7 +572,7 @@ int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetC
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>201 - 缺少权限。      <br>401 - 参数错误。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。      <br>2101008 - 回调已注册。      <br>2101022 - 请求数超出了允许的最大值。 |
+| int32_t | 0 - 成功。<br>201 - 缺少权限。<br>401 - 参数错误。<br>2100002 - 无法连接到服务。<br>2100003 - 内部错误。<br>2101008 - 回调已注册。<br>2101022 - 请求数超出了允许的最大值。 |
 
 ### OH_NetConn_RegisterDefaultNetConnCallback()
 
@@ -627,8 +583,6 @@ int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netCo
 **描述：**
 
 注册监听默认网络状态变化的回调。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
@@ -645,7 +599,7 @@ int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netCo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>201 - 缺少权限。      <br>401 - 参数错误。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。      <br>2101008 - 回调已注册。      <br>2101022 - 请求数超出了允许的最大值。 |
+| int32_t | 0 - 成功。<br>201 - 缺少权限。<br>401 - 参数错误。<br>2100002 - 无法连接到服务。<br>2100003 - 内部错误。<br>2101008 - 回调已注册。<br>2101022 - 请求数超出了允许的最大值。 |
 
 ### OH_NetConn_UnregisterNetConnCallback()
 
@@ -656,8 +610,6 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 **描述：**
 
 注销监听网络状态变化的回调。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
@@ -673,7 +625,7 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>201 - 缺少权限。      <br>401 - 参数错误。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。      <br>2101007 - 回调不存在。 |
+| int32_t | 0 - 成功。<br>201 - 缺少权限。<br>401 - 参数错误。<br>2100002 - 无法连接到服务。<br>2100003 - 内部错误。<br>2101007 - 回调不存在。 |
 
 ### OH_NetConn_SetPacUrl()
 
@@ -684,8 +636,6 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 **描述：**
 
 设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。 通过解析脚本地址可以获取代理信息。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **需要权限：** ohos.permission.SET_PAC_URL
 
@@ -701,7 +651,7 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 
 | 类型 | 说明 |
 | -- | -- |
-| NetConn_ErrorCode | 结果定义在 {@link NetConn_ErrorCode}。<br>    <br>{@link NETCONN_SUCCESS} 成功。<br>    <br>{@link NETCONN_PERMISSION_DENIED} 缺少权限。<br>    <br>{@link NETCONN_PARAMETER_ERROR} 参数错误。<br>    <br>{@link NETCONN_OPERATION_FAILED} 无法连接到服务。<br>    <br>{@link NETCONN_INTERNAL_ERROR} 内部错误。 |
+| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | 结果定义在 [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode)。<br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode) 成功。<br>[NETCONN_PERMISSION_DENIED](capi-net-connection-type-h.md#netconn_errorcode) 缺少权限。<br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 参数错误。<br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode) 无法连接到服务。<br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 内部错误。 |
 
 ### OH_NetConn_GetPacUrl()
 
@@ -712,8 +662,6 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 **描述：**
 
 获取系统级代理自动配置（PAC）脚本地址。
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 15
 
@@ -727,7 +675,7 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 
 | 类型 | 说明 |
 | -- | -- |
-| NetConn_ErrorCode | 结果定义在 {@link NetConn_ErrorCode}。<br>    <br>{@link NETCONN_SUCCESS} 成功。<br>    <br>{@link NETCONN_PARAMETER_ERROR} 参数错误。<br>    <br>{@link NETCONN_OPERATION_FAILED} 无法连接到服务。<br>    <br>{@link NETCONN_INTERNAL_ERROR} 内部错误。 |
+| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | 结果定义在 [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode)。<br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode) 成功。<br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 参数错误。<br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode) 无法连接到服务。<br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 内部错误。 |
 
 ### OH_NetConn_QueryProbeResult()
 
@@ -739,8 +687,6 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口涉及网络操作，避免在主流程调用，否则可能导致UI卡顿。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 20
@@ -751,13 +697,13 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 | -- | -- |
 | char *destination | 需要探测的目标域名或者IP地址。对于域名，探测前会进行域名解析，将域名解析为目标IP，之后发起探测。域名解析时间不包含在duration指示的探测持续时间内。 |
 | int32_t duration | 探测持续时间。单位：秒。探测间隔为1秒，因此可通过本字段控制探测次数。 |
-| NetConn_ProbeResultInfo *probeResultInfo | 丢包率和往返时间（RTT）。 |
+| [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) *probeResultInfo | 丢包率和往返时间（RTT）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>201 - 缺少权限。      <br>401 - 参数错误。      <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。<br>201 - 缺少权限。<br>401 - 参数错误。<br>2100003 - 内部错误。 |
 
 ### OH_NetConn_QueryTraceRoute()
 
@@ -769,8 +715,6 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 
 查询网络跟踪路由。
 
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 **需要权限：** ohos.permission.INTERNET and ohos.permission.LOCATION and ohos.permission.ACCESS_NET_TRACE_INFO
 
 **起始版本：** 20
@@ -780,13 +724,13 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 | 参数项 | 描述 |
 | -- | -- |
 | char *destination | 目的地址。 |
-| NetConn_TraceRouteOption *option | 路由参数选项。 |
-| NetConn_TraceRouteInfo *traceRouteInfo | 路由结果。需传入数组指针，数组大小代表路由跳数，默认30跳。若自定义跳数，则需保证数组大小与option字段中的maxJumpNumber数值保持一致。 |
+| [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) *option | 路由参数选项。 |
+| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) *traceRouteInfo | 路由结果。需传入数组指针，数组大小代表路由跳数，默认30跳。若自定义跳数，则需保证数组大小与option字段中的maxJumpNumber数值保持一致。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。      <br>201 - 缺少权限。 |
+| int32_t | 0 - 成功。<br>201 - 缺少权限。 |
 
 

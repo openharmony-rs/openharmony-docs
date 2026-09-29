@@ -6,9 +6,7 @@ Declares APIs for converting <b>FrameNode</b> objects on the ArkTS side to <b>Ar
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Since**: 12
+**Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
@@ -37,8 +35,6 @@ int32_t OH_ArkUI_NativeModule_GetNodeHandleFromAniValue(ani_env* env, ani_object
 
 Obtains a <b>FrameNode</b> object on the ArkTS side and maps it to an <b>ArkUI_NodeHandle</b> object on the native side.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
@@ -53,7 +49,7 @@ Obtains a <b>FrameNode</b> object on the ArkTS side and maps it to an <b>ArkUI_N
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NativeModule_GetContextFromAniValue()
 
@@ -64,8 +60,6 @@ int32_t OH_ArkUI_NativeModule_GetContextFromAniValue(ani_env* env, ani_object co
 **Description**
 
 Obtains a <b>UIContext</b> object on the ArkTS side and maps it to an <b>ArkUI_ContextHandle</b> object on the native side.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -81,7 +75,7 @@ Obtains a <b>UIContext</b> object on the ArkTS side and maps it to an <b>ArkUI_C
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NativeModule_GetNodeContentFromAniValue()
 
@@ -92,8 +86,6 @@ int32_t OH_ArkUI_NativeModule_GetNodeContentFromAniValue(ani_env *env, ani_objec
 **Description**
 
 Obtains a <b>NodeContent</b> object on the ArkTS side and maps it to an <b>ArkUI_NodeContentHandle</b> object on the native side.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -109,7 +101,7 @@ Obtains a <b>NodeContent</b> object on the ArkTS side and maps it to an <b>ArkUI
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.           Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.           Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NativeModule_GetNavDestinationAniParam()
 
@@ -121,8 +113,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetNavDestinationAniParam(ArkUI_NodeHandle
 
 Obtains the parameters of the NavDestination component where the node is located.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 **Parameters**:
@@ -131,13 +121,13 @@ Obtains the parameters of the NavDestination component where the node is located
 | -- | -- |
 | ArkUI_NodeHandle node | The node. |
 | ani_env* env | The ANI environment. |
-| ani_value* param | The parameter of NavDestination. |
+| [ani_value](../../apis-arkts/c-apis/capi--ani-value.md)* param | The parameter of NavDestination. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.          Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if query information failed,          this may be because the node is not in NavDestination. |
+| ArkUI_ErrorCode | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. Returns ARKUI_ERROR_CODE_GET_INFO_FAILED if query information failed, this may be because the node is not in NavDestination. |
 
 ### OH_ArkUI_NativeModule_GetDrawableDescriptorFromAniValue()
 
@@ -148,8 +138,6 @@ int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromAniValue(ani_env *env, an
 **Description**
 
 Obtains a <b>DrawableDescriptor</b> object on the ArkTS side and maps it to an <b>ArkUI_DrawableDescriptro</b> object on the native side.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -165,7 +153,7 @@ Obtains a <b>DrawableDescriptor</b> object on the ArkTS side and maps it to an <
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_NativeModule_GetDrawableDescriptorFromResourceAniValue()
 
@@ -176,8 +164,6 @@ int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromResourceAniValue(ani_env 
 **Description**
 
 Obtains a <b>Resource</b> object on the ArkTS side and maps it to an <b>ArkUI_DrawableDescriptro</b> object on the native side.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -193,6 +179,6 @@ Obtains a <b>Resource</b> object on the ArkTS side and maps it to an <b>ArkUI_Dr
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the error code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns the error code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 

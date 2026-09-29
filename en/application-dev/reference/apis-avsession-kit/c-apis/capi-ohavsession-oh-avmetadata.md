@@ -1,0 +1,18 @@
+# OH_AVMetadata
+
+```c
+typedef struct OH_AVMetadata OH_AVMetadata
+```
+
+## Overview
+
+Declaring the avmetadata. The instance of avmetadata set by application for current resource.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
+**Since**: 13
+
+**Related module**: [OHAVSession](capi-ohavsession.md)
+
+**Header file**: [native_avmetadata.h](capi-native-avmetadata-h.md)
+

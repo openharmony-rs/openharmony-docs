@@ -6,9 +6,7 @@ This file declares the capabilities for obtaining the character position in a te
 
 **Library**: libnative_drawing.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
-**Since**: 8
+**Since**: 18
 
 **Related module**: [Drawing](capi-drawing.md)
 
@@ -56,21 +54,19 @@ OH_Drawing_Array* OH_Drawing_TypographyGetTextLines(OH_Drawing_Typography* typog
 
 Obtains the array of text lines in a typography object. This array contains one or more text line objects. Release this pointer by calling [OH_Drawing_DestroyTextLines](capi-drawing-text-line-h.md#oh_drawing_destroytextlines) when this object is no longer needed.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Typography* typography | Pointer to the [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md) object. |
+| [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | Pointer to the [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Array* | Pointer to the text line array [OH_Drawing_Array](capi-drawing-oh-drawing-array.md). <br>Returns NULL when typography is NULL. |
+| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | Pointer to the text line array [OH_Drawing_Array](capi-drawing-oh-drawing-array.md). <br>Returns NULL when typography is NULL. |
 
 ### OH_Drawing_DestroyTextLines()
 
@@ -82,15 +78,13 @@ void OH_Drawing_DestroyTextLines(OH_Drawing_Array* lines)
 
 Releases the memory occupied by a text line array.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Array* lines | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object. |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* lines | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object. |
 
 ### OH_Drawing_DestroyTextLine()
 
@@ -102,15 +96,13 @@ void OH_Drawing_DestroyTextLine(OH_Drawing_TextLine* line)
 
 Releases the memory of a single text line object. Only the memory of a text line object that is independently allocated can be released. The memory of a text line object obtained from a line array through [OH_Drawing_GetTextLineByIndex](capi-drawing-text-line-h.md#oh_drawing_gettextlinebyindex) cannot be released.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 
 ### OH_Drawing_GetTextLineByIndex()
 
@@ -122,22 +114,20 @@ OH_Drawing_TextLine* OH_Drawing_GetTextLineByIndex(OH_Drawing_Array* lines, size
 
 Obtains the text line object with the specified index in a text line array.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Array* lines | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object. |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* lines | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object. |
 | size_t index | Index of the text line array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_TextLine* | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) text line object at the specified index. <br>Returns NULL if      lines is NULL or the index is out of bounds. |
+| [OH_Drawing_TextLine*](capi-drawing-oh-drawing-textline.md) | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) text line object at the specified index. <br>Returns NULL if lines is NULL or the index is out of bounds. |
 
 ### OH_Drawing_TextLineGetGlyphCount()
 
@@ -149,15 +139,13 @@ double OH_Drawing_TextLineGetGlyphCount(OH_Drawing_TextLine* line)
 
 Obtains the number of glyphs in a text line object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 
 **Returns**:
 
@@ -175,15 +163,13 @@ void OH_Drawing_TextLineGetTextRange(OH_Drawing_TextLine* line, size_t* start, s
 
 Obtains the range of the text in a text line object in the entire paragraph.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 | size_t* start | Pointer to the start of the range. |
 | size_t* end | Pointer to the end of the range. |
 
@@ -197,21 +183,19 @@ OH_Drawing_Array* OH_Drawing_TextLineGetGlyphRuns(OH_Drawing_TextLine* line)
 
 Obtains the array of text rendering units [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) in the text line object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Array* | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) array of text rendering units [OH_Drawing_Run](capi-drawing-oh-drawing-run.md). When the      [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) is no longer needed, please use the [OH_Drawing_DestroyRuns](capi-drawing-text-line-h.md#oh_drawing_destroyruns) API to release the      pointer of the object. |
+| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) array of text rendering units [OH_Drawing_Run](capi-drawing-oh-drawing-run.md). When the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) is no longer needed, please use the [OH_Drawing_DestroyRuns](capi-drawing-text-line-h.md#oh_drawing_destroyruns) API to release the pointer of the object. |
 
 ### OH_Drawing_DestroyRuns()
 
@@ -223,15 +207,13 @@ void OH_Drawing_DestroyRuns(OH_Drawing_Array* runs)
 
 Releases the memory occupied by a glyph run array.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Array* runs | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) array, which holds multiple [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) objects. |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* runs | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) array, which holds multiple [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) objects. |
 
 ### OH_Drawing_GetRunByIndex()
 
@@ -243,22 +225,20 @@ OH_Drawing_Run* OH_Drawing_GetRunByIndex(OH_Drawing_Array* runs, size_t index)
 
 Obtains the glyph run object with the specified index in a glyph run array.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_Array* runs | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) array, which holds multiple [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) objects. |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* runs | Pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) array, which holds multiple [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) objects. |
 | size_t index | Index of the glyph run array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Run* | Pointer to the text rendering unit object [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) at the specified index. <br>NULL is      returned if runs is NULL or the index is out of bounds. |
+| [OH_Drawing_Run*](capi-drawing-oh-drawing-run.md) | Pointer to the text rendering unit object [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) at the specified index. <br>NULL is returned if runs is NULL or the index is out of bounds. |
 
 ### OH_Drawing_TextLinePaint()
 
@@ -270,16 +250,14 @@ void OH_Drawing_TextLinePaint(OH_Drawing_TextLine* line, OH_Drawing_Canvas* canv
 
 Paints a text line on the canvas with the coordinate point (x, y) as the upper left corner.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
-| OH_Drawing_Canvas* canvas | Pointer to the target canvas for drawing, which is an [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md). |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the target canvas for drawing, which is an [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md). |
 | double x | Horizontal coordinate of the upper left corner, in px. |
 | double y | Vertical coordinate of the upper left corner, in px. |
 
@@ -293,15 +271,13 @@ OH_Drawing_TextLine* OH_Drawing_TextLineCreateTruncatedLine(OH_Drawing_TextLine*
 
 Creates a truncated text line object. Truncates the original text line based on the specified width, truncation type, and truncation mark string, inserts the specified mark string at the truncation position, and generates and returns a new independent text line object. The original text is not affected.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 | double width | Width of the truncated line, in physical pixels (px). |
 | int mode | Truncation type. The value is an enumerated value of [OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal). Currently, only **<br>ELLIPSIS_MODAL_HEAD** and **ELLIPSIS_MODAL_TAIL** are supported. |
 | const char* ellipsis | Pointer to the string used to mark a truncation. |
@@ -310,7 +286,7 @@ Creates a truncated text line object. Truncates the original text line based on 
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_TextLine* | Pointer to the truncated text line object [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md). <br>NULL is returned when line or      ellipsis is NULL. <br>Please use [OH_Drawing_DestroyTextLine](capi-drawing-text-line-h.md#oh_drawing_destroytextline) to release the object's memory when it is no      longer needed. |
+| [OH_Drawing_TextLine*](capi-drawing-oh-drawing-textline.md) | Pointer to the truncated text line object [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md). <br>NULL is returned when line or ellipsis is NULL. <br>Please use [OH_Drawing_DestroyTextLine](capi-drawing-text-line-h.md#oh_drawing_destroytextline) to release the object's memory when it is no longer needed. |
 
 ### OH_Drawing_TextLineGetTypographicBounds()
 
@@ -322,15 +298,13 @@ double OH_Drawing_TextLineGetTypographicBounds(OH_Drawing_TextLine* line, double
 
 Obtains the typographic bounds of the text line object. The typographic bounds of a text line are related to the typographic font and typographic font size, and are independent of the characters themselves. <br>For example, for the string " a b ", where there is one space before the 'a' character and one space after the ' b' character, the typographic bounds include the bounds of the leading and trailing spaces. For example, for the string "j" or "E", the typographic bounds are the same, i.e., independent of the characters themselves. <br>The text height can be calculated using height = ascent + descent + leading.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the text line object [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md). |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the text line object [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md). |
 | double* ascent | Pointer to the ascent height of the text line object. The unit is physical pixel. |
 | double* descent | Pointer to the descent height of the text line object. The unit is physical pixel. |
 | double* leading | Pointer to the leading of the text line object. The unit is physical pixel. |
@@ -351,21 +325,19 @@ OH_Drawing_Rect* OH_Drawing_TextLineGetImageBounds(OH_Drawing_TextLine* line)
 
 Obtains the image bounds of the text line object. The image bounds of a text line are related to the typographic font, typographic font size, and the characters themselves, and are equivalent to the visual bounds. <br>For example, for the string " a b ", where there is one space before the 'a' character and one space after the ' b' character, the user can only see "a b" on the UI, and the image bounds are the bounds excluding the leading and trailing spaces. <br>For example, for the string "j" or "E", the visual bounds are different, i.e., related to the characters themselves. The visual bounds width of the string "j" is smaller than that of the string "E", and the visual bounds height of the string "j" is greater than that of the string "E".
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_Rect* | Pointer to the image bounds [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) of the text line object. <br>Returns NULL when the      passed-in line is NULL. <br>When the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) is no longer needed, please use the      [OH_Drawing_RectDestroy](capi-drawing-rect-h.md#oh_drawing_rectdestroy) API to release the pointer of the object. |
+| [OH_Drawing_Rect*](capi-drawing-oh-drawing-rect.md) | Pointer to the image bounds [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) of the text line object. <br>Returns NULL when the passed-in line is NULL. <br>When the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) is no longer needed, please use the [OH_Drawing_RectDestroy](capi-drawing-rect-h.md#oh_drawing_rectdestroy) API to release the pointer of the object. |
 
 ### OH_Drawing_TextLineGetTrailingSpaceWidth()
 
@@ -377,15 +349,13 @@ double OH_Drawing_TextLineGetTrailingSpaceWidth(OH_Drawing_TextLine* line)
 
 Obtains the width of the spaces at the end of a text line object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 
 **Returns**:
 
@@ -403,22 +373,20 @@ int32_t OH_Drawing_TextLineGetStringIndexForPosition(OH_Drawing_TextLine* line, 
 
 Obtains the string index at the specified position in the text line object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
-| OH_Drawing_Point* point | Pointer to the position [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) where the index is to be found. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to the position [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) where the index is to be found. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the index of the character. For example, for the string "abc", the index of "a" is 0, the index of "      b" is 1, and the index of "c" is 2. If the specified position is at "a", then 0 is returned. |
+| int32_t | Returns the index of the character. For example, for the string "abc", the index of "a" is 0, the index of " b" is 1, and the index of "c" is 2. If the specified position is at "a", then **0** is returned. |
 
 ### OH_Drawing_TextLineGetOffsetForStringIndex()
 
@@ -430,15 +398,13 @@ double OH_Drawing_TextLineGetOffsetForStringIndex(OH_Drawing_TextLine* line, int
 
 Obtains the offset of a character with the specified index in a text line object.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 | int32_t index | Index of the character. |
 
 **Returns**:
@@ -457,8 +423,6 @@ typedef bool (*Drawing_CaretOffsetsCallback)(double offset, int32_t index, bool 
 
 Defines a custom callback used to receive the offset and index of each character in a text line object as its parameters.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
@@ -473,7 +437,7 @@ Defines a custom callback used to receive the offset and index of each character
 
 | Type | Description |
 | -- | -- |
-| bool | Whether to stop calling the callback. true means to stop; false otherwise. |
+| bool | Whether to stop calling the callback. **true** means to stop; **false** otherwise. |
 
 ### OH_Drawing_TextLineEnumerateCaretOffsets()
 
@@ -485,15 +449,13 @@ void OH_Drawing_TextLineEnumerateCaretOffsets(OH_Drawing_TextLine* line, Drawing
 
 Enumerates the offset and index of each character in a text line object and passes them to a custom callback function. You can use the offset and index array for other operations.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 | [Drawing_CaretOffsetsCallback](capi-drawing-text-line-h.md#drawing_caretoffsetscallback) callback | User-defined function [Drawing_CaretOffsetsCallback](capi-drawing-text-line-h.md#drawing_caretoffsetscallback). |
 
 ### OH_Drawing_TextLineGetAlignmentOffset()
@@ -506,15 +468,13 @@ double OH_Drawing_TextLineGetAlignmentOffset(OH_Drawing_TextLine* line, double a
 
 Obtains the offset of a text line object after alignment based on the alignment factor and alignment width.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_TextLine* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
+| [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)* line | Pointer to the [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object. |
 | double alignmentFactor | Alignment factor. A value less than or equal to 0.0 indicates left alignment, greater than 0. 0 and less than 0.5 indicates left-biased alignment, 0.5 indicates center alignment, greater than 0.5 and less than 1.0 indicates right-biased alignment, and greater than or equal to 1.0 indicates right alignment. |
 | double alignmentWidth | Alignment width, i.e., the offset of the bottom-right corner of the text line object relative to the starting position after final offset, in physical pixels (px). If the specified alignment width is less than the actual width of the text line object, 0 is returned. |
 

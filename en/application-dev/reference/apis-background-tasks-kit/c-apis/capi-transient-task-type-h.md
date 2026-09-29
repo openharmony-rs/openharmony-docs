@@ -6,9 +6,7 @@ Defines the data structures for the C APIs of transient task.
 
 **Library**: libtransient_task.so
 
-**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
-
-**Since**: 13
+**Since**: 11
 
 **Related module**: [TransientTask](capi-transienttask.md)
 
@@ -16,10 +14,10 @@ Defines the data structures for the C APIs of transient task.
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) | TransientTask_DelaySuspendInfo | A struct that describes the returned information about a transient task. The struct returns the ID and remaining time of the transient task. |
-| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | TransientTask_TransientTaskInfo | A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day. |
+| Name | Description |
+| -- | -- |
+| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) | A struct that describes the returned information about a transient task. The struct returns the ID and remaining time of the transient task. |
+| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day. |
 
 ### Enum
 
@@ -43,7 +41,7 @@ Defines the data structures for the C APIs of transient task.
 
 | Name | Description |
 | -- | -- |
-| void (*TransientTask_Callback)(void) | Defines a callback for transient task timeout.<br>**Since**: 13 |
+| void (*TransientTask_Callback)(void) | Defines a callback for transient task timeout.<br>**Since**: 13<br>**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask |
 
 ## Enum type description
 
@@ -56,8 +54,6 @@ enum TransientTask_ErrorCode
 **Description**
 
 Enumerates the error codes available for a transient task.
-
-**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Since**: 13
 
@@ -85,8 +81,6 @@ typedef void (*TransientTask_Callback)(void)
 **Description**
 
 Defines a callback for transient task timeout.
-
-**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Since**: 13
 

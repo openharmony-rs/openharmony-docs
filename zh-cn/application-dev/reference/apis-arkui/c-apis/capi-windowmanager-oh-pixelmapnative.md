@@ -1,0 +1,18 @@
+# OH_PixelmapNative
+
+```c
+typedef struct OH_PixelmapNative OH_PixelmapNative
+```
+
+## 概述
+
+Describes the pixel image information.
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 15
+
+**相关模块：** [WindowManager](capi-windowmanager.md)
+
+**所在头文件：** [oh_window_comm.h](capi-oh-window-comm-h.md)
+

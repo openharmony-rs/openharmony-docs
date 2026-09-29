@@ -6,8 +6,6 @@
 
 **库：** libnet_http.so
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 20
 
 **相关模块：** [netstack](capi-netstack.md)
@@ -18,17 +16,17 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Http_Buffer](capi-netstack-http-buffer.md) | Http_Buffer | HTTP缓存结构体。 |
-| [Http_HeaderValue](capi-netstack-http-headervalue.md) | Http_HeaderValue | 请求或者响应的标头映射的值类型。 |
-| [Http_HeaderEntry](capi-netstack-http-headerentry.md) | Http_HeaderEntry | 请求或者响应的标头的所有键值对。 |
-| [Http_ClientCert](capi-netstack-http-clientcert.md) | Http_ClientCert | 发送到服务端的客户端证书配置，服务端将通过客户端证书校验客户端身份。 |
-| [Http_CustomProxy](capi-netstack-http-customproxy.md) | Http_CustomProxy | 用户自定义代理配置。 |
-| [Http_Proxy](capi-netstack-http-proxy.md) | Http_Proxy | 代理配置结构体。 |
-| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) | Http_PerformanceTiming | HTTP响应时间信息，会在{@link Http_Response}中收集。 |
-| [Http_RequestOptions](capi-netstack-http-requestoptions.md) | Http_RequestOptions | 定义HTTP请求配置的结构体。 |
-| [Http_Response](capi-netstack-http-response.md) | Http_Response | 定义HTTP响应的结构体。 |
-| [Http_Request](capi-netstack-http-request.md) | Http_Request | HTTP请求结构体。 |
-| [Http_EventsHandler](capi-netstack-http-eventshandler.md) | Http_EventsHandler | 监听不同HTTP事件的回调函数。 |
+| [Http_Buffer](capi-netstack-http-buffer.md) | - | HTTP缓存结构体。 |
+| [Http_HeaderValue](capi-netstack-http-headervalue.md) | - | 请求或者响应的标头映射的值类型。 |
+| [Http_HeaderEntry](capi-netstack-http-headerentry.md) | - | 请求或者响应的标头的所有键值对。 |
+| [Http_ClientCert](capi-netstack-http-clientcert.md) | - | 发送到服务端的客户端证书配置，服务端将通过客户端证书校验客户端身份。 |
+| [Http_CustomProxy](capi-netstack-http-customproxy.md) | - | 用户自定义代理配置。 |
+| [Http_Proxy](capi-netstack-http-proxy.md) | - | 代理配置结构体。 |
+| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) | - | HTTP响应时间信息，会在[Http_Response](capi-netstack-http-response.md)中收集。 |
+| [Http_RequestOptions](capi-netstack-http-requestoptions.md) | - | 定义HTTP请求配置的结构体。 |
+| [Http_Response](capi-netstack-http-response.md) | - | 定义HTTP响应的结构体。 |
+| [Http_Request](capi-netstack-http-request.md) | - | HTTP请求结构体。 |
+| [Http_EventsHandler](capi-netstack-http-eventshandler.md) | - | 监听不同HTTP事件的回调函数。 |
 | [Http_Headers](capi-netstack-http-headers.md) | Http_Headers | HTTP请求或者是响应中的标头。 |
 
 ### 枚举
@@ -72,11 +70,11 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode) | 接收到HTTP响应的回调函数。<br>**起始版本：** 20 |
-| void (*Http_OnDataReceiveCallback)(const char *data, size_t length) | 接收到数据的回调。<br>**起始版本：** 20 |
-| void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize) | 请求/响应数据传输过程中调用的回调函数。<br>**起始版本：** 20 |
-| void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers) | 收到HTTP响应头的回调函数。<br>**起始版本：** 20 |
-| void (*Http_OnVoidCallback)(void) | 请求的DataEnd或Cancel事件回调的回调函数。<br>**起始版本：** 20 |
+| void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode) | 接收到HTTP响应的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack |
+| void (*Http_OnDataReceiveCallback)(const char *data, size_t length) | 接收到数据的回调。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack |
+| void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize) | 请求/响应数据传输过程中调用的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack |
+| void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers) | 收到HTTP响应头的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack |
+| void (*Http_OnVoidCallback)(void) | 请求的DataEnd或Cancel事件回调的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack |
 
 ## 枚举类型说明
 
@@ -89,8 +87,6 @@ enum Http_ErrCode
 **描述：**
 
 定义HTTP请求的错误码。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
@@ -141,8 +137,6 @@ enum Http_ResponseCode
 **描述：**
 
 定义HTTP响应码。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
@@ -195,8 +189,6 @@ enum Http_AddressFamilyType
 
 定义解析目标域名时限定的地址类型。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -214,8 +206,6 @@ enum Http_HttpProtocol
 **描述：**
 
 HTTP协议版本号枚举定义。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
@@ -236,8 +226,6 @@ enum Http_CertType
 
 证书类型枚举。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -255,8 +243,6 @@ enum Http_ProxyType
 **描述：**
 
 代理配置类型枚举定义。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
@@ -279,15 +265,13 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 
 接收到HTTP响应的回调函数。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct Http_Response](capi-netstack-http-response.md) \*response | HTTP响应结构体，指向Http_Response的指针，参考[Http_Response](capi-netstack-http-response.md)。 |
+| [struct Http_Response](capi-netstack-http-response.md) *response | HTTP响应结构体，指向Http_Response的指针，参考[Http_Response](capi-netstack-http-response.md)。 |
 | uint32_t errCode | 响应码。 |
 
 ### Http_OnDataReceiveCallback()
@@ -300,15 +284,13 @@ typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 
 接收到数据的回调。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char \*data | 响应体。 |
+| const char *data | 响应体。 |
 | size_t length | 响应体的长度。 |
 
 ### Http_OnProgressCallback()
@@ -320,8 +302,6 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 **描述：**
 
 请求/响应数据传输过程中调用的回调函数。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
@@ -342,15 +322,13 @@ typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 
 收到HTTP响应头的回调函数。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Http_Headers](capi-netstack-http-headers.md) \*headers | 接收到的请求头，指向Http_Headers的指针，参考[Http_Headers](capi-netstack-http-headers.md)。 |
+| [Http_Headers](capi-netstack-http-headers.md) *headers | 接收到的请求头，指向Http_Headers的指针，参考[Http_Headers](capi-netstack-http-headers.md)。 |
 
 ### Http_OnVoidCallback()
 
@@ -361,8 +339,6 @@ typedef void (*Http_OnVoidCallback)(void)
 **描述：**
 
 请求的DataEnd或Cancel事件回调的回调函数。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 

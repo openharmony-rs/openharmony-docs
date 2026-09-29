@@ -6,8 +6,6 @@ The file declares the functions for basic display management. You can call the f
 
 **Library**: libnative_display_manager.so
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)
@@ -63,11 +61,11 @@ The file declares the functions for basic display management. You can call the f
 
 | Name | Description |
 | -- | -- |
-| void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId) | Defines a callback function to listen for display status changes.<br>**Since**: 12 |
-| void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)( NativeDisplayManager_FoldDisplayMode displayMode) | Defines a callback function to listen for folded/unfolded state changes of the display.<br>**Since**: 12 |
-| void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId) | Defines a callback function to listen for available area changes of a display.<br>**Since**: 20 |
-| void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId) | Defines a callback function to listen for display addition events.<br>**Since**: 20 |
-| void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId) | Defines a callback function to listen for display removal events.<br>**Since**: 20 |
+| void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId) | Defines a callback function to listen for display status changes.<br>**Since**: 12<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
+| void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)( NativeDisplayManager_FoldDisplayMode displayMode) | Defines a callback function to listen for folded/unfolded state changes of the display.<br>**Since**: 12<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
+| void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId) | Defines a callback function to listen for available area changes of a display.<br>**Since**: 20<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
+| void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId) | Defines a callback function to listen for display addition events.<br>**Since**: 20<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
+| void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId) | Defines a callback function to listen for display removal events.<br>**Since**: 20<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
 
 ## Function description
 
@@ -81,8 +79,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayId(uint6
 
 Obtains the ID of the default display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -95,7 +91,7 @@ Obtains the ID of the default display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayWidth()
 
@@ -106,8 +102,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayWidth(in
 **Description**
 
 Obtains the width of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -121,7 +115,7 @@ Obtains the width of the default display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayHeight()
 
@@ -132,8 +126,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayHeight(i
 **Description**
 
 Obtains the height of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -147,7 +139,7 @@ Obtains the height of the default display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayRotation()
 
@@ -159,21 +151,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRotation
 
 Obtains the clockwise rotation angle of the default display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_Rotation *displayRotation | Pointer to the clockwise rotation angle. For details about the available options, see [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation). |
+| [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation) *displayRotation | Pointer to the clockwise rotation angle. For details about the available options, see [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayOrientation()
 
@@ -185,21 +175,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayOrientat
 
 Obtains the orientation of the default display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_Orientation *displayOrientation | Pointer to the orientation. For details about the available options, see [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation). |
+| [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation) *displayOrientation | Pointer to the orientation. For details about the available options, see [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayVirtualPixelRatio()
 
@@ -210,8 +198,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayVirtualP
 **Description**
 
 Obtains the virtual pixel ratio of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -225,7 +211,7 @@ Obtains the virtual pixel ratio of the default display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayRefreshRate()
 
@@ -236,8 +222,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRefreshR
 **Description**
 
 Obtains the refresh rate of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -251,7 +235,7 @@ Obtains the refresh rate of the default display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityDpi()
 
@@ -262,8 +246,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityD
 **Description**
 
 Obtains the physical pixel density of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -277,7 +259,7 @@ Obtains the physical pixel density of the default display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityPixels()
 
@@ -288,8 +270,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityP
 **Description**
 
 Obtains the logical pixel density of the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -303,7 +283,7 @@ Obtains the logical pixel density of the default display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayScaledDensity()
 
@@ -314,8 +294,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayScaledDe
 **Description**
 
 Obtains the scale factor of fonts displayed on the default display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -329,7 +307,7 @@ Obtains the scale factor of fonts displayed on the default display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi()
 
@@ -340,8 +318,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityX
 **Description**
 
 Obtains the number of physical pixels per inch on the default display in the X dimension.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -355,7 +331,7 @@ Obtains the number of physical pixels per inch on the default display in the X d
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi()
 
@@ -366,8 +342,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityY
 **Description**
 
 Obtains the number of physical pixels per inch on the default display in the Y dimension.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -381,7 +355,7 @@ Obtains the number of physical pixels per inch on the default display in the Y d
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo()
 
@@ -393,21 +367,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDefaultDisplayCutou
 
 Obtains the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_CutoutInfo **cutoutInfo | Double pointer to the unusable area information, which is encapsulated in [NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md). |
+| [NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md) **cutoutInfo | Double pointer to the unusable area information, which is encapsulated in [NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo()
 
@@ -419,21 +391,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyDefaultDisplayCuto
 
 Destroys the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_CutoutInfo *cutoutInfo | Pointer to the unusable area information object, which is obtained by calling [OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdefaultdisplaycutoutinfo). For details, see [NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md). |
+| [NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md) *cutoutInfo | Pointer to the unusable area information object, which is obtained by calling [OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdefaultdisplaycutoutinfo). For details, see [NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li></ul> |
 
 ### OH_NativeDisplayManager_IsFoldable()
 
@@ -444,8 +414,6 @@ bool OH_NativeDisplayManager_IsFoldable()
 **Description**
 
 Checks whether the current device is foldable.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -465,21 +433,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetFoldDisplayMode(Native
 
 Obtains the display mode of the foldable device.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_FoldDisplayMode *displayMode | Pointer to the display mode. For details about the available options, see [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode). |
+| [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode) *displayMode | Pointer to the display mode. For details about the available options, see [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If device not support.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If device not support.</li></ul> |
 
 ### OH_NativeDisplayManager_DisplayChangeCallback()
 
@@ -490,8 +456,6 @@ typedef void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId
 **Description**
 
 Defines a callback function to listen for display status changes.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -511,8 +475,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayChangeList
 
 Registers a listener for display status changes (such as rotation, refresh rate, DPI, and resolution changes).
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -526,7 +488,7 @@ Registers a listener for display status changes (such as rotation, refresh rate,
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_UnregisterDisplayChangeListener()
 
@@ -537,8 +499,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayChangeLi
 **Description**
 
 Unregisters a listener for display status changes.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -552,7 +512,7 @@ Unregisters a listener for display status changes.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_FoldDisplayModeChangeCallback()
 
@@ -564,15 +524,13 @@ typedef void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)(NativeDisp
 
 Defines a callback function to listen for folded/unfolded state changes of the display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_FoldDisplayMode displayMode | Folded or unfolded state of the display. For details about the available options, see [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode). |
+| [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode) displayMode | Folded or unfolded state of the display. For details about the available options, see [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode). |
 
 ### OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener()
 
@@ -583,8 +541,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterFoldDisplayModeCh
 **Description**
 
 Registers a listener for folded/unfolded state changes of the display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -599,7 +555,7 @@ Registers a listener for folded/unfolded state changes of the display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If device not support.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If device not support.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener()
 
@@ -610,8 +566,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterFoldDisplayMode
 **Description**
 
 Unregisters a listener for folded/unfolded state changes of the display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -625,7 +579,7 @@ Unregisters a listener for folded/unfolded state changes of the display.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If device not support.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If device not support.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_CreateAllDisplays()
 
@@ -637,21 +591,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAllDisplays(NativeD
 
 Obtains the object that contains the information about all displays.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_DisplaysInfo **allDisplays | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md). |
+| [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md) **allDisplays | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_DestroyAllDisplays()
 
@@ -663,15 +615,13 @@ void OH_NativeDisplayManager_DestroyAllDisplays(NativeDisplayManager_DisplaysInf
 
 Destroys the object that contains the information about all displays.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_DisplaysInfo *allDisplays | Pointer to the display information object, which is obtained by calling [OH_NativeDisplayManager_CreateAllDisplays](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays). For details, see [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md). |
+| [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md) *allDisplays | Pointer to the display information object, which is obtained by calling [OH_NativeDisplayManager_CreateAllDisplays](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays). For details, see [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md). |
 
 ### OH_NativeDisplayManager_CreateDisplayById()
 
@@ -683,8 +633,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_
 
 Obtains the object that contains the information about a display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -692,13 +640,13 @@ Obtains the object that contains the information about a display.
 | Parameter | Description |
 | -- | -- |
 | uint32_t displayId | ID of the display. The value must be a non-negative integer. |
-| NativeDisplayManager_DisplayInfo **displayInfo | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md). |
+| [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md) **displayInfo | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_DestroyDisplay()
 
@@ -710,15 +658,13 @@ void OH_NativeDisplayManager_DestroyDisplay(NativeDisplayManager_DisplayInfo *di
 
 Destroys the object that contains the information about a display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_DisplayInfo *displayInfo | Pointer to the display information object, which is obtained by calling [OH_NativeDisplayManager_CreateDisplayById](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdisplaybyid) or [OH_NativeDisplayManager_CreatePrimaryDisplay](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createprimarydisplay). For details, see [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md). |
+| [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md) *displayInfo | Pointer to the display information object, which is obtained by calling [OH_NativeDisplayManager_CreateDisplayById](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdisplaybyid) or [OH_NativeDisplayManager_CreatePrimaryDisplay](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createprimarydisplay). For details, see [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md). |
 
 ### OH_NativeDisplayManager_CreatePrimaryDisplay()
 
@@ -730,21 +676,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(Nati
 
 Obtains the object that contains the information about the primary display. For devices other than 2-in-1 devices, the displayInfo object obtained contains information about the built-in screen. For 2-in-1 devices with an external screen, the displayInfo object obtained contains information about the current primary screen. For 2-in-1 devices without an external screen, the displayInfo object obtained contains information about the built-in screen.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_DisplayInfo **displayInfo | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md). |
+| [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md) **displayInfo | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_AvailableAreaChangeCallback()
 
@@ -755,8 +699,6 @@ typedef void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t dis
 **Description**
 
 Defines a callback function to listen for available area changes of a display.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 20
 
@@ -776,8 +718,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterAvailableAreaChan
 
 Registers a listener for available area changes of the display.<br> This API can be properly called on devices running OpenHarmony 7.0.0 or later. For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets. If being called on other device types, it does not take effect and no error is reported.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -791,7 +731,7 @@ Registers a listener for available area changes of the display.<br> This API can
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener()
 
@@ -802,8 +742,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterAvailableAreaCh
 **Description**
 
 Unregisters a listener for available area changes of the display.<br> This API can be properly called on devices running OpenHarmony 7.0.0 or later. For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets. If being called on other device types, it does not take effect and no error is reported.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 20
 
@@ -817,7 +755,7 @@ Unregisters a listener for available area changes of the display.<br> This API c
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_CreateAvailableArea()
 
@@ -829,8 +767,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint6
 
 Obtains the available area of a display.<br> This API can be properly called on devices running OpenHarmony 7.0.0 or later. For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, but does not work for other device types. To obtain the available screen area on the current device, call [OH_NativeDisplayManager_GetDefaultDisplayWidth](capi-oh-display-manager-h.md#oh_nativedisplaymanager_getdefaultdisplaywidth) and [OH_NativeDisplayManager_GetDefaultDisplayHeight](capi-oh-display-manager-h.md#oh_nativedisplaymanager_getdefaultdisplayheight).
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -838,13 +774,13 @@ Obtains the available area of a display.<br> This API can be properly called on 
 | Parameter | Description |
 | -- | -- |
 | uint64_t displayId | Display ID, which is a non-negative integer. |
-| NativeDisplayManager_Rect **availableArea | Double pointer to the available area of the display. For details, see [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md). |
+| [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md) **availableArea | Double pointer to the available area of the display. For details, see [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_DestroyAvailableArea()
 
@@ -856,21 +792,19 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyAvailableArea(Nati
 
 Destroys the available area of a display.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NativeDisplayManager_Rect *availableArea | Pointer to the available area, which is obtained by calling [OH_NativeDisplayManager_CreateAvailableArea](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createavailablearea). For details about the available area, see [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md). |
+| [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md) *availableArea | Pointer to the available area, which is obtained by calling [OH_NativeDisplayManager_CreateAvailableArea](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createavailablearea). For details about the available area, see [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li></ul> |
 
 ### OH_NativeDisplayManager_DisplayAddCallback()
 
@@ -881,8 +815,6 @@ typedef void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId)
 **Description**
 
 Defines a callback function to listen for display addition events.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 20
 
@@ -902,8 +834,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayAddListene
 
 Registers a listener for display addition events (for example, monitor inserted).
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -917,7 +847,7 @@ Registers a listener for display addition events (for example, monitor inserted)
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_UnregisterDisplayAddListener()
 
@@ -928,8 +858,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayAddListe
 **Description**
 
 Unregisters a listener for display addition events.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 20
 
@@ -943,7 +871,7 @@ Unregisters a listener for display addition events.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_DisplayRemoveCallback()
 
@@ -954,8 +882,6 @@ typedef void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId
 **Description**
 
 Defines a callback function to listen for display removal events.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 20
 
@@ -975,8 +901,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayRemoveList
 
 Registers a listener for display removal events (for example, monitor removed).
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -990,7 +914,7 @@ Registers a listener for display removal events (for example, monitor removed).
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_UnregisterDisplayRemoveListener()
 
@@ -1001,8 +925,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayRemoveLi
 **Description**
 
 Unregisters the listener for display removal events.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 20
 
@@ -1016,7 +938,7 @@ Unregisters the listener for display removal events.
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter illegal.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDisplaySourceMode()
 
@@ -1028,8 +950,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint
 
 Obtains the display source mode. The default value is **DisplaySourceMode.None**.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -1037,13 +957,13 @@ Obtains the display source mode. The default value is **DisplaySourceMode.None**
 | Parameter | Description |
 | -- | -- |
 | uint64_t displayId | Display ID, which is a non-negative integer. |
-| NativeDisplayManager_SourceMode *sourceMode | Pointer to the source mode. For details about the available options, see [NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode). |
+| [NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode) *sourceMode | Pointer to the source mode. For details about the available options, see [NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If Parameter illegal.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If Parameter illegal.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 ### OH_NativeDisplayManager_GetDisplayPosition()
 
@@ -1054,8 +974,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 **Description**
 
 Obtains the display position, that is, the x-coordinate and y-coordinate relative to the original point (the upper left corner of the main screen).
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 20
 
@@ -1071,6 +989,6 @@ Obtains the display position, that is, the x-coordinate and y-coordinate relativ
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If Parameter illegal.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li> <li>[DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If Parameter illegal.</li> <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 

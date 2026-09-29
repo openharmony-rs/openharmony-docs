@@ -6,8 +6,6 @@
 
 **库：** libohinput.so
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
 **起始版本：** 12
 
 **相关模块：** [input](capi-input.md)
@@ -31,8 +29,6 @@ enum Input_KeyCode
 **描述：**
 
 键值。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **起始版本：** 12
 

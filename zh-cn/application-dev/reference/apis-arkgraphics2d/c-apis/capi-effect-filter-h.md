@@ -6,8 +6,6 @@
 
 **库：** libnative_effect.so
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 12
 
 **相关模块：** [effectKit](capi-effectkit.md)
@@ -40,22 +38,22 @@ EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** 
 
 创建一个OH_Filter对象，对图像应用各种滤镜效果（如模糊、提亮或灰度等）， 适用于图像编辑、相册应用和视频处理等场景。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 12
+
+**资源释放：** effect_filter/OH_Filter_Release {filter}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_PixelmapNative* pixelmap | [in] 作为滤镜效果处理源图像的位图对象。不能为NULL。 |
-| OH_Filter** filter | [out] 用来接收滤镜的二级指针。不能为NULL。 |
+| [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md)* pixelmap | [in] 作为滤镜效果处理源图像的位图对象。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)** filter | [out] 用来接收滤镜的二级指针。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当pixelmap或filter为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul> <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li> <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当pixelmap或filter为空指针时，返回EFFECT_BAD_PARAMETER。</li> </ul> |
 
 ### OH_Filter_Release()
 
@@ -67,21 +65,19 @@ EffectErrorCode OH_Filter_Release(OH_Filter* filter)
 
 释放OH_Filter对象。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Filter* filter | [in] 被释放的对象指针。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 被释放的对象指针。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul> <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li> <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li> </ul> |
 
 ### OH_Filter_Blur()
 
@@ -93,22 +89,20 @@ EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)
 
 创建一个毛玻璃滤镜效果，并添加到滤镜效果链中。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Filter* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
 | float radius | [in] 毛玻璃效果的模糊半径，取值范围为[0, +∞)，单位为像素。 值为0时不产生模糊效果；值越大，模糊效果越强；值越小，模糊效果越弱。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针或radius小于0时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul> <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li> <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针或radius小于0时，返回EFFECT_BAD_PARAMETER。</li> </ul> |
 
 ### OH_Filter_BlurWithTileMode()
 
@@ -120,23 +114,21 @@ EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, Effe
 
 创建一个毛玻璃滤镜效果，并添加到滤镜效果链中，支持选择着色器效果平铺模式。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 14
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Filter* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
 | float radius | [in] 毛玻璃效果的模糊半径，取值范围为[0, +∞)，单位为像素。 参数值为0时不产生模糊效果。值越大模糊效果越强。 |
-| EffectTileMode tileMode | [in] 着色器效果平铺模式，不同模式决定图像边缘区域的不同处理方式， 支持可选的具体模式可见[EffectTileMode](capi-effect-types-h.md#effecttilemode)枚举。 |
+| [EffectTileMode](capi-effect-types-h.md#effecttilemode) tileMode | [in] 着色器效果平铺模式，不同模式决定图像边缘区域的不同处理方式， 支持可选的具体模式可见[EffectTileMode](capi-effect-types-h.md#effecttilemode)枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针或radius小于0时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul> <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li> <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针或radius小于0时，返回EFFECT_BAD_PARAMETER。</li> </ul> |
 
 ### OH_Filter_Brighten()
 
@@ -148,22 +140,20 @@ EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)
 
 创建一个提亮效果，并添加到滤镜效果链中。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Filter* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
 | float brightness | [in] 提亮效果的亮度值，取值范围为[0, 1]。取值为0时图像保持不变，取值为1时图像全白。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针或          brightness超出[0,1]时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul> <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li> <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针或brightness超出[0,1]时，返回EFFECT_BAD_PARAMETER。</li> </ul> |
 
 ### OH_Filter_GrayScale()
 
@@ -175,21 +165,19 @@ EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)
 
 创建一个灰度效果，并添加到滤镜效果链中。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Filter* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul> <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li> <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li> </ul> |
 
 ### OH_Filter_Invert()
 
@@ -201,21 +189,19 @@ EffectErrorCode OH_Filter_Invert(OH_Filter* filter)
 
 创建一个反色效果，并添加到滤镜效果链中。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Filter* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul> <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li> <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li> </ul> |
 
 ### OH_Filter_SetColorMatrix()
 
@@ -227,22 +213,20 @@ EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatri
 
 通过矩阵创建一个自定义的效果，并添加到滤镜效果链中， 适用于需要实现特定的颜色变换效果（如色彩校正、色调调整或色温调节等）的场景。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Filter* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
-| OH_Filter_ColorMatrix* matrix | [in] 用来创建滤镜的自定义矩阵[OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md)。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md)* matrix | [in] 用来创建滤镜的自定义矩阵[OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md)。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter或matrix为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul> <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li> <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter或matrix为空指针时，返回EFFECT_BAD_PARAMETER。</li> </ul> |
 
 ### OH_Filter_GetEffectPixelMap()
 
@@ -254,21 +238,19 @@ EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative
 
 获取滤镜生成的位图。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Filter* filter | [in] 用来创建位图的滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
-| OH_PixelmapNative** pixelmap | [out] 用来接收位图的二级指针。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 用来创建位图的滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md)** pixelmap | [out] 用来接收位图的二级指针。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter或pixelmap为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul> <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) 操作成功则返回EFFECT_SUCCESS。</li> <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) 当filter或pixelmap为空指针时，返回EFFECT_BAD_PARAMETER。</li> </ul> |
 
 

@@ -186,7 +186,7 @@ NODE_SLIDER_PREFIX
 
 **Description**
 
-Sets a custom component on the leading side of the Slider component.<br> **Attribute setting method [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter format:** <ul> <li>.object: Parameter type [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> </ul> The prefix component will be placed at the start position of the Slider， typically on the left side in LTR layouts. *
+Sets a custom component on the leading side of the Slider component.<br> **Attribute setting method [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter format:** <ul> <li>.object: Parameter type [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> </ul> The prefix component will be placed at the start position of the Slider， typically on the left side in LTR layouts. *
 
 **Since**: 20
 
@@ -198,7 +198,7 @@ NODE_SLIDER_SUFFIX
 
 **Description**
 
-Sets a custom component on the trailing side of the Slider component.<br> **Attribute setting method {@link link ArkUI_AttributeItem} parameter format:** <ul> <li>.object: Parameter type [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> </ul> The suffix component will be placed at the end position of the Slider, typically on the right side in LTR layouts. *
+Sets a custom component on the trailing side of the Slider component.<br> **Attribute setting method link ArkUI_AttributeItem parameter format:** <ul> <li>.object: Parameter type [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> </ul> The suffix component will be placed at the end position of the Slider, typically on the right side in LTR layouts. *
 
 **Since**: 20
 

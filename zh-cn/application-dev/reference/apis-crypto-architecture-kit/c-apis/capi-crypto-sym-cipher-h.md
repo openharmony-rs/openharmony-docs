@@ -8,8 +8,6 @@
 
 **库：** libohcrypto.so
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **相关模块：** [CryptoSymCipherApi](capi-cryptosymcipherapi.md)
@@ -55,8 +53,6 @@ enum CryptoSymCipher_ParamsType
 
 定义加解密参数类型。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -78,9 +74,9 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_Create(OH_CryptoSymCipherParams **par
 
 创建对称密钥加解密参数。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_sym_cipher/OH_CryptoSymCipherParams_Destroy {params}
 
 **参数：**
 
@@ -92,7 +88,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_Create(OH_CryptoSymCipherParams **par
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) params为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) params为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密操作失败。</li> </ul> |
 
 **参考：**
 
@@ -109,8 +105,6 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_SetParam(OH_CryptoSymCipherParams *pa
 
 设置加解密参数。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **参数：**
@@ -119,13 +113,13 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_SetParam(OH_CryptoSymCipherParams *pa
 | -- | -- |
 | [OH_CryptoSymCipherParams](capi-cryptosymcipherapi-oh-cryptosymcipherparams.md) *params | [in] 加解密参数。不能为NULL。 |
 | [CryptoSymCipher_ParamsType](capi-crypto-sym-cipher-h.md#cryptosymcipher_paramstype) paramsType | [in] 设置的加解密参数类型。 |
-| Crypto_DataBlob *value | [in] 参数值。本接口为浅拷贝，不会复制value中的数据。 调用者必须确保value指向的内存在[OH_CryptoSymCipher_Init](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) 调用完成前保持有效。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [in] 参数值。本接口为浅拷贝，不会复制value中的数据。 调用者必须确保value指向的内存在[OH_CryptoSymCipher_Init](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) 调用完成前保持有效。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) params或value为NULL，或paramsType无法识别。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) params或value为NULL，或paramsType无法识别。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密操作失败。</li> </ul> |
 
 ### OH_CryptoSymCipherParams_Destroy()
 
@@ -136,8 +130,6 @@ void OH_CryptoSymCipherParams_Destroy(OH_CryptoSymCipherParams *params)
 **描述：**
 
 销毁加解密参数。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -157,9 +149,9 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCi
 
 根据给定的算法名称创建对称密钥加解密上下文。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_sym_cipher/OH_CryptoSymCipher_Destroy {ctx}
 
 **参数：**
 
@@ -172,7 +164,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCi
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL或algoName为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) 参数无效。 [since 20]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL或algoName为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) 参数无效。 [since 20]</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密操作失败。</li> </ul> |
 
 **参考：**
 
@@ -189,8 +181,6 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Init(OH_CryptoSymCipher *ctx, Crypto_Cipher
 
 使用给定的加解密模式、密钥和参数初始化加解密操作。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **参数：**
@@ -198,15 +188,15 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Init(OH_CryptoSymCipher *ctx, Crypto_Cipher
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSymCipher](capi-cryptosymcipherapi-oh-cryptosymcipher.md) *ctx | [in] 对称密钥加解密上下文。不能为NULL。 |
-| Crypto_CipherMode mod | [in] 加解密模式，加密或解密。 |
-| OH_CryptoSymKey *key | [in] 对称密钥。不能为NULL。 |
+| [Crypto_CipherMode](capi-crypto-common-h.md#crypto_ciphermode) mod | [in] 加解密模式，加密或解密。 |
+| [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md) *key | [in] 对称密钥。不能为NULL。 |
 | [OH_CryptoSymCipherParams](capi-cryptosymcipherapi-oh-cryptosymcipherparams.md) *params | [in] 算法参数，例如IV。ECB模式下需为NULL，其他模式不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或key为NULL，或非ECB模式下IV缺失或长度错误。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) 参数无效。 [since 20]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密初始化失败。可能的原因：密钥长度与算法不匹配。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或key为NULL，或非ECB模式下IV缺失或长度错误。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) 参数无效。 [since 20]</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密初始化失败。可能的原因：密钥长度与算法不匹配。</li> </ul> |
 
 **参考：**
 
@@ -224,23 +214,23 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Update(OH_CryptoSymCipher *ctx, Crypto_Data
 
 更新加解密数据，输出已加密或已解密的数据。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSymCipher](capi-cryptosymcipherapi-oh-cryptosymcipher.md) *ctx | [in] 对称密钥加解密上下文。不能为NULL。 |
-| Crypto_DataBlob *in | [in] 待加密或解密的数据。不能为NULL。 |
-| Crypto_DataBlob *out | [out] 指向用于存储更新数据的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] 待加密或解密的数据。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储更新数据的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx、in或out为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) 参数无效。 [since 20]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密更新失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx、in或out为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) 参数无效。 [since 20]</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密更新失败。</li> </ul> |
 
 **参考：**
 
@@ -257,23 +247,23 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Final(OH_CryptoSymCipher *ctx, Crypto_DataB
 
 结束加解密操作，输出最终结果。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSymCipher](capi-cryptosymcipherapi-oh-cryptosymcipher.md) *ctx | [in] 对称密钥加解密上下文。不能为NULL。 |
-| Crypto_DataBlob *in | [in] 待加密或解密的数据。如果数据已通过[OH_CryptoSymCipher_Update](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)接口更新了所有数据，此参数可以为NULL。 |
-| Crypto_DataBlob *out | [out] 指向用于存储最终结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] 待加密或解密的数据。如果数据已通过[OH_CryptoSymCipher_Update](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)接口更新了所有数据，此参数可以为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储最终结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或out为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) 参数无效。 [since 20]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密完成失败。可能的原因：解密时IV或密钥错误；AEAD（GCM/CCM）          认证标签验证失败（TAG、AAD、密文或密钥错误）；分组密码（如AES-CBC/ECB）解密时密文长度不是分组大小的整数倍；分组密码使用NoPadding          加密时明文长度不是分组大小的整数倍。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或out为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) 参数无效。 [since 20]</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 加解密完成失败。可能的原因：解密时IV或密钥错误；AEAD（GCM/CCM）认证标签验证失败（TAG、AAD、密文或密钥错误）；分组密码（如AES-CBC/ECB）解密时密文长度不是分组大小的整数倍；分组密码使用NoPadding加密时明文长度不是分组大小的整数倍。</li> </ul> |
 
 ### OH_CryptoSymCipher_GetAlgoName()
 
@@ -284,8 +274,6 @@ const char *OH_CryptoSymCipher_GetAlgoName(OH_CryptoSymCipher *ctx)
 **描述：**
 
 获取对称密钥加解密算法名称。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -310,8 +298,6 @@ void OH_CryptoSymCipher_Destroy(OH_CryptoSymCipher *ctx)
 **描述：**
 
 销毁对称密钥加解密上下文。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 

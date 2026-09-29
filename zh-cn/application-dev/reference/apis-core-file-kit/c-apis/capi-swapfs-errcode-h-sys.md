@@ -8,8 +8,6 @@
 
 **库：** libohswapfs.so
 
-**系统能力：** SystemCapability.FileManagement.File.Swapfs
-
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
@@ -36,8 +34,6 @@ enum OH_Swapfs_ErrCode
 
 swapfs模块的错误码。
 
-**系统能力：** SystemCapability.FileManagement.File.Swapfs
-
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
@@ -50,14 +46,14 @@ swapfs模块的错误码。
 | SWAPFS_E_BUFFER_TOO_SMALL = 36200003 | 换入缓冲区大小小于所需大小（Direct I/O模式下为occupiedSize，缓冲模式下为dataSize）。 dataSize为实际写入的数据字节数。 occupiedSize为磁盘上占用的物理空间字节数（Direct I/O模式下对齐到 4096，等于dataSize向上取整到SWAPFS_DIO_ALIGNMENT的倍数）。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_KEY_NOT_FOUND = 36200004 | 指定的keyId在当前管理器中不存在。请确认keyId是否正确或已创建。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_KEY_STATE_INVALID = 36200005 | key处于OH_SWAPFS_KEY_STATUS_REMOVING状态，无法进行操作。请等待key删除完成或使用其他可用的key。<br>**起始版本：** 26.0.0 |
-| SWAPFS_E_BUSY = 36200006 | 检测到并发冲突。 {@link OH_Swapfs_RemoveAllData}或{@link OH_Swapfs_DestroyManager}检测到有活跃操作正在进行。请稍后重试或等待当前操作完成。<br>**起始版本：** 26.0.0 |
+| SWAPFS_E_BUSY = 36200006 | 检测到并发冲突。 OH_Swapfs_RemoveAllData或OH_Swapfs_DestroyManager检测到有活跃操作正在进行。请稍后重试或等待当前操作完成。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_NOSPC = 36200007 | 设备存储空间不足。请清理存储空间后重试。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_QUOTA_EXCEEDED = 36200008 | 换出空间配额超限。总占用空间已达到配置的上限。请清理已换出的数据或调整配额上限。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_IO_ERROR = 36200009 | IO读取或写入失败。原因可能包括：实际读取/写入字节数少于请求字节数（短读/短写）、数据持久化失败（fsync失败）或文件重命名失败。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_FEATURE_DISABLED = 36200010 | 换出功能因设备存储空间不足或控制策略被禁用。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_ACCES = 36200011 | 权限被拒绝。请检查应用权限或文件访问权限。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_PATH_UNAVAILABLE = 36200012 | 换出根路径无法创建或不可用。请检查路径配置或存储设备状态。<br>**起始版本：** 26.0.0 |
-| SWAPFS_E_SHUTTING_DOWN = 36200013 | 管理器正在关闭。 新的{@link OH_Swapfs_SwapOut}、{@link OH_Swapfs_SwapIn}、{@link OH_Swapfs_RemoveData}或{@link OH_Swapfs_RemoveAllData}操作将被拒绝。<br>**起始版本：** 26.0.0 |
+| SWAPFS_E_SHUTTING_DOWN = 36200013 | 管理器正在关闭。 新的OH_Swapfs_SwapOut、OH_Swapfs_SwapIn、OH_Swapfs_RemoveData或OH_Swapfs_RemoveAllData操作将被拒绝。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_NOMEM = 36200014 | 内存分配失败。<br>**起始版本：** 26.0.0 |
 
 

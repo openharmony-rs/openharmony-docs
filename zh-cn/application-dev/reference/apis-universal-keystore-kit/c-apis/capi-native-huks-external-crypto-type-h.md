@@ -8,8 +8,6 @@
 
 **库：** libhuks_external_crypto.z.so
 
-**系统能力：** SystemCapability.Security.Huks.CryptoExtension
-
 **起始版本：** 22
 
 **相关模块：** [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
@@ -18,10 +16,10 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md) | OH_Huks_ExternalCryptoParam | 定义参数集合中单个参数的结构体。 |
-| [OH_Huks_ExternalCryptoParamSet](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparamset.md) | OH_Huks_ExternalCryptoParamSet | 定义外部加密参数集合的结构体。 |
+| 名称 | 描述 |
+| -- | -- |
+| [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md) | 定义参数集合中单个参数的结构体。 |
+| [OH_Huks_ExternalCryptoParamSet](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparamset.md) | 定义外部加密参数集合的结构体。 |
 
 ### 枚举
 
@@ -49,8 +47,6 @@ enum OH_Huks_ExternalCryptoTag
 
 列举参数集合中使用的标签值。
 
-**系统能力：** SystemCapability.Security.Huks.CryptoExtension
-
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -71,8 +67,6 @@ enum OH_Huks_ExternalPinAuthState
 **描述：**
 
 列举Ukey PIN码认证状态。
-
-**系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **起始版本：** 22
 

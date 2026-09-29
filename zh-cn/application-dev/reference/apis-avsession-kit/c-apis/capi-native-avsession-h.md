@@ -6,8 +6,6 @@
 
 **库：** libohavsession.so
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)
@@ -18,8 +16,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md) | OH_AVSession | 播控会话结构体定义。<br> 可通过{@link OH_AVSession_Create}创建一个会话对象。 |
-| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md) | OH_AVCastController | 声明投播控制器对象。<br> 该对象可以使用{@link OH_AVSession_CreateAVCastController}函数创建。 |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md) | OH_AVSession | 播控会话结构体定义。<br> 可通过[OH_AVSession_Create](capi-native-avsession-h.md#oh_avsession_create)创建一个会话对象。 |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md) | OH_AVCastController | 声明投播控制器对象。<br> 该对象可以使用[OH_AVSession_CreateAVCastController](capi-native-avsession-h.md#oh_avsession_createavcastcontroller)函数创建。 |
 
 ### 函数
 
@@ -68,13 +66,13 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session, AVSession_ControlCommand command, void* userData) | 通用的执行播控命令的回调。<br>**起始版本：** 13 |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData) | 快进的回调。<br>**起始版本：** 13 |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData) | 快退的回调。<br>**起始版本：** 13 |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData) | 进度调节的回调。<br>**起始版本：** 13 |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session, AVSession_LoopMode curLoopMode, void* userData) | 设置循环模式的回调。<br>**起始版本：** 13 |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session, const char* assetId, void* userData) | 收藏的回调。<br>**起始版本：** 13 |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_AVSession* session, AVSession_ConnectionState state, AVSession_OutputDeviceInfo* outputDeviceInfo) | 设备变化的回调。<br>**起始版本：** 23 |
+| AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session, AVSession_ControlCommand command, void* userData) | 通用的执行播控命令的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData) | 快进的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData) | 快退的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData) | 进度调节的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session, AVSession_LoopMode curLoopMode, void* userData) | 设置循环模式的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session, const char* assetId, void* userData) | 收藏的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_AVSession* session, AVSession_ConnectionState state, AVSession_OutputDeviceInfo* outputDeviceInfo) | 设备变化的回调。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 
 ## 函数说明
 
@@ -88,17 +86,15 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession*
 
 通用的执行播控命令的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md)\* session | the OH_AVSession instance pointer. |
-| AVSession_ControlCommand command | playback command |
-| void\* userData | userdata which is passed by register. |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | the OH_AVSession instance pointer. |
+| [AVSession_ControlCommand](capi-native-avsession-base-h.md#avsession_controlcommand) command | playback command |
+| void* userData | userdata which is passed by register. |
 
 ### OH_AVSessionCallback_OnFastForward()
 
@@ -110,17 +106,15 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSess
 
 快进的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md)\* session | the OH_AVSession instance pointer. |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | the OH_AVSession instance pointer. |
 | uint32_t seekTime | forward time, described by milliseconds. |
-| void\* userData | userdata which is passed by register. |
+| void* userData | userdata which is passed by register. |
 
 ### OH_AVSessionCallback_OnRewind()
 
@@ -132,17 +126,15 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* 
 
 快退的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md)\* session | the OH_AVSession instance pointer. |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | the OH_AVSession instance pointer. |
 | uint32_t seekTime | rewind time, described by milliseconds. |
-| void\* userData | userdata which is passed by register. |
+| void* userData | userdata which is passed by register. |
 
 ### OH_AVSessionCallback_OnSeek()
 
@@ -154,17 +146,15 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* se
 
 进度调节的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md)\* session | the OH_AVSession instance pointer. |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | the OH_AVSession instance pointer. |
 | uint64_t seekTime | position after seek, described by milliseconds. |
-| void\* userData | userdata which is passed by register. |
+| void* userData | userdata which is passed by register. |
 
 ### OH_AVSessionCallback_OnSetLoopMode()
 
@@ -176,17 +166,15 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSess
 
 设置循环模式的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md)\* session | the OH_AVSession instance pointer. |
-| AVSession_LoopMode curLoopMode | current loop mode. |
-| void\* userData | userdata which is passed by register. |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | the OH_AVSession instance pointer. |
+| [AVSession_LoopMode](capi-native-avsession-base-h.md#avsession_loopmode) curLoopMode | current loop mode. |
+| void* userData | userdata which is passed by register. |
 
 ### OH_AVSessionCallback_OnToggleFavorite()
 
@@ -198,17 +186,15 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVS
 
 收藏的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md)\* session | the OH_AVSession instance pointer. |
-| const char\* assetId | the assetId for which the favorite status needs to be switched. |
-| void\* userData | userdata which is passed by register. |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | the OH_AVSession instance pointer. |
+| const char* assetId | the assetId for which the favorite status needs to be switched. |
+| void* userData | userdata which is passed by register. |
 
 ### OH_AVSessionCallback_OutputDeviceChange()
 
@@ -220,17 +206,15 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_A
 
 设备变化的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md)\* session | the OH_AVSession instance pointer. |
-| AVSession_ConnectionState state | the [AVSession_ConnectionState](capi-native-avsession-base-h.md#avsession_connectionstate) of output device. |
-| AVSession_OutputDeviceInfo\* outputDeviceInfo | the [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) pointer variable which will be set current output device info. Do not release the outputDeviceInfo pointer separately, instead call [OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice) to release the outputDeviceInfo when it is not used anymore. |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | the OH_AVSession instance pointer. |
+| [AVSession_ConnectionState](capi-native-avsession-base-h.md#avsession_connectionstate) state | the [AVSession_ConnectionState](capi-native-avsession-base-h.md#avsession_connectionstate) of output device. |
+| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)* outputDeviceInfo | the [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) pointer variable which will be set current output device info. Do not release the outputDeviceInfo pointer separately, instead call [OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice) to release the outputDeviceInfo when it is not used anymore. |
 
 ### OH_AVSession_Create()
 
@@ -242,15 +226,13 @@ AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* se
 
 创建会话对象。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| AVSession_Type sessionType | 会话类型[AVSession_Type](capi-native-avsession-base-h.md#avsession_type)。 |
+| [AVSession_Type](capi-native-avsession-base-h.md#avsession_type) sessionType | 会话类型[AVSession_Type](capi-native-avsession-base-h.md#avsession_type)。 |
 | const char* sessionTag | 会话标签。 |
 | const char* bundleName | 创建会话的包名。 |
 | const char* abilityName | 创建会话的Ability组件名。 |
@@ -260,7 +242,7 @@ AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* se
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数sessionType无效。\n                                          2. 参数sessionTag为nullptr。\n                                          3. 参数bundleName为nullptr。\n                                          4. 参数abilityName为nullptr。\n                                          5. 参数avsession为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数sessionType无效。\n 2. 参数sessionTag为nullptr。\n 3. 参数bundleName为nullptr。\n 4. 参数abilityName为nullptr。\n 5. 参数avsession为nullptr。 |
 
 ### OH_AVSession_Destroy()
 
@@ -272,8 +254,6 @@ AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)
 
 销毁会话对象。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -286,7 +266,7 @@ AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
 
 ### OH_AVSession_Activate()
 
@@ -298,8 +278,6 @@ AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)
 
 激活会话。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -312,7 +290,7 @@ AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
 
 ### OH_AVSession_Deactivate()
 
@@ -324,8 +302,6 @@ AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)
 
 取消激活媒体会话。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -338,7 +314,7 @@ AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
 
 ### OH_AVSession_GetSessionType()
 
@@ -350,8 +326,6 @@ AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession
 
 获取会话类型。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -359,13 +333,13 @@ AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| AVSession_Type* sessionType | 返回的会话类型。 |
+| [AVSession_Type](capi-native-avsession-base-h.md#avsession_type)* sessionType | 返回的会话类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数sessionType为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数sessionType为nullptr。 |
 
 ### OH_AVSession_GetSessionId()
 
@@ -376,8 +350,6 @@ AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char*
 **描述：**
 
 获取会话ID。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -392,7 +364,7 @@ AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char*
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数sessionId为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数sessionId为nullptr。 |
 
 ### OH_AVSession_SetAVMetadata()
 
@@ -404,8 +376,6 @@ AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetad
 
 设置媒体元数据。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -413,13 +383,13 @@ AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetad
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| OH_AVMetadata* avmetadata | 设置媒体元数据信息。 |
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadata.md)* avmetadata | 设置媒体元数据信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数avmetadata为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数avmetadata为nullptr。 |
 
 ### OH_AVSession_SetPlaybackState()
 
@@ -431,8 +401,6 @@ AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSessi
 
 设置播放状态。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -440,13 +408,13 @@ AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSessi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| AVSession_PlaybackState playbackState | 播放状态。 |
+| [AVSession_PlaybackState](capi-native-avsession-base-h.md#avsession_playbackstate) playbackState | 播放状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数playbackState是无效的。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数playbackState是无效的。 |
 
 ### OH_AVSession_SetPlaybackPosition()
 
@@ -458,8 +426,6 @@ AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSe
 
 设置播放位置。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -467,13 +433,13 @@ AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| AVSession_PlaybackPosition* playbackPosition | 播放位置对象。 |
+| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)* playbackPosition | 播放位置对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数playbackPosition为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数playbackPosition为nullptr。 |
 
 ### OH_AVSession_SetFavorite()
 
@@ -484,8 +450,6 @@ AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorit
 **描述：**
 
 设置收藏状态。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -500,7 +464,7 @@ AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorit
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
 
 ### OH_AVSession_SetLoopMode()
 
@@ -512,8 +476,6 @@ AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_Lo
 
 设置循环模式。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -521,13 +483,13 @@ AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_Lo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| AVSession_LoopMode loopMode | 循环模式。 |
+| [AVSession_LoopMode](capi-native-avsession-base-h.md#avsession_loopmode) loopMode | 循环模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数loopMode是无效的。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数loopMode是无效的。 |
 
 ### OH_AVSession_SetRemoteCastEnabled()
 
@@ -538,8 +500,6 @@ AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, boo
 **描述：**
 
 请求使能远程投播。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -554,7 +514,7 @@ AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, boo
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n          AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。\n |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。\n |
 
 ### OH_AVSession_RegisterCommandCallback()
 
@@ -566,8 +526,6 @@ AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, 
 
 注册通用播控的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -575,7 +533,7 @@ AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| AVSession_ControlCommand command | 播控的控制命令。 |
+| [AVSession_ControlCommand](capi-native-avsession-base-h.md#avsession_controlcommand) command | 播控的控制命令。 |
 | [OH_AVSessionCallback_OnCommand](capi-native-avsession-h.md#oh_avsessioncallback_oncommand) callback | 控制命令的回调。 |
 | void* userData | 指向通过回调函数传递的应用数据指针。 |
 
@@ -583,7 +541,7 @@ AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, 
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_CODE_COMMAND_INVALID：控制命令无效。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_CODE_COMMAND_INVALID：控制命令无效。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_UnregisterCommandCallback()
 
@@ -595,8 +553,6 @@ AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession
 
 取消注册通用播控的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -604,14 +560,14 @@ AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| AVSession_ControlCommand command | 播控的控制命令。 |
+| [AVSession_ControlCommand](capi-native-avsession-base-h.md#avsession_controlcommand) command | 播控的控制命令。 |
 | [OH_AVSessionCallback_OnCommand](capi-native-avsession-h.md#oh_avsessioncallback_oncommand) callback | 控制命令的回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_CODE_COMMAND_INVALID：控制命令无效。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_CODE_COMMAND_INVALID：控制命令无效。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_RegisterForwardCallback()
 
@@ -623,8 +579,6 @@ AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, 
 
 注册快进的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -639,7 +593,7 @@ AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, 
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_UnregisterForwardCallback()
 
@@ -651,8 +605,6 @@ AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession
 
 取消注册快进的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -666,7 +618,7 @@ AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_RegisterRewindCallback()
 
@@ -678,8 +630,6 @@ AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, O
 
 注册快退的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -694,7 +644,7 @@ AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, O
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_UnregisterRewindCallback()
 
@@ -706,8 +656,6 @@ AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,
 
 取消注册快退的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -721,7 +669,7 @@ AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_RegisterSeekCallback()
 
@@ -733,8 +681,6 @@ AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_
 
 注册跳转的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -749,7 +695,7 @@ AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_UnregisterSeekCallback()
 
@@ -761,8 +707,6 @@ AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, O
 
 取消注册跳转的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -776,7 +720,7 @@ AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, O
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_RegisterSetLoopModeCallback()
 
@@ -788,8 +732,6 @@ AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsessi
 
 注册设置循环模式的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -804,7 +746,7 @@ AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsessi
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_UnregisterSetLoopModeCallback()
 
@@ -816,8 +758,6 @@ AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avses
 
 取消注册设置循环模式的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -831,7 +771,7 @@ AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avses
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_RegisterToggleFavoriteCallback()
 
@@ -842,8 +782,6 @@ AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avse
 **描述：**
 
 设置收藏的回调。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -859,7 +797,7 @@ AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avse
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_UnregisterToggleFavoriteCallback()
 
@@ -870,8 +808,6 @@ AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* av
 **描述：**
 
 取消设置收藏的回调。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -886,7 +822,7 @@ AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* av
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_RegisterOutputDeviceChangeCallback()
 
@@ -898,8 +834,6 @@ AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* 
 
 注册设备变化的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -913,7 +847,7 @@ AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* 
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_UnregisterOutputDeviceChangeCallback()
 
@@ -925,8 +859,6 @@ AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession
 
 取消注册设备变化的回调。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -940,7 +872,7 @@ AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数callback为nullptr。 |
 
 ### OH_AVSession_AcquireSession()
 
@@ -951,8 +883,6 @@ AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char
 **描述：**
 
 获取已经存在的媒体会话对象。 当不再使用媒体会话对象时，调用[OH_AVSession_Destroy](capi-native-avsession-h.md#oh_avsession_destroy)进行释放。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -969,7 +899,7 @@ AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数sessionTag无效。\n                                          2. 参数bundleName无效。\n                                          3. 参数abilityName无效。\n                                          4. 参数avsession为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数sessionTag无效。\n 2. 参数bundleName无效。\n 3. 参数abilityName无效。\n 4. 参数avsession为nullptr。 |
 
 ### OH_AVSession_CreateAVCastController()
 
@@ -980,8 +910,6 @@ AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, O
 **描述：**
 
 创建投播控制器对象。 当投播控制器对象不再使用时，调用[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)进行释放。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -996,7 +924,7 @@ AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, O
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数avcastcontroller为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数avcastcontroller为nullptr。 |
 
 ### OH_AVSession_StopCasting()
 
@@ -1008,8 +936,6 @@ AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)
 
 停止当前投播并断开设备连接。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -1022,7 +948,7 @@ AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n          AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n AV_SESSION_ERR_INVALID_PARAMETER：参数avsession为nullptr。 |
 
 ### OH_AVSession_AcquireOutputDevice()
 
@@ -1034,8 +960,6 @@ AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSe
 
 获取当前输出设备。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -1043,13 +967,13 @@ AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| AVSession_OutputDeviceInfo** outputDeviceInfo | 指向用于接收输出设备信息AVSession_OutputDeviceInfo的变量的指针。 不可以单独释放outputDeviceInfo指针。 当不再使用outputDeviceInfo时，调用[OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice)进行释放。 |
+| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)** outputDeviceInfo | 指向用于接收输出设备信息AVSession_OutputDeviceInfo的变量的指针。 不可以单独释放outputDeviceInfo指针。 当不再使用outputDeviceInfo时，调用[OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice)进行释放。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n          AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数outputDeviceInfo为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_SERVICE_EXCEPTION：会话服务异常。\n AV_SESSION_ERR_CODE_SESSION_NOT_EXIST：会话不存在。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数outputDeviceInfo为nullptr。 |
 
 ### OH_AVSession_ReleaseOutputDevice()
 
@@ -1061,8 +985,6 @@ AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSe
 
 释放输出设备对象。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -1070,12 +992,12 @@ AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| AVSession_OutputDeviceInfo *outputDeviceInfo | 应当释放的输出设备。 |
+| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) *outputDeviceInfo | 应当释放的输出设备。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avsession为nullptr。\n                                          2. 参数outputDeviceInfo为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n AV_SESSION_ERR_INVALID_PARAMETER：\n 1. 参数avsession为nullptr。\n 2. 参数outputDeviceInfo为nullptr。 |
 
 

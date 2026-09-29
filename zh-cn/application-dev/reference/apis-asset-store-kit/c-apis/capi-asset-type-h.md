@@ -6,8 +6,6 @@ Defines the enums, structs, and error codes used in the asset store service.
 
 **库：** libasset_ndk.z.so
 
-**系统能力：** SystemCapability.Security.Asset
-
 **起始版本：** 11
 
 **相关模块：** [AssetType](capi-assettype.md)
@@ -58,8 +56,6 @@ enum Asset_TagType
 
 关键资产属性标签的类型。
 
-**系统能力：** SystemCapability.Security.Asset
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -77,8 +73,6 @@ enum Asset_Tag
 **描述：**
 
 关键资产属性的标签。
-
-**系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
 
@@ -127,8 +121,6 @@ enum Asset_ResultCode
 
 ASSET APIs使用的结果码。
 
-**系统能力：** SystemCapability.Security.Asset
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -165,8 +157,6 @@ enum Asset_Accessibility
 
 基于锁屏状态的访问控制类型。
 
-**系统能力：** SystemCapability.Security.Asset
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -185,8 +175,6 @@ enum Asset_AuthType
 
 关键资产支持的用户认证类型。
 
-**系统能力：** SystemCapability.Security.Asset
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -203,8 +191,6 @@ enum Asset_SyncType
 **描述：**
 
 关键资产支持的同步类型。
-
-**系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
 
@@ -225,8 +211,6 @@ enum Asset_WrapType
 
 关键资产支持的加密导入导出类型。
 
-**系统能力：** SystemCapability.Security.Asset
-
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -243,8 +227,6 @@ enum Asset_ConflictResolution
 **描述：**
 
 新增关键资产时的冲突（如：别名相同）处理策略。
-
-**系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
 
@@ -263,8 +245,6 @@ enum Asset_ReturnType
 
 关键资产查询返回的结果类型。
 
-**系统能力：** SystemCapability.Security.Asset
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -281,8 +261,6 @@ enum Asset_OperationType
 **描述：**
 
 附属的操作类型。
-
-**系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 12
 

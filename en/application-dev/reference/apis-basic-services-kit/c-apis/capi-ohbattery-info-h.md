@@ -6,8 +6,6 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 **Library**: libohbattery_info.so
 
-**System capability**: SystemCapability.PowerManager.BatteryManager.Core
-
 **Since**: 13
 
 **Related module**: [OH_BatteryInfo](capi-oh-batteryinfo.md)
@@ -31,9 +29,9 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 | Name | Description |
 | -- | -- |
-| static const char *COMMON_EVENT_KEY_CAPACITY = "soc" | Defines the common event indicating a battery capacity change.<br>**Since**: 13 |
-| static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | Defines the common event indicating a charging status change.<br>**Since**: 13 |
-| static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | Defines the common event indicating a battery plugged type change.<br>**Since**: 13 |
+| static const char *COMMON_EVENT_KEY_CAPACITY = "soc" | Defines the common event indicating a battery capacity change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core |
+| static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | Defines the common event indicating a charging status change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core |
+| static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | Defines the common event indicating a battery plugged type change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core |
 
 ## Enum type description
 
@@ -46,8 +44,6 @@ enum BatteryInfo_BatteryPluggedType
 **Description**
 
 Enumerates the battery plugged types.
-
-**System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
 **Since**: 13
 
@@ -72,8 +68,6 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 Obtains the current battery capacity in percent.
 
-**System capability**: SystemCapability.PowerManager.BatteryManager.Core
-
 **Since**: 13
 
 **Returns**:
@@ -92,14 +86,12 @@ BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 
 Obtains the battery plugged type.
 
-**System capability**: SystemCapability.PowerManager.BatteryManager.Core
-
 **Since**: 13
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [BatteryInfo_BatteryPluggedType](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) | <ul>          <li>[PLUGGED_TYPE_NONE](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if there is no power supply;</li>          <li>[PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in AC charging mode;</li>          <li>[PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in USB DC charging mode;</li>          <li>[PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in wireless charging mode;</li>          <li>[PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the battery plugged type is unknown.</li>          </ul> |
+| [BatteryInfo_BatteryPluggedType](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) | <ul> <li>[PLUGGED_TYPE_NONE](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if there is no power supply;</li> <li>[PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in AC charging mode;</li> <li>[PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in USB DC charging mode;</li> <li>[PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in wireless charging mode;</li> <li>[PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the battery plugged type is unknown.</li> </ul> |
 
 

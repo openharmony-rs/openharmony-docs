@@ -6,8 +6,6 @@ Defines the error code for the native module.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -31,8 +29,6 @@ enum ArkUI_ErrorCode
 **Description**
 
 Enumerates the error codes.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

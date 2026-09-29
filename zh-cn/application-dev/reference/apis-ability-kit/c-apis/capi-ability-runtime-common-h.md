@@ -6,8 +6,6 @@
 
 **库：** libability_runtime.so
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 13
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
@@ -31,8 +29,6 @@ enum AbilityRuntime_ErrorCode
 **描述：**
 
 AbilityRuntime模块的错误码的枚举。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 13
 

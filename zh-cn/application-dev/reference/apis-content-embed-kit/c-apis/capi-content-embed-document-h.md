@@ -6,8 +6,6 @@
 
 **库：** libcontent_embed_ndk.so
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
 
 **相关模块：** [ContentEmbed](capi-contentembed.md)
@@ -20,8 +18,8 @@
 | -- | -- | -- |
 | [ContentEmbed_Document](capi-contentembed-contentembed-document.md) | ContentEmbed_Document | 声明OE文档结构体类型。封装了被嵌入文档的元数据、内容和存储结构。 |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) | ContentEmbed_Storage | 声明OE文档Storage结构体类型。类似于文件系统中的目录，Storage对象的父对象必须是另一个Storage对象或根Storage对象。 |
-| [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) | ContentEmbed_StorageElement | 声明OE文档存储元素的结构体类型。通过{@link OH_ContentEmbed_StorageElement_GetName}获取名称、<br>{@link OH_ContentEmbed_StorageElement_GetCTime}获取创建时间和{@link OH_ContentEmbed_StorageElement_GetMTime}获取修改<br>时间。可以通过{@link OH_ContentEmbed_StorageElement_IsStorage}判断当前是否是{@link ContentEmbed_Storage}的封装对象，<br>{@link OH_ContentEmbed_StorageElement_IsStream}判断当前是否是{@link ContentEmbed_Stream}的封装对象。 |
-| [ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md) | ContentEmbed_StorageElements | 声明ContentEmbed_StorageElements结构体类型。通过{@link OH_ContentEmbed_Storage_GetElements}获取某个<br>{@link ContentEmbed_Storage}对象下所有的{@link ContentEmbed_Storage}和{@link ContentEmbed_Stream}对象集合，每个对象封装<br>成{@link ContentEmbed_StorageElement}结构体。可以通过{@link OH_ContentEmbed_StorageElements_GetCount}获取当前查询元素<br>的数量，{@link OH_ContentEmbed_StorageElements_GetElement}获取指定索引位置的{@link ContentEmbed_StorageElement}实例对象。 |
+| [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) | ContentEmbed_StorageElement | 声明OE文档存储元素的结构体类型。通过[OH_ContentEmbed_StorageElement_GetName](capi-content-embed-document-h.md#oh_contentembed_storageelement_getname)获取名称、 [OH_ContentEmbed_StorageElement_GetCTime](capi-content-embed-document-h.md#oh_contentembed_storageelement_getctime)获取创建时间和[OH_ContentEmbed_StorageElement_GetMTime](capi-content-embed-document-h.md#oh_contentembed_storageelement_getmtime)获取修改 时间。可以通过[OH_ContentEmbed_StorageElement_IsStorage](capi-content-embed-document-h.md#oh_contentembed_storageelement_isstorage)判断当前是否是[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)的封装对象， [OH_ContentEmbed_StorageElement_IsStream](capi-content-embed-document-h.md#oh_contentembed_storageelement_isstream)判断当前是否是[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)的封装对象。 |
+| [ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md) | ContentEmbed_StorageElements | 声明ContentEmbed_StorageElements结构体类型。通过[OH_ContentEmbed_Storage_GetElements](capi-content-embed-document-h.md#oh_contentembed_storage_getelements)获取某个 [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象下所有的[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)和[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象集合，每个对象封装 成[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)结构体。可以通过[OH_ContentEmbed_StorageElements_GetCount](capi-content-embed-document-h.md#oh_contentembed_storageelements_getcount)获取当前查询元素 的数量，[OH_ContentEmbed_StorageElements_GetElement](capi-content-embed-document-h.md#oh_contentembed_storageelements_getelement)获取指定索引位置的[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例对象。 |
 | [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) | ContentEmbed_Stream | 声明OE文档Stream结构体类型。类似于文件系统中的文件，可对其进行读取或写入，且Stream对象只能存在于Storage对象中。 |
 
 ### 宏定义
@@ -83,9 +81,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, Co
 
 使用提供的标识符OEID创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。 <br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
+
+**资源释放：** OH_ContentEmbed_DestroyDocument {document}
 
 **参数：**
 
@@ -98,7 +96,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, Co
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_CreateDocumentByFile()
 
@@ -110,9 +108,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFileP
 
 从源文件创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。 <br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
+
+**资源释放：** OH_ContentEmbed_DestroyDocument {document}
 
 **参数：**
 
@@ -127,7 +125,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFileP
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>      <li>[CE_ERR_INVALID_LINKING_PATH](capi-content-embed-common-h.md#contentembed_errorcode)：表示链接文件在应用沙箱中，无法创建链接。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> <li>[CE_ERR_INVALID_LINKING_PATH](capi-content-embed-common-h.md#contentembed_errorcode)：表示链接文件在应用沙箱中，无法创建链接。</li> </ul> |
 
 ### OH_ContentEmbed_LoadDocumentFromFile()
 
@@ -139,9 +137,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFileP
 
 通过已存在的OE格式文件加载[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。 <br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
+
+**资源释放：** OH_ContentEmbed_DestroyDocument {document}
 
 **参数：**
 
@@ -155,7 +153,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFileP
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Document_Read()
 
@@ -166,8 +164,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t len
 **描述：**
 
 从OE文档对象的指定偏移位置读取原始二进制数据到缓冲区。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -185,7 +181,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t len
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Document_GetOEid()
 
@@ -196,8 +192,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetOEid(const ContentEmbed_Docum
 **描述：**
 
 从OE文档对象获取标识符OEID。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -212,7 +206,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetOEid(const ContentEmbed_Docum
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Document_IsLinking()
 
@@ -223,8 +217,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_IsLinking(const ContentEmbed_Doc
 **描述：**
 
 OE文档是否以链接方式创建。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -239,7 +231,7 @@ OE文档是否以链接方式创建。
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Document_GetNativeFilePath()
 
@@ -250,8 +242,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetNativeFilePath(const ContentE
 **描述：**
 
 从OE文档中获取客户端沙箱目录下存储的被嵌入源文件路径。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -266,7 +256,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetNativeFilePath(const ContentE
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Document_GetRootStorage()
 
@@ -278,9 +268,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Docu
 
 从OE文档对象获取根[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
+
+**资源释放：** OH_ContentEmbed_DestroyStorage {storage}
 
 **参数：**
 
@@ -293,7 +283,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Docu
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Document_Flush()
 
@@ -304,8 +294,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Flush(const ContentEmbed_Documen
 **描述：**
 
 将OE文档中数据落盘至OE格式文件。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -319,7 +307,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Flush(const ContentEmbed_Documen
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_FILE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示文件操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_FILE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示文件操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_CreateStorage()
 
@@ -331,9 +319,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_
 
 根据OE文档父Storage对象和名称创建子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
+
+**资源释放：** OH_ContentEmbed_DestroyStorage {childStorage}
 
 **参数：**
 
@@ -347,7 +335,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败，可能是parentStorage无效或名称无效。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针，可能是childStorage创建失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示存储操作失败，可能是磁盘空间不足。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败，可能是parentStorage无效或名称无效。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针，可能是childStorage创建失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示存储操作失败，可能是磁盘空间不足。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_GetStorage()
 
@@ -359,9 +347,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Sto
 
 从OE文档父Storage对象和名称获取子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
+
+**资源释放：** OH_ContentEmbed_DestroyStorage {childStorage}
 
 **参数：**
 
@@ -375,7 +363,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Sto
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_CreateStream()
 
@@ -387,9 +375,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage
 
 在OE文档父Storage对象和名称创建[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
+
+**资源释放：** OH_ContentEmbed_DestroyStream {childStream}
 
 **参数：**
 
@@ -403,7 +391,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li>      <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li> <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_GetStream()
 
@@ -415,9 +403,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *p
 
 从OE文档父Storage对象和名称获取子[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
+
+**资源释放：** OH_ContentEmbed_DestroyStream {childStream}
 
 **参数：**
 
@@ -431,7 +419,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *p
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li>      <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li> <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_DeleteEntry()
 
@@ -442,8 +430,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage 
 **描述：**
 
 从OE文档父Storage对象删除指定名称的子Storage对象或子Stream对象。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -458,7 +444,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage 
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li>      <li>[CE_ERR_FILE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li> <li>[CE_ERR_FILE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_DeleteAllEntry()
 
@@ -470,8 +456,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Stora
 
 从OE文档Storage对象删除所有条目，包括子Storage对象和子Stream对象。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
 
 **参数：**
@@ -484,7 +468,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Stora
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_DestroyStorage()
 
@@ -496,8 +480,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStorage(ContentEmbed_Storage *stor
 
 销毁OE文档[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象实例并回收内存。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
 
 **参数：**
@@ -510,7 +492,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStorage(ContentEmbed_Storage *stor
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Stream_Read()
 
@@ -521,8 +503,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, 
 **描述：**
 
 从OE文档Stream对象的当前位置读取指定长度的数据到缓冲区。读取成功后，Stream对象的偏移量会按实际读取的字节数递增。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -539,7 +519,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示流操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示流操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Stream_Write()
 
@@ -550,8 +530,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Write(ContentEmbed_Stream *stream,
 **描述：**
 
 将指定长度的数据从缓冲区写入OE文档Stream对象的当前位置。写入成功后，Stream对象的偏移量会按实际写入的字节数递增。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -568,7 +546,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Write(ContentEmbed_Stream *stream,
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示流操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示流操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Stream_Seek()
 
@@ -579,8 +557,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, 
 **描述：**
 
 将OE文档Stream对象的当前读取位置设置为指定的偏移量。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -595,7 +571,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流相关操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流相关操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Stream_GetPosition()
 
@@ -606,8 +582,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetPosition(ContentEmbed_Stream *s
 **描述：**
 
 获取OE文档Stream对象的当前位置偏移量。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -622,7 +596,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetPosition(ContentEmbed_Stream *s
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流相关操作失败。</li>      <li>[CE_ERR_FILE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示文件操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流相关操作失败。</li> <li>[CE_ERR_FILE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示文件操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Stream_GetSize()
 
@@ -633,8 +607,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetSize(ContentEmbed_Stream *strea
 **描述：**
 
 获取OE文档Stream对象的总大小，单位为字节。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -649,7 +621,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetSize(ContentEmbed_Stream *strea
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流相关操作失败。</li>      <li>[CE_ERR_FILE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示文件操作失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_STREAM_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件流相关操作失败。</li> <li>[CE_ERR_FILE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示文件操作失败。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_DestroyStream()
 
@@ -660,8 +632,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStream(ContentEmbed_Stream *stream
 **描述：**
 
 销毁OE文档[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象实例并回收内存。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -675,7 +645,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStream(ContentEmbed_Stream *stream
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_DestroyDocument()
 
@@ -686,8 +656,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyDocument(ContentEmbed_Document *do
 **描述：**
 
 销毁[ContentEmbed_Document](capi-contentembed-contentembed-document.md)对象实例并回收内存。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -701,7 +669,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyDocument(ContentEmbed_Document *do
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_GetOEid()
 
@@ -712,8 +680,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *sto
 **描述：**
 
 获取OE文档Storage对象的标识符OEID。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -729,7 +695,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *sto
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_SetOEid()
 
@@ -740,8 +706,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *sto
 **描述：**
 
 设置OE文档Storage对象的标识符OEID。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -757,7 +721,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *sto
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_StorageElements_Create()
 
@@ -769,9 +733,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_Stora
 
 创建并初始化[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例。 <br>开发者可通过[OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。
 
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
-
 **起始版本：** 24
+
+**资源释放：** OH_ContentEmbed_StorageElements_Destroy {storageElements}
 
 **参数：**
 
@@ -783,7 +747,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_Stora
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_StorageElements_Destroy()
 
@@ -794,8 +758,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Destroy(ContentEmbed_Stor
 **描述：**
 
 销毁[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例并回收其占用的内存。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -809,7 +771,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Destroy(ContentEmbed_Stor
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_GetElements()
 
@@ -820,8 +782,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_St
 **描述：**
 
 获取OE文档Storage对象中的元素列表。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -836,7 +796,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_St
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示OE格式文件目录相关操作失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_StorageElements_GetCount()
 
@@ -847,8 +807,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetCount(const ContentEmb
 **描述：**
 
 获取[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例的元素数量。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -863,7 +821,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetCount(const ContentEmb
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_StorageElements_GetElement()
 
@@ -874,8 +832,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetElement(const ContentE
 **描述：**
 
 获取[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例的指定索引位置的元素。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -891,7 +847,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetElement(const ContentE
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_StorageElement_GetName()
 
@@ -902,8 +858,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetName(const ContentEmbed
 **描述：**
 
 获取[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例的名称。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -919,7 +873,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetName(const ContentEmbed
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_StorageElement_GetCTime()
 
@@ -930,8 +884,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetCTime(const ContentEmbe
 **描述：**
 
 获取[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例的创建时间戳，单位为毫秒。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -946,7 +898,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetCTime(const ContentEmbe
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_StorageElement_GetMTime()
 
@@ -957,8 +909,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetMTime(const ContentEmbe
 **描述：**
 
 获取[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例的最后修改时间戳，单位为毫秒。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -973,7 +923,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetMTime(const ContentEmbe
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_StorageElement_IsStorage()
 
@@ -984,8 +934,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStorage(const ContentEmb
 **描述：**
 
 检查[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例是否为OE文档Storage对象。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -1000,7 +948,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStorage(const ContentEmb
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_StorageElement_IsStream()
 
@@ -1011,8 +959,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStream(const ContentEmbe
 **描述：**
 
 检查[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例是否为OE文档Stream对象。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -1027,7 +973,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStream(const ContentEmbe
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 ### OH_ContentEmbed_Storage_CopyTo()
 
@@ -1038,8 +984,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcS
 **描述：**
 
 将源OE文档Storage对象中的所有子Storage对象和Stream对象复制到目标OE文档Storage对象。
-
-**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -1054,6 +998,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcS
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示存储操作失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul> <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li> <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li> <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li> <li>[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示存储操作失败。</li> <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li> <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li> </ul> |
 
 

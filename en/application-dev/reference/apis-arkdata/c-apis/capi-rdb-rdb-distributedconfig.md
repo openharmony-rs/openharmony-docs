@@ -1,7 +1,7 @@
 # Rdb_DistributedConfig
 
 ```c
-typedef struct Rdb_DistributedConfig {...} Rdb_DistributedConfig
+struct Rdb_DistributedConfig {...}
 ```
 
 ## Overview

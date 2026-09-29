@@ -6,8 +6,6 @@ Defines the param names of all predefined events.<br> In addition to custom even
 
 **Library**: libhiappevent_ndk.z.so
 
-**System capability**: SystemCapability.HiviewDFX.HiAppEvent
-
 **Since**: 8
 
 **Related module**: [HiAppEvent](capi-hiappevent.md)

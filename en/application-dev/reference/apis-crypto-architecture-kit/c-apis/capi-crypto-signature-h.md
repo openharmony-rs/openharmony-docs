@@ -8,8 +8,6 @@ Defines the signing and verification interfaces.
 
 **Library**: libohcrypto.so
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 **Related module**: [CryptoSignatureApi](capi-cryptosignatureapi.md)
@@ -69,8 +67,6 @@ enum CryptoSignature_ParamType
 
 Defines signature parameter types.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 | Enum item | Description |
@@ -95,9 +91,9 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 Creates a verification context based on the given algorithm name.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
+
+**Resource release**: crypto_signature/OH_CryptoVerify_Destroy {verify}
 
 **Parameters**:
 
@@ -110,7 +106,7 @@ Creates a verification context based on the given algorithm name.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if verify or algoName is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if verify or algoName is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 **Reference**:
 
@@ -127,8 +123,6 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 
 Initializes the verification context with the given public key.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -136,13 +130,13 @@ Initializes the verification context with the given public key.
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] Verification context. Cannot be NULL. |
-| OH_CryptoPubKey *pubKey | [in] Public key. Cannot be NULL. |
+| [OH_CryptoPubKey](capi-cryptoasymkeyapi-oh-cryptopubkey.md) *pubKey | [in] Public key. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or pubKey is NULL, or the key             type does not match the signature algorithm.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if verify init fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or pubKey is NULL, or the key type does not match the signature algorithm.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if verify init fails.</li> </ul> |
 
 **Reference**:
 
@@ -161,8 +155,6 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 
 Appends message data to be verified.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -170,13 +162,13 @@ Appends message data to be verified.
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] Verification context. Cannot be NULL. |
-| Crypto_DataBlob *in | [in] Data to be verified. Cannot be NULL. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] Data to be verified. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or in is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) if the function call is invalid. [since 26.0.0]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if verify update fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or in is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) if the function call is invalid. [since 26.0.0]</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if verify update fails.</li> </ul> |
 
 **Reference**:
 
@@ -193,8 +185,6 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 
 Verifies message data.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -202,14 +192,14 @@ Verifies message data.
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] Verification context. Cannot be NULL. |
-| Crypto_DataBlob *in | [in] Data to be verified. Can be NULL if all data has been updated via [OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update). |
-| Crypto_DataBlob *signData | [in] Signature data. Cannot be NULL. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] Data to be verified. Can be NULL if all data has been updated via [OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update). |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *signData | [in] Signature data. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Returns the boolean verification result. Returns true if verification succeeds, false if verification fails.      Possible causes: incorrect public key, corrupted signature data, mismatched hash algorithm,      mismatched padding mode, or the data does not match the original signed data. |
+| bool | Returns the boolean verification result. Returns true if verification succeeds, false if verification fails. Possible causes: incorrect public key, corrupted signature data, mismatched hash algorithm, mismatched padding mode, or the data does not match the original signed data. |
 
 ### OH_CryptoVerify_Recover()
 
@@ -221,23 +211,23 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 
 Recovers signature data. Only RSA algorithm is supported.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {rawSignData}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] Verification context. Cannot be NULL. |
-| Crypto_DataBlob *signData | [in] Signature data. Cannot be NULL. |
-| Crypto_DataBlob *rawSignData | [out] Pointer to the Crypto_DataBlob structure for storing the raw signature data. Cannot be NULL. Initialize rawSignData to {0} before calling. Do not pre-allocate rawSignData->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *signData | [in] Signature data. Cannot be NULL. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *rawSignData | [out] Pointer to the Crypto_DataBlob structure for storing the raw signature data. Cannot be NULL. Initialize rawSignData to {0} before calling. Do not pre-allocate rawSignData->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx, signData, or rawSignData is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) if the function call is invalid. [since 26.0.0]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if recover fails. Possible causes:             signature data length does not match the RSA key modulus size.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx, signData, or rawSignData is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) if the function call is invalid. [since 26.0.0]</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if recover fails. Possible causes: signature data length does not match the RSA key modulus size.</li> </ul> |
 
 ### OH_CryptoVerify_GetAlgoName()
 
@@ -249,8 +239,6 @@ const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 
 Obtains the algorithm name of the verification context.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -263,7 +251,7 @@ Obtains the algorithm name of the verification context.
 
 | Type | Description |
 | -- | -- |
-| const char * | Returns the verification algorithm name. No need to free by the caller. Invalid after the context is      destroyed. |
+| const char * | Returns the verification algorithm name. No need to free by the caller. Invalid after the context is destroyed. |
 
 ### OH_CryptoVerify_SetParam()
 
@@ -275,8 +263,6 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 Sets the specified parameter of the verification context.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -285,13 +271,13 @@ Sets the specified parameter of the verification context.
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] Verification context. Cannot be NULL. |
 | [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | [in] Signature parameter type. |
-| Crypto_DataBlob *value | [in] Input data. This function performs a deep copy of the data in value. The caller can release value immediately after the function returns. Cannot be NULL. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [in] Input data. This function performs a deep copy of the data in value. The caller can release value immediately after the function returns. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or value is NULL,             value->data is NULL, value->len does not match the expected size for the             type, or type is not a valid CryptoSignature_ParamType.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if setting parameter fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or value is NULL, value->data is NULL, value->len does not match the expected size for the type, or type is not a valid CryptoSignature_ParamType.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if setting parameter fails.</li> </ul> |
 
 ### OH_CryptoVerify_GetParam()
 
@@ -303,9 +289,9 @@ OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 Obtains the specified parameter of the verification context.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {value}
 
 **Parameters**:
 
@@ -313,13 +299,13 @@ Obtains the specified parameter of the verification context.
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] Verification context. Cannot be NULL. |
 | [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | [in] Signature parameter type. |
-| Crypto_DataBlob *value | [out] Pointer to the Crypto_DataBlob structure for storing the output data. Cannot be NULL. Initialize value to {0} before calling. Do not pre-allocate value->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [out] Pointer to the Crypto_DataBlob structure for storing the output data. Cannot be NULL. Initialize value to {0} before calling. Do not pre-allocate value->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or value is NULL, or type is             not a valid CryptoSignature_ParamType.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation for the output fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if getting parameter fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or value is NULL, or type is not a valid CryptoSignature_ParamType.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation for the output fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if getting parameter fails.</li> </ul> |
 
 ### OH_CryptoVerify_Destroy()
 
@@ -330,8 +316,6 @@ void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 **Description**
 
 Destroys the verification context.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -351,9 +335,9 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 
 Creates a signing context based on the given algorithm name.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_signature/OH_CryptoSign_Destroy {sign}
 
 **Parameters**:
 
@@ -366,7 +350,7 @@ Creates a signing context based on the given algorithm name.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if sign or algoName is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if sign or algoName is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 **Reference**:
 
@@ -383,8 +367,6 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 
 Initializes the signing context.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Parameters**:
@@ -392,13 +374,13 @@ Initializes the signing context.
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] Signing context. Cannot be NULL. |
-| OH_CryptoPrivKey *privKey | [in] Private key. Cannot be NULL. |
+| [OH_CryptoPrivKey](capi-cryptoasymkeyapi-oh-cryptoprivkey.md) *privKey | [in] Private key. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or privKey is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if sign init fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or privKey is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if sign init fails.</li> </ul> |
 
 **Reference**:
 
@@ -416,8 +398,6 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 
 Updates data to be signed.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Parameters**:
@@ -425,13 +405,13 @@ Updates data to be signed.
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] Signing context. Cannot be NULL. |
-| const Crypto_DataBlob *in | [in] Data to be signed. Cannot be NULL. |
+| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] Data to be signed. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or in is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) if the function call is invalid. [since 26.0.0]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if sign update fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or in is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) if the function call is invalid. [since 26.0.0]</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if sign update fails.</li> </ul> |
 
 **Reference**:
 
@@ -448,23 +428,23 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 
 Finishes the signing operation.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] Signing context. Cannot be NULL. |
-| const Crypto_DataBlob *in | [in] Data to be signed. Can be NULL if all data has been updated via [OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update). |
-| Crypto_DataBlob *out | [out] Pointer to the Crypto_DataBlob structure for storing the signature result. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
+| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] Data to be signed. Can be NULL if all data has been updated via [OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update). |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] Pointer to the Crypto_DataBlob structure for storing the signature result. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or out is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if signing fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or out is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if signing fails.</li> </ul> |
 
 ### OH_CryptoSign_GetAlgoName()
 
@@ -475,8 +455,6 @@ const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 **Description**
 
 Obtains the algorithm name of the signing context.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -502,8 +480,6 @@ OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 
 Sets the specified parameter for the signing context.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Parameters**:
@@ -512,13 +488,13 @@ Sets the specified parameter for the signing context.
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] Signing context. Cannot be NULL. |
 | [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | [in] Signing parameter type. |
-| const Crypto_DataBlob *value | [in] Input data. This function performs a deep copy of the data in value. The caller can release value immediately after the function returns. Cannot be NULL. |
+| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [in] Input data. This function performs a deep copy of the data in value. The caller can release value immediately after the function returns. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or value is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or value is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 ### OH_CryptoSign_GetParam()
 
@@ -530,9 +506,9 @@ OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 
 Obtains the specified parameter from the signing context.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {value}
 
 **Parameters**:
 
@@ -540,13 +516,13 @@ Obtains the specified parameter from the signing context.
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] Signing context. Cannot be NULL. |
 | [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | [in] Signing parameter type. |
-| Crypto_DataBlob *value | [out] Pointer to the Crypto_DataBlob structure for storing the output data. Cannot be NULL. Initialize value to {0} before calling. Do not pre-allocate value->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [out] Pointer to the Crypto_DataBlob structure for storing the output data. Cannot be NULL. Initialize value to {0} before calling. Do not pre-allocate value->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or value is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or value is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 ### OH_CryptoSign_Destroy()
 
@@ -557,8 +533,6 @@ void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 **Description**
 
 Destroys the signing context.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -578,22 +552,22 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature
 
 Creates an ECC signature specification. Also supports SM2 signatures.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_signature/OH_CryptoEccSignatureSpec_Destroy {spec}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Crypto_DataBlob *eccSignature | [in] ECC signature data in DER format. If NULL, an empty signature specification is created. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *eccSignature | [in] ECC signature data in DER format. If NULL, an empty signature specification is created. |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) **spec | [out] Pointer to the ECC signature specification pointer. spec cannot be NULL, *spec must be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec is NULL or spec is not NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if parsing eccSignature fails or             eccSignature contains an invalid DER-encoded ECDSA-Sig-Value.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec is NULL or *spec is not NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if parsing eccSignature fails or eccSignature contains an invalid DER-encoded ECDSA-Sig-Value.</li> </ul> |
 
 **Reference**:
 
@@ -611,23 +585,23 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *
 
 Gets the r and s values from the ECC signature specification.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {r}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) *spec | [in] ECC signature specification. Cannot be NULL. |
-| Crypto_DataBlob *r | [out] Pointer to the Crypto_DataBlob structure for storing the r value. Cannot be NULL. Initialize r to {0} before calling. Do not pre-allocate r->data. |
-| Crypto_DataBlob *s | [out] Pointer to the Crypto_DataBlob structure for storing the s value. Cannot be NULL. Initialize s to {0} before calling. Do not pre-allocate s->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *r | [out] Pointer to the Crypto_DataBlob structure for storing the r value. Cannot be NULL. Initialize r to {0} before calling. Do not pre-allocate r->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *s | [out] Pointer to the Crypto_DataBlob structure for storing the s value. Cannot be NULL. Initialize s to {0} before calling. Do not pre-allocate s->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec, r, or s is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec, r, or s is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 ### OH_CryptoEccSignatureSpec_SetRAndS()
 
@@ -639,8 +613,6 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 
 Sets the r and s values for the ECC signature specification.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
 
 **Parameters**:
@@ -648,14 +620,14 @@ Sets the r and s values for the ECC signature specification.
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) *spec | [in] ECC signature specification. Cannot be NULL. |
-| Crypto_DataBlob *r | [in] r value. This function performs a deep copy of the data in r and s. The caller can release r and s immediately after the function returns. Cannot be NULL. |
-| Crypto_DataBlob *s | [in] s value. Cannot be NULL. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *r | [in] r value. This function performs a deep copy of the data in r and s. The caller can release r and s immediately after the function returns. Cannot be NULL. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *s | [in] s value. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec, r, or s is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec, r, or s is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 **Reference**:
 
@@ -672,22 +644,22 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 
 Encodes the ECC signature specification into DER format signature data.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 20
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) *spec | [in] ECC signature specification. Cannot be NULL. |
-| Crypto_DataBlob *out | [out] Pointer to the Crypto_DataBlob structure for storing the encoded signature. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] Pointer to the Crypto_DataBlob structure for storing the encoded signature. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or out is NULL, or             r and s values have not been set via [OH_CryptoEccSignatureSpec_SetRAndS](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands).</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if encoding fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or out is NULL, or r and s values have not been set via [OH_CryptoEccSignatureSpec_SetRAndS](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands).</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if encoding fails.</li> </ul> |
 
 ### OH_CryptoEccSignatureSpec_Destroy()
 
@@ -698,8 +670,6 @@ void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 **Description**
 
 Destroys the ECC signature specification.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 

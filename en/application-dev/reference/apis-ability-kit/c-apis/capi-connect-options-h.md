@@ -6,9 +6,7 @@ Declares the connection options for extension ability, including callbacks for c
 
 **Library**: libability_runtime.so
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Since**: 13
+**Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
 
@@ -37,9 +35,9 @@ Declares the connection options for extension ability, including callbacks for c
 
 | Name | Description |
 | -- | -- |
-| void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)( OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element, OHIPCRemoteProxy *proxy) | The callback interface is invoked when the connection succeeds.<br>**Since**: 26.0.0 |
-| void (*OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback)( OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element) | The callback interface is invoked when the disconnection occurs.<br>**Since**: 26.0.0 |
-| void (*OH_AbilityRuntime_ConnectOptions_OnFailedCallback)( OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityRuntime_ErrorCode code) | The callback interface is invoked when the connection fails.<br>**Since**: 26.0.0 |
+| void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)( OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element, OHIPCRemoteProxy *proxy) | The callback interface is invoked when the connection succeeds.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
+| void (*OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback)( OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element) | The callback interface is invoked when the disconnection occurs.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
+| void (*OH_AbilityRuntime_ConnectOptions_OnFailedCallback)( OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityRuntime_ErrorCode code) | The callback interface is invoked when the connection fails.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
 
 ## Function description
 
@@ -53,17 +51,15 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)(OH_AbilityRun
 
 The callback interface is invoked when the connection succeeds.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) \*connectOptions | Represents a pointer to an {@link<br>OH_AbilityRuntime_ConnectOptions} instance. |
-| AbilityBase_Element \*element | Represents the element name of the extension ability. |
-| OHIPCRemoteProxy \*proxy | Represents the remote object instance. |
+| [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) *connectOptions | Represents a pointer to an [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) instance. |
+| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) *element | Represents the element name of the extension ability. |
+| [OHIPCRemoteProxy](../../apis-ipc-kit/c-apis/capi-ohipcparcel-ohipcremoteproxy.md) *proxy | Represents the remote object instance. |
 
 ### OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback()
 
@@ -75,16 +71,14 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback)(OH_Ability
 
 The callback interface is invoked when the disconnection occurs.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) \*connectOptions | Represents a pointer to an [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) instance. |
-| AbilityBase_Element \*element | Represents the element name of the extension ability. |
+| [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) *connectOptions | Represents a pointer to an [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) instance. |
+| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) *element | Represents the element name of the extension ability. |
 
 ### OH_AbilityRuntime_ConnectOptions_OnFailedCallback()
 
@@ -96,16 +90,14 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnFailedCallback)(OH_AbilityRunt
 
 The callback interface is invoked when the connection fails.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) \*connectOptions | Represents a pointer to an [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) instance. |
-| AbilityRuntime_ErrorCode code | Represents the error code of the failure. |
+| [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) *connectOptions | Represents a pointer to an [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) instance. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) code | Represents the error code of the failure. |
 
 ### OH_AbilityRuntime_CreateConnectOptions()
 
@@ -117,15 +109,13 @@ OH_AbilityRuntime_ConnectOptions* OH_AbilityRuntime_CreateConnectOptions()
 
 Creates a ConnectOptions object.<br> *
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Since**: 26.0.0
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ConnectOptions*](capi-abilityruntime-oh-abilityruntime-connectoptions.md) | Returns a newly created OH_AbilityRuntime_ConnectOptions object.  The caller is responsible for destroying the returned object by calling  [OH_AbilityRuntime_DestroyConnectOptions](capi-connect-options-h.md#oh_abilityruntime_destroyconnectoptions) to avoid memory leaks. |
+| [OH_AbilityRuntime_ConnectOptions*](capi-abilityruntime-oh-abilityruntime-connectoptions.md) | Returns a newly created OH_AbilityRuntime_ConnectOptions object. The caller is responsible for destroying the returned object by calling [OH_AbilityRuntime_DestroyConnectOptions](capi-connect-options-h.md#oh_abilityruntime_destroyconnectoptions) to avoid memory leaks. |
 
 ### OH_AbilityRuntime_DestroyConnectOptions()
 
@@ -136,8 +126,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyConnectOptions(OH_AbilityRunti
 **Description**
 
 Destroys the specified ConnectOptions.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -151,7 +139,7 @@ Destroys the specified ConnectOptions.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | The error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the connectOptions is invalid. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | The error code. [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the operation is successful. [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the connectOptions is invalid. |
 
 ### OH_AbilityRuntime_ConnectOptions_SetOnConnectCallback()
 
@@ -162,8 +150,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnConnectCallback(O
 **Description**
 
 Set the callback [OH_AbilityRuntime_ConnectOptions_OnConnectCallback](capi-connect-options-h.md#oh_abilityruntime_connectoptions_onconnectcallback) in [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md).
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -178,7 +164,7 @@ Set the callback [OH_AbilityRuntime_ConnectOptions_OnConnectCallback](capi-conne
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Returns a specific error code. [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success. [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
 
 ### OH_AbilityRuntime_ConnectOptions_SetOnDisconnectCallback()
 
@@ -189,8 +175,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnDisconnectCallbac
 **Description**
 
 Set the callback [OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback](capi-connect-options-h.md#oh_abilityruntime_connectoptions_ondisconnectcallback) in [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md).
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -205,7 +189,7 @@ Set the callback [OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback](capi-co
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Returns a specific error code. [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success. [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
 
 ### OH_AbilityRuntime_ConnectOptions_SetOnFailedCallback()
 
@@ -216,8 +200,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnFailedCallback(OH
 **Description**
 
 Set the callback [OH_AbilityRuntime_ConnectOptions_OnFailedCallback](capi-connect-options-h.md#oh_abilityruntime_connectoptions_onfailedcallback) in [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md).
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -232,6 +214,6 @@ Set the callback [OH_AbilityRuntime_ConnectOptions_OnFailedCallback](capi-connec
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Returns a specific error code. [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success. [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
 
 

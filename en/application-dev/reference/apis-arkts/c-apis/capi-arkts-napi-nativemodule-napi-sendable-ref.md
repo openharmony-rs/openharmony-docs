@@ -1,0 +1,18 @@
+# napi_sendable_ref
+
+```c
+typedef struct napi_sendable_ref napi_sendable_ref
+```
+
+## Overview
+
+Native strong sendable reference of an sendable ArkTS object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
+
+**Since**: 22
+
+**Related module**: [ArkTS_Napi_NativeModule](capi-arkts-napi-nativemodule.md)
+
+**Header file**: [native_api.h](capi-native-api-h.md)
+

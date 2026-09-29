@@ -1,7 +1,7 @@
 # Http_CustomProxy
 
 ```c
-typedef struct Http_CustomProxy {...} Http_CustomProxy
+struct Http_CustomProxy {...}
 ```
 
 ## 概述

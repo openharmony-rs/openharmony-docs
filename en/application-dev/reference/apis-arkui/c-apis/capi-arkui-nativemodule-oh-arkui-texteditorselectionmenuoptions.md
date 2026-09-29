@@ -6,7 +6,7 @@ typedef struct OH_ArkUI_TextEditorSelectionMenuOptions OH_ArkUI_TextEditorSelect
 
 ## Overview
 
-Defines the text selection menu options of the text editor.
+Defines the text selection menu options of a text editor, which are used to customize the content of the text selection menu. It supports you in adding, replacing, or removing menu items based on service requirements, and is applicable to scenarios that require text operation menu customization, such as adding custom operation items like "Translate", "Search", and "Share", or replacing the default menu options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

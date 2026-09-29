@@ -6,8 +6,6 @@ Provides the API about TA agent.
 
 **Library**: NA
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -35,8 +33,6 @@ TEE_Result tee_agent_lock(uint32_t agent_id)
 
 The TA sends a message to the gtask to lock the agent.
 
-**System capability**: SystemCapability.Tee.TeeClient
-
 **Since**: 20
 
 **Parameters**:
@@ -49,7 +45,7 @@ The TA sends a message to the gtask to lock the agent.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns {@code TEE_SUCCESS} if the operation is successful.          Returns other information otherwise. |
+| TEE_Result | Returns {@code TEE_SUCCESS} if the operation is successful. Returns other information otherwise. |
 
 ### tee_agent_unlock()
 
@@ -60,8 +56,6 @@ TEE_Result tee_agent_unlock(uint32_t agent_id)
 **Description**
 
 Unlock the agent.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -75,7 +69,7 @@ Unlock the agent.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns {@code TEE_SUCCESS} if the operation is successful.          Returns other information otherwise. |
+| TEE_Result | Returns {@code TEE_SUCCESS} if the operation is successful. Returns other information otherwise. |
 
 ### tee_send_agent_cmd()
 
@@ -86,8 +80,6 @@ TEE_Result tee_send_agent_cmd(uint32_t agent_id)
 **Description**
 
 Send agent cmd to gtask.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -101,7 +93,7 @@ Send agent cmd to gtask.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns {@code TEE_SUCCESS} if the operation is successful.          Returns other information otherwise. |
+| TEE_Result | Returns {@code TEE_SUCCESS} if the operation is successful. Returns other information otherwise. |
 
 ### tee_get_agent_buffer()
 
@@ -112,8 +104,6 @@ TEE_Result tee_get_agent_buffer(uint32_t agent_id, void **buffer, uint32_t *leng
 **Description**
 
 Receive messgage in get agent buffer.
-
-**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -129,6 +119,6 @@ Receive messgage in get agent buffer.
 
 | Type | Description |
 | -- | -- |
-| TEE_Result | Returns {@code TEE_SUCCESS} if the operation is successful.          Returns other information otherwise. |
+| TEE_Result | Returns {@code TEE_SUCCESS} if the operation is successful. Returns other information otherwise. |
 
 

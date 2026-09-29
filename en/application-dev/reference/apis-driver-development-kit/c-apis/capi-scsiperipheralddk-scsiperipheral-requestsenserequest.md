@@ -1,7 +1,7 @@
 # ScsiPeripheral_RequestSenseRequest
 
 ```c
-typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSenseRequest
+struct ScsiPeripheral_RequestSenseRequest {...}
 ```
 
 ## Overview

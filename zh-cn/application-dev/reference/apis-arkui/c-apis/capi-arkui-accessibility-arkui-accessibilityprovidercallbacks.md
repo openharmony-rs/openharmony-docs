@@ -1,12 +1,12 @@
 # ArkUI_AccessibilityProviderCallbacks
 
 ```c
-typedef struct ArkUI_AccessibilityProviderCallbacks {...} ArkUI_AccessibilityProviderCallbacks
+struct ArkUI_AccessibilityProviderCallbacks {...}
 ```
 
 ## 概述
 
-第三方{@link provider}回调函数结构定义，需要第三方平台实现的相关函数，通过OH_ArkUI_AccessibilityProviderRegisterCallback注册到系统侧。 适用于读屏软件、语音控制、开关控制等无障碍辅助场景，第三方平台通过实现这些回调响应系统的无障碍查询和操作请求。
+第三方provider回调函数结构定义，需要第三方平台实现的相关函数，通过OH_ArkUI_AccessibilityProviderRegisterCallback注册到系统侧。 适用于读屏软件、语音控制、开关控制等无障碍辅助场景，第三方平台通过实现这些回调响应系统的无障碍查询和操作请求。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,7 +55,7 @@ int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_Accessibility
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。             ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。可能原因：传入的elementId无效、mode无效或elementList为空指针。     处理步骤：请检查参数elementId、mode、elementList的有效性。 |
+| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。可能原因：传入的elementId无效、mode无效或elementList为空指针。处理步骤：请检查参数elementId、mode、elementList的有效性。 |
 
 ### findAccessibilityNodeInfosByText()
 
@@ -80,7 +80,7 @@ int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。             ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
+| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
 
 ### findFocusedAccessibilityNode()
 
@@ -105,7 +105,7 @@ int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。             ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
+| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
 
 ### findNextFocusAccessibilityNode()
 
@@ -130,7 +130,7 @@ int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_Accessibility
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。              ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
+| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
 
 ### executeAccessibilityAction()
 
@@ -155,7 +155,7 @@ int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_Act
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。             ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
+| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
 
 ### clearFocusedFocusAccessibilityNode()
 
@@ -171,7 +171,7 @@ int32_t (*clearFocusedFocusAccessibilityNode)()
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。             ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
+| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
 
 ### getAccessibilityNodeCursorPosition()
 
@@ -195,6 +195,6 @@ int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t request
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。             ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
+| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
 
 

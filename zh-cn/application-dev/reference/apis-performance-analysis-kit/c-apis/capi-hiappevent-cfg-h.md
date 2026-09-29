@@ -6,8 +6,6 @@
 
 **库：** libhiappevent_ndk.z.so
 
-**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-
 **起始版本：** 8
 
 **相关模块：** [HiAppEvent](capi-hiappevent.md)

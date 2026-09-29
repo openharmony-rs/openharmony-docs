@@ -1,7 +1,7 @@
 # OH_AudioDeviceDescriptorArray
 
 ```c
-typedef struct OH_AudioDeviceDescriptorArray {...} OH_AudioDeviceDescriptorArray
+struct OH_AudioDeviceDescriptorArray {...}
 ```
 
 ## 概述
@@ -23,6 +23,6 @@ typedef struct OH_AudioDeviceDescriptorArray {...} OH_AudioDeviceDescriptorArray
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t size | 音频设备描述符数组大小。 |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) **descriptors | 音频设备描述符数组。 |
+| OH_AudioDeviceDescriptor **descriptors | 音频设备描述符数组。 |
 
 

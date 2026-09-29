@@ -1,7 +1,7 @@
 # OH_AVRecorder_Location
 
 ```c
-typedef struct OH_AVRecorder_Location {...} OH_AVRecorder_Location
+struct OH_AVRecorder_Location {...}
 ```
 
 ## Overview

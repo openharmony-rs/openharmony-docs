@@ -6,8 +6,6 @@ Defines the APIs for accessing and managing OS account information.
 
 **Library**: libos_account_ndk.so
 
-**System capability**: SystemCapability.Account.OsAccount
-
 **Since**: 12
 
 **Related module**: [OsAccount](capi-osaccount.md)
@@ -39,8 +37,6 @@ OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)
 
 Obtains the name of the OS account, to which the caller process belongs.
 
-**System capability**: SystemCapability.Account.OsAccount
-
 **Since**: 12
 
 **Parameters**:
@@ -54,7 +50,7 @@ Obtains the name of the OS account, to which the caller process belongs.
 
 | Type | Description |
 | -- | -- |
-| OsAccount_ErrCode | <ul>          <li>[OS_ACCOUNT_ERR_OK](capi-os-account-common-h.md#osaccount_errcode) The operation is successful.</li>          <li>[OS_ACCOUNT_ERR_INTERNAL_ERROR](capi-os-account-common-h.md#osaccount_errcode) An internal error occurs.</li>          <li>[OS_ACCOUNT_ERR_INVALID_PARAMETER](capi-os-account-common-h.md#osaccount_errcode) The buffer is a null pointer or the size of the OS account          name's character array (including \0) is greater than the value of buffer_size.</li>          </ul> |
+| [OsAccount_ErrCode](capi-os-account-common-h.md#osaccount_errcode) | <ul> <li>[OS_ACCOUNT_ERR_OK](capi-os-account-common-h.md#osaccount_errcode) The operation is successful.</li> <li>[OS_ACCOUNT_ERR_INTERNAL_ERROR](capi-os-account-common-h.md#osaccount_errcode) An internal error occurs.</li> <li>[OS_ACCOUNT_ERR_INVALID_PARAMETER](capi-os-account-common-h.md#osaccount_errcode) The buffer is a null pointer or the size of the OS account name's character array (including **\0**) is greater than the value of **buffer_size**.</li> </ul> |
 
 ### OH_OsAccount_GetNameByLocalId()
 
@@ -65,8 +61,6 @@ OsAccount_ErrCode OH_OsAccount_GetNameByLocalId(int32_t localId, char *name, siz
 **Description**
 
 Obtains the name of the target OS account based on its local ID.
-
-**System capability**: SystemCapability.Account.OsAccount
 
 **Required permission**: ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
 
@@ -84,6 +78,6 @@ Obtains the name of the target OS account based on its local ID.
 
 | Type | Description |
 | -- | -- |
-| OsAccount_ErrCode | <ul>          <li>[OS_ACCOUNT_ERR_OK](capi-os-account-common-h.md#osaccount_errcode) The operation is successful.</li>          <li>[OS_ACCOUNT_ERR_PERMISSION_DENIED](capi-os-account-common-h.md#osaccount_errcode) Permission is denied.</li>          <li>[OS_ACCOUNT_ERR_INTERNAL_ERROR](capi-os-account-common-h.md#osaccount_errcode) An internal error occurs.</li>          <li>[OS_ACCOUNT_ERR_INVALID_PARAMETER](capi-os-account-common-h.md#osaccount_errcode) The name is a null pointer or the size of the OS account          name's character array (including \0) is greater than the value of name_size.</li>          <li>[OS_ACCOUNT_ERR_ACCOUNT_NOT_FOUND](capi-os-account-common-h.md#osaccount_errcode) The account is not found.</li>          <li>[OS_ACCOUNT_ERR_RESTRICTED_ACCOUNT](capi-os-account-common-h.md#osaccount_errcode) The account is restricted and cannot be queried.</li>          </ul> |
+| [OsAccount_ErrCode](capi-os-account-common-h.md#osaccount_errcode) | <ul> <li>[OS_ACCOUNT_ERR_OK](capi-os-account-common-h.md#osaccount_errcode) The operation is successful.</li> <li>[OS_ACCOUNT_ERR_PERMISSION_DENIED](capi-os-account-common-h.md#osaccount_errcode) Permission is denied.</li> <li>[OS_ACCOUNT_ERR_INTERNAL_ERROR](capi-os-account-common-h.md#osaccount_errcode) An internal error occurs.</li> <li>[OS_ACCOUNT_ERR_INVALID_PARAMETER](capi-os-account-common-h.md#osaccount_errcode) The name is a null pointer or the size of the OS account name's character array (including **\0**) is greater than the value of **name_size**.</li> <li>[OS_ACCOUNT_ERR_ACCOUNT_NOT_FOUND](capi-os-account-common-h.md#osaccount_errcode) The account is not found.</li> <li>[OS_ACCOUNT_ERR_RESTRICTED_ACCOUNT](capi-os-account-common-h.md#osaccount_errcode) The account is restricted and cannot be queried.</li> </ul> |
 
 

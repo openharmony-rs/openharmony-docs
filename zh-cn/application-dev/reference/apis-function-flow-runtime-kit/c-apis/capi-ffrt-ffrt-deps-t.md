@@ -23,6 +23,6 @@ typedef struct ffrt_deps_t {...} ffrt_deps_t
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t len | 依赖数量。 |
-| const [ffrt_dependence_t*](capi-ffrt-ffrt-dependence-t.md) items | 依赖数据数组。 |
+| [const ffrt_dependence_t*](capi-ffrt-ffrt-dependence-t.md) items | 依赖数据数组。 |
 
 

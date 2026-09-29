@@ -6,8 +6,6 @@
 
 **库：** libohaudio.so
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
@@ -45,8 +43,6 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceMa
 
 获取音频资源管理器。 <br>使用音频资源管理器相关功能，首先需要获取音频资源管理器实例。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -59,7 +55,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceMa
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr |
 
 ### OH_AudioResourceManager_CreateWorkgroup()
 
@@ -70,8 +66,6 @@ OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceMa
 **描述：**
 
 创建音频工作组。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -87,7 +81,7 @@ OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceMa
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) out of workgroup resources      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) out of workgroup resources [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioResourceManager_ReleaseWorkgroup()
 
@@ -98,8 +92,6 @@ OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceM
 **描述：**
 
 释放音频工作组。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -114,7 +106,7 @@ OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceM
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioWorkgroup_AddCurrentThread()
 
@@ -125,8 +117,6 @@ OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *grou
 **描述：**
 
 将当前线程加入group指向的音频工作组。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -141,7 +131,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *grou
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) out of resources for the new thread      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) out of resources for the new thread [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioWorkgroup_RemoveThread()
 
@@ -152,8 +142,6 @@ OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, i
 **描述：**
 
 将tokenId对应的线程从group音频工作组中移除。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -168,7 +156,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, i
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1. 参数group为nullptr；      <br>2. 参数tokenId无效。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1. 参数group为nullptr；<br>2. 参数tokenId无效。<br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
 
 ### OH_AudioWorkgroup_Start()
 
@@ -179,8 +167,6 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t
 **描述：**
 
 通知系统group指向的音频工作组开始工作，并告知系统当前工作组预期完成时间。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -196,7 +182,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr, or time is invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr, or time is invalid [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioWorkgroup_Stop()
 
@@ -207,8 +193,6 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)
 **描述：**
 
 通知系统group指向的音频工作组任务已完成。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -222,6 +206,6 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 

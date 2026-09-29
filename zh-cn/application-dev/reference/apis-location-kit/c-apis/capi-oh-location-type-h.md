@@ -6,8 +6,6 @@
 
 **库：** liblocation_ndk.so
 
-**系统能力：** SystemCapability.Location.Location.Core
-
 **起始版本：** 13
 
 **相关模块：** [Location](capi-location.md)
@@ -18,7 +16,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Location_BasicInfo](capi-location-location-basicinfo.md) | Location_BasicInfo | 定义位置基本信息的结构体。 |
+| [Location_BasicInfo](capi-location-location-basicinfo.md) | - | 定义位置基本信息的结构体。 |
 | [Location_Info](capi-location-location-info.md) | Location_Info | 定义位置信息的结构体。 |
 | [Location_RequestConfig](capi-location-location-requestconfig.md) | Location_RequestConfig | 定义位置请求参数的结构体。 |
 
@@ -50,7 +48,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*Location_InfoCallback)(Location_Info* location, void* userData) | 用于接收位置上报的回调函数。<br>指向Location_Info实例的指针，携带最新的位置信息。<br>location实例的内存会在Location_InfoCallback结束时回收，请在此之前调用OH_LocationInfo_GetBasicInfo等接口获取位置信息。<br>**起始版本：** 13 |
+| void (*Location_InfoCallback)(Location_Info* location, void* userData) | 用于接收位置上报的回调函数。<br>指向Location_Info实例的指针，携带最新的位置信息。<br>location实例的内存会在Location_InfoCallback结束时回收，请在此之前调用OH_LocationInfo_GetBasicInfo等接口获取位置信息。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Location.Location.Core |
 
 ## 枚举类型说明
 
@@ -63,8 +61,6 @@ enum Location_ResultCode
 **描述：**
 
 定义位置服务的错误码。
-
-**系统能力：** SystemCapability.Location.Location.Core
 
 **起始版本：** 13
 
@@ -87,8 +83,6 @@ enum Location_UseScene
 
 定义位置请求中的用户活动场景类型。
 
-**系统能力：** SystemCapability.Location.Location.Core
-
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -108,8 +102,6 @@ enum Location_PowerConsumptionScene
 
 定义位置请求中的功耗场景类型。
 
-**系统能力：** SystemCapability.Location.Location.Core
-
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -127,8 +119,6 @@ enum Location_SourceType
 **描述：**
 
 定义位置信息的来源。
-
-**系统能力：** SystemCapability.Location.Location.Core
 
 **起始版本：** 13
 
@@ -152,8 +142,6 @@ bool OH_LocationInfo_IsFromMock(Location_Info* location)
 
 判断定位信息是否来自模拟位置功能。
 
-**系统能力：** SystemCapability.Location.Location.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -166,7 +154,7 @@ bool OH_LocationInfo_IsFromMock(Location_Info* location)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回bool类型的结果，用于指示该位置是否来自模拟位置功能。      如果值为 true，表示该位置来自模拟位置功能；如果值为false，表示该位置源自系统的真实定位结果。 |
+| bool | 返回bool类型的结果，用于指示该位置是否来自模拟位置功能。如果值为 true，表示该位置来自模拟位置功能；如果值为false，表示该位置源自系统的真实定位结果。 |
 
 ### OH_LocationInfo_GetBasicInfo()
 
@@ -177,8 +165,6 @@ Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)
 **描述：**
 
 获取位置基本信息。
-
-**系统能力：** SystemCapability.Location.Location.Core
 
 **起始版本：** 13
 
@@ -204,8 +190,6 @@ Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, c
 
 获取位置信息中的附加信息。
 
-**系统能力：** SystemCapability.Location.Location.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -220,7 +204,7 @@ Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [Location_ResultCode](capi-oh-location-type-h.md#location_resultcode) | 返回操作结果。详细定义参见[Location_ResultCode](capi-oh-location-type-h.md#location_resultcode)。<br>    {@link LOCAION_SUCCESS} 获取附加信息成功。<br>    [LOCATION_INVALID_PARAM](capi-oh-location-type-h.md#location_resultcode) 1. 入参location或additionalInfo是空指针。      2. 入参length太小，也就是additionalInfo指向的内存太小导致无法保存完整的附加信息字符串。 |
+| [Location_ResultCode](capi-oh-location-type-h.md#location_resultcode) | 返回操作结果。详细定义参见[Location_ResultCode](capi-oh-location-type-h.md#location_resultcode)。LOCAION_SUCCESS 获取附加信息成功。[LOCATION_INVALID_PARAM](capi-oh-location-type-h.md#location_resultcode) 1. 入参location或additionalInfo是空指针。2. 入参length太小，也就是additionalInfo指向的内存太小导致无法保存完整的附加信息字符串。 |
 
 ### Location_InfoCallback()
 
@@ -232,16 +216,14 @@ typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)
 
 用于接收位置上报的回调函数。<br>指向Location_Info实例的指针，携带最新的位置信息。<br>location实例的内存会在Location_InfoCallback结束时回收，请在此之前调用OH_LocationInfo_GetBasicInfo等接口获取位置信息。
 
-**系统能力：** SystemCapability.Location.Location.Core
-
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Location_Info](capi-location-location-info.md)\* location | - 指向[Location_Info](capi-location-location-info.md) 实例的指针，携带最新的位置信息。 location实例的内存会在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)结束时回收， 请在此之前调用[OH_LocationInfo_GetBasicInfo](capi-oh-location-type-h.md#oh_locationinfo_getbasicinfo)等接口获取位置信息。 |
-| void\* userData | - 指向调用者数据结构或对象的指针，该参数是通过[OH_LocationRequestConfig_SetCallback](capi-oh-location-type-h.md#oh_locationrequestconfig_setcallback)传入的。 |
+| [Location_Info](capi-location-location-info.md)* location | - 指向[Location_Info](capi-location-location-info.md) 实例的指针，携带最新的位置信息。 location实例的内存会在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)结束时回收， 请在此之前调用[OH_LocationInfo_GetBasicInfo](capi-oh-location-type-h.md#oh_locationinfo_getbasicinfo)等接口获取位置信息。 |
+| void* userData | - 指向调用者数据结构或对象的指针，该参数是通过[OH_LocationRequestConfig_SetCallback](capi-oh-location-type-h.md#oh_locationrequestconfig_setcallback)传入的。 |
 
 ### OH_Location_CreateRequestConfig()
 
@@ -253,15 +235,13 @@ Location_RequestConfig* OH_Location_CreateRequestConfig(void)
 
 创建一个位置请求参数结构体实例。
 
-**系统能力：** SystemCapability.Location.Location.Core
-
 **起始版本：** 13
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Location_RequestConfig*](capi-location-location-requestconfig.md) | 返回指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。      如果返回NULL表示创建失败，可能的原因是应用地址空间满，导致空间分配不出来。 |
+| [Location_RequestConfig*](capi-location-location-requestconfig.md) | 返回指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。如果返回NULL表示创建失败，可能的原因是应用地址空间满，导致空间分配不出来。 |
 
 ### OH_Location_DestroyRequestConfig()
 
@@ -272,8 +252,6 @@ void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)
 **描述：**
 
 销毁位置请求参数实例并回收内存。
-
-**系统能力：** SystemCapability.Location.Location.Core
 
 **起始版本：** 13
 
@@ -292,8 +270,6 @@ void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig,
 **描述：**
 
 设置位置请求参数中的用户活动场景。 位置请求参数[Location_RequestConfig](capi-location-location-requestconfig.md)中以useScene优先。 如果设置了useScene，则powerConsumptionScene参数无效。 如果未设置useScene，设置了powerConsumptionScene则该参数生效。 如果两个参数都未设置，则默认useScene为[LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](capi-oh-location-type-h.md#location_usescene)， powerConsumptionScene参数无效。
-
-**系统能力：** SystemCapability.Location.Location.Core
 
 **起始版本：** 13
 
@@ -314,8 +290,6 @@ void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* r
 
 设置位置请求参数中的功耗场景。
 
-**系统能力：** SystemCapability.Location.Location.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -335,8 +309,6 @@ void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig,
 
 设置位置请求参数中的位置上报间隔。
 
-**系统能力：** SystemCapability.Location.Location.Core
-
 **起始版本：** 13
 
 **参数：**
@@ -355,8 +327,6 @@ void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig,
 **描述：**
 
 设置回调函数。
-
-**系统能力：** SystemCapability.Location.Location.Core
 
 **起始版本：** 13
 

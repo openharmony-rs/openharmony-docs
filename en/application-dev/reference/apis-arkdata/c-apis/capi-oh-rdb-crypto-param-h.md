@@ -6,9 +6,7 @@ Provides functions and enumerations related to cryptographic parameters of the r
 
 **Library**: libnative_rdb_ndk.z.so
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since**: 10
+**Since**: 20
 
 **Related module**: [RDB](capi-rdb.md)
 
@@ -53,8 +51,6 @@ enum Rdb_EncryptionAlgo
 
 Enumerates the database encryption algorithms.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 20
 
 | Enum item | Description |
@@ -73,8 +69,6 @@ enum Rdb_HmacAlgo
 
 Enumerates the supported HMAC algorithm when opening a database.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 20
 
 | Enum item | Description |
@@ -92,8 +86,6 @@ enum Rdb_KdfAlgo
 **Description**
 
 Enumerates the supported KDF algorithm when opening a database.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -116,15 +108,13 @@ OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 
 Creates an OH_Rdb_CryptoParam instance object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 20
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_Rdb_CryptoParam *](capi-rdb-oh-rdb-cryptoparam.md) | Returns a pointer to OH_Rdb_CryptoParam instance when the execution is successful.  Otherwise, nullptr is returned. The memory must be released through the OH_Rdb_DestroyCryptoParam  interface after the use is complete. |
+| [OH_Rdb_CryptoParam *](capi-rdb-oh-rdb-cryptoparam.md) | Returns a pointer to OH_Rdb_CryptoParam instance when the execution is successful. Otherwise, nullptr is returned. The memory must be released through the OH_Rdb_DestroyCryptoParam interface after the use is complete. |
 
 **Reference**:
 
@@ -141,8 +131,6 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 
 Destroys an OH_Rdb_CryptoParam instance object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -155,7 +143,7 @@ Destroys an OH_Rdb_CryptoParam instance object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Crypto_SetEncryptionKey()
 
@@ -166,8 +154,6 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 **Description**
 
 Sets key data to the OH_Rdb_CryptoParam object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -183,7 +169,7 @@ Sets key data to the OH_Rdb_CryptoParam object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Crypto_SetIteration()
 
@@ -194,8 +180,6 @@ int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 **Description**
 
 Sets the number of KDF iterations used when opening an encrypted database.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -210,7 +194,7 @@ Sets the number of KDF iterations used when opening an encrypted database.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Crypto_SetEncryptionAlgo()
 
@@ -221,8 +205,6 @@ int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 **Description**
 
 Sets the encryption algorithm when opening an encrypted database.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -237,7 +219,7 @@ Sets the encryption algorithm when opening an encrypted database.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Crypto_SetHmacAlgo()
 
@@ -248,8 +230,6 @@ int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 **Description**
 
 Sets the HMAC algorithm when opening an encrypted database.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -264,7 +244,7 @@ Sets the HMAC algorithm when opening an encrypted database.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Crypto_SetKdfAlgo()
 
@@ -275,8 +255,6 @@ int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 **Description**
 
 Sets the KDF algorithm when opening an encrypted database.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -291,7 +269,7 @@ Sets the KDF algorithm when opening an encrypted database.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_Crypto_SetCryptoPageSize()
 
@@ -302,8 +280,6 @@ int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 **Description**
 
 Sets the page size used when opening an encrypted database.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -318,6 +294,6 @@ Sets the page size used when opening an encrypted database.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 

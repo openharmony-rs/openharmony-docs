@@ -1,7 +1,7 @@
 # Camera_DeviceQueryInfo
 
 ```c
-typedef struct Camera_DeviceQueryInfo {...} Camera_DeviceQueryInfo
+struct Camera_DeviceQueryInfo {...}
 ```
 
 ## 概述

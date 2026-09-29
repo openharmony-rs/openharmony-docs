@@ -1,7 +1,7 @@
 # OH_NN_Memory
 
 ```c
-typedef struct OH_NN_Memory {...} OH_NN_Memory
+struct OH_NN_Memory {...}
 ```
 
 ## Overview
@@ -14,7 +14,7 @@ Defines the memory structure.
 
 **Deprecated**: 11
 
-**Replaced by**: {@link NN_Tensor}
+**Replaced by**: [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md)
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
 

@@ -1,7 +1,7 @@
 # OH_VideoInfo
 
 ```c
-typedef struct OH_VideoInfo {...} OH_VideoInfo
+struct OH_VideoInfo {...}
 ```
 
 ## 概述

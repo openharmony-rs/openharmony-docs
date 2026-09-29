@@ -1,12 +1,12 @@
 # OH_AudioCapturer_Callbacks_Struct
 
 ```c
-typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks
+struct OH_AudioCapturer_Callbacks_Struct {...}
 ```
 
 ## 概述
 
-声明用于音频采集器的回调函数指针。<br>为了避免不可预期的行为，在设置音频回调函数时，请确保该结构体的每一个成员变量都 被自定义的回调方法或空指针初始化。可参考{@link 推荐使用OHAudio开发音频录制功能(C/C++)}。
+声明用于音频采集器的回调函数指针。<br>为了避免不可预期的行为，在设置音频回调函数时，请确保该结构体的每一个成员变量都 被自定义的回调方法或空指针初始化。可参考推荐使用OHAudio开发音频录制功能(C/C++)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

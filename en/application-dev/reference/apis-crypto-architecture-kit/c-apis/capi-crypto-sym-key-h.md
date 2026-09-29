@@ -8,8 +8,6 @@ Defines the symmetric key interfaces.
 
 **Library**: libohcrypto.so
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 **Related module**: [CryptoSymKeyApi](capi-cryptosymkeyapi.md)
@@ -48,9 +46,9 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 Creates a symmetric key generator based on the given algorithm name, e.g. AES256.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
+
+**Resource release**: crypto_sym_key/OH_CryptoSymKeyGenerator_Destroy {ctx}
 
 **Parameters**:
 
@@ -63,7 +61,7 @@ Creates a symmetric key generator based on the given algorithm name, e.g. AES256
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or algoName is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or algoName is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 **Reference**:
 
@@ -81,9 +79,9 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ct
 
 Generates a symmetric key randomly.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
+
+**Resource release**: crypto_sym_key/OH_CryptoSymKey_Destroy {keyCtx}
 
 **Parameters**:
 
@@ -96,7 +94,7 @@ Generates a symmetric key randomly.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or keyCtx is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) if the function call is invalid. Possible causes:             the algorithm does not support random key generation (e.g. RC2, RC4, Blowfish, CAST),             use OH_CryptoSymKeyGenerator_Convert interface instead.[since 26.0.0]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or keyCtx is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) if the function call is invalid. Possible causes: the algorithm does not support random key generation (e.g. RC2, RC4, Blowfish, CAST), use OH_CryptoSymKeyGenerator_Convert interface instead.[since 26.0.0]</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 ### OH_CryptoSymKeyGenerator_Convert()
 
@@ -108,23 +106,23 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx
 
 Converts symmetric key data to a symmetric key.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
+
+**Resource release**: crypto_sym_key/OH_CryptoSymKey_Destroy {keyCtx}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoSymKeyGenerator](capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md) *ctx | [in] Symmetric key generator. Cannot be NULL. |
-| const Crypto_DataBlob *keyData | [in] Data used to generate the symmetric key. Cannot be NULL. |
+| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *keyData | [in] Data used to generate the symmetric key. Cannot be NULL. |
 | [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md) **keyCtx | [out] Pointer to the symmetric key pointer. keyCtx cannot be NULL, *keyCtx must be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx, keyData, or keyCtx is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx, keyData, or keyCtx is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 ### OH_CryptoSymKeyGenerator_GetAlgoName()
 
@@ -136,8 +134,6 @@ const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)
 
 Obtains the algorithm name of the symmetric key generator.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -150,7 +146,7 @@ Obtains the algorithm name of the symmetric key generator.
 
 | Type | Description |
 | -- | -- |
-| const char * | Returns the symmetric key algorithm name. No need to free by the caller. Invalid after      the generator is destroyed. |
+| const char * | Returns the symmetric key algorithm name. No need to free by the caller. Invalid after the generator is destroyed. |
 
 ### OH_CryptoSymKeyGenerator_Destroy()
 
@@ -161,8 +157,6 @@ void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)
 **Description**
 
 Destroys the symmetric key generator.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -181,8 +175,6 @@ const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)
 **Description**
 
 Obtains the symmetric key algorithm name from the symmetric key.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -208,22 +200,22 @@ OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_Dat
 
 Obtains the symmetric key data from the symmetric key.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
+
+**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md) *keyCtx | [in] Symmetric key. Cannot be NULL. |
-| Crypto_DataBlob *out | [out] Pointer to the Crypto_DataBlob structure for storing the key data. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] Pointer to the Crypto_DataBlob structure for storing the key data. Cannot be NULL. Initialize out to {0} before calling. Do not pre-allocate out->data. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if keyCtx or out is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if keyCtx or out is NULL.</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li> </ul> |
 
 ### OH_CryptoSymKey_Destroy()
 
@@ -234,8 +226,6 @@ void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)
 **Description**
 
 Destroys the symmetric key.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 

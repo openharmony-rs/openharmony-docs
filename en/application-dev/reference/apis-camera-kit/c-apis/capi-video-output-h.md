@@ -6,8 +6,6 @@ The file declares the video output concepts.
 
 **Library**: libohcamera.so
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)
@@ -18,7 +16,7 @@ The file declares the video output concepts.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) | VideoOutput_Callbacks | The struct describes the callbacks related to video output. |
+| [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) | - | The struct describes the callbacks related to video output. |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md) | Camera_VideoOutput | The struct describes the video output object. |
 
 ### Function
@@ -48,9 +46,9 @@ The file declares the video output concepts.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput) | Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame start events.<br>**Since**: 11 |
-| void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount) | Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame end events.<br>**Since**: 11 |
-| void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode) | Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output errors.<br>**Since**: 11 |
+| void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput) | Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame start events.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
+| void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount) | Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame end events.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
+| void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode) | Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output errors.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
 
 ## Function description
 
@@ -64,15 +62,13 @@ typedef void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput)
 
 Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame start events.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)\* videoOutput | Pointer to the VideoOutput instance that transfers the callback. |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the VideoOutput instance that transfers the callback. |
 
 ### OH_VideoOutput_OnFrameEnd()
 
@@ -84,15 +80,13 @@ typedef void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32
 
 Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame end events.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)\* videoOutput | Pointer to the VideoOutput instance that transfers the callback. |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the VideoOutput instance that transfers the callback. |
 | int32_t frameCount | Number of frames to be included in the callback. |
 
 ### OH_VideoOutput_OnError()
@@ -105,16 +99,14 @@ typedef void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_E
 
 Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output errors.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)\* videoOutput | Pointer to the VideoOutput instance that transfers the callback. |
-| Camera_ErrorCode errorCode | Error code reported during video output. |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the VideoOutput instance that transfers the callback. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | Error code reported during video output. |
 
 **Reference**:
 
@@ -131,8 +123,6 @@ Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput
 
 Registers a callback to listen for video output events.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -146,7 +136,7 @@ Registers a callback to listen for video output events.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_VideoOutput_UnregisterCallback()
 
@@ -158,8 +148,6 @@ Camera_ErrorCode OH_VideoOutput_UnregisterCallback(Camera_VideoOutput* videoOutp
 
 Unregisters the callback used to listen for video output events.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -173,7 +161,7 @@ Unregisters the callback used to listen for video output events.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_VideoOutput_Start()
 
@@ -184,8 +172,6 @@ Camera_ErrorCode OH_VideoOutput_Start(Camera_VideoOutput* videoOutput)
 **Description**
 
 Starts video output.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -199,7 +185,7 @@ Starts video output.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SESSION_NOT_CONFIG: The capture session is not configured.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_VideoOutput_Stop()
 
@@ -210,8 +196,6 @@ Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)
 **Description**
 
 Stops video output.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -225,7 +209,7 @@ Stops video output.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_VideoOutput_Release()
 
@@ -236,8 +220,6 @@ Camera_ErrorCode OH_VideoOutput_Release(Camera_VideoOutput* videoOutput)
 **Description**
 
 Releases a VideoOutput instance.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -251,7 +233,7 @@ Releases a VideoOutput instance.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_VideoOutput_GetActiveProfile()
 
@@ -263,8 +245,6 @@ Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput
 
 Obtains the profile of a VideoOutput instance.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -272,13 +252,13 @@ Obtains the profile of a VideoOutput instance.
 | Parameter | Description |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the VideoOutput instance for which the profile is to be obtained. |
-| Camera_VideoProfile** profile | Double pointer to the video output profile obtained. |
+| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)** profile | Double pointer to the video output profile obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_VideoOutput_DeleteProfile()
 
@@ -290,21 +270,19 @@ Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)
 
 Deletes the profile of a VideoOutput instance.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_VideoProfile* profile | Pointer to the profile to delete. |
+| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)* profile | Pointer to the profile to delete. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_VideoOutput_IsMirrorSupported()
 
@@ -315,8 +293,6 @@ Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutpu
 **Description**
 
 Check whether mirror mode is supported for videoOutput
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 15
 
@@ -331,7 +307,7 @@ Check whether mirror mode is supported for videoOutput
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds. [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
 
 ### OH_VideoOutput_EnableMirror()
 
@@ -342,8 +318,6 @@ Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bo
 **Description**
 
 Enable or disable mirror mode for videoOutput
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 15
 
@@ -358,7 +332,7 @@ Enable or disable mirror mode for videoOutput
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds. [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
 
 ### OH_VideoOutput_GetVideoRotation()
 
@@ -370,8 +344,6 @@ Camera_ErrorCode OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput
 
 Obtains the rotation angle of a video.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -380,13 +352,13 @@ Obtains the rotation angle of a video.
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the target VideoOutput instance. |
 | int deviceDegree | Clockwise rotation angle of the device relative to the natural direction (the charging port faces downward). |
-| Camera_ImageRotation* imageRotation | Pointer to the rotation angle of the video output. |
+| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | Pointer to the rotation angle of the video output. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_VideoOutput_GetVideoRotationWithoutDeviceDegree()
 
@@ -398,8 +370,6 @@ Camera_ErrorCode OH_VideoOutput_GetVideoRotationWithoutDeviceDegree(Camera_Video
 
 Obtains the rotation angle of a video.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -407,13 +377,13 @@ Obtains the rotation angle of a video.
 | Parameter | Description |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the target VideoOutput instance. |
-| Camera_ImageRotation* imageRotation | Pointer to the rotation angle of the video output. |
+| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | Pointer to the rotation angle of the video output. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_VideoOutput_GetSupportedFrameRates()
 
@@ -425,8 +395,6 @@ Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* video
 
 Obtains the list of frame rates supported by a VideoOutput instance.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -434,14 +402,14 @@ Obtains the list of frame rates supported by a VideoOutput instance.
 | Parameter | Description |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the target VideoOutput instance. |
-| Camera_FrameRateRange** frameRateRange | Double pointer to the list of frame rates, if the function is successfully called. |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md)** frameRateRange | Double pointer to the list of frame rates, if the function is successfully called. |
 | uint32_t* size | Pointer to the size of the list of frame rates. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_VideoOutput_DeleteFrameRates()
 
@@ -453,8 +421,6 @@ Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput
 
 Deletes the frame rate list.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -462,13 +428,13 @@ Deletes the frame rate list.
 | Parameter | Description |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the target VideoOutput instance. |
-| Camera_FrameRateRange* frameRateRange | Pointer to the list of frame rates to delete. |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md)* frameRateRange | Pointer to the list of frame rates to delete. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_VideoOutput_SetFrameRate()
 
@@ -479,8 +445,6 @@ Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, in
 **Description**
 
 Sets the frame rates for a VideoOutput instance.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -496,7 +460,7 @@ Sets the frame rates for a VideoOutput instance.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_VideoOutput_GetActiveFrameRate()
 
@@ -508,8 +472,6 @@ Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutp
 
 Obtains the active frame rates of a VideoOutput instance.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -517,12 +479,12 @@ Obtains the active frame rates of a VideoOutput instance.
 | Parameter | Description |
 | -- | -- |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the target VideoOutput instance. |
-| Camera_FrameRateRange* frameRateRange | Pointer to the frame rate range, if the function is successfully called. |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md)* frameRateRange | Pointer to the frame rate range, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 

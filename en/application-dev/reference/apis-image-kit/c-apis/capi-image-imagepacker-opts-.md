@@ -1,7 +1,7 @@
 # ImagePacker_Opts_
 
 ```c
-typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts
+struct ImagePacker_Opts_ {...}
 ```
 
 ## Overview

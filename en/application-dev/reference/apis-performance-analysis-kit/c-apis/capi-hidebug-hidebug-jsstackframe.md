@@ -1,7 +1,7 @@
 # HiDebug_JsStackFrame
 
 ```c
-typedef struct HiDebug_JsStackFrame {...} HiDebug_JsStackFrame
+struct HiDebug_JsStackFrame {...}
 ```
 
 ## Overview

@@ -6,9 +6,7 @@ Defines the data structures for the C APIs of the HTTP request module.
 
 **Library**: libnet_http.so
 
-**System capability**: SystemCapability.Communication.NetStack
-
-**Since**: 11
+**Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)
 
@@ -18,17 +16,17 @@ Defines the data structures for the C APIs of the HTTP request module.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Http_Buffer](capi-netstack-http-buffer.md) | Http_Buffer | Defines the HTTP buffer structure. |
-| [Http_HeaderValue](capi-netstack-http-headervalue.md) | Http_HeaderValue | Defines the type of a mapped value in a request or response header. |
-| [Http_HeaderEntry](capi-netstack-http-headerentry.md) | Http_HeaderEntry | Defines all key-value pairs in the request or response header. |
-| [Http_ClientCert](capi-netstack-http-clientcert.md) | Http_ClientCert | Defines the client certificate sent to a remote server, which will be used by the server to verify the identity of the client. |
-| [Http_CustomProxy](capi-netstack-http-customproxy.md) | Http_CustomProxy | Defines the custom proxy configuration. |
-| [Http_Proxy](capi-netstack-http-proxy.md) | Http_Proxy | Defines the proxy configuration structure. |
-| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) | Http_PerformanceTiming | Defines the HTTP response timing information, which will be collected via {@link Http_Response}. |
-| [Http_RequestOptions](capi-netstack-http-requestoptions.md) | Http_RequestOptions | Defines the structure of HTTP requests. |
-| [Http_Response](capi-netstack-http-response.md) | Http_Response | Defines the structure of HTTP responses. |
-| [Http_Request](capi-netstack-http-request.md) | Http_Request | Defines an HTTP request. |
-| [Http_EventsHandler](capi-netstack-http-eventshandler.md) | Http_EventsHandler | Defines the callback for various HTTP events. |
+| [Http_Buffer](capi-netstack-http-buffer.md) | - | Defines the HTTP buffer structure. |
+| [Http_HeaderValue](capi-netstack-http-headervalue.md) | - | Defines the type of a mapped value in a request or response header. |
+| [Http_HeaderEntry](capi-netstack-http-headerentry.md) | - | Defines all key-value pairs in the request or response header. |
+| [Http_ClientCert](capi-netstack-http-clientcert.md) | - | Defines the client certificate sent to a remote server, which will be used by the server to verify the identity of the client. |
+| [Http_CustomProxy](capi-netstack-http-customproxy.md) | - | Defines the custom proxy configuration. |
+| [Http_Proxy](capi-netstack-http-proxy.md) | - | Defines the proxy configuration structure. |
+| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) | - | Defines the HTTP response timing information, which will be collected via [Http_Response](capi-netstack-http-response.md). |
+| [Http_RequestOptions](capi-netstack-http-requestoptions.md) | - | Defines the structure of HTTP requests. |
+| [Http_Response](capi-netstack-http-response.md) | - | Defines the structure of HTTP responses. |
+| [Http_Request](capi-netstack-http-request.md) | - | Defines an HTTP request. |
+| [Http_EventsHandler](capi-netstack-http-eventshandler.md) | - | Defines the callback for various HTTP events. |
 | [Http_Headers](capi-netstack-http-headers.md) | Http_Headers | Defines the header of an HTTP request or response. |
 
 ### Enum
@@ -72,11 +70,11 @@ Defines the data structures for the C APIs of the HTTP request module.
 
 | Name | Description |
 | -- | -- |
-| void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode) | Callback function that is invoked when response is received.<br>**Since**: 20 |
-| void (*Http_OnDataReceiveCallback)(const char *data, size_t length) | Callback function that is invoked when a response body is received.<br>**Since**: 20 |
-| void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize) | Callback function invoked during request/response data transmission.<br>**Since**: 20 |
-| void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers) | Callback called when header are received.<br>**Since**: 20 |
-| void (*Http_OnVoidCallback)(void) | Empty callback function for requested DataEnd or Canceled event callback.<br>**Since**: 20 |
+| void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode) | Callback function that is invoked when response is received.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
+| void (*Http_OnDataReceiveCallback)(const char *data, size_t length) | Callback function that is invoked when a response body is received.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
+| void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize) | Callback function invoked during request/response data transmission.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
+| void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers) | Callback called when header are received.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
+| void (*Http_OnVoidCallback)(void) | Empty callback function for requested DataEnd or Canceled event callback.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
 
 ## Enum type description
 
@@ -89,8 +87,6 @@ enum Http_ErrCode
 **Description**
 
 Defines http error code.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -141,8 +137,6 @@ enum Http_ResponseCode
 **Description**
 
 Defines http response code.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -195,8 +189,6 @@ enum Http_AddressFamilyType
 
 Defines the address Family.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 20
 
 | Enum item | Description |
@@ -214,8 +206,6 @@ enum Http_HttpProtocol
 **Description**
 
 Defines the HTTP version.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -236,8 +226,6 @@ enum Http_CertType
 
 Defines the Cert Type.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 20
 
 | Enum item | Description |
@@ -255,8 +243,6 @@ enum Http_ProxyType
 **Description**
 
 Proxy type. Used to distinguish different proxy configurations.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -279,15 +265,13 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 
 Callback function that is invoked when response is received.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [struct Http_Response](capi-netstack-http-response.md) \*response | Http response struct, see [Http_Response](capi-netstack-http-response.md). |
+| [struct Http_Response](capi-netstack-http-response.md) *response | Http response struct, see [Http_Response](capi-netstack-http-response.md). |
 | uint32_t errCode | Response error code. |
 
 ### Http_OnDataReceiveCallback()
@@ -300,15 +284,13 @@ typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 
 Callback function that is invoked when a response body is received.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const char \*data | Response body. |
+| const char *data | Response body. |
 | size_t length | Length of response body. |
 
 ### Http_OnProgressCallback()
@@ -320,8 +302,6 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 **Description**
 
 Callback function invoked during request/response data transmission.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -342,15 +322,13 @@ typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 
 Callback called when header are received.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [Http_Headers](capi-netstack-http-headers.md) \*headers | Headers of the received requests, which points to the pointer of [Http_Headers](capi-netstack-http-headers.md). |
+| [Http_Headers](capi-netstack-http-headers.md) *headers | Headers of the received requests, which points to the pointer of [Http_Headers](capi-netstack-http-headers.md). |
 
 ### Http_OnVoidCallback()
 
@@ -361,8 +339,6 @@ typedef void (*Http_OnVoidCallback)(void)
 **Description**
 
 Empty callback function for requested DataEnd or Canceled event callback.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 

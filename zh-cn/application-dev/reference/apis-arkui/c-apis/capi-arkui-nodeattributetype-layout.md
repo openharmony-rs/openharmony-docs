@@ -186,7 +186,7 @@ NODE_ALIGN_RULES
 
 **描述：**
 
-相对容器中子组件的对齐规则属性，支持属性设置，属性重置，获取属性接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.object：设置相对容器中子组件的对齐规则，参数类型为{@link ArkUI_AlignmentRuleOption}。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：相对容器中子组件的对齐规则，参数类型为{@link ArkUI_AlignmentRuleOption}。</li> </ul>
+相对容器中子组件的对齐规则属性，支持属性设置，属性重置，获取属性接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：设置相对容器中子组件的对齐规则，参数类型为ArkUI_AlignmentRuleOption。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：相对容器中子组件的对齐规则，参数类型为ArkUI_AlignmentRuleOption。</li> </ul>
 
 **起始版本：** 12
 
@@ -330,7 +330,7 @@ NODE_RELATIVE_LAYOUT_CHAIN_MODE
 
 **描述：**
 
-指定以该组件为链头所构成的链的参数，支持属性设置、属性重置和属性获取接口。<br> 仅当父容器为RelativeContainer时生效。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32：设置链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。</li><br><li>.value[1].i32：设置链的样式。枚举{@link ArkUI_RelativeLayoutChainStyle}。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32：链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。</li><br><li>.value[1].i32：链的样式。枚举{@link ArkUI_RelativeLayoutChainStyle}。</li> </ul>
+指定以该组件为链头所构成的链的参数，支持属性设置、属性重置和属性获取接口。<br> 仅当父容器为RelativeContainer时生效。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。</li> <li>.value[1].i32：设置链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。</li> <li>.value[1].i32：链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。</li> </ul>
 
 **起始版本：** 12
 

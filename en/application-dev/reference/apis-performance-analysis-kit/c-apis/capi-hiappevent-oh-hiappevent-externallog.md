@@ -1,7 +1,7 @@
 # OH_HiAppEvent_ExternalLog
 
 ```c
-typedef struct OH_HiAppEvent_ExternalLog {...} OH_HiAppEvent_ExternalLog
+struct OH_HiAppEvent_ExternalLog {...}
 ```
 
 ## Overview

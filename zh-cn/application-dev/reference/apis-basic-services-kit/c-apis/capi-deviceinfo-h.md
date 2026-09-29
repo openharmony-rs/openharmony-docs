@@ -8,8 +8,6 @@
 
 **库：** libdeviceinfo_ndk.z.so
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **相关模块：** [DeviceInfo](capi-deviceinfo.md)
@@ -60,15 +58,13 @@ const char *OH_GetDeviceType(void)
 
 获取设备类型。返回预定义的设备类型字符串。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | 返回设备类型字符串。可能的值包括：     <br>• "phone"     <br>• "default"（设备类型无法识别时的默认返回值）     <br>• "wearable"     <br>• "liteWearable"     <br>• "tablet"     <br>• "tv"     <br>• "car"     <br>• "smartVision" |
+| const char * | 返回设备类型字符串。可能的值包括：<br>• "phone" <br>• "default"（设备类型无法识别时的默认返回值）<br>• "wearable" <br>• "liteWearable" <br>• "tablet" <br>• "tv" <br>• "car" <br>• "smartVision" |
 
 ### OH_GetManufacture()
 
@@ -79,8 +75,6 @@ const char *OH_GetManufacture(void)
 **描述：**
 
 获取设备制造商。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -100,8 +94,6 @@ const char *OH_GetBrand(void)
 
 获取设备品牌。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -119,8 +111,6 @@ const char *OH_GetMarketName(void)
 **描述：**
 
 获取外部产品系列，即外部产品名称。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -140,8 +130,6 @@ const char *OH_GetProductSeries(void)
 
 获取产品系列。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -159,8 +147,6 @@ const char *OH_GetProductModel(void)
 **描述：**
 
 获取认证型号。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -180,8 +166,6 @@ const char *OH_GetSoftwareModel(void)
 
 获取内部软件子型号，当多个硬件型号共用同一软件版本时，该字段用于区分不同的软件分支。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -199,8 +183,6 @@ const char *OH_GetHardwareModel(void)
 **描述：**
 
 获取硬件版本号。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -220,8 +202,6 @@ const char *OH_GetBootloaderVersion(void)
 
 获取Bootloader版本号。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -239,8 +219,6 @@ const char *OH_GetAbiList(void)
 **描述：**
 
 获取应用二进制接口（Abi）。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -260,8 +238,6 @@ const char *OH_GetSecurityPatchTag(void)
 
 获取安全补丁级别。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -279,8 +255,6 @@ const char *OH_GetDisplayVersion(void)
 **描述：**
 
 获取产品版本。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -300,8 +274,6 @@ const char *OH_GetIncrementalVersion(void)
 
 获取差异版本。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -320,15 +292,13 @@ const char *OH_GetOsReleaseType(void)
 
 获取系统的发布类型。返回预定义的发布类型字符串。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | 操作系统发布类别包括"Release"、"Beta"和"Canary"。          <br> 具体的发布类型可能是"release"，"Beta1"，或其他类似的。          <br>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。          <br>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。          <br>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。 |
+| const char * | 操作系统发布类别包括"Release"、"Beta"和"Canary"。<br> 具体的发布类型可能是"release"，"Beta1"，或其他类似的。<br>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。<br>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。<br>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。 |
 
 ### OH_GetOSFullName()
 
@@ -339,8 +309,6 @@ const char *OH_GetOSFullName(void)
 **描述：**
 
 获取完整的系统版本名。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -360,8 +328,6 @@ int OH_GetSdkApiVersion(void)
 
 获取系统软件API版本。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -380,15 +346,13 @@ int OH_GetFirstApiVersion(void)
 
 获取首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本，取值范围为整数。          常见的取值包括：3等。 |
+| int | 首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本，取值范围为整数。常见的取值包括：3等。 |
 
 ### OH_GetVersionId()
 
@@ -399,8 +363,6 @@ const char *OH_GetVersionId(void)
 **描述：**
 
 获取版本ID。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -420,8 +382,6 @@ const char *OH_GetBuildType(void)
 
 获取系统的构建类型。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -439,8 +399,6 @@ const char *OH_GetBuildUser(void)
 **描述：**
 
 获取系统的构建用户。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -460,8 +418,6 @@ const char *OH_GetBuildHost(void)
 
 获取系统的构建主机。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -479,8 +435,6 @@ const char *OH_GetBuildTime(void)
 **描述：**
 
 获取系统的构建时间。
-
-**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -500,8 +454,6 @@ const char *OH_GetBuildRootHash(void)
 
 获取系统的构建版本Hash。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
@@ -520,15 +472,13 @@ const char *OH_GetDistributionOSName(void)
 
 获取ISV发行版系统名称。独立软件供应商（ISV）可以使用自定义的系统名称。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | ISV发行版系统名称。      <br>如果没有指定ISV，它将返回一个空字符串。 |
+| const char * | ISV发行版系统名称。<br>如果没有指定ISV，它将返回一个空字符串。 |
 
 ### OH_GetDistributionOSVersion()
 
@@ -540,15 +490,13 @@ const char *OH_GetDistributionOSVersion(void)
 
 获取ISV发行版系统版本号。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | ISV发行版系统版本号。      <br>如果没有指定ISV，它将返回与[OH_GetOSFullName](capi-deviceinfo-h.md#oh_getosfullname)相同的值。 |
+| const char * | ISV发行版系统版本号。<br>如果没有指定ISV，它将返回与[OH_GetOSFullName](capi-deviceinfo-h.md#oh_getosfullname)相同的值。 |
 
 ### OH_GetDistributionOSApiVersion()
 
@@ -560,15 +508,13 @@ int OH_GetDistributionOSApiVersion(void)
 
 获取ISV发行版系统API版本。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | ISV发行版系统API版本。      <br>如果没有指定ISV，它将返回与[OH_GetSdkApiVersion](capi-deviceinfo-h.md#oh_getsdkapiversion)相同的值。 |
+| int | ISV发行版系统API版本。<br>如果没有指定ISV，它将返回与[OH_GetSdkApiVersion](capi-deviceinfo-h.md#oh_getsdkapiversion)相同的值。 |
 
 ### OH_GetDistributionOSReleaseType()
 
@@ -580,14 +526,12 @@ const char *OH_GetDistributionOSReleaseType(void)
 
 获取ISV发行版系统类型。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 **起始版本：** 10
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | ISV发行版系统类型。      <br>如果没有指定ISV，它将返回与[OH_GetOsReleaseType](capi-deviceinfo-h.md#oh_getosreleasetype)相同的值。 |
+| const char * | ISV发行版系统类型。<br>如果没有指定ISV，它将返回与[OH_GetOsReleaseType](capi-deviceinfo-h.md#oh_getosreleasetype)相同的值。 |
 
 

@@ -6,8 +6,6 @@
 
 **库：** libohclouddiskmanager.so
 
-**系统能力：** SystemCapability.FileManagement.CloudDiskManager
-
 **起始版本：** 21
 
 **相关模块：** [CloudDisk](capi-clouddisk.md)
@@ -31,8 +29,6 @@ enum CloudDisk_ErrorCode
 **描述：**
 
 定义云盘管理模块的错误码。
-
-**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
@@ -66,5 +62,12 @@ enum CloudDisk_ErrorCode
 | OH_CLOUD_DISK_NOT_A_DIRECTORY = 34400023 | 目标路径的父目录不是目录。<br>**起始版本：** 26.0.1 |
 | OH_CLOUD_DISK_FILE_NOT_EXIST = 34400024 | 目标路径不存在。<br>**起始版本：** 26.0.1 |
 | OH_CLOUD_DISK_NAME_TOO_LONG = 34400025 | 文件名或路径过长。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_FILE_TOO_LARGE = 34400026 | 文件过大。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_PLACEHOLDER_NOT_FULLY_HYDRATED = 34400028 | 占位符文件未完全水合。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_DEHYDRATE_DENIED = 34400029 | 应用回调拒绝脱水操作。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_CANCELLED = 34400030 | 水合任务已取消。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_ALREADY_HYDRATED = 34400031 | 占位符文件已完全水合。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_NO_HYDRATION_IN_PROGRESS = 34400032 | 没有正在进行的水合任务。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_HYDRATION_TASK_LIMIT_REACHED = 34400034 | 待处理的占位符水合任务数量达到上限。<br>**起始版本：** 26.0.1 |
 
 

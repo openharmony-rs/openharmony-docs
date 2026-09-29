@@ -6,8 +6,6 @@ Declares the data types for filter effects, used to define the matrices, status 
 
 **Library**: libnative_effect.so
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Related module**: [effectKit](capi-effectkit.md)
@@ -41,8 +39,6 @@ enum EffectErrorCode
 
 Enumerates the status codes of the filter effect.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -50,7 +46,7 @@ Enumerates the status codes of the filter effect.
 | EFFECT_SUCCESS = 0 | The operation is successful. |
 | EFFECT_BAD_PARAMETER = 401 | Invalid parameter. Check the parameter type and range. |
 | EFFECT_UNSUPPORTED_OPERATION = 7600201 | The operation is not supported. Check the API usage. |
-| EFFECT_UNKNOWN_ERROR = 7600901 | An unidentified error occurred. Possible causes include abnormal system resources or improper API calling. Check the API call parameters and system resource |
+| EFFECT_UNKNOWN_ERROR = 7600901 | An unidentified error occurred. Possible causes include abnormal system resources or improper API calling. Check the API call parameters and system resource status first. |
 
 ### EffectTileMode
 
@@ -62,15 +58,13 @@ enum EffectTileMode
 
 Enumerates the tile modes of the shader effect.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 14
 
 | Enum item | Description |
 | -- | -- |
-| CLAMP = 0 | Clamp mode. If the shader effect exceeds its original bounds, the remaining area is filled with the edge color of the shader. Applicable to scenarios requiring |
-| REPEAT | Repeat mode. Repeats the shader effect in both horizontal and vertical directions. Applicable to scenarios requiring seamless tiled textures, such as background |
-| MIRROR | Mirror mode. Repeats the shader effect in both horizontal and vertical directions, alternating mirrored images so that adjacent images always join seamlessly. Applicable to scenarios requiring continuity while avoiding abrupt repeating |
-| DECAL | Decal mode. Renders the shader effect only within its original bounds. Applicable to scenarios requiring precise control over shader boundaries, where areas outside the bounds remain transparent or retain the original |
+| CLAMP = 0 | Clamp mode. If the shader effect exceeds its original bounds, the remaining area is filled with the edge color of the shader. Applicable to scenarios requiring a smooth transition to a solid color background. |
+| REPEAT | Repeat mode. Repeats the shader effect in both horizontal and vertical directions. Applicable to scenarios requiring seamless tiled textures, such as background pattern filling. |
+| MIRROR | Mirror mode. Repeats the shader effect in both horizontal and vertical directions, alternating mirrored images so that adjacent images always join seamlessly. Applicable to scenarios requiring continuity while avoiding abrupt repeating edges, such as gradient backgrounds. |
+| DECAL | Decal mode. Renders the shader effect only within its original bounds. Applicable to scenarios requiring precise control over shader boundaries, where areas outside the bounds remain transparent or retain the original content. |
 
 

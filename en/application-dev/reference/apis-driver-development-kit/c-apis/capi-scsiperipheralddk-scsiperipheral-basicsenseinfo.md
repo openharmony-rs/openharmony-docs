@@ -1,7 +1,7 @@
 # ScsiPeripheral_BasicSenseInfo
 
 ```c
-typedef struct ScsiPeripheral_BasicSenseInfo {...} ScsiPeripheral_BasicSenseInfo
+struct ScsiPeripheral_BasicSenseInfo {...}
 ```
 
 ## Overview

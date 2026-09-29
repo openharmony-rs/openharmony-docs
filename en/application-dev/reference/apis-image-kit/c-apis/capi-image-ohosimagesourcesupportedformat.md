@@ -6,7 +6,7 @@ struct OhosImageSourceSupportedFormat {...}
 
 ## Overview
 
-Defines image source supported format string. {@link OhosImageSourceSupportedFormatList} and {@link OH_ImageSource_GetSupportedFormats}
+Defines image source supported format string. [OhosImageSourceSupportedFormatList](capi-image-ohosimagesourcesupportedformatlist.md) and [OH_ImageSource_GetSupportedFormats](capi-image-source-mdk-h.md#oh_imagesource_getsupportedformats)
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -23,10 +23,8 @@ Defines image source supported format string. {@link OhosImageSourceSupportedFor
 | Name | Description |
 | -- | -- |
 | char* format = nullptr |  |
-| size_t size = 0;
-#else |  |
+| size_t size = 0 |  |
 | char* format |  |
-| size_t size;
-#endif |  |
+| size_t size |  |
 
 

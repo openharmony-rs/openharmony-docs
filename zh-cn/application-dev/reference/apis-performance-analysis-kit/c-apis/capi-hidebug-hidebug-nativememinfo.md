@@ -1,7 +1,7 @@
 # HiDebug_NativeMemInfo
 
 ```c
-typedef struct HiDebug_NativeMemInfo {...} HiDebug_NativeMemInfo
+struct HiDebug_NativeMemInfo {...}
 ```
 
 ## 概述

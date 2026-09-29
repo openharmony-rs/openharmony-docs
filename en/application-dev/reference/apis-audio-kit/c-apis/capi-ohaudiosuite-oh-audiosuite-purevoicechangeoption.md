@@ -1,7 +1,7 @@
 # OH_AudioSuite_PureVoiceChangeOption
 
 ```c
-typedef struct OH_AudioSuite_PureVoiceChangeOption {...} OH_AudioSuite_PureVoiceChangeOption
+struct OH_AudioSuite_PureVoiceChangeOption {...}
 ```
 
 ## Overview

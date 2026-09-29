@@ -1,0 +1,18 @@
+# napi_callsite_info
+
+```c
+typedef struct napi_callsite_info napi_callsite_info
+```
+
+## Overview
+
+Callsite info handle for caching inline cache (IC) information of property access.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
+
+**Since**: 24
+
+**Related module**: [ArkTS_Napi_NativeModule](capi-arkts-napi-nativemodule.md)
+
+**Header file**: [native_api.h](capi-native-api-h.md)
+

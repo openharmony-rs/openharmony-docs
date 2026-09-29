@@ -8,6 +8,8 @@ typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
 
 DRM_MediaKeySystemInfo类型，DRM媒体密钥系统信息结构体，用于存储和管理DRM媒体密钥系统相关信息。<br> **使用场景：**<br> - 在线视频播放时获取DRM系统信息。 - 版权保护应用中查询媒体密钥系统状态。 - DRM认证流程中传递密钥系统配置信息。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 12
 
 **相关模块：** [AVPlayer](capi-avplayer.md)

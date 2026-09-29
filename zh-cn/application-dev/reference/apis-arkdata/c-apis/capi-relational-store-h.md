@@ -8,8 +8,6 @@
 
 **库：** libnative_rdb_ndk.z.so
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -22,16 +20,16 @@
 | -- | -- | -- |
 | [OH_Rdb_Config](capi-rdb-oh-rdb-config.md) | OH_Rdb_Config | 管理关系型数据库配置。 |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | OH_Rdb_Store | 表示数据库实例。 |
-| [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | Rdb_DistributedConfig | 记录表的分布式配置信息。 |
-| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) | Rdb_KeyInfo | 描述发生变化的行的主键或者行号。 |
-| [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md) | Rdb_ChangeInfo | 记录端云同步过程详情。 |
-| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) | Rdb_SubscribeCallback | 表示回调函数。 |
-| [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) | Rdb_DataObserver | 表示数据观察者。 |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md) | Rdb_Statistic | 描述数据库表的端云同步过程的统计信息。 |
-| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | Rdb_TableDetails | 描述数据库表执行端云同步任务上传和下载的统计信息。 |
-| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) | Rdb_ProgressDetails | 描述数据库整体执行端云同步任务上传和下载的统计信息。 |
-| [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) | Rdb_ProgressObserver | 端云同步进度观察者。 |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | OH_Rdb_ConfigV2 | 管理关系数据库配置，与{@link OH_Rdb_Config}的区别是该结构体成员变量不对外暴露，使用一系列方法配置该结构体的属性，支持向量数据库。 |
+| [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | - | 记录表的分布式配置信息。 |
+| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) | - | 描述发生变化的行的主键或者行号。 |
+| [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md) | - | 记录端云同步过程详情。 |
+| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) | - | 表示回调函数。 |
+| [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) | - | 表示数据观察者。 |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) | - | 描述数据库表的端云同步过程的统计信息。 |
+| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | - | 描述数据库表执行端云同步任务上传和下载的统计信息。 |
+| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) | - | 描述数据库整体执行端云同步任务上传和下载的统计信息。 |
+| [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) | - | 端云同步进度观察者。 |
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | OH_Rdb_ConfigV2 | 管理关系数据库配置，与[OH_Rdb_Config](capi-rdb-oh-rdb-config.md)的区别是该结构体成员变量不对外暴露，使用一系列方法配置该结构体的属性，支持向量数据库。 |
 
 ### 枚举
 
@@ -46,6 +44,7 @@
 | [Rdb_SubscribeType](#rdb_subscribetype) | Rdb_SubscribeType | 描述订阅类型。 |
 | [Rdb_SyncMode](#rdb_syncmode) | Rdb_SyncMode | 表示数据库的同步模式。 |
 | [Rdb_Progress](#rdb_progress) | Rdb_Progress |  |
+| [Rdb_ProgressCode](#rdb_progresscode) | Rdb_ProgressCode |  |
 
 ### 宏定义
 
@@ -142,11 +141,11 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t count) | 端云数据更改事件的回调函数。<br>**起始版本：** 11 |
-| void (*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **changeInfo, uint32_t count) | 端云数据更改事件的细节的回调函数。<br>**起始版本：** 11 |
-| void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progressDetails) | 端云同步进度的回调函数。<br>**起始版本：** 11 |
-| void (*Rdb_SyncCallback)(Rdb_ProgressDetails *progressDetails) | 数据库端云同步的回调函数。<br>**起始版本：** 11 |
-| void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store) | 数据库异常处理的回调函数。<br>**起始版本：** 22 |
+| void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t count) | 端云数据更改事件的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| void (*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **changeInfo, uint32_t count) | 端云数据更改事件的细节的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progressDetails) | 端云同步进度的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| void (*Rdb_SyncCallback)(Rdb_ProgressDetails *progressDetails) | 数据库端云同步的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store) | 数据库异常处理的回调函数。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 
 ## 枚举类型说明
 
@@ -159,8 +158,6 @@ enum OH_Rdb_SecurityLevel
 **描述：**
 
 数据库的安全级别枚举。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -180,8 +177,6 @@ enum Rdb_SecurityArea
 **描述：**
 
 描述数据库的安全区域等级。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -203,8 +198,6 @@ enum Rdb_DBType
 
 描述数据库的内核类型。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 14
 
 | 枚举项 | 描述 |
@@ -222,8 +215,6 @@ enum Rdb_Tokenizer
 **描述：**
 
 描述数据库的分词器类型。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 17
 
@@ -243,8 +234,6 @@ enum Rdb_DistributedType
 
 描述表的分布式类型的枚举。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -260,8 +249,6 @@ enum Rdb_ChangeType
 **描述：**
 
 描述数据变更类型。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -279,8 +266,6 @@ enum Rdb_SubscribeType
 **描述：**
 
 描述订阅类型。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -300,8 +285,6 @@ enum Rdb_SyncMode
 
 表示数据库的同步模式。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -318,13 +301,29 @@ enum Rdb_Progress
 
 **描述：**
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 | 枚举项 | 描述 |
 | -- | -- |
 | RDB_SYNC_BEGIN | 表示端云同步过程开始。 |
 | RDB_SYNC_IN_PROGRESS | 表示正在端云同步过程中。 |
 | RDB_SYNC_FINISH | 表示端云同步过程已完成。 |
+
+### Rdb_ProgressCode
+
+```c
+enum Rdb_ProgressCode
+```
+
+**描述：**
+
+| 枚举项 | 描述 |
+| -- | -- |
+| RDB_SUCCESS | 表示端云同步过程成功。 |
+| RDB_UNKNOWN_ERROR | 表示端云同步过程遇到未知错误。 |
+| RDB_NETWORK_ERROR | 表示端云同步过程遇到网络错误。 |
+| RDB_CLOUD_DISABLED | 表示云端不可用。 |
+| RDB_LOCKED_BY_OTHERS | 表示有其他设备正在端云同步，本设备无法进行端云同步。 |
+| RDB_RECORD_LIMIT_EXCEEDED | 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。 |
+| RDB_NO_SPACE_FOR_ASSET | 表示云空间剩余空间小于待同步的资产大小。 |
 
 
 ## 函数说明
@@ -339,15 +338,13 @@ OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig()
 
 创建一个[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例，并返回指向该实例的指针。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 14
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Rdb_ConfigV2 *](capi-rdb-oh-rdb-configv2.md) | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。      <br>使用完成后，必须通过[OH_Rdb_DestroyConfig](capi-relational-store-h.md#oh_rdb_destroyconfig)接口释放内存。 |
+| [OH_Rdb_ConfigV2 *](capi-rdb-oh-rdb-configv2.md) | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。<br>使用完成后，必须通过[OH_Rdb_DestroyConfig](capi-relational-store-h.md#oh_rdb_destroyconfig)接口释放内存。 |
 
 **参考：**
 
@@ -364,8 +361,6 @@ int OH_Rdb_DestroyConfig(OH_Rdb_ConfigV2 *config)
 
 销毁由[OH_Rdb_CreateConfig](capi-relational-store-h.md#oh_rdb_createconfig)创建的[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)对象。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 14
 
 **参数：**
@@ -378,7 +373,7 @@ int OH_Rdb_DestroyConfig(OH_Rdb_ConfigV2 *config)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetDatabaseDir()
 
@@ -389,8 +384,6 @@ int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库文件路径。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -405,7 +398,7 @@ int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetStoreName()
 
@@ -416,8 +409,6 @@ int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库名称。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -432,7 +423,7 @@ int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetBundleName()
 
@@ -443,8 +434,6 @@ int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置应用包名。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -459,7 +448,7 @@ int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetModuleName()
 
@@ -470,8 +459,6 @@ int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置应用模块名。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -486,7 +473,7 @@ int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetEncrypted()
 
@@ -497,8 +484,6 @@ int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库是否加密。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -513,7 +498,7 @@ int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetSecurityLevel()
 
@@ -524,8 +509,6 @@ int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库安全级别[OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)。 <br>创建数据库时必须调用该方法，否则数据库文件无法创建成功，调用[OH_Rdb_CreateOrOpen](capi-relational-store-h.md#oh_rdb_createoropen)接口时将返回错误码RDB_E_INVALID_ARGS。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -540,7 +523,7 @@ int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetArea()
 
@@ -551,8 +534,6 @@ int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库安全区域等级[Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea)。 <br>创建数据库时必须调用该方法，否则数据库文件无法创建成功，调用[OH_Rdb_CreateOrOpen](capi-relational-store-h.md#oh_rdb_createoropen)接口时将返回错误码RDB_E_INVALID_ARGS。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -567,7 +548,7 @@ int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetDbType()
 
@@ -578,8 +559,6 @@ int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库类型[Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -594,7 +573,7 @@ int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。      <br>RDB_E_NOT_SUPPORTED 表示不支持当前操作。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。<br>RDB_E_NOT_SUPPORTED 表示不支持当前操作。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetCustomDir()
 
@@ -605,8 +584,6 @@ int OH_Rdb_SetCustomDir(OH_Rdb_ConfigV2 *config, const char *customDir)
 **描述：**
 
 设置数据库的自定义目录。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -621,7 +598,7 @@ int OH_Rdb_SetCustomDir(OH_Rdb_ConfigV2 *config, const char *customDir)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetReadOnly()
 
@@ -632,8 +609,6 @@ int OH_Rdb_SetReadOnly(OH_Rdb_ConfigV2 *config, bool readOnly)
 **描述：**
 
 设置关系型数据库是否为只读模式。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -648,7 +623,7 @@ int OH_Rdb_SetReadOnly(OH_Rdb_ConfigV2 *config, bool readOnly)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetPlugins()
 
@@ -659,8 +634,6 @@ int OH_Rdb_SetPlugins(OH_Rdb_ConfigV2 *config, const char **plugins, int32_t len
 **描述：**
 
 设置具有特定功能（如全文检索）的动态库。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -676,7 +649,7 @@ int OH_Rdb_SetPlugins(OH_Rdb_ConfigV2 *config, const char **plugins, int32_t len
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetCryptoParam()
 
@@ -688,8 +661,6 @@ int OH_Rdb_SetCryptoParam(OH_Rdb_ConfigV2 *config, const OH_Rdb_CryptoParam *cry
 
 设置自定义加密参数。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -697,13 +668,13 @@ int OH_Rdb_SetCryptoParam(OH_Rdb_ConfigV2 *config, const OH_Rdb_CryptoParam *cry
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 表示此关系型数据库相关的数据库配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)的指针。 |
-| const OH_Rdb_CryptoParam *cryptoParam | 表示自定义加密参数。 |
+| [const OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *cryptoParam | 表示自定义加密参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetTokenizer()
 
@@ -714,8 +685,6 @@ int OH_Rdb_SetTokenizer(OH_Rdb_ConfigV2 *config, Rdb_Tokenizer tokenizer)
 **描述：**
 
 给指定的数据库文件配置设置分词器类型。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 17
 
@@ -730,7 +699,7 @@ int OH_Rdb_SetTokenizer(OH_Rdb_ConfigV2 *config, Rdb_Tokenizer tokenizer)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。      <br>RDB_E_NOT_SUPPORTED 表示不支持当前操作。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。<br>RDB_E_NOT_SUPPORTED 表示不支持当前操作。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetPersistent()
 
@@ -741,8 +710,6 @@ int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)
 **描述：**
 
 指定数据库是否需要持久化。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -757,7 +724,7 @@ int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_SetSemanticIndex()
 
@@ -768,8 +735,6 @@ int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)
 **描述：**
 
 开启或关闭基于语义索引的知识加工。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -784,7 +749,7 @@ int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_IsTokenizerSupported()
 
@@ -795,8 +760,6 @@ int OH_Rdb_IsTokenizerSupported(Rdb_Tokenizer tokenizer, bool *isSupported)
 **描述：**
 
 判断当前平台是否支持传入的分词器。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -811,7 +774,7 @@ int OH_Rdb_IsTokenizerSupported(Rdb_Tokenizer tokenizer, bool *isSupported)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_GetSupportedDbType()
 
@@ -822,8 +785,6 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 **描述：**
 
 获得支持的数据库类型[Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -837,7 +798,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 | 类型 | 说明 |
 | -- | -- |
-| const int * | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| const int * | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_CreateValueObject()
 
@@ -849,15 +810,13 @@ OH_VObject *OH_Rdb_CreateValueObject()
 
 创建[OH_VObject](capi-rdb-oh-vobject.md)实例。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_VObject * | 创建成功则返回一个指向[OH_VObject](capi-rdb-oh-vobject.md)结构体实例的指针，否则返回NULL。 |
+| [OH_VObject *](capi-rdb-oh-vobject.md) | 创建成功则返回一个指向[OH_VObject](capi-rdb-oh-vobject.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -874,15 +833,13 @@ OH_VBucket *OH_Rdb_CreateValuesBucket()
 
 创建[OH_VBucket](capi-rdb-oh-vbucket.md)实例。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_VBucket * | 创建成功则返回一个指向[OH_VBucket](capi-rdb-oh-vbucket.md)结构体实例的指针，否则返回NULL。 |
+| [OH_VBucket *](capi-rdb-oh-vbucket.md) | 创建成功则返回一个指向[OH_VBucket](capi-rdb-oh-vbucket.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -899,8 +856,6 @@ OH_Predicates *OH_Rdb_CreatePredicates(const char *table)
 
 创建[OH_Predicates](capi-rdb-oh-predicates.md)实例。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -913,7 +868,7 @@ OH_Predicates *OH_Rdb_CreatePredicates(const char *table)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Predicates * | 创建成功则返回一个指向[OH_Predicates](capi-rdb-oh-predicates.md)结构体实例的指针，否则返回NULL。 |
+| [OH_Predicates *](capi-rdb-oh-predicates.md) | 创建成功则返回一个指向[OH_Predicates](capi-rdb-oh-predicates.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -930,8 +885,6 @@ OH_Rdb_Store *OH_Rdb_GetOrOpen(const OH_Rdb_Config *config, int *errCode)
 
 获得一个相关的[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例，操作关系型数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -945,7 +898,7 @@ OH_Rdb_Store *OH_Rdb_GetOrOpen(const OH_Rdb_Config *config, int *errCode)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Rdb_Store *](capi-rdb-oh-rdb-store.md) | 创建成功则返回一个指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)结构体实例的指针，否则返回NULL。      <br>RDB_OK表示成功。      <br>RDB_E_INVALID_ARGS表示无效参数。 |
+| [OH_Rdb_Store *](capi-rdb-oh-rdb-store.md) | 创建成功则返回一个指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)结构体实例的指针，否则返回NULL。<br>RDB_OK表示成功。<br>RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -962,8 +915,6 @@ OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode)
 
 使用指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，获得一个对应的[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例，用来操作关系型数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 14
 
 **参数：**
@@ -977,7 +928,7 @@ OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Rdb_Store *](capi-rdb-oh-rdb-store.md) | 创建成功则返回一个指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)结构体实例的指针，否则返回NULL。      <br>RDB_OK表示成功。      <br>RDB_E_INVALID_ARGS表示无效参数。 |
+| [OH_Rdb_Store *](capi-rdb-oh-rdb-store.md) | 创建成功则返回一个指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)结构体实例的指针，否则返回NULL。<br>RDB_OK表示成功。<br>RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -994,8 +945,6 @@ int OH_Rdb_CloseStore(OH_Rdb_Store *store)
 
 销毁[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)对象，并回收该对象占用的内存。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1008,7 +957,7 @@ int OH_Rdb_CloseStore(OH_Rdb_Store *store)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1025,8 +974,6 @@ int OH_Rdb_DeleteStore(const OH_Rdb_Config *config)
 
 使用指定的数据库文件配置删除数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1039,7 +986,7 @@ int OH_Rdb_DeleteStore(const OH_Rdb_Config *config)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1056,8 +1003,6 @@ int OH_Rdb_DeleteStoreV2(const OH_Rdb_ConfigV2 *config)
 
 使用指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)删除数据库。 <br>当使用向量数据库时，在调用接口前，应当确保向量数据库已经打开的OH_Rdb_Store和OH_Cursor均已成功关闭。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 14
 
 **参数：**
@@ -1070,7 +1015,7 @@ int OH_Rdb_DeleteStoreV2(const OH_Rdb_ConfigV2 *config)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1087,8 +1032,6 @@ int OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBuck
 
 向目标表中插入一行数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1097,13 +1040,13 @@ int OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBuck
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | const char *table | 表示指定的目标表名。 |
-| OH_VBucket *valuesBucket | 表示要插入到表中的数据行[OH_VBucket](capi-rdb-oh-vbucket.md)。 |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *valuesBucket | 表示要插入到表中的数据行[OH_VBucket](capi-rdb-oh-vbucket.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 如果插入成功，返回rowID，否则返回的结果小于0。      <br>RDB_ERR表示插入失败。      <br>RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 如果插入成功，返回rowID，否则返回的结果小于0。<br>RDB_ERR表示插入失败。<br>RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -1120,8 +1063,6 @@ int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, 
 
 向目标表中插入一行数据，并支持冲突解决。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -1130,15 +1071,15 @@ int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, 
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | const char *table | 表示目标表的名称。 |
-| OH_VBucket *row | 表示要插入到表中的数据。 |
-| Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *row | 表示要插入到表中的数据。 |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 表示发生冲突时的解决策略。 |
 | int64_t *rowId | 表示插入成功后返回的行号。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示执行成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：违反约束导致操作中止。 |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：违反约束导致操作中止。 |
 
 ### OH_Rdb_BatchInsert()
 
@@ -1150,8 +1091,6 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table, const OH_Data_VBu
 
 将一批数据插入到目标表中。 <br>单次插入参数的最大数量限制为32766，超出上限会返回RDB_E_INVALID_ARGS错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。 <br>例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。 <br>请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -1161,14 +1100,14 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table, const OH_Data_VBu
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | const char *table | 表示要插入数据的目标表名。 |
 | const OH_Data_VBuckets *rows | 表示要插入到表中的一组数据。 |
-| Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 表示发生冲突时的解决策略。 |
 | int64_t *changes | 输出参数，表示插入成功的次数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：SQLite约束。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误码：SQLite约束。 |
 
 ### OH_Rdb_Update()
 
@@ -1180,8 +1119,6 @@ int OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *
 
 根据指定的条件更新数据库中的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1189,14 +1126,14 @@ int OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_VBucket *valuesBucket | 表示要更新到表中的数据行[OH_VBucket](capi-rdb-oh-vbucket.md)。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定更新条件。 |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *valuesBucket | 表示要更新到表中的数据行[OH_VBucket](capi-rdb-oh-vbucket.md)。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定更新条件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 如果更新成功，返回更新的行数，否则返回的结果小于0。      <br>RDB_ERR表示更新失败。      <br>RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 如果更新成功，返回更新的行数，否则返回的结果小于0。<br>RDB_ERR表示更新失败。<br>RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -1213,8 +1150,6 @@ int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH
 
 根据指定条件更新数据库中的数据，并支持冲突解决。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -1222,16 +1157,16 @@ int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_VBucket *row | 表示要更新到表中的数据行。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定更新条件。 |
-| Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *row | 表示要更新到表中的数据行。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定更新条件。 |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 表示发生冲突时的解决策略。 |
 | int64_t *changes | 输出参数，表示成功更新的行数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示执行成功。      <br>返回RDB_E_ERROR 表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：违反约束导致操作中止。 |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_ERROR 表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：违反约束导致操作中止。 |
 
 ### OH_Rdb_Delete()
 
@@ -1243,8 +1178,6 @@ int OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 根据指定的条件删除数据库中的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1252,13 +1185,13 @@ int OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定删除条件。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定删除条件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 如果删除成功，返回删除的行数；如果失败，则返回的结果小于0。      <br>RDB_ERR表示删除失败。      <br>RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 如果删除成功，返回删除的行数；如果失败，则返回的结果小于0。<br>RDB_ERR表示删除失败。<br>RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -1275,8 +1208,6 @@ OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const ch
 
 根据指定条件查询数据库中的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1284,7 +1215,7 @@ OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const ch
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定查询条件。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定查询条件。 |
 | const char *const *columnNames | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 | int length | 该参数为输入参数，表示开发者传入的columnNames数组的长度。若length大于columnNames数组的实际长度，则会访问越界。 |
 
@@ -1292,7 +1223,7 @@ OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const ch
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -1309,8 +1240,6 @@ OH_Cursor *OH_Rdb_QueryWithoutRowCount(OH_Rdb_Store *store, OH_Predicates *predi
 
 根据指定条件查询数据库中的数据，不计算行数。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -1318,7 +1247,7 @@ OH_Cursor *OH_Rdb_QueryWithoutRowCount(OH_Rdb_Store *store, OH_Predicates *predi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定查询条件。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定查询条件。 |
 | const char *const columns[] | 表示要查询的列。如果值为空数组，则查询适用于所有列。 |
 | int length | 该参数为输入参数，表示开发者传入的columns数组的长度。若length大于columns数组的实际长度，则会访问越界。 |
 
@@ -1326,7 +1255,7 @@ OH_Cursor *OH_Rdb_QueryWithoutRowCount(OH_Rdb_Store *store, OH_Predicates *predi
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果获取store失败或结果集为空，则返回nullptr。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果获取store失败或结果集为空，则返回nullptr。 |
 
 **参考：**
 
@@ -1343,8 +1272,6 @@ OH_Cursor *OH_Rdb_QuerySqlWithoutRowCount(OH_Rdb_Store *store, const char *sql, 
 
 执行有返回值的SQL语句，不计算行数，支持向量数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -1359,7 +1286,7 @@ OH_Cursor *OH_Rdb_QuerySqlWithoutRowCount(OH_Rdb_Store *store, const char *sql, 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果SQL语句无效或内存分配失败，则返回nullptr。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果SQL语句无效或内存分配失败，则返回nullptr。 |
 
 **参考：**
 
@@ -1376,8 +1303,6 @@ int OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql)
 
 执行无返回值的SQL语句。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1391,7 +1316,7 @@ int OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1408,8 +1333,6 @@ int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values 
 
 执行有返回值的SQL语句，支持向量数据库。 <br>不支持开头包含注释的语句。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -1425,7 +1348,7 @@ int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已经关闭。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL日志文件大小超过默认值。<br>返回RDB_E_SQLITE_FULL表示SQLite错误码：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误码：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误码：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误码：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误码：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误码：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误码：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误码：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误码：数据类型不匹配。 |
 
 **参考：**
 
@@ -1442,8 +1365,6 @@ int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql)
 
 使用指定的事务ID执行无返回值的SQL语句，仅支持向量数据库。 <br>不支持开头包含注释的语句。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 14
 
 **参数：**
@@ -1458,7 +1379,7 @@ int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK表示成功。      <br>RDB_E_INVALID_ARGS表示无效参数，可能情况如下：      <br>传入参数为空指针。      <br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。      <br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。      <br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。      <br>当store或者sql为NULL时。      <br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK表示成功。<br>RDB_E_INVALID_ARGS表示无效参数，可能情况如下：<br>传入参数为空指针。<br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。<br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。<br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。<br>当store或者sql为NULL时。<br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
 
 **参考：**
 
@@ -1475,8 +1396,6 @@ OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)
 
 根据指定SQL语句查询数据库中的数据，支持向量数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1490,7 +1409,7 @@ OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -1507,8 +1426,6 @@ OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_
 
 根据指定SQL语句查询数据库中的数据，支持向量数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -1523,7 +1440,7 @@ OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，使用完成后及时释放[OH_Cursor](capi-rdb-oh-cursor.md)。      <br>如果SQL语句无效或内存分配失败，则返回NULL。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，使用完成后及时释放[OH_Cursor](capi-rdb-oh-cursor.md)。<br>如果SQL语句无效或内存分配失败，则返回NULL。 |
 
 **参考：**
 
@@ -1540,8 +1457,6 @@ int OH_Rdb_BeginTransaction(OH_Rdb_Store *store)
 
 在开始执行SQL语句之前，开始事务。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1554,7 +1469,7 @@ int OH_Rdb_BeginTransaction(OH_Rdb_Store *store)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1571,8 +1486,6 @@ int OH_Rdb_RollBack(OH_Rdb_Store *store)
 
 回滚已经执行的SQL语句。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1585,7 +1498,7 @@ int OH_Rdb_RollBack(OH_Rdb_Store *store)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1602,8 +1515,6 @@ int OH_Rdb_Commit(OH_Rdb_Store *store)
 
 提交已执行的SQL语句。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1616,7 +1527,7 @@ int OH_Rdb_Commit(OH_Rdb_Store *store)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1633,8 +1544,6 @@ int OH_Rdb_BeginTransWithTrxId(OH_Rdb_Store *store, int64_t *trxId)
 
 在开始执行SQL语句之前，开始事务，并获得该事务的ID，仅支持向量数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 14
 
 **参数：**
@@ -1648,7 +1557,7 @@ int OH_Rdb_BeginTransWithTrxId(OH_Rdb_Store *store, int64_t *trxId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。      <br>RDB_E_NOT_SUPPORTED 表示不支持当前操作。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。<br>RDB_E_NOT_SUPPORTED 表示不支持当前操作。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1665,8 +1574,6 @@ int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 使用指定的事务ID，回滚已经执行的SQL语句，仅支持向量数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 14
 
 **参数：**
@@ -1680,7 +1587,7 @@ int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK表示成功。      <br>RDB_E_INVALID_ARGS表示无效参数，可能情况如下：      <br>传入参数为空指针。      <br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。      <br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。      <br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。      <br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK表示成功。<br>RDB_E_INVALID_ARGS表示无效参数，可能情况如下：<br>传入参数为空指针。<br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。<br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。<br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。<br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
 
 **参考：**
 
@@ -1697,8 +1604,6 @@ int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 使用指定的事务ID，提交已经执行的SQL语句，仅支持向量数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 14
 
 **参数：**
@@ -1712,7 +1617,7 @@ int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS表示无效参数，可能情况如下：      <br>传入参数为空指针。      <br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。      <br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。      <br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。      <br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS表示无效参数，可能情况如下：<br>传入参数为空指针。<br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。<br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。<br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。<br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
 
 **参考：**
 
@@ -1729,8 +1634,6 @@ int OH_Rdb_Backup(OH_Rdb_Store *store, const char *databasePath)
 
 以指定路径备份数据库，支持向量数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1744,7 +1647,7 @@ int OH_Rdb_Backup(OH_Rdb_Store *store, const char *databasePath)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1761,8 +1664,6 @@ int OH_Rdb_Restore(OH_Rdb_Store *store, const char *databasePath)
 
 从指定的数据库备份文件恢复数据库，支持向量数据库。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1776,7 +1677,7 @@ int OH_Rdb_Restore(OH_Rdb_Store *store, const char *databasePath)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1793,8 +1694,6 @@ int OH_Rdb_GetVersion(OH_Rdb_Store *store, int *version)
 
 获取数据库版本。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1808,7 +1707,7 @@ int OH_Rdb_GetVersion(OH_Rdb_Store *store, int *version)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1825,8 +1724,6 @@ int OH_Rdb_SetVersion(OH_Rdb_Store *store, int version)
 
 设置数据库版本。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 **参数：**
@@ -1840,7 +1737,7 @@ int OH_Rdb_SetVersion(OH_Rdb_Store *store, int version)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1856,8 +1753,6 @@ int OH_Rdb_SetDistributedTables(OH_Rdb_Store *store, const char *tables[], uint3
 **描述：**
 
 设置分布式数据库表。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -1875,7 +1770,7 @@ int OH_Rdb_SetDistributedTables(OH_Rdb_Store *store, const char *tables[], uint3
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -1893,8 +1788,6 @@ OH_Cursor *OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, con
 
 获取数据库表中数据的最后修改时间。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -1904,13 +1797,13 @@ OH_Cursor *OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, con
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | const char *tableName | 要查找的分布式数据库表表名。 |
 | const char *columnName | 指定要查询的数据库表的列名。 |
-| OH_VObject *values | 指定要查询的行的主键。如果数据库表无主键，参数columnName需传入"rowid"，此时values为要查询的数据库表的行号。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) *values | 指定要查询的行的主键。如果数据库表无主键，参数columnName需传入"rowid"，此时values为要查询的数据库表的行号。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果操作成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果操作成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -1929,16 +1822,14 @@ typedef void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t 
 
 端云数据更改事件的回调函数。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*context | 表示数据观察者的上下文。 |
-| const char \*values[] | 表示发生变更的云账号。 |
+| void *context | 表示数据观察者的上下文。 |
+| const char *values[] | 表示发生变更的云账号。 |
 | uint32_t count | 表示更改的端云帐户数量。 |
 
 ### Rdb_DetailsObserver()
@@ -1951,16 +1842,14 @@ typedef void (*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **change
 
 端云数据更改事件的细节的回调函数。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*context | 表示数据观察者的上下文。 |
-| [const Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md) \*\*changeInfo | 表示已更改表的信息[Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md)。 |
+| void *context | 表示数据观察者的上下文。 |
+| [const Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md) **changeInfo | 表示已更改表的信息[Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md)。 |
 | uint32_t count | 表示更改的表的数量。 |
 
 **参考：**
@@ -1978,8 +1867,6 @@ int OH_Rdb_Subscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Data
 
 为数据库注册观察者。当分布式数据库或本地数据库中的数据发生更改时，将调用回调。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -1994,7 +1881,7 @@ int OH_Rdb_Subscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Data
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2012,8 +1899,6 @@ int OH_Rdb_Unsubscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Da
 
 从数据库中删除指定类型的指定观察者。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -2028,7 +1913,7 @@ int OH_Rdb_Unsubscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Da
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2045,8 +1930,6 @@ Rdb_TableDetails *OH_Rdb_GetTableDetails(Rdb_ProgressDetails *progress, int32_t 
 **描述：**
 
 从端云同步任务的统计信息中获取数据库表的统计信息。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -2079,16 +1962,14 @@ typedef void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progres
 
 端云同步进度的回调函数。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*context | 回调数据的上下文。 |
-| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) \*progressDetails | 端云同步进度的详细信息。 |
+| void *context | 回调数据的上下文。 |
+| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progressDetails | 端云同步进度的详细信息。 |
 
 **参考：**
 
@@ -2105,15 +1986,13 @@ typedef void (*Rdb_SyncCallback)(Rdb_ProgressDetails *progressDetails)
 
 数据库端云同步的回调函数。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) \*progressDetails | 数据库端云同步的统计信息。 |
+| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progressDetails | 数据库端云同步的统计信息。 |
 
 **参考：**
 
@@ -2129,8 +2008,6 @@ int OH_Rdb_CloudSync(OH_Rdb_Store *store, Rdb_SyncMode mode, const char *tables[
 **描述：**
 
 进行端云同步。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -2148,7 +2025,7 @@ int OH_Rdb_CloudSync(OH_Rdb_Store *store, Rdb_SyncMode mode, const char *tables[
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2166,8 +2043,6 @@ int OH_Rdb_SubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObse
 
 订阅RDB存储的自动同步进度。 <br>当收到自动同步进度的通知时，将调用回调。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -2181,7 +2056,7 @@ int OH_Rdb_SubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObse
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2199,8 +2074,6 @@ int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressOb
 
 取消订阅RDB存储的自动同步进程。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -2214,7 +2087,7 @@ int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressOb
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2232,8 +2105,6 @@ int OH_Rdb_LockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 根据指定的条件锁定数据库中的数据，锁定数据不执行端云同步。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -2241,13 +2112,13 @@ int OH_Rdb_LockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定锁定条件。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定锁定条件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2264,8 +2135,6 @@ int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 根据指定的条件解锁数据库中的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -2273,13 +2142,13 @@ int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定解锁条件。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定解锁条件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2296,8 +2165,6 @@ OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates,
 
 根据指定条件查询数据库中锁定的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -2305,7 +2172,7 @@ OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定查询条件。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定查询条件。 |
 | const char *const *columnNames | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 | int length | 该参数为输入参数，表示开发者传入的columnNames数组的长度。若length大于columnNames数组的实际长度，则会访问越界。 |
 
@@ -2313,7 +2180,7 @@ OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -2330,8 +2197,6 @@ int OH_Rdb_CreateTransaction(OH_Rdb_Store *store, const OH_RDB_TransOptions *opt
 
 创建一个事务对象。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -2339,14 +2204,14 @@ int OH_Rdb_CreateTransaction(OH_Rdb_Store *store, const OH_RDB_TransOptions *opt
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| const OH_RDB_TransOptions *options | 指向[OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md)实例的指针。 |
-| OH_Rdb_Transaction **trans | 输出参数，表示执行成功时指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。否则返回nullptr。 <br>使用完成后，必须通过[OH_RdbTrans_Destroy](capi-oh-rdb-transaction-h.md#oh_rdbtrans_destroy)接口释放内存。 |
+| [const OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) *options | 指向[OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md)实例的指针。 |
+| [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) **trans | 输出参数，表示执行成功时指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。否则返回nullptr。 <br>使用完成后，必须通过[OH_RdbTrans_Destroy](capi-oh-rdb-transaction-h.md#oh_rdbtrans_destroy)接口释放内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_ERROR表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_DATABASE_BUSY表示数据库无响应。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误: 数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误: 访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误: 数据库文件被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误: 数据库内存不足。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误: 磁盘I/O错误。      <br>返回RDB_E_SQLITE_CANT_OPEN表示SQLite错误: 无法打开数据库文件。 |
+| int | 返回执行结果。<br>返回RDB_OK表示成功。<br>返回RDB_E_ERROR表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_DATABASE_BUSY表示数据库无响应。<br>返回RDB_E_SQLITE_FULL表示SQLite错误: 数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误: 访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误: 数据库文件被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误: 数据库内存不足。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误: 磁盘I/O错误。<br>返回RDB_E_SQLITE_CANT_OPEN表示SQLite错误: 无法打开数据库文件。 |
 
 **参考：**
 
@@ -2362,8 +2227,6 @@ int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char
 **描述：**
 
 将数据库文件附加到当前连接的数据库。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -2381,7 +2244,7 @@ int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示执行成功。      <br>返回RDB_E_ERROR 表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。      <br>返回RDB_E_DATABASE_BUSY表示数据库无响应。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：违反约束导致操作中止。 |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_ERROR 表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。<br>返回RDB_E_DATABASE_BUSY表示数据库无响应。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：违反约束导致操作中止。 |
 
 ### OH_Rdb_Detach()
 
@@ -2392,8 +2255,6 @@ int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime,
 **描述：**
 
 从当前数据库中分离指定的数据库。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -2410,7 +2271,7 @@ int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime,
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示执行成功。      <br>返回RDB_E_ERROR 表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。      <br>返回RDB_E_DATABASE_BUSY表示数据库无响应。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：违反约束导致操作中止。 |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_ERROR 表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。<br>返回RDB_E_DATABASE_BUSY表示数据库无响应。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：违反约束导致操作中止。 |
 
 **参考：**
 
@@ -2427,8 +2288,6 @@ int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)
 
 支持不同语言的排序规则。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -2442,7 +2301,7 @@ int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示执行成功。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。 |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_ERR表示函数执行异常。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。 |
 
 **参考：**
 
@@ -2459,17 +2318,15 @@ typedef void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_
 
 数据库异常处理的回调函数。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void \*context | 表示数据异常处理的上下文，生命周期由业务自身管理。 |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) \*config | 指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)对象的指针，即与此RDB存储相关的数据库配置，不可在回调函数外部使用。 |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) \*store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针，该指针由系统产生，回调函数结束后即刻释放，不可在回调函数外部使用。 |
+| void *context | 表示数据异常处理的上下文，生命周期由业务自身管理。 |
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)对象的指针，即与此RDB存储相关的数据库配置，不可在回调函数外部使用。 |
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针，该指针由系统产生，回调函数结束后即刻释放，不可在回调函数外部使用。 |
 
 ### OH_Rdb_RegisterCorruptedHandler()
 
@@ -2480,8 +2337,6 @@ int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context
 **描述：**
 
 注册数据库异常处理。当数据库发生异常时，将调用异常处理的回调函数。 <br>异常处理逻辑为用户自定义，回调时触发的业务需要用户自行保障。 <br>每个路径只允许注册一次。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 22
 
@@ -2497,7 +2352,7 @@ int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。      <br>返回RDB_E_SUB_LIMIT_REACHED表示注册数量超过限制。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。<br>返回RDB_E_SUB_LIMIT_REACHED表示注册数量超过限制。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2514,8 +2369,6 @@ int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *conte
 
 取消注册的数据库异常处理的回调函数。 <br>handler和context必须要和订阅时保持一致，否则取消失败。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 22
 
 **参数：**
@@ -2530,7 +2383,7 @@ int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *conte
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2547,8 +2400,6 @@ int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)
 
 更改加密数据库密钥。 <br>不支持对非WAL模式的数据库进行密钥更新。 <br>手动更新时需要独占访问数据库，此时若存在任何未释放的结果集、事务或其他进程打开的数据库均会导致更新失败。 <br>支持加密数据库的参数更新，以及加密数据库与非加密数据库之间的相互转换。 <br>数据库越大，执行更新所需的时间越长。 <br>加密参数变更需谨慎，调用OH_Rdb_CreateOrOpen时需要传入正确的加密参数，否则可能打开数据库失败。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 22
 
 **参数：**
@@ -2556,13 +2407,13 @@ int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_Rdb_CryptoParam *param | 指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。      <br>返回RDB_OK表示执行成功。      <br>返回RDB_E_ERROR 表示数据库常见错误。      <br>返回RDB_E_INVALID_ARGS表示输入参数无效。      <br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。      <br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。 |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_ERROR 表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。 |
 
 ### OH_Rdb_BatchInsertWithReturning()
 
@@ -2574,8 +2425,6 @@ int OH_Rdb_BatchInsertWithReturning(OH_Rdb_Store *store, const char *table, cons
 
 将批量数据插入目标表，并将变更信息输出到上下文中。 <br>一次最多可以插入32766个参数。如果参数数量超过上限，则返回错误代码RDB_E_INVALID_ARGS。 <br>参数数量计算方式为插入数据条数乘以插入数据时所有字段的并集大小。 <br>例如：插入数据的所有字段的并集大小为10则最多可以插入3276条数据（3276*10=32760）。 <br>请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -2585,14 +2434,14 @@ int OH_Rdb_BatchInsertWithReturning(OH_Rdb_Store *store, const char *table, cons
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
 | const OH_Data_VBuckets *rows | 要插入到表中的行数据。 |
-| Rdb_ConflictResolution resolution | 发生冲突时的解决策略Rdb_ConflictResolution，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常， <br>无法正常获取实际的变更数据。 |
-| OH_RDB_ReturningContext *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 发生冲突时的解决策略Rdb_ConflictResolution，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常， <br>无法正常获取实际的变更数据。 |
+| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。      <br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。      <br>返回RDB_E_DATABASE_BUSY表示数据库忙。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：由于违反约束而中止。      <br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。<br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。<br>返回RDB_E_DATABASE_BUSY表示数据库忙。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：由于违反约束而中止。<br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2609,8 +2458,6 @@ int OH_Rdb_UpdateWithReturning(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicat
 
 根据指定条件更新数据库中的数据并输出更改信息到上下文。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -2618,16 +2465,16 @@ int OH_Rdb_UpdateWithReturning(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicat
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_VBucket *row | 要更新到表中的行数据。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
-| Rdb_ConflictResolution resolution | 发生冲突时的解决策略Rdb_ConflictResolution，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常， <br>无法正常获取实际的变更数据。 |
-| OH_RDB_ReturningContext *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *row | 要更新到表中的行数据。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 发生冲突时的解决策略Rdb_ConflictResolution，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常， <br>无法正常获取实际的变更数据。 |
+| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。      <br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。      <br>返回RDB_E_EMPTY_VALUES_BUCKET表示值桶为空。      <br>返回RDB_E_DATABASE_BUSY表示数据库忙。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：由于违反约束而中止。      <br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。<br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。<br>返回RDB_E_EMPTY_VALUES_BUCKET表示值桶为空。<br>返回RDB_E_DATABASE_BUSY表示数据库忙。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_CONSTRAINT表示SQLite错误：由于违反约束而中止。<br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 
@@ -2644,8 +2491,6 @@ int OH_Rdb_DeleteWithReturning(OH_Rdb_Store *store, OH_Predicates *predicates, O
 
 根据指定条件从数据库中删除数据并输出更改信息到上下文。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 23
 
 **参数：**
@@ -2653,14 +2498,14 @@ int OH_Rdb_DeleteWithReturning(OH_Rdb_Store *store, OH_Predicates *predicates, O
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
-| OH_RDB_ReturningContext *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
+| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。      <br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。      <br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。      <br>返回RDB_E_DATABASE_BUSY表示数据库忙。      <br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。      <br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。      <br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。      <br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。      <br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。      <br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。      <br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。      <br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。      <br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。<br>返回RDB_E_WAL_SIZE_OVER_LIMIT表示WAL文件大小超过默认限制。<br>返回RDB_E_NOT_SUPPORTED表示不支持的操作。<br>返回RDB_E_DATABASE_BUSY表示数据库忙。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。<br>返回RDB_E_SQLITE_CORRUPT表示数据库损坏。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_LOCKED表示SQLite错误：数据库中的表被锁定。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：发生某种磁盘I/O错误。<br>返回RDB_E_SQLITE_TOO_BIG表示SQLite错误：TEXT或BLOB超出大小限制。<br>返回RDB_E_SQLITE_MISMATCH表示SQLite错误：数据类型不匹配。<br>返回RDB_E_SQLITE_ERROR表示SQLite错误。可能原因：语法错误，例如表或列不存在。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 **参考：**
 

@@ -1,7 +1,7 @@
 # UsbRequestPipe
 
 ```c
-typedef struct UsbRequestPipe {...} __attribute__((aligned(8))) UsbRequestPipe
+struct UsbRequestPipe {...}
 ```
 
 ## Overview

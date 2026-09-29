@@ -1,7 +1,7 @@
 # ImageSourceNative_
 
 ```c
-typedef struct ImageSourceNative_ ImageSourceNative
+struct ImageSourceNative_
 ```
 
 ## 概述

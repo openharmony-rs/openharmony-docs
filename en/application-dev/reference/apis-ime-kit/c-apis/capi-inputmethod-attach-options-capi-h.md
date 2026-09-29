@@ -8,8 +8,6 @@ Provides methods for creating, destroying, reading, and writing the option objec
 
 **Library**: libohinputmethod.so
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 **Related module**: [InputMethod](capi-inputmethod.md)
@@ -44,8 +42,6 @@ InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 
 Create a new [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance.
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -58,7 +54,7 @@ Create a new [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachopti
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_AttachOptions *](capi-inputmethod-inputmethod-attachoptions.md) | If the creation succeeds, a pointer to the newly created [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)  instance is returned. If the creation fails, NULL is returned, possible cause is insufficient memory. |
+| [InputMethod_AttachOptions *](capi-inputmethod-inputmethod-attachoptions.md) | If the creation succeeds, a pointer to the newly created [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance is returned. If the creation fails, NULL is returned, possible cause is insufficient memory. |
 
 ### OH_AttachOptions_CreateWithRequestKeyboardReason()
 
@@ -70,8 +66,6 @@ InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool
 
 Create a new [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance.
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 15
 
 **Parameters**:
@@ -79,13 +73,13 @@ Create a new [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachopti
 | Parameter | Description |
 | -- | -- |
 | bool showKeyboard | Represents whether to show the keyboard. |
-| InputMethod_RequestKeyboardReason requestKeyboardReason |  Reason for requesting the keyboard. |
+| [InputMethod_RequestKeyboardReason](capi-inputmethod-types-capi-h.md#inputmethod_requestkeyboardreason) requestKeyboardReason |  Reason for requesting the keyboard. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_AttachOptions *](capi-inputmethod-inputmethod-attachoptions.md) | If the creation succeeds, a pointer to the newly created [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)  instance is returned. If the creation fails, NULL is returned, possible cause is insufficient memory. |
+| [InputMethod_AttachOptions *](capi-inputmethod-inputmethod-attachoptions.md) | If the creation succeeds, a pointer to the newly created [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance is returned. If the creation fails, NULL is returned, possible cause is insufficient memory. |
 
 ### OH_AttachOptions_Destroy()
 
@@ -96,8 +90,6 @@ void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)
 **Description**
 
 Delete a [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance.
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -117,8 +109,6 @@ InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions 
 
 Get showKeyboard value from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
 **Since**: 12
 
 **Parameters**:
@@ -132,7 +122,7 @@ Get showKeyboard value from [InputMethod_AttachOptions](capi-inputmethod-inputme
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_AttachOptions_GetRequestKeyboardReason()
 
@@ -143,8 +133,6 @@ InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_Atta
 **Description**
 
 Obtains the reason that triggers the input method from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 15
 
@@ -159,6 +147,6 @@ Obtains the reason that triggers the input method from [InputMethod_AttachOption
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. If options is NULL, or requestKeyboardReason is NULL.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. If options is NULL, or requestKeyboardReason is NULL. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 

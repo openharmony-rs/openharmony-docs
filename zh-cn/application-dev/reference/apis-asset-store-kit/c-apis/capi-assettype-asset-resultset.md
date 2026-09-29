@@ -23,6 +23,6 @@ typedef struct Asset_ResultSet {...} Asset_ResultSet
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t count | 关键资产的条数。 |
-| [Asset_Result](capi-assettype-asset-result.md) *results | 指向关键资产数组的指针。 |
+| Asset_Result *results | 指向关键资产数组的指针。 |
 
 

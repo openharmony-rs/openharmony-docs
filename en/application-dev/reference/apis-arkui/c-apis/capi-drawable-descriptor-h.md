@@ -6,8 +6,6 @@ Declares the APIs of **NativeDrawableDescriptor**.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -19,8 +17,8 @@ Declares the APIs of **NativeDrawableDescriptor**.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | Defines a struct for the **DrawableDescriptor** object. |
-| [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) | - | The OH_PixelmapNative struct describes an uncompressed PixelMap format, which is encapsulated at the native layer after images are decoded.<br>To create an OH_PixelmapNative object, call {@link OH_PixelmapNative_CreatePixelmap}. By default, BGRA_8888 is used for data processing.<br>To release an<br>OH_PixelmapNative object, call {@link OH_PixelmapNative_Release}.<br>The table below describes the content and operation mode of the OH_PixelmapNative struct. |
-| [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | Defines a struct for the pointer to an **OH_PixelmapNative** object. |
+| [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) | - | The OH_PixelmapNative struct describes an uncompressed PixelMap format, which is encapsulated at the native layer after images are decoded.<br>To create an OH_PixelmapNative object, call OH_PixelmapNative_CreatePixelmap. By default, BGRA_8888 is used for data processing.<br>To release an OH_PixelmapNative object, call OH_PixelmapNative_Release.<br>The table below describes the content and operation mode of the OH_PixelmapNative struct. |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnativehandle.md) | OH_PixelmapNativeHandle | Defines a struct for the pointer to an **OH_PixelmapNative** object. |
 | [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptor-animationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | Defines the DrawableDescriptor animation controller object. |
 
 ### Enum
@@ -28,7 +26,7 @@ Declares the APIs of **NativeDrawableDescriptor**.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [DrawableDescriptor_AnimationStatus](#drawabledescriptor_animationstatus) | DrawableDescriptor_AnimationStatus | Enumerates the playback states of DrawableDescriptor animations. |
-| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode) | DrawableDescriptor_AnimationStopMode | Enumerates the stop modes of {@link DrawableDescriptor} animations. |
+| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode) | DrawableDescriptor_AnimationStopMode | Enumerates the stop modes of DrawableDescriptor animations. |
 
 ### Function
 
@@ -70,8 +68,6 @@ enum DrawableDescriptor_AnimationStatus
 
 Enumerates the playback states of DrawableDescriptor animations.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 | Enum item | Description |
@@ -89,9 +85,7 @@ enum DrawableDescriptor_AnimationStopMode
 
 **Description**
 
-Enumerates the stop modes of {@link DrawableDescriptor} animations.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates the stop modes of DrawableDescriptor animations.
 
 **Since**: 24
 
@@ -113,21 +107,19 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_Pixe
 
 Creates a **DrawableDescriptor** object from a **PixelMap** object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | Pointer to the [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) object. |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnativehandle.md) pixelMap | Pointer to the [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_DrawableDescriptor*](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | Pointer to the DrawableDescriptor object. |
+| [ArkUI_DrawableDescriptor*](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | Pointer to the **DrawableDescriptor** object. |
 
 ### OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap()
 
@@ -139,22 +131,20 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap
 
 Creates a **DrawableDescriptor** object from an array of **PixelMap** objects.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md)* array | Pointer to the array of **PixelMap** objects. |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnativehandle.md)* array | Pointer to the array of **PixelMap** objects. |
 | int32_t size | Size of the **PixelMap** object array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_DrawableDescriptor*](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | Pointer to the DrawableDescriptor object. |
+| [ArkUI_DrawableDescriptor*](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | Pointer to the **DrawableDescriptor** object. |
 
 ### OH_ArkUI_DrawableDescriptor_Dispose()
 
@@ -165,8 +155,6 @@ void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescr
 **Description**
 
 Disposes of the pointer to a **DrawableDescriptor** object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -186,8 +174,6 @@ OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_Draw
 
 Obtains the pointer to a **PixelMap** object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -200,7 +186,7 @@ Obtains the pointer to a **PixelMap** object.
 
 | Type | Description |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | Pointer to the [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) object. |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnativehandle.md) | Pointer to the [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) object. |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray()
 
@@ -212,8 +198,6 @@ OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(Ar
 
 Obtains an array of **PixelMap** objects for playing an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -226,7 +210,7 @@ Obtains an array of **PixelMap** objects for playing an animation.
 
 | Type | Description |
 | -- | -- |
-| [OH_PixelmapNativeHandle*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | Pointer to the array of PixelMap objects. |
+| [OH_PixelmapNativeHandle*](capi-arkui-nativemodule-oh-pixelmapnativehandle.md) | Pointer to the array of **PixelMap** objects. |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize()
 
@@ -238,8 +222,6 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableD
 
 Obtains the size of the **PixelMap** object array for playing an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -252,7 +234,7 @@ Obtains the size of the **PixelMap** object array for playing an animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Size of the PixelMap object array. |
+| int32_t | Size of the **PixelMap** object array. |
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationDuration()
 
@@ -263,8 +245,6 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* 
 **Description**
 
 Sets the total playback duration for an array of **PixelMap** objects.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -284,8 +264,6 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescripto
 **Description**
 
 Obtains the total playback duration for an array of **PixelMap** objects.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -311,8 +289,6 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor*
 
 Sets the number of times that an array of **PixelMap** objects is played.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -331,8 +307,6 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescript
 **Description**
 
 Obtains the number of times that an array of **PixelMap** objects is played.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -358,8 +332,6 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDes
 
 Sets the duration for each frame in a DrawableDescriptor animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -374,7 +346,7 @@ Sets the duration for each frame in a DrawableDescriptor animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations()
 
@@ -385,8 +357,6 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDes
 **Description**
 
 Obtains the duration of each frame in a DrawableDescriptor animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -402,7 +372,7 @@ Obtains the duration of each frame in a DrawableDescriptor animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay()
 
@@ -413,8 +383,6 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescripto
 **Description**
 
 Specifies whether to enable autoplay for a DrawableDescriptor animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -429,7 +397,7 @@ Specifies whether to enable autoplay for a DrawableDescriptor animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay()
 
@@ -440,8 +408,6 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescripto
 **Description**
 
 Checks whether autoplay is enabled for a DrawableDescriptor animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -456,7 +422,7 @@ Checks whether autoplay is enabled for a DrawableDescriptor animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationStopMode()
 
@@ -468,22 +434,20 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescripto
 
 Sets the stop mode for an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to the {@link DrawableDescriptor} object. |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to the DrawableDescriptor object. |
 | [DrawableDescriptor_AnimationStopMode](capi-drawable-descriptor-h.md#drawabledescriptor_animationstopmode) mode | Stop mode of an animation. <br>The value is an enumerated value of [DrawableDescriptor_AnimationStopMode](capi-drawable-descriptor-h.md#drawabledescriptor_animationstopmode). The default value is [DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME](capi-drawable-descriptor-h.md#drawabledescriptor_animationstopmode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationStopMode()
 
@@ -495,22 +459,20 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDes
 
 Obtains the stop mode of an animation.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to the {@link DrawableDescriptor} object. |
+| [const ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to the DrawableDescriptor object. |
 | [DrawableDescriptor_AnimationStopMode](capi-drawable-descriptor-h.md#drawabledescriptor_animationstopmode)* mode | Stop mode of an animation. <br>For details about the values, see [DrawableDescriptor_AnimationStopMode](capi-drawable-descriptor-h.md#drawabledescriptor_animationstopmode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_CreateAnimationController()
 
@@ -522,8 +484,6 @@ int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDesc
 
 Creates an animation controller for the DrawableDescriptor.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -531,14 +491,14 @@ Creates an animation controller for the DrawableDescriptor.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) *drawableDescriptor | Pointer to a **DrawableDescriptor** object. |
-| ArkUI_NodeHandle node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
 | [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptor-animationcontroller.md)** controller | Pointer to a **DrawableDescriptor** animation controller. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_DisposeAnimationController()
 
@@ -549,8 +509,6 @@ void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescri
 **Description**
 
 Disposes of the DrawableDescriptor animation controller.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -570,8 +528,6 @@ int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_Anim
 
 Starts playback from the first frame.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -584,7 +540,7 @@ Starts playback from the first frame.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_StopAnimation()
 
@@ -596,8 +552,6 @@ int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_Anima
 
 Stops the DrawableDescriptor animation and returns to the first frame.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -610,7 +564,7 @@ Stops the DrawableDescriptor animation and returns to the first frame.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_ResumeAnimation()
 
@@ -622,8 +576,6 @@ int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_Ani
 
 Resumes the DrawableDescriptor animation from the current frame.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -636,7 +588,7 @@ Resumes the DrawableDescriptor animation from the current frame.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_PauseAnimation()
 
@@ -648,8 +600,6 @@ int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_Anim
 
 Pauses playback on the current frame.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 22
 
 **Parameters**:
@@ -662,7 +612,7 @@ Pauses playback on the current frame.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationStatus()
 
@@ -673,8 +623,6 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_
 **Description**
 
 Obtains the playback status of the DrawableDescriptor animation.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -689,6 +637,6 @@ Obtains the playback status of the DrawableDescriptor animation.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <ul>      <li>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.</li>      <li>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.</li>      </ul> |
+| int32_t | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 

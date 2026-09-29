@@ -8,8 +8,6 @@
 
 **库：** libnative_drm.so
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **相关模块：** [Drm](capi-drm.md)
@@ -48,8 +46,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | MediaKeySystem事件触发时将调用的回调函数，不返回MediaKeySystem实例，适用于单个MediaKeySystem场景。<br>**起始版本：** 11 |
-| Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | MediaKeySystem事件触发时将调用的回调函数，返回MediaKeySystem实例，适用于多个MediaKeySystem场景。<br>**起始版本：** 12 |
+| Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | MediaKeySystem事件触发时将调用的回调函数，不返回MediaKeySystem实例，适用于单个MediaKeySystem场景。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Drm.Core |
+| Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | MediaKeySystem事件触发时将调用的回调函数，返回MediaKeySystem实例，适用于多个MediaKeySystem场景。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Drm.Core |
 
 ## 函数说明
 
@@ -63,24 +61,22 @@ typedef Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t 
 
 MediaKeySystem事件触发时将调用的回调函数，不返回MediaKeySystem实例，适用于单个MediaKeySystem场景。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| DRM_EventType eventType | 事件类型。 |
-| uint8_t \*info | 事件信息。 |
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | 事件类型。 |
+| uint8_t *info | 事件信息。 |
 | int32_t infoLen | 事件信息长度。 |
-| char \*extra | 增量信息。 |
+| char *extra | 增量信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数无效。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数无效。 |
 
 ### OH_MediaKeySystem_Callback()
 
@@ -92,25 +88,23 @@ typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem
 
 MediaKeySystem事件触发时将调用的回调函数，返回MediaKeySystem实例，适用于多个MediaKeySystem场景。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem \*mediaKeySystem | MediaKeySystem实例。 |
-| DRM_EventType eventType | 事件类型。 |
-| uint8_t \*info | 事件信息。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | 事件类型。 |
+| uint8_t *info | 事件信息。 |
 | int32_t infoLen | 事件信息长度。 |
-| char \*extra | 增量信息。 |
+| char *extra | 增量信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数无效。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数无效。 |
 
 ### OH_MediaKeySystem_SetCallback()
 
@@ -122,22 +116,20 @@ Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_Med
 
 设置MediaKeySystem事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | [OH_MediaKeySystem_Callback](capi-native-mediakeysystem-h.md#oh_mediakeysystem_callback) callback | 回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效。 |
 
 ### OH_MediaKeySystem_GetMediaKeySystems()
 
@@ -149,22 +141,20 @@ Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *
 
 获取设备支持的DRM解决方案的名称和唯一标识的列表。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| DRM_MediaKeySystemDescription *descs | DRM解决方案名称和唯一标识的列表。 |
+| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) *descs | DRM解决方案名称和唯一标识的列表。 |
 | uint32_t *count | DRM解决方案名称和唯一标识的列表长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：      <br>输入参数descs为空指针。      <br>输入参数count为空指针。      <br>输入参数descs长度不足。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：<br>输入参数descs为空指针。<br>输入参数count为空指针。<br>输入参数descs长度不足。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_IsSupported()
 
@@ -175,8 +165,6 @@ bool OH_MediaKeySystem_IsSupported(const char *name)
 **描述：**
 
 查询设备是否支持对应的DRM解决方案。
-
-**系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
 
@@ -201,8 +189,6 @@ bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 **描述：**
 
 查询设备是否支持对应的DRM解决方案名称及媒体类型。可通过[OH_MediaKeySystem_IsSupported](capi-native-mediakeysystem-h.md#oh_mediakeysystem_issupported)接口先确认name参数对应的DRM解决方案是否是设备支持的。
-
-**系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
 
@@ -229,8 +215,6 @@ bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_
 
 查询设备是否支持对应的DRM解决方案、媒体类型、内容保护级别。可通过[OH_MediaKeySystem_IsSupported2](capi-native-mediakeysystem-h.md#oh_mediakeysystem_issupported2)接口先判断mimeType是否支持。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -239,7 +223,7 @@ bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_
 | -- | -- |
 | const char *name | 输入参数，DRM解决方案名称。可通过[OH_MediaKeySystem_GetMediaKeySystems](capi-native-mediakeysystem-h.md#oh_mediakeysystem_getmediakeysystems)接口获取设备支持的DRM解决方案名称。 |
 | const char *mimeType | 输入参数，媒体类型，支持的媒体类型取决于DRM解决方案，如：video/avc、video/hevc。 |
-| DRM_ContentProtectionLevel contentProtectionLevel | 输入参数，内容保护级别。 |
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) contentProtectionLevel | 输入参数，内容保护级别。 |
 
 **返回值：**
 
@@ -257,8 +241,6 @@ Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKey
 
 创建MediaKeySystem实例。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -266,13 +248,13 @@ Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKey
 | 参数项 | 描述 |
 | -- | -- |
 | const char *name | DRM解决方案名称。 |
-| MediaKeySystem **mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) **mediaKeySystem | MediaKeySystem实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：      <br>输入参数name为空指针。      <br>输入参数name长度为0。      <br>输入参数mediaKeySystem为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。      <br>DRM_ERR_SERVICE_DIED：服务死亡。      <br>DRM_ERR_MAX_SYSTEM_NUM_REACHED：已创建的MediaKeySystem数量达到最大限制（64个）。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：<br>输入参数name为空指针。<br>输入参数name长度为0。<br>输入参数mediaKeySystem为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。<br>DRM_ERR_SERVICE_DIED：服务死亡。<br>DRM_ERR_MAX_SYSTEM_NUM_REACHED：已创建的MediaKeySystem数量达到最大限制（64个）。 |
 
 ### OH_MediaKeySystem_SetConfigurationString()
 
@@ -284,15 +266,13 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySys
 
 设置字符串类型的配置属性。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | const char *configName | 字符串类型配置属性名，不能为空，具体支持的属性名由设备上DRM解决方案决定。 |
 | const char *value | 字符串类型配置属性值，不能为空，具体支持的属性值由设备上DRM解决方案决定。 |
 
@@ -300,7 +280,7 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySys
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，输入参数configName为空指针，或输入参数value为空指针。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，输入参数configName为空指针，或输入参数value为空指针。 |
 
 ### OH_MediaKeySystem_GetConfigurationString()
 
@@ -312,15 +292,13 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySys
 
 获取字符串类型配置属性值。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | const char *configName | 字符串类型配置名。 |
 | char *value | 字符串类型配置值，用于存储获取的配置属性值。该参数不能为空，具体支持的取值由设备上DRM解决方案决定。 |
 | int32_t valueLen | 字符串类型配置值长度。 |
@@ -329,7 +307,7 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySys
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，输入参数configName为空指针，或输入参数value为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，输入参数configName为空指针，或输入参数value为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_SetConfigurationByteArray()
 
@@ -341,15 +319,13 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKey
 
 设置字符数组类型的配置属性值。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | const char *configName | 字符数组类型配置属性名称，不能为空，具体支持的属性名由设备上DRM解决方案决定。 |
 | uint8_t *value | 字符数组类型配置属性值，不能为空，具体支持的属性值由设备上DRM解决方案决定。 |
 | int32_t valueLen | 字符数组类型配置属性值长度。 |
@@ -358,7 +334,7 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKey
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，输入参数configName为空指针，或输入参数value为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，输入参数configName为空指针，或输入参数value为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_GetConfigurationByteArray()
 
@@ -370,15 +346,13 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKey
 
 获取字符数组类型配置属性值。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | const char *configName | 字符数组类型配置属性名称，不能为空，具体支持的属性名由设备上DRM解决方案决定。 |
 | uint8_t *value | 字符数组类型配置属性，用于存储获取的配置属性值。该参数不能为空，具体支持的取值由设备上DRM解决方案决定。 |
 | int32_t *valueLen | 字符数组类型配置属性长度。 |
@@ -387,7 +361,7 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKey
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，输入参数configName为空指针，输入参数value为空指针，或valueLen为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，输入参数configName为空指针，输入参数value为空指针，或valueLen为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_GetStatistics()
 
@@ -399,22 +373,20 @@ Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_
 
 获取度量记录。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
-| DRM_Statistics *statistics | 度量记录。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
+| [DRM_Statistics](capi-drm-drm-statistics.md) *statistics | 度量记录。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数statistics为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数statistics为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_GetMaxContentProtectionLevel()
 
@@ -426,22 +398,20 @@ Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *media
 
 获取设备支持的最大内容保护级别。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
-| DRM_ContentProtectionLevel *contentProtectionLevel | 内容保护级别。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) *contentProtectionLevel | 内容保护级别。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数contentProtectionLevel为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数contentProtectionLevel为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_SetMediaKeySystemCallback()
 
@@ -453,22 +423,20 @@ Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKey
 
 设置MediaKeySystem事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | [MediaKeySystem_Callback](capi-native-mediakeysystem-h.md#mediakeysystem_callback) callback | 回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效。 |
 
 ### OH_MediaKeySystem_CreateMediaKeySession()
 
@@ -480,23 +448,21 @@ Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySyst
 
 创建MediaKeySession会话实例。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
-| DRM_ContentProtectionLevel *level | 内容保护级别。可通过[OH_MediaKeySystem_GetMaxContentProtectionLevel](capi-native-mediakeysystem-h.md#oh_mediakeysystem_getmaxcontentprotectionlevel)接口先获取设备支持的最大内容保护级别。 |
-| MediaKeySession **mediaKeySession | MediaKeySession实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) *level | 内容保护级别。可通过[OH_MediaKeySystem_GetMaxContentProtectionLevel](capi-native-mediakeysystem-h.md#oh_mediakeysystem_getmaxcontentprotectionlevel)接口先获取设备支持的最大内容保护级别。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) **mediaKeySession | MediaKeySession实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数level超出合理范围，或mediaKeySession为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。      <br>DRM_ERR_SERVICE_DIED：服务死亡。      <br>DRM_ERR_MAX_SESSION_NUM_REACHED：当前MediaKeySystem已创建的MediaKeySession数量达到最大限制（64个）。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数level超出合理范围，或mediaKeySession为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。<br>DRM_ERR_SERVICE_DIED：服务死亡。<br>DRM_ERR_MAX_SESSION_NUM_REACHED：当前MediaKeySystem已创建的MediaKeySession数量达到最大限制（64个）。 |
 
 ### OH_MediaKeySystem_GenerateKeySystemRequest()
 
@@ -508,15 +474,13 @@ Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeyS
 
 生成设备DRM证书请求。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | uint8_t *request | 设备DRM证书请求。 |
 | int32_t *requestLen | 设备DRM证书请求的长度。 |
 | char *defaultUrl | 设备DRM证书服务的URL。 |
@@ -526,7 +490,7 @@ Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeyS
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或其它指针类型输入参数为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或其它指针类型输入参数为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_ProcessKeySystemResponse()
 
@@ -538,15 +502,13 @@ Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeyS
 
 处理设备DRM证书请求响应。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | uint8_t *response | 设备DRM证书请求响应。 |
 | int32_t responseLen | 设备DRM证书请求响应长度。 |
 
@@ -554,7 +516,7 @@ Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeyS
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数response为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数response为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyIds()
 
@@ -566,22 +528,20 @@ Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySyst
 
 获取离线媒体密钥标识列表，媒体密钥标识用于对离线媒体密钥的管理。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
-| DRM_OfflineMediakeyIdArray *offlineMediaKeyIds | 离线媒体密钥的媒体密钥标识列表。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
+| [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md) *offlineMediaKeyIds | 离线媒体密钥的媒体密钥标识列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数offlineMediaKeyIds为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_NO_MEMORY：内存不足，内存分配失败。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数offlineMediaKeyIds为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyStatus()
 
@@ -593,24 +553,22 @@ Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeyS
 
 获取离线媒体密钥状态。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | uint8_t *offlineMediaKeyId | 离线媒体密钥标识。 |
 | int32_t offlineMediaKeyIdLen | 离线媒体密钥标识长度。 |
-| DRM_OfflineMediaKeyStatus *status | 媒体密钥状态。 |
+| [DRM_OfflineMediaKeyStatus](capi-native-drm-common-h.md#drm_offlinemediakeystatus) *status | 媒体密钥状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或其它指针类型输入参数为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或其它指针类型输入参数为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_ClearOfflineMediaKeys()
 
@@ -622,15 +580,13 @@ Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySyst
 
 按ID清除离线媒体密钥。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 | uint8_t *offlineMediaKeyId | 离线媒体密钥标识。 |
 | int32_t offlineMediaKeyIdLen | 离线媒体密钥标识长度。 |
 
@@ -638,7 +594,7 @@ Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySyst
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数offlineMediaKeyId为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数offlineMediaKeyId为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_GetCertificateStatus()
 
@@ -650,22 +606,20 @@ Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySyste
 
 获取设备DRM证书状态。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
-| DRM_CertificateStatus *certStatus | 设备DRM证书状态值。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
+| [DRM_CertificateStatus](capi-native-drm-common-h.md#drm_certificatestatus) *certStatus | 设备DRM证书状态值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数certStatus为空指针。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效，或输入参数certStatus为空指针。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 ### OH_MediaKeySystem_Destroy()
 
@@ -677,20 +631,18 @@ Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)
 
 销毁MediaKeySystem实例。
 
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| MediaKeySystem *mediaKeySystem | MediaKeySystem实例。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | MediaKeySystem实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Drm_ErrCode | DRM_ERR_OK：执行成功。      <br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效。      <br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK：执行成功。<br>DRM_ERR_INVALID_VAL：输入参数mediaKeySystem为空指针或无效。<br>DRM_ERR_UNKNOWN：发生内部错误，请查看日志详细信息。 |
 
 

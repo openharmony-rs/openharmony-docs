@@ -1,7 +1,7 @@
 # JSVM_DefineClassOptions
 
 ```c
-typedef struct JSVM_DefineClassOptions {...} JSVM_DefineClassOptions
+typedef union JSVM_DefineClassOptions {...} JSVM_DefineClassOptions
 ```
 
 ## Overview
@@ -22,8 +22,6 @@ DefineClass options.
 
 | Name | Description |
 | -- | -- |
-| [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | DefineClass option id. |
-| union | option content. |
 | void* ptr | for option value with pointer type. |
 | int num | for option value with integer type |
 | bool boolean;

@@ -8,6 +8,8 @@ typedef struct OH_AVPlayerVideoOutput OH_AVPlayerVideoOutput
 
 定义了OH_AVPlayerVideoOutput结构体，用于表示播放器视频输出的相关信息。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AVPlayer](capi-avplayer.md)

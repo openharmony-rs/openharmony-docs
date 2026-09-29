@@ -6,8 +6,6 @@ Defines the APIs for the websocket client module.
 
 **Library**: libnet_websocket.so
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)
@@ -37,24 +35,22 @@ struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen
 
 Constructor used to create a WebSocket client.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| WebSocket_OnOpenCallback onOpen | Callback invoked when the WebSocket client receives an **open** message. |
-| WebSocket_OnMessageCallback onMessage | Callback invoked when the WebSocket client receives a **Message** message. |
-| WebSocket_OnErrorCallback onError | Callback invoked when the WebSocket client receives an **error** message. |
-| WebSocket_OnCloseCallback onclose | Callback invoked when the WebSocket client receives a **close** message. |
+| [WebSocket_OnOpenCallback](capi-net-websocket-type-h.md#websocket_onopencallback) onOpen | Callback invoked when the WebSocket client receives an **open** message. |
+| [WebSocket_OnMessageCallback](capi-net-websocket-type-h.md#websocket_onmessagecallback) onMessage | Callback invoked when the WebSocket client receives a **Message** message. |
+| [WebSocket_OnErrorCallback](capi-net-websocket-type-h.md#websocket_onerrorcallback) onError | Callback invoked when the WebSocket client receives an **error** message. |
+| [WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback) onclose | Callback invoked when the WebSocket client receives a **close** message. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| struct WebSocket * | Pointer to the WebSocket client if the operation is successful; NULL otherwise. |
+| [struct WebSocket *](capi-netstack-websocket.md) | Pointer to the WebSocket client if the operation is successful; **NULL** otherwise. |
 
 ### OH_WebSocketClient_AddHeader()
 
@@ -66,22 +62,20 @@ int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Head
 
 Adds the header information to the client request.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| struct WebSocket *client | Pointer to the WebSocket client. |
-| struct WebSocket_Header header | Header information. |
+| [struct WebSocket](capi-netstack-websocket.md) *client | Pointer to the WebSocket client. |
+| [struct WebSocket_Header](capi-netstack-websocket-header.md) header | Header information. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | 0 if the operation is successful; a non-0 value otherwise. For details about the return values, see       OH_Websocket_ErrCode. |
+| int | **0** if the operation is successful; a non-0 value otherwise. For details about the return values, see ** OH_Websocket_ErrCode**. |
 
 ### OH_WebSocketClient_Connect()
 
@@ -93,8 +87,6 @@ int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct
 
 Connects the WebSocket client to the server.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 11
@@ -103,15 +95,15 @@ Connects the WebSocket client to the server.
 
 | Parameter | Description |
 | -- | -- |
-| struct WebSocket *client | Pointer to the WebSocket client. |
+| [struct WebSocket](capi-netstack-websocket.md) *client | Pointer to the WebSocket client. |
 | const char *url | IP address for the WebSocket client to connect to the server. |
-| struct WebSocket_RequestOptions options | Optional parameters for connection establishment. |
+| [struct WebSocket_RequestOptions](capi-netstack-websocket-requestoptions.md) options | Optional parameters for connection establishment. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | 0 if the operation is successful; a non-0 value otherwise. For details about the return values, see       OH_Websocket_ErrCode. |
+| int | **0** if the operation is successful; a non-0 value otherwise. For details about the return values, see ** OH_Websocket_ErrCode**. |
 
 ### OH_WebSocketClient_Send()
 
@@ -123,8 +115,6 @@ int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)
 
 Sends data from the WebSocket client to the server.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 11
@@ -133,7 +123,7 @@ Sends data from the WebSocket client to the server.
 
 | Parameter | Description |
 | -- | -- |
-| struct WebSocket *client | WebSocket client. |
+| [struct WebSocket](capi-netstack-websocket.md) *client | WebSocket client. |
 | char *data | Data sent by the WebSocket client. |
 | size_t length | Length of the data sent by the WebSocket client. |
 
@@ -141,7 +131,7 @@ Sends data from the WebSocket client to the server.
 
 | Type | Description |
 | -- | -- |
-| int | 0 if the operation is successful; a non-0 value otherwise. For details about the return values, see       OH_Websocket_ErrCode. |
+| int | **0** if the operation is successful; a non-0 value otherwise. For details about the return values, see ** OH_Websocket_ErrCode**. |
 
 ### OH_WebSocketClient_Close()
 
@@ -153,8 +143,6 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 Closes the connection on the WebSocket client.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 11
@@ -163,14 +151,14 @@ Closes the connection on the WebSocket client.
 
 | Parameter | Description |
 | -- | -- |
-| struct WebSocket *client | WebSocket client. |
-| struct WebSocket_CloseOption options | Optional parameters for connection closure. |
+| [struct WebSocket](capi-netstack-websocket.md) *client | WebSocket client. |
+| [struct WebSocket_CloseOption](capi-netstack-websocket-closeoption.md) options | Optional parameters for connection closure. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | 0 if the operation is successful; a non-0 value otherwise. For details about the return values, see       OH_Websocket_ErrCode. |
+| int | **0** if the operation is successful; a non-0 value otherwise. For details about the return values, see ** OH_Websocket_ErrCode**. |
 
 ### OH_WebSocketClient_Destroy()
 
@@ -182,8 +170,6 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 
 Destroys the WebSocket client and releases the context and resources of the WebSocket connection. Usage:
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 11
@@ -192,12 +178,12 @@ Destroys the WebSocket client and releases the context and resources of the WebS
 
 | Parameter | Description |
 | -- | -- |
-| struct WebSocket *client | WebSocket client. |
+| [struct WebSocket](capi-netstack-websocket.md) *client | WebSocket client. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | 0 if the operation is successful; a non-0 value otherwise. For details about the return values, see       OH_Websocket_ErrCode. |
+| int | **0** if the operation is successful; a non-0 value otherwise. For details about the return values, see ** OH_Websocket_ErrCode**. |
 
 

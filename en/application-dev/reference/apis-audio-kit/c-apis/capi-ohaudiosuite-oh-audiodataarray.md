@@ -1,7 +1,7 @@
 # OH_AudioDataArray
 
 ```c
-typedef struct OH_AudioDataArray {...} OH_AudioDataArray
+struct OH_AudioDataArray {...}
 ```
 
 ## Overview

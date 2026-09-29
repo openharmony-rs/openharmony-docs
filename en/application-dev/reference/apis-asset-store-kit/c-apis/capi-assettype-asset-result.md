@@ -23,6 +23,6 @@ Represents the query result of an asset.
 | Name | Description |
 | -- | -- |
 | uint32_t count | Number of asset attributes in the query result. |
-| [Asset_Attr](capi-assettype-asset-attr.md) *attrs | Pointer to the array of the asset attributes. |
+| Asset_Attr *attrs | Pointer to the array of the asset attributes. |
 
 

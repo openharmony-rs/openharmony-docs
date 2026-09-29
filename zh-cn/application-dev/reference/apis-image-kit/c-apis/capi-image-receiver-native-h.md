@@ -6,8 +6,6 @@
 
 **库：** libimage_receiver.so
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
@@ -18,8 +16,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md) | - | OH_ImageReceiverNative是native层封装的图片接收器结构体，OH_ImageReceiverNative结构体不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br> 创建OH_ImageReceiverNative对象使用{@link OH_ImageReceiverNative_Create}函数。<br>释放OH_ImageReceiverNative对象使用<br>{@link OH_ImageReceiverNative_Release}函数。<br>OH_ImageReceiverNative结构体内容和操作方式如下： |
-| [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md) | - | 用于定义OH_ImageReceiverOptions数据类型名称。<br>OH_ImageReceiverOptions是native层封装的图片接收器选项设置器结构体， 用于创建OH_ImageReceiverNative时传入设置参数。OH_ImageReceiverOptions结构体不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br> 创建OH_ImageReceiverOptions对象使用{@link OH_ImageReceiverOptions_Create}函数。<br>释放OH_ImageReceiverOptions对象使用<br>{@link OH_ImageReceiverOptions_Release}函数。<br>OH_ImageReceiverOptions结构体内容和操作方式如下： |
+| [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md) | - | OH_ImageReceiverNative是native层封装的图片接收器结构体，OH_ImageReceiverNative结构体不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br> 创建OH_ImageReceiverNative对象使用[OH_ImageReceiverNative_Create](capi-image-receiver-native-h.md#oh_imagereceivernative_create)函数。<br>释放OH_ImageReceiverNative对象使用 [OH_ImageReceiverNative_Release](capi-image-receiver-native-h.md#oh_imagereceivernative_release)函数。<br>OH_ImageReceiverNative结构体内容和操作方式如下： |
+| [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md) | - | 用于定义OH_ImageReceiverOptions数据类型名称。<br>OH_ImageReceiverOptions是native层封装的图片接收器选项设置器结构体， 用于创建OH_ImageReceiverNative时传入设置参数。OH_ImageReceiverOptions结构体不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br> 创建OH_ImageReceiverOptions对象使用[OH_ImageReceiverOptions_Create](capi-image-receiver-native-h.md#oh_imagereceiveroptions_create)函数。<br>释放OH_ImageReceiverOptions对象使用 [OH_ImageReceiverOptions_Release](capi-image-receiver-native-h.md#oh_imagereceiveroptions_release)函数。<br>OH_ImageReceiverOptions结构体内容和操作方式如下： |
 
 ### 函数
 
@@ -50,8 +48,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_ImageReceiver_OnCallback)(OH_ImageReceiverNative *receiver) | 定义native层图片的回调方法。<br>**起始版本：** 12 |
-| void (*OH_ImageReceiver_ImageArriveCallback)(OH_ImageReceiverNative *receiver, void *userData) | ImageArrive事件的回调方法。<br>**起始版本：** 20 |
+| void (*OH_ImageReceiver_OnCallback)(OH_ImageReceiverNative *receiver) | 定义native层图片的回调方法。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver |
+| void (*OH_ImageReceiver_ImageArriveCallback)(OH_ImageReceiverNative *receiver, void *userData) | ImageArrive事件的回调方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver |
 
 ## 函数说明
 
@@ -65,8 +63,6 @@ typedef void (*OH_ImageReceiver_OnCallback)(OH_ImageReceiverNative *receiver)
 
 定义native层图片的回调方法。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 ### OH_ImageReceiver_ImageArriveCallback()
@@ -78,8 +74,6 @@ typedef void (*OH_ImageReceiver_ImageArriveCallback)(OH_ImageReceiverNative *rec
 **描述：**
 
 ImageArrive事件的回调方法。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 20
 
@@ -93,8 +87,6 @@ Image_ErrorCode OH_ImageReceiverOptions_Create(OH_ImageReceiverOptions **options
 
 Creates an OH_ImageReceiverOptions object at the application layer.
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **参数：**
@@ -107,7 +99,7 @@ Creates an OH_ImageReceiverOptions object at the application layer.
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if bad parameter.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_ALLOC_FAILED - if alloc failed. |
+| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if bad parameter. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_ALLOC_FAILED - if alloc failed. |
 
 ### OH_ImageReceiverOptions_GetSize()
 
@@ -118,8 +110,6 @@ Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options
 **描述：**
 
 获取OH_ImageReceiverOptions对象的Image_Size。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 12
 
@@ -134,7 +124,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverOptions_SetSize()
 
@@ -145,8 +135,6 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 **描述：**
 
 设置OH_ImageReceiverOptions对象的Image_Size。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 12
 
@@ -161,7 +149,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverOptions_GetCapacity()
 
@@ -172,8 +160,6 @@ Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* opt
 **描述：**
 
 获取OH_ImageReceiverOptions对象的图片缓存容量。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 12
 
@@ -188,7 +174,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverOptions_SetCapacity()
 
@@ -199,8 +185,6 @@ Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* opt
 **描述：**
 
 设置OH_ImageReceiverOptions对象的图片缓存容量。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 12
 
@@ -215,7 +199,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverOptions_Release()
 
@@ -226,8 +210,6 @@ Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options
 **描述：**
 
 释放OH_ImageReceiverOptions对象。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 12
 
@@ -241,7 +223,7 @@ Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -258,8 +240,6 @@ Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, 
 
 创建应用层OH_ImageReceiverNative对象。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **参数：**
@@ -273,7 +253,7 @@ Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_ALLOC_FAILED：申请内存失败。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_ALLOC_FAILED：申请内存失败。 |
 
 ### OH_ImageReceiverNative_GetReceivingSurfaceId()
 
@@ -284,8 +264,6 @@ Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNat
 **描述：**
 
 通过OH_ImageReceiverNative获取SurfaceId。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 12
 
@@ -300,7 +278,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNat
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_UNKNOWN_ERROR：未知原因错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_UNKNOWN_ERROR：未知原因错误。 |
 
 **参考：**
 
@@ -317,8 +295,6 @@ Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* r
 
 通过OH_ImageReceiverNative获取最新的一张图片。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **参数：**
@@ -326,13 +302,13 @@ Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* r
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md)* receiver | 表示OH_ImageReceiverNative对象的指针。 |
-| OH_ImageNative** image | 获取到的应用层的OH_ImageNative指针对象。 |
+| [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)** image | 获取到的应用层的OH_ImageNative指针对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_UNKNOWN_ERROR：未知原因错误。      <br>IMAGE_ALLOC_FAILED：申请内存失败。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_UNKNOWN_ERROR：未知原因错误。<br>IMAGE_ALLOC_FAILED：申请内存失败。 |
 
 **参考：**
 
@@ -349,8 +325,6 @@ Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* rec
 
 通过OH_ImageReceiverNative获取下一张图片。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **参数：**
@@ -358,13 +332,13 @@ Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* rec
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md)* receiver | 表示OH_ImageReceiverNative对象的指针。 |
-| OH_ImageNative** image | 获取到的应用层的OH_ImageNative指针对象。 |
+| [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)** image | 获取到的应用层的OH_ImageNative指针对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_UNKNOWN_ERROR：未知原因错误。      <br>IMAGE_ALLOC_FAILED：申请内存失败。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_UNKNOWN_ERROR：未知原因错误。<br>IMAGE_ALLOC_FAILED：申请内存失败。 |
 
 **参考：**
 
@@ -381,8 +355,6 @@ Image_ErrorCode OH_ImageReceiverNative_On(OH_ImageReceiverNative* receiver, OH_I
 
 注册一个[OH_ImageReceiver_OnCallback](capi-image-receiver-native-h.md#oh_imagereceiver_oncallback)回调事件。 <br>每当接收到新的图片，该回调事件就会响应。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **参数：**
@@ -396,7 +368,7 @@ Image_ErrorCode OH_ImageReceiverNative_On(OH_ImageReceiverNative* receiver, OH_I
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -413,8 +385,6 @@ Image_ErrorCode OH_ImageReceiverNative_Off(OH_ImageReceiverNative* receiver)
 
 关闭[OH_ImageReceiver_OnCallback](capi-image-receiver-native-h.md#oh_imagereceiver_oncallback)回调事件。 <br>关闭被[OH_ImageReceiverNative_On](capi-image-receiver-native-h.md#oh_imagereceivernative_on)开启的回调事件。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **参数：**
@@ -427,7 +397,7 @@ Image_ErrorCode OH_ImageReceiverNative_Off(OH_ImageReceiverNative* receiver)
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -444,8 +414,6 @@ Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver,
 
 通过OH_ImageReceiverNative获取ImageReceiver的大小。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **参数：**
@@ -459,7 +427,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver,
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -476,8 +444,6 @@ Image_ErrorCode OH_ImageReceiverNative_GetCapacity(OH_ImageReceiverNative* recei
 
 通过OH_ImageReceiverNative获取ImageReceiver的容量。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **参数：**
@@ -491,7 +457,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetCapacity(OH_ImageReceiverNative* recei
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -508,8 +474,6 @@ Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)
 
 释放Native OH_ImageReceiverNative对象。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
 **起始版本：** 12
 
 **参数：**
@@ -522,7 +486,7 @@ Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -536,8 +500,6 @@ Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative* rec
 ```
 
 **描述：**
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 20
 
@@ -553,7 +515,7 @@ Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative* rec
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：操作成功。      <br>IMAGE_RECEIVER_INVALID_PARAMETER：参数错误。 |
+| Image_ErrorCode | IMAGE_SUCCESS：操作成功。<br>IMAGE_RECEIVER_INVALID_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverNative_OffImageArrive()
 
@@ -562,8 +524,6 @@ Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative* re
 ```
 
 **描述：**
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 20
 
@@ -578,7 +538,7 @@ Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative* re
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | IMAGE_SUCCESS：操作成功。      <br>IMAGE_RECEIVER_INVALID_PARAMETER：参数错误，receiver或callback未注册。 |
+| Image_ErrorCode | IMAGE_SUCCESS：操作成功。<br>IMAGE_RECEIVER_INVALID_PARAMETER：参数错误，receiver或callback未注册。 |
 
 ### OH_ImageReceiverNative_SetMemoryName()
 
@@ -589,8 +549,6 @@ Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNativ
 **描述：**
 
 设置OH_ImageReceiverNative对象的内存名称。<br> 仅支持可见ASCII字符，空格、换行、制表符及其他控制字符将被过滤掉。 如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。 过滤后的名称长度（包括结束符'\0'）不得超过256字节。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 26.0.1
 
@@ -606,6 +564,6 @@ Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNativ
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li>          <li>[IMAGE_RECEIVER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) receiver或name为NULL，或size为0，              或name过滤后无可视字符，或过滤后大小超过256字节。</li>          </ul> |
+| Image_ErrorCode | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li> <li>[IMAGE_RECEIVER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) receiver或name为NULL，或size为0，或name过滤后无可视字符，或过滤后大小超过256字节。</li> </ul> |
 
 

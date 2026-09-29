@@ -174,7 +174,7 @@ NODE_TRANSFORM_CENTER
 
 **描述：**
 
-图形变换和转场的中心点属性，影响旋转（NODE_ROTATE/NODE_ROTATE_ANGLE/NODE_ROTATE_TRANSITION）、缩放（NODE_SCALE/NODE_SCALE_TRANSITION）、 平移（NODE_TRANSLATE/NODE_TRANSLATE_TRANSITION）等变换和转场属性的中心点行为，支持属性设置，属性重置，属性获取接口。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.value[0]?.f32：表示中心点X轴坐标值，单位为vp，默认值0.0。</li> <li>.value[1]?.f32：表示中心点Y轴坐标，单位为vp，默认值0.0。</li> <li>.value[2]?.f32：表示中心点Z轴坐标，单位为vp，默认值0.0。</li> <li>.value[3]?.f32：表示中心点X轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[0].f32，默认值：0.5f。超出范围时返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。</li> <li>.value[4]?.f32：表示中心点Y轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[1].f32，默认值：0.5f。超出范围时返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。</li> <li>.value[5]?.f32：表示中心点Z轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[2].f32，默认值：0.0f。超出范围时返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。</li> </ul> **返回：**<br><ul> <li>.value[0].f32：表示中心点X轴坐标，单位为vp。</li> <li>.value[1].f32：表示中心点Y轴坐标，单位为vp。</li> <li>.value[2].f32：表示中心点Z轴坐标，单位为vp。注：如果设置坐标百分比位置，属性获取方法返回计算后的以vp为单位的值。</li> </ul>
+图形变换和转场的中心点属性，影响旋转（NODE_ROTATE/NODE_ROTATE_ANGLE/NODE_ROTATE_TRANSITION）、缩放（NODE_SCALE/NODE_SCALE_TRANSITION）、 平移（NODE_TRANSLATE/NODE_TRANSLATE_TRANSITION）等变换和转场属性的中心点行为，支持属性设置，属性重置，属性获取接口。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.value[0]?.f32：表示中心点X轴坐标值，单位为vp，默认值0.0。</li> <li>.value[1]?.f32：表示中心点Y轴坐标，单位为vp，默认值0.0。</li> <li>.value[2]?.f32：表示中心点Z轴坐标，单位为vp，默认值0.0。</li> <li>.value[3]?.f32：表示中心点X轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[0].f32，默认值：0.5f。超出范围时返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。</li> <li>.value[4]?.f32：表示中心点Y轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[1].f32，默认值：0.5f。超出范围时返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。</li> <li>.value[5]?.f32：表示中心点Z轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[2].f32，默认值：0.0f。超出范围时返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。</li> </ul> **返回：**<br><ul> <li>.value[0].f32：表示中心点X轴坐标，单位为vp。</li> <li>.value[1].f32：表示中心点Y轴坐标，单位为vp。</li> <li>.value[2].f32：表示中心点Z轴坐标，单位为vp。注：如果设置坐标百分比位置，属性获取方法返回计算后的以vp为单位的值。</li> </ul>
 
 **起始版本：** 12
 
@@ -270,7 +270,7 @@ NODE_CONTRAST
 
 **描述：**
 
-对比度属性，支持属性设置，属性重置和属性获取接口。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.value[0].f32：对比度，等于1时为原图，越大则对比度越高，默认值为1，取值范围：[0, 10)，超出范围时返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。</li> </ul> **返回：**<br><ul> <li>.value[0].f32：对比度，取值范围：[0, 10)。</li> </ul>
+对比度属性，支持属性设置，属性重置和属性获取接口。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.value[0].f32：对比度，等于1时为原图，越大则对比度越高，默认值为1，取值范围：[0, 10)，超出范围时返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。</li> </ul> **返回：**<br><ul> <li>.value[0].f32：对比度，取值范围：[0, 10)。</li> </ul>
 
 **起始版本：** 12
 
@@ -366,7 +366,7 @@ NODE_BACKDROP_BLUR = 99
 
 **描述：**
 
-设置背景模糊效果，支持属性设置，属性重置和属性获取接口。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.value[0].f32：表示背景模糊半径，取值范围[0,+∞)，超出范围时返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。单位px，默认值0.0。</li> <li>.value[1]?.f32：表示灰阶模糊参数，对黑色的提亮程度，取值范围为[0,127]。不传入时默认值为0。</li> <li>.value[2]?.f32：表示灰阶模糊参数，对白色的压暗程度，取值范围为[0,127]。不传入时默认值为0。</li> </ul> **返回：**<br><ul> <li>.value[0].f32：表示背景模糊半径，取值范围[0,+∞)，单位为px。</li> <li>.value[1].f32：表示灰阶模糊参数，对黑色的提亮程度，取值范围为[0,127]。</li> <li>.value[2].f32：表示灰阶模糊参数，对白色的压暗程度，取值范围为[0,127]。</li> </ul>
+设置背景模糊效果，支持属性设置，属性重置和属性获取接口。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.value[0].f32：表示背景模糊半径，取值范围[0,+∞)，超出范围时返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。单位px，默认值0.0。</li> <li>.value[1]?.f32：表示灰阶模糊参数，对黑色的提亮程度，取值范围为[0,127]。不传入时默认值为0。</li> <li>.value[2]?.f32：表示灰阶模糊参数，对白色的压暗程度，取值范围为[0,127]。不传入时默认值为0。</li> </ul> **返回：**<br><ul> <li>.value[0].f32：表示背景模糊半径，取值范围[0,+∞)，单位为px。</li> <li>.value[1].f32：表示灰阶模糊参数，对黑色的提亮程度，取值范围为[0,127]。</li> <li>.value[2].f32：表示灰阶模糊参数，对白色的压暗程度，取值范围为[0,127]。</li> </ul>
 
 **起始版本：** 15
 
@@ -402,7 +402,7 @@ NODE_SYSTEM_MATERIAL = 127
 
 **描述：**
 
-定义系统材质属性，支持属性设置，属性重置和属性获取接口。 仅支持系统材质的设备可使用此属性。否则，当设置此属性时，将返回错误码[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode)。 设备是否支持系统材质可通过调用[OH_ArkUI_NativeModule_GetSystemMaterialSupported](capi-native-material-h.md#oh_arkui_nativemodule_getsystemmaterialsupported)获取。 材质效果在不同算力的设备上表现不同。算力等级由[ArkUI_MaterialLevel](capi-native-material-h.md#arkui_materiallevel)定义，可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。 在算力等级为ARKUI_MATERIAL_LEVEL_SMOOTH的设备上，设置NODE_SYSTEM_MATERIAL会覆盖NODE_SHADOW/NODE_CUSTOM_SHADOW的阴影效果、NODE_OUTLINE_COLOR的外描边颜色、NODE_OUTLINE_WIDTH的外描边宽度，并改变组件背景颜色。 在算力等级为ARKUI_MATERIAL_LEVEL_EXQUISITE或ARKUI_MATERIAL_LEVEL_GENTLE的设备上，设置NODE_SYSTEM_MATERIAL会覆盖阴影属性并在系统材质层添加滤镜效果，可产生类似玻璃的效果。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.object：系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md)。</li> </ul> **返回：**<br><ul> <li>.object：系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md)。返回值中的ArkUI_ImmersiveMaterialHandle对象是指向静态成员的指针，因此无需也禁止通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)释放返回对象。</li> </ul>
+定义系统材质属性，支持属性设置，属性重置和属性获取接口。 仅支持系统材质的设备可使用此属性。否则，当设置此属性时，将返回错误码ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED。 设备是否支持系统材质可通过调用[OH_ArkUI_NativeModule_GetSystemMaterialSupported](capi-native-material-h.md#oh_arkui_nativemodule_getsystemmaterialsupported)获取。 材质效果在不同算力的设备上表现不同。算力等级由[ArkUI_MaterialLevel](capi-native-material-h.md#arkui_materiallevel)定义，可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。 在算力等级为ARKUI_MATERIAL_LEVEL_SMOOTH的设备上，设置NODE_SYSTEM_MATERIAL会覆盖NODE_SHADOW/NODE_CUSTOM_SHADOW的阴影效果、NODE_OUTLINE_COLOR的外描边颜色、NODE_OUTLINE_WIDTH的外描边宽度，并改变组件背景颜色。 在算力等级为ARKUI_MATERIAL_LEVEL_EXQUISITE或ARKUI_MATERIAL_LEVEL_GENTLE的设备上，设置NODE_SYSTEM_MATERIAL会覆盖阴影属性并在系统材质层添加滤镜效果，可产生类似玻璃的效果。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.object：系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md)。</li> </ul> **返回：**<br><ul> <li>.object：系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md)。返回值中的ArkUI_ImmersiveMaterialHandle对象是指向静态成员的指针，因此无需也禁止通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)释放返回对象。</li> </ul>
 
 **起始版本：** 26.0.0
 

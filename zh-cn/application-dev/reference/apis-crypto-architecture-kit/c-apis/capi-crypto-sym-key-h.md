@@ -8,8 +8,6 @@
 
 **库：** libohcrypto.so
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **相关模块：** [CryptoSymKeyApi](capi-cryptosymkeyapi.md)
@@ -48,9 +46,9 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 根据给定的算法名称创建对称密钥生成器。例如AES256。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_sym_key/OH_CryptoSymKeyGenerator_Destroy {ctx}
 
 **参数：**
 
@@ -63,7 +61,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL或algoName为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL或algoName为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 **参考：**
 
@@ -81,9 +79,9 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ct
 
 随机生成对称密钥。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_sym_key/OH_CryptoSymKey_Destroy {keyCtx}
 
 **参数：**
 
@@ -96,7 +94,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ct
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或keyCtx为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) 无效的函数调用。可能的原因：算法不支持随机生成密钥            （如RC2、RC4、Blowfish、CAST），请使用OH_CryptoSymKeyGenerator_Convert接口。[since 26.0.0]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或keyCtx为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) 无效的函数调用。可能的原因：算法不支持随机生成密钥（如RC2、RC4、Blowfish、CAST），请使用OH_CryptoSymKeyGenerator_Convert接口。[since 26.0.0]</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoSymKeyGenerator_Convert()
 
@@ -108,23 +106,23 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx
 
 将对称密钥数据转换为对称密钥。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_sym_key/OH_CryptoSymKey_Destroy {keyCtx}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSymKeyGenerator](capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md) *ctx | [in] 对称密钥生成器。不能为NULL。 |
-| const Crypto_DataBlob *keyData | [in] 用于生成对称密钥的数据。不能为NULL。 |
+| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *keyData | [in] 用于生成对称密钥的数据。不能为NULL。 |
 | [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md) **keyCtx | [out] 指向对称密钥指针的指针。keyCtx不能为NULL，*keyCtx必须为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx、keyData或keyCtx为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx、keyData或keyCtx为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoSymKeyGenerator_GetAlgoName()
 
@@ -135,8 +133,6 @@ const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)
 **描述：**
 
 获取对称密钥生成器的算法名称。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -162,8 +158,6 @@ void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)
 
 销毁对称密钥生成器。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **参数：**
@@ -181,8 +175,6 @@ const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)
 **描述：**
 
 从对称密钥中获取对称密钥算法名称。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -208,22 +200,22 @@ OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_Dat
 
 从对称密钥中获取对称密钥数据。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md) *keyCtx | [in] 对称密钥。不能为NULL。 |
-| Crypto_DataBlob *out | [out] 指向用于存储密钥数据的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储密钥数据的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) keyCtx或out为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) keyCtx或out为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoSymKey_Destroy()
 
@@ -234,8 +226,6 @@ void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)
 **描述：**
 
 销毁对称密钥。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 

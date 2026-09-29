@@ -1,7 +1,7 @@
 # ScsiPeripheral_ReadCapacityRequest
 
 ```c
-typedef struct ScsiPeripheral_ReadCapacityRequest {...} ScsiPeripheral_ReadCapacityRequest
+struct ScsiPeripheral_ReadCapacityRequest {...}
 ```
 
 ## 概述

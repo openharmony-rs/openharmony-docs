@@ -1,7 +1,7 @@
 # OH_Huks_ExternalCryptoParam
 
 ```c
-typedef struct OH_Huks_ExternalCryptoParam {...} OH_Huks_ExternalCryptoParam
+union OH_Huks_ExternalCryptoParam {...}
 ```
 
 ## 概述
@@ -22,8 +22,6 @@ typedef struct OH_Huks_ExternalCryptoParam {...} OH_Huks_ExternalCryptoParam
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t tag | 标签值。<br>**起始版本：** 22 |
-| union | 标签内容。<br>**起始版本：** 22 |
 | bool boolParam | 布尔类型参数。<br>**起始版本：** 22 |
 | int32_t int32Param | int32_t类型参数。<br>**起始版本：** 22 |
 | uint32_t uint32Param | uint32_t类型参数。<br>**起始版本：** 22 |

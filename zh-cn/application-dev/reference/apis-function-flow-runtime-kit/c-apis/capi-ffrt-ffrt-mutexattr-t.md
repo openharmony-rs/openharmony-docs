@@ -22,6 +22,6 @@ typedef struct ffrt_mutexattr_t {...} ffrt_mutexattr_t
 
 | 名称 | 描述 |
 | -- | -- |
-| long storage | 互斥锁属性的内部存储。请勿直接访问，通过{@link ffrt_mutexattr_init}初始化。 |
+| long storage | 互斥锁属性的内部存储。请勿直接访问，通过ffrt_mutexattr_init初始化。 |
 
 

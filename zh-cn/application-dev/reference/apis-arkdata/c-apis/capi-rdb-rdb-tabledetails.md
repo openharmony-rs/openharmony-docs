@@ -1,7 +1,7 @@
 # Rdb_TableDetails
 
 ```c
-typedef struct Rdb_TableDetails {...} Rdb_TableDetails
+struct Rdb_TableDetails {...}
 ```
 
 ## 概述

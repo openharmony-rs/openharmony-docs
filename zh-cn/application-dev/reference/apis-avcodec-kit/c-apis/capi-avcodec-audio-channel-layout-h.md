@@ -8,8 +8,6 @@
 
 **库：** libnative_media_codecbase.so
 
-**系统能力：** SystemCapability.Multimedia.Media.CodecBase
-
 **起始版本：** 10
 
 **相关模块：** [CodecBase](capi-codecbase.md)
@@ -34,8 +32,6 @@ enum AudioChannelSet
 **描述：**
 
 音频声道数集合，将每一个声道数映射为uint64_t的变量。
-
-**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
 
@@ -79,8 +75,6 @@ enum AudioChannelLayout
 **描述：**
 
 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。
-
-**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
 

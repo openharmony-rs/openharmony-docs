@@ -6,8 +6,6 @@
 
 **库：** libnative_buffer.so
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **起始版本：** 12
 
 **相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)
@@ -16,18 +14,19 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) | OH_NativeBuffer_ColorXY | 表示基色的X和Y坐标。 |
-| [OH_NativeBuffer_Smpte2086](capi-oh-nativebuffer-oh-nativebuffer-smpte2086.md) | OH_NativeBuffer_Smpte2086 | 表示smpte2086静态元数据。 |
-| [OH_NativeBuffer_Cta861](capi-oh-nativebuffer-oh-nativebuffer-cta861.md) | OH_NativeBuffer_Cta861 | 表示CTA-861.3静态元数据。 |
-| [OH_NativeBuffer_StaticMetadata](capi-oh-nativebuffer-oh-nativebuffer-staticmetadata.md) | OH_NativeBuffer_StaticMetadata | 表示HDR静态元数据。 |
+| 名称 | 描述 |
+| -- | -- |
+| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) | 表示基色的X和Y坐标。 |
+| [OH_NativeBuffer_Smpte2086](capi-oh-nativebuffer-oh-nativebuffer-smpte2086.md) | 表示smpte2086静态元数据。 |
+| [OH_NativeBuffer_Cta861](capi-oh-nativebuffer-oh-nativebuffer-cta861.md) | 表示CTA-861.3静态元数据。 |
+| [OH_NativeBuffer_StaticMetadata](capi-oh-nativebuffer-oh-nativebuffer-staticmetadata.md) | 表示HDR静态元数据。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。 Move from native_buffer.h to native_common.h |
+| [OH_NativeBuffer_MetadataType](#oh_nativebuffer_metadatatype) | OH_NativeBuffer_MetadataType | OH_NativeBuffer的图像标准。 |
 | [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。 |
 | [OH_NativeBuffer_Format](#oh_nativebuffer_format) | OH_NativeBuffer_Format | OH_NativeBuffer格式的枚举。 |
 | [OH_NativeBuffer_TransformType](#oh_nativebuffer_transformtype) | OH_NativeBuffer_TransformType | OH_NativeBuffer转换类型的枚举。 |
@@ -45,8 +44,6 @@ enum OH_NativeBuffer_ColorSpace
 **描述：**
 
 OH_NativeBuffer的颜色空间。 Move from native_buffer.h to native_common.h
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 12
 
@@ -87,6 +84,29 @@ OH_NativeBuffer的颜色空间。 Move from native_buffer.h to native_common.h
 | OH_COLORSPACE_BT2020_LOG_FULL |  |
 | OH_COLORSPACE_BT2020_LOG_LIMIT |  |
 
+### OH_NativeBuffer_MetadataType
+
+```c
+enum OH_NativeBuffer_MetadataType
+```
+
+**描述：**
+
+OH_NativeBuffer的图像标准。
+
+**起始版本：** 12
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_VIDEO_HDR_HLG | 视频HLG。 |
+| OH_VIDEO_HDR_HDR10 | 视频HDR10。 |
+| OH_VIDEO_HDR_VIVID | 视频HDR VIVID。 |
+| OH_IMAGE_HDR_VIVID_DUAL |  |
+| OH_IMAGE_HDR_VIVID_SINGLE |  |
+| OH_IMAGE_HDR_ISO_DUAL |  |
+| OH_IMAGE_HDR_ISO_SINGLE |  |
+| OH_VIDEO_NONE = -1 |  |
+
 ### OH_NativeBuffer_MetadataKey
 
 ```c
@@ -96,8 +116,6 @@ enum OH_NativeBuffer_MetadataKey
 **描述：**
 
 表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 12
 
@@ -117,8 +135,6 @@ enum OH_NativeBuffer_Format
 **描述：**
 
 OH_NativeBuffer格式的枚举。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 10
 
@@ -179,8 +195,6 @@ enum OH_NativeBuffer_TransformType
 
 OH_NativeBuffer转换类型的枚举。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -208,8 +222,6 @@ enum OH_NativeBuffer_VideoDimensionType
 
 视频维度类型枚举。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
-
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -228,8 +240,6 @@ enum OH_NativeBuffer_3D_MetadataKey
 **描述：**
 
 表示NativeBuffer的3D元数据枚举属性。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 26.0.0
 

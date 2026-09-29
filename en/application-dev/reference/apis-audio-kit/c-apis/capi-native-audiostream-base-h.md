@@ -6,8 +6,6 @@ Declare the underlying data structure.
 
 **Library**: libohaudio.so
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 **Related module**: [OHAudio](capi-ohaudio.md)
@@ -18,12 +16,12 @@ Declare the underlying data structure.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) | OH_AudioStreamInfo | Define the audio stream info structure, used to describe basic audio format. |
-| [OH_AudioRenderer_Callbacks_Struct](capi-ohaudio-oh-audiorenderer-callbacks-struct.md) | OH_AudioRenderer_Callbacks | Declaring the callback struct for renderer stream. |
-| [OH_AudioCapturer_Callbacks_Struct](capi-ohaudio-oh-audiocapturer-callbacks-struct.md) | OH_AudioCapturer_Callbacks | Declaring the callback struct for capturer stream. |
-| [OH_AudioStreamBuilderStruct](capi-ohaudio-oh-audiostreambuilderstruct.md) | OH_AudioStreamBuilder | Declaring the audio stream builder. The instance of builder is used for creating audio stream. |
-| [OH_AudioRendererStruct](capi-ohaudio-oh-audiorendererstruct.md) | OH_AudioRenderer | Declaring the audio renderer stream. The instance of renderer stream is used for playing audio data. |
-| [OH_AudioCapturerStruct](capi-ohaudio-oh-audiocapturerstruct.md) | OH_AudioCapturer | Declaring the audio capturer stream. The instance of renderer stream is used for capturing audio data. |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) | - | Define the audio stream info structure, used to describe basic audio format. |
+| [OH_AudioRenderer_Callbacks_Struct](capi-ohaudio-oh-audiorenderer-callbacks-struct.md) | - | Declaring the callback struct for renderer stream. |
+| [OH_AudioCapturer_Callbacks_Struct](capi-ohaudio-oh-audiocapturer-callbacks-struct.md) | - | Declaring the callback struct for capturer stream. |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md) | OH_AudioStreamBuilder | Declaring the audio stream builder. The instance of builder is used for creating audio stream. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md) | OH_AudioRenderer | Declaring the audio renderer stream. The instance of renderer stream is used for playing audio data. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md) | OH_AudioCapturer | Declaring the audio capturer stream. The instance of renderer stream is used for capturing audio data. |
 
 ### Enum
 
@@ -50,6 +48,7 @@ Declare the underlying data structure.
 | [OH_AudioStream_VolumeMode](#oh_audiostream_volumemode) | OH_AudioStream_VolumeMode | Define the audio stream volume mode. |
 | [OH_AudioStream_LatencyType](#oh_audiostream_latencytype) | OH_AudioStream_LatencyType | Defines audio latency types. |
 | [OH_AudioStream_PlaybackCaptureMode](#oh_audiostream_playbackcapturemode) | OH_AudioStream_PlaybackCaptureMode | Defines mode for playback capture, each mode means different target streams to capture. |
+| [OH_AudioStream_PlaybackCaptureStartState](#oh_audiostream_playbackcapturestartstate) | OH_AudioStream_PlaybackCaptureStartState | Defines the playback capture start state, which is returned asynchronously after calling OH_AudioCapturer_RequestPlaybackCaptureStart function. |
 
 ### Function
 
@@ -64,10 +63,10 @@ Declare the underlying data structure.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason) | Callback when the output device of an audio renderer changed.<br>**Since**: 11 |
-| void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData) | Callback when the mark position reached.<br>**Since**: 12 |
-| int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize) | This function pointer will point to the callback function that is used to write audio data with metadata<br>**Since**: 12 |
-| OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize) | Callback function of write data.<br> This function is similar with OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnWriteData instead of the return value. The return result of this function indicates whether the data filled in the buffer is valid or invalid. If result is invalid, the data filled by user will not be played.<br>**Since**: 12 |
+| void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason) | Callback when the output device of an audio renderer changed.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData) | Callback when the mark position reached.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize) | This function pointer will point to the callback function that is used to write audio data with metadata<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
+| OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize) | Callback function of write data.<br> This function is similar with OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnWriteData instead of the return value. The return result of this function indicates whether the data filled in the buffer is valid or invalid. If result is invalid, the data filled by user will not be played.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 
 ## Enum type description
 
@@ -81,19 +80,17 @@ enum OH_AudioStream_Result
 
 Define the result of the function execution.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_SUCCESS = 0 |  The call was successful.<br>**Since**: 10 |
-| AUDIOSTREAM_ERROR_INVALID_PARAM = 1 |  This means that the function was executed with an invalid input parameter.<br>**Since**: 10 |
-| AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2 |  Execution status exception.<br>**Since**: 10 |
-| AUDIOSTREAM_ERROR_SYSTEM = 3 |  An system error has occurred.<br>**Since**: 10 |
-| AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4 |  Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 19 |
-| AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104 |  Unsupported audio stream ability, including function and configuration.<br>**Since**: 26.0.0 |
-| AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 |  Audio server process died.<br>**Since**: 26.0.0 |
+| AUDIOSTREAM_SUCCESS = 0 | &nbsp;The call was successful.<br>**Since**: 10 |
+| AUDIOSTREAM_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter.<br>**Since**: 10 |
+| AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2 | &nbsp;Execution status exception.<br>**Since**: 10 |
+| AUDIOSTREAM_ERROR_SYSTEM = 3 | &nbsp;An system error has occurred.<br>**Since**: 10 |
+| AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 19 |
+| AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104 | &nbsp;Unsupported audio stream ability, including function and configuration.<br>**Since**: 26.0.0 |
+| AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 | &nbsp;Audio server process died.<br>**Since**: 26.0.0 |
 
 ### OH_AudioStream_Type
 
@@ -104,8 +101,6 @@ enum OH_AudioStream_Type
 **Description**
 
 Define the audio stream type.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -123,8 +118,6 @@ enum OH_AudioStream_SampleFormat
 **Description**
 
 Define the audio stream sample format.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -146,8 +139,6 @@ enum OH_AudioStream_EncodingType
 
 Define the audio encoding type.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 | Enum item | Description |
@@ -165,8 +156,6 @@ enum OH_AudioStream_Usage
 **Description**
 
 Define the audio stream usage. Audio stream usage is used to describe what work scenario the current stream is used for.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -197,8 +186,6 @@ enum OH_AudioStream_LatencyMode
 
 Define the audio latency mode.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 | Enum item | Description |
@@ -215,8 +202,6 @@ enum OH_AudioStream_DirectPlaybackMode
 **Description**
 
 Enumerates audio direct playback modes.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 19
 
@@ -235,8 +220,6 @@ enum OH_AudioStream_Event
 **Description**
 
 Define the audio event.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -257,8 +240,6 @@ enum OH_AudioStream_State
 **Description**
 
 The audio stream states
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -282,8 +263,6 @@ enum OH_AudioInterrupt_ForceType
 
 Defines the audio interrupt type.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 10
 
 | Enum item | Description |
@@ -300,8 +279,6 @@ enum OH_AudioInterrupt_Hint
 **Description**
 
 Defines the audio interrupt hint type.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -325,8 +302,6 @@ enum OH_AudioStream_SourceType
 **Description**
 
 Defines the audio source type.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -353,8 +328,6 @@ enum OH_AudioInterrupt_Mode
 
 Defines the audio interrupt mode.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -371,8 +344,6 @@ enum OH_AudioStream_AudioEffectMode
 **Description**
 
 Defines the audio effect mode.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -391,8 +362,6 @@ enum OH_AudioStream_FastStatus
 
 Defines the fast status.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 20
 
 | Enum item | Description |
@@ -410,15 +379,13 @@ enum OH_AudioStream_DeviceChangeReason
 
 Defines reason for device changes of one audio stream.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 11
 
 | Enum item | Description |
 | -- | -- |
 | REASON_UNKNOWN = 0 | Unknown. |
 | REASON_NEW_DEVICE_AVAILABLE = 1 | New Device available. |
-| REASON_OLD_DEVICE_UNAVAILABLE = 2 | Old Device unavailable. Applications should consider to pause the audio playback when this reason is |
+| REASON_OLD_DEVICE_UNAVAILABLE = 2 | Old Device unavailable. Applications should consider to pause the audio playback when this reason is reported. |
 | REASON_OVERRODE = 3 | Device is overrode by user or system. |
 | REASON_SESSION_ACTIVATED = 4 | Device information when the audio session is activated.<br>**Since**: 20 |
 | REASON_STREAM_PRIORITY_CHANGED = 5 | There is a higher-priority stream, causing the system device to change.<br>**Since**: 20 |
@@ -432,8 +399,6 @@ enum OH_AudioStream_PrivacyType
 **Description**
 
 Defines Enumeration of audio stream privacy type for playback capture.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -453,8 +418,6 @@ enum OH_AudioData_Callback_Result
 
 Defines enumeration of audio data callback result.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 | Enum item | Description |
@@ -472,8 +435,6 @@ enum OH_AudioStream_VolumeMode
 
 Define the audio stream volume mode.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 19
 
 | Enum item | Description |
@@ -490,8 +451,6 @@ enum OH_AudioStream_LatencyType
 **Description**
 
 Defines audio latency types.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 23
 
@@ -511,8 +470,6 @@ enum OH_AudioStream_PlaybackCaptureMode
 
 Defines mode for playback capture, each mode means different target streams to capture.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 23
 
 | Enum item | Description |
@@ -520,6 +477,24 @@ Defines mode for playback capture, each mode means different target streams to c
 | AUDIOSTREAM_PLAYBACKCAPTURE_MODE_DEFAULT = 0x0 |  |
 | AUDIOSTREAM_PLAYBACKCAPTURE_MODE_MEDIA = 0x1 |  |
 | AUDIOSTREAM_PLAYBACKCAPTURE_MODE_EXCLUDING_SELF = 0x8000 |  |
+
+### OH_AudioStream_PlaybackCaptureStartState
+
+```c
+enum OH_AudioStream_PlaybackCaptureStartState
+```
+
+**Description**
+
+Defines the playback capture start state, which is returned asynchronously after calling OH_AudioCapturer_RequestPlaybackCaptureStart function.
+
+**Since**: 23
+
+| Enum item | Description |
+| -- | -- |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS = 0 |  |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_FAILED = 1 |  |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_NOT_AUTHORIZED = 2 |  |
 
 
 ## Function description
@@ -534,16 +509,14 @@ typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* re
 
 Callback when the output device of an audio renderer changed.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)\* renderer | AudioRenderer where this event occurs. |
-| void\* userData | User data which is passed by user. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer where this event occurs. |
+| void* userData | User data which is passed by user. |
 | [OH_AudioStream_DeviceChangeReason](capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) reason | Indicates that why does the output device changes. |
 
 ### OH_AudioRenderer_OnMarkReachedCallback()
@@ -556,17 +529,15 @@ typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* rendere
 
 Callback when the mark position reached.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)\* renderer | AudioRenderer where this event occurs. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer where this event occurs. |
 | uint32_t samplePos | Mark position in samples. |
-| void\* userData | User data which is passed by user. |
+| void* userData | User data which is passed by user. |
 
 ### OH_AudioRenderer_WriteDataWithMetadataCallback()
 
@@ -578,19 +549,17 @@ typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRender
 
 This function pointer will point to the callback function that is used to write audio data with metadata
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)\* renderer | AudioRenderer where this event occurs. |
-| void\* userData | User data which is passed by user. |
-| void\* audioData | Audio data which is written by user. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer where this event occurs. |
+| void* userData | User data which is passed by user. |
+| void* audioData | Audio data which is written by user. |
 | int32_t audioDataSize | Audio data size which is the size of audio data written by user, unit is byte. |
-| void\* metadata | Metadata which is written by user. |
+| void* metadata | Metadata which is written by user. |
 | int32_t metadataSize | Metadata size which is the size of metadata written by user, unit is byte. |
 
 **Returns**:
@@ -609,17 +578,15 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 
 Callback function of write data.<br> This function is similar with OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnWriteData instead of the return value. The return result of this function indicates whether the data filled in the buffer is valid or invalid. If result is invalid, the data filled by user will not be played.
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)\* renderer | AudioRenderer where this callback occurs. |
-| void\* userData | User data which is passed by user. |
-| void\* audioData | Audio data pointer, where user should fill in audio data. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer where this callback occurs. |
+| void* userData | User data which is passed by user. |
+| void* audioData | Audio data pointer, where user should fill in audio data. |
 | int32_t audioDataSize | Size of audio data that user should fill in, unit is byte. |
 
 **Returns**:

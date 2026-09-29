@@ -8,6 +8,8 @@ typedef struct OH_AVSeiMessageArray OH_AVSeiMessageArray
 
 SEI（Supplemental Enhancement Information）消息数组的结构体类型。用于存储和管理SEI消息，支持批量获取和处理视频流中的SEI消息，适用于需要解析视频补充增强信息的场景。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 23
 
 **相关模块：** [AVPlayer](capi-avplayer.md)

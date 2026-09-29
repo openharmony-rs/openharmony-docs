@@ -1,7 +1,7 @@
 # UsbConfigDescriptor
 
 ```c
-typedef struct UsbConfigDescriptor {...} __attribute__((packed)) UsbConfigDescriptor
+struct UsbConfigDescriptor {...}
 ```
 
 ## Overview

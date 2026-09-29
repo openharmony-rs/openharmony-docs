@@ -1,7 +1,7 @@
 # Ethernet_MacAddrInfoList
 
 ```c
-typedef struct Ethernet_MacAddrInfoList {...} Ethernet_MacAddrInfoList
+struct Ethernet_MacAddrInfoList {...}
 ```
 
 ## Overview

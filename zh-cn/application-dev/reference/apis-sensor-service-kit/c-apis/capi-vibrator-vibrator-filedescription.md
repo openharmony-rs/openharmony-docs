@@ -1,7 +1,7 @@
 # Vibrator_FileDescription
 
 ```c
-typedef struct Vibrator_FileDescription {...} Vibrator_FileDescription
+struct Vibrator_FileDescription {...}
 ```
 
 ## 概述

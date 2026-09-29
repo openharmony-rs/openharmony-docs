@@ -6,8 +6,6 @@ Provide environment APIS.
 
 **Library**: libohenvironment.so
 
-**System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
-
 **Since**: 12
 
 **Related module**: [Environment](capi-environment.md)
@@ -34,8 +32,6 @@ FileManagement_ErrCode OH_Environment_GetUserDownloadDir(char **result)
 
 Obtains the sandbox path of the Download root directory.
 
-**System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
-
 **Since**: 12
 
 **Parameters**:
@@ -48,7 +44,7 @@ Obtains the sandbox path of the Download root directory.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Return the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDesktopDir()
 
@@ -59,8 +55,6 @@ FileManagement_ErrCode OH_Environment_GetUserDesktopDir(char **result)
 **Description**
 
 Obtains the sandbox path of the Desktop root directory.
-
-**System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **Since**: 12
 
@@ -74,7 +68,7 @@ Obtains the sandbox path of the Desktop root directory.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Return the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDocumentDir()
 
@@ -85,8 +79,6 @@ FileManagement_ErrCode OH_Environment_GetUserDocumentDir(char **result)
 **Description**
 
 Obtains the sandbox path of the Document root directory.
-
-**System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **Since**: 12
 
@@ -100,6 +92,6 @@ Obtains the sandbox path of the Document root directory.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Return the status code of the execution.          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 

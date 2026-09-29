@@ -8,8 +8,6 @@
 
 **库：** libnative_rdb_ndk.z.so
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -55,8 +53,6 @@ enum Rdb_EncryptionAlgo
 
 数据库加密算法。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -75,8 +71,6 @@ enum Rdb_HmacAlgo
 
 打开数据库时支持的HMAC算法。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -94,8 +88,6 @@ enum Rdb_KdfAlgo
 **描述：**
 
 打开数据库时支持的KDF算法。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -118,15 +110,13 @@ OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 
 创建一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Rdb_CryptoParam *](capi-rdb-oh-rdb-cryptoparam.md) | 成功时返回指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。      <br>否则返回nullptr。使用完成后，必须通过[OH_Rdb_DestroyCryptoParam](capi-oh-rdb-crypto-param-h.md#oh_rdb_destroycryptoparam)接口释放内存。 |
+| [OH_Rdb_CryptoParam *](capi-rdb-oh-rdb-cryptoparam.md) | 成功时返回指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。<br>否则返回nullptr。使用完成后，必须通过[OH_Rdb_DestroyCryptoParam](capi-oh-rdb-crypto-param-h.md#oh_rdb_destroycryptoparam)接口释放内存。 |
 
 **参考：**
 
@@ -143,8 +133,6 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 
 销毁一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 20
 
 **参数：**
@@ -157,7 +145,7 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Crypto_SetEncryptionKey()
 
@@ -168,8 +156,6 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 **描述：**
 
 设置[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)对象的密钥数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -185,7 +171,7 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Crypto_SetIteration()
 
@@ -196,8 +182,6 @@ int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 **描述：**
 
 设置打开加密数据库时使用的KDF算法迭代次数。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -212,7 +196,7 @@ int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Crypto_SetEncryptionAlgo()
 
@@ -223,8 +207,6 @@ int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 **描述：**
 
 设置打开加密数据库时使用的加密算法。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -239,7 +221,7 @@ int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Crypto_SetHmacAlgo()
 
@@ -250,8 +232,6 @@ int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 **描述：**
 
 设置打开加密数据库时使用的HMAC算法。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -266,7 +246,7 @@ int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Crypto_SetKdfAlgo()
 
@@ -277,8 +257,6 @@ int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 **描述：**
 
 设置打开加密数据库时使用的KDF算法。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -293,7 +271,7 @@ int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Crypto_SetCryptoPageSize()
 
@@ -304,8 +282,6 @@ int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 **描述：**
 
 设置打开加密数据库时使用的页大小。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -320,6 +296,6 @@ int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 

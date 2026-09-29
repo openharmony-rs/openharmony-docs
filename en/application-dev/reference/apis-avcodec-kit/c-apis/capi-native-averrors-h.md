@@ -6,8 +6,6 @@ The file declares the error codes used by the media framework.
 
 **Library**: libnative_media_core.so
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 9
 
 **Related module**: [Core](capi-core.md)
@@ -31,8 +29,6 @@ enum OH_AVErrCode
 **Description**
 
 Enumerates the error codes used by the media framework.
-
-**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
@@ -67,7 +63,7 @@ Enumerates the error codes used by the media framework.
 | AV_ERR_IO_SSL_SERVER_CERT_UNTRUSTED = 5411010 | SSL server cert untrusted.<br>**Since**: 14 |
 | AV_ERR_IO_UNSUPPORTED_REQUEST = 5411011 | unsupported request due to network protocols.<br>**Since**: 14 |
 | AV_ERR_IO_CLEARTEXT_NOT_PERMITTED = 5411012 | Http clear text not permitted.<br>**Since**: 23 |
-| AV_ERR_STREAM_CHANGED = 5410005 | Signals a stream format change in synchronous mode. Required follow-up actions: - For video encoders: Call {@link OH_VideoEncoder_GetOutputDescription}<br> - For video decoders: Call {@link OH_VideoDecoder_GetOutputDescription}<br> - For audio decoders : Call {@link OH_AudioCodec_GetOutputDescription} to retrieve updated stream configuration.<br>**Since**: 20 |
+| AV_ERR_STREAM_CHANGED = 5410005 | Signals a stream format change in synchronous mode. Required follow-up actions: - For video encoders: Call OH_VideoEncoder_GetOutputDescription - For video decoders: Call OH_VideoDecoder_GetOutputDescription - For audio decoders : Call OH_AudioCodec_GetOutputDescription to retrieve updated stream configuration.<br>**Since**: 20 |
 | AV_ERR_TRY_AGAIN_LATER = 5410006 | Indicates temporary buffer query failure in synchronous mode, it's recommended to wait and retry the operation after a short interval.<br>**Since**: 20 |
 | AV_ERR_SUPER_RESOLUTION_UNSUPPORTED = 5410003 | Super-resolution unsupported.<br>**Since**: 23 |
 | AV_ERR_SUPER_RESOLUTION_NOT_ENABLED = 5410004 | No PlaybackStrategy set to enable super-resolution feature.<br>**Since**: 23 |

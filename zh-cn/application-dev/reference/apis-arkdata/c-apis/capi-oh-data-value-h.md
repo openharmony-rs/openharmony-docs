@@ -8,8 +8,6 @@
 
 **库：** libnative_rdb_ndk.z.so
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -69,8 +67,6 @@ enum OH_ColumnType
 
 表示列的类型。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -98,15 +94,13 @@ OH_Data_Value *OH_Value_Create(void)
 
 创建[OH_Data_Value](capi-rdb-oh-data-value.md)实例，用于存储单条键值对数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Data_Value *](capi-rdb-oh-data-value.md) | 执行成功时返回指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。否则返回nullptr。      <br>使用完成后，必须通过[OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy)接口释放内存。 |
+| [OH_Data_Value *](capi-rdb-oh-data-value.md) | 执行成功时返回指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。否则返回nullptr。<br>使用完成后，必须通过[OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy)接口释放内存。 |
 
 **参考：**
 
@@ -123,8 +117,6 @@ int OH_Value_Destroy(OH_Data_Value *value)
 
 销毁[OH_Data_Value](capi-rdb-oh-data-value.md)对象。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -137,7 +129,7 @@ int OH_Value_Destroy(OH_Data_Value *value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutNull()
 
@@ -149,8 +141,6 @@ int OH_Value_PutNull(OH_Data_Value *value)
 
 添加空数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -163,7 +153,7 @@ int OH_Value_PutNull(OH_Data_Value *value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutInt()
 
@@ -174,8 +164,6 @@ int OH_Value_PutInt(OH_Data_Value *value, int64_t val)
 **描述：**
 
 添加整型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -190,7 +178,7 @@ int OH_Value_PutInt(OH_Data_Value *value, int64_t val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutReal()
 
@@ -201,8 +189,6 @@ int OH_Value_PutReal(OH_Data_Value *value, double val)
 **描述：**
 
 添加REAL类型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -217,7 +203,7 @@ int OH_Value_PutReal(OH_Data_Value *value, double val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutText()
 
@@ -228,8 +214,6 @@ int OH_Value_PutText(OH_Data_Value *value, const char *val)
 **描述：**
 
 添加字符串类型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -244,7 +228,7 @@ int OH_Value_PutText(OH_Data_Value *value, const char *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutBlob()
 
@@ -255,8 +239,6 @@ int OH_Value_PutBlob(OH_Data_Value *value, const unsigned char *val, size_t leng
 **描述：**
 
 添加BLOB类型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -272,7 +254,7 @@ int OH_Value_PutBlob(OH_Data_Value *value, const unsigned char *val, size_t leng
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutAsset()
 
@@ -284,8 +266,6 @@ int OH_Value_PutAsset(OH_Data_Value *value, const Data_Asset *val)
 
 添加ASSET类型数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -293,13 +273,13 @@ int OH_Value_PutAsset(OH_Data_Value *value, const Data_Asset *val)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。 |
-| const Data_Asset *val | 表示指向[Data_Asset](capi-rdb-data-asset.md)对象的指针。 |
+| [const Data_Asset](capi-rdb-data-asset.md) *val | 表示指向[Data_Asset](capi-rdb-data-asset.md)对象的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutAssets()
 
@@ -311,8 +291,6 @@ int OH_Value_PutAssets(OH_Data_Value *value, const Data_Asset * const * val, siz
 
 添加ASSETS类型数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -320,14 +298,14 @@ int OH_Value_PutAssets(OH_Data_Value *value, const Data_Asset * const * val, siz
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。 |
-| const Data_Asset * const * val | 表示指向[Data_Asset](capi-rdb-data-asset.md)对象的指针。 |
+| [const Data_Asset * const ](capi-rdb-data-asset.md)* val | 表示指向[Data_Asset](capi-rdb-data-asset.md)对象的指针。 |
 | size_t length | 该参数是输入参数，表示开发者传入的[Data_Asset](capi-rdb-data-asset.md)对象数组元素的个数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutFloatVector()
 
@@ -338,8 +316,6 @@ int OH_Value_PutFloatVector(OH_Data_Value *value, const float *val, size_t lengt
 **描述：**
 
 添加float数组类型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -355,7 +331,7 @@ int OH_Value_PutFloatVector(OH_Data_Value *value, const float *val, size_t lengt
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutUnlimitedInt()
 
@@ -366,8 +342,6 @@ int OH_Value_PutUnlimitedInt(OH_Data_Value *value, int sign, const uint64_t *tru
 **描述：**
 
 添加任意长度的整型数组数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -384,7 +358,7 @@ int OH_Value_PutUnlimitedInt(OH_Data_Value *value, int sign, const uint64_t *tru
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_GetType()
 
@@ -395,8 +369,6 @@ int OH_Value_GetType(OH_Data_Value *value, OH_ColumnType *type)
 **描述：**
 
 获取数据类型。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -411,7 +383,7 @@ int OH_Value_GetType(OH_Data_Value *value, OH_ColumnType *type)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_IsNull()
 
@@ -422,8 +394,6 @@ int OH_Value_IsNull(OH_Data_Value *value, bool *val)
 **描述：**
 
 检查数据是否为空。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -438,7 +408,7 @@ int OH_Value_IsNull(OH_Data_Value *value, bool *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_GetInt()
 
@@ -449,8 +419,6 @@ int OH_Value_GetInt(OH_Data_Value *value, int64_t *val)
 **描述：**
 
 获取整型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -465,7 +433,7 @@ int OH_Value_GetInt(OH_Data_Value *value, int64_t *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetReal()
 
@@ -476,8 +444,6 @@ int OH_Value_GetReal(OH_Data_Value *value, double *val)
 **描述：**
 
 获取REAL类型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -492,7 +458,7 @@ int OH_Value_GetReal(OH_Data_Value *value, double *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetText()
 
@@ -503,8 +469,6 @@ int OH_Value_GetText(OH_Data_Value *value, const char **val)
 **描述：**
 
 获取字符串类型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -519,7 +483,7 @@ int OH_Value_GetText(OH_Data_Value *value, const char **val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetBlob()
 
@@ -530,8 +494,6 @@ int OH_Value_GetBlob(OH_Data_Value *value, const uint8_t **val, size_t *length)
 **描述：**
 
 获取BLOB类型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -547,7 +509,7 @@ int OH_Value_GetBlob(OH_Data_Value *value, const uint8_t **val, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetAsset()
 
@@ -559,8 +521,6 @@ int OH_Value_GetAsset(OH_Data_Value *value, Data_Asset *val)
 
 获取ASSET类型数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -568,13 +528,13 @@ int OH_Value_GetAsset(OH_Data_Value *value, Data_Asset *val)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。 |
-| Data_Asset *val | 表示指向[Data_Asset](capi-rdb-data-asset.md)对象的指针。 <br>需要申请数据内存。 <br>此函数仅填充数据。否则执行失败。 |
+| [Data_Asset](capi-rdb-data-asset.md) *val | 表示指向[Data_Asset](capi-rdb-data-asset.md)对象的指针。 <br>需要申请数据内存。 <br>此函数仅填充数据。否则执行失败。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetAssetsCount()
 
@@ -585,8 +545,6 @@ int OH_Value_GetAssetsCount(OH_Data_Value *value, size_t *length)
 **描述：**
 
 获取ASSETS类型数据的大小。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -601,7 +559,7 @@ int OH_Value_GetAssetsCount(OH_Data_Value *value, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetAssets()
 
@@ -613,8 +571,6 @@ int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, siz
 
 获取ASSETS类型数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -622,7 +578,7 @@ int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, siz
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。 |
-| Data_Asset **val | 表示指向[Data_Asset](capi-rdb-data-asset.md)对象的指针。 <br>需要申请数据内存。 <br>此函数仅填充数据。否则执行失败。 |
+| [Data_Asset](capi-rdb-data-asset.md) **val | 表示指向[Data_Asset](capi-rdb-data-asset.md)对象的指针。 <br>需要申请数据内存。 <br>此函数仅填充数据。否则执行失败。 |
 | size_t inLen | 表示val的大小。可以通过[OH_Values_GetAssetsCount](capi-oh-data-values-h.md#oh_values_getassetscount)获取。 |
 | size_t *outLen | 一个输出参数，表示实际获取的数据大小。 |
 
@@ -630,7 +586,7 @@ int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, siz
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 **参考：**
 
@@ -647,8 +603,6 @@ int OH_Value_GetFloatVectorCount(OH_Data_Value *value, size_t *length)
 
 获取float数组类型数据的大小。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -662,7 +616,7 @@ int OH_Value_GetFloatVectorCount(OH_Data_Value *value, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示参数无效。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示参数无效。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetFloatVector()
 
@@ -673,8 +627,6 @@ int OH_Value_GetFloatVector(OH_Data_Value *value, float *val, size_t inLen, size
 **描述：**
 
 获取float数组类型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -691,7 +643,7 @@ int OH_Value_GetFloatVector(OH_Data_Value *value, float *val, size_t inLen, size
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 **参考：**
 
@@ -708,8 +660,6 @@ int OH_Value_GetUnlimitedIntBand(OH_Data_Value *value, size_t *length)
 
 获取任意长度的整型数据的大小。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -723,7 +673,7 @@ int OH_Value_GetUnlimitedIntBand(OH_Data_Value *value, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetUnlimitedInt()
 
@@ -734,8 +684,6 @@ int OH_Value_GetUnlimitedInt(OH_Data_Value *value, int *sign, uint64_t *trueForm
 **描述：**
 
 获取任意长度的整型数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -753,7 +701,7 @@ int OH_Value_GetUnlimitedInt(OH_Data_Value *value, int *sign, uint64_t *trueForm
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 **参考：**
 

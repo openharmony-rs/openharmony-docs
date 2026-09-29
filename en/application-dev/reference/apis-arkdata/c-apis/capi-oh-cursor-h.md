@@ -6,8 +6,6 @@ Provides functions and enumerations related to the resultSet.
 
 **Library**: libnative_rdb_ndk.z.so
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 10
 
 **Related module**: [RDB](capi-rdb.md)
@@ -39,8 +37,6 @@ int OH_Cursor_GetFloatVectorCount(OH_Cursor *cursor, int32_t columnIndex, size_t
 
 Get float array data size of the requested column from OH_Cursor object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -55,7 +51,7 @@ Get float array data size of the requested column from OH_Cursor object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_STEP_RESULT_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) the result set has been closed.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_STEP_RESULT_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) the result set has been closed. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
 
 ### OH_Cursor_GetFloatVector()
 
@@ -66,8 +62,6 @@ int OH_Cursor_GetFloatVector(OH_Cursor *cursor, int32_t columnIndex, float *val,
 **Description**
 
 Obtains the value of the requested column as a float array.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -85,7 +79,7 @@ Obtains the value of the requested column as a float array.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_STEP_RESULT_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) the result set has been closed.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_STEP_RESULT_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) the result set has been closed. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
 
 **Reference**:
 

@@ -354,7 +354,7 @@ NODE_TEXT_CONTENT_WITH_STYLED_STRING
 
 **描述：**
 
-Text组件使用格式化字符串对象设置文本内容属性，支持属性设置、属性重置和属性获取接口。 配置自定义{@link OH_Drawing_Typography}对象到Text组件，会跳过文本控件的布局测算阶段。注意事项： 1. 需要保证OH_ArkUI_StyledString对象、OH_Drawing_Typography对象的生命周期跟随Text组件生命周期， Text组件析构时重置OH_ArkUI_StyledString对象，否则会导致应用出现空指针崩溃。 2. 保证OH_Drawing_TypographyLayout方法调用时序在Text组件的布局测算之前。 3. 释放OH_ArkUI_StyledString对象、OH_Drawing_Typography对象时，需要同步调用Text组件的reset方法，否则会导致应用出现空指针崩溃。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.object：表示 ArkUI_StyledString 格式化字符串数据，参数类型为[ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.object：表示 ArkUI_StyledString 格式化字符串数据，参数类型为[ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)。</li> </ul>
+Text组件使用格式化字符串对象设置文本内容属性，支持属性设置、属性重置和属性获取接口。 配置自定义[OH_Drawing_Typography](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-typography.md)对象到Text组件，会跳过文本控件的布局测算阶段。注意事项： 1. 需要保证OH_ArkUI_StyledString对象、OH_Drawing_Typography对象的生命周期跟随Text组件生命周期， Text组件析构时重置OH_ArkUI_StyledString对象，否则会导致应用出现空指针崩溃。 2. 保证OH_Drawing_TypographyLayout方法调用时序在Text组件的布局测算之前。 3. 释放OH_ArkUI_StyledString对象、OH_Drawing_Typography对象时，需要同步调用Text组件的reset方法，否则会导致应用出现空指针崩溃。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：表示 ArkUI_StyledString 格式化字符串数据，参数类型为[ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：表示 ArkUI_StyledString 格式化字符串数据，参数类型为[ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)。</li> </ul>
 
 **起始版本：** 12
 
@@ -558,7 +558,7 @@ NODE_TEXT_TEXT_SELECTION = 1046
 
 **描述：**
 
-设置文本选择区域，设置后选中区域将被高亮显示，支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32：文本选择的起始位置。取值范围：[0, 文本长度]，必须是有效的文本索引。</li><br><li>.value[1].i32：文本选择的结束位置。取值范围：[0, 文本长度]，必须是有效的文本索引。</li><br><li>.object：选择选项。参数类型为{@link ArkUI_SelectionOptions}。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].i32：文本选择的起始位置。</li><br><li>.value[1].i32：文本选择的结束位置。</li> <li>.object：选择选项。参数类型为{@link ArkUI_SelectionOptions}。</li> </ul>
+设置文本选择区域，设置后选中区域将被高亮显示，支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：文本选择的起始位置。取值范围：[0, 文本长度]，必须是有效的文本索引。</li> <li>.value[1].i32：文本选择的结束位置。取值范围：[0, 文本长度]，必须是有效的文本索引。</li> <li>.object：选择选项。参数类型为ArkUI_SelectionOptions。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：文本选择的起始位置。</li> <li>.value[1].i32：文本选择的结束位置。</li> <li>.object：选择选项。参数类型为ArkUI_SelectionOptions。</li> </ul>
 
 **起始版本：** 23
 
@@ -810,7 +810,7 @@ NODE_IMAGE_SPAN_COLOR_FILTER = 3004
 
 **描述：**
 
-图片滤镜效果属性，支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].f32 ~ .value[19].f32：表示5x4颜色滤镜矩阵数组，共20个浮点数元素，按行优先顺序排列。矩阵前4列分别对应红（R）、绿（G）、蓝（B）、透明度（A）通道的颜色变换系数，第5列为各通道的偏移量。用于对图片进行颜色变换处理，如亮度、对比度、色调调整等。</li><br><li>.size：表示滤镜数组大小为5x4。</li><br><li>.object：颜色滤波器指针，参数类型为{@link OH_Drawing_ColorFilter}。<br>.object和.size参数只能二选一，不可同时设置。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].f32 ~ .value[19].f32：表示滤镜矩阵数组。</li> <li>.size：表示滤镜数组大小为5x4。</li> <li>.object：颜色滤波器指针，参数类型为{@link OH_Drawing_ColorFilter}。</li> </ul>
+图片滤镜效果属性，支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 ~ .value[19].f32：表示5x4颜色滤镜矩阵数组，共20个浮点数元素，按行优先顺序排列。矩阵前4列分别对应红（R）、绿（G）、蓝（B）、透明度（A）通道的颜色变换系数，第5列为各通道的偏移量。用于对图片进行颜色变换处理，如亮度、对比度、色调调整等。</li> <li>.size：表示滤镜数组大小为5x4。</li> <li>.object：颜色滤波器指针，参数类型为[OH_Drawing_ColorFilter](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-colorfilter.md)。 .object和.size参数只能二选一，不可同时设置。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 ~ .value[19].f32：表示滤镜矩阵数组。</li> <li>.size：表示滤镜数组大小为5x4。</li> <li>.object：颜色滤波器指针，参数类型为[OH_Drawing_ColorFilter](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-colorfilter.md)。</li> </ul>
 
 **起始版本：** 22
 
@@ -834,7 +834,7 @@ NODE_IMAGE_SPAN_RESIZABLE = 3006
 
 **描述：**
 
-imageSpan组件图片拉伸时，支持通过设置边框大小或者使用矩阵方格对象调整其大小，支持属性设置、属性重置和属性获取接口。接口调用时需要保证设置和获取的参数类型是相同的。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].f32：左边缘宽度，单位为vp。</li><br><li>.value[1].f32：上边缘宽度，单位为vp。</li><br><li>.value[2].f32：右边缘宽度，单位为vp。</li><br><li>.value[3].f32：下边缘宽度，单位为vp。</li><br><li>.object：参数类型为{@link OH_Drawing_Lattice}。</li><br></ul><br>**属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul><br><li>.value[0].f32：左边缘宽度，单位为vp。</li><br><li>.value[1].f32：上边缘宽度，单位为vp。</li><br><li>.value[2].f32：右边缘宽度，单位为vp。</li><br><li>.value[3].f32：下边缘宽度，单位为vp。</li> <li>.object：参数类型为{@link OH_Drawing_Lattice}。</li> </ul>
+imageSpan组件图片拉伸时，支持通过设置边框大小或者使用矩阵方格对象调整其大小，支持属性设置、属性重置和属性获取接口。接口调用时需要保证设置和获取的参数类型是相同的。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：左边缘宽度，单位为vp。</li> <li>.value[1].f32：上边缘宽度，单位为vp。</li> <li>.value[2].f32：右边缘宽度，单位为vp。</li> <li>.value[3].f32：下边缘宽度，单位为vp。</li> <li>.object：参数类型为[OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md)。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：左边缘宽度，单位为vp。</li> <li>.value[1].f32：上边缘宽度，单位为vp。</li> <li>.value[2].f32：右边缘宽度，单位为vp。</li> <li>.value[3].f32：下边缘宽度，单位为vp。</li> <li>.object：参数类型为[OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md)。</li> </ul>
 
 **起始版本：** 26.0.1
 

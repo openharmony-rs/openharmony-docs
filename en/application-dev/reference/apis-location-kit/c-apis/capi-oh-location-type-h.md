@@ -6,8 +6,6 @@ Declares the common location attributes.
 
 **Library**: liblocation_ndk.so
 
-**System capability**: SystemCapability.Location.Location.Core
-
 **Since**: 13
 
 **Related module**: [Location](capi-location.md)
@@ -18,7 +16,7 @@ Declares the common location attributes.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Location_BasicInfo](capi-location-location-basicinfo.md) | Location_BasicInfo | Defines the location information. |
+| [Location_BasicInfo](capi-location-location-basicinfo.md) | - | Defines the location information. |
 | [Location_Info](capi-location-location-info.md) | Location_Info | Define the structure of location information. |
 | [Location_RequestConfig](capi-location-location-requestconfig.md) | Location_RequestConfig | Define the structure of location request parameters. |
 
@@ -50,7 +48,7 @@ Declares the common location attributes.
 
 | Name | Description |
 | -- | -- |
-| void (*Location_InfoCallback)(Location_Info* location, void* userData) | Defines the callback function used to report location data.<br>**Since**: 13 |
+| void (*Location_InfoCallback)(Location_Info* location, void* userData) | Defines the callback function used to report location data.<br>**Since**: 13<br>**System capability**: SystemCapability.Location.Location.Core |
 
 ## Enum type description
 
@@ -64,18 +62,16 @@ enum Location_ResultCode
 
 Enumerates the location result codes.
 
-**System capability**: SystemCapability.Location.Location.Core
-
 **Since**: 13
 
 | Enum item | Description |
 | -- | -- |
-| LOCATION_SUCCESS = 0 | The operation is successful. |
-| LOCATION_PERMISSION_DENIED = 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| LOCATION_INVALID_PARAM = 401 | Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range. |
-| LOCATION_NOT_SUPPORTED = 801 | Capability not supported. Failed to call function due to limited device capabilities. |
-| LOCATION_SERVICE_UNAVAILABLE = 3301000 | The location service is unavailable. Possible reasons: Abnormal startup of location services. |
-| LOCATION_SWITCH_OFF = 3301100 | The location switch is off. |
+| LOCATION_SUCCESS = 0 | &nbsp;The operation is successful. |
+| LOCATION_PERMISSION_DENIED = 201 | &nbsp;Permission verification failed. The application does not have the permission required to call the API. |
+| LOCATION_INVALID_PARAM = 401 | &nbsp;Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range. |
+| LOCATION_NOT_SUPPORTED = 801 | &nbsp;Capability not supported. Failed to call function due to limited device capabilities. |
+| LOCATION_SERVICE_UNAVAILABLE = 3301000 | &nbsp;The location service is unavailable. Possible reasons: Abnormal startup of location services. |
+| LOCATION_SWITCH_OFF = 3301100 | &nbsp;The location switch is off. |
 
 ### Location_UseScene
 
@@ -86,8 +82,6 @@ enum Location_UseScene
 **Description**
 
 Enumeration values of use scenarios.
-
-**System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
 
@@ -108,8 +102,6 @@ enum Location_PowerConsumptionScene
 
 Enumerates the power consumption scenario.
 
-**System capability**: SystemCapability.Location.Location.Core
-
 **Since**: 13
 
 | Enum item | Description |
@@ -127,8 +119,6 @@ enum Location_SourceType
 **Description**
 
 Enumerates the source type of location.
-
-**System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
 
@@ -152,8 +142,6 @@ bool OH_LocationInfo_IsFromMock(Location_Info* location)
 
 Indicates whether the location was obtained from the mock location function.
 
-**System capability**: SystemCapability.Location.Location.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -166,7 +154,7 @@ Indicates whether the location was obtained from the mock location function.
 
 | Type | Description |
 | -- | -- |
-| bool | true if the location was obtained from the mock location function.  Otherwise, the location originates from the system's real positioning result. |
+| bool | true if the location was obtained from the mock location function. Otherwise, the location originates from the system's real positioning result. |
 
 ### OH_LocationInfo_GetBasicInfo()
 
@@ -177,8 +165,6 @@ Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)
 **Description**
 
 Obtain basic location information.
-
-**System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
 
@@ -192,7 +178,7 @@ Obtain basic location information.
 
 | Type | Description |
 | -- | -- |
-| [Location_BasicInfo](capi-location-location-basicinfo.md) | Return the basic information structure of the location.\n  For a detailed definition, please refer to [Location_BasicInfo](capi-location-location-basicinfo.md).\n |
+| [Location_BasicInfo](capi-location-location-basicinfo.md) | Return the basic information structure of the location.\n For a detailed definition, please refer to [Location_BasicInfo](capi-location-location-basicinfo.md).\n |
 
 ### OH_LocationInfo_GetAdditionalInfo()
 
@@ -203,8 +189,6 @@ Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, c
 **Description**
 
 Obtain additional information from the location information.
-
-**System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
 
@@ -220,7 +204,7 @@ Obtain additional information from the location information.
 
 | Type | Description |
 | -- | -- |
-| [Location_ResultCode](capi-oh-location-type-h.md#location_resultcode) | Location functions result code.\n      For a detailed definition, please refer to [Location_ResultCode](capi-oh-location-type-h.md#location_resultcode).\n<br>    {@link LOCAION_SUCCESS} Successfully obtained additional information.\n<br>    [LOCATION_INVALID_PARAM](capi-oh-location-type-h.md#location_resultcode) 1.The input parameter location or additionalInfo is a null pointer.\n          2.The input parameter length is too small to store additional information.\n |
+| [Location_ResultCode](capi-oh-location-type-h.md#location_resultcode) | Location functions result code.\n For a detailed definition, please refer to [Location_ResultCode](capi-oh-location-type-h.md#location_resultcode).\n LOCAION_SUCCESS Successfully obtained additional information.\n [LOCATION_INVALID_PARAM](capi-oh-location-type-h.md#location_resultcode) 1.The input parameter location or additionalInfo is a null pointer.\n 2.The input parameter length is too small to store additional information.\n |
 
 ### Location_InfoCallback()
 
@@ -232,16 +216,14 @@ typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)
 
 Defines the callback function used to report location data.
 
-**System capability**: SystemCapability.Location.Location.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [Location_Info](capi-location-location-info.md)\* location | - Pointer to the [Location_Info](capi-location-location-info.md) instance. Carry the latest location information. The memory of the location instance is recycled at the end of [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback). Before that, call [OH_LocationInfo_GetBasicInfo](capi-oh-location-type-h.md#oh_locationinfo_getbasicinfo) and other interfaces to obtain location information. |
-| void\* userData | - Pointer to an application data structure, this parameter is passed in through [OH_LocationRequestConfig_SetCallback](capi-oh-location-type-h.md#oh_locationrequestconfig_setcallback). |
+| [Location_Info](capi-location-location-info.md)* location | - Pointer to the [Location_Info](capi-location-location-info.md) instance. Carry the latest location information. The memory of the location instance is recycled at the end of [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback). Before that, call [OH_LocationInfo_GetBasicInfo](capi-oh-location-type-h.md#oh_locationinfo_getbasicinfo) and other interfaces to obtain location information. |
+| void* userData | - Pointer to an application data structure, this parameter is passed in through [OH_LocationRequestConfig_SetCallback](capi-oh-location-type-h.md#oh_locationrequestconfig_setcallback). |
 
 ### OH_Location_CreateRequestConfig()
 
@@ -253,15 +235,13 @@ Location_RequestConfig* OH_Location_CreateRequestConfig(void)
 
 Create a location request parameter structure instance.
 
-**System capability**: SystemCapability.Location.Location.Core
-
 **Since**: 13
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [Location_RequestConfig*](capi-location-location-requestconfig.md) | Return a pointer to the {@ link Location_RequestConfig} instance. \n  If NULL is returned, it indicates that the creation failed. \n  The possible reason is that the application address space is full,\n  resulting in the inability to allocate space. \n |
+| [Location_RequestConfig*](capi-location-location-requestconfig.md) | Return a pointer to the {@ link Location_RequestConfig} instance. \n If NULL is returned, it indicates that the creation failed. \n The possible reason is that the application address space is full,\n resulting in the inability to allocate space. \n |
 
 ### OH_Location_DestroyRequestConfig()
 
@@ -272,8 +252,6 @@ void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)
 **Description**
 
 Destroy the location request parameter instance and reclaim memory.
-
-**System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
 
@@ -292,8 +270,6 @@ void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig,
 **Description**
 
 Set the use scenario in the location request parameter. Prioritize useScene in the location request parameter [Location_RequestConfig](capi-location-location-requestconfig.md). If useScene is set, powerConsumptionScene becomes invalid. If useScene is not set and powerConsumptionScene is set, this parameter takes effect. If both parameters are not set, the default useScene is [LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](capi-oh-location-type-h.md#location_usescene), and the powerConsumptionCenario parameter is invalid.
-
-**System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
 
@@ -314,8 +290,6 @@ void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* r
 
 Set the power consumption scenario in the location request parameters.
 
-**System capability**: SystemCapability.Location.Location.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -335,8 +309,6 @@ void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig,
 
 Set the location reporting interval in the location request parameter.
 
-**System capability**: SystemCapability.Location.Location.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -355,8 +327,6 @@ void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig,
 **Description**
 
 Set up a callback function for receiving location information.
-
-**System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
 

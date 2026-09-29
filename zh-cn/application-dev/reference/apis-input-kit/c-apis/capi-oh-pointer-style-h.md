@@ -6,8 +6,6 @@
 
 **库：** libohinput.so
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
 **起始版本：** 22
 
 **相关模块：** [input](capi-input.md)
@@ -37,8 +35,6 @@ enum Input_PointerStyle
 **描述：**
 
 鼠标光标样式。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **起始版本：** 22
 
@@ -96,6 +92,6 @@ enum Input_PointerStyle
 | LASER_CURSOR = 49 | 悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接设置。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。<br>**起始版本：** 22 |
 | LASER_CURSOR_DOT = 50 | 点击光标。手写笔进入空鼠模式时使用该光标，无法直接设置。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。<br>**起始版本：** 22 |
 | LASER_CURSOR_DOT_RED = 51 | 激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接设置。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。<br>**起始版本：** 22 |
-| DEVELOPER_DEFINED_ICON = -100 | 自定义光标，开发者可使用{@link OH_Input_SetCustomCursor}设置自定义光标，不支持使用{@link OH_Input_SetPointerStyle}直接设置。<br>**起始版本：** 22 |
+| DEVELOPER_DEFINED_ICON = -100 | 自定义光标，开发者可使用OH_Input_SetCustomCursor设置自定义光标，不支持使用OH_Input_SetPointerStyle直接设置。<br>**起始版本：** 22 |
 
 

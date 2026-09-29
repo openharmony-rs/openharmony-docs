@@ -6,9 +6,7 @@ Provides database transaction related functions and enumerations.
 
 **Library**: libnative_rdb_ndk.z.so
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since**: 10
+**Since**: 18
 
 **Related module**: [RDB](capi-rdb.md)
 
@@ -64,8 +62,6 @@ enum OH_RDB_TransType
 
 Indicates relation database transaction type.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 | Enum item | Description |
@@ -88,15 +84,13 @@ OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void)
 
 Creates an OH_RDB_TransOptions instance object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_RDB_TransOptions *](capi-rdb-oh-rdb-transoptions.md) | Returns a pointer to OH_RDB_TransOptions instance when the execution is successful.  Otherwise, nullptr is returned. The memory must be released through the OH_RdbTrans_DestroyOptions  interface after the use is complete. |
+| [OH_RDB_TransOptions *](capi-rdb-oh-rdb-transoptions.md) | Returns a pointer to OH_RDB_TransOptions instance when the execution is successful. Otherwise, nullptr is returned. The memory must be released through the OH_RdbTrans_DestroyOptions interface after the use is complete. |
 
 **Reference**:
 
@@ -113,8 +107,6 @@ int OH_RdbTrans_DestroyOptions(OH_RDB_TransOptions *options)
 
 Destroys an OH_RDB_TransOptions instance object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -127,7 +119,7 @@ Destroys an OH_RDB_TransOptions instance object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_RdbTransOption_SetType()
 
@@ -138,8 +130,6 @@ int OH_RdbTransOption_SetType(OH_RDB_TransOptions *options, OH_RDB_TransType typ
 **Description**
 
 Sets integer data to the options object.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
@@ -154,7 +144,7 @@ Sets integer data to the options object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_RdbTrans_Commit()
 
@@ -166,8 +156,6 @@ int OH_RdbTrans_Commit(OH_Rdb_Transaction *trans)
 
 Commits a transaction of a relational database.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -180,7 +168,7 @@ Commits a transaction of a relational database.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: SQLite: Attempt to write a readonly database.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: SQLite: Attempt to write a readonly database. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. |
 
 ### OH_RdbTrans_Rollback()
 
@@ -192,8 +180,6 @@ int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans)
 
 Roll back a transaction of a relational database.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -206,7 +192,7 @@ Roll back a transaction of a relational database.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. |
 
 ### OH_RdbTrans_Insert()
 
@@ -218,8 +204,6 @@ int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VB
 
 Inserts a row of data into the target table.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -228,14 +212,14 @@ Inserts a row of data into the target table.
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
 | const char *table | Represents the target table. |
-| const OH_VBucket *row | Represents the row data to be inserted into the table. |
+| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | Represents the row data to be inserted into the table. |
 | int64_t *rowId | Represents row line number when insert successfully. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
 
 ### OH_RdbTrans_InsertWithConflictResolution()
 
@@ -247,8 +231,6 @@ int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const ch
 
 Inserts a row of data into the target table and support conflict resolution.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -257,15 +239,15 @@ Inserts a row of data into the target table and support conflict resolution.
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
 | const char *table | Represents the target table. |
-| const OH_VBucket *row | Represents the row data to be inserted into the table. |
-| Rdb_ConflictResolution resolution | Represents the resolution when conflict occurs. |
+| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | Represents the row data to be inserted into the table. |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | Represents the resolution when conflict occurs. |
 | int64_t *rowId | Represents row line number when insert successfully. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch.          Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation. |
 
 ### OH_RdbTrans_BatchInsert()
 
@@ -277,8 +259,6 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 
 Inserts a batch of data into the target table.<br> A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code RDB_E_INVALID_ARGS is returned. The product of the number of inserted data records and the size of the union of all fields in the inserted data equals the number of parameters. For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760). Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -287,15 +267,15 @@ Inserts a batch of data into the target table.<br> A maximum of 32766 parameters
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
 | const char *table | Represents the target table. |
-| const OH_Data_VBuckets *rows | Represents the rows data to be inserted into the table. |
-| Rdb_ConflictResolution resolution | Represents the resolution when conflict occurs. |
+| [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | Represents the rows data to be inserted into the table. |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | Represents the resolution when conflict occurs. |
 | int64_t *changes | Represents the number of successful insertions. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch.          Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation. |
 
 ### OH_RdbTrans_Update()
 
@@ -307,8 +287,6 @@ int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const O
 
 Updates data in the database based on specified conditions.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -316,15 +294,15 @@ Updates data in the database based on specified conditions.
 | Parameter | Description |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
-| const OH_VBucket *row | Represents the row data to be updated into the table. |
-| const OH_Predicates *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
+| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | Represents the row data to be updated into the table. |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
 | int64_t *changes | Represents the number of successful insertions. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
 
 ### OH_RdbTrans_UpdateWithConflictResolution()
 
@@ -336,8 +314,6 @@ int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH
 
 Updates data in the database based on specified conditions and support conflict resolution.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 20
 
 **Parameters**:
@@ -345,16 +321,16 @@ Updates data in the database based on specified conditions and support conflict 
 | Parameter | Description |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
-| const OH_VBucket *row | Represents the row data to be updated into the table. |
-| const OH_Predicates *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
-| Rdb_ConflictResolution resolution | Represents the resolution when conflict occurs. |
+| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | Represents the row data to be updated into the table. |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | Represents the resolution when conflict occurs. |
 | int64_t *changes | Represents the number of successful insertions. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch.          Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation. |
 
 ### OH_RdbTrans_Delete()
 
@@ -366,8 +342,6 @@ int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicate
 
 Deletes data from the database based on specified conditions
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -375,14 +349,14 @@ Deletes data from the database based on specified conditions
 | Parameter | Description |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
-| const OH_Predicates *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
 | int64_t *changes | Represents the number of successfully Deleted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
 
 ### OH_RdbTrans_QueryWithoutRowCount()
 
@@ -394,8 +368,6 @@ OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_
 
 Queries data in the database based on specified conditions without row count.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -403,7 +375,7 @@ Queries data in the database based on specified conditions without row count.
 | Parameter | Description |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
-| const OH_Predicates *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
 | const char * const columns[] | Represents the columns to query. If the value is empty array, the query applies to all columns. |
 | int len | Represents the number of columns elements. |
 
@@ -411,7 +383,7 @@ Queries data in the database based on specified conditions without row count.
 
 | Type | Description |
 | -- | -- |
-| OH_Cursor * | If the operation is successful, a pointer to the instance of the OH_Cursor structure is returned.  If database has closed or the database does not respond, nullptr is returned. |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | If the operation is successful, a pointer to the instance of the OH_Cursor structure is returned. If database has closed or the database does not respond, nullptr is returned. |
 
 ### OH_RdbTrans_Query()
 
@@ -423,8 +395,6 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 
 Queries data in the database based on specified conditions.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -432,7 +402,7 @@ Queries data in the database based on specified conditions.
 | Parameter | Description |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
-| const OH_Predicates *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents the specified update condition by the instance object of OH_Predicates. |
 | const char *columns[] | Represents the columns to query. If the value is empty array, the query applies to all columns. |
 | int len | Represents the number of columns elements. |
 
@@ -440,7 +410,7 @@ Queries data in the database based on specified conditions.
 
 | Type | Description |
 | -- | -- |
-| OH_Cursor * | If the operation is successful, a pointer to the instance of the OH_Cursor structure is returned.  If database has closed or the database does not respond, nullptr is returned. |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | If the operation is successful, a pointer to the instance of the OH_Cursor structure is returned. If database has closed or the database does not respond, nullptr is returned. |
 
 ### OH_RdbTrans_QuerySql()
 
@@ -452,8 +422,6 @@ OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, cons
 
 Queries data in the database based on SQL statement.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -462,13 +430,13 @@ Queries data in the database based on SQL statement.
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
 | const char *sql | Represents the SQL statement to execute. |
-| const OH_Data_Values *args | Represents a pointer to an instance of OH_Data_Values and  it is the selection arguments. |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | Represents a pointer to an instance of OH_Data_Values and  it is the selection arguments. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Cursor * | If the operation is successful, a pointer to the instance of the OH_Cursor structure is returned.  If database has closed or the database does not respond, nullptr is returned. |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | If the operation is successful, a pointer to the instance of the OH_Cursor structure is returned. If database has closed or the database does not respond, nullptr is returned. |
 
 ### OH_RdbTrans_QuerySqlWithoutRowCount()
 
@@ -480,8 +448,6 @@ OH_Cursor *OH_RdbTrans_QuerySqlWithoutRowCount(OH_Rdb_Transaction *trans, const 
 
 Queries data in the database based on SQL statement without row count.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -490,13 +456,13 @@ Queries data in the database based on SQL statement without row count.
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
 | const char *sql | Represents the SQL statement to execute. |
-| const OH_Data_Values *args | Represents a pointer to an instance of OH_Data_Values and  it is the selection arguments. |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | Represents a pointer to an instance of OH_Data_Values and  it is the selection arguments. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Cursor * | If the operation is successful, a pointer to the instance of the OH_Cursor structure is returned.  If database has closed or the database does not respond, nullptr is returned. |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | If the operation is successful, a pointer to the instance of the OH_Cursor structure is returned. If database has closed or the database does not respond, nullptr is returned. |
 
 ### OH_RdbTrans_Execute()
 
@@ -508,8 +474,6 @@ int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Dat
 
 Executes an SQL statement that contains specified parameters.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -518,14 +482,14 @@ Executes an SQL statement that contains specified parameters.
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
 | const char *sql | Represents the SQL statement to execute. |
-| const OH_Data_Values *args | Represents the values of the parameters in the SQL statement. |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | Represents the values of the parameters in the SQL statement. |
 | OH_Data_Value **result | Represents a pointer to OH_Data_Value instance when the execution is successful. The memory must be released through the OH_Value_Destroy interface after the use is complete. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory.          Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) database common error. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_PERM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Access permission denied. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_NOMEM](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is out of memory. Returns [RDB_E_SQLITE_READONLY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Attempt to write a readonly database. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. |
 
 **Reference**:
 
@@ -542,8 +506,6 @@ int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans)
 
 Destroys an OH_Rdb_Transaction instance object.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 18
 
 **Parameters**:
@@ -556,7 +518,7 @@ Destroys an OH_Rdb_Transaction instance object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
+| int | Returns the error code. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_RdbTrans_BatchInsertWithReturning()
 
@@ -568,8 +530,6 @@ int OH_RdbTrans_BatchInsertWithReturning(OH_Rdb_Transaction *trans, const char *
 
 Inserts a batch of data into the target table and output change info to context.<br> A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code RDB_E_INVALID_ARGS is returned. The product of the number of inserted data records and the size of the union of all fields in the inserted data equals the number of parameters. For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760). Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -578,15 +538,15 @@ Inserts a batch of data into the target table and output change info to context.
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
 | const char *table | Represents the target table. |
-| const OH_Data_VBuckets *rows | Represents the rows data to be inserted into the table. |
-| Rdb_ConflictResolution resolution | Represents the resolution when conflict occurs. |
-| OH_RDB_ReturningContext *context | Represents a pointer to a pointer to an [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance. |
+| [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | Represents the rows data to be inserted into the table. |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | Represents the resolution when conflict occurs. |
+| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Represents a pointer to a pointer to an [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_NOT_SUPPORTED](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for not support.          Returns [RDB_E_DATABASE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for database busy.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch.          Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation.          Returns [RDB_E_SQLITE_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite error.              Possible causes: syntax error, such as a table or column not existing.  Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_NOT_SUPPORTED](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for not support. Returns [RDB_E_DATABASE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for database busy. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation. Returns [RDB_E_SQLITE_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite error. Possible causes: syntax error, such as a table or column not existing. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -603,8 +563,6 @@ int OH_RdbTrans_UpdateWithReturning(OH_Rdb_Transaction *trans, OH_VBucket *row, 
 
 Updates data in the database based on specified conditions and output change info to context.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -612,16 +570,16 @@ Updates data in the database based on specified conditions and output change inf
 | Parameter | Description |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
-| OH_VBucket *row | Represents the row data to be updated into the table. |
-| OH_Predicates *predicates | Represents a pointer to an {link OH_Predicates} instance. |
-| Rdb_ConflictResolution resolution | Represents the resolution when conflict occurs. |
-| OH_RDB_ReturningContext *context | Represents a pointer to a pointer to an [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance. |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *row | Represents the row data to be updated into the table. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an {link OH_Predicates} instance. |
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | Represents the resolution when conflict occurs. |
+| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Represents a pointer to a pointer to an [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_NOT_SUPPORTED](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for not support.          Returns [RDB_E_EMPTY_VALUES_BUCKET](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for a values bucket is empty.          Returns [RDB_E_DATABASE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for database busy.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch.          Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation.          Returns [RDB_E_SQLITE_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite error.              Possible causes: syntax error, such as a table or column not existing.  Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_NOT_SUPPORTED](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for not support. Returns [RDB_E_EMPTY_VALUES_BUCKET](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for a values bucket is empty. Returns [RDB_E_DATABASE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for database busy. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. Returns [RDB_E_SQLITE_CONSTRAINT](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Abort due to constraint violation. Returns [RDB_E_SQLITE_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite error. Possible causes: syntax error, such as a table or column not existing. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 
@@ -638,8 +596,6 @@ int OH_RdbTrans_DeleteWithReturning(OH_Rdb_Transaction *trans, OH_Predicates *pr
 
 Deletes data from the database based on specified conditions and output change info to context.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -647,14 +603,14 @@ Deletes data from the database based on specified conditions and output change i
 | Parameter | Description |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Represents a pointer to an instance of OH_Rdb_Transaction. |
-| OH_Predicates *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
-| OH_RDB_ReturningContext *context | Represents a pointer to a pointer to an [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance. |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Represents a pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. |
+| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Represents a pointer to a pointer to an [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter.          Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit.          Returns [RDB_E_NOT_SUPPORTED](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for not support.          Returns [RDB_E_DATABASE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for database busy.          Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed.          Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full.          Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted.          Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked.          Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked.          Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred.          Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit.          Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch.          Returns [RDB_E_SQLITE_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite error.              Possible causes: syntax error, such as a table or column not existing.  Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+| int | Returns the status code of the execution. Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. Returns [RDB_E_WAL_SIZE_OVER_LIMIT](capi-relational-store-error-code-h.md#oh_rdb_errcode) the WAL file size over default limit. Returns [RDB_E_NOT_SUPPORTED](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for not support. Returns [RDB_E_DATABASE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) The error code for database busy. Returns [RDB_E_ALREADY_CLOSED](capi-relational-store-error-code-h.md#oh_rdb_errcode) database already closed. Returns [RDB_E_SQLITE_FULL](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database is full. Returns [RDB_E_SQLITE_CORRUPT](capi-relational-store-error-code-h.md#oh_rdb_errcode) database corrupted. Returns [RDB_E_SQLITE_BUSY](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: The database file is locked. Returns [RDB_E_SQLITE_LOCKED](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: A table in the database is locked. Returns [RDB_E_SQLITE_IOERR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Some kind of disk I/O error occurred. Returns [RDB_E_SQLITE_TOO_BIG](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: TEXT or BLOB exceeds size limit. Returns [RDB_E_SQLITE_MISMATCH](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite: Data type mismatch. Returns [RDB_E_SQLITE_ERROR](capi-relational-store-error-code-h.md#oh_rdb_errcode) SQLite error. Possible causes: syntax error, such as a table or column not existing. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 

@@ -6,8 +6,6 @@ Declares the APIs for obtaining the time zone information.
 
 **Library**: libtime_service_ndk.so
 
-**System capability**: SystemCapability.MiscServices.Time
-
 **Since**: 12
 
 **Related module**: [TimeService](capi-timeservice.md)
@@ -44,8 +42,6 @@ enum TimeService_ErrCode
 
 Enumerates the error codes.
 
-**System capability**: SystemCapability.MiscServices.Time
-
 **Since**: 12
 
 | Enum item | Description |
@@ -67,8 +63,6 @@ TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 
 Obtains the current system time zone.
 
-**System capability**: SystemCapability.MiscServices.Time
-
 **Since**: 12
 
 **Parameters**:
@@ -82,6 +76,6 @@ Obtains the current system time zone.
 
 | Type | Description |
 | -- | -- |
-| [TimeService_ErrCode](capi-time-service-h.md#timeservice_errcode) | Returns TIMESERVICE_ERR_OK if the operation is successful;      <br>returns TIMESERVICE_ERR_INTERNAL_ERROR if the system parameters fail to be obtained;      <br>returns TIMESERVICE_ERR_INVALID_PARAMETER if timeZone is a null pointer or the length of the time      zone name (excluding the end character \0) is greater than or equal to the value of len. |
+| [TimeService_ErrCode](capi-time-service-h.md#timeservice_errcode) | Returns **TIMESERVICE_ERR_OK** if the operation is successful; <br>returns **TIMESERVICE_ERR_INTERNAL_ERROR** if the system parameters fail to be obtained; <br>returns **TIMESERVICE_ERR_INVALID_PARAMETER** if **timeZone** is a null pointer or the length of the time zone name (excluding the end character **\0**) is greater than or equal to the value of **len**. |
 
 

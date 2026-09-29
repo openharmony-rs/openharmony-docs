@@ -1,7 +1,7 @@
 # UsbDeviceDescriptor
 
 ```c
-typedef struct UsbDeviceDescriptor {...} __attribute__((aligned(8))) UsbDeviceDescriptor
+struct UsbDeviceDescriptor {...}
 ```
 
 ## Overview

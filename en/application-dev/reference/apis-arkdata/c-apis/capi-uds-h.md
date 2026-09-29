@@ -6,8 +6,6 @@ Defines the APIs and structs related to the uniform data structs. If the paramet
 
 **Library**: libudmf.so
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Related module**: [UDMF](capi-udmf.md)
@@ -140,8 +138,6 @@ enum Udmf_AuthPermission
 
 Enumerates the URI authorization policies in the drag scenario.<br> > **NOTE**<br>> > This authorization policy takes effect only in drag scenarios.<br> The **NONE**, **READ**, **WRITE**, and **PERSIST** policies are supported. They can be combined, and only the following combinations take effect:<br> - **NONE**: No file permission is granted. - **READ**: Only one-time read permission is granted. - **WRITE**: Only one-time read and write permissions are granted. (Write permission includes read permission.) - **READ+WRITE**: One-time read and write authorization is performed, which is equivalent to **WRITE** authorization. - **READ+PERSIST**: Persistent read permission is granted. - **WRITE+PERSIST**: Persistent read and write permissions are granted. - **READ+WRITE+PERSIST**: Persistent read and write permissions are granted. The rules for applying the drag authorization policies are as follows (in descending order of priority): - Single data level: The **FileUri** and **HTML** (UDSs) support the configuration of authorization policy parameters, which take effect only once for a single record and have the highest priority. - [OH_UdmfData](capi-udmf-oh-udmfdata.md) level: The authorization parameters provided in [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) are valid for a single drag operation. If an authorization policy is configured for a piece of data, the configuration of the data is preferentially used. This level has the second highest priority. - Default level: If no authorization policy is configured for a single piece of data or [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md), proxy authorization is performed based on the default drag logic. The default logic is as follows: - FileUri data: By default, the **READ**, **WRITE**, and **PERSIST** permissions are granted in drag scenarios. - HTML data: Grants read permission only to the URIs in the img tags of the HTML text.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -164,15 +160,13 @@ OH_UdsPlainText* OH_UdsPlainText_Create()
 
 Creates an [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instance and a pointer to it. If this pointer is no longer required, use {@lOH_UdsPlainText_Destroy} to destroy it. Otherwise, memory leaks may occur.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_UdsPlainText*](capi-udmf-oh-udsplaintext.md) | If the operation is successful, a pointer to the instance of the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)  structure is returned. If the operation is failed, nullptr is returned. |
+| [OH_UdsPlainText*](capi-udmf-oh-udsplaintext.md) | If the operation is successful, a pointer to the instance of the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) structure is returned. If the operation is failed, nullptr is returned. |
 
 **Reference**:
 
@@ -188,8 +182,6 @@ void OH_UdsPlainText_Destroy(OH_UdsPlainText* pThis)
 **Description**
 
 Destroy a pointer that points to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -213,8 +205,6 @@ const char* OH_UdsPlainText_GetType(OH_UdsPlainText* pThis)
 **Description**
 
 Get type id from the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -245,8 +235,6 @@ const char* OH_UdsPlainText_GetContent(OH_UdsPlainText* pThis)
 
 Get content from the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -275,8 +263,6 @@ const char* OH_UdsPlainText_GetAbstract(OH_UdsPlainText* pThis)
 **Description**
 
 Get abstract from the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -307,8 +293,6 @@ int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)
 
 Get details from the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -322,7 +306,7 @@ Get details from the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -339,8 +323,6 @@ int OH_UdsPlainText_SetContent(OH_UdsPlainText* pThis, const char* content)
 
 Set content to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -354,7 +336,7 @@ Set content to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -371,8 +353,6 @@ int OH_UdsPlainText_SetAbstract(OH_UdsPlainText* pThis, const char* abstract)
 
 Set abstract to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -386,7 +366,7 @@ Set abstract to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -403,8 +383,6 @@ int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* deta
 
 Set details to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -418,7 +396,7 @@ Set details to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -435,15 +413,13 @@ OH_UdsHyperlink* OH_UdsHyperlink_Create()
 
 Creates a pointer to the instance of the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_UdsHyperlink*](capi-udmf-oh-udshyperlink.md) | If the operation is successful, a pointer to the instance of [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)  structure is returned. If the operation is failed, nullptr is returned. |
+| [OH_UdsHyperlink*](capi-udmf-oh-udshyperlink.md) | If the operation is successful, a pointer to the instance of [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) structure is returned. If the operation is failed, nullptr is returned. |
 
 **Reference**:
 
@@ -459,8 +435,6 @@ void OH_UdsHyperlink_Destroy(OH_UdsHyperlink* pThis)
 **Description**
 
 Destroy a pointer that points to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -484,8 +458,6 @@ const char* OH_UdsHyperlink_GetType(OH_UdsHyperlink* pThis)
 **Description**
 
 Obtains the type ID from an [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -516,8 +488,6 @@ const char* OH_UdsHyperlink_GetUrl(OH_UdsHyperlink* pThis)
 
 Get url from the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -546,8 +516,6 @@ const char* OH_UdsHyperlink_GetDescription(OH_UdsHyperlink* pThis)
 **Description**
 
 Get description from the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -578,8 +546,6 @@ int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)
 
 Get details from the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -593,7 +559,7 @@ Get details from the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -610,8 +576,6 @@ int OH_UdsHyperlink_SetUrl(OH_UdsHyperlink* pThis, const char* url)
 
 Set url to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -625,7 +589,7 @@ Set url to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -642,8 +606,6 @@ int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* descripti
 
 Set description to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -657,7 +619,7 @@ Set description to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -674,8 +636,6 @@ int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* deta
 
 Set details to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -689,7 +649,7 @@ Set details to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -706,15 +666,13 @@ OH_UdsHtml* OH_UdsHtml_Create()
 
 Creates a pointer to the instance of the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_UdsHtml*](capi-udmf-oh-udshtml.md) | If the operation is successful, a pointer to the instance of the [OH_UdsHtml](capi-udmf-oh-udshtml.md)  structure is returned. If the operation is failed, nullptr is returned. |
+| [OH_UdsHtml*](capi-udmf-oh-udshtml.md) | If the operation is successful, a pointer to the instance of the [OH_UdsHtml](capi-udmf-oh-udshtml.md) structure is returned. If the operation is failed, nullptr is returned. |
 
 **Reference**:
 
@@ -730,8 +688,6 @@ void OH_UdsHtml_Destroy(OH_UdsHtml* pThis)
 **Description**
 
 Destroy a pointer that points to the [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -755,8 +711,6 @@ const char* OH_UdsHtml_GetType(OH_UdsHtml* pThis)
 **Description**
 
 Obtains the type ID from an [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -787,8 +741,6 @@ const char* OH_UdsHtml_GetContent(OH_UdsHtml* pThis)
 
 Get content from the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -817,8 +769,6 @@ const char* OH_UdsHtml_GetPlainContent(OH_UdsHtml* pThis)
 **Description**
 
 Get plain content from the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -849,8 +799,6 @@ int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)
 
 Get details from the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -864,7 +812,7 @@ Get details from the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -881,8 +829,6 @@ int OH_UdsHtml_SetContent(OH_UdsHtml* pThis, const char* content)
 
 Set content to the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -896,7 +842,7 @@ Set content to the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -913,8 +859,6 @@ int OH_UdsHtml_SetPlainContent(OH_UdsHtml* pThis, const char* plainContent)
 
 Set plain content to the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -928,7 +872,7 @@ Set plain content to the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -945,8 +889,6 @@ int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)
 
 Set details to the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -960,7 +902,7 @@ Set details to the [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -977,8 +919,6 @@ int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)
 
 Set the authorization policy to [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -992,7 +932,7 @@ Set the authorization policy to [OH_UdsHtml](capi-udmf-oh-udshtml.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1009,15 +949,13 @@ OH_UdsAppItem* OH_UdsAppItem_Create()
 
 Creates a pointer to the instance of the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_UdsAppItem*](capi-udmf-oh-udsappitem.md) | If the operation is successful, a pointer to the instance of the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)  structure is returned. sIf the operation is failed, nullptr is returned. |
+| [OH_UdsAppItem*](capi-udmf-oh-udsappitem.md) | If the operation is successful, a pointer to the instance of the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) structure is returned. sIf the operation is failed, nullptr is returned. |
 
 **Reference**:
 
@@ -1033,8 +971,6 @@ void OH_UdsAppItem_Destroy(OH_UdsAppItem* pThis)
 **Description**
 
 Destroy a pointer that points to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -1058,8 +994,6 @@ const char* OH_UdsAppItem_GetType(OH_UdsAppItem* pThis)
 **Description**
 
 Get type from the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -1090,8 +1024,6 @@ const char* OH_UdsAppItem_GetId(OH_UdsAppItem* pThis)
 
 Get app id from the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1120,8 +1052,6 @@ const char* OH_UdsAppItem_GetName(OH_UdsAppItem* pThis)
 **Description**
 
 Get app name from the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -1152,8 +1082,6 @@ const char* OH_UdsAppItem_GetIconId(OH_UdsAppItem* pThis)
 
 Get app icon id from the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1182,8 +1110,6 @@ const char* OH_UdsAppItem_GetLabelId(OH_UdsAppItem* pThis)
 **Description**
 
 Get app label id from the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -1214,8 +1140,6 @@ const char* OH_UdsAppItem_GetBundleName(OH_UdsAppItem* pThis)
 
 Get bundle name from the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1244,8 +1168,6 @@ const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)
 **Description**
 
 Get ability name from the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
@@ -1276,8 +1198,6 @@ int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)
 
 Get details from the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -1291,7 +1211,7 @@ Get details from the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1308,8 +1228,6 @@ int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)
 
 Set application id to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1323,7 +1241,7 @@ Set application id to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1340,8 +1258,6 @@ int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)
 
 Set application name to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1355,7 +1271,7 @@ Set application name to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1372,8 +1288,6 @@ int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)
 
 Set application icon id to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1387,7 +1301,7 @@ Set application icon id to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1404,8 +1318,6 @@ int OH_UdsAppItem_SetLabelId(OH_UdsAppItem* pThis, const char* appLabelId)
 
 Set application label id to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1419,7 +1331,7 @@ Set application label id to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1436,8 +1348,6 @@ int OH_UdsAppItem_SetBundleName(OH_UdsAppItem* pThis, const char* bundleName)
 
 Set bundle name to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1451,7 +1361,7 @@ Set bundle name to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1468,8 +1378,6 @@ int OH_UdsAppItem_SetAbilityName(OH_UdsAppItem* pThis, const char* abilityName)
 
 Set ability name to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -1483,7 +1391,7 @@ Set ability name to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1500,8 +1408,6 @@ int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)
 
 Set details to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -1515,7 +1421,7 @@ Set details to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1532,15 +1438,13 @@ OH_UdsFileUri* OH_UdsFileUri_Create()
 
 Creates a pointer to the instance of the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_UdsFileUri*](capi-udmf-oh-udsfileuri.md) | If the operation is successful, a pointer to the instance of the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)  structure is returned. If the memory is not enough, nullptr is returned. |
+| [OH_UdsFileUri*](capi-udmf-oh-udsfileuri.md) | If the operation is successful, a pointer to the instance of the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) structure is returned. If the memory is not enough, nullptr is returned. |
 
 **Reference**:
 
@@ -1556,8 +1460,6 @@ void OH_UdsFileUri_Destroy(OH_UdsFileUri* pThis)
 **Description**
 
 Destroy a pointer that points to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
 
@@ -1581,8 +1483,6 @@ const char* OH_UdsFileUri_GetType(OH_UdsFileUri* pThis)
 **Description**
 
 Get type id from the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
 
@@ -1613,8 +1513,6 @@ const char* OH_UdsFileUri_GetFileUri(OH_UdsFileUri* pThis)
 
 Get file uri from the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1643,8 +1541,6 @@ const char* OH_UdsFileUri_GetFileType(OH_UdsFileUri* pThis)
 **Description**
 
 Get file type from the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
 
@@ -1675,8 +1571,6 @@ int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)
 
 Get details from the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -1690,7 +1584,7 @@ Get details from the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1707,8 +1601,6 @@ int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)
 
 Set file uri to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1722,7 +1614,7 @@ Set file uri to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1739,8 +1631,6 @@ int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)
 
 Set file type to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1754,7 +1644,7 @@ Set file type to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1771,8 +1661,6 @@ int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)
 
 Set details to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -1786,7 +1674,7 @@ Set details to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1803,8 +1691,6 @@ int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)
 
 Set the authorization policy to [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1818,7 +1704,7 @@ Set the authorization policy to [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).      <br>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.      <br>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). <br>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. <br>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1835,15 +1721,13 @@ OH_UdsPixelMap* OH_UdsPixelMap_Create()
 
 Creates a pointer to the instance of the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_UdsPixelMap*](capi-udmf-oh-udspixelmap.md) | If the operation is successful, a pointer to the instance of the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)  structure is returned. If the memory is not enough, nullptr is returned. |
+| [OH_UdsPixelMap*](capi-udmf-oh-udspixelmap.md) | If the operation is successful, a pointer to the instance of the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) structure is returned. If the memory is not enough, nullptr is returned. |
 
 **Reference**:
 
@@ -1859,8 +1743,6 @@ void OH_UdsPixelMap_Destroy(OH_UdsPixelMap* pThis)
 **Description**
 
 Destroy a pointer that points to the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
 
@@ -1884,8 +1766,6 @@ const char* OH_UdsPixelMap_GetType(OH_UdsPixelMap* pThis)
 **Description**
 
 Get type id from the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
 
@@ -1916,8 +1796,6 @@ void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelm
 
 Get pixel map from the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1925,7 +1803,7 @@ Get pixel map from the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
 | Parameter | Description |
 | -- | -- |
 | [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | Represents a pointer to an instance of [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md). |
-| OH_PixelmapNative* pixelmapNative | Represents output params of {@link OH_PixelmapNative}. |
+| [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md)* pixelmapNative | Represents output params of [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md). |
 
 **Reference**:
 
@@ -1942,8 +1820,6 @@ int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)
 
 Get details from the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -1957,7 +1833,7 @@ Get details from the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -1974,8 +1850,6 @@ int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelma
 
 Set pixel map to the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -1983,13 +1857,13 @@ Set pixel map to the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
 | Parameter | Description |
 | -- | -- |
 | [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | Represents a pointer to an instance of [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md). |
-| OH_PixelmapNative* pixelmapNative | Represents a new {@link OH_PixelmapNative}. |
+| [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md)* pixelmapNative | Represents a new [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2006,8 +1880,6 @@ int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* detail
 
 Set details to the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -2021,7 +1893,7 @@ Set details to the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2038,15 +1910,13 @@ OH_UdsArrayBuffer* OH_UdsArrayBuffer_Create()
 
 Creates a pointer to the instance of the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_UdsArrayBuffer*](capi-udmf-oh-udsarraybuffer.md) | If the operation is successful, a pointer to the instance of the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)  structure is returned. If the memory is not enough, nullptr is returned. |
+| [OH_UdsArrayBuffer*](capi-udmf-oh-udsarraybuffer.md) | If the operation is successful, a pointer to the instance of the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) structure is returned. If the memory is not enough, nullptr is returned. |
 
 **Reference**:
 
@@ -2063,8 +1933,6 @@ int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)
 
 Destroy a pointer that points to the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) instance.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -2077,7 +1945,7 @@ Destroy a pointer that points to the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybu
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2094,8 +1962,6 @@ int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, un
 
 Set array buffer data to the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -2110,7 +1976,7 @@ Set array buffer data to the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2127,8 +1993,6 @@ int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, u
 
 Get array buffer data from the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 13
 
 **Parameters**:
@@ -2143,7 +2007,7 @@ Get array buffer data from the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.m
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2160,15 +2024,13 @@ OH_UdsContentForm* OH_UdsContentForm_Create()
 
 Creates a pointer to the instance of the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_UdsContentForm*](capi-udmf-oh-udscontentform.md) | If the operation is successful, a pointer to the instance of the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md)  structure is returned. If the operation is failed, nullptr is returned. |
+| [OH_UdsContentForm*](capi-udmf-oh-udscontentform.md) | If the operation is successful, a pointer to the instance of the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) structure is returned. If the operation is failed, nullptr is returned. |
 
 **Reference**:
 
@@ -2184,8 +2046,6 @@ void OH_UdsContentForm_Destroy(OH_UdsContentForm* pThis)
 **Description**
 
 Destroy a pointer that points to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 14
 
@@ -2209,8 +2069,6 @@ const char* OH_UdsContentForm_GetType(OH_UdsContentForm* pThis)
 **Description**
 
 Get type id from the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 14
 
@@ -2241,8 +2099,6 @@ int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thu
 
 Get thumb data from the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2257,7 +2113,7 @@ Get thumb data from the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args.          [UDMF_ERR](capi-udmf-err-code-h.md#udmf_errcode) Internal data error. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. [UDMF_ERR](capi-udmf-err-code-h.md#udmf_errcode) Internal data error. |
 
 **Reference**:
 
@@ -2273,8 +2129,6 @@ const char* OH_UdsContentForm_GetDescription(OH_UdsContentForm* pThis)
 **Description**
 
 Get description from the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 14
 
@@ -2305,8 +2159,6 @@ const char* OH_UdsContentForm_GetTitle(OH_UdsContentForm* pThis)
 
 Get title from the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2336,8 +2188,6 @@ int OH_UdsContentForm_GetAppIcon(OH_UdsContentForm* pThis, unsigned char** appIc
 
 Obtains the application icon data from an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2352,7 +2202,7 @@ Obtains the application icon data from an [OH_UdsContentForm](capi-udmf-oh-udsco
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args.          [UDMF_ERR](capi-udmf-err-code-h.md#udmf_errcode) Internal data error. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. [UDMF_ERR](capi-udmf-err-code-h.md#udmf_errcode) Internal data error. |
 
 **Reference**:
 
@@ -2368,8 +2218,6 @@ const char* OH_UdsContentForm_GetAppName(OH_UdsContentForm* pThis)
 **Description**
 
 Get app name from the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 14
 
@@ -2400,8 +2248,6 @@ const char* OH_UdsContentForm_GetLinkUri(OH_UdsContentForm* pThis)
 
 Get link url from the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2431,8 +2277,6 @@ int OH_UdsContentForm_SetThumbData(OH_UdsContentForm* pThis, const unsigned char
 
 Set thumb data to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2447,7 +2291,7 @@ Set thumb data to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2464,8 +2308,6 @@ int OH_UdsContentForm_SetDescription(OH_UdsContentForm* pThis, const char* descr
 
 Set description to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2479,7 +2321,7 @@ Set description to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2496,8 +2338,6 @@ int OH_UdsContentForm_SetTitle(OH_UdsContentForm* pThis, const char* title)
 
 Set title to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2511,7 +2351,7 @@ Set title to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2528,8 +2368,6 @@ int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* 
 
 Sets the application icon data for an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2544,7 +2382,7 @@ Sets the application icon data for an [OH_UdsContentForm](capi-udmf-oh-udsconten
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2561,8 +2399,6 @@ int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)
 
 Set app name to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2576,7 +2412,7 @@ Set app name to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2593,8 +2429,6 @@ int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)
 
 Set link uri to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 14
 
 **Parameters**:
@@ -2608,7 +2442,7 @@ Set link uri to the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2625,15 +2459,13 @@ OH_UdsDetails* OH_UdsDetails_Create()
 
 Creates a pointer to the instance of the [OH_UdsDetails](capi-udmf-oh-udsdetails.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_UdsDetails*](capi-udmf-oh-udsdetails.md) | If the operation is successful, a pointer to the instance of the [OH_UdsDetails](capi-udmf-oh-udsdetails.md)  structure is returned. If the operation is failed, nullptr is returned. |
+| [OH_UdsDetails*](capi-udmf-oh-udsdetails.md) | If the operation is successful, a pointer to the instance of the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) structure is returned. If the operation is failed, nullptr is returned. |
 
 **Reference**:
 
@@ -2649,8 +2481,6 @@ void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)
 **Description**
 
 Destroy a pointer that points to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 22
 
@@ -2675,8 +2505,6 @@ bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)
 
 Determine whether the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) contain the specified key.
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -2690,7 +2518,7 @@ Determine whether the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) contain the sp
 
 | Type | Description |
 | -- | -- |
-| bool | Returns the status code of the execution.          {@code false} Represents The details do not contain the key.<br>        {@code true} Represents The details contain the key. |
+| bool | Returns the status code of the execution. {@code false} Represents The details do not contain the key. {@code true} Represents The details contain the key. |
 
 **Reference**:
 
@@ -2707,8 +2535,6 @@ int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)
 
 Remove the value corresponding to this key from the [OH_UdsDetails](capi-udmf-oh-udsdetails.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -2722,7 +2548,7 @@ Remove the value corresponding to this key from the [OH_UdsDetails](capi-udmf-oh
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2739,8 +2565,6 @@ int OH_UdsDetails_Clear(OH_UdsDetails* pThis)
 
 Clear all data in the [OH_UdsDetails](capi-udmf-oh-udsdetails.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -2753,7 +2577,7 @@ Clear all data in the [OH_UdsDetails](capi-udmf-oh-udsdetails.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2770,8 +2594,6 @@ int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* va
 
 Set key-value data to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -2786,7 +2608,7 @@ Set key-value data to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md).
 
 | Type | Description |
 | -- | -- |
-| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).          [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success.          [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
+| int | Returns the status code of the execution. See [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). [UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode) success. [UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode) The error code for common invalid args. |
 
 **Reference**:
 
@@ -2802,8 +2624,6 @@ const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)
 **Description**
 
 Get the value from the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) using the key.
-
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 22
 
@@ -2835,8 +2655,6 @@ char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)
 
 Get the all keys from the [OH_UdsDetails](capi-udmf-oh-udsdetails.md).
 
-**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
-
 **Since**: 22
 
 **Parameters**:
@@ -2850,7 +2668,7 @@ Get the all keys from the [OH_UdsDetails](capi-udmf-oh-udsdetails.md).
 
 | Type | Description |
 | -- | -- |
-| char** | Returns a double pointer to the result set if the operation is successful;      <br>returns nullptr otherwise.      <br>When [OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy) is used to destroy the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance,      the return value is also released. |
+| char** | Returns a double pointer to the result set if the operation is successful; <br>returns nullptr otherwise. <br>When [OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy) is used to destroy the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, the return value is also released. |
 
 **Reference**:
 

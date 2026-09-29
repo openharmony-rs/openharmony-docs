@@ -1,7 +1,7 @@
 # OH_Huks_CertChain
 
 ```c
-typedef struct OH_Huks_CertChain {...} OH_Huks_CertChain
+struct OH_Huks_CertChain {...}
 ```
 
 ## Overview
@@ -22,7 +22,7 @@ Defines the struct of a certificate chain.
 
 | Name | Description |
 | -- | -- |
-| struct [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *certs | Pointer to the certificate data. |
+| struct OH_Huks_Blob *certs | Pointer to the certificate data. |
 | uint32_t certsCount | Number of certificates. |
 
 

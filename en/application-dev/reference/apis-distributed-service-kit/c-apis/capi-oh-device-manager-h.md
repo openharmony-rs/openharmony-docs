@@ -6,8 +6,6 @@ Provides APIs to obtain information about trusted devices and local devices.
 
 **Library**: libdevicemanager_ndk.so
 
-**System capability**: SystemCapability.DistributedHardware.DeviceManager
-
 **Since**: 20
 
 **Related module**: [DeviceManager](capi-devicemanager.md)
@@ -33,8 +31,6 @@ int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int
 
 Obtains the display name of the local device. The device display name involves user privacy. You need to provide a privacy statement to declare the purpose of the device display name.
 
-**System capability**: SystemCapability.DistributedHardware.DeviceManager
-
 **Required permission**: ohos.permission.READ_LOCAL_DEVICE_NAME
 
 **Since**: 20
@@ -54,7 +50,7 @@ Obtains the display name of the local device. The device display name involves u
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code. For details about the error code definitions, see {@link DeviceManager_ErrorCode}.<br>     Returns {@link ERR_OK} is returned if the execution is successful.<br>     Returns {@link DM_ERR_FAILED} is returned if the function fails to be executed.<br>     Returns {@link DM_ERR_OBTAIN_SERVICE} is returned if the device management service fails to be obtained.<br>     Returns {@link DM_ERR_OBTAIN_BUNDLE_NAME} is returned if the bundle name fails to be obtained.<br>     Returns {@link ERR_INVALID_PARAMETER} is returned if the localDeviceName is nullptr or                                              localDeviceName is not nullptr. |
+| int32_t | Error code. For details about the error code definitions, see [DeviceManager_ErrorCode](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode). Returns [ERR_OK](../../apis-content-embed-kit/c-apis/capi-content-embed-common-h.md#contentembed_errorcode) is returned if the execution is successful. Returns [DM_ERR_FAILED](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the function fails to be executed. Returns [DM_ERR_OBTAIN_SERVICE](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the device management service fails to be obtained. Returns [DM_ERR_OBTAIN_BUNDLE_NAME](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the bundle name fails to be obtained. Returns [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) is returned if the localDeviceName is nullptr or *localDeviceName is not nullptr. |
 
 ### OH_DeviceManager_GetLocalDeviceNameC()
 
@@ -65,8 +61,6 @@ int32_t OH_DeviceManager_GetLocalDeviceNameC(char **localDeviceName, unsigned in
 **Description**
 
 Obtains the display name of the local device. The device display name involves user privacy. You need to provide a privacy statement to declare the purpose of the device display name.
-
-**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **Required permission**: ohos.permission.READ_LOCAL_DEVICE_NAME
 
@@ -83,6 +77,6 @@ Obtains the display name of the local device. The device display name involves u
 
 | Type | Description |
 | -- | -- |
-| int32_t | Error code. For details about the error code definitions, see {@link DeviceManager_ErrorCode}.<br>     Returns {@link ERR_OK} is returned if the execution is successful.<br>     Returns {@link DM_ERR_FAILED} is returned if the function fails to be executed.<br>     Returns {@link DM_ERR_OBTAIN_SERVICE} is returned if the device management service fails to be obtained.<br>     Returns {@link DM_ERR_OBTAIN_BUNDLE_NAME} is returned if the bundle name fails to be obtained.<br>     Returns {@link ERR_INVALID_PARAMETER} is returned if the localDeviceName is nullptr or                                              localDeviceName is not nullptr or len is nullptr. |
+| int32_t | Error code. For details about the error code definitions, see [DeviceManager_ErrorCode](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode). Returns [ERR_OK](../../apis-content-embed-kit/c-apis/capi-content-embed-common-h.md#contentembed_errorcode) is returned if the execution is successful. Returns [DM_ERR_FAILED](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the function fails to be executed. Returns [DM_ERR_OBTAIN_SERVICE](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the device management service fails to be obtained. Returns [DM_ERR_OBTAIN_BUNDLE_NAME](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the bundle name fails to be obtained. Returns [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) is returned if the localDeviceName is nullptr or *localDeviceName is not nullptr or len is nullptr. |
 
 

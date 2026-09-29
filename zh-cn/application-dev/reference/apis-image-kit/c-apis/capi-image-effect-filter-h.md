@@ -6,8 +6,6 @@
 
 **库：** libimage_effect.so
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **相关模块：** [ImageEffect](capi-imageeffect.md)
@@ -36,7 +34,7 @@
 | -- | -- |
 | OH_EFFECT_BRIGHTNESS_FILTER "Brightness" | 亮度滤镜，对应的参数为OH_EFFECT_FILTER_INTENSITY_KEY，参数类型为[EFFECT_DATA_TYPE_FLOAT](capi-image-effect-filter-h.md#imageeffect_datatype)。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
 | OH_EFFECT_CONTRAST_FILTER "Contrast" | 对比度滤镜，对应的参数为OH_EFFECT_FILTER_INTENSITY_KEY，参数类型为[EFFECT_DATA_TYPE_FLOAT](capi-image-effect-filter-h.md#imageeffect_datatype)。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
-| OH_EFFECT_CROP_FILTER "Crop" | 裁剪滤镜，对应的参数为OH_EFFECT_FILTER_REGION_KEY，参数类型为[EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype)， 参数值为结构体 {@link ImageEffect_Region}。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
+| OH_EFFECT_CROP_FILTER "Crop" | 裁剪滤镜，对应的参数为OH_EFFECT_FILTER_REGION_KEY，参数类型为[EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype)， 参数值为结构体 ImageEffect_Region。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
 | OH_EFFECT_FILTER_INTENSITY_KEY "FilterIntensity" | 强度参数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
 | OH_EFFECT_FILTER_REGION_KEY "FilterRegion" | 图像区域参数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
 
@@ -106,8 +104,6 @@ enum ImageEffect_DataType
 
 数据类型枚举值。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -131,8 +127,6 @@ enum ImageEffect_Format
 
 像素格式枚举值。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -155,8 +149,6 @@ enum ImageEffect_BufferType
 
 内存类型枚举值。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -178,8 +170,6 @@ OH_EffectFilterInfo *OH_EffectFilterInfo_Create()
 
 创建OH_EffectFilterInfo实例，调用[OH_EffectFilterInfo_Release](capi-image-effect-filter-h.md#oh_effectfilterinfo_release)进行资源释放。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **返回值：**
@@ -198,8 +188,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *inf
 
 设置滤镜名。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -213,7 +201,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *inf
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectFilterInfo_GetFilterName()
 
@@ -224,8 +212,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *inf
 **描述：**
 
 获取滤镜名。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -240,7 +226,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *inf
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectFilterInfo_SetSupportedBufferTypes()
 
@@ -251,8 +237,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilte
 **描述：**
 
 设置滤镜所支持的内存类型。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -268,7 +252,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilte
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectFilterInfo_GetSupportedBufferTypes()
 
@@ -279,8 +263,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilte
 **描述：**
 
 获取滤镜所支持的内存类型。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -296,7 +278,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilte
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectFilterInfo_SetSupportedFormats()
 
@@ -307,8 +289,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInf
 **描述：**
 
 设置滤镜所支持的像素格式。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -324,7 +304,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInf
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectFilterInfo_GetSupportedFormats()
 
@@ -335,8 +315,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInf
 **描述：**
 
 获取滤镜所支持的像素格式。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -352,7 +330,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInf
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectFilterInfo_Release()
 
@@ -363,8 +341,6 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_Release(OH_EffectFilterInfo *info)
 **描述：**
 
 销毁OH_EffectFilterInfo实例。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -378,7 +354,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_Release(OH_EffectFilterInfo *info)
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_Create()
 
@@ -389,8 +365,6 @@ OH_EffectBufferInfo *OH_EffectBufferInfo_Create()
 **描述：**
 
 创建OH_EffectBufferInfo实例，调用[OH_EffectBufferInfo_Release](capi-image-effect-filter-h.md#oh_effectbufferinfo_release)进行资源释放。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -410,8 +384,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetAddr(OH_EffectBufferInfo *info, voi
 
 设置图像内存地址。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -425,7 +397,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetAddr(OH_EffectBufferInfo *info, voi
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_GetAddr()
 
@@ -436,8 +408,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetAddr(OH_EffectBufferInfo *info, voi
 **描述：**
 
 获取图像内存地址。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -452,7 +422,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetAddr(OH_EffectBufferInfo *info, voi
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_SetWidth()
 
@@ -463,8 +433,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetWidth(OH_EffectBufferInfo *info, in
 **描述：**
 
 设置图像宽度。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -479,7 +447,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetWidth(OH_EffectBufferInfo *info, in
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_GetWidth()
 
@@ -490,8 +458,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetWidth(OH_EffectBufferInfo *info, in
 **描述：**
 
 获取图像宽度。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -506,7 +472,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetWidth(OH_EffectBufferInfo *info, in
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_SetHeight()
 
@@ -517,8 +483,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetHeight(OH_EffectBufferInfo *info, i
 **描述：**
 
 设置图像高度。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -533,7 +497,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetHeight(OH_EffectBufferInfo *info, i
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_GetHeight()
 
@@ -544,8 +508,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetHeight(OH_EffectBufferInfo *info, i
 **描述：**
 
 获取图像高度。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -560,7 +522,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetHeight(OH_EffectBufferInfo *info, i
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_SetRowSize()
 
@@ -571,8 +533,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetRowSize(OH_EffectBufferInfo *info, 
 **描述：**
 
 设置图像每一行的字节数。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -587,7 +547,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetRowSize(OH_EffectBufferInfo *info, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_GetRowSize()
 
@@ -598,8 +558,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetRowSize(OH_EffectBufferInfo *info, 
 **描述：**
 
 获取图像每一行的字节数。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -614,7 +572,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetRowSize(OH_EffectBufferInfo *info, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_SetEffectFormat()
 
@@ -625,8 +583,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetEffectFormat(OH_EffectBufferInfo *i
 **描述：**
 
 设置图像的像素格式。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -641,7 +597,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetEffectFormat(OH_EffectBufferInfo *i
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_GetEffectFormat()
 
@@ -652,8 +608,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetEffectFormat(OH_EffectBufferInfo *i
 **描述：**
 
 获取图像的像素格式。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -668,7 +622,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetEffectFormat(OH_EffectBufferInfo *i
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_SetTextureId()
 
@@ -679,8 +633,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTextureId(OH_EffectBufferInfo *info
 **描述：**
 
 设置OH_EffectBufferInfo的图像的textureId。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 20
 
@@ -695,7 +647,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTextureId(OH_EffectBufferInfo *info
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：参数缺失。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：参数缺失。 |
 
 ### OH_EffectBufferInfo_GetTextureId()
 
@@ -706,8 +658,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetTextureId(OH_EffectBufferInfo *info
 **描述：**
 
 从OH_EffectBufferInfo中获取图像的textureId。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 20
 
@@ -722,7 +672,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetTextureId(OH_EffectBufferInfo *info
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：参数缺失。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：参数缺失。 |
 
 ### OH_EffectBufferInfo_Release()
 
@@ -733,8 +683,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_Release(OH_EffectBufferInfo *info)
 **描述：**
 
 销毁OH_EffectBufferInfo实例。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -748,7 +696,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_Release(OH_EffectBufferInfo *info)
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectFilterDelegate_SetValue()
 
@@ -760,17 +708,15 @@ typedef bool (*OH_EffectFilterDelegate_SetValue)(OH_EffectFilter *filter, const 
 
 自定义滤镜设置参数的回调函数，用于开发者校验参数及参数值。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) \*filter | 滤镜指针。 |
-| const char \*key | 滤镜参数。 |
-| const ImageEffect_Any \*value | 滤镜参数值。 |
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | 滤镜指针。 |
+| const char *key | 滤镜参数。 |
+| const ImageEffect_Any *value | 滤镜参数值。 |
 
 **返回值：**
 
@@ -788,16 +734,14 @@ typedef void (*OH_EffectFilterDelegate_PushData)(OH_EffectFilter *filter, OH_Eff
 
 自定义滤镜传递图像信息到下一级滤镜的函数指针。需要在[OH_EffectFilterDelegate_Render](capi-image-effect-filter-h.md#oh_effectfilterdelegate_render) 的回调中主动调用该函数指针。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) \*filter | 滤镜指针。 |
-| [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) \*info | 图像信息OH_EffectBufferInfo指针。 |
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | 滤镜指针。 |
+| [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) *info | 图像信息OH_EffectBufferInfo指针。 |
 
 ### OH_EffectFilterDelegate_Render()
 
@@ -809,16 +753,14 @@ typedef bool (*OH_EffectFilterDelegate_Render)(OH_EffectFilter *filter, OH_Effec
 
 自定义滤镜渲染图像的回调函数。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) \*filter | 滤镜指针。 |
-| [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) \*info | 图像信息OH_EffectBufferInfo指针。 |
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | 滤镜指针。 |
+| [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) *info | 图像信息OH_EffectBufferInfo指针。 |
 | [OH_EffectFilterDelegate_PushData](capi-image-effect-filter-h.md#oh_effectfilterdelegate_pushdata) pushData | 自定义滤镜传递图像信息到下一级滤镜的函数指针OH_EffectFilterDelegate_PushData。 |
 
 **返回值：**
@@ -837,16 +779,14 @@ typedef bool (*OH_EffectFilterDelegate_Save)(OH_EffectFilter *filter, char **inf
 
 自定义滤镜序列化的回调函数，按照JSON格式进行滤镜序列化处理。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) \*filter | 滤镜指针。 |
-| char \*\*info | 指向char数组的指针，返回序列化JSON字符串。 |
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | 滤镜指针。 |
+| char **info | 指向char数组的指针，返回序列化JSON字符串。 |
 
 **返回值：**
 
@@ -864,15 +804,13 @@ typedef OH_EffectFilter *(*OH_EffectFilterDelegate_Restore)(const char *info)
 
 自定义滤镜反序列化的回调函数。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char \*info | 序列化JSON字符串。 |
+| const char *info | 序列化JSON字符串。 |
 
 **返回值：**
 
@@ -889,8 +827,6 @@ OH_EffectFilter *OH_EffectFilter_Create(const char *name)
 **描述：**
 
 创建OH_EffectFilter实例，调用[OH_EffectFilter_Release](capi-image-effect-filter-h.md#oh_effectfilter_release)进行资源释放。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -916,8 +852,6 @@ ImageEffect_ErrorCode OH_EffectFilter_SetValue(OH_EffectFilter *filter, const ch
 
 设置滤镜参数。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -932,7 +866,7 @@ ImageEffect_ErrorCode OH_EffectFilter_SetValue(OH_EffectFilter *filter, const ch
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。          EFFECT_KEY_ERROR：参数无效。          EFFECT_PARAM_ERROR：参数值无效。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。EFFECT_KEY_ERROR：参数无效。EFFECT_PARAM_ERROR：参数值无效。 |
 
 ### OH_EffectFilter_GetValue()
 
@@ -943,8 +877,6 @@ ImageEffect_ErrorCode OH_EffectFilter_GetValue(OH_EffectFilter *filter, const ch
 **描述：**
 
 获取滤镜参数。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -960,7 +892,7 @@ ImageEffect_ErrorCode OH_EffectFilter_GetValue(OH_EffectFilter *filter, const ch
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。          EFFECT_KEY_ERROR：参数无效。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。EFFECT_KEY_ERROR：参数无效。 |
 
 ### OH_EffectFilter_Register()
 
@@ -971,8 +903,6 @@ ImageEffect_ErrorCode OH_EffectFilter_Register(const OH_EffectFilterInfo *info, 
 **描述：**
 
 注册自定义滤镜。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -987,7 +917,7 @@ ImageEffect_ErrorCode OH_EffectFilter_Register(const OH_EffectFilterInfo *info, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectFilter_LookupFilters()
 
@@ -998,8 +928,6 @@ ImageEffect_FilterNames *OH_EffectFilter_LookupFilters(const char *key)
 **描述：**
 
 查询满足条件的滤镜。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -1025,8 +953,6 @@ void OH_EffectFilter_ReleaseFilterNames()
 
 释放滤镜名内存资源。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 ### OH_EffectFilter_LookupFilterInfo()
@@ -1038,8 +964,6 @@ ImageEffect_ErrorCode OH_EffectFilter_LookupFilterInfo(const char *name, OH_Effe
 **描述：**
 
 查询滤镜信息。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -1054,7 +978,7 @@ ImageEffect_ErrorCode OH_EffectFilter_LookupFilterInfo(const char *name, OH_Effe
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针或其他无效值。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针或其他无效值。 |
 
 ### OH_EffectFilter_Render()
 
@@ -1066,8 +990,6 @@ ImageEffect_ErrorCode OH_EffectFilter_Render(OH_EffectFilter *filter, OH_Pixelma
 
 执行图像渲染。
 
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
-
 **起始版本：** 12
 
 **参数：**
@@ -1075,14 +997,14 @@ ImageEffect_ErrorCode OH_EffectFilter_Render(OH_EffectFilter *filter, OH_Pixelma
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | 滤镜指针。 |
-| OH_PixelmapNative *inputPixelmap | 输入图像。 |
-| OH_PixelmapNative *outputPixelmap | 输出图像。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *inputPixelmap | 输入图像。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *outputPixelmap | 输出图像。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectFilter_RenderWithTextureId()
 
@@ -1093,8 +1015,6 @@ ImageEffect_ErrorCode OH_EffectFilter_RenderWithTextureId(OH_EffectFilter *filte
 **描述：**
 
 使用纹理标识渲染滤镜效果。该函数不支持相同的输入和输出图像。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 20
 
@@ -1111,7 +1031,7 @@ ImageEffect_ErrorCode OH_EffectFilter_RenderWithTextureId(OH_EffectFilter *filte
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：参数缺失。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：参数缺失。 |
 
 ### OH_EffectFilter_Release()
 
@@ -1122,8 +1042,6 @@ ImageEffect_ErrorCode OH_EffectFilter_Release(OH_EffectFilter *filter)
 **描述：**
 
 销毁OH_EffectFilter实例。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -1137,7 +1055,7 @@ ImageEffect_ErrorCode OH_EffectFilter_Release(OH_EffectFilter *filter)
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_SetTimestamp()
 
@@ -1148,8 +1066,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTimestamp(OH_EffectBufferInfo *info
 **描述：**
 
 设置滤镜时间戳。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -1164,7 +1080,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTimestamp(OH_EffectBufferInfo *info
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 ### OH_EffectBufferInfo_GetTimestamp()
 
@@ -1175,8 +1091,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetTimestamp(OH_EffectBufferInfo *info
 **描述：**
 
 获取滤镜时间戳。
-
-**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -1191,6 +1105,6 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetTimestamp(OH_EffectBufferInfo *info
 
 | 类型 | 说明 |
 | -- | -- |
-| ImageEffect_ErrorCode | EFFECT_SUCCESS：方法调用成功。          EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。EFFECT_ERROR_PARAM_INVALID：入参为空指针。 |
 
 

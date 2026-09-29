@@ -6,8 +6,6 @@
 
 **库：** libimage_packer.so
 
-**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
-
 **起始版本：** 12
 
 **系统接口：** 此接口为系统接口。
@@ -37,8 +35,6 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options
 
 获取OH_PackingOptions结构体中的needsPackDfxData参数。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
-
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
@@ -54,7 +50,7 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>      <br><li>IMAGE_SUCCESS：执行成功。</li>      <br><li>202：非系统应用程序调用该接口则返回此错误码。</li>      <br><li>IMAGE_PACKER_INVALID_PARAMETER：options或needsPackDfxData为空指针。</li>      <br></ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <br><li>IMAGE_SUCCESS：执行成功。</li> <br><li>202：非系统应用程序调用该接口则返回此错误码。</li> <br><li>IMAGE_PACKER_INVALID_PARAMETER：options或needsPackDfxData为空指针。</li> <br></ul> |
 
 ### OH_PackingOptions_SetNeedsPackDfxData()
 
@@ -65,8 +61,6 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options
 **描述：**
 
 设置OH_PackingOptions结构体中的needsPackDfxData参数。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 26.0.0
 
@@ -83,7 +77,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>      <br><li>IMAGE_SUCCESS：执行成功。</li>      <br><li>202：非系统应用程序调用该接口则返回此错误码。</li>      <br><li>IMAGE_PACKER_INVALID_PARAMETER：options为空指针。</li>      <br></ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <br><li>IMAGE_SUCCESS：执行成功。</li> <br><li>202：非系统应用程序调用该接口则返回此错误码。</li> <br><li>IMAGE_PACKER_INVALID_PARAMETER：options为空指针。</li> <br></ul> |
 
 ### OH_PackingOptions_SetC2paDataSize()
 
@@ -94,8 +88,6 @@ Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, ui
 **描述：**
 
 设置OH_PackingOptions结构体中的C2PA数据大小，默认值为0，表示不预留空间。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 26.0.1
 
@@ -112,7 +104,7 @@ Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, ui
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>           <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li>          <li>202 非系统应用程序调用该接口。</li>          <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options为NULL。</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li> <li>202 非系统应用程序调用该接口。</li> <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options为NULL。</li> </ul> |
 
 ### OH_PackingOptions_GetC2paDataSize()
 
@@ -123,8 +115,6 @@ Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *optio
 **描述：**
 
 获取OH_PackingOptions结构体中的C2PA数据大小。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 26.0.1
 
@@ -141,6 +131,6 @@ Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *optio
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>           <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li>          <li>202 非系统应用程序调用该接口。</li>          <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options或c2paDataSize为NULL。</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li> <li>202 非系统应用程序调用该接口。</li> <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options或c2paDataSize为NULL。</li> </ul> |
 
 

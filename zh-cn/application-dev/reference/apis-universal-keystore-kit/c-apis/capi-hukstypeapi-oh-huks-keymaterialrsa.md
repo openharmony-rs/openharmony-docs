@@ -1,7 +1,7 @@
 # OH_Huks_KeyMaterialRsa
 
 ```c
-typedef struct OH_Huks_KeyMaterialRsa {...} OH_Huks_KeyMaterialRsa
+struct OH_Huks_KeyMaterialRsa {...}
 ```
 
 ## 概述
@@ -22,7 +22,7 @@ typedef struct OH_Huks_KeyMaterialRsa {...} OH_Huks_KeyMaterialRsa
 
 | 名称 | 描述 |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。 |
+| enum OH_Huks_KeyAlg keyAlg | 密钥的算法类型。 |
 | uint32_t keySize | 密钥的长度，单位：Bit。 |
 | uint32_t nSize | n值的长度，单位：Byte。 |
 | uint32_t eSize | e值的长度，单位：Byte。 |

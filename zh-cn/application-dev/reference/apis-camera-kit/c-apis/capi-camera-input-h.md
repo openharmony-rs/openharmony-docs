@@ -6,8 +6,6 @@
 
 **库：** libohcamera.so
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)
@@ -18,8 +16,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) | CameraInput_Callbacks | 相机输入错误事件的回调。 |
-| [Camera_Input](capi-oh-camera-camera-input.md) | Camera_Input | 相机输入对象。可以使用{@link OH_CameraManager_CreateCameraInput}方法创建指针。 |
+| [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) | - | 相机输入错误事件的回调。 |
+| [Camera_Input](capi-oh-camera-camera-input.md) | Camera_Input | 相机输入对象。可以使用[OH_CameraManager_CreateCameraInput](capi-camera-manager-h.md#oh_cameramanager_createcamerainput)方法创建指针。 |
 
 ### 函数
 
@@ -44,8 +42,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_ErrorCode errorCode) | 在[CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md)中被调用的相机输入错误回调。<br>**起始版本：** 11 |
-| void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult) | 相机镜头遮挡、脏污检测结果回调。<br>**起始版本：** 23 |
+| void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_ErrorCode errorCode) | 在[CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md)中被调用的相机输入错误回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
+| void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult) | 相机镜头遮挡、脏污检测结果回调。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
 
 ## 函数说明
 
@@ -59,16 +57,14 @@ typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_E
 
 在[CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md)中被调用的相机输入错误回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Input](capi-oh-camera-camera-input.md)\* cameraInput | 传递回调的Camera_Input。 |
-| Camera_ErrorCode errorCode | 相机输入的Camera_ErrorCode。 |
+| [const Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | 传递回调的Camera_Input。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | 相机输入的Camera_ErrorCode。 |
 
 **参考：**
 
@@ -88,8 +84,6 @@ Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, Came
 
 注册相机输入更改事件回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 11
 
 **参数：**
@@ -103,7 +97,7 @@ Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, Came
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraInput_UnregisterCallback()
 
@@ -114,8 +108,6 @@ Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, Ca
 **描述：**
 
 注销相机输入更改事件回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -130,7 +122,7 @@ Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, Ca
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraInput_Open()
 
@@ -141,8 +133,6 @@ Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 **描述：**
 
 打开相机。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -156,7 +146,7 @@ Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。      <br>CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。<br>CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraInput_OpenSecureCamera()
 
@@ -167,8 +157,6 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 **描述：**
 
 打开安全相机。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
@@ -183,7 +171,7 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。      <br>CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。<br>CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraInput_Close()
 
@@ -194,8 +182,6 @@ Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 **描述：**
 
 关闭相机。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -209,7 +195,7 @@ Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraInput_Release()
 
@@ -220,8 +206,6 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 **描述：**
 
 释放相机输入实例。 <br>和[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)只需要调用其中一个，调用之后无须再调用[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -235,7 +219,7 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraInput_IsPhysicalCameraOrientationVariable()
 
@@ -246,8 +230,6 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 **描述：**
 
 查询设备不同折叠状态下，相机物理镜头角度是否可变。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 22
 
@@ -262,7 +244,7 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraInput_GetPhysicalCameraOrientation()
 
@@ -273,8 +255,6 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 **描述：**
 
 获取设备当前折叠状态下的物理镜头角度。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 22
 
@@ -289,7 +269,7 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraInput_UsePhysicalCameraOrientation()
 
@@ -300,8 +280,6 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 **描述：**
 
 选择是否使用物理镜头角度。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 22
 
@@ -316,7 +294,7 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraInput_OnOcclusionDetectionCallback()
 
@@ -328,16 +306,14 @@ typedef void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* 
 
 相机镜头遮挡、脏污检测结果回调。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Input](capi-oh-camera-camera-input.md)\* cameraInput | 传递回调的Camera_Input。 |
-| Camera_OcclusionDetectionResult occlusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
+| [const Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | 传递回调的Camera_Input。 |
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) occlusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
 
 ### OH_CameraInput_RegisterOcclusionDetectionCallback()
 
@@ -348,8 +324,6 @@ Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input*
 **描述：**
 
 注册相机镜头遮挡、脏污检测事件回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 23
 
@@ -364,7 +338,7 @@ Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input*
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraInput_UnregisterOcclusionDetectionCallback()
 
@@ -375,8 +349,6 @@ Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Inpu
 **描述：**
 
 注销相机镜头遮挡、脏污检测事件回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 23
 
@@ -391,7 +363,7 @@ Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Inpu
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_CameraInput_OpenConcurrentCameras()
 
@@ -403,8 +375,6 @@ Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput,
 
 根据指定并发类型打开相机。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 **起始版本：** 18
 
 **参数：**
@@ -412,12 +382,12 @@ Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput,
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | 要打开的Camera_Input实例。 |
-| Camera_ConcurrentType type | 指定并发类型。 |
+| [Camera_ConcurrentType](capi-camera-h.md#camera_concurrenttype) type | 指定并发类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: 方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。      <br>CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK: 方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。<br>CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 

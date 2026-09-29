@@ -6,8 +6,6 @@ The file declares the error codes defined by BundleManager.
 
 **库：** libbundle_ndk.z.so
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
 **起始版本：** 21
 
 **相关模块：** [Native_Bundle](capi-native-bundle.md)
@@ -18,7 +16,7 @@ The file declares the error codes defined by BundleManager.
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [BundleManager_ErrorCode](#bundlemanager_errorcode) | BundleManager_ErrorCode | 枚举错误码，详细介绍请参见{@link 通用错误码}。 |
+| [BundleManager_ErrorCode](#bundlemanager_errorcode) | BundleManager_ErrorCode | 枚举错误码，详细介绍请参见通用错误码。 |
 
 ## 枚举类型说明
 
@@ -30,9 +28,7 @@ enum BundleManager_ErrorCode
 
 **描述：**
 
-枚举错误码，详细介绍请参见{@link 通用错误码}。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+枚举错误码，详细介绍请参见通用错误码。
 
 **起始版本：** 21
 

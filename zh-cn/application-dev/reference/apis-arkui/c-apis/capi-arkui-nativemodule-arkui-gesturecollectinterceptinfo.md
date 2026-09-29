@@ -6,7 +6,7 @@ typedef struct ArkUI_GestureCollectInterceptInfo ArkUI_GestureCollectInterceptIn
 
 ## 概述
 
-定义手势收集拦截信息。在触摸测试收集手势的过程中，该类型用于向拦截回调提供响应链中的手势识别器和触摸识别器，并承载回调设置的手势收集干预结果。 相关接口请参见{@link native_gesture.h}中的手势收集拦截接口说明。
+定义手势收集拦截信息。在触摸测试收集手势的过程中，该类型用于向拦截回调提供响应链中的手势识别器和触摸识别器，并承载回调设置的手势收集干预结果。 相关接口请参见[native_gesture.h](capi-native-gesture-h.md)中的手势收集拦截接口说明。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -8,8 +8,6 @@
 
 **库：** libohcrypto.so
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
 
 **相关模块：** [CryptoRandApi](capi-cryptorandapi.md)
@@ -45,9 +43,9 @@ OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)
 
 创建随机数生成器上下文。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_rand/OH_CryptoRand_Destroy {ctx}
 
 **参数：**
 
@@ -59,7 +57,7 @@ OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoRand_GenerateRandom()
 
@@ -71,9 +69,9 @@ OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Cryp
 
 生成随机数。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **参数：**
 
@@ -81,13 +79,13 @@ OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Cryp
 | -- | -- |
 | [OH_CryptoRand](capi-cryptorandapi-oh-cryptorand.md) *ctx | [in] 随机数生成器上下文。不能为NULL。 |
 | int len | [in] 随机数的字节长度。 |
-| Crypto_DataBlob *out | [out] 指向用于存储随机数的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储随机数的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或out为NULL，或len小于等于0。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或out为NULL，或len小于等于0。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoRand_GetAlgoName()
 
@@ -98,8 +96,6 @@ const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)
 **描述：**
 
 获取随机数生成器的算法名称。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -125,8 +121,6 @@ OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *see
 
 设置随机数生成器的种子。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
 
 **参数：**
@@ -134,13 +128,13 @@ OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *see
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoRand](capi-cryptorandapi-oh-cryptorand.md) *ctx | [in] 随机数生成器上下文。不能为NULL。 |
-| Crypto_DataBlob *seed | [in] 种子数据。本接口会对seed中的数据进行深拷贝，调用者在接口返回后可立即释放seed。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *seed | [in] 种子数据。本接口会对seed中的数据进行深拷贝，调用者在接口返回后可立即释放seed。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL，             或seed无效（seed为NULL、seed->data为NULL、seed->len为0、或seed->len超过INT_MAX）。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL，或seed无效（seed为NULL、seed->data为NULL、seed->len为0、或seed->len超过INT_MAX）。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoRand_EnableHardwareEntropy()
 
@@ -151,8 +145,6 @@ OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)
 **描述：**
 
 启用硬件熵源。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 21
 
@@ -166,7 +158,7 @@ OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoRand_Destroy()
 
@@ -177,8 +169,6 @@ void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)
 **描述：**
 
 销毁随机数生成器上下文。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 

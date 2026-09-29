@@ -6,8 +6,6 @@
 
 **库：** libhttp_interceptor.so
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 24
 
 **相关模块：** [netstack](capi-netstack.md)
@@ -16,12 +14,12 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) | OH_Http_Interceptor_Headers | 定义拦截器的请求/响应头信息。 |
-| [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md) | OH_Http_Interceptor_Request | 定义拦截器的HTTP请求数据包结构。 |
-| [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md) | OH_Http_Interceptor_Response | 定义拦截器的HTTP响应数据包结构。 |
-| [OH_Http_Interceptor](capi-netstack-oh-http-interceptor.md) | OH_Http_Interceptor | 定义HTTP全局拦截器的配置信息。 |
+| 名称 | 描述 |
+| -- | -- |
+| [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) | 定义拦截器的请求/响应头信息。 |
+| [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md) | 定义拦截器的HTTP请求数据包结构。 |
+| [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md) | 定义拦截器的HTTP响应数据包结构。 |
+| [OH_Http_Interceptor](capi-netstack-oh-http-interceptor.md) | 定义HTTP全局拦截器的配置信息。 |
 
 ### 枚举
 
@@ -41,7 +39,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_Interceptor_Result (*OH_Http_InterceptorHandler)( OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified) | 定义HTTP拦截器处理函数。<br>**起始版本：** 24 |
+| OH_Interceptor_Result (*OH_Http_InterceptorHandler)( OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified) | 定义HTTP拦截器处理函数。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Communication.NetStack |
 
 ## 枚举类型说明
 
@@ -54,8 +52,6 @@ enum OH_Interceptor_Stage
 **描述：**
 
 定义拦截器的执行阶段。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 24
 
@@ -74,8 +70,6 @@ enum OH_Interceptor_Type
 
 定义拦截器的类型。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -92,8 +86,6 @@ enum OH_Interceptor_Result
 **描述：**
 
 定义拦截器的处理结果。
-
-**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 24
 
@@ -115,22 +107,20 @@ typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_
 
 定义HTTP拦截器处理函数。
 
-**系统能力：** SystemCapability.Communication.NetStack
-
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md) \*request | HTTP请求数据包指针（仅在请求阶段有效）。 |
-| [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md) \*response | HTTP响应数据包指针（仅在响应阶段有效）。 |
-| int32_t \*isModified | 标识拦截器是否修改了数据包。对OH_TYPE_READ_ONLY类型拦截器无效，可配置为nullptr。 <br>- 0表示未对数据执行修改操作。 <br>- 非0表示已对数据执行修改操作。 |
+| [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md) *request | HTTP请求数据包指针（仅在请求阶段有效）。 |
+| [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md) *response | HTTP响应数据包指针（仅在响应阶段有效）。 |
+| int32_t *isModified | 标识拦截器是否修改了数据包。对OH_TYPE_READ_ONLY类型拦截器无效，可配置为nullptr。 <br>- 0表示未对数据执行修改操作。 <br>- 非0表示已对数据执行修改操作。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Interceptor_Result](capi-http-interceptor-type-h.md#oh_interceptor_result) | 拦截器处理结果。      <br>- OH_CONTINUE：继续处理      <br>- OH_ABORT：拦截处理 |
+| [OH_Interceptor_Result](capi-http-interceptor-type-h.md#oh_interceptor_result) | 拦截器处理结果。<br>- OH_CONTINUE：继续处理<br>- OH_ABORT：拦截处理 |
 
 

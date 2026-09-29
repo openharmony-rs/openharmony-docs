@@ -1,7 +1,7 @@
 # Camera_FrameShutterInfo
 
 ```c
-typedef struct Camera_FrameShutterInfo {...} Camera_FrameShutterInfo
+struct Camera_FrameShutterInfo {...}
 ```
 
 ## Overview

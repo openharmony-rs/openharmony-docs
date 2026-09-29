@@ -6,8 +6,6 @@ The file declares the common enums and definitions of the window manager.
 
 **Library**: libnative_window_manager.so
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 12
 
 **Related module**: [WindowManager](capi-windowmanager.md)
@@ -23,7 +21,7 @@ The file declares the common enums and definitions of the window manager.
 | [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | The struct describes the main window information. |
 | [WindowManager_WindowProperties](capi-windowmanager-windowmanager-windowproperties.md) | WindowManager_WindowProperties | The struct describes the window properties. |
 | [WindowManager_AvoidArea](capi-windowmanager-windowmanager-avoidarea.md) | WindowManager_AvoidArea | The struct describes the avoid area. |
-| [struct](capi-windowmanager-struct.md) | OH_PixelmapNative | Describes the pixel image information. |
+| [OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md) | OH_PixelmapNative | Describes the pixel image information. |
 | [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) | OH_WindowManager_FrameMetrics | Defines a frame metric data object. |
 | [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md) | OH_WindowManager_DensityInfo | Window density information, including the system display size scaling factor, system default display size scaling factor, and custom display size scaling factor of the screen where the window is located. |
 
@@ -46,8 +44,8 @@ The file declares the common enums and definitions of the window manager.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_WindowManager_FrameMetricsMeasuredCallback)( int32_t windowId, const OH_WindowManager_FrameMetrics* metrics) | Frame metrics callback type.<br>**Since**: 26.0.0 |
-| void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info) | Density info callback type.<br>**Since**: 24 |
+| void (*OH_WindowManager_FrameMetricsMeasuredCallback)( int32_t windowId, const OH_WindowManager_FrameMetrics* metrics) | Frame metrics callback type.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Window.SessionManager |
+| void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info) | Density info callback type.<br>**Since**: 24<br>**System capability**: SystemCapability.Window.SessionManager |
 
 ## Enum type description
 
@@ -60,8 +58,6 @@ enum WindowManager_ErrorCode
 **Description**
 
 Enumerates the status codes returned by the window manager interface.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 12
 
@@ -93,8 +89,6 @@ enum WindowManager_AvoidAreaType
 
 Enumerates the avoid area types.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 15
 
 | Enum item | Description |
@@ -114,8 +108,6 @@ enum WindowManager_WindowType
 **Description**
 
 Enumerates the window types.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -139,8 +131,6 @@ typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, 
 
 Frame metrics callback type.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 **Since**: 26.0.0
 
 ### OH_WindowManager_DensityInfoCallback()
@@ -152,8 +142,6 @@ typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_
 **Description**
 
 Density info callback type.
-
-**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 24
 

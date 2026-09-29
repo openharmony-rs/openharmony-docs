@@ -1,7 +1,7 @@
 # Hid_AbsAxesArray
 
 ```c
-typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
+struct Hid_AbsAxesArray {...}
 ```
 
 ## Overview
@@ -22,7 +22,7 @@ Defines an array of absolute coordinates.
 
 | Name | Description |
 | -- | -- |
-| [Hid_AbsAxes](capi-hid-ddk-types-h.md#hid_absaxes) *hidAbsAxes | Array of absolute coordinates. |
+| Hid_AbsAxes *hidAbsAxes | Array of absolute coordinates. |
 | uint16_t length | Valid length of an array. |
 
 

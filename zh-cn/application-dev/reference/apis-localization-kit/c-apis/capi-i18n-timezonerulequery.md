@@ -1,7 +1,7 @@
 # TimeZoneRuleQuery
 
 ```c
-typedef struct TimeZoneRuleQuery {...} TimeZoneRuleQuery
+struct TimeZoneRuleQuery {...}
 ```
 
 ## 概述

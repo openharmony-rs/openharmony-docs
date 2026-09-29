@@ -6,8 +6,6 @@ The file declares the cropping rectangle, size, and component data of an image.
 
 **Library**: libohimage.so
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)
@@ -18,7 +16,7 @@ The file declares the cropping rectangle, size, and component data of an image.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) | OH_ImageBufferData | {@link OH_ImageBufferData} is the image data struct encapsulated at the native layer. To obtain an {@link OH_ImageBufferData}<br>object, call {@link OH_ImageNative_GetBufferData}.<br> The struct stores the shallow copy of the original image data. Once the original data is released, no read or write operations should be performed on the pointers within this struct; otherwise, undefined behavior will occur. |
+| [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) | - | [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) is the image data struct encapsulated at the native layer. To obtain an [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) object, call [OH_ImageNative_GetBufferData](capi-image-native-h.md#oh_imagenative_getbufferdata).<br> The struct stores the shallow copy of the original image data. Once the original data is released, no read or write operations should be performed on the pointers within this struct; otherwise, undefined behavior will occur. |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) | - | The struct describes the alias for an image object at the native layer. |
 
 ### Function
@@ -49,8 +47,6 @@ Image_ErrorCode OH_ImageNative_GetImageSize(OH_ImageNative *image, Image_Size *s
 
 Obtains [Image_Size](capi-image-nativemodule-image-size.md) of an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -58,13 +54,13 @@ Obtains [Image_Size](capi-image-nativemodule-image-size.md) of an [OH_ImageNativ
 | Parameter | Description |
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object. |
-| Image_Size *size | Pointer to the [Image_Size](capi-image-nativemodule-image-size.md) object obtained. |
+| [Image_Size](capi-image-nativemodule-image-size.md) *size | Pointer to the [Image_Size](capi-image-nativemodule-image-size.md) object obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNKNOWN_ERROR - An unknown error occurs. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_UNKNOWN_ERROR - An unknown error occurs. |
 
 ### OH_ImageNative_GetComponentTypes()
 
@@ -75,8 +71,6 @@ Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image, uint32_t
 **Description**
 
 Obtains the component types of an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -92,7 +86,7 @@ Obtains the component types of an [OH_ImageNative](capi-image-nativemodule-oh-im
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
 
 ### OH_ImageNative_GetByteBuffer()
 
@@ -103,8 +97,6 @@ Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image, uint32_t com
 **Description**
 
 Obtains the buffer corresponding to a component type in an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -120,7 +112,7 @@ Obtains the buffer corresponding to a component type in an [OH_ImageNative](capi
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
 
 ### OH_ImageNative_GetBufferSize()
 
@@ -131,8 +123,6 @@ Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image, uint32_t com
 **Description**
 
 Obtains the size of the buffer corresponding to a component type in an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -148,7 +138,7 @@ Obtains the size of the buffer corresponding to a component type in an [OH_Image
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
 
 ### OH_ImageNative_GetRowStride()
 
@@ -159,8 +149,6 @@ Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image, uint32_t comp
 **Description**
 
 Obtains the row stride corresponding to a component type in an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -176,7 +164,7 @@ Obtains the row stride corresponding to a component type in an [OH_ImageNative](
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
 
 ### OH_ImageNative_GetPixelStride()
 
@@ -187,8 +175,6 @@ Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image, uint32_t co
 **Description**
 
 Obtains the pixel stride corresponding to a component type in an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -204,7 +190,7 @@ Obtains the pixel stride corresponding to a component type in an [OH_ImageNative
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
 
 ### OH_ImageNative_GetTimestamp()
 
@@ -215,8 +201,6 @@ Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *time
 **Description**
 
 Obtains the timestamp of an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object. Timestamps, measured in nanoseconds, are usually monotonically increasing.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -231,7 +215,7 @@ Obtains the timestamp of an [OH_ImageNative](capi-image-nativemodule-oh-imagenat
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS The operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS The operation is successful. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER A parameter is incorrect. |
 
 ### OH_ImageNative_Release()
 
@@ -242,8 +226,6 @@ Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)
 **Description**
 
 Releases an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -257,7 +239,7 @@ Releases an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - The operation is successful. <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - A parameter is incorrect. |
 
 ### OH_ImageNative_GetColorSpace()
 
@@ -269,8 +251,6 @@ Image_ErrorCode OH_ImageNative_GetColorSpace(OH_ImageNative *image, int32_t *col
 
 Obtains the color space in an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 23
 
 **Parameters**:
@@ -278,13 +258,13 @@ Obtains the color space in an [OH_ImageNative](capi-image-nativemodule-oh-imagen
 | Parameter | Description |
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object. |
-| int32_t *colorSpaceName | Pointer to the image color space. For details about the color space corresponding to **colorSpaceName**, see {@link ColorSpaceName}. |
+| int32_t *colorSpaceName | Pointer to the image color space. For details about the color space corresponding to **colorSpaceName**, see [ColorSpaceName](../../apis-arkgraphics2d/c-apis/capi-native-color-space-manager-h.md#colorspacename). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) A parameter is incorrect. |
 
 ### OH_ImageNative_GetFormat()
 
@@ -295,8 +275,6 @@ Image_ErrorCode OH_ImageNative_GetFormat(OH_ImageNative *image, OH_NativeBuffer_
 **Description**
 
 Obtains the image format in an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 23
 
@@ -311,7 +289,7 @@ Obtains the image format in an [OH_ImageNative](capi-image-nativemodule-oh-image
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) A parameter is incorrect. |
 
 ### OH_ImageNative_GetBufferData()
 
@@ -322,8 +300,6 @@ Image_ErrorCode OH_ImageNative_GetBufferData(OH_ImageNative *image, OH_ImageBuff
 **Description**
 
 Obtains the image buffer data object in an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 23
 
@@ -338,6 +314,6 @@ Obtains the image buffer data object in an [OH_ImageNative](capi-image-nativemod
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) A parameter is incorrect. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) The operation is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) A parameter is incorrect. |
 
 

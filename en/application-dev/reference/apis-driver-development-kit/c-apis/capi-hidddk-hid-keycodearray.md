@@ -1,7 +1,7 @@
 # Hid_KeyCodeArray
 
 ```c
-typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
+struct Hid_KeyCodeArray {...}
 ```
 
 ## Overview
@@ -22,7 +22,7 @@ Defines a struct for the key code array.
 
 | Name | Description |
 | -- | -- |
-| [Hid_KeyCode](capi-hid-ddk-types-h.md#hid_keycode) *hidKeyCode | Key code array. |
+| Hid_KeyCode *hidKeyCode | Key code array. |
 | uint16_t length | Valid length of an array. |
 
 

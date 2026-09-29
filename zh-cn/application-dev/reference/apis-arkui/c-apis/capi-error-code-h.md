@@ -6,8 +6,6 @@ Defines the error code for the native module.
 
 **库：** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -32,8 +30,6 @@ enum ArkUI_ErrorCode
 
 定义错误码枚举值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -42,58 +38,58 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_PARAM_INVALID = 401 | 参数错误。<br>**起始版本：** 12 |
 | ARKUI_ERROR_CODE_CAPI_INIT_ERROR = 500 | 接口初始化错误。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_INTERNAL_ERROR = 100001 | 出现内部错误，例如内部环境错误导致失败，或者由于内部执行失败导致操作失败。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_PARAM_ERROR = 100023 | 参数错误。错误码的详细介绍请参见{@link 100023 参数错误}。<br>**起始版本：** 21 |
-| ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 | 当前XComponent状态异常，方法调用失败。错误码的详细介绍请参见{@link XComponent组件错误码}。<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | 组件不支持特定的属性或者事件。错误码的详细介绍请参见{@link 交互事件错误码}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED = 106103 | 不支持对ArkTS创建的节点执行对应的操作。错误码的详细介绍请参见{@link 106103 对应的操作不支持ArkTS创建的节点}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。错误码的详细介绍请参见{@link 106104 适配器未绑定}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | 适配器已存在。错误码的详细介绍请参见{@link 106105 适配器已存在}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。错误码的详细介绍请参见{@link 106106 子节点已存在}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | 组件事件中参数长度超限。错误码的详细介绍请参见{@link 106107 参数下标越界}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | 组件事件中不存在该数据。错误码的详细介绍请参见{@link 106108 数据不存在}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | 组件事件不支持返回值。错误码的详细介绍请参见{@link 106109 不支持返回值}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 | 暂不支持该事件类型。错误码的详细介绍请参见{@link 106110 暂不支持该事件类型}。<br>**起始版本：** 21 |
-| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。 错误码的详细介绍请参见{@link 106200 传入的索引值非法}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。 错误码的详细介绍请参见{@link 106201 查询路由导航信息失败}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常（数据过大）。 错误码的详细介绍请参见{@link 106202 传入的buffer size异常}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 | 传入的节点未挂载到组件树上。错误码的详细介绍请参见{@link 106203 传入的节点未挂载到组件树上}。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 | 不支持在非UI线程操作传入的节点。错误码的详细介绍请参见{@link 106204 不支持在非UI线程操作传入的节点}。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 | 反色能力入参错误。错误码的详细介绍请参见{@link 106205 反色能力入参错误}。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 | 节点已被接纳为附属节点。错误码的详细介绍请参见{@link 106206 节点已被接纳为附属节点}。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_HAS_PARENT = 106207 | 被接纳的节点已有父节点。错误码的详细介绍请参见{@link 106207 被接纳的附属节点已有父节点}。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 | 节点无法被接纳为附属节点。错误码的详细介绍请参见{@link 106208 节点无法被接纳为附属节点}。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 | 节点无法接纳其他节点。错误码的详细介绍请参见{@link 106209 节点无法接纳其他节点}。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 | 节点不是被目标节点接纳的附属节点。错误码的详细介绍请参见{@link 106210 节点不是被目标节点接纳的附属节点}。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_PARAM_ERROR = 100023 | 参数错误。错误码的详细介绍请参见100023 参数错误。<br>**起始版本：** 21 |
+| ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 | 当前XComponent状态异常，方法调用失败。错误码的详细介绍请参见XComponent组件错误码。<br>**起始版本：** 18 |
+| ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | 组件不支持特定的属性或者事件。错误码的详细介绍请参见交互事件错误码。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED = 106103 | 不支持对ArkTS创建的节点执行对应的操作。错误码的详细介绍请参见106103 对应的操作不支持ArkTS创建的节点。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。错误码的详细介绍请参见106104 适配器未绑定。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | 适配器已存在。错误码的详细介绍请参见106105 适配器已存在。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。错误码的详细介绍请参见106106 子节点已存在。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | 组件事件中参数长度超限。错误码的详细介绍请参见106107 参数下标越界。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | 组件事件中不存在该数据。错误码的详细介绍请参见106108 数据不存在。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | 组件事件不支持返回值。错误码的详细介绍请参见106109 不支持返回值。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 | 暂不支持该事件类型。错误码的详细介绍请参见106110 暂不支持该事件类型。<br>**起始版本：** 21 |
+| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。 错误码的详细介绍请参见106200 传入的索引值非法。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。 错误码的详细介绍请参见106201 查询路由导航信息失败。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常（数据过大）。 错误码的详细介绍请参见106202 传入的buffer size异常。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 | 传入的节点未挂载到组件树上。错误码的详细介绍请参见106203 传入的节点未挂载到组件树上。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 | 不支持在非UI线程操作传入的节点。错误码的详细介绍请参见106204 不支持在非UI线程操作传入的节点。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 | 反色能力入参错误。错误码的详细介绍请参见106205 反色能力入参错误。<br>**起始版本：** 20 |
+| ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 | 节点已被接纳为附属节点。错误码的详细介绍请参见106206 节点已被接纳为附属节点。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NODE_HAS_PARENT = 106207 | 被接纳的节点已有父节点。错误码的详细介绍请参见106207 被接纳的附属节点已有父节点。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 | 节点无法被接纳为附属节点。错误码的详细介绍请参见106208 节点无法被接纳为附属节点。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 | 节点无法接纳其他节点。错误码的详细介绍请参见106209 节点无法接纳其他节点。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 | 节点不是被目标节点接纳的附属节点。错误码的详细介绍请参见106210 节点不是被目标节点接纳的附属节点。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND = 106211 | 无法获取属性，因为之前未设置该属性。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID = 106212 | 子动画参数无效。<br>**起始版本：** 26.0.1 |
-| ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | 在{@link ArkUI_ContextHandle}上未找到指定的动画组。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | 在[ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md)上未找到指定的动画组。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL = 106214 | 检测到同一线程上对动画组接口的重入调用。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE = 106215 | 动画组未处于操作所需的状态。<br>**起始版本：** 26.0.1 |
-| ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 | 当前节点不是自定义节点。错误码的详细介绍请参见{@link 渲染节点错误码}。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 | 当前节点已存在子节点。错误码的详细介绍请参见{@link 渲染节点错误码}。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 | 当前渲染节点存在父组件。错误码的详细介绍请参见{@link 渲染节点错误码}。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 | 未找到对应的渲染子节点。错误码的详细介绍请参见{@link 渲染节点错误码}。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 | 参数值超出范围。错误码的详细介绍请参见{@link 渲染节点错误码}。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 | 当前渲染节点从{@link FrameNode}中获取。错误码的详细介绍请参见{@link 106406 当前渲染节点从FrameNode中获取}。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 | 当前渲染节点从{@link FrameNode}中获取且该{@link FrameNode}已被取消接纳为附属节点或销毁。错误码的详细介绍请参见<br>{@link 106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁}。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 | 当前节点不处于被接纳状态。错误码的详细介绍请参见{@link 106408 当前节点不处于被接纳状态}。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 | 当前节点无法获得焦点。错误码的详细介绍请参见{@link 150001 节点无法获得焦点}。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 | 当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见{@link 150002 祖先节点无法获得焦点}。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 | 当前节点不存在。错误码的详细介绍请参见{@link 150003 节点不存在}。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 | 截图超时。错误码的详细介绍请参见{@link 截图错误码}。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 | 截图选项不支持的色彩空间或动态范围模式。错误码的详细介绍请参见{@link 截图错误码}。<br>**起始版本：** 23 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 | 离屏节点截图不支持色彩空间或动态范围模式的isAuto参数设置为true。错误码的详细介绍请参见{@link 截图错误码}。<br>**起始版本：** 23 |
-| ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER = 180001 | 非滚动类容器。错误码的详细介绍请参见{@link 交互事件错误码}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH = 180002 | 存储区大小不足。错误码的详细介绍请参见{@link 交互事件错误码}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 | 该事件不是克隆事件。错误码的详细介绍请参见{@link 交互事件错误码}。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL = 180004 | 组件状态异常。错误码的详细介绍请参见{@link 交互事件错误码}。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT = 180005 | 未命中可响应事件的组件。错误码的详细介绍请参见{@link 交互事件错误码}。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 | 当前节点不是自定义节点。错误码的详细介绍请参见渲染节点错误码。<br>**起始版本：** 20 |
+| ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 | 当前节点已存在子节点。错误码的详细介绍请参见渲染节点错误码。<br>**起始版本：** 20 |
+| ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 | 当前渲染节点存在父组件。错误码的详细介绍请参见渲染节点错误码。<br>**起始版本：** 20 |
+| ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 | 未找到对应的渲染子节点。错误码的详细介绍请参见渲染节点错误码。<br>**起始版本：** 20 |
+| ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 | 参数值超出范围。错误码的详细介绍请参见渲染节点错误码。<br>**起始版本：** 20 |
+| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 | 当前渲染节点从FrameNode中获取。错误码的详细介绍请参见106406 当前渲染节点从FrameNode中获取。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 | 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。错误码的详细介绍请参见 106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 | 当前节点不处于被接纳状态。错误码的详细介绍请参见106408 当前节点不处于被接纳状态。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 | 当前节点无法获得焦点。错误码的详细介绍请参见150001 节点无法获得焦点。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 | 当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见150002 祖先节点无法获得焦点。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 | 当前节点不存在。错误码的详细介绍请参见150003 节点不存在。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 | 截图超时。错误码的详细介绍请参见截图错误码。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 | 截图选项不支持的色彩空间或动态范围模式。错误码的详细介绍请参见截图错误码。<br>**起始版本：** 23 |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 | 离屏节点截图不支持色彩空间或动态范围模式的isAuto参数设置为true。错误码的详细介绍请参见截图错误码。<br>**起始版本：** 23 |
+| ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER = 180001 | 非滚动类容器。错误码的详细介绍请参见交互事件错误码。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH = 180002 | 存储区大小不足。错误码的详细介绍请参见交互事件错误码。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 | 该事件不是克隆事件。错误码的详细介绍请参见交互事件错误码。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL = 180004 | 组件状态异常。错误码的详细介绍请参见交互事件错误码。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT = 180005 | 未命中可响应事件的组件。错误码的详细介绍请参见交互事件错误码。<br>**起始版本：** 15 |
 | ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED = 180006 | 接口不支持此输入事件类型。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_INVALID_STYLED_STRING = 180101 | 无效的属性字符串。错误码的详细介绍请参见{@link 属性字符串错误码}。<br>**起始版本：** 14 |
-| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 | 无效的UIContext对象。错误码的详细介绍请参见{@link UI上下文错误码}。<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 | 无效的回调函数。错误码的详细介绍请参见{@link UI上下文错误码}。<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 | 不支持手势识别器类型。错误码的详细介绍请参见{@link 交互事件错误码}。<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 | 当前阶段不允许该操作。错误码的详细介绍请参见{@link 拖拽事件错误码}。<br>**起始版本：** 19 |
+| ARKUI_ERROR_CODE_INVALID_STYLED_STRING = 180101 | 无效的属性字符串。错误码的详细介绍请参见属性字符串错误码。<br>**起始版本：** 14 |
+| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 | 无效的UIContext对象。错误码的详细介绍请参见UI上下文错误码。<br>**起始版本：** 18 |
+| ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 | 无效的回调函数。错误码的详细介绍请参见UI上下文错误码。<br>**起始版本：** 18 |
+| ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 | 不支持手势识别器类型。错误码的详细介绍请参见交互事件错误码。<br>**起始版本：** 18 |
+| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 | 当前阶段不允许该操作。错误码的详细介绍请参见拖拽事件错误码。<br>**起始版本：** 19 |
 | ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE = 103306 |  |
 | ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE = 103308 |  |
 

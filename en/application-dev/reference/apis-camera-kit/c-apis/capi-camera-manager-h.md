@@ -6,8 +6,6 @@ The file declares the camera manager concepts.
 
 **Library**: libohcamera.so
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)
@@ -16,9 +14,9 @@ The file declares the camera manager concepts.
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) | CameraManager_Callbacks | The struct describes the callbacks used to listen for camera status changes. |
+| Name | Description |
+| -- | -- |
+| [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) | The struct describes the callbacks used to listen for camera status changes. |
 
 ### Function
 
@@ -69,9 +67,9 @@ The file declares the camera manager concepts.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_CameraManager_StatusCallback)(Camera_Manager* cameraManager, Camera_StatusInfo* status) | Defines the callback defined in the [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) struct and used to report the camera manager status.<br>**Since**: 11 |
-| void (*OH_CameraManager_TorchStatusCallback)(Camera_Manager* cameraManager, Camera_TorchStatusInfo* status) | Defines the callback to listen for flashlight status changes.<br>**Since**: 12 |
-| void (*OH_CameraManager_OnFoldStatusInfoChange)(Camera_Manager* cameraManager, Camera_FoldStatusInfo* foldStatusInfo) | Defines the callback to listen for fold status changes of the camera manager.<br>**Since**: 13 |
+| void (*OH_CameraManager_StatusCallback)(Camera_Manager* cameraManager, Camera_StatusInfo* status) | Defines the callback defined in the [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) struct and used to report the camera manager status.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
+| void (*OH_CameraManager_TorchStatusCallback)(Camera_Manager* cameraManager, Camera_TorchStatusInfo* status) | Defines the callback to listen for flashlight status changes.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
+| void (*OH_CameraManager_OnFoldStatusInfoChange)(Camera_Manager* cameraManager, Camera_FoldStatusInfo* foldStatusInfo) | Defines the callback to listen for fold status changes of the camera manager.<br>**Since**: 13<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
 
 ## Function description
 
@@ -85,16 +83,14 @@ typedef void (*OH_CameraManager_StatusCallback)(Camera_Manager* cameraManager, C
 
 Defines the callback defined in the [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) struct and used to report the camera manager status.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager\* cameraManager | Pointer to the **Camera_Manager** instance that transfers the callback. |
-| Camera_StatusInfo\* status | Pointer to the status information of each camera. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance that transfers the callback. |
+| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md)* status | Pointer to the status information of each camera. |
 
 ### OH_CameraManager_TorchStatusCallback()
 
@@ -106,16 +102,14 @@ typedef void (*OH_CameraManager_TorchStatusCallback)(Camera_Manager* cameraManag
 
 Defines the callback to listen for flashlight status changes.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager\* cameraManager | Pointer to the **Camera_Manager** instance that transfers the callback. |
-| Camera_TorchStatusInfo\* status | Pointer to the flashlight status information. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance that transfers the callback. |
+| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md)* status | Pointer to the flashlight status information. |
 
 ### OH_CameraManager_OnFoldStatusInfoChange()
 
@@ -127,16 +121,14 @@ typedef void (*OH_CameraManager_OnFoldStatusInfoChange)(Camera_Manager* cameraMa
 
 Defines the callback to listen for fold status changes of the camera manager.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager\* cameraManager | Pointer to the **Camera_Manager** instance that transfers the callback. |
-| Camera_FoldStatusInfo\* foldStatusInfo | Pointer to the fold status information of the device. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance that transfers the callback. |
+| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md)* foldStatusInfo | Pointer to the fold status information of the device. |
 
 ### OH_CameraManager_RegisterCallback()
 
@@ -148,22 +140,20 @@ Camera_ErrorCode OH_CameraManager_RegisterCallback(Camera_Manager* cameraManager
 
 Registers a callback to listen for camera status changes.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md)* callback | Pointer to the target callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_UnregisterCallback()
 
@@ -175,22 +165,20 @@ Camera_ErrorCode OH_CameraManager_UnregisterCallback(Camera_Manager* cameraManag
 
 Unregisters the callback used to listen for camera status changes.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md)* callback | Pointer to the target callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_RegisterTorchStatusCallback()
 
@@ -202,22 +190,20 @@ Camera_ErrorCode OH_CameraManager_RegisterTorchStatusCallback(Camera_Manager* ca
 
 Registers a callback to listen for flashlight status changes.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | [OH_CameraManager_TorchStatusCallback](capi-camera-manager-h.md#oh_cameramanager_torchstatuscallback) torchStatusCallback | Target callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_UnregisterTorchStatusCallback()
 
@@ -229,22 +215,20 @@ Camera_ErrorCode OH_CameraManager_UnregisterTorchStatusCallback(Camera_Manager* 
 
 Unregisters the callback used to listen for flashlight status changes.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | [OH_CameraManager_TorchStatusCallback](capi-camera-manager-h.md#oh_cameramanager_torchstatuscallback) torchStatusCallback | Target callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_RegisterFoldStatusInfoCallback()
 
@@ -256,22 +240,20 @@ Camera_ErrorCode OH_CameraManager_RegisterFoldStatusInfoCallback(Camera_Manager*
 
 Registers a callback to listen for fold status changes.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | [OH_CameraManager_OnFoldStatusInfoChange](capi-camera-manager-h.md#oh_cameramanager_onfoldstatusinfochange) foldStatusInfoCallback | Target callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_UnregisterFoldStatusInfoCallback()
 
@@ -283,22 +265,20 @@ Camera_ErrorCode OH_CameraManager_UnregisterFoldStatusInfoCallback(Camera_Manage
 
 Unregisters the callback used to listen for fold status changes.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | [OH_CameraManager_OnFoldStatusInfoChange](capi-camera-manager-h.md#oh_cameramanager_onfoldstatusinfochange) foldStatusInfoCallback | Target callback. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_GetSupportedCameras()
 
@@ -310,23 +290,21 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameras(Camera_Manager* cameraMana
 
 Obtains the supported cameras.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_Device** cameras | Double pointer to the list of cameras, which are defined in the Camera_Device struct, if the function is successfully called. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Device](capi-oh-camera-camera-device.md)** cameras | Double pointer to the list of cameras, which are defined in the Camera_Device struct, if the function is successfully called. |
 | uint32_t* size | Pointer to the size of the list of cameras. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_DeleteSupportedCameras()
 
@@ -338,23 +316,21 @@ Camera_ErrorCode OH_CameraManager_DeleteSupportedCameras(Camera_Manager* cameraM
 
 Deletes supported cameras.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_Device* cameras | Pointer to a list of cameras, which are defined in the Camera_Device struct. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Device](capi-oh-camera-camera-device.md)* cameras | Pointer to a list of cameras, which are defined in the Camera_Device struct. |
 | uint32_t size | The size of the list of cameras. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_GetSupportedCameraOutputCapability()
 
@@ -366,23 +342,21 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapability(Camera_Mana
 
 Obtains the output capability supported by a camera.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | cameras | the [Camera_Device](capi-oh-camera-camera-device.md) to be queried. |
-| Camera_OutputCapability** cameraOutputCapability | Double pointer to the output capability, which is defined in the Camera_OutputCapability struct, if the function is successfully called. |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)** cameraOutputCapability | Double pointer to the output capability, which is defined in the Camera_OutputCapability struct, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()
 
@@ -394,24 +368,22 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMod
 
 Obtains the output capability supported by a camera in the specified mode.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| const Camera_Device* camera | Pointer to the **Camera_Device** instance. |
-| Camera_SceneMode sceneMode | Scene mode. |
-| Camera_OutputCapability** cameraOutputCapability | Double pointer to output capability, which is defined in the **Camera_OutputCapability*<br> struct, if the function is successfully called. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | Pointer to the **Camera_Device** instance. |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | Scene mode. |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)** cameraOutputCapability | Double pointer to output capability, which is defined in the **Camera_OutputCapability*<br> struct, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()
 
@@ -423,24 +395,22 @@ Camera_ErrorCode OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithScen
 
 Obtains the complete output capabilities supported by a specified camera in a specified mode, including YUV, HEIF, and HDR. Before using YUV, HEIF, or HDR, you need to explicitly call this method to ensure that the complete output capabilities are obtained.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| const Camera_Device* camera | Pointer to the **Camera_Device** instance. |
-| Camera_SceneMode sceneMode | Scene mode. |
-| Camera_OutputCapability** cameraOutputCapability | Double pointer to output capability, which is defined in the **Camera_OutputCapability*<br> struct, if the function is successfully called. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | Pointer to the **Camera_Device** instance. |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | Scene mode. |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)** cameraOutputCapability | Double pointer to output capability, which is defined in the **Camera_OutputCapability*<br> struct, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_DeleteSupportedCameraOutputCapability()
 
@@ -452,22 +422,20 @@ Camera_ErrorCode OH_CameraManager_DeleteSupportedCameraOutputCapability(Camera_M
 
 Deletes the output capability supported by a camera.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_OutputCapability* cameraOutputCapability | Pointer to the output capability, which is defined in the **Camera_OutputCapability**<br>struct. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)* cameraOutputCapability | Pointer to the output capability, which is defined in the **Camera_OutputCapability**<br>struct. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_IsCameraMuted()
 
@@ -479,22 +447,20 @@ Camera_ErrorCode OH_CameraManager_IsCameraMuted(Camera_Manager* cameraManager, b
 
 Checks whether a camera is muted.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | bool* isCameraMuted | Pointer to the check result for whether the camera is muted, if the function is successfully called. **true** if muted, **false** otherwise. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_CreateCaptureSession()
 
@@ -506,22 +472,20 @@ Camera_ErrorCode OH_CameraManager_CreateCaptureSession(Camera_Manager* cameraMan
 
 Creates a **CaptureSession** instance.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_CaptureSession** captureSession | Double pointer to the **Camera_CaptureSession** instance created, if the function is successfully called. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)** captureSession | Double pointer to the **Camera_CaptureSession** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreateCameraInput()
 
@@ -533,8 +497,6 @@ Camera_ErrorCode OH_CameraManager_CreateCameraInput(Camera_Manager* cameraManage
 
 Creates a **Camera_Input** instance.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Required permission**: ohos.permission.CAMERA
 
 **Since**: 11
@@ -543,15 +505,15 @@ Creates a **Camera_Input** instance.
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| const Camera_Device* camera | Pointer to the **Camera_Device** instance. |
-| Camera_Input** cameraInput | Double pointer to the **Camera_Input** instance created, if the function is successfully called. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | Pointer to the **Camera_Device** instance. |
+| [Camera_Input](capi-oh-camera-camera-input.md)** cameraInput | Double pointer to the **Camera_Input** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreateCameraInput_WithPositionAndType()
 
@@ -563,8 +525,6 @@ Camera_ErrorCode OH_CameraManager_CreateCameraInput_WithPositionAndType(Camera_M
 
 Creates a **Camera_Input** instance with the specified camera position and type.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Required permission**: ohos.permission.CAMERA
 
 **Since**: 11
@@ -573,16 +533,16 @@ Creates a **Camera_Input** instance with the specified camera position and type.
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_Position position | Camera position. |
-| Camera_Type type | Camera type. |
-| Camera_Input** cameraInput | Double pointer to the **Camera_Input** instance created, if the function is successfully called. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Position](capi-camera-h.md#camera_position) position | Camera position. |
+| [Camera_Type](capi-camera-h.md#camera_type) type | Camera type. |
+| [Camera_Input](capi-oh-camera-camera-input.md)** cameraInput | Double pointer to the **Camera_Input** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreatePreviewOutput()
 
@@ -594,24 +554,22 @@ Camera_ErrorCode OH_CameraManager_CreatePreviewOutput(Camera_Manager* cameraMana
 
 Creates a **PreviewOutput** instance.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| const Camera_Profile* profile | Pointer to the profile used for creating the **Camera_PreviewOutput** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | Pointer to the profile used for creating the **Camera_PreviewOutput** instance. |
 | const char* surfaceId | Pointer to the surface ID used for creating the **Camera_PreviewOutput** instance. |
-| Camera_PreviewOutput** previewOutput | Double pointer to the **Camera_PreviewOutput** instance created, if the function is successfully called. |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | Double pointer to the **Camera_PreviewOutput** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreatePreviewOutputUsedInPreconfig()
 
@@ -623,23 +581,21 @@ Camera_ErrorCode OH_CameraManager_CreatePreviewOutputUsedInPreconfig(Camera_Mana
 
 Creates a **PreviewOutput** instance to be used in a preconfiguration stream.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | const char* surfaceId | Pointer to the surface ID used for creating the **Camera_PreviewOutput** instance. |
-| Camera_PreviewOutput** previewOutput | Double pointer to the **Camera_PreviewOutput** instance created, if the function is successfully called. |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | Double pointer to the **Camera_PreviewOutput** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreateDeferredPreviewOutput()
 
@@ -651,23 +607,21 @@ Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manag
 
 Create a defer preview output instance.The caller must call [OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release) to free the memory of the output.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 24
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const Camera_Manager* cameraManager | the [Camera_Manager](capi-oh-camera-camera-manager.md) instance. |
-| const Camera_Profile* profile | the [Camera_Profile](capi-oh-camera-camera-profile.md) to create [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md). |
-| Camera_PreviewOutput** previewOutput | the [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md) will be created if the method call succeeds. |
+| [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | the [Camera_Manager](capi-oh-camera-camera-manager.md) instance. |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | the [Camera_Profile](capi-oh-camera-camera-profile.md) to create [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md). |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | the [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md) will be created if the method call succeeds. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds. [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
 
 ### OH_CameraManager_CreatePhotoOutput()
 
@@ -679,24 +633,22 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutput(Camera_Manager* cameraManage
 
 Creates a **PhotoOutput** instance. This API can only be used to create a **PhotoOutput** object in JPEG format.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| const Camera_Profile* profile | Pointer to the profile used for creating the **Camera_PhotoOutput** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | Pointer to the profile used for creating the **Camera_PhotoOutput** instance. |
 | const char* surfaceId | Pointer to the surface ID used for creating the **Camera_PhotoOutput** instance. |
-| Camera_PhotoOutput** photoOutput | Double pointer to the **Camera_PhotoOutput** instance created, if the function is successfully called. |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)** photoOutput | Double pointer to the **Camera_PhotoOutput** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreatePhotoOutputUsedInPreconfig()
 
@@ -708,23 +660,21 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutputUsedInPreconfig(Camera_Manage
 
 Creates a **PhotoOutput** instance to be used in a preconfiguration stream.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | const char* surfaceId | Pointer to the surface ID used for creating the **Camera_PhotoOutput** instance. |
-| Camera_PhotoOutput** photoOutput | Double pointer to the **Camera_PhotoOutput** instance created, if the function is successfully called. |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)** photoOutput | Double pointer to the **Camera_PhotoOutput** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreatePhotoOutputWithoutSurface()
 
@@ -736,23 +686,21 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutputWithoutSurface(Camera_Manager
 
 Creates a **PhotoOutput** instance. **surfaceId** is not required in this function.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager *cameraManager | Pointer to the **Camera_Manager** instance. |
-| const Camera_Profile *profile | Pointer to the profile used for creating the **Camera_PhotoOutput** instance. |
-| Camera_PhotoOutput **photoOutput | Double pointer to the **Camera_PhotoOutput** instance created, if the function is successfully called. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md) *cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md) *profile | Pointer to the profile used for creating the **Camera_PhotoOutput** instance. |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) **photoOutput | Double pointer to the **Camera_PhotoOutput** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreateVideoOutput()
 
@@ -764,24 +712,22 @@ Camera_ErrorCode OH_CameraManager_CreateVideoOutput(Camera_Manager* cameraManage
 
 Creates a **VideoOutput** instance.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| const Camera_VideoProfile* profile | Pointer to the profile for creating the **Camera_VideoOutput** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)* profile | Pointer to the profile for creating the **Camera_VideoOutput** instance. |
 | const char* surfaceId | Pointer to the surface ID used for creating the **Camera_VideoOutput** instance. |
-| Camera_VideoOutput** videoOutput | Double pointer to the **Camera_VideoOutput** instance created, if the function is successfully called. |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)** videoOutput | Double pointer to the **Camera_VideoOutput** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreateVideoOutputUsedInPreconfig()
 
@@ -793,23 +739,21 @@ Camera_ErrorCode OH_CameraManager_CreateVideoOutputUsedInPreconfig(Camera_Manage
 
 Creates a **VideoOutput** instance to be used in a preconfiguration stream.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | const char* surfaceId | Pointer to the surface ID used for creating the **Camera_VideoOutput** instance. |
-| Camera_VideoOutput** videoOutput | Double pointer to the **Camera_VideoOutput** instance created, if the function is successfully called. |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)** videoOutput | Double pointer to the **Camera_VideoOutput** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreateMetadataOutput()
 
@@ -821,23 +765,21 @@ Camera_ErrorCode OH_CameraManager_CreateMetadataOutput(Camera_Manager* cameraMan
 
 Creates a **MetadataOutput** instance.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| const Camera_MetadataObjectType* profile | Pointer to the metadata object type used for creating the **Camera_MetadataOutput** instance. |
-| Camera_MetadataOutput** metadataOutput | Double pointer to the **Camera_MetadataOutput** instance created, if the function is successfully called. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* profile | Pointer to the metadata object type used for creating the **Camera_MetadataOutput** instance. |
+| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)** metadataOutput | Double pointer to the **Camera_MetadataOutput** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_CreateMetadataOutputWithObjectTypes()
 
@@ -849,24 +791,22 @@ Camera_ErrorCode OH_CameraManager_CreateMetadataOutputWithObjectTypes(Camera_Man
 
 Creates a **metadataOutput** instance using an array of metadata object types.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| const Camera_MetadataObjectType* metadataObjectTypes | Pointer to the metadata object types used for creating the **Camera_MetadataOutput**<br>instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* metadataObjectTypes | Pointer to the metadata object types used for creating the **Camera_MetadataOutput**<br>instance. |
 | uint32_t size | Length of the metadata object type array. |
-| Camera_MetadataOutput** metadataOutput | Double pointer to the **Camera_MetadataOutput** instance created, if the function is successfully called. |
+| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)** metadataOutput | Double pointer to the **Camera_MetadataOutput** instance created, if the function is successfully called. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_GetSupportedSceneModes()
 
@@ -878,23 +818,21 @@ Camera_ErrorCode OH_CameraManager_GetSupportedSceneModes(Camera_Device* camera, 
 
 Obtains the scene modes supported by a camera.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Device* camera | Pointer to the **Camera_Device** instance. |
-| Camera_SceneMode** sceneModes | Double pointer to the list of scene modes, which are defined in the Camera_SceneMode struct, if the function is successfully called. |
+| [Camera_Device](capi-oh-camera-camera-device.md)* camera | Pointer to the **Camera_Device** instance. |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode)** sceneModes | Double pointer to the list of scene modes, which are defined in the Camera_SceneMode struct, if the function is successfully called. |
 | uint32_t* size | Pointer to the size of the list of scene modes. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_DeleteSceneModes()
 
@@ -906,22 +844,20 @@ Camera_ErrorCode OH_CameraManager_DeleteSceneModes(Camera_Manager* cameraManager
 
 Deletes scene modes.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_SceneMode* sceneModes | Pointer to the list of scene modes to delete. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode)* sceneModes | Pointer to the list of scene modes to delete. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_IsTorchSupported()
 
@@ -933,22 +869,20 @@ Camera_ErrorCode OH_CameraManager_IsTorchSupported(Camera_Manager* cameraManager
 
 Checks whether the device supports the flashlight.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | bool* isTorchSupported | Pointer to the check result for the support of the flashlight. **true** if supported, **<br>false** otherwise. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_IsTorchSupportedByTorchMode()
 
@@ -960,23 +894,21 @@ Camera_ErrorCode OH_CameraManager_IsTorchSupportedByTorchMode(Camera_Manager* ca
 
 Checks whether the device supports the specified flashlight mode.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_TorchMode torchMode | Flashlight mode to check. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_TorchMode](capi-camera-h.md#camera_torchmode) torchMode | Flashlight mode to check. |
 | bool* isTorchSupported | Pointer to the check result for the support of the flashlight mode. **true** if supported, **<br>false** otherwise. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_SetTorchMode()
 
@@ -988,22 +920,20 @@ Camera_ErrorCode OH_CameraManager_SetTorchMode(Camera_Manager* cameraManager, Ca
 
 Sets a flashlight mode.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_TorchMode torchMode | Flashlight mode to set. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_TorchMode](capi-camera-h.md#camera_torchmode) torchMode | Flashlight mode to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_IsTorchLevelControlSupported()
 
@@ -1015,22 +945,20 @@ Camera_ErrorCode OH_CameraManager_IsTorchLevelControlSupported(const Camera_Mana
 
 Checks whether the device supports flashlight brightness control.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | bool* isTorchLevelControlSupported | Whether the device supports flashlight brightness control. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_SetTorchModeOnWithLevel()
 
@@ -1042,22 +970,20 @@ Camera_ErrorCode OH_CameraManager_SetTorchModeOnWithLevel(Camera_Manager* camera
 
 Turns on the flashlight and sets the brightness level.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | double torchLevel | Target brightness level. The value range is [0.0, 1.0]. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_GetCameraDevice()
 
@@ -1069,24 +995,22 @@ Camera_ErrorCode OH_CameraManager_GetCameraDevice(Camera_Manager* cameraManager,
 
 Queries a specified device based on position and type.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | the [Camera_Manager](capi-oh-camera-camera-manager.md) instance. |
-| Camera_Position position | the [Camera_Position](capi-camera-h.md#camera_position) instance. |
-| Camera_Type type | the [Camera_Type](capi-camera-h.md#camera_type) instance. |
-| Camera_Device* camera | the [Camera_Device](capi-oh-camera-camera-device.md) to be set. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | the [Camera_Manager](capi-oh-camera-camera-manager.md) instance. |
+| [Camera_Position](capi-camera-h.md#camera_position) position | the [Camera_Position](capi-camera-h.md#camera_position) instance. |
+| [Camera_Type](capi-camera-h.md#camera_type) type | the [Camera_Type](capi-camera-h.md#camera_type) instance. |
+| [Camera_Device](capi-oh-camera-camera-device.md)* camera | the [Camera_Device](capi-oh-camera-camera-device.md) to be set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds. [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
 
 ### OH_CameraManager_GetCameraDevices()
 
@@ -1098,24 +1022,22 @@ Camera_ErrorCode OH_CameraManager_GetCameraDevices(Camera_Manager* cameraManager
 
 Obtains the list of cameras that meet the search criteria based on the camera position, camera types, and connection type.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_DeviceQueryInfo* deviceQueryInfo | Camera device query information instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md)* deviceQueryInfo | Camera device query information instance. |
 | uint32_t* cameraSize | Size of the list of supported cameras. |
-| Camera_Device** cameras | List of supported cameras. |
+| [Camera_Device](capi-oh-camera-camera-device.md)** cameras | List of supported cameras. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraManager_DeleteCameraDevices()
 
@@ -1127,22 +1049,20 @@ Camera_ErrorCode OH_CameraManager_DeleteCameraDevices(Camera_Manager* cameraMana
 
 Deletes the specified camera.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| Camera_Device* cameras | List of cameras to be deleted. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [Camera_Device](capi-oh-camera-camera-device.md)* cameras | List of cameras to be deleted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_CameraManager_GetCameraConcurrentInfos()
 
@@ -1154,24 +1074,22 @@ Camera_ErrorCode OH_CameraManager_GetCameraConcurrentInfos(Camera_Manager* camer
 
 Obtains the concurrent information of specified cameras, the empty return means concurrency is not supported.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | the [Camera_Manager](capi-oh-camera-camera-manager.md) instance. |
-| const Camera_Device* camera | the [Camera_Device](capi-oh-camera-camera-device.md) instance. |
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | the [Camera_Manager](capi-oh-camera-camera-manager.md) instance. |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | the [Camera_Device](capi-oh-camera-camera-device.md) instance. |
 | uint32_t deviceSize | length of the input device array. |
-| Camera_ConcurrentInfo** cameraConcurrentInfo | the [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) to be set. |
+| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md)** cameraConcurrentInfo | the [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) to be set. |
 | uint32_t* infoSize | length of the returned concurrency information array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds. [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
 
 

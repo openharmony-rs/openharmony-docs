@@ -8,8 +8,6 @@
 
 **库：** libohcrypto.so
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **相关模块：** [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)
@@ -86,8 +84,6 @@ enum CryptoAsymKey_ParamType
 
 定义非对称密钥参数类型。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -133,8 +129,6 @@ enum Crypto_EncodingType
 
 定义编码类型。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -152,8 +146,6 @@ enum CryptoPrivKeyEncoding_ParamType
 
 定义私钥编码参数类型。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -170,8 +162,6 @@ enum CryptoAsymKeySpec_Type
 **描述：**
 
 定义非对称密钥规格类型。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -195,9 +185,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 根据给定的算法名称创建非对称密钥生成器。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_asym_key/OH_CryptoAsymKeyGenerator_Destroy {ctx}
 
 **参数：**
 
@@ -210,7 +200,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL或algoName为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL或algoName为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 **参考：**
 
@@ -228,9 +218,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *
 
 生成非对称密钥对。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_asym_key/OH_CryptoKeyPair_Destroy {keyCtx}
 
 **参数：**
 
@@ -243,7 +233,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或keyCtx为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或keyCtx为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoAsymKeyGenerator_Convert()
 
@@ -255,9 +245,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *c
 
 将非对称密钥数据转换为密钥对。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_asym_key/OH_CryptoKeyPair_Destroy {keyCtx}
 
 **参数：**
 
@@ -265,15 +255,15 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *c
 | -- | -- |
 | [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) *ctx | [in] 非对称密钥生成器。不能为NULL。 |
 | [Crypto_EncodingType](capi-crypto-asym-key-h.md#crypto_encodingtype) type | [in] 编码类型。 |
-| Crypto_DataBlob *pubKeyData | [in] 公钥数据，不能与priKeyData同时为NULL。 |
-| Crypto_DataBlob *priKeyData | [in] 私钥数据，不能与pubKeyData同时为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *pubKeyData | [in] 公钥数据，不能与priKeyData同时为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *priKeyData | [in] 私钥数据，不能与pubKeyData同时为NULL。 |
 | [OH_CryptoKeyPair](capi-cryptoasymkeyapi-oh-cryptokeypair.md) **keyCtx | [out] 指向密钥对指针的指针。keyCtx不能为NULL，*keyCtx必须为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL，pubKeyData和priKeyData同时为NULL，keyCtx为NULL          或type不是有效的Crypto_EncodingType。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的密钥格式。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密钥转换失败。可能的原因：             密钥数据损坏或不是有效的PEM/DER格式，密钥数据与算法不匹配，或加密私钥的密码不正确。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL，pubKeyData和priKeyData同时为NULL，keyCtx为NULL或type不是有效的Crypto_EncodingType。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的密钥格式。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密钥转换失败。可能的原因：密钥数据损坏或不是有效的PEM/DER格式，密钥数据与算法不匹配，或加密私钥的密码不正确。</li> </ul> |
 
 ### OH_CryptoAsymKeyGenerator_GetAlgoName()
 
@@ -285,8 +275,6 @@ const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx
 
 获取非对称密钥生成器的算法名称。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **参数：**
@@ -299,7 +287,7 @@ const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | <ul>          <li>返回非对称密钥算法名称，不需要调用者释放，在生成器销毁后不可使用。</li>          <li>返回NULL，如果ctx是NULL。</li>          </ul> |
+| const char * | <ul> <li>返回非对称密钥算法名称，不需要调用者释放，在生成器销毁后不可使用。</li> <li>返回NULL，如果ctx是NULL。</li> </ul> |
 
 ### OH_CryptoAsymKeyGenerator_Destroy()
 
@@ -310,8 +298,6 @@ void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)
 **描述：**
 
 销毁非对称密钥生成器。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -331,8 +317,6 @@ void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)
 
 销毁密钥对。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **参数：**
@@ -351,8 +335,6 @@ OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)
 
 获取密钥对中的公钥。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
 
 **参数：**
@@ -365,7 +347,7 @@ OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_CryptoPubKey *](capi-cryptoasymkeyapi-oh-cryptopubkey.md) | <ul>          <li>返回密钥对中的公钥。为内部引用，不需要单独销毁，在密钥对销毁后不可使用。</li>          <li>返回NULL，如果keyCtx为NULL或公钥不存在。</li>          </ul> |
+| [OH_CryptoPubKey *](capi-cryptoasymkeyapi-oh-cryptopubkey.md) | <ul> <li>返回密钥对中的公钥。为内部引用，不需要单独销毁，在密钥对销毁后不可使用。</li> <li>返回NULL，如果keyCtx为NULL或公钥不存在。</li> </ul> |
 
 ### OH_CryptoKeyPair_GetPrivKey()
 
@@ -376,8 +358,6 @@ OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)
 **描述：**
 
 获取密钥对中的私钥。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -391,7 +371,7 @@ OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_CryptoPrivKey *](capi-cryptoasymkeyapi-oh-cryptoprivkey.md) | <ul>          <li>返回密钥对中的私钥。为内部引用，不需要单独销毁，在密钥对销毁后不可使用。</li>          <li>返回NULL，如果keyCtx为NULL或私钥不存在。</li>          </ul> |
+| [OH_CryptoPrivKey *](capi-cryptoasymkeyapi-oh-cryptoprivkey.md) | <ul> <li>返回密钥对中的私钥。为内部引用，不需要单独销毁，在密钥对销毁后不可使用。</li> <li>返回NULL，如果keyCtx为NULL或私钥不存在。</li> </ul> |
 
 ### OH_CryptoPubKey_Encode()
 
@@ -403,9 +383,9 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 
 对公钥进行编码。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **参数：**
 
@@ -414,13 +394,13 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 | [OH_CryptoPubKey](capi-cryptoasymkeyapi-oh-cryptopubkey.md) *key | [in] 公钥。不能为NULL。 |
 | [Crypto_EncodingType](capi-crypto-asym-key-h.md#crypto_encodingtype) type | [in] 编码类型。 |
 | const char *encodingStandard | [in] 编码标准，支持"X509"。不能为NULL。 |
-| Crypto_DataBlob *out | [out] 指向用于存储编码结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储编码结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) key、out或encodingStandard为NULL，type不是             有效的Crypto_EncodingType，或编码标准与密钥类型不兼容。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的编码格式。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 编码失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) key、out或encodingStandard为NULL，type不是有效的Crypto_EncodingType，或编码标准与密钥类型不兼容。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的编码格式。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 编码失败。</li> </ul> |
 
 ### OH_CryptoPubKey_GetParam()
 
@@ -432,9 +412,9 @@ OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_P
 
 获取公钥的指定参数。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 12
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {value}
 
 **参数：**
 
@@ -442,13 +422,13 @@ OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_P
 | -- | -- |
 | [OH_CryptoPubKey](capi-cryptoasymkeyapi-oh-cryptopubkey.md) *key | [in] 公钥。不能为NULL。 |
 | [CryptoAsymKey_ParamType](capi-crypto-asym-key-h.md#cryptoasymkey_paramtype) item | [in] 非对称密钥参数类型。 |
-| Crypto_DataBlob *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将value初始化为{0}，不要预分配 value->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将value初始化为{0}，不要预分配 value->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) key或value为NULL，或该参数类型不支持该密钥算法。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的参数类型。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 获取参数失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) key或value为NULL，或该参数类型不支持该密钥算法。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的参数类型。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 获取参数失败。</li> </ul> |
 
 ### OH_CryptoAsymKeyGenerator_SetPassword()
 
@@ -459,8 +439,6 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerato
 **描述：**
 
 设置非对称密钥生成器的密码。如果需要使用[OH_CryptoAsymKeyGenerator_Convert](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)将加密的私钥数据转换为密钥对，请调用此方法 设置密码。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -476,7 +454,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerato
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或password为NULL，或passwordLen为0。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或password为NULL，或passwordLen为0。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoPrivKeyEncodingParams_Create()
 
@@ -488,9 +466,9 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncoding
 
 创建私钥编码参数。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_asym_key/OH_CryptoPrivKeyEncodingParams_Destroy {ctx}
 
 **参数：**
 
@@ -502,7 +480,7 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncoding
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 **参考：**
 
@@ -519,8 +497,6 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodi
 
 设置私钥编码参数。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
 
 **参数：**
@@ -529,13 +505,13 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodi
 | -- | -- |
 | [OH_CryptoPrivKeyEncodingParams](capi-cryptoasymkeyapi-oh-cryptoprivkeyencodingparams.md) *ctx | [in] 私钥编码参数。不能为NULL。 |
 | [CryptoPrivKeyEncoding_ParamType](capi-crypto-asym-key-h.md#cryptoprivkeyencoding_paramtype) type | [in] 私钥编码参数类型。 |
-| Crypto_DataBlob *value | [in] 私钥编码参数值。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [in] 私钥编码参数值。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或value为NULL，             value->data为NULL，value->len为0，或type无法识别。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 深拷贝内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或value为NULL，value->data为NULL，value->len为0，或type无法识别。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 深拷贝内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoPrivKeyEncodingParams_Destroy()
 
@@ -546,8 +522,6 @@ void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)
 **描述：**
 
 销毁私钥编码参数。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -567,9 +541,9 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_Encoding
 
 对私钥进行编码。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **参数：**
 
@@ -579,13 +553,13 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_Encoding
 | [Crypto_EncodingType](capi-crypto-asym-key-h.md#crypto_encodingtype) type | [in] 编码类型。 |
 | const char *encodingStandard | [in] 编码标准，支持"PKCS8"和"PKCS1"。其中"PKCS1"仅支持RSA私钥。不能为NULL。 |
 | [OH_CryptoPrivKeyEncodingParams](capi-cryptoasymkeyapi-oh-cryptoprivkeyencodingparams.md) *params | [in] 私钥编码参数，可以为NULL，如果需要加密私钥，应设置此参数。 |
-| Crypto_DataBlob *out | [out] 指向用于存储编码结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储编码结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) key、out或encodingStandard为NULL，             type不是有效的Crypto_EncodingType，或编码标准与密钥类型不兼容。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的编码格式。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 编码失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) key、out或encodingStandard为NULL，type不是有效的Crypto_EncodingType，或编码标准与密钥类型不兼容。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的编码格式。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 编码失败。</li> </ul> |
 
 ### OH_CryptoPrivKey_GetParam()
 
@@ -597,9 +571,9 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey
 
 获取私钥的指定参数。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {value}
 
 **参数：**
 
@@ -607,13 +581,13 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey
 | -- | -- |
 | [OH_CryptoPrivKey](capi-cryptoasymkeyapi-oh-cryptoprivkey.md) *key | [in] 私钥。不能为NULL。 |
 | [CryptoAsymKey_ParamType](capi-crypto-asym-key-h.md#cryptoasymkey_paramtype) item | [in] 非对称密钥参数类型。 |
-| Crypto_DataBlob *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将value初始化为{0}，不要预分配 value->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将value初始化为{0}，不要预分配 value->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) key或value为NULL，或该参数类型不支持该密钥算法。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的参数类型。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 获取参数失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) key或value为NULL，或该参数类型不支持该密钥算法。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的参数类型。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 获取参数失败。</li> </ul> |
 
 ### OH_CryptoAsymKeySpec_GenEcCommonParamsSpec()
 
@@ -625,9 +599,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveNa
 
 生成EC通用参数规格。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_asym_key/OH_CryptoAsymKeySpec_Destroy {spec}
 
 **参数：**
 
@@ -640,7 +614,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveNa
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) curveName或spec为NULL，或曲线名不是有效的椭圆曲线。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的曲线。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 生成规格失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) curveName或spec为NULL，或曲线名不是有效的椭圆曲线。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的曲线。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 生成规格失败。</li> </ul> |
 
 ### OH_CryptoAsymKeySpec_GenDhCommonParamsSpec()
 
@@ -652,9 +626,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen
 
 生成DH通用参数规格。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_asym_key/OH_CryptoAsymKeySpec_Destroy {spec}
 
 **参数：**
 
@@ -668,7 +642,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec为NULL，             pLen为负数，skLen为负数，或skLen大于pLen。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec为NULL，pLen为负数，skLen为负数，或skLen大于pLen。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoAsymKeySpec_Create()
 
@@ -680,9 +654,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKe
 
 根据给定的算法名称和规格类型创建非对称密钥规格。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_asym_key/OH_CryptoAsymKeySpec_Destroy {spec}
 
 **参数：**
 
@@ -696,7 +670,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKe
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) algoName或spec为NULL，             algoName不是支持的算法名称。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) algoName或spec为NULL，algoName不是支持的算法名称。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoAsymKeySpec_SetParam()
 
@@ -708,8 +682,6 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, Cryp
 
 设置非对称密钥规格的指定参数。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
 
 **参数：**
@@ -718,13 +690,13 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, Cryp
 | -- | -- |
 | [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *spec | [in] 非对称密钥规格。不能为NULL。 |
 | [CryptoAsymKey_ParamType](capi-crypto-asym-key-h.md#cryptoasymkey_paramtype) type | [in] 非对称密钥参数类型。 |
-| Crypto_DataBlob *value | [in] 输入数据。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [in] 输入数据。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec或value为NULL，             value->data为NULL，value->len为0，或该参数类型不支持该算法。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 深拷贝内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec或value为NULL，value->data为NULL，value->len为0，或该参数类型不支持该算法。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 深拷贝内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoAsymKeySpec_SetCommonParamsSpec()
 
@@ -735,8 +707,6 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec 
 **描述：**
 
 将通用参数规格设置到非对称密钥规格中。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -751,7 +721,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec或commonParamsSpec为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec或commonParamsSpec为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoAsymKeySpec_GetParam()
 
@@ -763,9 +733,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, Cryp
 
 获取非对称密钥规格的指定参数。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {value}
 
 **参数：**
 
@@ -773,13 +743,13 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, Cryp
 | -- | -- |
 | [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *spec | [in] 非对称密钥规格。不能为NULL。 |
 | [CryptoAsymKey_ParamType](capi-crypto-asym-key-h.md#cryptoasymkey_paramtype) type | [in] 非对称密钥参数类型。 |
-| Crypto_DataBlob *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将value初始化为{0}，不要预分配 value->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将value初始化为{0}，不要预分配 value->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec或value为NULL，或该参数类型不支持该算法。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec或value为NULL，或该参数类型不支持该算法。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoAsymKeySpec_Destroy()
 
@@ -790,8 +760,6 @@ void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)
 **描述：**
 
 销毁非对称密钥规格。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -811,9 +779,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec 
 
 根据非对称密钥规格创建密钥生成器。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_asym_key/OH_CryptoAsymKeyGeneratorWithSpec_Destroy {generator}
 
 **参数：**
 
@@ -826,7 +794,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) keySpec或generator为NULL，             或密钥规格参数不完整或无效。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 创建生成器失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) keySpec或generator为NULL，或密钥规格参数不完整或无效。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 创建生成器失败。</li> </ul> |
 
 **参考：**
 
@@ -843,9 +811,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyG
 
 根据非对称密钥规格生成密钥对。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_asym_key/OH_CryptoKeyPair_Destroy {keyPair}
 
 **参数：**
 
@@ -858,7 +826,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyG
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) generator或keyPair为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 生成密钥对失败。可能的原因：密钥规格参数不完整或不一致。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) generator或keyPair为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 生成密钥对失败。可能的原因：密钥规格参数不完整或不一致。</li> </ul> |
 
 ### OH_CryptoAsymKeyGeneratorWithSpec_Destroy()
 
@@ -869,8 +837,6 @@ void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec
 **描述：**
 
 销毁根据规格创建的非对称密钥生成器。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -890,23 +856,23 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob
 
 创建椭圆曲线点。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_asym_key/OH_CryptoEcPoint_Destroy {point}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | const char *curveName | [in] 椭圆曲线的NID（Name Identifier）字符串名称，不能为NULL。例如"NID_X9_62_prime256v1"、"NID_secp384r1"、 "NID_secp521r1"、"NID_sm2"。 |
-| Crypto_DataBlob *ecKeyData | [in] 椭圆曲线点数据，支持"04 \|\| x \|\| y"、"02 \|\| x"或"03 \|\| x"格式。可以为NULL。如果ecKeyData参数为NULL， 将创建一个空的椭圆曲线点规格。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *ecKeyData | [in] 椭圆曲线点数据，支持"04 \|\| x \|\| y"、"02 \|\| x"或"03 \|\| x"格式。可以为NULL。如果ecKeyData参数为NULL， 将创建一个空的椭圆曲线点规格。 |
 | [OH_CryptoEcPoint](capi-cryptoasymkeyapi-oh-cryptoecpoint.md) **point | [out] 指向椭圆曲线点指针的指针。point不能为NULL，*point必须为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) curveName或point为NULL，或曲线名称无效。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的曲线。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 创建EC点失败。可能的原因：点数据格式不正确。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) curveName或point为NULL，或曲线名称无效。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的曲线。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 创建EC点失败。可能的原因：点数据格式不正确。</li> </ul> |
 
 **参考：**
 
@@ -924,23 +890,23 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 获取椭圆曲线点的x和y坐标。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {x}
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoEcPoint](capi-cryptoasymkeyapi-oh-cryptoecpoint.md) *point | [in] 椭圆曲线点。不能为NULL。 |
-| Crypto_DataBlob *x | [out] 指向用于存储x坐标的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将x初始化为{0}，不要预分配x->data内存。 |
-| Crypto_DataBlob *y | [out] 指向用于存储y坐标的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将y初始化为{0}，不要预分配y->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *x | [out] 指向用于存储x坐标的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将x初始化为{0}，不要预分配x->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *y | [out] 指向用于存储y坐标的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将y初始化为{0}，不要预分配y->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) point、x或y为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) point、x或y为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 ### OH_CryptoEcPoint_SetCoordinate()
 
@@ -952,8 +918,6 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 设置椭圆曲线点的x和y坐标。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
 
 **参数：**
@@ -961,14 +925,14 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoEcPoint](capi-cryptoasymkeyapi-oh-cryptoecpoint.md) *point | [in] 椭圆曲线点。不能为NULL。 |
-| Crypto_DataBlob *x | [in] 椭圆曲线点的x坐标。本接口会对x和y中的数据进行深拷贝，调用者在接口返回后可立即释放x和y。不能为NULL。 |
-| Crypto_DataBlob *y | [in] 椭圆曲线点的y坐标。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *x | [in] 椭圆曲线点的x坐标。本接口会对x和y中的数据进行深拷贝，调用者在接口返回后可立即释放x和y。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *y | [in] 椭圆曲线点的y坐标。不能为NULL。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) point、x或y为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 深拷贝内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) point、x或y为NULL。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 深拷贝内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li> </ul> |
 
 **参考：**
 
@@ -985,9 +949,9 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *f
 
 将椭圆曲线点编码为指定格式。
 
-**系统能力：** SystemCapability.Security.CryptoFramework
-
 **起始版本：** 20
+
+**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
 
 **参数：**
 
@@ -995,13 +959,13 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *f
 | -- | -- |
 | [OH_CryptoEcPoint](capi-cryptoasymkeyapi-oh-cryptoecpoint.md) *point | [in] 椭圆曲线点。不能为NULL。 |
 | const char *format | [in] 编码格式，不能为NULL。支持"UNCOMPRESSED"和"COMPRESSED"。 |
-| Crypto_DataBlob *out | [out] 指向用于存储编码后椭圆曲线点数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将out初始化为{0}，不要预分配 out->data内存。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储编码后椭圆曲线点数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将out初始化为{0}，不要预分配 out->data内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) point、format或out为NULL，             或格式字符串不是有效的点格式。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的格式。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 编码失败。可能的原因：该点不是有效的曲线点。</li>          </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul> <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li> <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) point、format或out为NULL，或格式字符串不是有效的点格式。</li> <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的格式。</li> <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li> <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 编码失败。可能的原因：该点不是有效的曲线点。</li> </ul> |
 
 ### OH_CryptoEcPoint_Destroy()
 
@@ -1012,8 +976,6 @@ void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)
 **描述：**
 
 销毁椭圆曲线点。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 

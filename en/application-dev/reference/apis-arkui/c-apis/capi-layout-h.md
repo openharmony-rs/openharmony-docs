@@ -6,8 +6,6 @@ Defines the layout-related types for the native module.
 
 **Library**: libace_ndk.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -34,6 +32,8 @@ Defines the layout-related types for the native module.
 | [ArkUI_Axis](#arkui_axis) | ArkUI_Axis | Enumerates the scroll directions for the <b><List></b> component. |
 | [ArkUI_VerticalAlignment](#arkui_verticalalignment) | ArkUI_VerticalAlignment | Enumerates the vertical alignment modes. |
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) | ArkUI_HorizontalAlignment | Enumerates the alignment mode in the horizontal direction. |
+| [ArkUI_BarrierDirection](#arkui_barrierdirection) | ArkUI_BarrierDirection | defines the direction of the barrier line. |
+| [ArkUI_RelativeLayoutChainStyle](#arkui_relativelayoutchainstyle) | ArkUI_RelativeLayoutChainStyle | defines the style of the chain. |
 | [ArkUI_SafeAreaEdge](#arkui_safeareaedge) | ArkUI_SafeAreaEdge | defines the enumerated value of the direction of the extended security zone. |
 | [ArkUI_LayoutSafeAreaType](#arkui_layoutsafeareatype) | ArkUI_LayoutSafeAreaType | Define the types for expanding the safe area in layout. |
 | [ArkUI_LayoutSafeAreaEdge](#arkui_layoutsafeareaedge) | ArkUI_LayoutSafeAreaEdge | Define the edges for expanding the safe area in layout. |
@@ -122,8 +122,6 @@ enum ArkUI_Alignment
 
 Enumerates the alignment modes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -148,8 +146,6 @@ enum ArkUI_ItemAlignment
 
 Enumerates the modes in which components are laid out along the cross axis of the container.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -159,7 +155,7 @@ Enumerates the modes in which components are laid out along the cross axis of th
 | ARKUI_ITEM_ALIGNMENT_CENTER | The items in the container are centered along the cross axis. |
 | ARKUI_ITEM_ALIGNMENT_END | The items in the container are aligned with the cross-end edge. |
 | ARKUI_ITEM_ALIGNMENT_STRETCH | The items in the container are stretched and padded along the cross axis. |
-| ARKUI_ITEM_ALIGNMENT_BASELINE | The items in the container are aligned in such a manner that their text baselines are aligned along the |
+| ARKUI_ITEM_ALIGNMENT_BASELINE | The items in the container are aligned in such a manner that their text baselines are aligned along the cross axis. |
 
 ### ArkUI_FlexAlignment
 
@@ -171,8 +167,6 @@ enum ArkUI_FlexAlignment
 
 Enumerates the vertical alignment modes.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -180,9 +174,9 @@ Enumerates the vertical alignment modes.
 | ARKUI_FLEX_ALIGNMENT_START = 1 | The child components are aligned with the start edge of the main axis. |
 | ARKUI_FLEX_ALIGNMENT_CENTER = 2 | The child components are aligned in the center of the main axis. |
 | ARKUI_FLEX_ALIGNMENT_END = 3 | The child components are aligned with the end edge of the main axis. |
-| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with |
-| ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and |
-| ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent |
+| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with the main-end. |
+| ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and cross-main are both half the size of the space between two adjacent components. |
+| ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent components are the same. |
 
 ### ArkUI_FlexDirection
 
@@ -193,8 +187,6 @@ enum ArkUI_FlexDirection
 **Description**
 
 Enumerates the directions of the main axis in the flex container.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -215,8 +207,6 @@ enum ArkUI_FlexWrap
 
 Defines whether the flex container has a single line or multiple lines.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -234,8 +224,6 @@ enum ArkUI_Direction
 **Description**
 
 Enumerates the modes in which components are laid out along the main axis of the container.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -255,8 +243,6 @@ enum ArkUI_Axis
 
 Enumerates the scroll directions for the <b><List></b> component.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -273,8 +259,6 @@ enum ArkUI_VerticalAlignment
 **Description**
 
 Enumerates the vertical alignment modes.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -294,8 +278,6 @@ enum ArkUI_HorizontalAlignment
 
 Enumerates the alignment mode in the horizontal direction.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 | Enum item | Description |
@@ -303,6 +285,43 @@ Enumerates the alignment mode in the horizontal direction.
 | ARKUI_HORIZONTAL_ALIGNMENT_START = 0 | Aligned with the start edge in the same direction as the language in use. |
 | ARKUI_HORIZONTAL_ALIGNMENT_CENTER | Center aligned. This is the default alignment mode. |
 | ARKUI_HORIZONTAL_ALIGNMENT_END | Aligned with the end edge in the same direction as the language in use. |
+
+### ArkUI_BarrierDirection
+
+```c
+enum ArkUI_BarrierDirection
+```
+
+**Description**
+
+defines the direction of the barrier line.
+
+**Since**: 12
+
+| Enum item | Description |
+| -- | -- |
+| ARKUI_BARRIER_DIRECTION_START = 0 | The barrier is the leftmost of all its referencedIds. |
+| ARKUI_BARRIER_DIRECTION_END | The barrier is on the rightmost side of all its referencedIds. |
+| ARKUI_BARRIER_DIRECTION_TOP | The barrier is at the top of all its referencedIds. |
+| ARKUI_BARRIER_DIRECTION_BOTTOM | The barrier is at the bottom of all its referencedIds. |
+
+### ArkUI_RelativeLayoutChainStyle
+
+```c
+enum ArkUI_RelativeLayoutChainStyle
+```
+
+**Description**
+
+defines the style of the chain.
+
+**Since**: 12
+
+| Enum item | Description |
+| -- | -- |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | Components are evenly distributed among constraint anchor points. |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE | Except for the first and last two sub-components, other components are evenly distributed between the constraint anchor points. |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED | No gaps in subcomponents within the chain. |
 
 ### ArkUI_SafeAreaEdge
 
@@ -313,8 +332,6 @@ enum ArkUI_SafeAreaEdge
 **Description**
 
 defines the enumerated value of the direction of the extended security zone.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -335,8 +352,6 @@ enum ArkUI_LayoutSafeAreaType
 
 Define the types for expanding the safe area in layout.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 23
 
 | Enum item | Description |
@@ -352,8 +367,6 @@ enum ArkUI_LayoutSafeAreaEdge
 **Description**
 
 Define the edges for expanding the safe area in layout.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -376,8 +389,6 @@ enum ArkUI_LocalizedAlignment
 **Description**
 
 Enumerates the localizedAlignment modes.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -403,8 +414,6 @@ enum ArkUI_LayoutPolicy
 
 Enumerates the LayoutPolicy.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 | Enum item | Description |
@@ -422,8 +431,6 @@ enum ArkUI_PixelRoundCalcPolicy
 **Description**
 
 Enumerates the PixelRoundPolicy.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -445,8 +452,6 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 **Description**
 
 Create auxiliary line information in the RelativeContaine container.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -472,8 +477,6 @@ void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)
 
 Destroy auxiliary line information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -491,8 +494,6 @@ void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char
 **Description**
 
 Set the Id of the auxiliary line.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -514,8 +515,6 @@ void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, Ark
 
 Set the direction of the auxiliary line.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -535,8 +534,6 @@ void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline,
 **Description**
 
 Set the distance from the left or top of the container.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -558,8 +555,6 @@ void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, f
 
 Set the distance from the right or bottom of the container.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -579,8 +574,6 @@ const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int
 **Description**
 
 Get the Id of the auxiliary line.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -607,8 +600,6 @@ ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guidelin
 
 Get the direction of the auxiliary line.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -633,8 +624,6 @@ float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline
 **Description**
 
 Get the distance from the left or top of the container.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -661,8 +650,6 @@ float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, 
 
 Get the distance from the right side or bottom of the container.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -688,8 +675,6 @@ ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 
 creates barrier information within the RelativeContaine container.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -714,8 +699,6 @@ void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)
 
 Destroy barrier information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -733,8 +716,6 @@ void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char*
 **Description**
 
 Set the Id of the barrier.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -756,8 +737,6 @@ void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkU
 
 Set the direction of the barrier.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -765,7 +744,7 @@ Set the direction of the barrier.
 | Parameter | Description |
 | -- | -- |
 | ArkUI_BarrierOption* barrierStyle | barrier information. |
-| ArkUI_BarrierDirection value | direction. |
+| [ArkUI_BarrierDirection](capi-layout-h.md#arkui_barrierdirection) value | direction. |
 | int32_t index | Barrier index value. |
 
 ### OH_ArkUI_BarrierOption_SetReferencedId()
@@ -777,8 +756,6 @@ void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, c
 **Description**
 
 Sets the dependent component of the barrier.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -799,8 +776,6 @@ const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int3
 **Description**
 
 Get the Id of the barrier.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -827,8 +802,6 @@ ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* 
 
 Gets the direction of the barrier.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -842,7 +815,7 @@ Gets the direction of the barrier.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_BarrierDirection | The direction of the barrier. |
+| [ArkUI_BarrierDirection](capi-layout-h.md#arkui_barrierdirection) | The direction of the barrier. |
 
 ### OH_ArkUI_BarrierOption_GetReferencedId()
 
@@ -853,8 +826,6 @@ const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierS
 **Description**
 
 Get the dependent components of the barrier.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -882,8 +853,6 @@ int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierS
 
 Gets the number of dependent components of the barrier.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -909,8 +878,6 @@ ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()
 
 creates alignment rule information for subcomponents in relative containers.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Returns**:
@@ -929,8 +896,6 @@ void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)
 
 Destroys the alignment rule information of subcomponents in relative containers.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -948,8 +913,6 @@ void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, co
 **Description**
 
 Set the start alignment parameter.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -971,8 +934,6 @@ void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, cons
 
 Set the end alignment parameter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -992,8 +953,6 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption*
 **Description**
 
 Set the parameters for horizontal center alignment.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1015,8 +974,6 @@ void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, cons
 
 Set the parameters for top alignment.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1036,8 +993,6 @@ void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, c
 **Description**
 
 Set the bottom alignment parameters.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1059,8 +1014,6 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* o
 
 Set the parameters for vertical center alignment.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1081,8 +1034,6 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* o
 
 Sets the horizontal offset parameter of the component under the anchor point constraint.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1102,8 +1053,6 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* opt
 
 Set the vertical offset parameter of the component under the anchor point constraint.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1122,8 +1071,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* o
 **Description**
 
 Get the Id of the start-aligned parameter.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1149,8 +1096,6 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_A
 
 Gets the alignment of the start-aligned parameter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1174,8 +1119,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* opt
 **Description**
 
 Get the end alignment parameter.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1201,8 +1144,6 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_Ali
 
 Get the end alignment parameter.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1226,8 +1167,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRu
 **Description**
 
 Gets the parameters of horizontal center alignment.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1253,8 +1192,6 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizon
 
 Gets the parameters of horizontal center alignment.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1278,8 +1215,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* opt
 **Description**
 
 Get the top-aligned parameters.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1305,8 +1240,6 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_Align
 
 Get the top-aligned parameters.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1330,8 +1263,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* 
 **Description**
 
 Get the bottom alignment parameters.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1357,8 +1288,6 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_Al
 
 Get the bottom alignment parameters.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1382,8 +1311,6 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRule
 **Description**
 
 Gets the parameters of vertical center alignment.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1409,8 +1336,6 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(
 
 Gets the parameters of vertical center alignment.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1434,8 +1359,6 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* 
 **Description**
 
 Get the bias value in the horizontal direction.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1461,8 +1384,6 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* op
 
 Get the bias value in the vertical direction.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 12
 
 **Parameters**:
@@ -1487,8 +1408,6 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
 
 Create an edge object for position attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Returns**:
@@ -1506,8 +1425,6 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edge
 **Description**
 
 Creates a deep copy of an edge object for position attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1533,8 +1450,6 @@ void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)
 
 Dispose an edge object for position attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1552,8 +1467,6 @@ void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)
 **Description**
 
 Sets the top edge of an edge object for position attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1574,8 +1487,6 @@ int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 
 Gets the top edge of an edge object for position attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1589,7 +1500,7 @@ Gets the top edge of an edge object for position attribute.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.       Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>     Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PositionEdges_SetLeft()
 
@@ -1600,8 +1511,6 @@ void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)
 **Description**
 
 Sets the left edge of an edge object for position attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1622,8 +1531,6 @@ int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 
 Gets the left edge of an edge object for position attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1637,7 +1544,7 @@ Gets the left edge of an edge object for position attribute.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.       Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>     Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PositionEdges_SetBottom()
 
@@ -1648,8 +1555,6 @@ void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 **Description**
 
 Sets the bottom edge of an edge object for position attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1670,8 +1575,6 @@ int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* valu
 
 Gets the bottom edge of an edge object for position attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1685,7 +1588,7 @@ Gets the bottom edge of an edge object for position attribute.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.       Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>     Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PositionEdges_SetRight()
 
@@ -1696,8 +1599,6 @@ void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)
 **Description**
 
 Sets the right edge of an edge object for position attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1718,8 +1619,6 @@ int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value
 
 Gets the right edge of an edge object for position attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1733,7 +1632,7 @@ Gets the right edge of an edge object for position attribute.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.       Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>     Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PixelRoundPolicy_Create()
 
@@ -1744,8 +1643,6 @@ ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 **Description**
 
 Create a policy object for PixelRound attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1765,8 +1662,6 @@ void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)
 
 Dispose a policy object for PixelRound attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1784,8 +1679,6 @@ void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 **Description**
 
 Sets the top edge of a policy object for PixelRound attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1806,8 +1699,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 Gets the top edge of a policy object for PixelRound attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1821,7 +1712,7 @@ Gets the top edge of a policy object for PixelRound attribute.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.       Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>     Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
@@ -1832,8 +1723,6 @@ void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_Pi
 **Description**
 
 Sets the start edge of a policy object for PixelRound attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1854,8 +1743,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 
 Gets the start edge of a policy object for PixelRound attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1869,7 +1756,7 @@ Gets the start edge of a policy object for PixelRound attribute.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.       Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>     Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
@@ -1880,8 +1767,6 @@ void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 **Description**
 
 Sets the bottom edge of a policy object for PixelRound attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1902,8 +1787,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 
 Gets the bottom edge of a policy object for PixelRound attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1917,7 +1800,7 @@ Gets the bottom edge of a policy object for PixelRound attribute.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.       Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>     Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
@@ -1928,8 +1811,6 @@ void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 **Description**
 
 Sets the end edge of a policy object for PixelRound attribute.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1950,8 +1831,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 Gets the end edge of a policy object for PixelRound attribute.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Since**: 21
 
 **Parameters**:
@@ -1965,6 +1844,6 @@ Gets the end edge of a policy object for PixelRound attribute.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.       Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>     Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if the parameter is invalid. |
+| int32_t | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid. |
 
 

@@ -6,7 +6,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.0.0
+**起始版本：** 12
 
 ## 文件汇总
 
@@ -27,13 +27,13 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [error_code.h](capi-error-code-h.md) | Defines the error code for the native module. |
 | [common_type.h](capi-common-type-h.md) | 定义ArkUI Native API的公共类型。 |
 | [drawable_descriptor.h](capi-drawable-descriptor-h.md) | 提供NativeDrawableDescriptor接口的类型定义。 |
-| [native_node_napi.h](capi-native-node-napi-h.md) | 提供ArkTS侧的{@link FrameNode}转换{@link NodeHandle}的方式。 |
-| [styled_string.h](capi-styled-string-h.md) | 在Native侧定义{@link ArkUI_NodeType}为ARKUI_NODE_TEXT的组件的文本样式和文本布局管理器。 |
+| [native_node_napi.h](capi-native-node-napi-h.md) | 提供ArkTS侧的FrameNode转换NodeHandle的方式。 |
+| [styled_string.h](capi-styled-string-h.md) | 在Native侧定义[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)为ARKUI_NODE_TEXT的组件的文本样式和文本布局管理器。 |
 | [custom_span.h](capi-custom-span-h.md) | 定义CustomSpan相关的结构体和接口，用于实现自定义绘制Span的精确尺寸测量、布局排版和绘制效果。支持开发者在富文本编辑器、聊天应用、文档应用等场景中实现图文混排、表情内嵌、自定义标记等功能， 提供灵活的自定义绘制Span能力，帮助开发者提升开发效率，实现更丰富的文本排版效果。 |
 | [water_flow.h](capi-water-flow-h.md) | 定义WaterFlow组件相关的枚举和接口。 |
-| [swiper.h](capi-swiper-h.md) | 定义Swiper组件的枚举和接口。 |
+| [swiper.h](capi-swiper-h.md) | Defines the enumerations and APIs of the **Swiper** component for implementing scenarios such as carousel display and content navigation. It supports custom navigation indicators (dot/number types), navigation arrow styles, nested scrolling modes, mouse wheel page-turning modes, and animation modes, helping users quickly build carousel interaction experiences. |
 | [common_attributes.h](capi-common-attributes-h.md) | Defines the common property and method types for the native module. |
-| [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
+| [navigation_router.h](capi-navigation-router-h.md) | Defines the enumerations related to the **NavDestination** and **Router** components. |
 | [scroll.h](capi-scroll-h.md) | 提供滚动方向、边缘效果、滚动条状态、内容裁剪、嵌套滚动、滚动状态和滚动来源等枚举，用于配置和监听Scroll组件及相关可滚动组件的行为。 |
 | [list_item.h](capi-list-item-h.md) | Provides shared list item-related type and function definitions for <b>NativeNode</b> APIs. |
 | [grid.h](capi-grid-h.md) | 定义Grid组件相关的枚举和接口。 |

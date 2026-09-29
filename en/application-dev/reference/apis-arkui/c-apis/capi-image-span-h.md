@@ -2,11 +2,9 @@
 
 ## Overview
 
-Defines a set of ImageSpan enum and interface.
+Defines enumerations related to **ImageSpan**, which are used to embed images in rich text and control the alignment between images and text. Multiple alignment modes are supported for mixed image-text layout scenarios, enabling precise alignment of images with text and improving the display of rich text.
 
 **Library**: libace_ndk.z.so
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -18,7 +16,7 @@ Defines a set of ImageSpan enum and interface.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment) | ArkUI_ImageSpanAlignment | Enumerates the alignment mode of the image with the text. |
+| [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment) | ArkUI_ImageSpanAlignment | Enumerates image alignment modes based on text. |
 
 ## Enum type description
 
@@ -30,9 +28,7 @@ enum ArkUI_ImageSpanAlignment
 
 **Description**
 
-Enumerates the alignment mode of the image with the text.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+Enumerates image alignment modes based on text.
 
 **Since**: 12
 

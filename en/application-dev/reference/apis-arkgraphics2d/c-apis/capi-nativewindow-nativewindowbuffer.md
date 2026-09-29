@@ -1,12 +1,12 @@
 # NativeWindowBuffer
 
 ```c
-typedef struct NativeWindowBuffer OHNativeWindowBuffer
+struct NativeWindowBuffer
 ```
 
 ## Overview
 
-define the new type name OHNativeWindowBuffer for struct NativeWindowBuffer.
+native window buffer.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 

@@ -6,9 +6,7 @@ Declares the event loop interfaces in C.
 
 **Library**: libffrt.z.so
 
-**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
-
-**Since**: 10
+**Since**: 12
 
 **Related module**: [FFRT](capi-ffrt.md)
 
@@ -36,7 +34,7 @@ Declares the event loop interfaces in C.
 
 | Name | Description |
 | -- | -- |
-| void* ffrt_loop_t | Loop handle, which identifies different loops.<br>**Since**: 12 |
+| void* ffrt_loop_t | Loop handle, which identifies different loops.<br>**Since**: 12<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
 
 ## Function description
 
@@ -50,8 +48,6 @@ FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 
 Creates a loop on the specified queue for running an event loop.
 
-**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
-
 **Since**: 12
 
 **Parameters**:
@@ -64,7 +60,7 @@ Creates a loop on the specified queue for running an event loop.
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_loop_t | A non-null loop handle if the loop is created;          a null pointer otherwise. |
+| FFRT_C_API ffrt_loop_t | A non-null loop handle if the loop is created; a null pointer otherwise. |
 
 ### ffrt_loop_destroy()
 
@@ -76,21 +72,19 @@ FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)
 
 Destroys a loop.<br> Call this interface to release the resources associated with the loop.
 
-**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ffrt_loop_t loop | Indicates a loop handle. |
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Indicates a loop handle. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API int | `0` if the loop is destroyed;          `-1` otherwise. |
+| FFRT_C_API int | `0` if the loop is destroyed; `-1` otherwise. |
 
 ### ffrt_loop_run()
 
@@ -102,21 +96,19 @@ FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)
 
 Starts a loop run.<br> This function occupies the calling thread, running the event loop synchronously on the current thread until [ffrt_loop_stop](capi-loop-h.md#ffrt_loop_stop) is invoked.
 
-**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ffrt_loop_t loop | Indicates a loop handle. |
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Indicates a loop handle. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API int | `0` if the loop run succeeds;          `-1` otherwise. |
+| FFRT_C_API int | `0` if the loop run succeeds; `-1` otherwise. |
 
 **Reference**:
 
@@ -133,15 +125,13 @@ FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)
 
 Stops a loop run.<br> After this call, the thread executing [ffrt_loop_run](capi-loop-h.md#ffrt_loop_run) stops the loop and returns.
 
-**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ffrt_loop_t loop | Indicates a loop handle. |
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Indicates a loop handle. |
 
 **Reference**:
 
@@ -158,26 +148,24 @@ FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t ev
 
 Controls an epoll file descriptor on ffrt loop.<br> Adds, modifies, or deletes the monitored events on the target file descriptor.
 
-**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ffrt_loop_t loop | Indicates a loop handle. |
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Indicates a loop handle. |
 | int op | Indicates the operation type on the target file descriptor, such as add, modify, or delete. |
 | int fd | Indicates the target file descriptor on which to perform the operation. |
 | uint32_t events | Indicates the event type to monitor on the target file descriptor (such as readable, writable, and so on), and can be combined by bitwise OR. |
 | void* data | Indicates user data used in cb. |
-| ffrt_poller_cb cb | Indicates user cb which will be executed when the target fd is polled. |
+| [ffrt_poller_cb](capi-type-def-h.md#ffrt_poller_cb) cb | Indicates user cb which will be executed when the target fd is polled. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API int | `0` if the operation succeeds;          `-1` otherwise. |
+| FFRT_C_API int | `0` if the operation succeeds; `-1` otherwise. |
 
 ### ffrt_loop_timer_start()
 
@@ -189,18 +177,16 @@ FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout
 
 Starts a timer on ffrt loop.<br> The callback is invoked after the timeout elapses, and is repeated if `repeat` is `true`.
 
-**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ffrt_loop_t loop | Indicates a loop handle. |
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Indicates a loop handle. |
 | uint64_t timeout | Indicates the number of milliseconds that specifies timeout. The value range is [0, +∞). |
 | void* data | Indicates user data used in cb. |
-| ffrt_timer_cb cb | Indicates user cb which will be executed when timeout. |
+| [ffrt_timer_cb](capi-type-def-h.md#ffrt_timer_cb) cb | Indicates user cb which will be executed when timeout. |
 | bool repeat | Indicates whether to repeat this timer. `true` to repeat the timer, `false` to run it once. |
 
 **Returns**:
@@ -224,22 +210,20 @@ FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)
 
 Stops a timer on ffrt loop.<br> After this call, the timer no longer fires.
 
-**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ffrt_loop_t loop | Indicates a loop handle. |
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Indicates a loop handle. |
 | ffrt_timer_t handle | Indicates the timer handle returned by [ffrt_loop_timer_start](capi-loop-h.md#ffrt_loop_timer_start). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API int | `0` if the operation succeeds;          `-1` otherwise. |
+| FFRT_C_API int | `0` if the operation succeeds; `-1` otherwise. |
 
 **Reference**:
 

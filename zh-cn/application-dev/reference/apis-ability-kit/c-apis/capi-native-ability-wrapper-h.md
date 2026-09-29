@@ -6,8 +6,6 @@
 
 **库：** libability_runtime.so
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
@@ -18,7 +16,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [AbilityRuntime_NativeAbilityWrapper](capi-abilityruntime-abilityruntime-nativeabilitywrapper.md) | AbilityRuntime_NativeAbilityWrapper | 定义AbilityRuntime_NativeAbilityWrapper结构体类型，用于封装{@link UIAbility}的相关信息。 |
+| [AbilityRuntime_NativeAbilityWrapper](capi-abilityruntime-abilityruntime-nativeabilitywrapper.md) | AbilityRuntime_NativeAbilityWrapper | 定义AbilityRuntime_NativeAbilityWrapper结构体类型，用于封装UIAbility的相关信息。 |
 
 ### 函数
 
@@ -40,8 +38,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityInstanceId(const AbilityRun
 
 从NativeAbility数据信息中获取Ability实例ID。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
@@ -56,7 +52,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityInstanceId(const AbilityRun
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回错误码。      <br>返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示操作成功。      <br>返回[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示nativeAbilityWrapper或buffer为空指针，或bufferSize小于37。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回错误码。<br>返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示操作成功。<br>返回[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示nativeAbilityWrapper或buffer为空指针，或bufferSize小于37。 |
 
 ### OH_AbilityRuntime_GetAbilityName()
 
@@ -67,8 +63,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityName(const AbilityRuntime_N
 **描述：**
 
 从NativeAbility数据信息中获取Ability名称。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -85,7 +79,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityName(const AbilityRuntime_N
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回错误码。      <br>返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示操作成功。      <br>返回[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示nativeAbilityWrapper或writeLength为空指针，或缓冲区太小无法存储Ability名称。      <br>返回[ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示NativeAbility数据信息无效或不完整。      <br>返回[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示内部错误。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回错误码。<br>返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示操作成功。<br>返回[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示nativeAbilityWrapper或writeLength为空指针，或缓冲区太小无法存储Ability名称。<br>返回[ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示NativeAbility数据信息无效或不完整。<br>返回[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示内部错误。 |
 
 ### OH_AbilityRuntime_GetEnv()
 
@@ -96,8 +90,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetEnv(const AbilityRuntime_NativeAbi
 **描述：**
 
 从NativeAbility数据信息中获取napi_env。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -112,6 +104,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetEnv(const AbilityRuntime_NativeAbi
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回错误码。      <br>返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示操作成功。      <br>返回[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示nativeAbilityWrapper或env为空指针。      <br>返回[ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示NativeAbility数据信息无效或不完整。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回错误码。<br>返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示操作成功。<br>返回[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示nativeAbilityWrapper或env为空指针。<br>返回[ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)表示NativeAbility数据信息无效或不完整。 |
 
 

@@ -1,7 +1,7 @@
 # OH_Huks_KeyAliasSet
 
 ```c
-typedef struct OH_Huks_KeyAliasSet {...} OH_Huks_KeyAliasSet
+struct OH_Huks_KeyAliasSet {...}
 ```
 
 ## 概述
@@ -23,6 +23,6 @@ typedef struct OH_Huks_KeyAliasSet {...} OH_Huks_KeyAliasSet
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t aliasesCnt | 密钥别名集个数。 |
-| struct [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *aliases | 指向密钥别名集数据的指针。 |
+| struct OH_Huks_Blob *aliases | 指向密钥别名集数据的指针。 |
 
 

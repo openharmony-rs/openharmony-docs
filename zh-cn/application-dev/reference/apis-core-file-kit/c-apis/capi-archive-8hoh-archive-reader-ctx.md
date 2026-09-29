@@ -1,0 +1,18 @@
+# *OH_Archive_Reader_Ctx
+
+```c
+typedef struct *OH_Archive_Reader_Ctx *OH_Archive_Reader_Ctx
+```
+
+## 概述
+
+文件解压缩器的上下文结构体指针。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 26.0.0
+
+**相关模块：** [Archive](capi-archive.md)
+
+**所在头文件：** [oh_archive.h](capi-oh-archive-h.md)
+

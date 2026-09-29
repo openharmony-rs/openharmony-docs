@@ -1,7 +1,7 @@
 # NativeChildProcess_Args
 
 ```c
-typedef struct NativeChildProcess_Args {...} NativeChildProcess_Args
+struct NativeChildProcess_Args {...}
 ```
 
 ## Overview
@@ -23,6 +23,6 @@ The struct describes the parameters passed to the child process.
 | Name | Description |
 | -- | -- |
 | char* entryParams |  |
-| struct [NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList |  |
+| [struct NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList |  |
 
 

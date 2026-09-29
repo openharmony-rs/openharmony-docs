@@ -6,8 +6,6 @@ Defines C APIs for cellular data module.
 
 **Library**: libtelephony_data.so
 
-**System capability**: SystemCapability.Telephony.CellularData
-
 **Since**: 13
 
 **Related module**: [Telephony](capi-telephony.md)
@@ -32,14 +30,12 @@ int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)
 
 Obtains the default SIM card used for mobile data.
 
-**System capability**: SystemCapability.Telephony.CellularData
-
 **Since**: 13
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Default SIM card used for mobile data. The value 0 indicates card slot 1, and the value 1 indicates      card slot 2. |
+| int32_t | Default SIM card used for mobile data. The value **0** indicates card slot 1, and the value **1** indicates card slot 2. |
 
 

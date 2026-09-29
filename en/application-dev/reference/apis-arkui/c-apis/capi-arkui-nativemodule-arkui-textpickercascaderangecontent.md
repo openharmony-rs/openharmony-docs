@@ -23,7 +23,7 @@ Defines a multi-column cascade picker.
 | Name | Description |
 | -- | -- |
 | const char* text |  |
-| const [ARKUI_TextPickerRangeContent*](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) children |  |
+| [const ARKUI_TextPickerRangeContent*](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) children |  |
 | int32_t size |  |
 
 

@@ -1,12 +1,12 @@
 # ScsiPeripheral_DeviceMemMap
 
 ```c
-typedef struct ScsiPeripheral_DeviceMemMap {...} ScsiPeripheral_DeviceMemMap
+struct ScsiPeripheral_DeviceMemMap {...}
 ```
 
 ## Overview
 
-Represents the device memory mapping created by calling {@link OH_ScsiPeripheral_CreateDeviceMemMap}. The buffer that uses the device memory mapping can provide better performance.
+Represents the device memory mapping created by calling OH_ScsiPeripheral_CreateDeviceMemMap. The buffer that uses the device memory mapping can provide better performance.
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 

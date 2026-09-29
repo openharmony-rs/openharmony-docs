@@ -1,7 +1,7 @@
 # CloudDisk_ResultList
 
 ```c
-typedef struct CloudDisk_ResultList {...} CloudDisk_ResultList
+struct CloudDisk_ResultList {...}
 ```
 
 ## 概述

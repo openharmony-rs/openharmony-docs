@@ -1,0 +1,18 @@
+# JSVM_CpuProfiler
+
+```c
+typedef struct JSVM_CpuProfiler JSVM_CpuProfiler
+```
+
+## Overview
+
+To represent a JavaScript profiler.
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 12
+
+**Related module**: [JSVM](capi-jsvm.md)
+
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
+

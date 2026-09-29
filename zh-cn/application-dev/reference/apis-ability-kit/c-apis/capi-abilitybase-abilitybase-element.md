@@ -1,12 +1,12 @@
 # AbilityBase_Element
 
 ```c
-typedef struct AbilityBase_Element {...} AbilityBase_Element
+struct AbilityBase_Element {...}
 ```
 
 ## 概述
 
-声明{@link Want}中Element结构体。
+声明Want中Element结构体。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 

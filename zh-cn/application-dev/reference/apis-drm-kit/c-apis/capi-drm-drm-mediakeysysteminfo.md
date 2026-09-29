@@ -1,7 +1,7 @@
 # DRM_MediaKeySystemInfo
 
 ```c
-typedef struct DRM_MediaKeySystemInfo {...} DRM_MediaKeySystemInfo
+struct DRM_MediaKeySystemInfo {...}
 ```
 
 ## 概述

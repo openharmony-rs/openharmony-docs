@@ -8,8 +8,6 @@
 
 **库：** libnative_media_core.so
 
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
 **起始版本：** 9
 
 **相关模块：** [Core](capi-core.md)
@@ -20,9 +18,9 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) | OH_AVCodecBufferAttr | 定义OH_AVCodec的缓冲区描述信息。 |
+| 名称 | 描述 |
+| -- | -- |
+| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) | 定义OH_AVCodec的缓冲区描述信息。 |
 
 ### 枚举
 
@@ -41,8 +39,6 @@ enum OH_AVCodecBufferFlags
 **描述：**
 
 枚举OH_AVCodec缓冲区标记的类别。
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
 

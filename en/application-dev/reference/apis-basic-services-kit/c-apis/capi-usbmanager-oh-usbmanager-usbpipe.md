@@ -1,7 +1,7 @@
 # OH_UsbManager_UsbPipe
 
 ```c
-typedef struct OH_UsbManager_UsbPipe {...} OH_UsbManager_UsbPipe
+struct OH_UsbManager_UsbPipe {...}
 ```
 
 ## Overview

@@ -6,8 +6,6 @@ Defines the functions for using native fence.
 
 **Library**: libnative_fence.so
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
-
 **Since**: 20
 
 **Related module**: [NativeFence](capi-nativefence.md)
@@ -35,8 +33,6 @@ bool OH_NativeFence_IsValid(int fenceFd)
 
 Checks if the fenceFd is valid.
 
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
-
 **Since**: 20
 
 **Parameters**:
@@ -49,7 +45,7 @@ Checks if the fenceFd is valid.
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the fenceFd is valid.          Returns false if the fenceFd is a negative integer. |
+| bool | Returns true if the fenceFd is valid. Returns false if the fenceFd is a negative integer. |
 
 ### OH_NativeFence_Wait()
 
@@ -60,8 +56,6 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 **Description**
 
 Waits for a fence signal. The maximum waiting time is determined by the timeout parameter. The incoming fenceFd needs to be closed by the user themselves.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 20
 
@@ -76,7 +70,7 @@ Waits for a fence signal. The maximum waiting time is determined by the timeout 
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the fence signaled.          Returns false in the following cases:          1.if the fenceFd is a negative integer.          2.no event occurred within the specified timeout period.          3.the underlying poll interface call failed.          4.the timeout value is 0.          5.failed to duplicate the file descriptor. |
+| bool | Returns true if the fence signaled. Returns false in the following cases: 1.if the fenceFd is a negative integer. 2.no event occurred within the specified timeout period. 3.the underlying poll interface call failed. 4.the timeout value is 0. 5.failed to duplicate the file descriptor. |
 
 ### OH_NativeFence_WaitForever()
 
@@ -87,8 +81,6 @@ bool OH_NativeFence_WaitForever(int fenceFd)
 **Description**
 
 Waits forever for a fence signal. The incoming fenceFd needs to be closed by the user themselves.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 20
 
@@ -102,7 +94,7 @@ Waits forever for a fence signal. The incoming fenceFd needs to be closed by the
 
 | Type | Description |
 | -- | -- |
-| bool | Returns true if the fence signaled.          Returns false in the following cases:          1.if the fenceFd is a negative integer.          2.no incidents have occurred, permanent waiting.          3.failed to duplicate the file descriptor. |
+| bool | Returns true if the fence signaled. Returns false in the following cases: 1.if the fenceFd is a negative integer. 2.no incidents have occurred, permanent waiting. 3.failed to duplicate the file descriptor. |
 
 ### OH_NativeFence_Close()
 
@@ -113,8 +105,6 @@ void OH_NativeFence_Close(int fenceFd)
 **Description**
 
 Close the fenceFd.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 20
 

@@ -1,7 +1,7 @@
 # ScsiPeripheral_TestUnitReadyRequest
 
 ```c
-typedef struct ScsiPeripheral_TestUnitReadyRequest {...} ScsiPeripheral_TestUnitReadyRequest
+struct ScsiPeripheral_TestUnitReadyRequest {...}
 ```
 
 ## 概述

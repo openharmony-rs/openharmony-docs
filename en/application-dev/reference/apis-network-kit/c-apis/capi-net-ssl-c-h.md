@@ -6,8 +6,6 @@ Defines C APIs for the SSL/TLS certificate chain verification module.
 
 **Library**: libnet_ssl.so
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)
@@ -40,22 +38,20 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 
 Provides certificate chain verification APIs for external systems.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 11
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const struct NetStack_CertBlob *cert | Certificate to be verified. |
-| const struct NetStack_CertBlob *caCert | Certificate specified by the user. If this parameter is left blank, the preset certificate is used for verification. |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *cert | Certificate to be verified. |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *caCert | Certificate specified by the user. If this parameter is left blank, the preset certificate is used for verification. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| uint32_t | 0: Success.      <br>2305001: Unknown error.      <br>2305002: Failed to obtain the issuer certificate.      <br>2305003: Failed to obtain the certificate revocation list (CRL).      <br>2305004: Failed to decrypt the certificate signature.      <br>2305005: Failed to decrypt the CRL signature.      <br>2305006: Failed to decode the issuer public key.      <br>2305007: Failed to sign the certificate.      <br>2305008: Failed to sign the CRL.      <br>2305009: Certificate not activated.      <br>2305010: Certificate expired.      <br>2305011: CRL not activated.      <br>2305012: CRL expired.      <br>2305023: Certificate revoked.      <br>2305024: Invalid certificate authority (CA).      <br>2305027: Untrusted certificate. |
+| uint32_t | **0**: Success. <br>**2305001**: Unknown error. <br>**2305002**: Failed to obtain the issuer certificate. <br>**2305003**: Failed to obtain the certificate revocation list (CRL). <br>**2305004**: Failed to decrypt the certificate signature. <br>**2305005**: Failed to decrypt the CRL signature. <br>**2305006**: Failed to decode the issuer public key. <br>**2305007**: Failed to sign the certificate. <br>**2305008**: Failed to sign the CRL. <br>**2305009**: Certificate not activated. <br>**2305010**: Certificate expired. <br>**2305011**: CRL not activated. <br>**2305012**: CRL expired. <br>**2305023**: Certificate revoked. <br>**2305024**: Invalid certificate authority (CA). <br>**2305027**: Untrusted certificate. |
 
 ### OH_NetStack_GetPinSetForHostName()
 
@@ -67,8 +63,6 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 
 Obtains the certificate lock information.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 12
 
 **Parameters**:
@@ -76,13 +70,13 @@ Obtains the certificate lock information.
 | Parameter | Description |
 | -- | -- |
 | const char *hostname | Host name. |
-| NetStack_CertificatePinning *pin | Defines the certificate lock information structure. |
+| [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md) *pin | Defines the certificate lock information structure. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>401: Parameter error.      <br>2305999: Memory error. |
+| int32_t | **0**: Success. <br>**401**: Parameter error. <br>**2305999**: Memory error. |
 
 ### OH_NetStack_GetCertificatesForHostName()
 
@@ -94,8 +88,6 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 
 Obtains the certificate information.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 12
 
 **Parameters**:
@@ -103,13 +95,13 @@ Obtains the certificate information.
 | Parameter | Description |
 | -- | -- |
 | const char *hostname | Host name. |
-| NetStack_Certificates *certs | Defines the certificate information structure. |
+| [NetStack_Certificates](capi-netstack-netstack-certificates.md) *certs | Defines the certificate information structure. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>401: Parameter error.      <br>2305999: Memory error. |
+| int32_t | **0**: Success. <br>**401**: Parameter error. <br>**2305999**: Memory error. |
 
 ### OH_Netstack_DestroyCertificatesContent()
 
@@ -121,15 +113,13 @@ void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 
 Releases the certificate content.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| NetStack_Certificates *certs | Represents the certificate information. |
+| [NetStack_Certificates](capi-netstack-netstack-certificates.md) *certs | Represents the certificate information. |
 
 ### OH_Netstack_IsCleartextPermitted()
 
@@ -140,8 +130,6 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 **Description**
 
 Boolean value indicating whether plaintext HTTP is allowed.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -157,7 +145,7 @@ Boolean value indicating whether plaintext HTTP is allowed.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>201: Permission denied.      <br>401: Parameter error. |
+| int32_t | **0**: Success. <br>**201**: Permission denied. <br>**401**: Parameter error. |
 
 ### OH_Netstack_IsCleartextPermittedByHostName()
 
@@ -168,8 +156,6 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 **Description**
 
 Boolean value indicating whether host name–based plaintext HTTP is allowed.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -186,7 +172,7 @@ Boolean value indicating whether host name–based plaintext HTTP is allowed.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>201: Permission denied.      <br>401: Parameter error. |
+| int32_t | **0**: Success. <br>**201**: Permission denied. <br>**401**: Parameter error. |
 
 ### OH_Netstack_IsCleartextCfgByComponent()
 
@@ -197,8 +183,6 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 **Description**
 
 Checks whether plaintext HTTP interception is enabled.
-
-**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -213,7 +197,7 @@ Checks whether plaintext HTTP interception is enabled.
 
 | Type | Description |
 | -- | -- |
-| int32_t | 0: Success.      <br>2100001: Invalid parameter value. |
+| int32_t | **0**: Success. <br>**2100001**: Invalid parameter value. |
 
 ### OH_NetStack_CreateAndVerifySortedCertChain()
 
@@ -229,26 +213,24 @@ Creates and verifies a sorted certificate chain.
 >
 > After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const struct NetStack_CertBlob *cert | Certificate chain to be verified. Cannot be NULL or empty. |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *cert | Certificate chain to be verified. Cannot be NULL or empty. |
 | size_t certCount | Certificate number of param cert. |
-| const struct NetStack_CertBlob *caCert | CA certificate specified by the user. If NULL, the preset certificate is used. |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *caCert | CA certificate specified by the user. If NULL, the preset certificate is used. |
 | const char *hostname | The expected server hostname. |
-| struct NetStack_CertBlob **outSortedChain | Pointer to receive the sorted certificate chain. Can be NULL if the caller does not need the chain data. Valid only if return value is 0. Allocated memory must be freed using OH_NetStack_FreeCertChain. |
+| [struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) **outSortedChain | Pointer to receive the sorted certificate chain. Can be NULL if the caller does not need the chain data. Valid only if return value is 0. Allocated memory must be freed using OH_NetStack_FreeCertChain. |
 | size_t *outSortedCount | Pointer to receive the count of sorted certificates. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| uint32_t | 0 - success.          2305001 - Unspecified error.          2305002 - Unable to get issuer certificate.          2305004 - Unable to decrypt certificate signature.          2305006 - Unable to decode issuer public key.          2305007 - Certificate signature failure.          2305009 - Certificate is not yet valid.          2305010 - Certificate has expired.          2305024 - Invalid certificate authority (CA).          2305062 - Hostname verification failed.          2305027 - Certificate is untrusted. |
+| uint32_t | 0 - success. 2305001 - Unspecified error. 2305002 - Unable to get issuer certificate. 2305004 - Unable to decrypt certificate signature. 2305006 - Unable to decode issuer public key. 2305007 - Certificate signature failure. 2305009 - Certificate is not yet valid. 2305010 - Certificate has expired. 2305024 - Invalid certificate authority (CA). 2305062 - Hostname verification failed. 2305027 - Certificate is untrusted. |
 
 ### OH_NetStack_FreeCertChain()
 
@@ -260,15 +242,13 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 
 Frees the certificate chain allocated by OH_NetStack_CreateAndVerifySortedCertChain.
 
-**System capability**: SystemCapability.Communication.NetStack
-
 **Since**: 26.0.0
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| struct NetStack_CertBlob *certChain | The certificate chain pointer received from outSortedChain. If NULL, this function does nothing. |
+| [struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *certChain | The certificate chain pointer received from outSortedChain. If NULL, this function does nothing. |
 | size_t certCount | The number of certificates in the chain. |
 
 

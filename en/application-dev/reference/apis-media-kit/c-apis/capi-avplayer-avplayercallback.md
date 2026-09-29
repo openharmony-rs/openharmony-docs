@@ -1,7 +1,7 @@
 # AVPlayerCallback
 
 ```c
-typedef struct AVPlayerCallback {...} AVPlayerCallback
+struct AVPlayerCallback {...}
 ```
 
 ## Overview
@@ -12,7 +12,7 @@ The struct contains the set of the **OH_AVPlayerOnInfo** and **OH_AVPlayerOnErro
 
 **Deprecated**: 12
 
-**Replaced by**: {@link OH_AVPlayerOnInfoCallback} {@link OH_AVPlayerOnErrorCallback}
+**Replaced by**: [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)
 
 **Related module**: [AVPlayer](capi-avplayer.md)
 

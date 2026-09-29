@@ -6,8 +6,6 @@ Defines native api of ArkTS native module.
 
 **Library**: libace_napi.z.so
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Related module**: [ArkTS_Napi_NativeModule](capi-arkts-napi-nativemodule.md)
@@ -18,10 +16,10 @@ Defines native api of ArkTS native module.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [napi_critical_scope\_\_*](capi-arkts-napi-nativemodule-napi-critical-scope--8h.md) | napi_critical_scope | Native critical scope provides a scope within that an ArkTS string buffer cache can be obtained. |
-| [napi_strong_ref\_\_*](capi-arkts-napi-nativemodule-napi-strong-ref--8h.md) | napi_strong_ref | Native strong reference of an ArkTS object. |
-| [napi_callsite_info\_\_*](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md) | napi_callsite_info | Callsite info handle for caching inline cache (IC) information of property access. |
-| [napi_sendable_ref\_\_*](capi-arkts-napi-nativemodule-napi-sendable-ref--8h.md) | napi_sendable_ref | Native strong sendable reference of an sendable ArkTS object. |
+| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope.md) | napi_critical_scope | Native critical scope provides a scope within that an ArkTS string buffer cache can be obtained. |
+| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref.md) | napi_strong_ref | Native strong reference of an ArkTS object. |
+| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md) | napi_callsite_info | Callsite info handle for caching inline cache (IC) information of property access. |
+| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref.md) | napi_sendable_ref | Native strong sendable reference of an sendable ArkTS object. |
 
 ### Function
 
@@ -223,9 +221,9 @@ NAPI_EXTERN napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_
 
 | Name | Description |
 | -- | -- |
-| void* (*napi_native_binding_detach_callback)(napi_env env, void* native_object, void* hint) | Native detach callback of napi_coerce_to_native_binding_object that can be used to detach the ArkTS object and the native object.<br>**Since**: 11 |
-| napi_value (*napi_native_binding_attach_callback)(napi_env env, void* native_object, void* hint) | Native attach callback of napi_coerce_to_native_binding_object that can be used to bind the ArkTS object and the native object.<br>**Since**: 11 |
-| void (*napi_finalize_callback)(void* finalize_data, void* finalize_hint) | Native finalize callback is utilized to recycle native object resource.<br>**Since**: 22 |
+| void* (*napi_native_binding_detach_callback)(napi_env env, void* native_object, void* hint) | Native detach callback of napi_coerce_to_native_binding_object that can be used to detach the ArkTS object and the native object.<br>**Since**: 11<br>**System capability**: SystemCapability.ArkUI.ArkUI.Napi |
+| napi_value (*napi_native_binding_attach_callback)(napi_env env, void* native_object, void* hint) | Native attach callback of napi_coerce_to_native_binding_object that can be used to bind the ArkTS object and the native object.<br>**Since**: 11<br>**System capability**: SystemCapability.ArkUI.ArkUI.Napi |
+| void (*napi_finalize_callback)(void* finalize_data, void* finalize_hint) | Native finalize callback is utilized to recycle native object resource.<br>**Since**: 22<br>**System capability**: SystemCapability.ArkUI.ArkUI.Napi |
 
 ## Function description
 
@@ -238,8 +236,6 @@ typedef void* (*napi_native_binding_detach_callback)(napi_env env, void* native_
 **Description**
 
 Native detach callback of napi_coerce_to_native_binding_object that can be used to detach the ArkTS object and the native object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
 
@@ -256,8 +252,6 @@ NAPI_EXTERN napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_
 
 Native attach callback of napi_coerce_to_native_binding_object that can be used to bind the ArkTS object and the native object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 ### napi_finalize_callback()
@@ -270,8 +264,6 @@ typedef void (*napi_finalize_callback)(void* finalize_data, void* finalize_hint)
 
 Native finalize callback is utilized to recycle native object resource.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 22
 
 ### napi_load_module()
@@ -283,8 +275,6 @@ NAPI_EXTERN napi_status napi_load_module(napi_env env, const char* path, napi_va
 **Description**
 
 Loads an .abc file as a module. This API returns the namespace of the module.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
 
@@ -311,8 +301,6 @@ NAPI_EXTERN napi_status napi_set_instance_data(napi_env env, void* data, napi_fi
 **Description**
 
 Associates data with the currently running environment.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
 
@@ -341,8 +329,6 @@ NAPI_EXTERN napi_status napi_get_instance_data(napi_env env, void** data)
 
 Retrieves the data that was previously associated with the currently running environment.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 **Parameters**:
@@ -368,8 +354,6 @@ NAPI_EXTERN napi_status napi_add_env_cleanup_hook(napi_env env, void (*fun)(void
 
 Registers a clean-up hook for releasing resources when the environment exits.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 **Parameters**:
@@ -377,8 +361,8 @@ Registers a clean-up hook for releasing resources when the environment exits.
 | Parameter | Description |
 | -- | -- |
 | api_env env | Current running virtual machine context. |
-| void (\*fun)(void\* arg) | Function pointer which will be triggered when environment is destroy. |
-| void (\*fun)(void\* arg) | The argument is passed to the function pointer 'fun'. |
+| void (*fun)(void* arg) | Function pointer which will be triggered when environment is destroy. |
+| void (*fun)(void* arg) | The argument is passed to the function pointer 'fun'. |
 
 **Returns**:
 
@@ -396,8 +380,6 @@ NAPI_EXTERN napi_status napi_remove_env_cleanup_hook(napi_env env, void (*fun)(v
 
 Unregisters the clean-up hook.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 **Parameters**:
@@ -405,8 +387,8 @@ Unregisters the clean-up hook.
 | Parameter | Description |
 | -- | -- |
 | api_env env | Current running virtual machine context. |
-| void (\*fun)(void\* arg) | Function pointer which will be triggered when environment is destroy. |
-| void (\*fun)(void\* arg) | The argument is passed to the function pointer 'fun'. |
+| void (*fun)(void* arg) | Function pointer which will be triggered when environment is destroy. |
+| void (*fun)(void* arg) | The argument is passed to the function pointer 'fun'. |
 
 **Returns**:
 
@@ -423,8 +405,6 @@ NAPI_EXTERN napi_status napi_add_async_cleanup_hook(napi_env env, napi_async_cle
 **Description**
 
 Registers an asynchronous clean-up hook for releasing resources when the environment exits.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
 
@@ -453,8 +433,6 @@ NAPI_EXTERN napi_status napi_remove_async_cleanup_hook(napi_async_cleanup_hook_h
 
 Unregisters the asynchronous clean-up hook.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 **Parameters**:
@@ -478,8 +456,6 @@ NAPI_EXTERN napi_status napi_async_init(napi_env env, napi_value async_resource,
 **Description**
 
 Creates an asynchronous context. The capabilities related to 'async_hook' are not supported currently.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
 
@@ -508,8 +484,6 @@ NAPI_EXTERN napi_status napi_async_destroy(napi_env env, napi_async_context asyn
 
 Destroys the previously created asynchronous context. The capabilities related to 'async_hook' are not supported currently.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 **Parameters**:
@@ -534,8 +508,6 @@ NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env, napi_value resour
 **Description**
 
 Opens a callback scope. The capabilities related to 'async_hook' are not supported currently.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
 
@@ -564,8 +536,6 @@ NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env, napi_callback_sc
 
 Closes the callback scope. The capabilities related to 'async_hook' are not supported currently.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 **Parameters**:
@@ -591,8 +561,6 @@ NAPI_EXTERN napi_status node_api_get_module_file_name(napi_env env, const char**
 
 Obtains the absolute path of the location, from which the addon is loaded.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 **Parameters**:
@@ -617,8 +585,6 @@ NAPI_EXTERN napi_status napi_create_object_with_properties(napi_env env, napi_va
 **Description**
 
 Create ArkTS Object with initial properties given by descriptors, note that property key must be String, and must can not convert to element_index, also all keys must not duplicate.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
 
@@ -647,8 +613,6 @@ NAPI_EXTERN napi_status napi_create_object_with_named_properties(napi_env env, n
 
 Create ArkTS Object with initial properties given by keys and values, note that property key must be String, and must can not convert to element_index, also all keys must not duplicate.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 **Parameters**:
@@ -676,8 +640,6 @@ NAPI_EXTERN napi_status napi_coerce_to_native_binding_object(napi_env env, napi_
 **Description**
 
 This API sets native properties to a object and converts this ArkTS object to native binding object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
 
@@ -708,8 +670,6 @@ NAPI_EXTERN napi_status napi_add_finalizer(napi_env env, napi_value js_object, v
 
 Adds a 'napi_finalize' callback, which will be called when the ArkTS object is garbage-collected.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 11
 
 **Parameters**:
@@ -739,8 +699,6 @@ NAPI_EXTERN napi_status napi_load_module_with_info(napi_env env, const char* pat
 
 The module is loaded through the NAPI. By default, the default object is exported from the module.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -768,8 +726,6 @@ NAPI_EXTERN napi_status napi_create_ark_runtime(napi_env* env)
 
 Create the ark runtime.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -794,8 +750,6 @@ NAPI_EXTERN napi_status napi_destroy_ark_runtime(napi_env* env)
 
 Destroy the ark runtime.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -819,8 +773,6 @@ NAPI_EXTERN napi_status napi_define_sendable_class(napi_env env, const char* utf
 **Description**
 
 Defines a sendable class.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 
@@ -854,8 +806,6 @@ NAPI_EXTERN napi_status napi_is_sendable(napi_env env, napi_value value, bool* r
 
 Queries a napi_value to check if it is sendable.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -881,8 +831,6 @@ NAPI_EXTERN napi_status napi_create_sendable_object_with_properties(napi_env env
 **Description**
 
 Defines a sendable object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 
@@ -911,8 +859,6 @@ NAPI_EXTERN napi_status napi_wrap_sendable(napi_env env, napi_value js_object, v
 
 Wraps a native instance in an ArkTS object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -940,8 +886,6 @@ NAPI_EXTERN napi_status napi_wrap_sendable_with_size(napi_env env, napi_value js
 **Description**
 
 Wraps a native instance in an ArkTS object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 
@@ -972,8 +916,6 @@ NAPI_EXTERN napi_status napi_unwrap_sendable(napi_env env, napi_value js_object,
 
 Retrieves a native instance that was previously wrapped in an ArkTS object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -999,8 +941,6 @@ NAPI_EXTERN napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_ob
 **Description**
 
 Retrieves a native instance that was previously wrapped in an ArkTS object and removes the wrapping.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 
@@ -1028,8 +968,6 @@ NAPI_EXTERN napi_status napi_create_sendable_array(napi_env env, napi_value* res
 
 Create a sendable array.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -1054,8 +992,6 @@ NAPI_EXTERN napi_status napi_create_sendable_array_with_length(napi_env env, siz
 **Description**
 
 Create a sendable array with length.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 
@@ -1083,8 +1019,6 @@ NAPI_EXTERN napi_status napi_create_sendable_arraybuffer(napi_env env, size_t by
 
 Create a sendable arraybuffer.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -1111,8 +1045,6 @@ NAPI_EXTERN napi_status napi_create_sendable_typedarray(napi_env env, napi_typed
 **Description**
 
 Create a sendable typedarray.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 
@@ -1143,8 +1075,6 @@ NAPI_EXTERN napi_status napi_run_event_loop(napi_env env, napi_event_mode mode)
 
 Run the event loop by the given env and running mode in current thread.<br> Support to run the native event loop in an asynchronous native thread with the specified running mode.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -1152,7 +1082,7 @@ Run the event loop by the given env and running mode in current thread.<br> Supp
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| napi_event_mode mode | Indicates the running mode of the native event loop. |
+| [napi_event_mode](capi-common-h.md#napi_event_mode) mode | Indicates the running mode of the native event loop. |
 
 **Returns**:
 
@@ -1169,8 +1099,6 @@ NAPI_EXTERN napi_status napi_stop_event_loop(napi_env env)
 **Description**
 
 Stop the event loop in current thread.<br> Support to stop the running event loop in current native thread.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 
@@ -1195,8 +1123,6 @@ NAPI_EXTERN napi_status napi_serialize(napi_env env, napi_value object, napi_val
 **Description**
 
 Serialize an ArkTS object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 
@@ -1226,8 +1152,6 @@ NAPI_EXTERN napi_status napi_deserialize(napi_env env, void* buffer, napi_value*
 
 Restore serialization data to an ArkTS object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -1254,8 +1178,6 @@ NAPI_EXTERN napi_status napi_delete_serialization_data(napi_env env, void* buffe
 
 Delete serialization data.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -1281,8 +1203,6 @@ NAPI_EXTERN napi_status napi_call_threadsafe_function_with_priority(napi_threads
 
 Dispatch a task with specified priority from a native thread to an ArkTS thread, the task will execute the given thread safe function.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -1291,7 +1211,7 @@ Dispatch a task with specified priority from a native thread to an ArkTS thread,
 | -- | -- |
 | napi_threadsafe_function func | Indicates the thread safe function. |
 | void *data | Indicates the data anticipated to be transferred to the ArkTS thread. |
-| napi_task_priority priority | Indicates the priority of the task dispatched. |
+| [napi_task_priority](capi-common-h.md#napi_task_priority) priority | Indicates the priority of the task dispatched. |
 | bool isTail | Indicates the way of the task dispatched into the native event queue. When "isTail" is true, the task will be dispatched to the tail of the native event queue. Conversely, when "isTail" is false, the tasks will be dispatched to the head of the native event queue. |
 
 **Returns**:
@@ -1310,8 +1230,6 @@ NAPI_EXTERN napi_status napi_fatal_exception(napi_env env, napi_value err)
 
 Throws UncaughtException to ArkTS.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 12
 
 **Parameters**:
@@ -1325,7 +1243,7 @@ Throws UncaughtException to ArkTS.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) err is nullptr;\n<br>                                  If the param err is not an ArkTS Error value.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) err is nullptr;\n If the param err is not an ArkTS Error value.\n napi_pending_exception There is an uncaught exception occurred before execution.\n |
 
 ### napi_make_callback()
 
@@ -1336,8 +1254,6 @@ NAPI_EXTERN napi_status napi_make_callback(napi_env env, napi_async_context asyn
 **Description**
 
 Allows an ArkTS function to be called in the asynchronous context. The capabilities related to 'async_hook' are not supported currently.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
 
@@ -1357,7 +1273,7 @@ Allows an ArkTS function to be called in the asynchronous context. The capabilit
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, func and(or) recv is nullptr;\n<br>                                  If the param argc is greater than 0 but argv is nullptr.\n<br>        {@link napi_object_expected } If the param recv is not an ArkTS Object.\n<br>        {@link napi_function_expected } If the param func is not an ArkTS Function.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, func and(or) recv is nullptr;\n If the param argc is greater than 0 but argv is nullptr.\n napi_object_expected If the param recv is not an ArkTS Object.\n napi_function_expected If the param func is not an ArkTS Function.\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_create_buffer()
 
@@ -1368,8 +1284,6 @@ NAPI_EXTERN napi_status napi_create_buffer(napi_env env, size_t length, void** d
 **Description**
 
 Creates an ArkTS ArrayBuffer object of the specified size.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1386,7 +1300,7 @@ Creates an ArkTS ArrayBuffer object of the specified size.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, data or result is nullptr, or length is larger than 2097152,                                    or length is less than zero.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, data or result is nullptr, or length is larger than 2097152, or length is less than zero.\n |
 
 ### napi_create_promise()
 
@@ -1397,8 +1311,6 @@ NAPI_EXTERN napi_status napi_create_promise(napi_env env, napi_deferred* deferre
 **Description**
 
 Creates a deferred object and an ArkTS promise.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1414,7 +1326,7 @@ Creates a deferred object and an ArkTS promise.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, deferred or resolution is nullptr.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n<br>        {@link napi_generic_failure } If create promise failed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, deferred or resolution is nullptr.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n napi_generic_failure If create promise failed.\n |
 
 ### napi_resolve_deferred()
 
@@ -1425,8 +1337,6 @@ NAPI_EXTERN napi_status napi_resolve_deferred(napi_env env, napi_deferred deferr
 **Description**
 
 Resolves a promise by way of the deferred object associated.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1442,7 +1352,7 @@ Resolves a promise by way of the deferred object associated.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, deferred or resolution is nullptr.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, deferred or resolution is nullptr.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n |
 
 ### napi_reject_deferred()
 
@@ -1453,8 +1363,6 @@ NAPI_EXTERN napi_status napi_reject_deferred(napi_env env, napi_deferred deferre
 **Description**
 
 Rejects a promise by way of the deferred object associated.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1470,7 +1378,7 @@ Rejects a promise by way of the deferred object associated.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, deferred or rejection is nullptr.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, deferred or rejection is nullptr.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n |
 
 ### napi_is_promise()
 
@@ -1481,8 +1389,6 @@ NAPI_EXTERN napi_status napi_is_promise(napi_env env, napi_value value, bool* is
 **Description**
 
 Checks whether the given 'napi_value' is a promise object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1498,7 +1404,7 @@ Checks whether the given 'napi_value' is a promise object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or is_promise is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or is_promise is nullptr.\n |
 
 ### napi_get_uv_event_loop()
 
@@ -1509,8 +1415,6 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env, struct uv_loop_s** 
 **Description**
 
 Obtains the current libuv loop instance.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1525,7 +1429,7 @@ Obtains the current libuv loop instance.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or loop is nullptr.\n<br>        {@link napi_generic_failure } If env is invalid.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or loop is nullptr.\n napi_generic_failure If env is invalid.\n |
 
 ### napi_create_threadsafe_function()
 
@@ -1536,8 +1440,6 @@ NAPI_EXTERN napi_status napi_create_threadsafe_function(napi_env env, napi_value
 **Description**
 
 Creates a thread-safe function.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1561,7 +1463,7 @@ Creates a thread-safe function.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, async_resource_name or result is nullptr; max_queue_size is less than 0;\n<br>                                  initial_thread_count is greater than 128 or less than 0; func and call_js_cb are\n<br>                                  nullptr at same time.\n<br>        {@link napi_generic_failure } If create thread-safe function failed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, async_resource_name or result is nullptr; max_queue_size is less than 0;\n initial_thread_count is greater than 128 or less than 0; func and call_js_cb are\n nullptr at same time.\n napi_generic_failure If create thread-safe function failed.\n |
 
 ### napi_get_threadsafe_function_context()
 
@@ -1572,8 +1474,6 @@ NAPI_EXTERN napi_status napi_get_threadsafe_function_context(napi_threadsafe_fun
 **Description**
 
 Obtains the context of a thread-safe function.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1588,7 +1488,7 @@ Obtains the context of a thread-safe function.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If func or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If func or result is nullptr.\n |
 
 ### napi_call_threadsafe_function()
 
@@ -1599,8 +1499,6 @@ NAPI_EXTERN napi_status napi_call_threadsafe_function(napi_threadsafe_function f
 **Description**
 
 Calls a thread-safe function.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1616,7 +1514,7 @@ Calls a thread-safe function.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If func is nullptr.\n<br>        {@link napi_queue_full } If event queue is full.\n<br>        {@link napi_closing } If the thread-safe function is closing.\n<br>        {@link napi_generic_failure } If call thread-safe function failed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If func is nullptr.\n napi_queue_full If event queue is full.\n napi_closing If the thread-safe function is closing.\n napi_generic_failure If call thread-safe function failed.\n |
 
 ### napi_acquire_threadsafe_function()
 
@@ -1627,8 +1525,6 @@ NAPI_EXTERN napi_status napi_acquire_threadsafe_function(napi_threadsafe_functio
 **Description**
 
 Acquires a thread-safe function.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1642,7 +1538,7 @@ Acquires a thread-safe function.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If func is nullptr.\n<br>        {@link napi_generic_failure } If acquire thread-safe function failed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If func is nullptr.\n napi_generic_failure If acquire thread-safe function failed.\n |
 
 ### napi_release_threadsafe_function()
 
@@ -1653,8 +1549,6 @@ NAPI_EXTERN napi_status napi_release_threadsafe_function(napi_threadsafe_functio
 **Description**
 
 Releases a thread-safe function.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1669,7 +1563,7 @@ Releases a thread-safe function.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If func is nullptr.\n<br>        {@link napi_generic_failure } If release thread-safe function failed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If func is nullptr.\n napi_generic_failure If release thread-safe function failed.\n |
 
 ### napi_unref_threadsafe_function()
 
@@ -1681,8 +1575,6 @@ NAPI_EXTERN napi_status napi_unref_threadsafe_function(napi_env env, napi_thread
 
 Indicates that the event loop running on the main thread may exit before the thread-safe function is destroyed.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -1696,7 +1588,7 @@ Indicates that the event loop running on the main thread may exit before the thr
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or func is nullptr.\n<br>        {@link napi_generic_failure } If unref thread-safe function failed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or func is nullptr.\n napi_generic_failure If unref thread-safe function failed.\n |
 
 ### napi_ref_threadsafe_function()
 
@@ -1708,8 +1600,6 @@ NAPI_EXTERN napi_status napi_ref_threadsafe_function(napi_env env, napi_threadsa
 
 Indicates that the event loop running on the main thread should not exit until the thread-safe function is destroyed.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -1723,7 +1613,7 @@ Indicates that the event loop running on the main thread should not exit until t
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or func is nullptr.\n<br>        {@link napi_generic_failure } If ref thread-safe function failed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or func is nullptr.\n napi_generic_failure If ref thread-safe function failed.\n |
 
 ### napi_create_date()
 
@@ -1734,8 +1624,6 @@ NAPI_EXTERN napi_status napi_create_date(napi_env env, double time, napi_value* 
 **Description**
 
 Creates an ArkTS 'Date' object from C double data
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1751,7 +1639,7 @@ Creates an ArkTS 'Date' object from C double data
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or result is nullptr.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or result is nullptr.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n |
 
 ### napi_is_date()
 
@@ -1762,8 +1650,6 @@ NAPI_EXTERN napi_status napi_is_date(napi_env env, napi_value value, bool* is_da
 **Description**
 
 Checks whether the given ArkTS value is a 'Date' object. You can use this API to check the type of the parameter passed from ArkTS.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1779,7 +1665,7 @@ Checks whether the given ArkTS value is a 'Date' object. You can use this API to
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or is_date is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or is_date is nullptr.\n |
 
 ### napi_get_date_value()
 
@@ -1790,8 +1676,6 @@ NAPI_EXTERN napi_status napi_get_date_value(napi_env env, napi_value value, doub
 **Description**
 
 Obtains the C equivalent of the given ArkTS 'Date' object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1807,7 +1691,7 @@ Obtains the C equivalent of the given ArkTS 'Date' object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or result is nullptr.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n<br>        {@link napi_date_expected } If the 'value' is not a 'Date' object.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or result is nullptr.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n napi_date_expected If the 'value' is not a 'Date' object.\n |
 
 ### napi_create_bigint_int64()
 
@@ -1818,8 +1702,6 @@ NAPI_EXTERN napi_status napi_create_bigint_int64(napi_env env, int64_t value, na
 **Description**
 
 Creates an ArkTS BigInt from C int64 data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1835,7 +1717,7 @@ Creates an ArkTS BigInt from C int64 data.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or result is nullptr.\n |
 
 ### napi_create_bigint_uint64()
 
@@ -1846,8 +1728,6 @@ NAPI_EXTERN napi_status napi_create_bigint_uint64(napi_env env, uint64_t value, 
 **Description**
 
 Creates an ArkTS BigInt from C int64 data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1863,7 +1743,7 @@ Creates an ArkTS BigInt from C int64 data.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or result is nullptr.\n |
 
 ### napi_create_bigint_words()
 
@@ -1874,8 +1754,6 @@ NAPI_EXTERN napi_status napi_create_bigint_words(napi_env env, int sign_bit, siz
 **Description**
 
 Creates a single ArkTS BigInt from a C uint64 array.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1893,7 +1771,7 @@ Creates a single ArkTS BigInt from a C uint64 array.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, words or result is nullptr or word_count is larger than 2147483647.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, words or result is nullptr or word_count is larger than 2147483647.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n |
 
 ### napi_get_value_bigint_int64()
 
@@ -1904,8 +1782,6 @@ NAPI_EXTERN napi_status napi_get_value_bigint_int64(napi_env env, napi_value val
 **Description**
 
 Obtains a signed 64-bit integer from an ArkTS BigInt object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1922,7 +1798,7 @@ Obtains a signed 64-bit integer from an ArkTS BigInt object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value, result or lossless is nullptr or word_count is larger than\n<br>                                  2147483647.\n<br>        {@link napi_bigint_expected } If the 'value' is not an ArkTS bigint object.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value, result or lossless is nullptr or word_count is larger than\n 2147483647.\n napi_bigint_expected If the 'value' is not an ArkTS bigint object.\n |
 
 ### napi_get_value_bigint_uint64()
 
@@ -1933,8 +1809,6 @@ NAPI_EXTERN napi_status napi_get_value_bigint_uint64(napi_env env, napi_value va
 **Description**
 
 Obtains an unsigned 64-bit integer from an ArkTS BigInt object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1951,7 +1825,7 @@ Obtains an unsigned 64-bit integer from an ArkTS BigInt object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value, result or lossless is nullptr or word_count is larger than\n<br>                                  2147483647.\n<br>        {@link napi_bigint_expected } If the 'value' is not an ArkTS bigint object.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value, result or lossless is nullptr or word_count is larger than\n 2147483647.\n napi_bigint_expected If the 'value' is not an ArkTS bigint object.\n |
 
 ### napi_get_value_bigint_words()
 
@@ -1962,8 +1836,6 @@ NAPI_EXTERN napi_status napi_get_value_bigint_words(napi_env env, napi_value val
 **Description**
 
 Obtains the underlying 64-bit unsigned (uint64) byte data from an ArkTS BigInt object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -1981,7 +1853,7 @@ Obtains the underlying 64-bit unsigned (uint64) byte data from an ArkTS BigInt o
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or word_count is nullptr or word_count is larger than 2147483647.\n<br>        {@link napi_bigint_expected } If the 'value' is not an ArkTS bigint object.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or word_count is nullptr or word_count is larger than 2147483647.\n napi_bigint_expected If the 'value' is not an ArkTS bigint object.\n |
 
 ### napi_create_external_buffer()
 
@@ -1992,8 +1864,6 @@ NAPI_EXTERN napi_status napi_create_external_buffer(napi_env env, size_t length,
 **Description**
 
 Creates an ArkTS ArrayBuffer object of the specified size and initializes it with the given data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2012,7 +1882,7 @@ Creates an ArkTS ArrayBuffer object of the specified size and initializes it wit
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, data or result is nullptr, or length is larger than 2097152,<br>                                  or length is less than or equal to zero.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, data or result is nullptr, or length is larger than 2097152, or length is less than or equal to zero.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n |
 
 ### napi_create_buffer_copy()
 
@@ -2023,8 +1893,6 @@ NAPI_EXTERN napi_status napi_create_buffer_copy(napi_env env, size_t length, con
 **Description**
 
 Creates an ArkTS ArrayBuffer object of the specified size and initializes it with the given data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2042,7 +1910,7 @@ Creates an ArkTS ArrayBuffer object of the specified size and initializes it wit
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, data or result is nullptr, or length is larger than 2097152,                                    or length is less than or equal to zero.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, data or result is nullptr, or length is larger than 2097152, or length is less than or equal to zero.\n |
 
 ### napi_is_buffer()
 
@@ -2053,8 +1921,6 @@ NAPI_EXTERN napi_status napi_is_buffer(napi_env env, napi_value value, bool* res
 **Description**
 
 Checks whether the given ArkTS value is a 'ArrayBuffer' object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2070,7 +1936,7 @@ Checks whether the given ArkTS value is a 'ArrayBuffer' object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or result is nullptr.\n |
 
 ### napi_get_buffer_info()
 
@@ -2081,8 +1947,6 @@ NAPI_EXTERN napi_status napi_get_buffer_info(napi_env env, napi_value value, voi
 **Description**
 
 Obtains the underlying data of 'ArrayBuffer' and its length.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2099,7 +1963,7 @@ Obtains the underlying data of 'ArrayBuffer' and its length.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or result is nullptr.\n<br>        {@link napi_arraybuffer_expected } If the 'value' is not an ArkTS array buffer object.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or result is nullptr.\n napi_arraybuffer_expected If the 'value' is not an ArkTS array buffer object.\n |
 
 ### napi_object_freeze()
 
@@ -2111,8 +1975,6 @@ NAPI_EXTERN napi_status napi_object_freeze(napi_env env, napi_value object)
 
 Freezes an ArkTS object. Once an object is frozen, its properties are immutable.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2126,7 +1988,7 @@ Freezes an ArkTS object. Once an object is frozen, its properties are immutable.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or object is nullptr.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or object is nullptr.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n |
 
 ### napi_object_seal()
 
@@ -2138,8 +2000,6 @@ NAPI_EXTERN napi_status napi_object_seal(napi_env env, napi_value object)
 
 Seals an ArkTS object. Once an object is sealed, its properties cannot be added or deleted, but property values can be modified.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2153,7 +2013,7 @@ Seals an ArkTS object. Once an object is sealed, its properties cannot be added 
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or object is nullptr.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or object is nullptr.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n |
 
 ### napi_detach_arraybuffer()
 
@@ -2164,8 +2024,6 @@ NAPI_EXTERN napi_status napi_detach_arraybuffer(napi_env env, napi_value arraybu
 **Description**
 
 Detaches the underlying data from an 'ArrayBuffer' object. After the data is detached, you can operate the data in C/C++.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2180,7 +2038,7 @@ Detaches the underlying data from an 'ArrayBuffer' object. After the data is det
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or arraybuffer is nullptr, if 'arraybuffer' is not an ArrayBuffer object.\n<br>        {@link napi_object_expected } If the 'arraybuffer' is not an ArkTS object.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or arraybuffer is nullptr, if 'arraybuffer' is not an ArrayBuffer object.\n napi_object_expected If the 'arraybuffer' is not an ArkTS object.\n |
 
 ### napi_is_detached_arraybuffer()
 
@@ -2191,8 +2049,6 @@ NAPI_EXTERN napi_status napi_is_detached_arraybuffer(napi_env env, napi_value va
 **Description**
 
 Checks whether the given 'ArrayBuffer' has been detached.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2208,7 +2064,7 @@ Checks whether the given 'ArrayBuffer' has been detached.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or result is nullptr.\n |
 
 ### napi_get_all_property_names()
 
@@ -2219,8 +2075,6 @@ NAPI_EXTERN napi_status napi_get_all_property_names(napi_env env, napi_value obj
 **Description**
 
 Obtains the names of all properties of an ArkTS object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2239,7 +2093,7 @@ Obtains the names of all properties of an ArkTS object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, object or result is nullptr;\n<br>                                  key_mode is not enumeration value of napi_key_collection_mode;\n<br>                                  key_conversion is not enumeration value of napi_key_conversion.\n<br>        {@link napi_pending_exception } If an ArkTS exception existed when the function was called.\n<br>        {@link napi_object_expected } If object is not object type and function type.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, object or result is nullptr;\n key_mode is not enumeration value of napi_key_collection_mode;\n key_conversion is not enumeration value of napi_key_conversion.\n napi_pending_exception If an ArkTS exception existed when the function was called.\n napi_object_expected If object is not object type and function type.\n |
 
 ### napi_module_register()
 
@@ -2250,8 +2104,6 @@ NAPI_EXTERN void napi_module_register(napi_module* mod)
 **Description**
 
 Registers a native module.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2271,8 +2123,6 @@ NAPI_EXTERN napi_status napi_get_last_error_info(napi_env env, const napi_extend
 
 Obtains the napi_extended_error_info struct, which contains the latest error information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2286,7 +2136,7 @@ Obtains the napi_extended_error_info struct, which contains the latest error inf
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or result is nullptr.\n |
 
 ### napi_throw()
 
@@ -2297,8 +2147,6 @@ NAPI_EXTERN napi_status napi_throw(napi_env env, napi_value error)
 **Description**
 
 Throws an ArkTS error.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2313,7 +2161,7 @@ Throws an ArkTS error.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or error is nullptr, or error is not an error object.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or error is nullptr, or error is not an error object.\n |
 
 ### napi_throw_error()
 
@@ -2325,8 +2173,6 @@ NAPI_EXTERN napi_status napi_throw_error(napi_env env, const char* code, const c
 
 Throws an ArkTS Error with text information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2341,7 +2187,7 @@ Throws an ArkTS Error with text information.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or msg is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or msg is nullptr.\n |
 
 ### napi_throw_type_error()
 
@@ -2353,8 +2199,6 @@ NAPI_EXTERN napi_status napi_throw_type_error(napi_env env, const char* code, co
 
 Throws an ArkTS TypeError with text information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2369,7 +2213,7 @@ Throws an ArkTS TypeError with text information.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or msg is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or msg is nullptr.\n |
 
 ### napi_throw_range_error()
 
@@ -2381,8 +2225,6 @@ NAPI_EXTERN napi_status napi_throw_range_error(napi_env env, const char* code, c
 
 Throws an ArkTS RangeError with text information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2397,7 +2239,7 @@ Throws an ArkTS RangeError with text information.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or msg is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or msg is nullptr.\n |
 
 ### napi_is_error()
 
@@ -2408,8 +2250,6 @@ NAPI_EXTERN napi_status napi_is_error(napi_env env, napi_value value, bool* resu
 **Description**
 
 Checks whether a 'napi_value' is an error object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2425,7 +2265,7 @@ Checks whether a 'napi_value' is an error object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or result is nullptr.\n |
 
 ### napi_create_error()
 
@@ -2437,8 +2277,6 @@ NAPI_EXTERN napi_status napi_create_error(napi_env env, napi_value code, napi_va
 
 Creates an ArkTS Error with text information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2454,7 +2292,7 @@ Creates an ArkTS Error with text information.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, msg or result is nullptr, code is not string and number type or msg is\n                                    not a string type.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, msg or result is nullptr, code is not string and number type or msg is\n not a string type.\n |
 
 ### napi_create_type_error()
 
@@ -2466,8 +2304,6 @@ NAPI_EXTERN napi_status napi_create_type_error(napi_env env, napi_value code, na
 
 Creates an ArkTS TypeError with text information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2483,7 +2319,7 @@ Creates an ArkTS TypeError with text information.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, msg or result is nullptr, code is not string and number type or msg is\n                                    not a string type.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, msg or result is nullptr, code is not string and number type or msg is\n not a string type.\n |
 
 ### napi_create_range_error()
 
@@ -2495,8 +2331,6 @@ NAPI_EXTERN napi_status napi_create_range_error(napi_env env, napi_value code, n
 
 Creates an ArkTS RangeError with text information.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2512,7 +2346,7 @@ Creates an ArkTS RangeError with text information.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, msg or result is nullptr, code is not string and number type or msg is\n                                    not a string type.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, msg or result is nullptr, code is not string and number type or msg is\n not a string type.\n |
 
 ### napi_is_exception_pending()
 
@@ -2523,8 +2357,6 @@ NAPI_EXTERN napi_status napi_is_exception_pending(napi_env env, bool* result)
 **Description**
 
 Checks whether an exception occurs.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2539,7 +2371,7 @@ Checks whether an exception occurs.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or result is nullptr.\n |
 
 ### napi_get_and_clear_last_exception()
 
@@ -2550,8 +2382,6 @@ NAPI_EXTERN napi_status napi_get_and_clear_last_exception(napi_env env, napi_val
 **Description**
 
 Obtains and clears the latest exception.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2566,7 +2396,7 @@ Obtains and clears the latest exception.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or result is nullptr.\n |
 
 ### napi_fatal_error()
 
@@ -2577,8 +2407,6 @@ NAPI_EXTERN NAPI_NO_RETURN void napi_fatal_error(const char* location, size_t lo
 **Description**
 
 Raises a fatal error to terminate the process immediately.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2601,8 +2429,6 @@ NAPI_EXTERN napi_status napi_open_handle_scope(napi_env env, napi_handle_scope* 
 
 Opens a scope.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -2616,7 +2442,7 @@ Opens a scope.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or result is nullptr.\n |
 
 ### napi_close_handle_scope()
 
@@ -2627,8 +2453,6 @@ NAPI_EXTERN napi_status napi_close_handle_scope(napi_env env, napi_handle_scope 
 **Description**
 
 Closes the scope passed in. After the scope is closed, all references declared in it are closed.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2643,7 +2467,7 @@ Closes the scope passed in. After the scope is closed, all references declared i
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or scope is nullptr.\n<br>        {@link napi_handle_scope_mismatch } If there is no scope still existed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or scope is nullptr.\n napi_handle_scope_mismatch If there is no scope still existed.\n |
 
 ### napi_open_escapable_handle_scope()
 
@@ -2654,8 +2478,6 @@ NAPI_EXTERN napi_status napi_open_escapable_handle_scope(napi_env env, napi_esca
 **Description**
 
 Opens an escapable handle scope from which the declared values can be returned to the outer scope.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2670,7 +2492,7 @@ Opens an escapable handle scope from which the declared values can be returned t
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or result is nullptr.\n |
 
 ### napi_close_escapable_handle_scope()
 
@@ -2681,8 +2503,6 @@ NAPI_EXTERN napi_status napi_close_escapable_handle_scope(napi_env env, napi_esc
 **Description**
 
 Closes the escapable handle scope passed in.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2697,7 +2517,7 @@ Closes the escapable handle scope passed in.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or scope is nullptr.\n<br>        {@link napi_handle_scope_mismatch } If there is no scope still existed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or scope is nullptr.\n napi_handle_scope_mismatch If there is no scope still existed.\n |
 
 ### napi_escape_handle()
 
@@ -2708,8 +2528,6 @@ NAPI_EXTERN napi_status napi_escape_handle(napi_env env, napi_escapable_handle_s
 **Description**
 
 Promotes the handle to the input ArkTS object so that it is valid for the lifespan of its outer scope.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2726,7 +2544,7 @@ Promotes the handle to the input ArkTS object so that it is valid for the lifesp
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, scope, escapee or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, scope, escapee or result is nullptr.\n |
 
 ### napi_create_reference()
 
@@ -2737,8 +2555,6 @@ NAPI_EXTERN napi_status napi_create_reference(napi_env env, napi_value value, ui
 **Description**
 
 Creates a reference for an object to extend its lifespan. The caller needs to manage the reference lifespan.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2755,7 +2571,7 @@ Creates a reference for an object to extend its lifespan. The caller needs to ma
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or result is nullptr.\n |
 
 ### napi_delete_reference()
 
@@ -2766,8 +2582,6 @@ NAPI_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref)
 **Description**
 
 Deletes the reference passed in.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2782,7 +2596,7 @@ Deletes the reference passed in.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or ref is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or ref is nullptr.\n |
 
 ### napi_reference_ref()
 
@@ -2793,8 +2607,6 @@ NAPI_EXTERN napi_status napi_reference_ref(napi_env env, napi_ref ref, uint32_t*
 **Description**
 
 Increments the reference count for the reference passed in and returns the count.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2810,7 +2622,7 @@ Increments the reference count for the reference passed in and returns the count
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or ref is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or ref is nullptr.\n |
 
 ### napi_reference_unref()
 
@@ -2821,8 +2633,6 @@ NAPI_EXTERN napi_status napi_reference_unref(napi_env env, napi_ref ref, uint32_
 **Description**
 
 Decrements the reference count for the reference passed in and returns the count.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2838,7 +2648,7 @@ Decrements the reference count for the reference passed in and returns the count
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or ref is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or ref is nullptr.\n |
 
 ### napi_get_reference_value()
 
@@ -2849,8 +2659,6 @@ NAPI_EXTERN napi_status napi_get_reference_value(napi_env env, napi_ref ref, nap
 **Description**
 
 Obtains the ArkTS Object associated with the reference.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2866,7 +2674,7 @@ Obtains the ArkTS Object associated with the reference.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, ref or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, ref or result is nullptr.\n |
 
 ### napi_has_own_property()
 
@@ -2877,8 +2685,6 @@ NAPI_EXTERN napi_status napi_has_own_property(napi_env env, napi_value object, n
 **Description**
 
 Check if the given ArkTS Object has the named own property or not.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2895,7 +2701,7 @@ Check if the given ArkTS Object has the named own property or not.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object, key and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurs in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object, key and(or) result is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurs in execution.\n |
 
 ### napi_define_class()
 
@@ -2906,8 +2712,6 @@ NAPI_EXTERN napi_status napi_define_class(napi_env env, const char* utf8name, si
 **Description**
 
 Defines an ArkTS class, including constructor function and properties.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2928,7 +2732,7 @@ Defines an ArkTS class, including constructor function and properties.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n execution.\n<br>        {@link napi_invalid_arg } If the param env, utf8name and(or) result is nullptr. If napi_property_descriptor<br>                                  is nullptr but property_count greater than 0.\n<br>        {@link napi_function_expected } If the param func is not an ArkTS Function.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurs in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n execution.\n napi_invalid_arg If the param env, utf8name and(or) result is nullptr. If napi_property_descriptor is nullptr but property_count greater than 0.\n napi_function_expected If the param func is not an ArkTS Function.\n napi_pending_exception If have uncaught exception, or exception occurs in execution.\n |
 
 ### napi_create_symbol()
 
@@ -2939,8 +2743,6 @@ NAPI_EXTERN napi_status napi_create_symbol(napi_env env, napi_value description,
 **Description**
 
 Creates an ArkTS symbol.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2956,7 +2758,7 @@ Creates an ArkTS symbol.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr;\n                                    If the param description is not nullptr and is not an ArkTS String.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr;\n If the param description is not nullptr and is not an ArkTS String.\n |
 
 ### napi_create_function()
 
@@ -2967,8 +2769,6 @@ NAPI_EXTERN napi_status napi_create_function(napi_env env, const char* utf8name,
 **Description**
 
 Create an ArkTS function. This is the primary mechanism to call back into native code from ArkTS.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -2987,7 +2787,7 @@ Create an ArkTS function. This is the primary mechanism to call back into native
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, cb and(or) result is nullptr.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, cb and(or) result is nullptr.\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_typeof()
 
@@ -2998,8 +2798,6 @@ NAPI_EXTERN napi_status napi_typeof(napi_env env, napi_value value, napi_valuety
 **Description**
 
 Similar to typeof operation, support external value, detects null as a separate type.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3015,7 +2813,7 @@ Similar to typeof operation, support external value, detects null as a separate 
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_get_value_double()
 
@@ -3026,8 +2824,6 @@ NAPI_EXTERN napi_status napi_get_value_double(napi_env env, napi_value value, do
 **Description**
 
 Obtains the double value corresponding to the given ArkTS value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3043,7 +2839,7 @@ Obtains the double value corresponding to the given ArkTS value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n<br>        {@link napi_number_expected } If a non-number ArkTS value passed in it.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n napi_number_expected If a non-number ArkTS value passed in it.\n |
 
 ### napi_get_value_int32()
 
@@ -3054,8 +2850,6 @@ NAPI_EXTERN napi_status napi_get_value_int32(napi_env env, napi_value value, int
 **Description**
 
 Obtains the int32_t value corresponding to the given ArkTS value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3071,7 +2865,7 @@ Obtains the int32_t value corresponding to the given ArkTS value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n<br>        {@link napi_number_expected } If a non-number ArkTS value passed in it.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n napi_number_expected If a non-number ArkTS value passed in it.\n |
 
 ### napi_get_value_uint32()
 
@@ -3082,8 +2876,6 @@ NAPI_EXTERN napi_status napi_get_value_uint32(napi_env env, napi_value value, ui
 **Description**
 
 Obtains the uint32_t value corresponding to the given ArkTS value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3099,7 +2891,7 @@ Obtains the uint32_t value corresponding to the given ArkTS value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n<br>        {@link napi_number_expected } If a non-number ArkTS value passed in it.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n napi_number_expected If a non-number ArkTS value passed in it.\n |
 
 ### napi_get_value_int64()
 
@@ -3110,8 +2902,6 @@ NAPI_EXTERN napi_status napi_get_value_int64(napi_env env, napi_value value, int
 **Description**
 
 Obtains the int64_t value corresponding to the given ArkTS value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3127,7 +2917,7 @@ Obtains the int64_t value corresponding to the given ArkTS value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n<br>        {@link napi_number_expected } If a non-number ArkTS value passed in it.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n napi_number_expected If a non-number ArkTS value passed in it.\n |
 
 ### napi_get_value_bool()
 
@@ -3138,8 +2928,6 @@ NAPI_EXTERN napi_status napi_get_value_bool(napi_env env, napi_value value, bool
 **Description**
 
 Obtains the C Boolean equivalent of an ArkTS Boolean value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3155,7 +2943,7 @@ Obtains the C Boolean equivalent of an ArkTS Boolean value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n<br>        {@link napi_boolean_expected } If a non-boolean ArkTS value passed in it.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n napi_boolean_expected If a non-boolean ArkTS value passed in it.\n |
 
 ### napi_get_value_string_latin1()
 
@@ -3166,8 +2954,6 @@ NAPI_EXTERN napi_status napi_get_value_string_latin1(napi_env env, napi_value va
 **Description**
 
 Obtains the ISO-8859-1-encoded string corresponding to the given ArkTS value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3185,7 +2971,7 @@ Obtains the ISO-8859-1-encoded string corresponding to the given ArkTS value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) value is nullptr;\n<br>                                  If the param buf and result both are nullptr.\n<br>        {@link napi_string_expected } If a non-string ArkTS value passed in it.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) value is nullptr;\n If the param buf and result both are nullptr.\n napi_string_expected If a non-string ArkTS value passed in it.\n |
 
 ### napi_get_value_string_utf8()
 
@@ -3196,8 +2982,6 @@ NAPI_EXTERN napi_status napi_get_value_string_utf8(napi_env env, napi_value valu
 **Description**
 
 Obtains the UTF8-encoded string corresponding to the given ArkTS value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3215,7 +2999,7 @@ Obtains the UTF8-encoded string corresponding to the given ArkTS value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) value is nullptr;\n<br>                                  If the param buf and result both are nullptr.\n<br>        {@link napi_string_expected } If a non-string ArkTS value passed in it.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) value is nullptr;\n If the param buf and result both are nullptr.\n napi_string_expected If a non-string ArkTS value passed in it.\n |
 
 ### napi_get_undefined()
 
@@ -3226,8 +3010,6 @@ NAPI_EXTERN napi_status napi_get_undefined(napi_env env, napi_value* result)
 **Description**
 
 Obtains the ArkTS undefined value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3242,7 +3024,7 @@ Obtains the ArkTS undefined value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the parameter env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the parameter env and(or) result is nullptr.\n |
 
 ### napi_get_null()
 
@@ -3253,8 +3035,6 @@ NAPI_EXTERN napi_status napi_get_null(napi_env env, napi_value* result)
 **Description**
 
 Obtains the ArkTS null value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3269,7 +3049,7 @@ Obtains the ArkTS null value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_get_global()
 
@@ -3280,8 +3060,6 @@ NAPI_EXTERN napi_status napi_get_global(napi_env env, napi_value* result)
 **Description**
 
 Obtains the ArkTS global object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3296,7 +3074,7 @@ Obtains the ArkTS global object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_get_boolean()
 
@@ -3309,8 +3087,6 @@ NAPI_EXTERN napi_status napi_get_boolean(napi_env env, bool value, napi_value* r
 **Description**
 
 Obtains the ArkTS singleton value corresponding to given C primitive boolean value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3326,7 +3102,7 @@ Obtains the ArkTS singleton value corresponding to given C primitive boolean val
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_create_object()
 
@@ -3337,8 +3113,6 @@ NAPI_EXTERN napi_status napi_create_object(napi_env env, napi_value* result)
 **Description**
 
 Creates a default ArkTS object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3353,7 +3127,7 @@ Creates a default ArkTS object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_create_array()
 
@@ -3364,8 +3138,6 @@ NAPI_EXTERN napi_status napi_create_array(napi_env env, napi_value* result)
 **Description**
 
 Creates an ArkTS array.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3380,7 +3152,7 @@ Creates an ArkTS array.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_create_array_with_length()
 
@@ -3391,8 +3163,6 @@ NAPI_EXTERN napi_status napi_create_array_with_length(napi_env env, size_t lengt
 **Description**
 
 Creates an ArkTS array of the specified length.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3408,7 +3178,7 @@ Creates an ArkTS array of the specified length.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_create_double()
 
@@ -3419,8 +3189,6 @@ NAPI_EXTERN napi_status napi_create_double(napi_env env, double value, napi_valu
 **Description**
 
 Creates an ArkTS number from C double data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3436,7 +3204,7 @@ Creates an ArkTS number from C double data.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_create_int32()
 
@@ -3447,8 +3215,6 @@ NAPI_EXTERN napi_status napi_create_int32(napi_env env, int32_t value, napi_valu
 **Description**
 
 Creates an ArkTS number from C int32_t data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3464,7 +3230,7 @@ Creates an ArkTS number from C int32_t data.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_create_uint32()
 
@@ -3475,8 +3241,6 @@ NAPI_EXTERN napi_status napi_create_uint32(napi_env env, uint32_t value, napi_va
 **Description**
 
 Creates an ArkTS number from C uint32_t data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3492,7 +3256,7 @@ Creates an ArkTS number from C uint32_t data.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_create_int64()
 
@@ -3503,8 +3267,6 @@ NAPI_EXTERN napi_status napi_create_int64(napi_env env, int64_t value, napi_valu
 **Description**
 
 Creates an ArkTS number from C int64_t data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3520,7 +3282,7 @@ Creates an ArkTS number from C int64_t data.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) result is nullptr.\n |
 
 ### napi_create_string_latin1()
 
@@ -3531,8 +3293,6 @@ NAPI_EXTERN napi_status napi_create_string_latin1(napi_env env, const char* str,
 **Description**
 
 Creates an ArkTS string from an ISO-8859-1-encoded C string.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3549,7 +3309,7 @@ Creates an ArkTS string from an ISO-8859-1-encoded C string.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, str and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, str and(or) result is nullptr.\n |
 
 ### napi_create_string_utf8()
 
@@ -3560,8 +3320,6 @@ NAPI_EXTERN napi_status napi_create_string_utf8(napi_env env, const char* str, s
 **Description**
 
 Creates an ArkTS string from a UTF8-encoded C string.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3578,7 +3336,7 @@ Creates an ArkTS string from a UTF8-encoded C string.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, str and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, str and(or) result is nullptr.\n |
 
 ### napi_is_arraybuffer()
 
@@ -3589,8 +3347,6 @@ NAPI_EXTERN napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool
 **Description**
 
 Checks if the ArkTS value is an ArkTS ArrayBuffer.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3606,7 +3362,7 @@ Checks if the ArkTS value is an ArkTS ArrayBuffer.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_create_arraybuffer()
 
@@ -3617,8 +3373,6 @@ NAPI_EXTERN napi_status napi_create_arraybuffer(napi_env env, size_t byte_length
 **Description**
 
 Creates an ArkTS ArrayBuffer of the specified size.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3635,7 +3389,7 @@ Creates an ArkTS ArrayBuffer of the specified size.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, data and(or) result is nullptr.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, data and(or) result is nullptr.\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_create_external()
 
@@ -3646,8 +3400,6 @@ NAPI_EXTERN napi_status napi_create_external(napi_env env, void* data, napi_fina
 **Description**
 
 Allocates a JS value with external data.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3665,7 +3417,7 @@ Allocates a JS value with external data.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env or result is nullptr.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env or result is nullptr.\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_create_external_arraybuffer()
 
@@ -3676,8 +3428,6 @@ NAPI_EXTERN napi_status napi_create_external_arraybuffer(napi_env env, void* ext
 **Description**
 
 The underlying data that ArrayBuffer point to.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3696,7 +3446,7 @@ The underlying data that ArrayBuffer point to.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, external_data, finalize_cb and(or) result is nullptr.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, external_data, finalize_cb and(or) result is nullptr.\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_get_arraybuffer_info()
 
@@ -3707,8 +3457,6 @@ NAPI_EXTERN napi_status napi_get_arraybuffer_info(napi_env env, napi_value array
 **Description**
 
 Obtains the underlying data buffer of ArrayBuffer and its length.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3725,7 +3473,7 @@ Obtains the underlying data buffer of ArrayBuffer and its length.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, arraybuffer and(or) byte_length is nullptr.\n<br>        {@link napi_arraybuffer_expected } If the param is neither ArkTS TypedArray nor SendableArrayBuffer.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, arraybuffer and(or) byte_length is nullptr.\n napi_arraybuffer_expected If the param is neither ArkTS TypedArray nor SendableArrayBuffer.\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_is_typedarray()
 
@@ -3736,8 +3484,6 @@ NAPI_EXTERN napi_status napi_is_typedarray(napi_env env, napi_value value, bool*
 **Description**
 
 Checks if the ArkTS value is an ArkTS TypedArray.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3753,7 +3499,7 @@ Checks if the ArkTS value is an ArkTS TypedArray.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_create_typedarray()
 
@@ -3764,8 +3510,6 @@ NAPI_EXTERN napi_status napi_create_typedarray(napi_env env, napi_typedarray_typ
 **Description**
 
 Creates an ArkTS TypeArray from an existing ArrayBuffer.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3784,7 +3528,7 @@ Creates an ArkTS TypeArray from an existing ArrayBuffer.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, arraybuffer and(or) result is nullptr;\n<br>                                  If param type is not a valid napi_typedarray_type.\n<br>        {@link napi_arraybuffer_expected } If a non-arraybuffer ArkTS value passed in it.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, arraybuffer and(or) result is nullptr;\n If param type is not a valid napi_typedarray_type.\n napi_arraybuffer_expected If a non-arraybuffer ArkTS value passed in it.\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_get_typedarray_info()
 
@@ -3795,8 +3539,6 @@ NAPI_EXTERN napi_status napi_get_typedarray_info(napi_env env, napi_value typeda
 **Description**
 
 Obtains properties of a TypedArray.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3816,7 +3558,7 @@ Obtains properties of a TypedArray.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) typedarray is nullptr;\n                                     If the param typedarray is neither ArkTS TypedArray nor SendableTypedArray.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) typedarray is nullptr;\n If the param typedarray is neither ArkTS TypedArray nor SendableTypedArray.\n |
 
 ### napi_create_dataview()
 
@@ -3827,8 +3569,6 @@ NAPI_EXTERN napi_status napi_create_dataview(napi_env env, size_t length, napi_v
 **Description**
 
 Creates an ArkTS DataView from an existing ArrayBuffer.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3846,7 +3586,7 @@ Creates an ArkTS DataView from an existing ArrayBuffer.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, arraybuffer and(or) result is nullptr.\n<br>        {@link napi_arraybuffer_expected } If a non-arraybuffer ArkTS value passed in it.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n                                          If the sum of byte_length and length is greater than the byte length of\n                                          the arraybuffer.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, arraybuffer and(or) result is nullptr.\n napi_arraybuffer_expected If a non-arraybuffer ArkTS value passed in it.\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n If the sum of byte_length and length is greater than the byte length of\n the arraybuffer.\n |
 
 ### napi_is_dataview()
 
@@ -3857,8 +3597,6 @@ NAPI_EXTERN napi_status napi_is_dataview(napi_env env, napi_value value, bool* r
 **Description**
 
 Checks if the ArkTS value is an ArkTS DataView.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3874,7 +3612,7 @@ Checks if the ArkTS value is an ArkTS DataView.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_get_dataview_info()
 
@@ -3885,8 +3623,6 @@ NAPI_EXTERN napi_status napi_get_dataview_info(napi_env env, napi_value dataview
 **Description**
 
 Obtains properties of a DataView.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3905,7 +3641,7 @@ Obtains properties of a DataView.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) dataview is nullptr;\n                                    If non-dataview ArkTS value passed in.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) dataview is nullptr;\n If non-dataview ArkTS value passed in.\n |
 
 ### napi_get_array_length()
 
@@ -3916,8 +3652,6 @@ NAPI_EXTERN napi_status napi_get_array_length(napi_env env, napi_value value, ui
 **Description**
 
 Obtains the array length.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3933,7 +3667,7 @@ Obtains the array length.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr;\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr;\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_get_prototype()
 
@@ -3944,8 +3678,6 @@ NAPI_EXTERN napi_status napi_get_prototype(napi_env env, napi_value object, napi
 **Description**
 
 Obtains the prototype of an ArkTS object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3961,7 +3693,7 @@ Obtains the prototype of an ArkTS object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object or result is nullptr;\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object or result is nullptr;\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_get_value_external()
 
@@ -3972,8 +3704,6 @@ NAPI_EXTERN napi_status napi_get_value_external(napi_env env, napi_value value, 
 **Description**
 
 Obtains the external data pointer previously passed through napi_create_external().
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -3989,7 +3719,7 @@ Obtains the external data pointer previously passed through napi_create_external
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value or result is nullptr;\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value or result is nullptr;\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_coerce_to_bool()
 
@@ -4000,8 +3730,6 @@ NAPI_EXTERN napi_status napi_coerce_to_bool(napi_env env, napi_value value, napi
 **Description**
 
 Coerce the given ArkTS value to an ArkTS boolean value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4017,7 +3745,7 @@ Coerce the given ArkTS value to an ArkTS boolean value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_coerce_to_number()
 
@@ -4028,8 +3756,6 @@ NAPI_EXTERN napi_status napi_coerce_to_number(napi_env env, napi_value value, na
 **Description**
 
 Coerce the given ArkTS value to an ArkTS number value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4045,7 +3771,7 @@ Coerce the given ArkTS value to an ArkTS number value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_coerce_to_object()
 
@@ -4056,8 +3782,6 @@ NAPI_EXTERN napi_status napi_coerce_to_object(napi_env env, napi_value value, na
 **Description**
 
 Coerce the given ArkTS value to an ArkTS object value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4073,7 +3797,7 @@ Coerce the given ArkTS value to an ArkTS object value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_coerce_to_string()
 
@@ -4084,8 +3808,6 @@ NAPI_EXTERN napi_status napi_coerce_to_string(napi_env env, napi_value value, na
 **Description**
 
 Coerce the given ArkTS value to an ArkTS string value.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4101,7 +3823,7 @@ Coerce the given ArkTS value to an ArkTS string value.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_instanceof()
 
@@ -4112,8 +3834,6 @@ NAPI_EXTERN napi_status napi_instanceof(napi_env env, napi_value object, napi_va
 **Description**
 
 Invoke instanceof operation on the object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4130,7 +3850,7 @@ Invoke instanceof operation on the object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object, constructor and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS object value.\n<br>        {@link napi_function_expected } If the param constructor is not an ArkTS function value.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object, constructor and(or) result is nullptr.\n napi_object_expected If the param object is not an ArkTS object value.\n napi_function_expected If the param constructor is not an ArkTS function value.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_is_array()
 
@@ -4141,8 +3861,6 @@ NAPI_EXTERN napi_status napi_is_array(napi_env env, napi_value value, bool* resu
 **Description**
 
 Checks if the ArkTS value is an ArkTS Array.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4158,7 +3876,7 @@ Checks if the ArkTS value is an ArkTS Array.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_strict_equals()
 
@@ -4169,8 +3887,6 @@ NAPI_EXTERN napi_status napi_strict_equals(napi_env env, napi_value lhs, napi_va
 **Description**
 
 Checks if the two ArkTS values are equal.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4187,7 +3903,7 @@ Checks if the two ArkTS values are equal.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n |
 
 ### napi_get_property_names()
 
@@ -4198,8 +3914,6 @@ NAPI_EXTERN napi_status napi_get_property_names(napi_env env, napi_value object,
 **Description**
 
 Obtains the names of the enumerable properties of object as an Array of Strings. The keys that are symbols will not be included.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4215,7 +3929,7 @@ Obtains the names of the enumerable properties of object as an Array of Strings.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value and(or) result is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n |
 
 ### napi_set_property()
 
@@ -4226,8 +3940,6 @@ NAPI_EXTERN napi_status napi_set_property(napi_env env, napi_value object, napi_
 **Description**
 
 Set a property on the given ArkTS Object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4244,7 +3956,7 @@ Set a property on the given ArkTS Object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object, key and(or) value is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object, key and(or) value is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_get_property()
 
@@ -4255,8 +3967,6 @@ NAPI_EXTERN napi_status napi_get_property(napi_env env, napi_value object, napi_
 **Description**
 
 Get the requests property of the given ArkTS Object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4273,7 +3983,7 @@ Get the requests property of the given ArkTS Object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object, key and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object, key and(or) result is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_has_property()
 
@@ -4284,8 +3994,6 @@ NAPI_EXTERN napi_status napi_has_property(napi_env env, napi_value object, napi_
 **Description**
 
 Check if the given ArkTS Object has the named property or not.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4302,7 +4010,7 @@ Check if the given ArkTS Object has the named property or not.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object, key and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object, key and(or) result is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_delete_property()
 
@@ -4313,8 +4021,6 @@ NAPI_EXTERN napi_status napi_delete_property(napi_env env, napi_value object, na
 **Description**
 
 Delete the named property of the given ArkTS Object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4331,7 +4037,7 @@ Delete the named property of the given ArkTS Object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object and(or) key is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object and(or) key is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_set_named_property()
 
@@ -4342,8 +4048,6 @@ NAPI_EXTERN napi_status napi_set_named_property(napi_env env, napi_value object,
 **Description**
 
 Set a property on the given ArkTS Object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4360,7 +4064,7 @@ Set a property on the given ArkTS Object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object, utf8name and(or) value is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object, utf8name and(or) value is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_get_named_property()
 
@@ -4371,8 +4075,6 @@ NAPI_EXTERN napi_status napi_get_named_property(napi_env env, napi_value object,
 **Description**
 
 Get the requests property of the given ArkTS Object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4389,7 +4091,7 @@ Get the requests property of the given ArkTS Object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object, utf8name and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object, utf8name and(or) result is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_has_named_property()
 
@@ -4400,8 +4102,6 @@ NAPI_EXTERN napi_status napi_has_named_property(napi_env env, napi_value object,
 **Description**
 
 Check if the given ArkTS Object has the named property or not.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4418,7 +4118,7 @@ Check if the given ArkTS Object has the named property or not.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object, utf8name and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object, utf8name and(or) result is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_set_element()
 
@@ -4429,8 +4129,6 @@ NAPI_EXTERN napi_status napi_set_element(napi_env env, napi_value object, uint32
 **Description**
 
 Set a element on the given ArkTS Array.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4447,7 +4145,7 @@ Set a element on the given ArkTS Array.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object and(or) value is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object and(or) value is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_get_element()
 
@@ -4458,8 +4156,6 @@ NAPI_EXTERN napi_status napi_get_element(napi_env env, napi_value object, uint32
 **Description**
 
 Get the requests element of the given ArkTS Array.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4476,7 +4172,7 @@ Get the requests element of the given ArkTS Array.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object and(or) result is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_has_element()
 
@@ -4487,8 +4183,6 @@ NAPI_EXTERN napi_status napi_has_element(napi_env env, napi_value object, uint32
 **Description**
 
 Check if the given ArkTS Array has an element at the requested index.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4505,7 +4199,7 @@ Check if the given ArkTS Array has an element at the requested index.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object and(or) result is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_delete_element()
 
@@ -4516,8 +4210,6 @@ NAPI_EXTERN napi_status napi_delete_element(napi_env env, napi_value object, uin
 **Description**
 
 Delete the special index from the given ArkTS Array.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4534,7 +4226,7 @@ Delete the special index from the given ArkTS Array.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object and(or) key is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object and(or) key is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_define_properties()
 
@@ -4545,8 +4237,6 @@ NAPI_EXTERN napi_status napi_define_properties(napi_env env, napi_value object, 
 **Description**
 
 Efficient define multiple properties on the given ArkTS Object by napi_property_descriptor.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4563,7 +4253,7 @@ Efficient define multiple properties on the given ArkTS Object by napi_property_
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, object and(or) properties is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, object and(or) properties is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_call_function()
 
@@ -4574,8 +4264,6 @@ NAPI_EXTERN napi_status napi_call_function(napi_env env, napi_value recv, napi_v
 **Description**
 
 Invoke an ArkTS function. This is the primary mechanism to call back into JavaScript.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4594,7 +4282,7 @@ Invoke an ArkTS function. This is the primary mechanism to call back into JavaSc
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) func is nullptr. If argv is nullptr but argc greater\n<br>                                  than 0.\n<br>        {@link napi_function_expected } If the param func is not an ArkTS Function.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) func is nullptr. If argv is nullptr but argc greater\n than 0.\n napi_function_expected If the param func is not an ArkTS Function.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_get_cb_info()
 
@@ -4605,8 +4293,6 @@ NAPI_EXTERN napi_status napi_get_cb_info(napi_env env, napi_callback_info cbinfo
 **Description**
 
 Obtains callback details about the call like arguments, this from given callback info.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4625,7 +4311,7 @@ Obtains callback details about the call like arguments, this from given callback
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) cbinfo is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) cbinfo is nullptr.\n |
 
 ### napi_get_new_target()
 
@@ -4636,8 +4322,6 @@ NAPI_EXTERN napi_status napi_get_new_target(napi_env env, napi_callback_info cbi
 **Description**
 
 Obtains callback details about the call like arguments, this from given callback info.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4653,7 +4337,7 @@ Obtains callback details about the call like arguments, this from given callback
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, cbinfo and(or) result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, cbinfo and(or) result is nullptr.\n |
 
 ### napi_new_instance()
 
@@ -4664,8 +4348,6 @@ NAPI_EXTERN napi_status napi_new_instance(napi_env env, napi_value constructor, 
 **Description**
 
 Instantiate a new ArkTS value using a given napi_value that represents the constructor for the object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4683,7 +4365,7 @@ Instantiate a new ArkTS value using a given napi_value that represents the const
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) func is nullptr. If argv is nullptr but argc greater\n<br>                                  than 0.\n<br>        {@link napi_function_expected } If the param func is not an ArkTS Function.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) func is nullptr. If argv is nullptr but argc greater\n than 0.\n napi_function_expected If the param func is not an ArkTS Function.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_wrap()
 
@@ -4694,8 +4376,6 @@ NAPI_EXTERN napi_status napi_wrap(napi_env env, napi_value js_object, void* nati
 **Description**
 
 Wraps a native instance in a ArkTS object. The native instance can be retrieved later using napi_unwrap.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4714,7 +4394,7 @@ Wraps a native instance in a ArkTS object. The native instance can be retrieved 
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, js_object, native_object and(or) finalize_cb is nullptr.\n<br>        {@link napi_object_expected } If the param js_object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, js_object, native_object and(or) finalize_cb is nullptr.\n napi_object_expected If the param js_object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_unwrap()
 
@@ -4726,8 +4406,6 @@ NAPI_EXTERN napi_status napi_unwrap(napi_env env, napi_value js_object, void** r
 
 Retrieves a native instance that was previously wrapped in an ArkTS object using napi_wrap.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -4742,7 +4420,7 @@ Retrieves a native instance that was previously wrapped in an ArkTS object using
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, js_object and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param js_object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, js_object and(or) result is nullptr.\n napi_object_expected If the param js_object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_remove_wrap()
 
@@ -4754,8 +4432,6 @@ NAPI_EXTERN napi_status napi_remove_wrap(napi_env env, napi_value js_object, voi
 
 Retrieves a native instance that was previously wrapped in the ArkTS object js_object using napi_wrap and removes the wrapping.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -4770,7 +4446,7 @@ Retrieves a native instance that was previously wrapped in the ArkTS object js_o
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, js_object and(or) result is nullptr.\n<br>        {@link napi_object_expected } If the param js_object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, js_object and(or) result is nullptr.\n napi_object_expected If the param js_object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_create_async_work()
 
@@ -4781,8 +4457,6 @@ NAPI_EXTERN napi_status napi_create_async_work(napi_env env, napi_value async_re
 **Description**
 
 Allocate a work object that is used to execute logic asynchronously.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
 
@@ -4802,7 +4476,7 @@ Allocate a work object that is used to execute logic asynchronously.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, async_resource_name, execute, complete and(or) result is\n                                    nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, async_resource_name, execute, complete and(or) result is\n nullptr.\n |
 
 ### napi_delete_async_work()
 
@@ -4814,8 +4488,6 @@ NAPI_EXTERN napi_status napi_delete_async_work(napi_env env, napi_async_work wor
 
 Free a previously allocated work object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -4829,7 +4501,7 @@ Free a previously allocated work object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) work is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) work is nullptr.\n |
 
 ### napi_queue_async_work()
 
@@ -4841,8 +4513,6 @@ NAPI_EXTERN napi_status napi_queue_async_work(napi_env env, napi_async_work work
 
 Requests that the previously allocated work be scheduled for execution. Once it returns successfully, this API must not be called again with the same napi_async_work item or the result will be undefined.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -4856,7 +4526,7 @@ Requests that the previously allocated work be scheduled for execution. Once it 
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) work is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) work is nullptr.\n |
 
 ### napi_cancel_async_work()
 
@@ -4868,8 +4538,6 @@ NAPI_EXTERN napi_status napi_cancel_async_work(napi_env env, napi_async_work wor
 
 Cancels queued work if it has not yet been started. If it has already started executing, it cannot be cancelled. If successful, the complete callback will be invoked with a status value of napi_cancelled. The work should not be deleted before the complete callback invocation, even if it has been successfully cancelled.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 10
 
 **Parameters**:
@@ -4883,7 +4551,7 @@ Cancels queued work if it has not yet been started. If it has already started ex
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env and(or) work is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env and(or) work is nullptr.\n |
 
 ### napi_wrap_enhance()
 
@@ -4894,8 +4562,6 @@ NAPI_EXTERN napi_status napi_wrap_enhance(napi_env env, napi_value js_object, vo
 **Description**
 
 Wraps a native instance in an ArkTS object.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 18
 
@@ -4916,7 +4582,7 @@ Wraps a native instance in an ArkTS object.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, js_object or native_object is nullptr.\n<br>        {@link napi_object_expected } If the param js_object is not an ArkTS Object or Function.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before(in) execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, js_object or native_object is nullptr.\n napi_object_expected If the param js_object is not an ArkTS Object or Function.\n napi_pending_exception There is an uncaught exception occurred before(in) execution.\n |
 
 ### napi_create_ark_context()
 
@@ -4927,8 +4593,6 @@ NAPI_EXTERN napi_status napi_create_ark_context(napi_env env, napi_env *newEnv)
 **Description**
 
 To create a new virtual machine context.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 20
 
@@ -4943,7 +4607,7 @@ To create a new virtual machine context.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env is nullptr.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurs in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env is nullptr.\n napi_pending_exception If have uncaught exception, or exception occurs in execution.\n |
 
 ### napi_switch_ark_context()
 
@@ -4954,8 +4618,6 @@ NAPI_EXTERN napi_status napi_switch_ark_context(napi_env env)
 **Description**
 
 To switch a virtual machine context which is expected to be used later.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 20
 
@@ -4969,7 +4631,7 @@ To switch a virtual machine context which is expected to be used later.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env is nullptr.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurs in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env is nullptr.\n napi_pending_exception If have uncaught exception, or exception occurs in execution.\n |
 
 ### napi_destroy_ark_context()
 
@@ -4980,8 +4642,6 @@ NAPI_EXTERN napi_status napi_destroy_ark_context(napi_env env)
 **Description**
 
 To destroy a virtual machine context which will not be used again.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 20
 
@@ -4995,7 +4655,7 @@ To destroy a virtual machine context which will not be used again.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env is nullptr.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurs in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env is nullptr.\n napi_pending_exception If have uncaught exception, or exception occurs in execution.\n |
 
 ### napi_open_critical_scope()
 
@@ -5007,8 +4667,6 @@ NAPI_EXTERN napi_status napi_open_critical_scope(napi_env env, napi_critical_sco
 
 To open a critical scope.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 21
 
 **Parameters**:
@@ -5016,13 +4674,13 @@ To open a critical scope.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope--8h.md)* scope | A critical scope of type of napi_critical_scope is generated. |
+| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope.md)* scope | A critical scope of type of napi_critical_scope is generated. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param scope is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param scope is nullptr.\n |
 
 ### napi_close_critical_scope()
 
@@ -5034,8 +4692,6 @@ NAPI_EXTERN napi_status napi_close_critical_scope(napi_env env, napi_critical_sc
 
 To close a critical scope.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 21
 
 **Parameters**:
@@ -5043,13 +4699,13 @@ To close a critical scope.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope--8h.md) scope | A critical scope to be closed. |
+| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope.md) scope | A critical scope to be closed. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param scope is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param scope is nullptr.\n |
 
 ### napi_get_buffer_string_utf16_in_critical_scope()
 
@@ -5060,8 +4716,6 @@ NAPI_EXTERN napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env 
 **Description**
 
 To obtain a ArkTS string buffer cache within the critical scope.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 21
 
@@ -5078,7 +4732,7 @@ To obtain a ArkTS string buffer cache within the critical scope.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, value, buffer and length is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, value, buffer and length is nullptr.\n |
 
 ### napi_create_strong_reference()
 
@@ -5090,8 +4744,6 @@ NAPI_EXTERN napi_status napi_create_strong_reference(napi_env env, napi_value va
 
 Creates a strong reference for an ArkTS object to extend its lifespan. The caller needs to manage the reference lifespan.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 21
 
 **Parameters**:
@@ -5100,13 +4752,13 @@ Creates a strong reference for an ArkTS object to extend its lifespan. The calle
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
 | napi_value value | The napi_value that is being referenced. |
-| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref--8h.md)* result | napi_strong_ref pointing to the new strong reference. |
+| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref.md)* result | napi_strong_ref pointing to the new strong reference. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or result is nullptr.\n |
 
 ### napi_delete_strong_reference()
 
@@ -5118,8 +4770,6 @@ NAPI_EXTERN napi_status napi_delete_strong_reference(napi_env env, napi_strong_r
 
 Deletes the strong reference passed in.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 21
 
 **Parameters**:
@@ -5127,13 +4777,13 @@ Deletes the strong reference passed in.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref--8h.md) ref | The napi_strong_ref to be deleted. |
+| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref.md) ref | The napi_strong_ref to be deleted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or ref is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or ref is nullptr.\n |
 
 ### napi_get_strong_reference_value()
 
@@ -5145,8 +4795,6 @@ NAPI_EXTERN napi_status napi_get_strong_reference_value(napi_env env, napi_stron
 
 Obtains the ArkTS Object associated with the strong reference.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 21
 
 **Parameters**:
@@ -5154,14 +4802,14 @@ Obtains the ArkTS Object associated with the strong reference.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref--8h.md) ref | The napi_strong_ref of the value being requested. |
+| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref.md) ref | The napi_strong_ref of the value being requested. |
 | napi_value* result | The napi_value referenced by the napi_strong_ref. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, ref or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, ref or result is nullptr.\n |
 
 ### napi_create_external_string_utf16()
 
@@ -5172,8 +4820,6 @@ NAPI_EXTERN napi_status napi_create_external_string_utf16(napi_env env, const ch
 **Description**
 
 Creates an ArkTS string from a UTF16-encoded C string.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 22
 
@@ -5192,7 +4838,7 @@ Creates an ArkTS string from a UTF16-encoded C string.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, str and(or) result is nullptr;\n                                    If the param length is not equal with NAPI_AUTO_LENGTH and\n                                    length is larger than INT_MAX;\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, str and(or) result is nullptr;\n If the param length is not equal with NAPI_AUTO_LENGTH and\n length is larger than INT_MAX;\n |
 
 ### napi_create_external_string_ascii()
 
@@ -5203,8 +4849,6 @@ NAPI_EXTERN napi_status napi_create_external_string_ascii(napi_env env, const ch
 **Description**
 
 Creates an ArkTS string from a ASCII-encoded C string.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 22
 
@@ -5223,7 +4867,7 @@ Creates an ArkTS string from a ASCII-encoded C string.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If the param env, str and(or) result is nullptr;\n                                    If the param length is not equal with NAPI_AUTO_LENGTH and\n                                    length is larger than INT_MAX;\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If the param env, str and(or) result is nullptr;\n If the param length is not equal with NAPI_AUTO_LENGTH and\n length is larger than INT_MAX;\n |
 
 ### napi_create_strong_sendable_reference()
 
@@ -5235,8 +4879,6 @@ NAPI_EXTERN napi_status napi_create_strong_sendable_reference(napi_env env, napi
 
 Creates a strong sendable reference for an ArkTS object to extend its lifespan. The caller needs to manage the sendable reference lifespan.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 22
 
 **Parameters**:
@@ -5245,13 +4887,13 @@ Creates a strong sendable reference for an ArkTS object to extend its lifespan. 
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
 | napi_value value | The sendable ArkTS object that is being referenced. |
-| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref--8h.md)* result | The napi_sendable_ref pointing to the new strong sendable reference. |
+| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref.md)* result | The napi_sendable_ref pointing to the new strong sendable reference. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, value or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, value or result is nullptr.\n |
 
 ### napi_delete_strong_sendable_reference()
 
@@ -5263,8 +4905,6 @@ NAPI_EXTERN napi_status napi_delete_strong_sendable_reference(napi_env env, napi
 
 Deletes the strong sendable reference passed in.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 22
 
 **Parameters**:
@@ -5272,13 +4912,13 @@ Deletes the strong sendable reference passed in.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref--8h.md) ref | The sendable reference to be deleted. |
+| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref.md) ref | The sendable reference to be deleted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or ref is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or ref is nullptr.\n |
 
 ### napi_get_strong_sendable_reference_value()
 
@@ -5290,8 +4930,6 @@ NAPI_EXTERN napi_status napi_get_strong_sendable_reference_value(napi_env env, n
 
 Obtains the ArkTS Object associated with the strong reference.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 22
 
 **Parameters**:
@@ -5299,14 +4937,14 @@ Obtains the ArkTS Object associated with the strong reference.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref--8h.md) ref | The sendable reference of the sendable object value being requested. |
+| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref.md) ref | The sendable reference of the sendable object value being requested. |
 | napi_value* result | The sendable ArkTS object referenced by the sendable reference. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, ref or result is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, ref or result is nullptr.\n |
 
 ### napi_throw_business_error()
 
@@ -5317,8 +4955,6 @@ NAPI_EXTERN napi_status napi_throw_business_error(napi_env env, int32_t errorCod
 **Description**
 
 Throws an ArkTS Error with text information.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 23
 
@@ -5334,7 +4970,7 @@ Throws an ArkTS Error with text information.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or msg is nullptr.\n<br>        {@link napi_pending_exception } There is an uncaught exception occurred before execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or msg is nullptr.\n napi_pending_exception There is an uncaught exception occurred before execution.\n |
 
 ### napi_create_callsite_info()
 
@@ -5346,8 +4982,6 @@ NAPI_EXTERN napi_status napi_create_callsite_info(napi_env env, napi_callsite_in
 
 Creates a callsite info handle for caching inline cache (IC) information of property access. Each different callsite should create an independent handle. The same handle can be reused across multiple calls but must not be used across threads. When no longer needed, napi_delete_callsite_info must be called to release the handle.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 24
 
 **Parameters**:
@@ -5355,13 +4989,13 @@ Creates a callsite info handle for caching inline cache (IC) information of prop
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md)* result | Pointer to napi_callsite_info to receive the created callsite info handle. |
+| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md)* result | Pointer to napi_callsite_info to receive the created callsite info handle. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env or result is nullptr.\n<br>        {@link napi_pending_exception } If a pending exception existed before the call.\n<br>        {@link napi_generic_failure } If the callsite info creation failed.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env or result is nullptr.\n napi_pending_exception If a pending exception existed before the call.\n napi_generic_failure If the callsite info creation failed.\n |
 
 ### napi_delete_callsite_info()
 
@@ -5373,8 +5007,6 @@ NAPI_EXTERN napi_status napi_delete_callsite_info(napi_env env, napi_callsite_in
 
 Deletes a callsite info handle and releases associated cache resources.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 24
 
 **Parameters**:
@@ -5382,13 +5014,13 @@ Deletes a callsite info handle and releases associated cache resources.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md) info | The callsite info handle to be deleted. |
+| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md) info | The callsite info handle to be deleted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env is nullptr.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env is nullptr.\n |
 
 ### napi_get_property_with_callsite_info()
 
@@ -5400,8 +5032,6 @@ NAPI_EXTERN napi_status napi_get_property_with_callsite_info(napi_env env, napi_
 
 Uses callsite info to quickly get an object property value. When the IC hits (the object has the same hidden class), it skips the regular hash table lookup and prototype chain traversal. The info parameter can be NULL, in which case the behavior is equivalent to napi_get_property.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 24
 
 **Parameters**:
@@ -5411,7 +5041,7 @@ Uses callsite info to quickly get an object property value. When the IC hits (th
 | napi_env env | Current running virtual machine context. |
 | napi_value object | The object to get the property from. |
 | napi_value key | The key name of the property to get. |
-| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md) info | Callsite info handle for IC caching. Can be NULL. |
+| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md) info | Callsite info handle for IC caching. Can be NULL. |
 | napi_value* result | Pointer to napi_value to receive the property value. |
 | bool* hit | Receives whether the IC cache was hit (true) or missed (false). |
 
@@ -5419,7 +5049,7 @@ Uses callsite info to quickly get an object property value. When the IC hits (th
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, object, key or result is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, object, key or result is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_set_property_with_callsite_info()
 
@@ -5431,8 +5061,6 @@ NAPI_EXTERN napi_status napi_set_property_with_callsite_info(napi_env env, napi_
 
 Uses callsite info to quickly set an object property value. When the IC hits (the object has the same hidden class), it skips the regular property setting process. The info parameter can be NULL, in which case the behavior is equivalent to napi_set_property.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
-
 **Since**: 24
 
 **Parameters**:
@@ -5443,14 +5071,14 @@ Uses callsite info to quickly set an object property value. When the IC hits (th
 | napi_value object | The object to set the property on. |
 | napi_value key | The key name of the property to set. |
 | napi_value value | The property value to set. |
-| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md) info | Callsite info handle for IC caching. Can be NULL. |
+| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md) info | Callsite info handle for IC caching. Can be NULL. |
 | bool* hit | Receives whether the IC cache was hit (true) or missed (false). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          {@link napi_ok } If the function executed successfully.\n<br>        {@link napi_invalid_arg } If env, object, key or value is nullptr.\n<br>        {@link napi_object_expected } If the param object is not an ArkTS Object.\n<br>        {@link napi_pending_exception } If have uncaught exception, or exception occurred in execution.\n |
+| NAPI_EXTERN napi_status | Returns the function execution status. napi_ok If the function executed successfully.\n napi_invalid_arg If env, object, key or value is nullptr.\n napi_object_expected If the param object is not an ArkTS Object.\n napi_pending_exception If have uncaught exception, or exception occurred in execution.\n |
 
 ### napi_get_global_handle_count()
 
@@ -5461,8 +5089,6 @@ NAPI_EXTERN napi_status napi_get_global_handle_count(napi_env env, size_t* count
 **Description**
 
 To obtain the count of global object in current ArkTS runtime thread.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 26.0.1
 
@@ -5477,6 +5103,6 @@ To obtain the count of global object in current ArkTS runtime thread.
 
 | Type | Description |
 | -- | -- |
-| NAPI_EXTERN napi_status | Returns the function execution status.          <ul><li>{@link napi_ok } If the function executed successfully.</li><br>        <li>{@link napi_invalid_arg } If env or count is nullptr.</li><br>        <li>{@link napi_pending_exception } There is an uncaught exception occurred before execution.</li></ul> |
+| NAPI_EXTERN napi_status | Returns the function execution status. <ul><li>napi_ok If the function executed successfully.</li> <li>napi_invalid_arg If env or count is nullptr.</li> <li>napi_pending_exception There is an uncaught exception occurred before execution.</li></ul> |
 
 

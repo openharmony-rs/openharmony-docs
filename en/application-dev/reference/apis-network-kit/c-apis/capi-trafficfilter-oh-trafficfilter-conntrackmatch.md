@@ -1,7 +1,7 @@
 # OH_TrafficFilter_ConntrackMatch
 
 ```c
-typedef struct OH_TrafficFilter_ConntrackMatch {...} OH_TrafficFilter_ConntrackMatch
+struct OH_TrafficFilter_ConntrackMatch {...}
 ```
 
 ## Overview

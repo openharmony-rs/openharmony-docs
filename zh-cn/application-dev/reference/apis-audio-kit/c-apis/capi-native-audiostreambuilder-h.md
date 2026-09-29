@@ -6,8 +6,6 @@ Declare audio stream builder related interfaces.
 
 **库：** libohaudio.so
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
@@ -66,22 +64,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Create(OH_AudioStreamBuilder** build
 
 创建一个输入或者输出类型的音频流构造器。 <br>当构造器不再使用时，需要调用[OH_AudioStreamBuilder_Destroy](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_destroy)销毁。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder** builder | 用于接收创建的构造器实例。 |
-| OH_AudioStream_Type type | 构造器的流类型。AUDIOSTREAM_TYPE_RENDERER或AUDIOSTREAM_TYPE_CAPTURER。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)** builder | 用于接收创建的构造器实例。 |
+| [OH_AudioStream_Type](capi-native-audiostream-base-h.md#oh_audiostream_type) type | 构造器的流类型。AUDIOSTREAM_TYPE_RENDERER或AUDIOSTREAM_TYPE_CAPTURER。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> </ul> |
 
 ### OH_AudioStreamBuilder_Destroy()
 
@@ -93,21 +89,19 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Destroy(OH_AudioStreamBuilder* build
 
 销毁一个音频流构造器。 <br>当构造器不再使用时，需要调用该函数销毁。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          <li>[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li> <li>[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetSamplingRate()
 
@@ -119,22 +113,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSamplingRate(OH_AudioStreamBuilde
 
 设置音频流的采样率属性。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | int32_t rate | 音频流采样率。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of rate invalid.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.The param of rate invalid.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetChannelCount()
 
@@ -146,22 +138,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelCount(OH_AudioStreamBuilde
 
 设置音频流的通道数属性。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | int32_t channelCount | 音频流通道数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of channelCount invalid.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.The param of channelCount invalid.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetSampleFormat()
 
@@ -173,22 +163,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSampleFormat(OH_AudioStreamBuilde
 
 设置音频流的采样格式属性。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioStream_SampleFormat format | 音频流采样格式。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStream_SampleFormat](capi-native-audiostream-base-h.md#oh_audiostream_sampleformat) format | 音频流采样格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetEncodingType()
 
@@ -200,22 +188,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetEncodingType(OH_AudioStreamBuilde
 
 设置音频流的编码类型属性。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioStream_EncodingType encodingType | 音频流编码类型。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) encodingType | 音频流编码类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetLatencyMode()
 
@@ -227,22 +213,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetLatencyMode(OH_AudioStreamBuilder
 
 设置音频流的时延模式。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioStream_LatencyMode latencyMode | 音频流时延模式。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode) latencyMode | 音频流时延模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetChannelLayout()
 
@@ -254,22 +238,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelLayout(OH_AudioStreamBuild
 
 设置音频流的声道布局。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | OH_AudioChannelLayout channelLayout | 音频流声道布局。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetRendererInfo()
 
@@ -281,22 +263,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInfo(OH_AudioStreamBuilde
 
 设置输出音频流的工作场景。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioStream_Usage usage | 输出音频流的使用场景。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 输出音频流的使用场景。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of usage invalid.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.The param of usage invalid.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetCapturerInfo()
 
@@ -308,22 +288,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInfo(OH_AudioStreamBuilde
 
 设置输入音频流的工作场景。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioStream_SourceType sourceType | 输入音频流的使用场景。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) sourceType | 输入音频流的使用场景。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of sourceType invalid.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.The param of sourceType invalid.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetRendererCallback()
 
@@ -335,8 +313,6 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererCallback(OH_AudioStreamBu
 
 设置输出音频流的回调。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **废弃版本：** 20
@@ -347,7 +323,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererCallback(OH_AudioStreamBu
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | OH_AudioRenderer_Callbacks callbacks | 将被用来处理输出音频流相关事件的回调函数。 |
 | void* userData | 指向通过回调函数传递的应用数据指针。 |
 
@@ -355,7 +331,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererCallback(OH_AudioStreamBu
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：      <br>1. 参数builder为nullptr；      <br>2. StreamType无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：<br>1. 参数builder为nullptr；<br>2. StreamType无效。 |
 
 ### OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback()
 
@@ -367,23 +343,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallbac
 
 设置输出音频流设备变更的回调。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioRenderer_OutputDeviceChangeCallback callback | 将被用来处理输出流设备变更相关事件的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback) callback | 将被用来处理输出流设备变更相关事件的回调函数。 |
 | void* userData | 指向通过回调函数传递的应用数据指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：      <br>1. 参数builder为nullptr；      <br>2. StreamType无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：<br>1. 参数builder为nullptr；<br>2. StreamType无效。 |
 
 ### OH_AudioStreamBuilder_SetRendererPrivacy()
 
@@ -395,22 +369,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererPrivacy(OH_AudioStreamBui
 
 Set the privacy of audio render.
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | Builder provided by OH_AudioStreamBuilder_Create() |
-| OH_AudioStream_PrivacyType privacy | Privacy type. |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | Builder provided by OH_AudioStreamBuilder_Create() |
+| [OH_AudioStream_PrivacyType](capi-native-audiostream-base-h.md#oh_audiostream_privacytype) privacy | Privacy type. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.StreamType invalid.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.StreamType invalid.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetCapturerCallback()
 
@@ -422,8 +394,6 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerCallback(OH_AudioStreamBu
 
 Set the callbacks for the capturer client
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **废弃版本：** 20
@@ -434,7 +404,7 @@ Set the callbacks for the capturer client
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder |  |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder |  |
 | OH_AudioCapturer_Callbacks callbacks |  |
 | OH_AudioCapturer_Callbacks callbacks | Callbacks to the functions that will process capturer stream. |
 | void* userData |  |
@@ -443,7 +413,7 @@ Set the callbacks for the capturer client
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | @return |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.StreamType invalid.</li> </ul> |
 
 ### OH_AudioStreamBuilder_GenerateRenderer()
 
@@ -455,22 +425,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_GenerateRenderer(OH_AudioStreamBuild
 
 Create the audio renderer client.<br> The AudioRenderer instance is used to play streaming audio data. When using AudioRenderer apis, there are many instructions for application to achieve better performance and lower power consumption: In music or audiobook background playback situation, you can have low power consumption by following this best practices document **Low-Power Rules in Music Playback Scenarios**. And for navigation situation, you can follow **Low-Power Rules in Navigation and Positioning Scenarios**.<br> Application developer should also be careful when app goes to background, please check if your audio playback is still needed, see **Audio Resources** in best practices document. And avoiding to send silence audio data continuously to waste system resources, otherwise system will take control measures when this behavior is detected, see **Audio Playback** in best practices document.<br> If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see **Developing an Audio Application** in best practices document.
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | Reference provided by OH_AudioStreamBuilder_Create() |
-| OH_AudioRenderer** audioRenderer | Pointer to a variable to receive the stream client. |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | Reference provided by OH_AudioStreamBuilder_Create() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)** audioRenderer | Pointer to a variable to receive the stream client. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.StreamType invalid;                                                  3.Create OHAudioRenderer failed.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.StreamType invalid; 3.Create OHAudioRenderer failed.</li> </ul> |
 
 ### OH_AudioStreamBuilder_GenerateCapturer()
 
@@ -482,22 +450,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_GenerateCapturer(OH_AudioStreamBuild
 
 创建输入音频流实例。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 10
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioCapturer** audioCapturer | 指向输入音频流实例的指针，将被用来接收函数创建的结果。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)** audioCapturer | 指向输入音频流实例的指针，将被用来接收函数创建的结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.StreamType invalid;                                                  3.Create OHAudioCapturer failed.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.StreamType invalid; 3.Create OHAudioCapturer failed.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetFrameSizeInCallback()
 
@@ -509,22 +475,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetFrameSizeInCallback(OH_AudioStrea
 
 用于播放时设置每次回调的帧长，帧长至少为音频硬件一次处理的数据大小，并且小于内部缓冲容量的一半。 <br>低时延播放：frameSize可设置为5ms、10ms、15ms、20ms音频数据对应的帧长。 <br>普通通路播放：frameSize可设置为20ms-100ms音频数据对应的帧长。例如，当采样率48000Hz时，20ms音频数据对应的帧长计算方式为：frameSize = 48000 * 0.02，即960个采样点数。 当frameSize为960时，对应的数据回调的长度为960 * 声道数 * 采样位宽（字节数）。比如双声道16bit时，length为960 * 2 * 2 = 3840。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 11
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | int32_t frameSize |  要设置音频数据的帧长。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback()
 
@@ -536,23 +500,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(OH_
 
 设置同时写入音频数据和元数据的回调。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioRenderer_WriteDataWithMetadataCallback callback | 将被用来同时写入音频数据和元数据的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioRenderer_WriteDataWithMetadataCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_writedatawithmetadatacallback) callback | 将被用来同时写入音频数据和元数据的回调函数。 |
 | void* userData | 指向通过回调函数传递的应用数据指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.StreamType invalid.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.StreamType invalid.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetRendererInterruptMode()
 
@@ -564,22 +526,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptMode(OH_AudioStr
 
 设置流客户端的中断模式。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioInterrupt_Mode mode | 音频中断模式。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioInterrupt_Mode](capi-native-audiostream-base-h.md#oh_audiointerrupt_mode) mode | 音频中断模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of mode invalid;                                                  3.StreamType invalid.</li>          </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result): 1.The param of builder is nullptr; 2.The param of mode invalid; 3.StreamType invalid.</li> </ul> |
 
 ### OH_AudioStreamBuilder_SetRendererWriteDataCallback()
 
@@ -591,23 +551,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallback(OH_Audi
 
 设置写入音频数据的回调函数。 <br>此函数与[OH_AudioStreamBuilder_SetRendererCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback)类似。如果同时使用[OH_AudioStreamBuilder_SetRendererCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback) 或者本函数，只有最后一次设置的回调才生效，其它回调不会生效。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioRenderer_OnWriteDataCallback callback | 将被用来写入音频数据的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioRenderer_OnWriteDataCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback) callback | 将被用来写入音频数据的回调函数。 |
 | void* userData | 指向通过回调函数传递的应用数据指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：      <br>1. 参数builder为nullptr；      <br>2. StreamType无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：<br>1. 参数builder为nullptr；<br>2. StreamType无效。 |
 
 ### OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced()
 
@@ -619,23 +577,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced
 
 设置写入音频数据的回调函数。 <br>此函数与[OH_AudioStreamBuilder_SetRendererWriteDataCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)类似。 <br>如果同时设置该回调和OH_AudioStreamBuilder_SetRendererWriteDataCallback，只有最后一次设置的回调生效。 <br>与OH_AudioStreamBuilder_SetRendererWriteDataCallback不同， OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced设置的回调函数，允许应用传入可变长度的音频数据，并通知系统写入的数据长度。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioRenderer_OnWriteDataCallbackAdvanced callback | 将被用来写入音频数据的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioRenderer_OnWriteDataCallbackAdvanced](capi-native-audiorenderer-h.md#oh_audiorenderer_onwritedatacallbackadvanced) callback | 将被用来写入音频数据的回调函数。 |
 | void* userData | 指向通过回调函数传递的应用数据指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数非法，比如builder为空指针，等等。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数非法，比如builder为空指针，等等。 |
 
 ### OH_AudioStreamBuilder_SetVolumeMode()
 
@@ -647,22 +603,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetVolumeMode(OH_AudioStreamBuilder*
 
 设置音频流音量模式。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioStream_VolumeMode volumeMode | 要设置的音频流音量模式。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStream_VolumeMode](capi-native-audiostream-base-h.md#oh_audiostream_volumemode) volumeMode | 要设置的音频流音量模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：      <br>1. 参数builder为nullptr；      <br>2. 参数volumeMode无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：<br>1. 参数builder为nullptr；<br>2. 参数volumeMode无效。 |
 
 ### OH_AudioStreamBuilder_SetRendererInterruptCallback()
 
@@ -674,23 +628,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptCallback(OH_Audi
 
 设置输出音频流中断事件的回调函数。 <br>此函数与[OH_AudioStreamBuilder_SetRendererCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback)类似。如果同时使用[OH_AudioStreamBuilder_SetRendererCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback) 或者本函数，只有最后一次设置的回调才生效，其它回调不会生效。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioRenderer_OnInterruptCallback callback | 用于接收中断事件的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioRenderer_OnInterruptCallback](capi-native-audiorenderer-h.md#oh_audiorenderer_oninterruptcallback) callback | 用于接收中断事件的回调函数。 |
 | void* userData | 指向应用程序数据结构的指针，该结构将传递给回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetRendererErrorCallback()
 
@@ -702,23 +654,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererErrorCallback(OH_AudioStr
 
 设置输出音频流错误事件的回调函数。 <br>此函数与[OH_AudioStreamBuilder_SetRendererCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback)类似。如果同时使用[OH_AudioStreamBuilder_SetRendererCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback) 或者本函数，那么只有最后一次设置的回调才生效，其它回调不会生效。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioRenderer_OnErrorCallback callback | 用于接收错误事件的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioRenderer_OnErrorCallback](capi-native-audiorenderer-h.md#oh_audiorenderer_onerrorcallback) callback | 用于接收错误事件的回调函数。 |
 | void* userData | 指向应用程序数据结构的指针，该结构将传递给回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerReadDataCallback()
 
@@ -730,23 +680,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerReadDataCallback(OH_Audio
 
 设置输入音频流读取数据的回调函数。 <br>此函数与[OH_AudioStreamBuilder_SetCapturerCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback)类似。如果同时使用[OH_AudioStreamBuilder_SetCapturerCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback) 或者本函数，那么只有最后一次设置的回调才生效，其它回调不会生效。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioCapturer_OnReadDataCallback callback | 用于接收读取数据事件的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioCapturer_OnReadDataCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback) callback | 用于接收读取数据事件的回调函数。 |
 | void* userData | 指向应用程序数据结构的指针，该结构将传递给回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback()
 
@@ -758,23 +706,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback(OH_A
 
 设置输入音频流设备变更的回调函数。 <br>此函数与[OH_AudioStreamBuilder_SetCapturerCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback)类似。如果同时使用[OH_AudioStreamBuilder_SetCapturerCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback) 或者本函数，那么只有最后一次设置的回调才生效，其它回调不会生效。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioCapturer_OnDeviceChangeCallback callback | 用于接收设备变更事件的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioCapturer_OnDeviceChangeCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_ondevicechangecallback) callback | 用于接收设备变更事件的回调函数。 |
 | void* userData | 指向应用程序数据结构的指针，该结构将传递给回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerInterruptCallback()
 
@@ -786,23 +732,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInterruptCallback(OH_Audi
 
 设置输入音频流中断事件的回调函数。 <br>此函数与[OH_AudioStreamBuilder_SetCapturerCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback)类似。如果同时使用[OH_AudioStreamBuilder_SetCapturerCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback) 或者本函数，那么只有最后一次设置的回调才生效，其它回调不会生效。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioCapturer_OnInterruptCallback callback | 用于接收中断事件的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioCapturer_OnInterruptCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_oninterruptcallback) callback | 用于接收中断事件的回调函数。 |
 | void* userData | 指向应用程序数据结构的指针，该结构将传递给回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerErrorCallback()
 
@@ -814,23 +758,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerErrorCallback(OH_AudioStr
 
 设置输入音频流错误事件的回调函数。 <br>此函数与[OH_AudioStreamBuilder_SetCapturerCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback)类似。如果同时使用[OH_AudioStreamBuilder_SetCapturerCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback) 或者本函数，那么只有最后一次设置的回调才生效，其它回调不会生效。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioCapturer_OnErrorCallback callback | 用于接收错误事件的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioCapturer_OnErrorCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onerrorcallback) callback | 用于接收错误事件的回调函数。 |
 | void* userData | 指向应用程序数据结构的指针，该结构将传递给回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted()
 
@@ -842,22 +784,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted(O
 
 设置输入音频流是否启用静音打断模式。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | bool muteWhenInterrupted | 设置当前录制音频流是否启用静音打断模式。true表示启用；false表示不启用，保持为默认打断模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback()
 
@@ -869,23 +809,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(
 
 设置音频播放过程中低时延状态改变事件的回调函数。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioRenderer_OnFastStatusChange callback | 用于接收播放低时延状态改变事件的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioRenderer_OnFastStatusChange](capi-native-audiorenderer-h.md#oh_audiorenderer_onfaststatuschange) callback | 用于接收播放低时延状态改变事件的回调函数。 |
 | void* userData | 指向应用程序数据结构的指针，该结构将传递给回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback()
 
@@ -897,23 +835,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(
 
 设置音频录制过程中低时延状态改变事件的回调函数。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioCapturer_OnFastStatusChange callback | 用于接收录制低时延状态改变事件的回调函数。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioCapturer_OnFastStatusChange](capi-native-audiocapturer-h.md#oh_audiocapturer_onfaststatuschange) callback | 用于接收录制低时延状态改变事件的回调函数。 |
 | void* userData | 指向应用程序数据结构的指针，该结构将传递给回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled()
 
@@ -925,22 +861,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled(OH_
 
 设置音频录制流是否采集带音频混响效果的音频数据。当音频环回设置为硬件模式并启用混响效果时，低时延模式的采集器可以获取到具备混响效果的录音数据。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | bool enabled | 设置应用程序是否采集带混响效果的音频数据。true表示采集，false表示不采集。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效。如builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效。如builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetPlaybackCaptureMode()
 
@@ -950,22 +884,20 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStrea
 
 **描述：**
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | uint32_t mode | 要设置的内录模式，可为[OH_AudioStream_PlaybackCaptureMode](capi-native-audiostream-base-h.md#oh_audiostream_playbackcapturemode)中多个值的组合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针或mode值无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针或mode值无效。 |
 
 ### OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback()
 
@@ -977,23 +909,21 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback(OH_
 
 设置蜂窝通话下行录音风险提示语播放结束的回调函数。仅在使用[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype). AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK录制时需要设置此函数。此回调必须成功设置，否则采集器无法创建。音频采集器创建后，风险提示语将自动添加到发送给通话对方的语音数据中。 应用应等待回调结果后再启动采集器，否则[OH_AudioCapturer_Start](capi-native-audiocapturer-h.md#oh_audiocapturer_start)将返回错误。请确保音频采集器在蜂窝通话开始后创建，否则 [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)将返回错误。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioCapturer_SensitiveRecordPermitCallback callback | 用于接收风险提示语播放结束的回调函数，不允许为空指针。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioCapturer_SensitiveRecordPermitCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_sensitiverecordpermitcallback) callback | 用于接收风险提示语播放结束的回调函数，不允许为空指针。 |
 | void* userData | 用户数据指针，将在回调中回传给应用。若无需传递数据，可传入空指针。若数据不为空指针，调用方应在收到回调时确认数据是否仍然有效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>      <br><li>AUDIOSTREAM_SUCCESS：函数执行成功。</li>      <br><li>AUDIOSTREAM_ERROR_INVALID_PARAM：参数builder或callback为空指针。</li>      <br></ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <br><li>AUDIOSTREAM_SUCCESS：函数执行成功。</li> <br><li>AUDIOSTREAM_ERROR_INVALID_PARAM：参数builder或callback为空指针。</li> <br></ul> |
 
 ### OH_AudioStreamBuilder_SetCellularRecordSecurityParams()
 
@@ -1005,15 +935,13 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCellularRecordSecurityParams(OH_A
 
 设置蜂窝通话下行录音的电话号码和安全令牌。仅在使用[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype).AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK录制时需要设置此函数。 电话号码和安全令牌将用于校验蜂窝通话下行采集器是否匹配对应的蜂窝通话，必须成功设置，否则采集器无法创建。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioStreamBuilder* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | const char* cellularRecordPhoneNum | 目标蜂窝通话的电话号码，用于makeCallWithToken()中，不允许为空指针。 |
 | const char* cellularRecordToken | 目标蜂窝通话的安全令牌，可通过通话管理的makeCallWithToken()函数获取，不允许为空指针。 |
 
@@ -1021,6 +949,6 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCellularRecordSecurityParams(OH_A
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | <ul>      <br><li>AUDIOSTREAM_SUCCESS：函数执行成功。</li>      <br><li>AUDIOSTREAM_ERROR_INVALID_PARAM：参数builder、cellularRecordPhoneNum或cellularRecordToken为空指针。</li>      <br></ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <br><li>AUDIOSTREAM_SUCCESS：函数执行成功。</li> <br><li>AUDIOSTREAM_ERROR_INVALID_PARAM：参数builder、cellularRecordPhoneNum或cellularRecordToken为空指针。</li> <br></ul> |
 
 

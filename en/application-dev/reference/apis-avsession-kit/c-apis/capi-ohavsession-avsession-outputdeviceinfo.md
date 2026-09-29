@@ -23,6 +23,6 @@ Declaring the target Device Information.
 | Name | Description |
 | -- | -- |
 | uint32_t size | Array size of device information. |
-| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) **deviceInfos | Arrays of device information. |
+| AVSession_DeviceInfo **deviceInfos | Arrays of device information. |
 
 

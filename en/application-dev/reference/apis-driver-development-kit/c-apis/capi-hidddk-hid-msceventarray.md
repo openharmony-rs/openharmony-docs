@@ -1,7 +1,7 @@
 # Hid_MscEventArray
 
 ```c
-typedef struct Hid_MscEventArray {...} Hid_MscEventArray
+struct Hid_MscEventArray {...}
 ```
 
 ## Overview
@@ -22,7 +22,7 @@ Defines an array of miscellaneous events.
 
 | Name | Description |
 | -- | -- |
-| [Hid_MscEvent](capi-hid-ddk-types-h.md#hid_mscevent) *hidMscEvent | Miscellaneous events. |
+| Hid_MscEvent *hidMscEvent | Miscellaneous events. |
 | uint16_t length | Valid length of an array. |
 
 

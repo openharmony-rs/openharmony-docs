@@ -1,7 +1,7 @@
 # CloudDisk_FileSyncState
 
 ```c
-typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
+struct CloudDisk_FileSyncState {...}
 ```
 
 ## Overview

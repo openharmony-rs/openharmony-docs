@@ -1,12 +1,12 @@
 # Usb_NonRootHubArray
 
 ```c
-typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
+struct Usb_NonRootHubArray {...}
 ```
 
 ## Overview
 
-The list of non-root hubs, which is used to store the non-root hub IDs and quantity obtained using {@link OH_Usb_GetNonRootHubs}.
+The list of non-root hubs, which is used to store the non-root hub IDs and quantity obtained using OH_Usb_GetNonRootHubs.
 
 **System capability**: SystemCapability.Driver.USB.Extension
 

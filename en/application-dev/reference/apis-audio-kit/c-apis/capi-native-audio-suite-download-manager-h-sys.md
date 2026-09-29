@@ -6,8 +6,6 @@ Declare audio download manager related interfaces.
 
 **Library**: libohaudiosuite.so
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -20,9 +18,9 @@ Declare audio download manager related interfaces.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioSuite_DownloadStatusInfo(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | OH_AudioSuite_DownloadStatusInfo | Define download status information structure.<br>**System API:** This is a system API. |
-| [OH_AudioSuite_DownloadStatusInfoArray(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | OH_AudioSuite_DownloadStatusInfoArray | Define download status information array structure.<br>**System API:** This is a system API. |
-| [OH_AudioSuite_DownloadManagerStruct(System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) | OH_AudioSuite_DownloadManager | Declare the audio download manager. The handle of audio download manager is used for download related functions.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_DownloadStatusInfo(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | - | Define download status information structure.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_DownloadStatusInfoArray(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | - | Define download status information array structure.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_DownloadManager(System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) | OH_AudioSuite_DownloadManager | Declare the audio download manager. The handle of audio download manager is used for download related functions.<br>**System API:** This is a system API. |
 
 ### Function
 
@@ -43,7 +41,7 @@ Declare audio download manager related interfaces.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)(System API) | Callback function for download status update.<br>**Since**: 26.0.0<br>**System API:** This is a system API. |
+| void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)(System API) | Callback function for download status update.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br>**System API:** This is a system API. |
 
 ## Function description
 
@@ -57,8 +55,6 @@ typedef void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoA
 
 Callback function for download status update.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -67,7 +63,7 @@ Callback function for download status update.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadStatusInfoArray](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) \*downloadStatusInfoArray | Pointer to array of download status information. |
+| [OH_AudioSuite_DownloadStatusInfoArray](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) *downloadStatusInfoArray | Pointer to array of download status information. |
 
 ### OH_AudioSuite_GetDownloadManager()
 
@@ -79,8 +75,6 @@ int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloa
 
 Get the audio download manager handle.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -89,13 +83,13 @@ Get the audio download manager handle.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) **downloadManager | Pointer to receive the download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) **downloadManager | Pointer to receive the download manager handle. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} If downloadManager is nullptr.</li>          </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager is nullptr.</li> </ul> |
 
 ### OH_AudioSuite_RegisterDownloadCallback()
 
@@ -107,8 +101,6 @@ int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *do
 
 Register download status callback.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -117,14 +109,14 @@ Register download status callback.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
 | [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | Callback function to receive download status updates. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} If downloadManager or callback is nullptr.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM} If IPC communication fails or the operation fails.</li>          </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager or callback is nullptr.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails or the operation fails.</li> </ul> |
 
 ### OH_AudioSuite_UnregisterDownloadCallback()
 
@@ -136,8 +128,6 @@ int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *
 
 Unregister download status callback.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -146,14 +136,14 @@ Unregister download status callback.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
 | [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | Callback function to unregister. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} If downloadManager or callback is nullptr.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM} If IPC communication fails or the operation fails.</li>          </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager or callback is nullptr.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails or the operation fails.</li> </ul> |
 
 ### OH_AudioSuite_StartDownload()
 
@@ -165,8 +155,6 @@ int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManag
 
 Start downloading a feature.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -175,14 +163,14 @@ Start downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to download. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} If downloadManager or featureName is nullptr.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM} If IPC communication fails or the operation fails.</li>          </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager or featureName is nullptr.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails or the operation fails.</li> </ul> |
 
 ### OH_AudioSuite_PauseDownload()
 
@@ -194,8 +182,6 @@ int32_t OH_AudioSuite_PauseDownload(OH_AudioSuite_DownloadManager *downloadManag
 
 Pause downloading a feature.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -204,14 +190,14 @@ Pause downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to pause. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} If downloadManager or featureName is nullptr.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM} If IPC communication fails or the operation fails.</li>          </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager or featureName is nullptr.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails or the operation fails.</li> </ul> |
 
 ### OH_AudioSuite_CancelDownload()
 
@@ -223,8 +209,6 @@ int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadMana
 
 Cancel downloading a feature.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -233,14 +217,14 @@ Cancel downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to cancel. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} If downloadManager or featureName is nullptr.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM} If IPC communication fails or the operation fails.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE} If the current state does not allow cancellation.</li>          </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager or featureName is nullptr.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails or the operation fails.</li> <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result) If the current state does not allow cancellation.</li> </ul> |
 
 ### OH_AudioSuite_StartBackgroundDownload()
 
@@ -252,8 +236,6 @@ int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *dow
 
 Start background downloading a feature.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -262,14 +244,14 @@ Start background downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to download. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} If downloadManager or featureName is nullptr.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM} If IPC communication fails or the operation fails.</li>          </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager or featureName is nullptr.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails or the operation fails.</li> </ul> |
 
 ### OH_AudioSuite_GetDownloadStatus()
 
@@ -281,8 +263,6 @@ int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadM
 
 Get download status of a feature.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -291,7 +271,7 @@ Get download status of a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature. |
 | [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) *status | Pointer to receive download status information. |
 
@@ -299,7 +279,7 @@ Get download status of a feature.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} If downloadManager, featureName or status is nullptr.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM} If IPC communication fails or the operation fails.</li>          </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager, featureName or status is nullptr.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails or the operation fails.</li> </ul> |
 
 ### OH_AudioSuite_UninstallCloudRom()
 
@@ -311,8 +291,6 @@ int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadM
 
 Uninstall a downloaded feature.
 
-**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -321,13 +299,13 @@ Uninstall a downloaded feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to uninstall. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} If downloadManager or featureName is nullptr.</li><br>        <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM} If IPC communication fails or the operation fails.</li>          </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager or featureName is nullptr.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails or the operation fails.</li> </ul> |
 
 

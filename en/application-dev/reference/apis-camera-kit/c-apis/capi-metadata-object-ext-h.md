@@ -6,9 +6,7 @@ The file declares the metadata object ext concepts.
 
 **Library**: libohcamera.so
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Since**: 11
+**Since**: 26.0.0
 
 **Related module**: [OH_Camera](capi-oh-camera.md)
 
@@ -48,8 +46,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetMetadataObjectType(const OH_Camera_Meta
 
 Obtains metadata object type.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -57,13 +53,13 @@ Obtains metadata object type.
 | Parameter | Description |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to a OH_Camera_MetadataObjectExt instance. |
-| Camera_MetadataObjectType* type | Pointer to the metadata object type, which is an **Camera_MetadataObjectType** instance. |
+| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* type | Pointer to the metadata object type, which is an **Camera_MetadataObjectType** instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_MetadataObjectExt_GetTimestamp()
 
@@ -74,8 +70,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetTimestamp(const OH_Camera_MetadataObjec
 **Description**
 
 Obtains the timestamp of the metadata object extension.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -90,7 +84,7 @@ Obtains the timestamp of the metadata object extension.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_MetadataObjectExt_GetBoundingBox()
 
@@ -102,8 +96,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetBoundingBox(const OH_Camera_MetadataObj
 
 Obtains the bounding box of the metadata object extension.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -111,13 +103,13 @@ Obtains the bounding box of the metadata object extension.
 | Parameter | Description |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to a OH_Camera_MetadataObjectExt instance. |
-| OH_Camera_Rect_Ext* boundingBox | Pointer to the metadata object bounding box, which is an **OH_Camera_Rect_Ext** instance. |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | Pointer to the metadata object bounding box, which is an **OH_Camera_Rect_Ext** instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. |
 
 ### OH_MetadataObjectExt_GetPitchAngle()
 
@@ -128,8 +120,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetPitchAngle(const OH_Camera_MetadataObje
 **Description**
 
 Obtains the pitch angle of the metadata object extension.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -144,7 +134,7 @@ Obtains the pitch angle of the metadata object extension.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST: The optional property does not exist. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST**: The optional property does not exist. |
 
 ### OH_MetadataObjectExt_GetYawAngle()
 
@@ -155,8 +145,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetYawAngle(const OH_Camera_MetadataObject
 **Description**
 
 Obtains the yaw angle of the metadata object extension.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -171,7 +159,7 @@ Obtains the yaw angle of the metadata object extension.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST: The optional property does not exist. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST**: The optional property does not exist. |
 
 ### OH_MetadataObjectExt_GetRollAngle()
 
@@ -182,8 +170,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRollAngle(const OH_Camera_MetadataObjec
 **Description**
 
 Obtains the roll angle of the metadata object extension.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -198,7 +184,7 @@ Obtains the roll angle of the metadata object extension.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST: The optional property does not exist. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST**: The optional property does not exist. |
 
 ### OH_MetadataObjectExt_GetLeftEyeBoundingBox()
 
@@ -210,8 +196,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetLeftEyeBoundingBox(const OH_Camera_Meta
 
 Obtains the left eye bounding box of the metadata object extension.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -219,13 +203,13 @@ Obtains the left eye bounding box of the metadata object extension.
 | Parameter | Description |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to a OH_Camera_MetadataObjectExt instance. |
-| OH_Camera_Rect_Ext* boundingBox | Pointer to the metadata object bounding box, which is an **OH_Camera_Rect_Ext** instance. |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | Pointer to the metadata object bounding box, which is an **OH_Camera_Rect_Ext** instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST: The optional property does not exist. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST**: The optional property does not exist. |
 
 ### OH_MetadataObjectExt_GetRightEyeBoundingBox()
 
@@ -237,8 +221,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_Met
 
 Obtains the right eye bounding box of the metadata object extension.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -246,13 +228,13 @@ Obtains the right eye bounding box of the metadata object extension.
 | Parameter | Description |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to a OH_Camera_MetadataObjectExt instance. |
-| OH_Camera_Rect_Ext* boundingBox | Pointer to the metadata object bounding box, which is an **OH_Camera_Rect_Ext** instance. |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | Pointer to the metadata object bounding box, which is an **OH_Camera_Rect_Ext** instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST: The optional property does not exist. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST**: The optional property does not exist. |
 
 ### OH_MetadataObjectExt_GetEmotion()
 
@@ -264,8 +246,6 @@ Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectE
 
 Obtains the emotion of the metadata object extension.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -273,13 +253,13 @@ Obtains the emotion of the metadata object extension.
 | Parameter | Description |
 | -- | -- |
 | [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to a OH_Camera_MetadataObjectExt instance. |
-| OH_Camera_MetadataObjectEmotion* emotion | Pointer to store the emotion type. |
+| [OH_Camera_MetadataObjectEmotion](capi-camera-h.md#oh_camera_metadataobjectemotion)* emotion | Pointer to store the emotion type. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK: The operation is successful.      <br>CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST: The optional property does not exist. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST**: The optional property does not exist. |
 
 ### OH_MetadataObjectExt_Destroy()
 
@@ -290,8 +270,6 @@ void OH_MetadataObjectExt_Destroy(OH_Camera_MetadataObjectExt** metadataObjectEx
 **Description**
 
 Destroys an array of [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md) instances.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -312,8 +290,6 @@ bool OH_MetadataObjectExt_IsLockFocusTracked(const OH_Camera_MetadataObjectExt* 
 
 Checks if focus is locked and tracked.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
 **Since**: 26.0.0
 
 **Parameters**:
@@ -326,6 +302,6 @@ Checks if focus is locked and tracked.
 
 | Type | Description |
 | -- | -- |
-| bool | true if locked and tracked, false otherwise. |
+| bool | **true** if locked and tracked, **false** otherwise. |
 
 

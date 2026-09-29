@@ -6,9 +6,7 @@ The file declares the functions of the media struct AVBuffer.
 
 **Library**: libnative_media_core.so
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
-**Since**: 9
+**Since**: 11
 
 **Related module**: [Core](capi-core.md)
 
@@ -33,7 +31,7 @@ The file declares the functions of the media struct AVBuffer.
 | [OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *format)](#oh_avbuffer_setparameter) | Sets parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance. |
 | [uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)](#oh_avbuffer_getaddr) | Obtains the virtual address of a data buffer. |
 | [int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)](#oh_avbuffer_getcapacity) | Obtains the capacity (in bytes) of a buffer. |
-| [OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)](#oh_avbuffer_getnativebuffer) | Obtains the pointer to an OH_NativeBuffer instance. You must call {@link OH_NativeBuffer_Unreference} to manually release the OH_NativeBuffer instance returned. |
+| [OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)](#oh_avbuffer_getnativebuffer) | Obtains the pointer to an OH_NativeBuffer instance. You must call OH_NativeBuffer_Unreference to manually release the OH_NativeBuffer instance returned. |
 
 ## Function description
 
@@ -47,8 +45,6 @@ OH_AVBuffer *OH_AVBuffer_Create(int32_t capacity)
 
 Creates an OH_AVBuffer instance. You must call [OH_AVBuffer_Destroy](capi-native-avbuffer-h.md#oh_avbuffer_destroy) to manually release the OH_AVBuffer instance returned.
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -61,7 +57,7 @@ Creates an OH_AVBuffer instance. You must call [OH_AVBuffer_Destroy](capi-native
 
 | Type | Description |
 | -- | -- |
-| [OH_AVBuffer *](capi-core-oh-avbuffer.md) | Pointer to the OH_AVBuffer instance created. If the operation fails, NULL is returned.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of capacity is less than or equal to 0.      <br>2. An internal error occurs, or the system does not have resources. |
+| [OH_AVBuffer *](capi-core-oh-avbuffer.md) | Pointer to the OH_AVBuffer instance created. If the operation fails, NULL is returned. <br>The possible causes of an operation failure are as follows: <br>1. The value of **capacity** is less than or equal to **0**. <br>2. An internal error occurs, or the system does not have resources. |
 
 ### OH_AVBuffer_Destroy()
 
@@ -73,8 +69,6 @@ OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)
 
 Releases an OH_AVBuffer instance. A buffer cannot be destroyed repeatedly.
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -87,7 +81,7 @@ Releases an OH_AVBuffer instance. A buffer cannot be destroyed repeatedly.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The value of buffer is nullptr or fails format verification.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The input buffer is not created by the user. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The value of **buffer** is nullptr or fails format verification. <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The input buffer is not created by the user. |
 
 ### OH_AVBuffer_GetBufferAttr()
 
@@ -99,8 +93,6 @@ OH_AVErrCode OH_AVBuffer_GetBufferAttr(OH_AVBuffer *buffer, OH_AVCodecBufferAttr
 
 Obtains the basic attributes, including **pts**, **size**, **offset**, and **flags**, of a buffer.
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -108,13 +100,13 @@ Obtains the basic attributes, including **pts**, **size**, **offset**, and **fla
 | Parameter | Description |
 | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | Pointer to an OH_AVBuffer instance. |
-| OH_AVCodecBufferAttr *attr | Pointer to an OH_AVCodecBufferAttr instance. |
+| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) *attr | Pointer to an OH_AVCodecBufferAttr instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows:      <br>1. The value of buffer or attr is nullptr.      <br>2. The value of buffer fails parameter structure verification. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows: <br>1. The value of **buffer** or **attr** is nullptr. <br>2. The value of **buffer** fails parameter structure verification. |
 
 ### OH_AVBuffer_SetBufferAttr()
 
@@ -126,8 +118,6 @@ OH_AVErrCode OH_AVBuffer_SetBufferAttr(OH_AVBuffer *buffer, const OH_AVCodecBuff
 
 Sets the basic attributes, including **pts**, **size**, **offset**, and **flags**, of a buffer.
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -135,13 +125,13 @@ Sets the basic attributes, including **pts**, **size**, **offset**, and **flags*
 | Parameter | Description |
 | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | Pointer to an OH_AVBuffer instance. |
-| const OH_AVCodecBufferAttr *attr | Pointer to an OH_AVCodecBufferAttr instance. |
+| [const OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) *attr | Pointer to an OH_AVCodecBufferAttr instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows:      <br>1. The value of buffer or attr is nullptr.      <br>2. The value of buffer fails parameter structure verification.      <br>3. The memory size or offset of the buffer is invalid. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows: <br>1. The value of **buffer** or **attr** is nullptr. <br>2. The value of **buffer** fails parameter structure verification. <br>3. The memory size or offset of the buffer is invalid. |
 
 ### OH_AVBuffer_GetParameter()
 
@@ -153,8 +143,6 @@ OH_AVFormat *OH_AVBuffer_GetParameter(OH_AVBuffer *buffer)
 
 Obtains parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance. You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) to manually release the OH_AVFormat instance returned.
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -167,7 +155,7 @@ Obtains parameters except basic attributes of a buffer. The information is carri
 
 | Type | Description |
 | -- | -- |
-| OH_AVFormat * | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows:      <br>1. The value of buffer is nullptr.      <br>2. The meta of the buffer is nullptr.      <br>3. The value of buffer fails parameter structure verification. |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows: <br>1. The value of **buffer** is nullptr. <br>2. The meta of the buffer is nullptr. <br>3. The value of **buffer** fails parameter structure verification. |
 
 ### OH_AVBuffer_SetParameter()
 
@@ -179,8 +167,6 @@ OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *fo
 
 Sets parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance.
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -188,13 +174,13 @@ Sets parameters except basic attributes of a buffer. The information is carried 
 | Parameter | Description |
 | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | Pointer to an OH_AVBuffer instance. |
-| const OH_AVFormat *format | Pointer to an OH_AVFormat instance. |
+| [const OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows:      <br>1. The value of buffer or format is nullptr.      <br>2. The meta of the buffer is nullptr.      <br>3. The value of buffer fails parameter structure verification. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows: <br>1. The value of **buffer** or **format** is nullptr. <br>2. The meta of the buffer is nullptr. <br>3. The value of **buffer** fails parameter structure verification. |
 
 ### OH_AVBuffer_GetAddr()
 
@@ -206,8 +192,6 @@ uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 
 Obtains the virtual address of a data buffer.
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -220,7 +204,7 @@ Obtains the virtual address of a data buffer.
 
 | Type | Description |
 | -- | -- |
-| uint8_t * | Virtual address. If the operation fails, NULL is returned.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of buffer is a null pointer.      <br>2. The value of OH_AVBuffer fails parameter structure verification.      <br>3. An internal error occurs. |
+| uint8_t * | Virtual address. If the operation fails, NULL is returned. <br>The possible causes of an operation failure are as follows: <br>1. The value of **buffer** is a null pointer. <br>2. The value of **OH_AVBuffer** fails parameter structure verification. <br>3. An internal error occurs. |
 
 ### OH_AVBuffer_GetCapacity()
 
@@ -232,8 +216,6 @@ int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)
 
 Obtains the capacity (in bytes) of a buffer.
 
-**System capability**: SystemCapability.Multimedia.Media.Core
-
 **Since**: 11
 
 **Parameters**:
@@ -246,7 +228,7 @@ Obtains the capacity (in bytes) of a buffer.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Capacity. If the operation fails, -1 is returned.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of buffer is a null pointer.      <br>2. The value of OH_AVBuffer fails parameter structure verification.      <br>3. An internal error occurs. |
+| int32_t | Capacity. If the operation fails, **-1** is returned. <br>The possible causes of an operation failure are as follows: <br>1. The value of **buffer** is a null pointer. <br>2. The value of **OH_AVBuffer** fails parameter structure verification. <br>3. An internal error occurs. |
 
 ### OH_AVBuffer_GetNativeBuffer()
 
@@ -256,9 +238,7 @@ OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)
 
 **Description**
 
-Obtains the pointer to an OH_NativeBuffer instance. You must call {@link OH_NativeBuffer_Unreference} to manually release the OH_NativeBuffer instance returned.
-
-**System capability**: SystemCapability.Multimedia.Media.Core
+Obtains the pointer to an OH_NativeBuffer instance. You must call OH_NativeBuffer_Unreference to manually release the OH_NativeBuffer instance returned.
 
 **Since**: 11
 
@@ -272,6 +252,6 @@ Obtains the pointer to an OH_NativeBuffer instance. You must call {@link OH_Nati
 
 | Type | Description |
 | -- | -- |
-| [OH_NativeBuffer *](capi-core-oh-nativebuffer.md) | Pointer to the OH_NativeBuffer instance created. If the operation fails, NULL is returned.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of buffer is a null pointer.      <br>2. The value of OH_AVBuffer fails parameter structure verification.      <br>3. An internal error occurs. |
+| [OH_NativeBuffer *](capi-core-oh-nativebuffer.md) | Pointer to the OH_NativeBuffer instance created. If the operation fails, NULL is returned. <br>The possible causes of an operation failure are as follows: <br>1. The value of **buffer** is a null pointer. <br>2. The value of **OH_AVBuffer** fails parameter structure verification. <br>3. An internal error occurs. |
 
 

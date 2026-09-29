@@ -1,0 +1,18 @@
+# ImagePacker_Native
+
+```c
+typedef struct ImagePacker_Native ImagePacker_Native
+```
+
+## Overview
+
+Defines an image packer object at the native layer for the image packer interface.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
+**Since**: 11
+
+**Related module**: [Image](capi-image.md)
+
+**Header file**: [image_packer_mdk.h](capi-image-packer-mdk-h.md)
+

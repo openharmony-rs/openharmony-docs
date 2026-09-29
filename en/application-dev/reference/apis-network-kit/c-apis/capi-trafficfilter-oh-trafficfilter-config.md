@@ -1,7 +1,7 @@
 # OH_TrafficFilter_Config
 
 ```c
-typedef struct OH_TrafficFilter_Config {...} OH_TrafficFilter_Config
+struct OH_TrafficFilter_Config {...}
 ```
 
 ## Overview

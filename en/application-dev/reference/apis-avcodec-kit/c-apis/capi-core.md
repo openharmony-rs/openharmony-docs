@@ -6,7 +6,7 @@ The Core module provides basic backbone capabilities for media frameworks, inclu
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
-**Since**: 18
+**Since**: 9
 
 ## Files
 

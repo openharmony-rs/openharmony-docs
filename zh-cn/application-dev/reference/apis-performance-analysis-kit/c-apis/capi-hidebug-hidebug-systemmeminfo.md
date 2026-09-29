@@ -1,7 +1,7 @@
 # HiDebug_SystemMemInfo
 
 ```c
-typedef struct HiDebug_SystemMemInfo {...} HiDebug_SystemMemInfo
+struct HiDebug_SystemMemInfo {...}
 ```
 
 ## 概述

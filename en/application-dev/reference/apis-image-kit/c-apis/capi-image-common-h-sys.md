@@ -6,8 +6,6 @@ The file declares the common enums and structs used by the image interface.
 
 **Library**: libimage_common.so
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 12
 
 **System API:** This is a system API.
@@ -35,8 +33,6 @@ Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metada
 
 Obtains the PictureMetadata object matching the specified type from the PictureMetadata array.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -54,7 +50,7 @@ Obtains the PictureMetadata object matching the specified type from the PictureM
 
 | Type | Description |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the operation is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if metadatas/metadata is nullptr or metadataCount is 0.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the operation is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if metadatas/metadata is nullptr or metadataCount is 0.</li> </ul> |
 
 ### OH_PictureMetadatas_Release()
 
@@ -65,8 +61,6 @@ Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint
 **Description**
 
 Releases an array of OH_PictureMetadata objects.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -83,6 +77,6 @@ Releases an array of OH_PictureMetadata objects.
 
 | Type | Description |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) metadatas is nullptr, or metadatasCount is 0.</li>          </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) metadatas is nullptr, or metadatasCount is 0.</li> </ul> |
 
 

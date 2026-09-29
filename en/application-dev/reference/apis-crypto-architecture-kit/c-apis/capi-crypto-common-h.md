@@ -8,8 +8,6 @@ Defines common data structures and error codes for crypto operations.
 
 **Library**: libohcrypto.so
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 **Related module**: [CryptoCommonApi](capi-cryptocommonapi.md)
@@ -18,9 +16,9 @@ Defines common data structures and error codes for crypto operations.
 
 ### Struct
 
-| Name | typedef keyword | Description |
-| -- | -- | -- |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) | Crypto_DataBlob | Crypto data structure. |
+| Name | Description |
+| -- | -- |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) | Crypto data structure. |
 
 ### Enum
 
@@ -47,8 +45,6 @@ enum OH_Crypto_ErrCode
 
 Enumerates the error codes.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 | Enum item | Description |
@@ -71,8 +67,6 @@ enum Crypto_CipherMode
 
 Defines the cipher mode.
 
-**System capability**: SystemCapability.Security.CryptoFramework
-
 **Since**: 12
 
 | Enum item | Description |
@@ -92,8 +86,6 @@ void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 **Description**
 
 Frees the memory of a data blob.
-
-**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 

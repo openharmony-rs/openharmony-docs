@@ -6,9 +6,7 @@ Declares the common enums and structs used by the image interface.
 
 **Library**: libimage_ndk.z.so
 
-**System capability**: SystemCapability.Multimedia.Image.Core
-
-**Since**: 8
+**Since**: 10
 
 **Related module**: [Image](capi-image.md)
 
@@ -37,8 +35,6 @@ enum IRNdkErrCode
 **Description**
 
 Enumerates the return values that may be used by the interface.
-
-**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
 

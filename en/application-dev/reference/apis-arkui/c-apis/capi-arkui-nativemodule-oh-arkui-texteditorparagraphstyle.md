@@ -6,7 +6,7 @@ typedef struct OH_ArkUI_TextEditorParagraphStyle OH_ArkUI_TextEditorParagraphSty
 
 ## Overview
 
-Defines the paragraph style of the text editor.
+Defines the paragraph style of a text editor, which describes the formatting attributes of paragraphs in a text editor. You can call related APIs to set and obtain the paragraph style. It applies to scenarios where style attributes such as the paragraph alignment, indentation, and line spacing need to be set.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
