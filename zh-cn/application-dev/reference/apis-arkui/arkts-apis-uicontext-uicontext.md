@@ -2949,7 +2949,7 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
 | frameCallback | [FrameCallback](arkts-apis-uicontext-framecallback.md) | 是   | 下一帧需要执行的回调。 |
-| delayTime | number | 是   | 延迟的时间，以毫秒为单位。传入null、undefined或小于0的值，会按0处理。 |
+| delayTime | number | 是   | 延迟的时间，以ms为单位。传入null、undefined或小于0的值，会按0处理。 |
 
 **示例：**
 
