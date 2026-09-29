@@ -68,8 +68,7 @@ setDisposedStatus(appId: string, disposedWant: Want): Promise\<void>
 ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = { bundleName: 'com.example.myapplication' };
@@ -92,8 +91,7 @@ ArkTS-Sta示例:
 'use static'
 
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 // 开发者需根据实际工程更新appId和want。
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = {bundleName: 'com.example.myapplication'};
@@ -152,9 +150,8 @@ setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback\<vo
 
 ArkTS-Dyn示例:
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = { bundleName: 'com.example.myapplication' };
@@ -177,9 +174,8 @@ ArkTS-Sta示例:
 ```ts
 'use static'
 
-import { appControl } from '@kit.AbilityKit';
+import { appControl, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 // 开发者需根据实际工程更新appId和want。
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = { bundleName: 'com.example.myapplication' };
@@ -237,9 +233,8 @@ setDisposedStatusSync(appId: string, disposedWant: Want): void;
 **示例：**
 
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 let want: Want = { bundleName: 'com.example.myapplication' };
@@ -439,9 +434,8 @@ getDisposedStatusSync(appId: string): Want;
 **示例：**
 
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 let want: Want;
@@ -863,10 +857,8 @@ ArkTS-Sta: setDisposedRule(appId: string, rule: DisposedRule, appIndex?: int): v
 **示例：**
 
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { bundleManager } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = {
@@ -1035,9 +1027,8 @@ ArkTS-Sta: setUninstallDisposedRule(appIdentifier: string, rule: UninstallDispos
 **示例：**
 
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appIdentifier = "com.example.myapplication_xxxxx";
 let want: Want = {
