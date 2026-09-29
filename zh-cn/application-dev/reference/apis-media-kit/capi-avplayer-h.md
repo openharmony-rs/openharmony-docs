@@ -37,7 +37,7 @@ AVPlayer是音视频播放组件，提供完整的播放控制和高级功能（
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef void (\*Player_MediaKeySystemInfoCallback)(OH_AVPlayer \*player, DRM_MediaKeySystemInfo\* mediaKeySystemInfo)](#player_mediakeysysteminfocallback) | Player_MediaKeySystemInfoCallback | 播放器DRM信息更新时调用。 |
-| [OH_AVPlayer *OH_AVPlayer_Create(void)](#oh_avplayer_create) | - | 创建播放器。推荐单个应用创建的音视频播放器实例限制总数，如某些设备可能仅支持创建较少的播放器实例，建议通过相关系统参数或芯片规格文档查询具体限制。 |
+| [OH_AVPlayer *OH_AVPlayer_Create(void)](#oh_avplayer_create) | - | 创建播放器。<br> 推荐单个应用创建的音视频播放器实例总数不超过16个。<!--Del--><br> 可创建的音视频播放器实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放器实例。<!--DelEnd--> |
 | [OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_seturlsource) | - | 设置播放器的播放源。对应的源可以是HTTP URL或HTTPS URL。 |
 | [OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_setfdsource) | - | 设置播放器的媒体文件描述符来源。 |
 | [OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer \*player, OH_AVDataSourceExt\* datasrc, void* userData)](#oh_avplayer_setdatasource) | - | 设置播放器的媒体源，该媒体源的数据由应用程序提供。 |
@@ -148,7 +148,7 @@ OH_AVPlayer *OH_AVPlayer_Create(void)
 
 **描述**
 
-创建播放器。推荐单个应用创建的音视频播放器实例限制总数，如某些设备可能仅支持创建较少的播放器实例，建议通过相关系统参数或芯片规格文档查询具体限制。
+创建播放器。<br> 推荐单个应用创建的音视频播放器实例总数不超过16个。<!--Del--><br> 可创建的音视频播放器实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放器实例。<!--DelEnd-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1326,8 +1326,8 @@ OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, in
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针，需在通过OH_AVPlayer_SetFDSource设置完视频资源后再添加字幕。 |
-| int32_t fd | 字幕源的文件描述符，必须为有效的文件描述符（大于等于0），可通过open()等系统调用获取。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| int32_t fd | 字幕源的文件描述符，必须为有效的文件描述符。|
 | int64_t offset | 文件描述符中媒体源的偏移量，单位为字节（Byte）。取值范围[0, 文件总大小)，从文件开头读取时可设为0。 |
 | int64_t size | 媒体源的大小，单位为字节（Byte），用于指定从文件描述符中读取的媒体数据长度。取值范围(0, 文件总大小 - offset]，必须大于0。 |
 
@@ -1611,8 +1611,8 @@ OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t w
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t width | 窗口宽度，取值范围[320-1920]，单位为像素（px）。width和height需满足组合范围限制（320x320至1920x1080）。超出范围或组合不符合限制时返回错误码AV_ERR_INVALID_VAL（参数错误）。 |
-| int32_t height | 窗口高度，取值范围[320-1080]，单位为像素（px）。width和height需满足组合范围限制（320x320至1920x1080）。超出范围或组合不符合限制时返回错误码AV_ERR_INVALID_VAL（参数错误）。 |
+| int32_t width | 窗口宽度，取值范围[320, 1920]，单位为像素（px）。超出范围时返回错误码AV_ERR_INVALID_VAL（参数错误）。 |
+| int32_t height | 窗口高度，取值范围[320, 1080]，单位为像素（px）。超出范围时返回错误码AV_ERR_INVALID_VAL（参数错误）。 |
 
 **返回：**
 
