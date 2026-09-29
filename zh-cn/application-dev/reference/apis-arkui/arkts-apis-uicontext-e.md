@@ -52,6 +52,8 @@
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
@@ -110,14 +112,16 @@
 | ------ | ---- | ---------- |
 | TAP | 0 | 点击手势。 |
 | LONG_PRESS | 1 | 长按手势。 |
-| PAN  | 2 | 平移手势。 |
+| PAN | 2 | 平移手势。 |
 | PINCH | 3 | 捏合手势。 |
-| SWIPE | 4| 滑动手势。 |
-| ROTATION| 5 | 旋转手势。 |
+| SWIPE | 4 | 滑动手势。 |
+| ROTATION | 5 | 旋转手势。 |
 
 ## ResolveStrategy<sup>22+</sup>
 
 UIContext对象的解析策略。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -131,9 +135,9 @@ UIContext对象的解析策略。
 | ------ | ---- | ---------- |
 | CALLING_SCOPE | 0 | 获取调用作用域的UIContext。 |
 | LAST_FOCUS | 1 | 获取最近切换到获焦状态的UIContext。 |
-| MAX_INSTANCE_ID  | 2 | 获取实例ID最大的UIContext。 |
+| MAX_INSTANCE_ID | 2 | 获取实例ID最大的UIContext。 |
 | UNIQUE | 3 | 获取唯一UI实例的UIContext。 |
-| LAST_FOREGROUND | 4| 获取最近切换到前台状态的UIContext。 |
+| LAST_FOREGROUND | 4 | 获取最近切换到前台状态的UIContext。 |
 | UNDEFINED | 5 | 获取未定义调用作用域的UIContext。 |
 
 ## CustomKeyboardContinueFeature<sup>23+</sup>
@@ -148,7 +152,7 @@ UIContext对象的解析策略。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 23
 

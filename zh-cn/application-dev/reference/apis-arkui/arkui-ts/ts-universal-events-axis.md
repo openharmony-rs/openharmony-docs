@@ -252,7 +252,7 @@ struct GetCurrentLocalPositionExample {
 
   build() {
     Column() {
-      Button('获取滚轮位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+      Button('获取鼠标光标位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
         .onAxisEvent((event?: AxisEvent) => {
           if (event) {
             this.textOffsetY = -200;

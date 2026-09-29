@@ -65,23 +65,23 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("hello world")
+        Text('hello world')
           .backgroundColor(Color.Blue)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            console.info("Text click");
+            console.info('Text click');
           })
       }
       .width(400)
       .height(300)
       .backgroundColor(Color.Pink)
       .onClick(() => {
-        console.info("Column click");
+        console.info('Column click');
       })
       // 调用onTouchIntercept修改该组件的HitTestMode属性
       .onTouchIntercept((event: TouchEvent) => {
-        console.info("OnTouchIntercept + " + JSON.stringify(event));
+        console.info('OnTouchIntercept + ' + JSON.stringify(event));
         // 使用touches时需要先校验是否为空
         if (event && event.touches) {
           let touches = event.touches;
@@ -89,6 +89,7 @@ struct Index {
             console.info('onTouchIntercept touches:', JSON.stringify(touches[i]));
           }
         }
+        // 当满足自定义拦截条件时，返回HitTestMode.None使该组件不参与触摸测试
         if (this.isPolygon(event)) {
           return HitTestMode.None;
         }
