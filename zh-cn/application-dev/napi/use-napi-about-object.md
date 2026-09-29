@@ -525,7 +525,7 @@ static napi_value SetTypeTagToObject(napi_env env, napi_callback_info info)
     // 给参数（对象）设置类型标签
     napi_status status = napi_type_tag_object(env, args[0], &TagsData[index]);
     if (status != napi_ok) {
-        napi_throw_error(env, "Reconnect error", "napi_type_tag_object failed");
+        napi_throw_error(env, "napi_type_tag_object error", "napi_type_tag_object failed");
         return nullptr;
     }
     // 将bool结果转换为napi_value并返回
