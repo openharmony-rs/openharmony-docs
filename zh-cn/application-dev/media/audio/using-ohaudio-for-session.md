@@ -201,8 +201,8 @@ OH_AudioSessionManager *audioSessionManager;
         audioSessionManager, MyAudioSessionDeactivatedCallback);
     // ...
     // 取消监听音频会话停用事件。
-    result = OH_AudioSessionManager_UnregisterStateChangeCallback(audioSessionManager,
-                                                                  AudioSessionStateChangedCallback);
+    result = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,
+                                                                         MyAudioSessionDeactivatedCallback);
     // ...
     // 停用音频会话。
     result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
