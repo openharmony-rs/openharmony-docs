@@ -2179,9 +2179,9 @@
 						"start_line":19
 					},
 					{
-						"end_line":137,
+						"end_line":219,
 						"name":"vector_OH_Rdb_GetSupportedDbType",
-						"start_line":133
+						"start_line":209
 					},
 					{
 						"end_line":239,
