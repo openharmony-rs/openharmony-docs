@@ -711,7 +711,7 @@ ArgumentMatchers用于用户自定义函数参数，当开发者想基于某类�
 | matchRegexs | 设定用户传任何符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.matchRegexs(Regex)方式调用。 |
 | notMatchRegexs | @since1.0.28，设定用户传任何不符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.notMatchRegexs(RegExp)方式调用。 |
 | containSubstring | @since1.0.28，设定用户传任何包含特定子串的字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.containSubstring(subString)方式调用。 |
-| notContainSubstring | @since1.0.28，设定用户传任何不包含特定子串的字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainSubArray(subString)方式调用。 |
+| notContainSubstring | @since1.0.28，设定用户传任何不包含特定子串的字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainSubstring(subString)方式调用。 |
 | containSubArray | @since1.0.28，设定用户传任何包含特定数组的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.containSubArray(subArray)方式调用。 |
 | notContainSubArray | @since1.0.28，设定用户传任何不包含特定数组的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainSubArray(subArray)方式调用。 |
 | containValue | @since1.0.28，设定用户传任何包含特定值的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.containValue(value)方式调用。 |
@@ -1432,7 +1432,7 @@ export default class TestAbility extends UIAbility {
    value: string
  }
  ```
- 
+
 > **说明：** 
 >
 > 若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
