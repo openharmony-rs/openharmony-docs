@@ -1649,7 +1649,7 @@ let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
 | cyclicalYear    | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  农历的干支年。<br>取值范围：[1, 60]。   |
 | month           | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  农历的月。<br>**说明：** <br>月份从0开始计数，0表示一月。   |
 | date            | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  农历的日。   |
-| isLeapMonth     | boolean |   否  |   是   |  该月是否是闰月。<br>true表示该月是闰月，false表示该月不是闰月。默认值为false。  |
+| isLeapMonth     | boolean |   否  |   是   |  该月是否是闰月。<br>true表示该月是闰月，false表示该月不是闰月。默认值：false。  |
 | hour            | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   是   |  农历的时。默认值：0。   |
 | minute          | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   是   |  农历的分。默认值：0。   |
 | second          | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   是   |  农历的秒。默认值：0。   |
