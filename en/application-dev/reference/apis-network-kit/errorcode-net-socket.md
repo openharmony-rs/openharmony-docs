@@ -6,13 +6,19 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:06.309Z pushedAt=2026-06-26T03:00:41.284Z -->
+<!-- md-trans-meta sourceCommit=93c44f09729518908d6cf3484da6e70f75e17aad translatedAt=2026-09-23T01:51:02.445Z pushedAt=2026-09-24T06:00:14.183Z -->
 
 > **NOTE**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
-> Socket error code mapping: 2301000 + [Kernel Error Codes](./errorcode-kernel.md).
-> Socket error code mapping: 2303100 + [Kernel Error Codes](./errorcode-kernel.md).
+> The following describes only the error codes specific to this module. For details about the universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> Socket error code mapping: 2301000 + [Kernel Error Code](./errorcode-kernel.md).
+> Socket server error code mapping: 2303100 + [Kernel Error Code](./errorcode-kernel.md).
+>
+> **Error code description for connection disconnection scenarios**
+> - Server actively disconnects: When the peer closes normally, both `TCPSocket` and `TLSSocket` trigger the close event without an error code. When the peer disconnects abnormally (connection reset), the `send()` or `message`/`error` event of `TCPSocket` returns 2301104, and `TLSSocket` returns 2303505 (TLS system call error).
+> - Client actively disconnects: After the local `close()`, if `TCPSocket` continues to call `send()`, `getState()`, and other APIs, 2301009 is returned; continuing to call `send()` returns 2301032 or 2301108.
+> - Disconnection due to cellular network: When the underlying cellular network is disconnected during `TCPSocket.connect()`/`send()`, 2301100, 2301101, or 2301113 is returned; a timeout in a weak network returns 2301110.
+> - Disconnection due to internal application reasons: After the local `close()` of `TCPSocket`, misoperations return 2301009, 2301032, or 2301108; calling `TCPSocketServer.send()` and other APIs on a socket for which no connection is established returns 2303207.
 
 ## 2301001 Operation Not Allowed
 
@@ -341,6 +347,314 @@ Insufficient permissions. The operation is denied.
 
 2. Check whether the operation meets the permission requirements. You can locate this error using the log keyword "Permission denied".
 
+## 2301032 Sending Data After the Connection Is Disconnected
+
+**Error Message**
+
+Broken pipe.
+
+**Description**
+
+Data is sent to a disconnected connection, and the peer (server or local) has closed the connection.
+
+**Possible Causes**
+
+1. After the server actively closes the connection, the local end still calls send to send data (errno is 32, EPIPE).
+
+2. After the local end actively closes the connection, it still calls send to send data.
+
+**Solution**
+
+1. Determine the disconnection timing: if the server closes first, the server actively disconnects; if the local end closes first, the client actively disconnects.
+
+2. Stop sending, re-establish the connection, and then send data.
+
+## 2301100 Network Closed
+
+**Error Message**
+
+Network is down.
+
+**Description**
+
+The network is closed, and the connection is disconnected.
+
+**Possible Causes**
+
+1. The cellular network is disconnected, there is no network signal, or airplane mode is enabled (errno is 100, ENETDOWN).
+
+2. The network service is not started or has stopped.
+
+**Solution**
+
+1. Determine that the disconnection is caused by the cellular network or the network, not by an internal application issue.
+
+2. Check the network connection status, restore the network, and then re-establish the connection.
+
+## 2301101 Network Unreachable
+
+**Error Message**
+
+Network is unreachable.
+
+**Description**
+
+The network is unreachable, and the connection is disconnected.
+
+**Possible Causes**
+
+1. The cellular data network is unavailable or not enabled (errno is 101, ENETUNREACH).
+
+2. The network route is abnormal or the gateway is unreachable.
+
+**Solution**
+
+1. Determine that the disconnection is caused by the cellular/network issue.
+
+2. Check the network connection status, and re-establish the connection after the network is restored.
+
+## 2301104 Connection Reset by Peer
+
+**Error Message**
+
+Connection reset by peer.
+
+**Description**
+
+Connection reset by peer, which usually indicates that the server actively disconnects the connection.
+
+**Possible Causes**
+
+1. The server actively disconnects the connection and sends an RST (errno 104, ECONNRESET).
+
+2. The server process exits abnormally, or the connection is reclaimed by the server due to timeout.
+
+**Solution**
+
+1. Determine that the server actively disconnects the connection.
+
+2. Check the running status of the server and re-establish the connection.
+
+## 2301108 Sending Data After the Connection Is Closed
+
+**Error Message**
+
+Cannot send after transport endpoint shutdown.
+
+**Description**
+
+Sending data after the local connection is closed.
+
+**Possible Causes**
+
+After the local end actively calls close or shutdown, send is still called (errno is 108, ESHUTDOWN).
+
+**Solution**
+
+1. Determine that this is a misoperation after the client actively disconnects.
+
+2. Check the code flow to ensure that no data is sent after the connection is closed.
+
+## 2301110 Connection Timed Out
+
+**Error Message**
+
+Connection timed out.
+
+**Description**
+
+The connection timed out, usually caused by a weak network or cellular network issue.
+
+**Possible Causes**
+
+1. The weak network or poor cellular network signal prevents data from being delivered within the timeout period (errno is 110, ETIMEDOUT).
+
+2. The connection is reclaimed by a network device after a long period without data interaction.
+
+**Solution**
+
+1. Determine that the disconnection is caused by a network issue (cellular/weak network).
+
+2. Check the network quality, and re-establish the connection after the network is restored.
+
+## 2301113 Host Unreachable
+
+**Error Message**
+
+No route to host.
+
+**Description**
+
+The target host is unreachable.
+
+**Possible Causes**
+
+1. The cellular network cannot route to the target host (errno is 113, EHOSTUNREACH).
+
+2. The target server is offline or its IP address has changed.
+
+**Solution**
+
+1. Determine that the disconnection is caused by a network issue (cellular/router).
+
+2. Check the reachability of the target host and the network status.
+
+## 2301115 Connection in progress or connection failed
+
+**Error Message**
+
+Operation now in progress.
+
+**Description**
+
+A compatibility error code returned by the framework when a TCP asynchronous connection is in progress, or when the connection times out or fails.
+
+**Possible Causes**
+
+1. A TCP asynchronous connection is in progress (errno is 115, EINPROGRESS), and the final connection result has not been returned.
+
+2. When **TCPSocket.connect** times out or fails, the framework uniformly returns EINPROGRESS (compatibility handling).
+
+3. This error code may also be returned when **LocalSocket.connect** times out or fails.
+
+**Solution**
+
+1. If the connection is still in progress, wait for the **connect** callback or the **'connect'** event before performing subsequent operations.
+
+2. If the connection has timed out, check the network connection status and the peer service status, and re-establish the connection.
+
+## 2301011 Operation Would Block
+
+**Error Message**
+
+Operation would block.
+
+**Description**
+
+The operation may block.
+
+**Possible Causes**
+
+1. A blocking operation is executed on a non-blocking socket (errno 11, EAGAIN).
+
+2. The socket send buffer is full, or the current resource is temporarily unavailable.
+
+**Solution**
+
+1. Wait until the socket is writable and try again.
+
+2. Check the socket status and resource usage.
+
+## 2301022 Invalid argument
+
+**Error Message**
+
+Invalid argument.
+
+**Description**
+
+Invalid argument.
+
+**Possible Causes**
+
+1. The passed parameter is invalid (errno is 22, EINVAL).
+
+2. The passed IP address, port, or socket option value is incorrect.
+
+**Solution**
+
+1. Check whether the value and format of the passed parameter are correct.
+
+2. Reset the parameter by referring to the API parameter description.
+
+## 2301088 Socket operation on non-socket
+
+**Error Message**
+
+Not a socket.
+
+**Description**
+
+A socket operation was executed on a non-socket file descriptor.
+
+**Possible Causes**
+
+1. The socket was not created correctly or has been destroyed (errno 88, ENOTSOCK).
+
+2. An operation was executed on a closed socket.
+
+**Solution**
+
+1. Check whether the socket is created correctly and not closed.
+
+2. Re-create the socket and then perform the operation.
+
+## 2301098 Network address already in use
+
+**Error Message**
+
+Address already in use.
+
+**Description**
+
+Network address already in use.
+
+**Possible Causes**
+
+1. The bound local address is already occupied by another socket (errno is 98, EADDRINUSE).
+
+2. The port has not been released and is still in the **TIME_WAIT** state.
+
+**Solution**
+
+1. Change the bound address or port.
+
+2. Wait for the port to be released or close the connection that occupies the port.
+
+## 2301099 Cannot Allocate Requested Address
+
+**Error Message**
+
+Cannot assign requested address.
+
+**Description**
+
+Cannot allocate requested address.
+
+**Possible Causes**
+
+1. The bound IP address does not belong to the local host (errno is 99, EADDRNOTAVAIL).
+
+2. The specified local address is invalid or unavailable.
+
+**Solution**
+
+1. Check whether the bound IP address is a local host address.
+
+2. Replace it with an available local address.
+
+## 2301111 Connection Refused
+
+**Error Message**
+
+Connection refused.
+
+**Description**
+
+Connection refused.
+
+**Possible Causes**
+
+1. No process is listening on the target address (errno is 111, ECONNREFUSED).
+
+2. The target server is not started, or the firewall rejects the connection request.
+
+**Solution**
+
+1. Confirm that the target server is started and listening on the corresponding port.
+
+2. Check the network firewall or security policy configuration.
+
 ## 2303111 Requested Resource Temporarily Unavailable
 
 **Error Message**
@@ -363,7 +677,7 @@ Try again later.
 
 **Error Message**
 
-Not a socket.
+Socket operation on non-socket.
 
 **Description**
 
@@ -417,7 +731,7 @@ Try another network address.
 
 **Error Message**
 
-Address not available.
+Cannot assign requested address.
 
 **Description**
 
@@ -449,6 +763,28 @@ The network service is not started or has been stopped.
 
 Check the network connection.
 
+## 2303207 Socket Is Not Connected
+
+**Error Message**
+
+Socket is not connected.
+
+**Description**
+
+An operation that requires a connection is executed on a socket for which no connection has been established.
+
+**Possible Causes**
+
+1. An operation such as sending is executed before the connection is established (errno is 107, ENOTCONN).
+
+2. The connection has been disconnected, but an operation is still executed on the socket.
+
+**Solution**
+
+1. Establish the connection first, and then execute the related operation.
+
+2. Check the connection status and re-establish the connection if necessary.
+
 ## 2303210 Connection Timeout
 
 **Error Message**
@@ -475,7 +811,7 @@ SSL is null.
 
 **Description**
 
-The SSL/TLS connection object is null. Invalid parameter.
+The SSL object is null.
 
 **Possible Causes**
 
@@ -503,7 +839,7 @@ An error occurred when reading data on the TLS socket.
 
 **Description**
 
-This error code is reported if an error occurs while reading data on the TLS socket.
+An error occurs when reading data from the TLS socket.
 
 **Possible Causes**
 
@@ -521,11 +857,11 @@ An error occurred when writing data on the TLS socket.
 
 **Description**
 
-This error code is reported if an error occurs while writing data on the TLS socket.
+An error occurs when writing data to the TLS socket.
 
 **Possible Causes**
 
-When the send buffer is full, the underlying socket sends an **EWOUDLBLOCK** error, which means that the server does not read the data sent from the client.
+When the sender buffer is full, the underlying socket send operation returns the **EWOULDBLOCK** error, which means that the server has not read the message sent from the client.
 
 **Solution**
 
@@ -535,7 +871,7 @@ Check the server status, and rectify the fault.
 
 **Error Message**
 
-An error occurred when verifying the x509 certificate.
+An error occurred when verifying the X.509 certificate.
 
 **Description**
 
@@ -577,7 +913,7 @@ An unrecoverable fatal I/O error occurred in the TLS system call.
 
 3. Try to re-establish the TLS connection.
 
-## 2303506 Failed to Close TLS Connections
+## 2303506 Failed to Close the TLS Connection
 
 **Error Message**
 
@@ -585,7 +921,7 @@ Failed to close the TLS connection.
 
 **Description**
 
-This error code is reported if the TLS/SSL connection to be closed has been disabled.
+Failed to close the TLS connection.
 
 **Possible Causes**
 
@@ -594,3 +930,47 @@ The TLS/SSL connection to be closed has been disabled.
 **Solution**
 
 Initiate a new TLS/SSL connection.
+
+## 2303601 Socket File Descriptor Is Invalid
+
+**Error Message**
+
+Invalid socket FD.
+
+**Description**
+
+The socket file descriptor is invalid.
+
+**Possible Causes**
+
+1. The socket is not created correctly or has been closed.
+
+2. An operation is executed on a destroyed socket.
+
+**Solution**
+
+1. Check whether the socket is valid.
+
+2. Re-create the socket and then execute the operation.
+
+## 2303602 Socket is not connected
+
+**Error Message**
+
+Socket is not connected.
+
+**Description**
+
+The socket is not connected.
+
+**Possible Causes**
+
+1. An operation that requires a connection is executed before the connection is established.
+
+2. The operation continues after the connection is closed.
+
+**Solution**
+
+1. Establish the connection before executing the operation.
+
+2. Check the connection status and initiate the connection again.

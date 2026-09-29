@@ -1,12 +1,11 @@
 # \@Local Decorator: Representing the Internal State of Components
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:57:05.799Z pushedAt=2026-07-25T09:21:44.734Z -->
+<!-- md-trans-meta sourceCommit=c4eacd7749f17b808b6e998528fa58a7554f7518 translatedAt=2026-09-21T11:12:32.083Z pushedAt=2026-09-23T08:50:14.968Z -->
 
 To observe changes to variables in custom components decorated by @ComponentV2, developers can use the [@Local](../../reference/apis-arkui/arkui-ts/ts-state-management-local.md#local) decorator to decorate variables.
 
@@ -382,7 +381,6 @@ struct Index {
   }
 }
 ```
-
 ![local-object](figures/local-object.gif)
 
 ### Decorating Variables of the Array Type
@@ -453,7 +451,7 @@ struct Index {
 
 ### Decorating Variables of the Date Type
 
-When the decorated object is of the **Date** type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**.
+When the decorated object is of the Date type, the reassignment of the entire Date can be observed, and the data in the Date can be updated by calling the Date APIs `setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, and `setUTCMilliseconds`.
 
 <!-- @[Local_Use_Case_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseDate.ets) -->
 
@@ -571,7 +569,6 @@ struct MapSample {
   }
 }
 ```
-
 ![local-map](figures/local-map.gif)
 
 ### Decorating Variables of the Set Type
@@ -629,7 +626,6 @@ struct SetSample {
   }
 }
 ```
-
 ![local-set](figures/local-set.gif)
 
 ### Decorating Variables of the Union Type
@@ -669,7 +665,6 @@ struct Index {
   }
 }
 ```
-
 ![local-union](figures/local-union.gif)
 
 ## FAQs

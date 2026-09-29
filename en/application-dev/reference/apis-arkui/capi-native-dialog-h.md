@@ -315,7 +315,7 @@ typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, vo
 
 A callback invoked when the dialog box is displayed.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 
@@ -335,7 +335,7 @@ void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* opt
 
 Opens a custom dialog box.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 

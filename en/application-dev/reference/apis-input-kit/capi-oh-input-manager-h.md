@@ -440,10 +440,10 @@ Provides return value enumerations.
 | Enum| Description|
 | -- | -- |
 | INPUT_SUCCESS = 0 | Operation succeeded.|
-| INPUT_PERMISSION_DENIED = 201 | Permission verification failed.|
-| INPUT_NOT_SYSTEM_APPLICATION = 202 | Non-system application.|
+| INPUT_PERMISSION_DENIED = 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| INPUT_NOT_SYSTEM_APPLICATION = 202 | Permission verification failed. A non-system application calls a system API. |
 | INPUT_PARAMETER_ERROR = 401 | Parameter check fails.|
-| INPUT_DEVICE_NOT_SUPPORTED = 801 | Function not supported.|
+| INPUT_DEVICE_NOT_SUPPORTED = 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | INPUT_SERVICE_EXCEPTION = 3800001 | Service error.|
 | INPUT_REPEAT_INTERCEPTOR = 4200001 | Interceptor repeatedly created.|
 | INPUT_OCCUPIED_BY_SYSTEM = 4200002 | Occupied by a system app.<br>**Since:** 14 |
@@ -2052,7 +2052,7 @@ Since API version 26.0.0, if the ohos.permission.CONTROL_DEVICE permission has b
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value of the function. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br> INPUT_SUCCESS = 0: The authorization request succeeds, and the system waits for the user's authorization result and invokes the callback to return the authorization state.<br> INPUT_PARAMETER_ERROR = 401: The parameter is invalid, for example, the callback parameter is null.<br> INPUT_DEVICE_NOT_SUPPORTED = 801: The function is not supported.<br> INPUT_SERVICE_EXCEPTION = 3800001: The service is abnormal.<br> INPUT_INJECTION_AUTHORIZING = 3900005: Authorization is in progress.<br> INPUT_INJECTION_OPERATION_FREQUENT = 3900006: Duplicate request (the current application requests the authorization dialog box consecutively and successfully, with an interval of no longer than 3 seconds).<br> INPUT_INJECTION_AUTHORIZED = 3900007: The current application has been authorized.<br> INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008: Another application has been authorized. |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value of the function. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br> INPUT_SUCCESS = 0: The authorization request succeeds, and the system waits for the user's authorization result and invokes the callback to return the authorization state.<br> INPUT_PARAMETER_ERROR = 401: The parameter is invalid, for example, the callback parameter is null.<br> INPUT_DEVICE_NOT_SUPPORTED = 801: Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br> INPUT_SERVICE_EXCEPTION = 3800001: The service is abnormal.<br> INPUT_INJECTION_AUTHORIZING = 3900005: Authorization is in progress.<br> INPUT_INJECTION_OPERATION_FREQUENT = 3900006: Duplicate request (the current application requests the authorization dialog box consecutively and successfully, with an interval of no longer than 3 seconds).<br> INPUT_INJECTION_AUTHORIZED = 3900007: The current application has been authorized.<br> INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008: Another application has been authorized. |
 
 ### OH_Input_QueryAuthorizedStatus()
 
@@ -3149,7 +3149,7 @@ Sets the modifier keys.
 | -- | -- |
 | [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | Hotkey object.|
 | int32_t *preKeys | List of modifier keys.|
-| int32_t size | Number of modifier keys. The value ranges from 1 to 2. |
+| int32_t size | Number of modifier keys. The value ranges from 1 to 4. |
 
 ### OH_Input_GetPreKeys()
 

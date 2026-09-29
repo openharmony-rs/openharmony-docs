@@ -790,6 +790,8 @@ struct MaskDispersion {
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
         this.pixelMap = pixelMap;
+      }).finally(() => {
+        imageSource.release();
       })
     })
   }
@@ -918,7 +920,7 @@ directionLight(direction: common2D.Point3d, color: Color, intensity: number, mas
 
 | 类型              | 说明                               |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | 返回挂载了由置换贴图控制的光照效果的Filter。 |
+| [Filter](#filter) | 返回挂载了由置换贴图控制的平行光照效果的Filter。 |
 
 **错误码：**
 
@@ -1131,6 +1133,8 @@ struct BlurBubblesRiseExample {
         let imageSource: image.ImageSource = image.createImageSource(buffer);
         imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
           this.maskImage = pixelmap as PixelMap;
+        }).finally(() => {
+          imageSource.release();
         });
       });
   }
@@ -1324,6 +1328,8 @@ VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐�
 backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
 用于改变组件背景颜色的blender，目前仅支持提亮混合器。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1650,6 +1656,8 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 
 混合器类型，用于描述混合效果。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
@@ -1970,11 +1978,10 @@ struct Index {
         return undefined;
       }
       const pixelMap: image.PixelMap | null = imageSource.createPixelMapSync();
+      imageSource.release();
       if (!pixelMap) {
-        imageSource.release();
         return undefined;
       }
-      imageSource.release();
       return pixelMap;
     } catch (err) {
       return undefined;

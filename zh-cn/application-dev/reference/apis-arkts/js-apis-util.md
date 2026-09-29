@@ -540,7 +540,7 @@ MultithreadingDetectionOptions是一个接口类，用于配置[ArkTSVM.setMulti
 
 ## ArkTSVM<sup>23+</sup>
 
-ArkTSVM是一个类，用于给开发者提供虚拟机的诊断与维护能力，包括多线程安全检测、堆内存信息获取、内存泄漏防护、全局引用追踪和堆内存预警等功能。
+ArkTSVM是一个类，用于给开发者提供虚拟机的诊断与维护能力，包括多线程安全检测、堆内存信息获取、内存泄漏防护、全局引用追踪、全局句柄数量查询和堆内存预警等功能。
 
 ### setMultithreadingDetectionEnabled<sup>23+</sup>
 
@@ -833,6 +833,39 @@ static offVMHeapMemoryPressure(): void
 import { util } from '@kit.ArkTS';
 
 util.ArkTSVM.offVMHeapMemoryPressure();
+```
+
+### getGlobalHandleCount
+
+static getGlobalHandleCount(): number
+
+获取当前调用线程所属虚拟机中正在使用的全局句柄（global handle）数量，适用于内存观测等场景。
+
+> **说明：**
+>
+> 在worker线程中调用本接口时，返回的是该worker线程所属虚拟机的计数，而非主线程虚拟机的计数。
+>
+> 该接口仅统计强引用（global handle）的数量，不包含弱引用（WeakRef）和Sendable引用（SendableRef）的数量。弱引用存储在独立的弱引用链表中，Sendable引用存储在独立的Sendable全局存储中，均不在本接口的遍历范围内。返回值受强引用创建/删除操作的影响，例如napi_create_strong_reference、napi_delete_strong_reference等接口会相应增减计数，napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference等接口不会影响计数结果。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| number | 当前调用线程所属虚拟机中正在使用的全局句柄数量。 |
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+let count: number = util.ArkTSVM.getGlobalHandleCount();
+console.info(`current global handle count: ${count}`);
 ```
 
 ## HeapMemoryThreshold<sup>24+</sup>

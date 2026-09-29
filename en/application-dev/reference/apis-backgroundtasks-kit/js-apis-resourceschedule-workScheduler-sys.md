@@ -39,7 +39,7 @@ setExecFrequency(info: FrequencyInfo): void
 
 Sets the execution frequency based on the app activity group.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -91,7 +91,7 @@ resetExecFrequency(uid: number): void
 
 Resets the execution frequency based on the app activity group.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -143,7 +143,7 @@ When **FrequencyInfo** is used to set the execution frequency, **uid**, **workId
 
 
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 

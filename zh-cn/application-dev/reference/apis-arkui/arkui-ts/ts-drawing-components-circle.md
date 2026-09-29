@@ -78,7 +78,7 @@ Circle(value?: CircleOptions)
 
 stroke(value: ResourceColor | ColorMetrics)
 
-设置边框颜色，支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色，可进行HDR提亮。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性。不设置时，默认边框颜色为[Color](ts-appendix-enums.md#color).Transparent，即没有边框。异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。
+设置边框颜色，相较于图形绘制通用属性中的[stroke](ts-drawing-components-common.md#stroke)接口，本接口新增支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色<!--Del-->，可进行HDR提亮<!--DelEnd-->。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性。不设置时，默认边框颜色为[Color](ts-appendix-enums.md#color).Transparent，即没有边框。异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。
 
 **起始版本：** 26.0.0
 
@@ -98,7 +98,7 @@ stroke(value: ResourceColor | ColorMetrics)
 
 fill(value: ResourceColor | ColorMetrics)
 
-设置填充区域的颜色，支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色，可进行HDR提亮。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性。不设置时，默认填充颜色为[Color](ts-appendix-enums.md#color).Black。异常值undefined、null、NaN和Infinity按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
+设置填充区域的颜色，相较于图形绘制通用属性中的[fill](ts-drawing-components-common.md#fill)接口，本接口新增支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色<!--Del-->，可进行HDR提亮<!--DelEnd-->。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性。不设置时，默认填充颜色为[Color](ts-appendix-enums.md#color).Black。异常值undefined、null、NaN和Infinity按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
 
 **起始版本：** 26.0.0
 
@@ -205,46 +205,3 @@ struct CircleModifierDemo {
 ```
 
 ![](figures/circleModifier.png)
-
-### 示例4（使用ColorMetrics设置HDR填充和边框颜色）
-
-通过[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)可为Circle组件设置HDR颜色，实现超出普通显示范围的亮度效果。其中，[fill](#fill)接口用于设置填充区域的颜色，[stroke](#stroke)接口用于设置边框颜色。以下示例左侧使用HDR暖金色填充和冰蓝色边框（亮度倍数大于1.0），右侧使用普通SDR颜色作为对照。在支持HDR的屏幕上可观察到左侧明显比右侧更亮且色彩更鲜艳。
-
-从API版本26.0.0开始，新增Circle组件专有的[fill](#fill)和[stroke](#stroke)接口，支持传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型以实现HDR提亮效果。
-
-```ts
-// xxx.ets
-import { ColorMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct CircleHDRDemo {
-  build() {
-    Column({ space: 30 }) {
-      Row({ space: 60 }) {
-        // HDR填充和边框：颜色分量值可以超过1.0，超过1.0的部分用于表现超出普通屏幕亮度范围的高亮效果
-        Column({ space: 8 }) {
-          Circle()
-            .width(120).height(120).strokeWidth(6)
-            .fill(ColorMetrics.createHDRColor(ColorSpace.BT2020, 2.5, 1.2, 0.0, 1)) // 高亮暖金
-            .stroke(ColorMetrics.createHDRColor(ColorSpace.BT2020, 0.0, 0.8, 2.5, 1)) // 高亮冰蓝
-          Text('HDR').fontColor(Color.White).fontSize(14)
-        }
-
-        // SDR填充和边框：颜色分量值的范围为0.0到1.0，是常规标准动态范围的颜色显示方式
-        Column({ space: 8 }) {
-          Circle()
-            .width(120).height(120).strokeWidth(6)
-            .fill('#ffc800') // 普通金黄
-            .stroke('#0066ff') // 普通深蓝
-          Text('SDR').fontColor(Color.White).fontSize(14)
-        }
-      }
-    }
-    .width('100%').height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-![circleHdr](figures/circleHdr.png)

@@ -709,13 +709,9 @@ for (const entry of myMap.entries()) {
 
 ## putAll
 
-putAll(from: BuiltinMap\<K, V>): void
+putAll(from: ReadonlyMap\<K, V>): void
 
 使用指定JavaScript原生容器Map中的键值对更新当前Map。如果指定JavaScript原生容器Map中存在与当前Map相同的键，则覆盖当前Map中对应的值；否则新增键值对。
-
-> **说明：**
->
-> BuiltinMap即JavaScript原生容器Map，并非ArkTS Map（collections.Map）。
 
 **起始版本：** 26.0.1
 
@@ -729,7 +725,7 @@ putAll(from: BuiltinMap\<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明      |
 | ------ | ---- | ---- | --------- |
-| from    | BuiltinMap\<K, V>    | 是   | 提供键值对的JavaScript原生容器Map。 |
+| from    | ReadonlyMap\<K, V>    | 是   | 提供键值对的JavaScript原生容器Map。 |
 
 **错误码：**
 

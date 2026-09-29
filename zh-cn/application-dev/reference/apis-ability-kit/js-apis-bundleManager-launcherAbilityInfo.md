@@ -30,4 +30,4 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 | labelId         | number                                                      | 是   | 否   | launcher ability的名称的资源ID值。      |
 | iconId          | number                                                      | 是   | 否   | launcher ability的图标的资源ID值。      |
 | userId          | number                                                      | 是   | 否   | launcher ability的用户ID。             |
-| installTime     | number                                                      | 是   | 否   | launcher ability的安装时间戳，单位毫秒。 |
+| installTime     | number                                                      | 是   | 否   | launcher ability的安装时间戳，单位ms。 |

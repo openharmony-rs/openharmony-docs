@@ -95,7 +95,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -143,7 +143,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -190,7 +190,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -234,7 +234,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -285,7 +285,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -320,7 +320,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100011 | The system ability works abnormally. |
 
 **Example**
@@ -356,7 +356,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -394,7 +394,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -431,7 +431,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -470,7 +470,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -510,7 +510,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -548,7 +548,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
@@ -594,7 +594,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -636,7 +636,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -691,7 +691,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -732,7 +732,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -780,7 +780,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -821,7 +821,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -863,7 +863,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -904,7 +904,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -944,7 +944,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -999,7 +999,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100016 | The uri field is missing in the want parameter. |
@@ -1133,7 +1133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -1172,7 +1172,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -1210,7 +1210,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100018 | The application is not authorized. |
@@ -1251,7 +1251,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100011 | The system ability works abnormally. |
 
 **Example**
@@ -1295,7 +1295,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100021 | Failed to set the enterprise policy. |
@@ -1478,7 +1478,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1561,7 +1561,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1633,7 +1633,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1776,7 +1776,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100011 | The system ability works abnormally. |
   
 **Example**
@@ -1828,7 +1828,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
   
 **Example**
 
@@ -1870,7 +1870,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1923,7 +1923,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -2182,7 +2182,7 @@ dlpPermission.getControlledAppLists().then((res) => {
 
 Enumerates the plugin commands that can be executed.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2203,7 +2203,7 @@ processPluginCommand(code: PluginCmd, message: string): Promise&lt;string&gt;
 
 Processes plugin commands in transparent encryption and decryption scenarios. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 

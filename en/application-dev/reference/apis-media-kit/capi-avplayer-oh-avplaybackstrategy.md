@@ -5,18 +5,19 @@
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:04:49.741Z pushedAt=2026-06-23T06:12:23.682Z -->
+<!-- md-trans-meta sourceCommit=b6dc5e5e7cc5cdd98e4b0593ece2e6c9d236388c translatedAt=2026-09-15T16:08:06.408Z pushedAt=2026-09-22T04:53:30.092Z -->
 
 ```c
-typedef struct OH_AVPlaybackStrategy OH_AVPlaybackStrategy
+typedef struct OH_AVPlaybackStrategy OH_AVPlaybackStrategy;
 ```
 
 ## Overview
 
-Defines a struct for the audio and video playback strategy.
+Defines the audio and video playback strategy. This struct is used to configure the strategy parameter for the player to play audio and video content. It is applicable to scenarios where playback behavior needs to be precisely controlled. If this parameter is not set, the player uses the default playback strategy.
 
 **Since**: 23
 
 **Related module**: [AVPlayer](capi-avplayer.md)
 
 **Header file**: [avplayer_base.h](capi-avplayer-base-h.md)
+

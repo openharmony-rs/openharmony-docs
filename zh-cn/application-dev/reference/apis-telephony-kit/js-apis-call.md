@@ -322,7 +322,7 @@ let context = this.getUIContext().getHostContext() as Context;
 call.makeCall(context, "138xxxxxxxx").then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`makeCall fail, promise: err->${err.code)},message:${err.message}`);
+    console.error(`makeCall fail, promise: err->${err.code},message:${err.message}`);
 });
 ```
 
@@ -332,7 +332,7 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。只支持在UIAbility中调用。
 
-> **说明**:
+> **说明：**
 >
 > 该接口返回校验token，应用可以利用phoneNumber和token实现特定能力，比如蜂窝下行流的录制。
 

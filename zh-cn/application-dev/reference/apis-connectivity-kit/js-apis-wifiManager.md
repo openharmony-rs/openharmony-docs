@@ -610,7 +610,7 @@ WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议�
 
 ## WifiCapability
 
-Wi-Fi功能。
+Wi-Fi支持的能力。
 
 **起始版本：** 26.0.0
 
@@ -1729,6 +1729,8 @@ getDeviceMacAddress(): string[]
 
 获取设备的MAC地址。
 
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
 **需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC 和 ohos.permission.GET_WIFI_INFO
 
 API8-15 ohos.permission.GET_WIFI_LOCAL_MAC权限仅向系统应用开放，从API16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
@@ -2505,7 +2507,7 @@ p2pConnect(config: WifiP2PConfig): void
 
 执行P2P连接。调用此方法后，如需取消连接可调用[p2pCancelConnect](#wifimanagerp2pcancelconnect)。
 
-当WifiP2PConfig中deviceAddressType为0（真实MAC地址）时，若设备MAC地址通过[wifiManager.on('p2pPeerDeviceChange')](#wifimanageronp2ppeerdevicechange)获取，需具备ohos.permission.GET_WIFI_PEERS_MAC权限。
+当WifiP2PConfig中deviceAddressType为1（真实MAC地址）时，若设备MAC地址通过[wifiManager.on('p2pPeerDeviceChange')](#wifimanageronp2ppeerdevicechange)获取，需具备ohos.permission.GET_WIFI_PEERS_MAC权限。
 
 从API版本26.0.0开始，支持通过WifiP2PConfig传入passphrase和groupName进行密钥连接，此时需将deviceAddress参数设置为"00:00:00:00:00:00"。
 

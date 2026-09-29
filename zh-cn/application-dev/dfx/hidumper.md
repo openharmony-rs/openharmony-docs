@@ -1345,30 +1345,9 @@ no records found.
 | -------- | -------- |
 | time | 异常退出发生的时间。 |
 | foreground | 异常退出发生时，进程是否在前台。True表示处于前台；False表示处于后台。 |
-| reason | 异常退出原因，原因范围详见[reason字段说明](#reason字段说明)。 |
+| reason | 异常退出原因。取值、各原因的产生场景、排查处理方法可参考[应用终止分析思路和分析步骤](appkilled-guidelines.md#分析思路和分析步骤)。 |
 | record_id | 异常退出记录ID。 |
 | process_name | 发生异常退出的进程名。 |
-
-### reason字段说明
-以下异常退出原因，可参考[应用终止分析思路和分析步骤](appkilled-guidelines.md#分析思路和分析步骤)进行问题排查处理。
-
-| 类型   | 说明                       |
-| ------- | ------------------------- |
-| IllegalAudioRendererBySuspend | 应用未申请合理的后台任务，但是后台有大量音频播放。 |
-| LowMemoryKill | 整机低内存。 |
-| OomKiller | 整机内存耗尽，无法继续分配。 |
-| PowerSaveClean | 整机切换到省电模式或应急模式。 |
-| ResourceLeak(AshmemLeak) | 应用Ashmem内存占用超标。 |
-| ResourceLeak(GpuLeak) | 应用GPU内存占用超标。 |
-| ResourceLeak(GpuRsLeak) | 应用在Render Service进程内的GPU内存占用超标。 |
-| ResourceLeak(IonLeak) | 应用的Ion内存占用超标。 |
-| RssThresholdKiller | 应用的RSS（Resident Set Size）占用超标。 |
-| SwapFull | 整机Swap空间耗尽。 |
-| ThreadBlock6S | 应用主进程阻塞，该类型支持根据record_id查看故障日志详情。 |
-| AppInputBlock | 输入事件无响应，该类型支持根据record_id查看故障日志详情。 |
-| LifecycleTimeout | 生命周期超时，该类型支持根据record_id查看故障日志详情。 |
-| JsError | JS崩溃，该类型支持根据record_id查看故障日志详情。 |
-| CppCrash | Native崩溃，该类型支持根据record_id查看故障日志详情。 |
 
 ## 获取异常退出故障日志
 

@@ -46,7 +46,7 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **示例：**
@@ -104,7 +104,7 @@ createMouseController(): Promise&lt;MouseController&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **示例：**
@@ -162,7 +162,7 @@ createTouchController(): Promise&lt;TouchController&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **示例：**

@@ -1501,9 +1501,9 @@ constructor(options?: NumericTextTransitionOptions)
 
 | 名称                   | 值  | 说明                  |
 | --------------------- | -------  | ------------------- |
-| MITER_JOIN            | 0  | 拐角类型为锐角。 |
+| MITER_JOIN            | 0  | 拐角类型为尖角。 |
 | ROUND_JOIN            | 1  | 拐角类型为圆角。 |
-| BEVEL_JOIN            | 2  | 拐角类型为平角。 |
+| BEVEL_JOIN            | 2  | 拐角类型为斜角。 |
 
 ## TextDirection<sup>22+</sup>
 

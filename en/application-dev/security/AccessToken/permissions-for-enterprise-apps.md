@@ -789,4 +789,4 @@ With this permission, the application can back up and restore user data and appl
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1

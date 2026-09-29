@@ -6,16 +6,17 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T02:39:52.644Z pushedAt=2026-09-24T06:00:14.222Z -->
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module are no longer maintained since API version 8. You are advised to use ['@ohos.net.connection'](js-apis-net-connection.md).
+> - Since API version 8, this API is no longer maintained. You are advised to use [@ohos.net.connection](js-apis-net-connection.md).
 
 ## Modules to Import
 
 
-```
+```js
 import network from '@system.network';
 ```
 
@@ -55,7 +56,7 @@ Error codes:
 
 **Example**
 
-```
+```js
 export default class Network {
   getType() {
     network.getType({
@@ -70,7 +71,7 @@ export default class Network {
 
 ## network.subscribe<sup>3+</sup>
 
-subscribe(options?:{<br>
+subscribe(options?: {<br>
 &nbsp;&nbsp;success?: (data: NetworkResponse) => void;<br>
 &nbsp;&nbsp;fail?: (data: any, code: number) => void;<br>
   }): void
@@ -95,7 +96,7 @@ Error codes:
 
 **Example**
 
-```
+```js
 export default class Network {
   subscribe() {
     network.subscribe({
@@ -118,7 +119,7 @@ Cancels listening to the network connection state of this device.
 
 **Example**
 
-```
+```js
 import network from '@system.network';
 
 network.unsubscribe();
@@ -131,5 +132,5 @@ network.unsubscribe();
 
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| metered | boolean | No| Yes |Whether to charge by traffic. The value **true** means to charge by traffic, and the value **false** means the opposite.|
+| metered | boolean | No | No | Whether the network is metered. **true**: metered; **false**: not metered. |
 | type | string | No| No|Network type. The value can be **2G**, **3G**, **4G**, **5G**, **WiFi**, or **none**.|

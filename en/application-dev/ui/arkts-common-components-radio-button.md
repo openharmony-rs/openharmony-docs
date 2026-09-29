@@ -1,14 +1,15 @@
 # Radio Button (Radio)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=233780541406c33f29af8bce3784afa16dc6ae50 translatedAt=2026-07-29T12:44:17.710Z pushedAt=2026-07-30T02:30:34.319Z -->
+<!-- md-trans-meta sourceCommit=b673026310640a6967ec0e867b1ea6e08abe03e7 translatedAt=2026-09-21T02:41:37.806Z pushedAt=2026-09-21T10:02:11.919Z -->
+
 
 The **Radio** component allows users to select from a set of mutually exclusive options. Only one radio button in a given group can be selected at the same time. For details, see [Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md).
+
 
 ## Creating a Radio Button
 
@@ -30,6 +31,7 @@ Radio({ value: 'Radio1', group: 'radioGroup' })
 Radio({ value: 'Radio2', group: 'radioGroup' })
   .checked(true)
 ```
+
 
 ![radio-create](figures/radio-create.png)
 
@@ -56,11 +58,12 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
   })
 ```
 
+
 ## Example Scenario
 
 In this example, the **Radio** components are used to switch between sound modes.
 
-<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) -->
+<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) --> 
 
 ``` TypeScript
 // xxx.ets
@@ -86,7 +89,7 @@ export struct RadioExample {
                   // Switch to ringing mode.
                   await this.getUIContext().getPromptAction().openToast(this.rst);
                 } catch (err) {
-                  console.error('Failed to show toast: ${err.code}');
+                  console.error(`Failed to show toast: ${err.code}`);
                 }
               }
             })
@@ -103,7 +106,7 @@ export struct RadioExample {
                   // Switch to vibration mode.
                   await this.getUIContext().getPromptAction().openToast(this.vst);
                 } catch (err) {
-                  console.error('Failed to show toast: ${err.code}');
+                  console.error(`Failed to show toast: ${err.code}`);
                 }
               }
             })
@@ -120,7 +123,7 @@ export struct RadioExample {
                   // Switch to silent mode.
                   await this.getUIContext().getPromptAction().openToast(this.sst);
                 } catch (err) {
-                  console.error('Failed to show toast: ${err.code}');
+                  console.error(`Failed to show toast: ${err.code}`);
                 }
               }
             })
@@ -132,4 +135,85 @@ export struct RadioExample {
 }
 ```
 
+
 ![radio-scenario](figures/radio-scenario.gif)
+
+Set independent group values for the Radio components on different Swiper pages to isolate and independently select the seasonal activity options.
+
+
+<!-- @[radio_control_swiper_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSwiper.ets) -->
+
+``` TypeScript
+// xxx.ets
+@Entry
+@Component
+export struct RadioSwiperSample {
+  // Index of the currently displayed page.
+  @State currentIndex: number = 0;
+  // Theme color of each page.
+  private colors: string[] = ['#699eec', '#699eec', '#699eec'];
+  // Title text of each page.
+  private titles: string[] = ['Spring', 'Summer', 'Autumn'];
+  // Independent Radio group name corresponding to each page. Groups on different pages do not affect each other.
+  private groups: string[] = ['springGroup', 'summerGroup', 'autumnGroup'];
+  // Independent selectable options of each page.
+  private options: string[][] = [
+    ['Bloom', 'Spring outing', 'Kite'],
+    ['Swim', 'Cool off', 'Watermelon'],
+    ['Moon', 'Climb', 'Autumn outing']
+  ];
+
+  build() {
+    // ...
+      Column({ space: 16 }) {
+        Text(`Current page: ${this.titles[this.currentIndex]}`)
+          .fontSize(18)
+          .fontWeight(FontWeight.Medium)
+
+        // Each page in the Swiper contains an independent group of Radio buttons. After swiping to switch pages, the selected state of each page does not affect the others.
+        Swiper() {
+          ForEach(this.titles, (title: string, index: number) => {
+            Column({ space: 16 }) {
+              Text(title)
+                .fontSize(48)
+                .fontColor('#fff')
+              // Radio group of the current page. The group name changes with the page and is independent of other pages.
+              Row({ space: 24 }) {
+                ForEach(this.options[index], (option: string) => {
+                  Column() {
+                    Radio({ value: option, group: this.groups[index] })
+                    Text(option)
+                      .fontSize(14)
+                      .fontColor('#fff')
+                      .margin({ top: 4 })
+                  }
+                })
+              }
+              .justifyContent(FlexAlign.Center)
+            }
+            .width('100%')
+            .height(240)
+            .justifyContent(FlexAlign.Center)
+            .backgroundColor(this.colors[index])
+            .borderRadius(16)
+          })
+        }
+        .index(this.currentIndex)
+        .indicator(true)
+        .loop(false)
+        .onChange((index: number) => {
+          // Update the current page index when swiping to switch pages.
+          this.currentIndex = index;
+        })
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 16, right: 16 })
+      .alignItems(HorizontalAlign.Center)
+      // ...
+  }
+}
+```
+
+
+![radio-swiper](figures/radio-swiper.gif)

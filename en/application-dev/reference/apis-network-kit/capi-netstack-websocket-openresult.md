@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c33290f86c4a896f90eff1ee86d78748f13424d1 translatedAt=2026-09-23T01:33:49.373Z pushedAt=2026-09-24T06:00:14.133Z -->
 
 ```c
 struct WebSocket_OpenResult {...}
@@ -13,7 +14,7 @@ struct WebSocket_OpenResult {...}
 
 ## Overview
 
-Defines the parameters for the connection success received by the WebSocket client.
+Defines the parameters returned to the WebSocket client upon successful connection from the server.
 
 **Since**: 11
 
@@ -27,5 +28,5 @@ Defines the parameters for the connection success received by the WebSocket clie
 
 | Name| Description|
 | -- | -- |
-| uint32_t code | Result code for successful WebSocket client connection.|
-| const char *reason | Reason for successful WebSocket client connection.|
+| uint32_t code | WebSocket client connection success code. |
+| const char *reason | WebSocket client connection success reason. |

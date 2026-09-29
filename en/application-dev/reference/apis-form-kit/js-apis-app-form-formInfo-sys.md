@@ -166,8 +166,8 @@ Enumerates the result codes that may be used for the operation of adding a widge
 | NO_SPACE       | 1    | There is no space for adding widgets.          |
 | PARAM_ERROR    | 2    | Parameter check fails.              |
 | INTERNAL_ERROR | 3    | An internal error occurs during widget processing.|
-| NOT_SUPPORT    | 4    | The widget cannot be published.<br>**Since:** 26.1.0|
-| HOST_FORM_LIMIT | 5   | The number of widgets added to the host exceeds the upper limit.<br>**Since:** 26.1.0|
+| NOT_SUPPORT    | 4    | The widget cannot be published.<br>**Since:** 26.0.1|
+| HOST_FORM_LIMIT | 5   | The number of widgets added to the host exceeds the upper limit.<br>**Since:** 26.0.1|
 
 ## RenderingMode<sup>18+</sup>
 
@@ -547,7 +547,7 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 
 Service information of the widget host.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -566,7 +566,7 @@ Service information of the widget host.
 
 Service information of the remote widget host.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -588,7 +588,7 @@ Service information of the remote widget host.
 
 Result of cross-device widget publishing.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 

@@ -1756,7 +1756,7 @@ class EntryAbility extends ServiceExtensionAbility {
         console.info('----------- onDisconnect -----------');
       },
       onFailed(code) {
-        console.info('----------- onFailed -----------');
+        console.error('----------- onFailed -----------');
       }
     };
     let connection: number;
@@ -2947,7 +2947,7 @@ export default class EntryServiceExtAbility extends ServiceExtensionAbility {
       this.context.startUIAbilities(wantList).then(() => {
         console.info(`TestTag:: start succeeded.`);
       }).catch((error: BusinessError) => {
-        console.info(`TestTag:: startUIAbilities failed: ${JSON.stringify(error)}`);
+        console.error(`TestTag:: startUIAbilities failed: ${JSON.stringify(error)}`);
       });
     } catch (paramError) {
       // 处理入参错误异常

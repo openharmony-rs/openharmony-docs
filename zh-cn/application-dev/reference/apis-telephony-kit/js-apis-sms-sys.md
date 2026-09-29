@@ -1485,7 +1485,7 @@ getSmsSegmentsInfo\(slotId: number, message: string, force7bit: boolean, callbac
 | slotId    | number                                                       | 是   | SIM卡槽ID：<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | message   | string                                                       | 是   | 消息。                                      |
 | force7bit | boolean                                                      | 是   | 是否使用7 bit编码，默认false。<br/>-true：是<br/>-false：否                          |
-| callback  | AsyncCallback&lt;[SmsSegmentsInfo](#smssegmentsinfo8)&gt; | 是   | 指示用于获取短信短信息的回调函数。  |
+| callback  | AsyncCallback&lt;[SmsSegmentsInfo](#smssegmentsinfo8)&gt; | 是   | 指示用于获取短信段信息的回调函数。  |
 
 **错误码：**
 
@@ -2362,7 +2362,7 @@ SIM卡消息状态。
 |   名称    | 值   | 说明 |
 | --------- | ---- | ---- |
 | TYPE_GSM  | 1    | GSM  |
-| TYPE_CDMA | 2    | CMDA |
+| TYPE_CDMA | 2    | CDMA |
 
 ## SmsEncodingScheme<sup>8+</sup>
 

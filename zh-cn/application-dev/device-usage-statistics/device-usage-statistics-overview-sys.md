@@ -1,4 +1,4 @@
-# 设备使用信息统计概述（仅对系统应用开放）
+# 设备使用信息统计概述(ArkTS) (仅对系统应用开放)
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @xufu7-->

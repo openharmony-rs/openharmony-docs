@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b675ee6f9df522a97fd104e0dc165775ccc2d1c4 translatedAt=2026-09-23T02:09:24.890Z pushedAt=2026-09-24T06:00:14.201Z -->
 
 The **netFirewall** module implements the network firewall functionality for applications. It allows applications to query the firewall interception records of the device.
 
@@ -44,7 +45,7 @@ Sets the firewall policy for a system user ID, including the firewall switch sta
 
 | Type               | Description                                    |
 | ------------------- | ---------------------------------------- |
-| Promise\<void>      | Promise that returns no value.               |
+| Promise\<void>      | Promise that returns no value.                |
 
 **Error codes**
 
@@ -97,7 +98,7 @@ Queries the firewall policy for a system user ID, including the firewall switch 
 
 | Type                                             | Description                                 |
 | ------------------------------------------------- | ------------------------------------- |
-| Promise\<[NetFirewallPolicy](#netfirewallpolicy)> | Promise used to return the result, which is a firewall policy.|
+| Promise\<[NetFirewallPolicy](#netfirewallpolicy)> | Promise object used to return the firewall policy of the current user. |
 
 
 **Error codes**
@@ -132,32 +133,36 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 Adds a firewall rule for the system user ID. The supported rule types are IP, Domain, and DNS. This API uses a promise to return the result.
 
-> **Description**
+> **NOTE**
 > 
-> 1. The priority of firewall rules is described as follows (there is no requirement on the call sequence of [setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy) and [addNetFirewallRule](#netfirewalladdnetfirewallrule)):
->    - Call [setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **DENY** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
->      - Explicit denying rule
->      - Explicit allowing rule
->      - Default denying policy
->    - Call [setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **ALLOW** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
->      - Explicit allowing rule
->      - Explicit denying rule
->      - Default allowing policy
->    - When the IP address rule and domain name rule of the firewall conflict (the IP of the domain name resolution is the same as that in the IP address rule, and the rule behavior conflicts):
->      - If the access is performed using a domain name, the domain name rule has a higher priority than the IP address rule and is not affected by the rule of the IP parsed from the domain name.
->      - If the access is performed using an IP address, the following rules are followed:
->        - If the domain name rule allows the access and the domain name resolution has been performed, the IP address denying rule or the default denying policy will not take effect, and the access using the IP address will be allowed.
->        - If the domain name rule allows the access and the domain name resolution has not been performed, the IP address denying rule or the default denying policy will take effect, and the access using the IP address will be denied.
->        - If the domain name rule denies the access, the IP address allowing rule or the default policy will take effect, and the access using the IP address will be allowed.
+> 1. Firewall rule priority description (no call order is required between [setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy) and [addNetFirewallRule](#netfirewalladdnetfirewallrule)):
+>    - When [setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy) is called to set the default policy to deny and [addNetFirewallRule](#netfirewalladdnetfirewallrule) is called to add explicit rules, the rule priority from high to low is as follows:
+>      - Explicit deny rule
+>      - Explicit allow rule
+>      - Default deny policy
+>    - When [setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy) is called to set the default policy to allow and [addNetFirewallRule](#netfirewalladdnetfirewallrule) is called to add explicit rules, the rule priority from high to low is as follows:
+>      - Explicit allow rule
+>      - Explicit deny rule
+>      - Default allow policy
+>    - When a firewall IP rule conflicts with a domain rule (the IP resolved from the domain is the same as the IP in the IP rule, and the rule actions conflict):
+>      - If the access is performed by domain name, the domain rule takes precedence over the IP rule and is not affected by the rule of the IP resolved from the domain.
+>      - If the access is performed by IP address, the following principles apply:
+>        - When the domain rule allows access, neither the IP rule nor the default policy can block the access, and the access by IP address is ultimately allowed.
+>        - When the domain rule denies access, the allow action of the IP rule or the default policy still takes effect, and the access by IP address is ultimately allowed.
+>       - The system identifies domain-based access and IP-based access as follows:
+>         - If the destination IP matches an IP address in the system network-layer domain cache table, the application is considered to access by domain name.
+>         - If the destination IP does not match any IP address in the system network-layer domain cache table, the application is considered to access by IP address.
+>         - The system network layer proactively queries the DNS information configured in the firewall and caches the corresponding IP addresses so that the domain allow rule takes effect.
+>        
 > 2. Supplementary description of rule types:
->    - When the input parameter **rule.type** of **addNetFirewallRule** is set to **RULE_IP**:
->      - If **rule.action** is set to **RULE_ALLOW** and **rule.localIps** and **rule.remoteIps** are not configured, the rule takes effect as full IP range access is allowed.
->      - If **rule.action** is set to **RULE_DENY** and **rule.localIps** and **rule.remoteIps** are not configured, the rule takes effect as full IP range access is denied.
->    - If **rule.type** of **addNetFirewallRule** is set to **RULE_DOMAIN** and **rule.domains** is not configured, the rule does not take effect.
+>    - When **rule.type** of **addNetFirewallRule** is set to RULE_IP:
+>      - If **rule.action** is **RULE_ALLOW** and neither **rule.localIps** nor **rule.remoteIps** is configured, the rule takes effect as allowing all IP segments.
+>      - If **rule.action** is **RULE_DENY** and neither **rule.localIps** nor **rule.remoteIps** is configured, the rule takes effect as blocking all IP segments.
+>    - When **rule.type** of **addNetFirewallRule** is set to **RULE_DOMAIN**, if **rule.domains** is not configured, the rule does not take effect.
 > 3. Description of the upper limit for adding firewall rules:
->    - A maximum of 1000 firewall rules can be added for a single system user ID. If this limit is exceeded, error code **29400001** is reported.
->    - A maximum of 2000 firewall rules can be added for all system user IDs. If this limit is exceeded, error code **29400001** is reported.
->    - A maximum of 100 fuzzy domain name rules can be added for all system user IDs. If this limit is exceeded, error code **29400005** is reported.
+>    - The upper limit of firewall rules added for a single system user ID is 1000. If this limit is exceeded, error code 29400001 is reported.
+>    - The upper limit of the total number of firewall rules added for all system user IDs is 2000. If this limit is exceeded, error code 29400001 is reported.
+>    - The upper limit of the total number of wildcard domain rules added for all system user IDs is 100. If this limit is exceeded, error code 29400005 is reported.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -173,7 +178,7 @@ Adds a firewall rule for the system user ID. The supported rule types are IP, Do
 
 | Type                                           | Description                                    |
 | ------------------------- | ----------------------------------------------------------- |
-| Promise\<number>          | Promise used to return the result, which is the firewall rule ID automatically generated by the system.|
+| Promise\<number>          | Promise object used to return the firewall rule ID, which is automatically generated by the system. |
 
 **Error codes**
 
@@ -246,7 +251,8 @@ let ipRule: netFirewall.NetFirewallRule = {
       startPort: 443,
       endPort: 443
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // Supported since API version 26.0.0.
 };
 netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -269,8 +275,18 @@ let domainRule: netFirewall.NetFirewallRule = {
     },{
       isWildcard: true,
       domain: "*.example.cn"
+    },{
+      isWildcard: true,
+      domain: "*w.example.cn"  // Supported since API version 26.0.0.
+    },{
+      isWildcard: true,
+      domain: "www.example.*"  // Supported since API version 26.0.0.
+    },{
+      isWildcard: true,
+      domain: "www.example.c*"  // Supported since API version 26.0.0.
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // Supported since API version 26.0.0.
 };
 netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -290,7 +306,8 @@ let dnsRule: netFirewall.NetFirewallRule = {
    primaryDns: "4.4.4.4",
    standbyDns: "8.8.8.8",
   },
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // Supported since API version 26.0.0.
 };
 netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -319,7 +336,7 @@ Deletes a specified firewall rule of a system user ID. This API uses a promise t
 
 | Type               | Description                                                                |
 | ------------------- | ---------------------------------------------------------------------|
-| Promise\<void>      | Promise that returns no value.                                |
+| Promise\<void>      | Promise that returns no value.                                 |
 
 **Error codes**
 
@@ -334,7 +351,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2100003  | System internal error.                                                          |
 | 29400000 | The specified user does not exist.                                              |
 | 29400006 | The specified rule does not exist.                                              |
-  
+
 **Example**
 
 ```ts
@@ -368,7 +385,7 @@ Updates a firewall rule. This API uses a promise to return the result.
 
 | Type                | Description                                                               |
 | -------------------  | ------------------------------------------------------------------- |
-| Promise\<void>       | Promise that returns no value.                               |
+| Promise\<void>       | Promise that returns no value.                                |
 
 **Error codes**
 
@@ -388,7 +405,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 29400005 | The number of domain rules exceeds the maximum.                                 |
 | 29400006 | The specified rule does not exist.                                              |
 | 29400007 | The dns rule is duplication.                                                    |
-  
+
 **Example**
 
 ```ts
@@ -416,7 +433,8 @@ let ipRuleUpd: netFirewall.NetFirewallRule = {
       startIp: "10.20.1.1",
       endIp: "10.20.1.10"
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // Supported since API version 26.0.0.
 };
 netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
   console.info('update firewall rule success.');
@@ -446,7 +464,7 @@ Obtains firewall rules by user ID. You need to specify the pagination query para
 
 | Type                                           | Description                                    |
 | ----------------------------------------------- | ---------------------------------------- |
-| Promise\<[FirewallRulePage](#firewallrulepage)> | Promise used to return the result, which is list of firewall rules.   |
+| Promise\<[FirewallRulePage](#firewallrulepage)> | Promise object that returns the paginated firewall rule list.    |
 
 **Error codes**
 
@@ -460,7 +478,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2100002  | Operation failed. Cannot connect to service.                                    |
 | 2100003  | System internal error.                                                          |
 | 29400000 | The specified user does not exist.                                              |
-  
+
 **Example**
 
 ```ts
@@ -501,7 +519,7 @@ Obtains a firewall rule based on the specified user ID and rule ID. This API use
 
 | Type                                           | Description                                    |
 | ----------------------------------------------- | ---------------------------------------- |
-| Promise\<[NetFirewallRule](#netfirewallrule)>   | Promise used to return the result, which is a firewall rule.           |
+| Promise\<[NetFirewallRule](#netfirewallrule)>   | Promise used to return the firewall rule.            |
 
 **Error codes**
 
@@ -516,7 +534,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2100003  | System internal error.                                                          |
 | 29400000 | The specified user does not exist.                                              |
 | 29400006 | The specified rule does not exist.                                              |
-  
+
 **Example**
 
 ```ts
@@ -549,11 +567,12 @@ Defines a firewall rule.
 | appUid      | number                                                      | No|Yes|Application or service UID.                                           |
 | localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Local IP addresses. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.        |
 | remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Remote IP addresses. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.|
-| protocol    | number                                                      | No| Yes|Protocol, which can be TCP (value **6**) or UDP (value **17**). This parameter is valid only when **type** is set to **RULE_IP**. |
+| protocol    | number                                                      | No | Yes | Protocol, including TCP: 6, UDP: 17, ICMP: 1, and ICMPv6: 58. Valid when **type=RULE_IP**.  |
 | localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|Local ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 port ranges can be specified.  |
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|Remote ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 port ranges can be specified.  |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **type** is set to **RULE_DOMAIN**. Currently, domain names cannot contain Chinese characters.        |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **type** is set to **RULE_DNS**. This parameter cannot be empty when **type** is set to **RULE_DNS**.                |
+| interface   | string                                                      | No | Yes | Name of the physical network interface card, for example, wlan0. Valid when **type=RULE_IP**; otherwise, it is ignored. Optional, with a maximum of 16 characters.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.                 |
 
 ## RequestParam
 
@@ -632,10 +651,10 @@ Enumerates the firewall rule types, including IP, Domain, and DNS.
 
 ## NetFirewallOrderField
 
-Enumerates the sorting methods of firewall rules.
-> **Description**
+Enumeration type, the sorting method of firewall rules.
+> **NOTE**
 > 
-> [getNetFirewallRules](#netfirewallgetnetfirewallrules) supports only the **ORDER_BY_RULE_NAME** field.<br>
+> The [getNetFirewallRules](#netfirewallgetnetfirewallrules) API supports only the **ORDER_BY_RULE_NAME** field.<br>
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
@@ -691,15 +710,22 @@ Defines domain name parameters of a firewall rule. Currently, Chinese domain nam
 | Name        | Type   | Read-Only| Optional|Description                                     |
 | ------------ | --------|------|-----|------------------------------------- |
 | isWildcard   | boolean | No | No|Whether to contain wildcards. The value **true** means to contain wildcards; and the value **false** means the opposite.                         |
-| domain       | string  | No |No|If **isWildcard** is set to **false**, the complete domain name, for example, "www.example.cn", needs to be specified.|
+| domain       | string  | No  | No | When **isWildcard** is **false**, a complete domain is required, for example, "www.example.com"; when **isWildcard** is **true**, wildcard rules are supported. For details about the format, see the description below. |
+
+When **isWildcard** is **true**, **domain** supports the wildcard character *"\*"*, which can appear at the beginning, the end, or both the beginning and the end of a domain name, indicating that it matches any character of any length (including zero). The following wildcard formats are supported:
+
+- `"*.xxx.xxx"`: prefix wildcard, matching xxx.xxx and all its subdomains. For example, "*.example.com" can match "example.com", "www.example.com", and "a.b.example.com". (Supported since API version 21)
+- `"*xx.xxx.xxx"`: prefix wildcard, matching domain names ending with "xx.xxx.xxx". For example, "*a.example.com" can match "a.example.com" and "www.a.example.com". (Supported since API version 26.0.0)
+- `"xxx.xxx.xxx.*"`: suffix wildcard, matching domain names starting with "xxx.xxx.xxx.". For example, "www.example.*" can match "www.example.com" and "www.example.cn". (Supported since API version 26.0.0)
+- `"xxx.xxx.xxx.xx*"`: suffix wildcard, matching domain names starting with "xxx.xxx.xxx.xx". For example, "www.example.co*" can match "www.example.com" and "www.example.com.cn". (Supported since API version 26.0.0)
 
 ## NetFirewallDnsParams
 
 Defines the DNS information of a firewall rule.
 
- > **Description**
- >
- >  This parameter cannot be empty when **rule.type** of [addNetFirewallRule](#netfirewalladdnetfirewallrule) is set to RULE_DNS.
+> **NOTE**
+>
+>  This parameter cannot be empty when **rule.type** of [addNetFirewallRule](#netfirewalladdnetfirewallrule) is set to **RULE_DNS**.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
