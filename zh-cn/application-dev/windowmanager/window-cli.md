@@ -48,9 +48,9 @@ ohos-window restore-window --windowId <id> --help
 | 错误码 | 说明 | 处理建议 |
 |--------|------|------|
 | `ERR_INVALID_INPUT` | 无效的输入参数 | 检查参数是否符合参数说明 |
-| `ERR_NO_PERMISSION` | 权限校验失败 | 检查是否配置ohos.permission.CONTROL_DEVICE权限 |
+| `ERR_NO_PERMISSION` | 权限校验失败 | 检查是否配置[ohos.permission.CONTROL_DEVICE](../security/AccessToken/restricted-permissions.md#ohospermissioncontrol_device)权限 |
 | `ERR_DEVICE_NOT_SUPPORT` | 设备不支持 | 检查当前设备类型 |
-| `ERR_IPC_FAILED` | IPC通信或服务连接失败 | 重启设备后再次尝试执行命令 |
+| `ERR_IPC_FAILED` | IPC通信或服务连接失败 | 尝试重试 |
 | `ERR_INVALID_OPERATION` | 当前状态不允许该操作 | 待设备解锁后再使用命令 |
 
 ### 示例代码
