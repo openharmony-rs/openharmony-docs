@@ -29,6 +29,8 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 按键（包括单个按键和组合键）注入。
 
+从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。
+
 **需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
@@ -101,6 +103,8 @@ injectEvent(keyEvent: KeyEventInfo): void
 
 按键(包括单个按键和组合键)注入。
 
+从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。
+
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -167,6 +171,8 @@ struct Index {
 injectKeyEvent(keyEvent: KeyEventData): void
 
 按键（包括单个按键和组合键）事件注入。
+
+从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -784,6 +790,7 @@ struct Index {
 | keyCode         | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否    |  否 | 按键键值。当前仅支持返回键/KEYCODE_BACK键。 |
 | keyDownDuration | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
+| displayId | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否    |  是 | 目标屏幕ID。取值应为≥0的整数。<br>**起始版本**：26.0.1|
 
 ## KeyEventData<sup>11+</sup>
 
