@@ -1,10 +1,10 @@
 # SmartPerf Device性能工具使用指导
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
-<!--Owner: @niu-guoliang-->
-<!--Designer: @niu-guoliang-->
-<!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @zhzhchuai-->
+<!--Designer: @zhzhchuai-->
+<!--Tester: @test-sdd-tse-->
+<!--Adviser: @chen8281-->
 
 ## 工具简介
 
