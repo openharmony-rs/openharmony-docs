@@ -2817,3 +2817,190 @@ struct Index {
   }
 }
 ```
+
+
+## UIAccessibilityElement
+
+无障碍聚焦节点元素信息。
+
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+### 属性
+
+| 名称                  | 类型                                                             | 只读 | 可选 | 描述             |
+|----------------------|--------------------------------------------------------------------|------|------|-------------------|
+| accessibilityFocused | boolean | 否 | 是 | 表示元素是否因无障碍目的获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值：false。|
+| checkable | boolean | 否 | 是 | 元素是否可勾选。true表示可勾选，false表示不可勾选。<br>默认值：false。|
+| checked | boolean | 否 | 是 | 元素是否已勾选。true表示已勾选，false表示未勾选。<br>默认值：false。|
+| clickable | boolean | 否 | 是 | 元素是否可点击。true表示可点击，false表示不可点击。<br>默认值：false。|
+| componentId | number | 否 | 是 | 元素所属组件的ID。<br>默认值：-1。|
+| componentType | string                                                             | 否  | 是  | 元素所属组件的类型。|
+| description | string                                                             | 否  | 是  | 元素的描述信息。|
+| editable| boolean | 否 | 是 | 元素是否可编辑。true表示可编辑，false表示不可编辑。<br>默认值：false。|
+| error | string                                                             | 否  | 是  | 元素的错误状态。|
+| focusable | boolean | 否 | 是 | 元素是否可获得焦点。true表示可获得焦点，false表示不可获得焦点。<br/>默认值：false。|
+| hintText | string                                                             | 否  | 是  | 提示文本。|
+| inputType< | number                                                             | 否  | 是  | 输入文本的类型。<br>默认值：0。|
+| inspectorKey | string                                                             | 否  | 是  | 检查器键。|
+| isActive| boolean | 否 | 是 | 元素是否处于活动状态。true表示活动状态，false表示非活动状态。<br>默认值：true。|
+| isEnable | boolean | 否 | 是 | 元素是否启用。true表示启用，false表示未启用。<br>默认值：false。|
+| isFocused | boolean | 否 | 是 | 表示元素是否已获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值：false。|
+| isPassword| boolean                                                            | 否  | 是  | 元素是否为密码。true表示元素是密码，false表示不是密码。<br>默认值：false。|
+| isVisible| boolean | 否 | 是 | 元素是否可见。true表示元素可见，false表示元素不可见。<br>默认值：false。|
+| longClickable | boolean | 否 | 是 | 元素是否可长按。true表示可长按，false表示不可长按。<br>默认值：false。|
+| pageId | number | 否 | 是 | 页面ID。<br>默认值：-1。|
+| pluralLineSupported | boolean | 否 | 是 | 表示元素是否支持多行文本。true表示支持，false表示不支持。<br>默认值：false。|
+| rect                | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)                                                      | 否  | 是  | 元素的区域。|
+| scrollable          | boolean                                                            | 否  | 是  | 元素是否可滚动。true表示元素可滚动，false表示不可滚动。<br>默认值：false。|
+| selected         | boolean                                                            | 否  | 是  | 元素是否已选中。true表示已选中，false表示未选中。<br>默认值：false。|
+| text                 | string                                                             | 否  | 是  | 元素的文本内容。|
+| textLengthLimit      | number                                                             | 否  | 是  | 元素的最大文本长度。|
+| valueMax             | number                                                             | 否  | 是  | 最大值。<br>默认值：0。|
+| valueMin            | number                                                             | 否  | 是  | 最小值。<br>默认值：0。|
+| valueNow            | number                                                             | 否  | 是  | 当前值。<br>默认值：0。|
+| offset            | number              | 否  | 是  | 内容区域相对于可滚动组件（如List和Grid）顶部坐标的像素偏移量，单位为像素（px）。<br>默认值：0。|
+| accessibilityText | string                                                  | 否  | 是  | 元素的无障碍文本信息。|
+| accessibilityStateDescription | string                                      | 否  | 是  | 元素的自定义无障碍状态播报文本信息。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| customComponentType             | string                                                             | 否  | 是  | 自定义组件类型。|
+| accessibilityNextFocusId            | number                | 否  | 是  | 下一个要获得焦点的组件的ID。<br>默认值：-1。|
+| accessibilityPreviousFocusId             | number                | 否  | 是  | 上一个要获得焦点的组件的ID。<br>默认值：-1。|
+| accessibilityScrollable            | boolean                 | 否  | 是  | 元素是否因无障碍目的而可滚动。此属性优先级高于scrollable。<br>true表示元素可滚动，false表示元素不可滚动。<br>默认值：true。|
+| accessibilityGroup  | boolean                                                            | 否  | 是  | 元素是否为无障碍组。true表示元素是无障碍组，false表示元素不是无障碍组。<br>默认值：false。|
+| accessibilityLevel             | string                                                             | 否  | 是  | 组件的无障碍级别。<br>'auto'：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被辅助功能识别。<br>'yes'：当前组件可被辅助功能识别。<br>'no'：当前组件不可被辅助功能识别。<br>'no-hide-descendants'：当前组件及其所有子组件不可被辅助功能识别。|
+| accessibilityVisible  | boolean                                                            | 否  | 是  | 组件是否无障碍可见。true表示可见，false表示不可见。|
+| parentId             | number                                                             | 否  | 是  | 组件的父元素ID。|
+| childrenIds             | Array\<number>                                                             | 否  | 是  | 组件的子元素ID列表。|
+
+## FocusedUIAccessibilityElementChangeInfo
+
+无障碍聚焦节点变化信息
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+### 属性
+
+| 名称                  | 类型                                                             | 只读 | 可选 | 描述             |
+|----------------------|--------------------------------------------------------------------|------|------|-------------------|
+| focusedElement | UIAccessibilityElement | 否 | 是 | 当前聚焦节点的信息|
+| unFocusedElement | UIAccessibilityElement | 否 | 是 | 上一个聚焦节点的信息|
+
+## accessibility.getFocusedUIAccessibilityElement
+
+getFocusedUIAccessibilityElement(): Promise<UIAccessibilityElement | undefined>
+
+获取当前应用内部无障碍聚焦的节点的节点信息，使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**返回值：**
+| 类型                                  | 说明                     |
+| ----------------------------------- | ---------------------- |
+| Promise&lt;UIAccessibilityElement&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的节点信息 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID   | 错误信息                                     |
+| ------- | ---------------------------------------- |
+| 9300000 | System abnormality. |
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+accessibility.getFocusedUIAccessibilityElement().then((data: accessibility.UIAccessibilityElement[]) => {
+  console.info(`succeeded in getting focused accessibility elementInfo, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`failed to get focused accessibility elementInfo because ${JSON.stringify(err)}`);
+});
+```
+
+## accessibility.onFocusedUIAccessibilityElementChanged
+
+onFocusedUIAccessibilityElementChanged(callback: Callback&lt;FocusedUIAccessibilityElementChangeInfo&gt;): void
+
+获取当前应用内部无障碍聚焦的节点的节点信息，使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名      | 类型                        | 必填   | 说明                                       |
+| -------- | ------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;FocusedUIAccessibilityElementChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID   | 错误信息                                     |
+| ------- | ---------------------------------------- |
+| 9300000 | System abnormality. |
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+static onFocusChanged(data: accessibility.FocusedUIAccessibilityElementChangeInfo): void {
+  console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
+  console.info('unFocusedElement: ' + JSON.stringify(data.unFocusedElement));
+}
+
+try {
+  accessibility.onFocusedUIAccessibilityElementChanged(onFocusChanged);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`failed to register accessibility element change listener because ${JSON.stringify(err)}`);
+}
+```
+
+## accessibility.offFocusedUIAccessibilityElementChanged
+
+offFocusedUIAccessibilityElementChanged(callback?: Callback&lt;FocusedUIAccessibilityElementChangeInfo&gt;): void
+
+获取当前应用内部无障碍聚焦的节点的节点信息，使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**错误码：**
+
+以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID   | 错误信息                                     |
+| ------- | ---------------------------------------- |
+| 9300000 | System abnormality. |
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+static onFocusChanged(data: accessibility.FocusedUIAccessibilityElementChangeInfo): void {
+  console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
+  console.info('unFocusedElement: ' + JSON.stringify(data.unFocusedElement));
+}
+
+try {
+  accessibility.onFocusedUIAccessibilityElementChanged(onFocusChanged);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`failed to register accessibility element change listener because ${JSON.stringify(err)}`);
+}
+
+try {
+  accessibility.offFocusedUIAccessibilityElementChanged(onFocusChanged);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`failed to deregister accessibility element change listener because ${JSON.stringify(err)}`);
+}
+```
