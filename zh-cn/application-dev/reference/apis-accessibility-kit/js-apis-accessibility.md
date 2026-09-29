@@ -2818,11 +2818,11 @@ struct Index {
 }
 ```
 
-
 ## UIAccessibilityElement
 
 无障碍聚焦节点元素信息。
 
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2837,17 +2837,17 @@ struct Index {
 | componentId | number | 否 | 是 | 元素所属组件的ID。<br>默认值：-1。|
 | componentType | string                                                             | 否  | 是  | 元素所属组件的类型。|
 | description | string                                                             | 否  | 是  | 元素的描述信息。|
-| editable| boolean | 否 | 是 | 元素是否可编辑。true表示可编辑，false表示不可编辑。<br>默认值：false。|
+| editable | boolean | 否 | 是 | 元素是否可编辑。true表示可编辑，false表示不可编辑。<br>默认值：false。|
 | error | string                                                             | 否  | 是  | 元素的错误状态。|
-| focusable | boolean | 否 | 是 | 元素是否可获得焦点。true表示可获得焦点，false表示不可获得焦点。<br/>默认值：false。|
+| focusable | boolean | 否 | 是 | 元素是否可获得焦点。true表示可获得焦点，false表示不可获得焦点。<br>默认值：false。|
 | hintText | string                                                             | 否  | 是  | 提示文本。|
-| inputType< | number                                                             | 否  | 是  | 输入文本的类型。<br>默认值：0。|
+| inputType | number                                                             | 否  | 是  | 输入文本的类型。<br>默认值：0。|
 | inspectorKey | string                                                             | 否  | 是  | 检查器键。|
-| isActive| boolean | 否 | 是 | 元素是否处于活动状态。true表示活动状态，false表示非活动状态。<br>默认值：true。|
+| isActive | boolean | 否 | 是 | 元素是否处于活动状态。true表示活动状态，false表示非活动状态。<br>默认值：true。|
 | isEnable | boolean | 否 | 是 | 元素是否启用。true表示启用，false表示未启用。<br>默认值：false。|
 | isFocused | boolean | 否 | 是 | 表示元素是否已获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值：false。|
-| isPassword| boolean                                                            | 否  | 是  | 元素是否为密码。true表示元素是密码，false表示不是密码。<br>默认值：false。|
-| isVisible| boolean | 否 | 是 | 元素是否可见。true表示元素可见，false表示元素不可见。<br>默认值：false。|
+| isPassword | boolean                                                            | 否  | 是  | 元素是否为密码。true表示元素是密码，false表示不是密码。<br>默认值：false。|
+| isVisible | boolean | 否 | 是 | 元素是否可见。true表示元素可见，false表示元素不可见。<br>默认值：false。|
 | longClickable | boolean | 否 | 是 | 元素是否可长按。true表示可长按，false表示不可长按。<br>默认值：false。|
 | pageId | number | 否 | 是 | 页面ID。<br>默认值：-1。|
 | pluralLineSupported | boolean | 否 | 是 | 表示元素是否支持多行文本。true表示支持，false表示不支持。<br>默认值：false。|
@@ -2874,7 +2874,9 @@ struct Index {
 
 ## FocusedUIAccessibilityElementChangeInfo
 
-无障碍聚焦节点变化信息
+无障碍聚焦节点变化信息。
+
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2889,18 +2891,18 @@ struct Index {
 
 getFocusedUIAccessibilityElement(): Promise<UIAccessibilityElement | undefined>
 
-获取当前应用内部无障碍聚焦的节点的节点信息，使用Promise异步回调。
+获取当前应用内部无障碍聚焦的节点的信息，使用Promise异步回调。
 
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：**SystemCapability.BarrierFree.Accessibility.Core
 
 **返回值：**
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;UIAccessibilityElement&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的节点信息 |
+| Promise&lt;UIAccessibilityElement&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息 |
 
 **错误码：**
 
@@ -2911,7 +2913,8 @@ getFocusedUIAccessibilityElement(): Promise<UIAccessibilityElement | undefined>
 | 9300000 | System abnormality. |
 
 ```ts
-import { accessibility } from '@kit.AccessibilityKit';
+import accessibility, { UIAccessibilityElement } from '@ohos.accessibility';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 accessibility.getFocusedUIAccessibilityElement().then((data: accessibility.UIAccessibilityElement[]) => {
   console.info(`succeeded in getting focused accessibility elementInfo, ${JSON.stringify(data)}`);
@@ -2924,7 +2927,69 @@ accessibility.getFocusedUIAccessibilityElement().then((data: accessibility.UIAcc
 
 onFocusedUIAccessibilityElementChanged(callback: Callback&lt;FocusedUIAccessibilityElementChangeInfo&gt;): void
 
-获取当前应用内部无障碍聚焦的节点的节点信息，使用Promise异步回调。
+注册监听器，监听应用无障碍焦点变化的事件
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名      | 类型                        | 必填   | 说明                                       |
+| -------- | ------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;FocusedUIAccessibilityElementChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID   | 错误信息                                     |
+| ------- | ---------------------------------------- |
+| 9300000 | System abnormality. |
+
+```ts
+import accessibility from '@ohos.accessibility';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  static onFocusChanged(data: accessibility.FocusedUIAccessibilityElementChangeInfo): void {
+    console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
+    console.info('unFocusedElement: ' + JSON.stringify(data.unFocusedElement));
+  }
+
+  aboutToAppear(): void {
+    try {
+      accessibility.onFocusedUIAccessibilityElementChanged(Index.onFocusChanged);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`failed to register accessibility element change listener because ${JSON.stringify(err)}`);
+    }
+  }
+
+build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## accessibility.offFocusedUIAccessibilityElementChanged
+
+offFocusedUIAccessibilityElementChanged(callback?: Callback&lt;FocusedUIAccessibilityElementChangeInfo&gt;): void
+
+注销监听器，该监听器用于监听应用无障碍焦点变化的事件
 
 **起始版本：** 26.0.1
 
@@ -2936,7 +3001,7 @@ onFocusedUIAccessibilityElementChanged(callback: Callback&lt;FocusedUIAccessibil
 
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;FocusedUIAccessibilityElementChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知 |
+| callback | Callback&lt;FocusedUIAccessibilityElementChangeInfo&gt; | 是    | 回调函数，需要注销的回调函数，传空值取消所有监听 |
 
 **错误码：**
 
@@ -2947,60 +3012,46 @@ onFocusedUIAccessibilityElementChanged(callback: Callback&lt;FocusedUIAccessibil
 | 9300000 | System abnormality. |
 
 ```ts
-import { accessibility } from '@kit.AccessibilityKit';
+import accessibility from '@ohos.accessibility';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-static onFocusChanged(data: accessibility.FocusedUIAccessibilityElementChangeInfo): void {
-  console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
-  console.info('unFocusedElement: ' + JSON.stringify(data.unFocusedElement));
-}
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
 
-try {
-  accessibility.onFocusedUIAccessibilityElementChanged(onFocusChanged);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`failed to register accessibility element change listener because ${JSON.stringify(err)}`);
-}
-```
+  static onFocusChanged(data: accessibility.FocusedUIAccessibilityElementChangeInfo): void {
+    console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
+    console.info('unFocusedElement: ' + JSON.stringify(data.unFocusedElement));
+  }
 
-## accessibility.offFocusedUIAccessibilityElementChanged
+  aboutToAppear(): void {
+    try {
+      accessibility.onFocusedUIAccessibilityElementChanged(Index.onFocusChanged);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`failed to register accessibility element change listener because ${JSON.stringify(err)}`);
+    }
+  }
 
-offFocusedUIAccessibilityElementChanged(callback?: Callback&lt;FocusedUIAccessibilityElementChangeInfo&gt;): void
+  aboutToDisappear(): void {
+    try {
+      accessibility.offFocusedUIAccessibilityElementChanged(Index.onFocusChanged);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`failed to deregister accessibility element change listener because ${JSON.stringify(err)}`);
+    }
+  }
 
-获取当前应用内部无障碍聚焦的节点的节点信息，使用Promise异步回调。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
-**错误码：**
-
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
-
-| 错误码ID   | 错误信息                                     |
-| ------- | ---------------------------------------- |
-| 9300000 | System abnormality. |
-
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-
-static onFocusChanged(data: accessibility.FocusedUIAccessibilityElementChangeInfo): void {
-  console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
-  console.info('unFocusedElement: ' + JSON.stringify(data.unFocusedElement));
-}
-
-try {
-  accessibility.onFocusedUIAccessibilityElementChanged(onFocusChanged);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`failed to register accessibility element change listener because ${JSON.stringify(err)}`);
-}
-
-try {
-  accessibility.offFocusedUIAccessibilityElementChanged(onFocusChanged);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`failed to deregister accessibility element change listener because ${JSON.stringify(err)}`);
+build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+    }
+    .height('100%')
+    .width('100%')
+  }
 }
 ```
