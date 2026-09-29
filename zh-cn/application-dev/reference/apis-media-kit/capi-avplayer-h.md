@@ -1704,7 +1704,7 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredWidth(OH_AVPlaybackStrategy *stra
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 播放策略配置对象指针，需先通过OH_AVPlaybackStrategy_Create创建，再通过相关Set接口配置宽度、高度、缓冲时长等参数，最后设置给播放器以应用策略。 |
-| int32_t width | AVPlayer启动时选择播放的首选宽度，单位为像素（px）。建议取值范围[320-1920]。播放器会选择接近该宽度的视频流进行播放。若未设置或设为0，则使用默认选择策略。 |
+| int32_t width | AVPlayer启动时选择播放的首选宽度，单位为像素（px）。建议取值范围[320, 1920]。播放器会选择接近该宽度的视频流进行播放。若未设置或设为0，则使用默认选择策略。 |
 
 **返回：**
 
@@ -1729,7 +1729,7 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredHeight(OH_AVPlaybackStrategy *str
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 播放策略配置对象指针，需先通过OH_AVPlaybackStrategy_Create创建，再通过相关Set接口配置高度等参数，最后设置给播放器以应用策略。 |
-| int32_t height | AVPlayer启动时选择播放的首选高度，单位为像素（px）。建议取值范围[320-1080]。播放器会选择接近该高度的视频流进行播放。若未设置或设为0，则使用默认选择策略。 |
+| int32_t height | AVPlayer启动时选择播放的首选高度，单位为像素（px）。建议取值范围[320, 1080]。播放器会选择接近该高度的视频流进行播放。若未设置或设为0，则使用默认选择策略。 |
 
 **返回：**
 
@@ -1754,7 +1754,7 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredBufferDuration(OH_AVPlaybackStrat
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 播放策略配置对象指针，需先通过OH_AVPlaybackStrategy_Create创建，再通过相关Set接口配置缓冲时长等参数，最后设置给播放器以应用策略。 |
-| int32_t ms | AVPlayer启动时选择播放的首选缓冲时长，单位为毫秒（ms）。建议取值范围[100-10000]。 |
+| int32_t ms | AVPlayer启动时选择播放的首选缓冲时长，单位为毫秒（ms）。建议取值范围[100, 10000]。 |
 
 **返回：**
 
@@ -1904,7 +1904,7 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(OH_AVPlaybackStr
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 播放策略配置对象指针，需先通过OH_AVPlaybackStrategy_Create创建，再通过相关Set接口配置快速播放阈值等参数，最后设置给播放器以应用策略。 |
-| double seconds | 自动快速播放的阈值，单位为秒（s）。建议取值范围[0.5-10.0]。 |
+| double seconds | 自动快速播放的阈值，单位为秒（s）。建议取值范围[0.5, 10.0]。 |
 
 **返回：**
 
